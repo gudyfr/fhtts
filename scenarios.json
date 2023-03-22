@@ -15,7 +15,9 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "Hound"
+            {
+                "name": "Hound"
+            }
         ],
         "overlays": [
             {
@@ -79,10 +81,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "CityGuard"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "CityGuard"
+            }
         ],
         "overlays": [
             {
@@ -144,10 +154,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "AlgoxScout"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "AlgoxScout"
+            }
         ],
         "overlays": [
             {
@@ -195,10 +213,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "Hound"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "Hound"
+            }
         ],
         "overlays": [
             {
@@ -251,11 +277,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxScout",
-            "FrozenFist",
-            "Snowdancer"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "FrozenFist"
+            },
+            {
+                "name": "Snowdancer"
+            }
         ],
         "overlays": [
             {
@@ -303,8 +339,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            }
         ],
         "overlays": [
             {
@@ -356,8 +396,12 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "FrostDemon",
-            "SnowImp"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -406,10 +450,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrozenCorpse",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerSoldier"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            }
         ],
         "overlays": [
             {
@@ -462,9 +514,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "Hound",
-            "PolarBear",
-            "SnowImp"
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -503,10 +561,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "IceWraith",
-            "LivingDoom",
-            "LivingSpirit",
-            "Ooze"
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "Ooze"
+            }
         ],
         "overlays": [
             {
@@ -571,9 +637,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "AlgoxIcespeaker"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            }
         ],
         "overlays": [
             {
@@ -615,9 +687,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrostDemon",
-            "WindDemon",
-            "AlgoxStormcaller"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "WindDemon"
+            },
+            {
+                "name": "AlgoxStormcaller"
+            }
         ],
         "overlays": [
             {
@@ -674,9 +752,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "NightDemon",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -737,9 +821,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "ShrikeFiend",
-            "SnowImp",
-            "WindDemon"
+            {
+                "name": "ShrikeFiend"
+            },
+            {
+                "name": "SnowImp"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -796,9 +886,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AbaelHerder",
-            "LightningEel",
-            "PiranhaPig"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -864,9 +960,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "RoboticBoltshooter",
-            "RuinedMachine"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -924,9 +1026,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -965,9 +1073,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "IceWraith",
-            "LivingDoom",
-            "LivingSpirit"
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            }
         ],
         "overlays": [
             {
@@ -1013,9 +1127,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AlgoxGuard",
-            "BurrowingBlade",
-            "FrozenCorpse"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "FrozenCorpse"
+            }
         ],
         "overlays": [
             {
@@ -1066,9 +1186,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "IceWraith"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "IceWraith"
+            }
         ],
         "overlays": [
             {
@@ -1115,9 +1241,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -1171,11 +1303,21 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrostDemon",
-            "LivingBones",
-            "LivingSpirit",
-            "SnowImp",
-            "PrinceofFrost"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "SnowImp"
+            },
+            {
+                "name": "PrinceofFrost"
+            }
         ],
         "overlays": [
             {
@@ -1240,9 +1382,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerWavethrower"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -1303,9 +1451,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LivingBones",
-            "LivingDoom",
-            "LivingSpirit"
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            }
         ],
         "overlays": [
             {
@@ -1353,9 +1507,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "LivingBones",
-            "WindDemon"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -1395,9 +1555,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "RuinedMachine"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -1441,9 +1607,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -1500,9 +1672,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "DeepTerror",
-            "LivingBones",
-            "Ooze"
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "Ooze"
+            }
         ],
         "overlays": [
             {
@@ -1548,10 +1726,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxIcespeaker",
-            "AlgoxSnowspeaker"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "AlgoxSnowspeaker"
+            }
         ],
         "overlays": [
             {
@@ -1596,11 +1782,21 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxIcespeaker",
-            "AlgoxPriest",
-            "AlgoxScout"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "AlgoxScout"
+            }
         ],
         "overlays": [
             {
@@ -1666,10 +1862,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxIcespeaker",
-            "AlgoxScout"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "AlgoxScout"
+            }
         ],
         "overlays": [
             {
@@ -1735,9 +1939,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -1777,9 +1987,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "HarrowerInfester",
-            "ShrikeFiend"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "HarrowerInfester"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -1840,10 +2056,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BlackImp",
-            "EarthDemon",
-            "FlameDemon",
-            "ShrikeFiend"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -1886,8 +2110,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "",
-            "LordofChaos"
+            {
+                "name": ""
+            },
+            {
+                "name": "LordofChaos"
+            }
         ],
         "overlays": [
             {
@@ -1926,9 +2154,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LivingBones",
-            "RuinedMachine",
-            "SpittingDrake"
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SpittingDrake"
+            }
         ],
         "overlays": [
             {
@@ -1975,9 +2209,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "RuinedMachine"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -2019,9 +2259,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LivingBones",
-            "LivingSpirit",
-            "RuinedMachine"
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -2076,9 +2322,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "Hound",
-            "PolarBear",
-            "SunDemon"
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SunDemon"
+            }
         ],
         "overlays": [
             {
@@ -2154,11 +2406,21 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AlgoxGuard",
-            "AlgoxScout",
-            "BlackImp",
-            "DeepTerror",
-            "FrozenCorpse"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "FrozenCorpse"
+            }
         ],
         "overlays": [
             {
@@ -2228,11 +2490,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -2275,10 +2547,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "DeepTerror",
-            "LivingDoom",
-            "LivingSpirit",
-            "NightDemon"
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "NightDemon"
+            }
         ],
         "overlays": [
             {
@@ -2325,9 +2605,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "DeepTerror",
-            "NightDemon",
-            "Ooze"
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "Ooze"
+            }
         ],
         "overlays": [
             {
@@ -2379,9 +2665,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -2429,10 +2721,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -2475,10 +2775,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AbaelHerder",
-            "AbaelScout",
-            "LightningEel",
-            "PiranhaPig"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -2557,9 +2865,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "FrozenCorpse",
-            "ShrikeFiend"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -2593,9 +2907,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxIcespeaker",
-            "HarrowerInfester",
-            "ShrikeFiend"
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "HarrowerInfester"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -2653,9 +2973,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AbaelScout",
-            "FrostDemon",
-            "WindDemon"
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -2702,9 +3028,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "BlackImp",
-            "DeepTerror",
-            "FrostDemon"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "FrostDemon"
+            }
         ],
         "overlays": [
             {
@@ -2761,10 +3093,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerWavethrower"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -2797,10 +3137,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -2858,8 +3206,12 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrostDemon",
-            "SnowImp"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -2912,10 +3264,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerSoldier",
-            "SeekeroftheAbyss"
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "SeekeroftheAbyss"
+            }
         ],
         "overlays": [
             {
@@ -2958,12 +3318,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerSoldier",
-            "LurkerWavethrower",
-            "SeekeroftheAbyss"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "SeekeroftheAbyss"
+            }
         ],
         "overlays": [
             {
@@ -3021,11 +3393,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "FrozenFist",
-            "Snowdancer"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "FrozenFist"
+            },
+            {
+                "name": "Snowdancer"
+            }
         ],
         "overlays": [
             {
@@ -3072,10 +3454,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BlackImp",
-            "HarrowerInfester",
-            "ShrikeFiend",
-            "HarbingerofShadow"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "HarrowerInfester"
+            },
+            {
+                "name": "ShrikeFiend"
+            },
+            {
+                "name": "HarbingerofShadow"
+            }
         ],
         "overlays": [
             {
@@ -3128,8 +3518,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "WindDemon",
-            "Render"
+            {
+                "name": "WindDemon"
+            },
+            {
+                "name": "Render"
+            }
         ],
         "overlays": [
             {
@@ -3185,10 +3579,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton",
-            "TheOrphan"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "TheOrphan"
+            }
         ],
         "overlays": [
             {
@@ -3250,10 +3652,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -3308,11 +3718,21 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerWavethrower",
-            "FractureoftheDeep"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "FractureoftheDeep"
+            }
         ],
         "overlays": [
             {
@@ -3364,9 +3784,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "DeepTerror",
-            "EarthDemon",
-            "HarrowerInfester"
+            {
+                "name": "DeepTerror"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "HarrowerInfester"
+            }
         ],
         "overlays": [
             {
@@ -3433,9 +3859,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "BlackImp",
-            "ChaosDemon",
-            "HarrowerInfester"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "HarrowerInfester"
+            }
         ],
         "overlays": [
             {
@@ -3486,12 +3918,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "SavvasIcestorm",
-            "SavvasLavaflow",
-            "WindDemon"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "SavvasIcestorm"
+            },
+            {
+                "name": "SavvasLavaflow"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -3539,12 +3983,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "CityGuard",
-            "LivingDoom",
-            "LivingSpirit",
-            "ShrikeFiend",
-            "VestigeoftheImprisonedGod"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "CityGuard"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "ShrikeFiend"
+            },
+            {
+                "name": "VestigeoftheImprisonedGod"
+            }
         ],
         "overlays": [
             {
@@ -3592,10 +4048,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith",
-            "LivingBones",
-            "SnowImp"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -3664,12 +4128,24 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "NightDemon",
-            "SunDemon",
-            "WindDemon"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SunDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -3752,13 +4228,27 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "NightDemon",
-            "SunDemon",
-            "WindDemon"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SunDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -3810,13 +4300,27 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "NightDemon",
-            "SunDemon",
-            "WindDemon"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SunDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -3875,9 +4379,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "ForestImp",
-            "RendingDrake"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "RendingDrake"
+            }
         ],
         "overlays": [
             {
@@ -3917,9 +4427,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "CityGuard",
-            "Hound",
-            "SunDemon"
+            {
+                "name": "CityGuard"
+            },
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "SunDemon"
+            }
         ],
         "overlays": [
             {
@@ -3973,12 +4489,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AbaelScout",
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerWavethrower",
-            "PiranhaPig"
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -4053,10 +4581,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith",
-            "LivingBones",
-            "SteelAutomaton"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -4130,11 +4666,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AbaelHerder",
-            "AbaelScout",
-            "LightningEel",
-            "PiranhaPig",
-            "FishKing"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "PiranhaPig"
+            },
+            {
+                "name": "FishKing"
+            }
         ],
         "overlays": [
             {
@@ -4210,12 +4756,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "ForestImp",
-            "PiranhaPig",
-            "WindDemon"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "PiranhaPig"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -4296,12 +4854,24 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AbaelHerder",
-            "AbaelScout",
-            "ChaosDemon",
-            "FrostDemon",
-            "LightningEel",
-            "PiranhaPig"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -4375,12 +4945,24 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "FlamingBladespinner",
-            "LurkerMindsnipper",
-            "PiranhaPig",
-            "FishKing"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "PiranhaPig"
+            },
+            {
+                "name": "FishKing"
+            }
         ],
         "overlays": [
             {
@@ -4446,11 +5028,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrostDemon",
-            "NightDemon",
-            "PiranhaPig",
-            "WindDemon",
-            "FishKing"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "PiranhaPig"
+            },
+            {
+                "name": "WindDemon"
+            },
+            {
+                "name": "FishKing"
+            }
         ],
         "overlays": [
             {
@@ -4501,12 +5093,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AbaelHerder",
-            "AbaelScout",
-            "LightningEel",
-            "LurkerSoldier",
-            "LurkerWavethrower",
-            "PiranhaPig"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -4578,10 +5182,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith",
-            "PolarBear",
-            "SnowImp"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -4664,10 +5276,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton",
-            "Relic"
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "Relic"
+            }
         ],
         "overlays": [
             {
@@ -4728,12 +5348,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AestherAshblade",
-            "AestherScout",
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AestherAshblade"
+            },
+            {
+                "name": "AestherScout"
+            },
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -4805,8 +5437,12 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "FrostDemon",
-            "WindDemon"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -4862,9 +5498,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AncientArtillery",
-            "LurkerMindsnipper",
-            "PiranhaPig"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -4930,8 +5572,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "Ooze",
-            "ElderOoze"
+            {
+                "name": "Ooze"
+            },
+            {
+                "name": "ElderOoze"
+            }
         ],
         "overlays": [
             {
@@ -4964,10 +5610,18 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "BlackImp",
-            "BurrowingBlade",
-            "LightningEel",
-            "PolarBear"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "PolarBear"
+            }
         ],
         "overlays": [
             {
@@ -5053,9 +5707,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BlackImp",
-            "EarthDemon",
-            "IceWraith"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "IceWraith"
+            }
         ],
         "overlays": [
             {
@@ -5117,12 +5777,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "FlamingBladespinner",
-            "LurkerClawcrusher",
-            "PolarBear",
-            "SteelAutomaton"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -5176,14 +5848,30 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "LurkerClawcrusher",
-            "SavvasIcestorm",
-            "SavvasLavaflow",
-            "WindDemon",
-            "TheCollector"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "SavvasIcestorm"
+            },
+            {
+                "name": "SavvasLavaflow"
+            },
+            {
+                "name": "WindDemon"
+            },
+            {
+                "name": "TheCollector"
+            }
         ],
         "overlays": [
             {
@@ -5230,10 +5918,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxIcespeaker",
-            "AlgoxPriest"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "AlgoxPriest"
+            }
         ],
         "overlays": [
             {
@@ -5309,10 +6005,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith",
-            "PolarBear",
-            "SnowImp"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -5349,10 +6053,18 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerWavethrower"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -5428,11 +6140,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerSoldier",
-            "LurkerWavethrower"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -5477,14 +6199,30 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxScout",
-            "AlgoxSnowspeaker",
-            "Hound",
-            "PolarBear",
-            "VermlingPriest",
-            "VermlingScout"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "VermlingPriest"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -5532,11 +6270,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton",
-            "VermlingScout"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -5598,10 +6346,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "IceWraith",
-            "LivingBones",
-            "LivingDoom",
-            "LivingSpirit"
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            }
         ],
         "overlays": [
             {
@@ -5659,9 +6415,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "BlackImp",
-            "RendingDrake"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "RendingDrake"
+            }
         ],
         "overlays": [
             {
@@ -5735,10 +6497,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -5791,10 +6561,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "BlackImp",
-            "BurrowingBlade",
-            "SpittingDrake"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "SpittingDrake"
+            }
         ],
         "overlays": [
             {
@@ -5865,9 +6643,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "RoboticBoltshooter",
-            "SteelAutomaton"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -5929,10 +6713,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "EarthDemon",
-            "LurkerMindsnipper",
-            "ShrikeFiend"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -5999,9 +6791,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxPriest"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            }
         ],
         "overlays": [
             {
@@ -6063,12 +6861,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "FrostDemon",
-            "LivingSpirit",
-            "NightDemon",
-            "SavvasIcestorm",
-            "WindDemon"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SavvasIcestorm"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -6101,10 +6911,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LivingDoom",
-            "LivingSpirit",
-            "LurkerClawcrusher",
-            "ShrikeFiend"
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -6154,11 +6972,21 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "EarthDemon",
-            "ForestImp",
-            "FrostDemon",
-            "SavvasIcestorm",
-            "WindDemon"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "SavvasIcestorm"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -6206,11 +7034,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "RendingDrake",
-            "SavvasLavaflow",
-            "WindDemon"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "RendingDrake"
+            },
+            {
+                "name": "SavvasLavaflow"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -6267,11 +7105,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "CityGuard",
-            "EarthDemon",
-            "FlameDemon",
-            "FrostDemon",
-            "WindDemon"
+            {
+                "name": "CityGuard"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -6334,13 +7182,27 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "LivingBones",
-            "LivingDoom",
-            "LivingSpirit",
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -6395,8 +7257,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "IceWraith",
-            "SnowImp"
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -6461,10 +7327,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -6526,10 +7400,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LivingDoom",
-            "LivingSpirit",
-            "RuinedMachine",
-            "ShrikeFiend"
+            {
+                "name": "LivingDoom"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -6589,11 +7471,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrostDemon",
-            "Hound",
-            "NightDemon",
-            "SavvasIcestorm",
-            "WindDemon"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "NightDemon"
+            },
+            {
+                "name": "SavvasIcestorm"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -6655,10 +7547,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "ChaosDemon",
-            "EarthDemon",
-            "Hound"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "Hound"
+            }
         ],
         "overlays": [
             {
@@ -6705,9 +7605,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "ChaosDemon",
-            "ForestImp",
-            "PolarBear"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "PolarBear"
+            }
         ],
         "overlays": [
             {
@@ -6767,9 +7673,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "Hound",
-            "PolarBear",
-            "SnowImp"
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -6811,9 +7723,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AlgoxGuard",
-            "AlgoxSnowspeaker",
-            "SnowImp"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -6864,10 +7782,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxGuard",
-            "AlgoxIcespeaker",
-            "AlgoxScout"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            },
+            {
+                "name": "AlgoxScout"
+            }
         ],
         "overlays": [
             {
@@ -6929,10 +7855,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "Hound",
-            "PolarBear",
-            "VermlingPriest",
-            "VermlingScout"
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "VermlingPriest"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -6985,10 +7919,18 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "FrozenCorpse",
-            "LivingBones",
-            "LurkerMindsnipper",
-            "LurkerSoldier"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            }
         ],
         "overlays": [
             {
@@ -7035,11 +7977,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "PolarBear",
-            "RendingDrake",
-            "ShrikeFiend",
-            "SpittingDrake"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "RendingDrake"
+            },
+            {
+                "name": "ShrikeFiend"
+            },
+            {
+                "name": "SpittingDrake"
+            }
         ],
         "overlays": [
             {
@@ -7103,12 +8055,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "CityGuard",
-            "Hound",
-            "RoboticBoltshooter",
-            "SteelAutomaton",
-            "VermlingPriest",
-            "VermlingScout"
+            {
+                "name": "CityGuard"
+            },
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "VermlingPriest"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -7161,10 +8125,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "PolarBear",
-            "SteelAutomaton",
-            "VermlingPriest",
-            "VermlingScout"
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "VermlingPriest"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -7217,10 +8189,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "IceWraith",
-            "PolarBear",
-            "SnowImp"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -7305,9 +8285,15 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AlgoxSnowspeaker",
-            "AncientArtillery",
-            "IceWraith"
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "IceWraith"
+            }
         ],
         "overlays": [
             {
@@ -7366,8 +8352,12 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "LivingBones",
-            "LivingSpirit"
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingSpirit"
+            }
         ],
         "overlays": [
             {
@@ -7423,8 +8413,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "RoboticBoltshooter",
-            "RuinedMachine"
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            }
         ],
         "overlays": [
             {
@@ -7480,9 +8474,15 @@
             "Snowthistle": 2
         },
         "monsters": [
-            "IceWraith",
-            "LivingSpirit",
-            "SnowImp"
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -7547,9 +8547,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FrozenCorpse",
-            "IceWraith"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            }
         ],
         "overlays": [
             {
@@ -7615,11 +8621,21 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AbaelScout",
-            "LurkerWavethrower",
-            "SnowImp",
-            "SteelAutomaton",
-            "VermlingScout"
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "SnowImp"
+            },
+            {
+                "name": "SteelAutomaton"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -7683,10 +8699,18 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "AlgoxGuard",
-            "AlgoxPriest",
-            "AlgoxScout",
-            "CityGuard"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxPriest"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "CityGuard"
+            }
         ],
         "overlays": [
             {
@@ -7767,9 +8791,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "LightningEel",
-            "ShrikeFiend"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "ShrikeFiend"
+            }
         ],
         "overlays": [
             {
@@ -7841,10 +8871,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerSoldier",
-            "LurkerWavethrower"
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -7877,10 +8915,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrostDemon",
-            "FrozenCorpse",
-            "IceWraith",
-            "SnowImp"
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -7931,10 +8977,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ForestImp",
-            "PolarBear",
-            "RendingDrake",
-            "SpittingDrake"
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "RendingDrake"
+            },
+            {
+                "name": "SpittingDrake"
+            }
         ],
         "overlays": [
             {
@@ -7990,11 +9044,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "ShrikeFiend",
-            "SteelAutomaton"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "ShrikeFiend"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -8061,11 +9125,21 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "FlameDemon",
-            "RendingDrake",
-            "SavvasLavaflow",
-            "SunDemon"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "RendingDrake"
+            },
+            {
+                "name": "SavvasLavaflow"
+            },
+            {
+                "name": "SunDemon"
+            }
         ],
         "overlays": [
             {
@@ -8132,11 +9206,21 @@
             "Snowthistle": 1
         },
         "monsters": [
-            "LightningEel",
-            "LivingBones",
-            "LivingSpirit",
-            "LurkerWavethrower",
-            "PiranhaPig"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingSpirit"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -8202,12 +9286,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "ForestImp",
-            "PiranhaPig",
-            "PolarBear",
-            "RoboticBoltshooter"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "PiranhaPig"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            }
         ],
         "overlays": [
             {
@@ -8279,7 +9375,7 @@
         "title": "Pirate Queen's Haul"
     },
     "138": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8295,9 +9391,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlameDemon",
-            "ForestImp",
-            "Hound"
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "ForestImp"
+            },
+            {
+                "name": "Hound"
+            }
         ],
         "overlays": [
             {
@@ -8332,10 +9434,10 @@
             "15-A"
         ],
         "title": "Wonder of Nature",
-        "x-haven-title" : "#20 Drifter: Wonder of Nature"
+        "x-haven-title": "#20 Drifter: Wonder of Nature"
     },
     "139": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8351,10 +9453,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "RoboticBoltshooter",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -8390,10 +9500,10 @@
             "11-F"
         ],
         "title": "Race Against the Clock",
-        "x-haven-title" : "#21 Blinkblade: Race Against the Clock"
+        "x-haven-title": "#21 Blinkblade: Race Against the Clock"
     },
     "140": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8409,9 +9519,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "CityGuard",
-            "PolarBear",
-            "VermlingScout"
+            {
+                "name": "CityGuard"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "VermlingScout"
+            }
         ],
         "overlays": [
             {
@@ -8445,10 +9561,10 @@
             "16-A"
         ],
         "title": "Scouting Ambush",
-        "x-haven-title" : "#22 Banner Spear: Scouting Ambush"
+        "x-haven-title": "#22 Banner Spear: Scouting Ambush"
     },
     "141": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8464,8 +9580,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BlackImp",
-            "NightDemon"
+            {
+                "name": "BlackImp"
+            },
+            {
+                "name": "NightDemon"
+            }
         ],
         "overlays": [
             {
@@ -8501,10 +9621,10 @@
             "15-A"
         ],
         "title": "The Dead of Night",
-        "x-haven-title" : "#23 Deathwalker: The Dead of Night"
+        "x-haven-title": "#23 Deathwalker: The Dead of Night"
     },
     "142": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8520,9 +9640,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "EarthDemon",
-            "LivingBones",
-            "SnowImp"
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "SnowImp"
+            }
         ],
         "overlays": [
             {
@@ -8554,10 +9680,10 @@
             "16-A"
         ],
         "title": "Bones in the Dirt",
-        "x-haven-title" : "#24 Boneshaper: Bones in the Dirt"
+        "x-haven-title": "#24 Boneshaper: Bones in the Dirt"
     },
     "143": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8573,12 +9699,24 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FlamingBladespinner",
-            "IceWraith",
-            "LightningEel",
-            "LurkerSoldier",
-            "LurkerWavethrower",
-            "RoboticBoltshooter"
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "IceWraith"
+            },
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerSoldier"
+            },
+            {
+                "name": "LurkerWavethrower"
+            },
+            {
+                "name": "RoboticBoltshooter"
+            }
         ],
         "overlays": [
             {
@@ -8618,10 +9756,10 @@
             "15-A"
         ],
         "title": "Divide and Conquer",
-        "x-haven-title" : "#25 Geminate: Divide and Conquer"
+        "x-haven-title": "#25 Geminate: Divide and Conquer"
     },
     "144": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8637,7 +9775,9 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "SunDemon"
+            {
+                "name": "SunDemon"
+            }
         ],
         "overlays": [
             {
@@ -8663,27 +9803,27 @@
                 "count": 8
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
-                "name" : "1",
-                "as" : "Orb of Energy a",
-                "trackable" : true
+                "name": "1",
+                "as": "Orb of Energy a",
+                "trackable": true
             },
             {
-                "name" : "2",
-                "as" : "Orb of Energy b",
-                "trackable" : true
+                "name": "2",
+                "as": "Orb of Energy b",
+                "trackable": true
             },
             {
-                "name" : "3",
-                "as" : "Orb of Energy c",
-                "trackable" : true
+                "name": "3",
+                "as": "Orb of Energy c",
+                "trackable": true
             },
             {
-                "name" : "4",
-                "as" : "Orb of Energy d",
-                "trackable" : true
-            }            
+                "name": "4",
+                "as": "Orb of Energy d",
+                "trackable": true
+            }
         ],
         "page": 177,
         "requirements": [
@@ -8695,10 +9835,10 @@
             "11-E"
         ],
         "title": "Path of Ancestry",
-        "x-haven-title" : "#26 Infuser: Path of Ancestry"
+        "x-haven-title": "#26 Infuser: Path of Ancestry"
     },
     "145": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8714,9 +9854,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "BurrowingBlade",
-            "EarthDemon",
-            "RendingDrake"
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "RendingDrake"
+            }
         ],
         "overlays": [
             {
@@ -8738,10 +9884,10 @@
             "15-B"
         ],
         "title": "Crumbling Descent",
-        "x-haven-title" : "#27 Pyroclast: Crumbling Descent"
+        "x-haven-title": "#27 Pyroclast: Crumbling Descent"
     },
     "146": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8757,8 +9903,12 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxArcher",
-            "AlgoxIcespeaker"
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxIcespeaker"
+            }
         ],
         "overlays": [
             {
@@ -8788,10 +9938,10 @@
             "15-A"
         ],
         "title": "Tuning the Resonance",
-        "x-haven-title" : "#28 Shattersong: Tuning the Resonance"
+        "x-haven-title": "#28 Shattersong: Tuning the Resonance"
     },
     "147": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8807,9 +9957,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxGuard",
-            "AlgoxSnowspeaker",
-            "WindDemon"
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -8849,10 +10005,10 @@
             "16-A"
         ],
         "title": "A Magnificent Trap",
-        "x-haven-title" : "#29 Trapper: A Magnificent Trap"
+        "x-haven-title": "#29 Trapper: A Magnificent Trap"
     },
     "148": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8868,10 +10024,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "ChaosDemon",
-            "EarthDemon",
-            "FlameDemon",
-            "SunDemon"
+            {
+                "name": "ChaosDemon"
+            },
+            {
+                "name": "EarthDemon"
+            },
+            {
+                "name": "FlameDemon"
+            },
+            {
+                "name": "SunDemon"
+            }
         ],
         "overlays": [
             {
@@ -8901,10 +10065,10 @@
             "13-D"
         ],
         "title": "A Collection of Suffering",
-        "x-haven-title" : "#30 Pain Conduit: A Collection of Suffering"
+        "x-haven-title": "#30 Pain Conduit: A Collection of Suffering"
     },
     "149": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8920,9 +10084,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AlgoxSnowspeaker",
-            "FrostDemon",
-            "WindDemon"
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "FrostDemon"
+            },
+            {
+                "name": "WindDemon"
+            }
         ],
         "overlays": [
             {
@@ -8957,10 +10127,10 @@
             "16-A"
         ],
         "title": "Fighting Snow with Snow",
-        "x-haven-title" : "#31 Snowdancer: Fighting Snow with Snow"
+        "x-haven-title": "#31 Snowdancer: Fighting Snow with Snow"
     },
     "150": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -8976,10 +10146,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -9009,10 +10187,10 @@
             "11-F"
         ],
         "title": "Under the Ice",
-        "x-haven-title" : "#32 Frozen Fist: Under the Ice"
+        "x-haven-title": "#32 Frozen Fist: Under the Ice"
     },
     "151": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -9028,9 +10206,15 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "FrozenCorpse",
-            "LivingBones",
-            "LivingSpirit"
+            {
+                "name": "FrozenCorpse"
+            },
+            {
+                "name": "LivingBones"
+            },
+            {
+                "name": "LivingSpirit"
+            }
         ],
         "overlays": [
             {
@@ -9067,10 +10251,10 @@
             "15-C"
         ],
         "title": "Recharge",
-        "x-haven-title" : "#33 H.I.V.E.: Recharge"
+        "x-haven-title": "#33 H.I.V.E.: Recharge"
     },
     "152": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -9086,10 +10270,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AncientArtillery",
-            "FlamingBladespinner",
-            "RuinedMachine",
-            "SteelAutomaton"
+            {
+                "name": "AncientArtillery"
+            },
+            {
+                "name": "FlamingBladespinner"
+            },
+            {
+                "name": "RuinedMachine"
+            },
+            {
+                "name": "SteelAutomaton"
+            }
         ],
         "overlays": [
             {
@@ -9119,10 +10311,10 @@
             "15-D"
         ],
         "title": "Boiler Room",
-        "x-haven-title" : "#34 Metal Mosaic: Boiler Room"
+        "x-haven-title": "#34 Metal Mosaic: Boiler Room"
     },
     "153": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -9138,10 +10330,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "AbaelHerder",
-            "AbaelScout",
-            "BurrowingBlade",
-            "PiranhaPig"
+            {
+                "name": "AbaelHerder"
+            },
+            {
+                "name": "AbaelScout"
+            },
+            {
+                "name": "BurrowingBlade"
+            },
+            {
+                "name": "PiranhaPig"
+            }
         ],
         "overlays": [
             {
@@ -9167,11 +10367,10 @@
             "14-B"
         ],
         "title": "Wet Work",
-        "x-haven-title" : "#35 Deepwraith: Wet Work"
-
+        "x-haven-title": "#35 Deepwraith: Wet Work"
     },
     "154": {
-        "campaign" : "Solo",
+        "campaign": "Solo",
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -9187,10 +10386,18 @@
             "Snowthistle": 0
         },
         "monsters": [
-            "LightningEel",
-            "LurkerClawcrusher",
-            "LurkerMindsnipper",
-            "LurkerWavethrower"
+            {
+                "name": "LightningEel"
+            },
+            {
+                "name": "LurkerClawcrusher"
+            },
+            {
+                "name": "LurkerMindsnipper"
+            },
+            {
+                "name": "LurkerWavethrower"
+            }
         ],
         "overlays": [
             {
@@ -9206,6 +10413,6 @@
             "15-C"
         ],
         "title": "Crash Against the Waves",
-        "x-haven-title" : "#36 Crashing Tide: Crash Against the Waves"
+        "x-haven-title": "#36 Crashing Tide: Crash Against the Waves"
     }
 }
