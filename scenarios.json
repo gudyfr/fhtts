@@ -287,10 +287,12 @@
                 "name": "AlgoxScout"
             },
             {
-                "name": "FrozenFist"
+                "name": "FrozenFist",
+                "boss": true
             },
             {
-                "name": "Snowdancer"
+                "name": "Snowdancer",
+                "boss": true
             }
         ],
         "overlays": [
@@ -650,7 +652,28 @@
         "overlays": [
             {
                 "name": "Ice Pillar",
-                "count": 5
+                "count": 3,
+                "trackable": true,
+                "renamed": "by nr"
+            },
+            {
+                "name": "Ice Pillar",
+                "count": 4,
+                "trackable": true,
+                "renamed": "by nr",
+                "start_nr" : 4
+            },
+            {
+                "name": "Ice Pillar",
+                "count": 1,
+                "trackable": true,
+                "as": "Ice Pillar A"
+            },
+            {
+                "name": "Ice Pillar",
+                "count": 1,
+                "trackable": true,
+                "as": "Ice Pillar B"
             },
             {
                 "name": "Snow Door",
@@ -7738,7 +7761,7 @@
                 "name": "Ice Pillar",
                 "count": 7,
                 "trackable": true,
-                "renamed" : "by nr"
+                "renamed": "by nr"
             },
             {
                 "name": "Rubble",
@@ -9858,7 +9881,7 @@
             },
             {
                 "name": "EarthDemon",
-                "as" : "Mountain's Heart",
+                "as": "Mountain's Heart",
                 "boss": true
             },
             {
@@ -10119,68 +10142,67 @@
                 "count": 2
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
-                "name" : "a",
-                "as" : "Rune of Power 1",
-                "trackable":true
+                "name": "a",
+                "as": "Rune of Power 1",
+                "trackable": true
             },
             {
-                "name" : "a",
-                "as" : "Rune of Power 2",
-                "trackable":true
+                "name": "a",
+                "as": "Rune of Power 2",
+                "trackable": true
             },
             {
-                "name" : "a",
-                "as" : "Rune of Power 3",
-                "trackable":true
+                "name": "a",
+                "as": "Rune of Power 3",
+                "trackable": true
             },
             {
-                "name" : "a",
-                "as" : "Rune of Power 4",
-                "trackable":true
+                "name": "a",
+                "as": "Rune of Power 4",
+                "trackable": true
             },
             {
-                "name" : "c",
-                "as" : "Rune of Power 5",
-                "trackable":true
+                "name": "c",
+                "as": "Rune of Power 5",
+                "trackable": true
             },
             {
-                "name" : "c",
-                "as" : "Rune of Power 6",
-                "trackable":true
+                "name": "c",
+                "as": "Rune of Power 6",
+                "trackable": true
             },
             {
-                "name" : "1",
-                "as" : "Rune Worker 1",
-                "trackable":true
+                "name": "1",
+                "as": "Rune Worker 1",
+                "trackable": true
             },
             {
-                "name" : "2",
-                "as" : "Rune Worker 2",
-                "trackable":true
+                "name": "2",
+                "as": "Rune Worker 2",
+                "trackable": true
             },
             {
-                "name" : "3",
-                "as" : "Rune Worker 3",
-                "trackable":true
+                "name": "3",
+                "as": "Rune Worker 3",
+                "trackable": true
             },
             {
-                "name" : "4",
-                "as" : "Rune Worker 4",
-                "trackable":true
+                "name": "4",
+                "as": "Rune Worker 4",
+                "trackable": true
             },
             {
-                "name" : "5",
-                "as" : "Rune Worker 5",
-                "trackable":true
+                "name": "5",
+                "as": "Rune Worker 5",
+                "trackable": true
             },
             {
-                "name" : "6",
-                "as" : "Rune Worker 6",
-                "trackable":true
+                "name": "6",
+                "as": "Rune Worker 6",
+                "trackable": true
             }
-
         ],
         "page": 184,
         "requirements": [
@@ -10225,7 +10247,7 @@
         ],
         "overlays": [
             {
-                "name": "Altar",                               
+                "name": "Altar",
                 "count": 3,
                 "trackable": true,
                 "renamed": "by nr"
