@@ -10226,7 +10226,9 @@
         "overlays": [
             {
                 "name": "Altar",                               
-                "count": 3
+                "count": 3,
+                "trackable": true,
+                "renamed": "by nr"
             },
             {
                 "name": "Small Ice Corridor",
