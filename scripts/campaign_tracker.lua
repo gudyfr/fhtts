@@ -222,5 +222,5 @@ end
 
 function loadScenario(scenario)
     local name = string.sub(scenario, 3)
-    Global.call("prepareScenario", name)
+    Global.call("prepareFrosthavenScenario", name)
 end
