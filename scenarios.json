@@ -661,7 +661,7 @@
                 "count": 4,
                 "trackable": true,
                 "renamed": "by nr",
-                "start_nr" : 4
+                "start_nr": 4
             },
             {
                 "name": "Ice Pillar",
@@ -877,11 +877,11 @@
                 "count": 1
             }
         ],
-        "tokens" :[
+        "tokens": [
             {
-                "name" : "1",
-                "as" : "Scenario",
-                "trackable" : true
+                "name": "1",
+                "as": "Scenario",
+                "trackable": true
             }
         ],
         "page": 17,
@@ -1127,6 +1127,18 @@
                 "count": 1
             }
         ],
+        "tokens": [
+            {
+                "name": "1",
+                "as": "Spectral Helper 1",
+                "trackable": true
+            },
+            {
+                "name": "2",
+                "as": "Spectral Helper 2",
+                "trackable": true
+            }
+        ],
         "page": 22,
         "requirements": [
             ""
@@ -1297,6 +1309,8 @@
             },
             {
                 "name": "Metal Cabinet",
+                "as": "Cabinet",
+                "renamed": "by nr",
                 "count": 4
             },
             {
@@ -1782,6 +1796,18 @@
             {
                 "name": "Treasure Chest",
                 "count": 2
+            }
+        ],
+        "tokens": [
+            {
+                "name": "1",
+                "as": "Emissary 1",
+                "trackable": true
+            },
+            {
+                "name": "2",
+                "as": "Emissary 2",
+                "trackable": true
             }
         ],
         "page": 34,
