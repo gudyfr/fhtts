@@ -4124,7 +4124,50 @@
             {
                 "name": "Tree",
                 "size": 3,
-                "count": 1
+                "count": 1,
+                "trackable" : true
+            }
+        ],
+        "tokens": [
+            {
+                "name": "1",
+                "as": "Militia 1",
+                "trackable": true
+            },
+            {
+                "name": "2",
+                "as": "Militia 2",
+                "trackable": true
+            },
+            {
+                "name": "3",
+                "as": "Militia 3",
+                "trackable": true
+            },
+            {
+                "name": "4",
+                "as": "Militia 4",
+                "trackable": true
+            },
+            {
+                "name": "5",
+                "as": "Militia 5",
+                "trackable": true
+            },
+            {
+                "name": "6",
+                "as": "Militia 6",
+                "trackable": true
+            },
+            {
+                "name": "7",
+                "as": "Militia 7",
+                "trackable": true
+            },
+            {
+                "name": "8",
+                "as": "Militia 8",
+                "trackable": true
             }
         ],
         "page": 79,
