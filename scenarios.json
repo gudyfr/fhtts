@@ -1312,7 +1312,7 @@
                 "as": "Cabinet",
                 "renamed": "by nr",
                 "count": 4,
-                "trackable" : true
+                "trackable": true
             },
             {
                 "name": "Power Conduit",
@@ -2285,9 +2285,9 @@
             {
                 "name": "Metal Door",
                 "count": 4,
-                "as" : "Door",
-                "trackable" : true,
-                "renamed" :"by nr"
+                "as": "Door",
+                "trackable": true,
+                "renamed": "by nr"
             },
             {
                 "name": "Rubble",
@@ -2436,6 +2436,18 @@
                 "count": 1
             }
         ],
+        "tokens": [
+            {
+                "name": "a",
+                "as": "Emissary 1",
+                "trackable": true
+            },
+            {
+                "name": "b",
+                "as": "Emissary 2",
+                "trackable": true
+            }
+        ]
         "page": 46,
         "requirements": [
             ""
@@ -2797,7 +2809,9 @@
         "overlays": [
             {
                 "name": "Metal Cabinet",
-                "count": 4
+                "count": 4,
+                "renamed": "by nr",
+                "trackable": true
             },
             {
                 "name": "Metal Door",
