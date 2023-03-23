@@ -1366,37 +1366,51 @@
         ],
         "overlays": [
             {
+                "name": "Dungeon Door",
+                "count": 3,
+                "type" : "Door"
+            },
+            {
                 "name": "Bear Trap",
-                "count": 3
+                "count": 3,
+                "as" : "Damage Trap",
+                "type" : "Trap"
+            },
+            {
+                "name": "Ice Spikes",
+                "count": 3,
+                "type" : "Hazardous Terrain"
+            },
+            {
+                "name": "Ice Pillar",
+                "count": 5,
+                "type" : "Obstacle"
             },
             {
                 "name": "Bookshelf",
                 "size": 2,
-                "count": 3
+                "count": 3,
+                "renamed":"by nr",
+                "trackable":true,
+                "type" : "Objective"
             },
             {
                 "name": "Crate",
-                "count": 3
-            },
-            {
-                "name": "Dungeon Door",
-                "count": 3
-            },
+                "count": 3,
+                "renamed":"by nr",
+                "trackable":true,
+                "type" : "Objective"
+            },           
             {
                 "name": "Glowing Orb",
-                "count": 1
-            },
-            {
-                "name": "Ice Pillar",
-                "count": 5
-            },
-            {
-                "name": "Ice Spikes",
-                "count": 3
+                "count": 1,
+                "trackable": true,
+                "type" : "Objective"
             },
             {
                 "name": "Treasure Chest",
-                "count": 1
+                "count": 1,
+                "type" : "Treasure"
             }
         ],
         "page": 27,
