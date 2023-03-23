@@ -5105,7 +5105,7 @@
             "11-D",
             "13-D"
         ],
-        "title": "Infiltraiting the Lair"
+        "title": "Infiltrating the Lair"
     },
     "76": {
         "errata": "",
@@ -5488,7 +5488,9 @@
             },
             {
                 "name": "Metal Cabinet",
-                "count": 4
+                "count": 4,
+                "trackable":true,
+                "renamed":"by letter"
             },
             {
                 "name": "Rubble",
