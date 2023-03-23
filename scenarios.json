@@ -3480,10 +3480,12 @@
                 "name": "AlgoxPriest"
             },
             {
-                "name": "FrozenFist"
+                "name": "FrozenFist",
+                "boss" : true
             },
             {
-                "name": "Snowdancer"
+                "name": "Snowdancer",
+                "boss": true
             }
         ],
         "overlays": [
