@@ -4623,8 +4623,17 @@
             },
             {
                 "name": "Tree",
+                "as" : "The Great Oak",
+                "trackable" : true,
                 "size": 3,
                 "count": 2
+            }
+        ],
+        "tokens" : [
+            {
+                "name" : "a",
+                "as" : "The great Oak",
+                "trackable" : true
             }
         ],
         "page": 88,
