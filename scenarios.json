@@ -4466,8 +4466,8 @@
             },
             {
                 "name": "ChaosDemon",
-                "as" : "Tormentor",
-                "boss" : true
+                "as": "Tormentor",
+                "boss": true
             },
             {
                 "name": "EarthDemon"
@@ -4623,18 +4623,18 @@
             },
             {
                 "name": "Tree",
-                "as" : "The Great Oak",
-                "trackable" : true,
+                "as": "The Great Oak",
+                "trackable": true,
                 "size": 3,
                 "count": 2
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
-                "name" : "a",
-                "count" : 3,
-                "as" : "The Great Oak",
-                "trackable" : true
+                "name": "a",
+                "count": 3,
+                "as": "The Great Oak",
+                "trackable": true
             }
         ],
         "page": 88,
@@ -4986,8 +4986,8 @@
                 "name": "Small Snow Rock",
                 "count": 2,
                 "as": "Small Tree",
-                "trackable":true,
-                "renamed":"by nr"
+                "trackable": true,
+                "renamed": "by nr"
             },
             {
                 "name": "Snow Door",
@@ -5489,8 +5489,8 @@
             {
                 "name": "Metal Cabinet",
                 "count": 4,
-                "trackable":true,
-                "renamed":"by letter"
+                "trackable": true,
+                "renamed": "by letter"
             },
             {
                 "name": "Rubble",
@@ -5549,43 +5549,68 @@
         ],
         "overlays": [
             {
-                "name": "Barricade",
-                "size": 2,
-                "count": 6
+                "name": "Metal Door",
+                "count": 1,
+                "trackable": true,
+                "as": "Door 1",
+                "type":"Door"
             },
             {
-                "name": "Bear Trap",
-                "count": 6
-            },
-            {
-                "name": "Small Debris",
-                "count": 4
-            },
-            {
-                "name": "Large Debris",
-                "size": 2,
-                "count": 4
+                "name": "Metal Door",
+                "count": 2,
+                "trackable": true,
+                "as": "Door 2",
+                "type":"Door"
             },
             {
                 "name": "Large Metal Corridor",
                 "size": 2,
-                "count": 2
-            },
-            {
-                "name": "Metal Door",
-                "count": 3
+                "count": 2,
+                "type":"Corridor"
             },
             {
                 "name": "Pressure Plate",
-                "count": 2
+                "count": 2,
+                "type":"Pressure Plate"
+            },
+            {
+                "name": "Immobilize Trap",
+                "count": 6,
+                "type":"Trap"
             },
             {
                 "name": "Rubble",
-                "count": 6
+                "count": 6,
+                "type":"Difficult"
             },
             {
+                "name": "Small Debris",
+                "count": 4,
+                "type":"Obstacle"
+            },
+            {
+                "name": "Large Debris",
+                "size": 2,
+                "count": 4,
+                "type":"Obstacle"
+            },
+            {
+                "name": "Barricade",
+                "size": 2,
+                "count": 1,
+                "trackable": true,
+                "type":"Objective"
+            },
+            {
+                "name": "Barricade",
+                "size": 2,
+                "count": 5,
+                "type":"Wall"
+            },        
+            {
                 "name": "Treasure Chest",
-                "count": 2
+                "count": 2,
+                "Type":"Treasure"
             }
         ],
         "page": 100,
