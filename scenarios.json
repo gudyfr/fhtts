@@ -2283,7 +2283,10 @@
             },
             {
                 "name": "Metal Door",
-                "count": 4
+                "count": 4,
+                "as" : "Door",
+                "trackable" : true,
+                "renamed" :"by nr"
             },
             {
                 "name": "Rubble",
