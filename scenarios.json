@@ -4125,7 +4125,7 @@
                 "name": "Tree",
                 "size": 3,
                 "count": 1,
-                "trackable" : true
+                "trackable": true
             }
         ],
         "tokens": [
@@ -4423,6 +4423,15 @@
             {
                 "name": "Snowdrift",
                 "count": 6
+            }
+        ],
+        "tokens": [
+            {
+                "name": "a",
+                "count": 4,
+                "as": "Elemental Core",
+                "renamed": "by nr",
+                "trackable": true
             }
         ],
         "page": 84,
