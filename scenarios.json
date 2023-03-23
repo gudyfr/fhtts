@@ -5574,14 +5574,15 @@
                 "type":"Pressure Plate"
             },
             {
-                "name": "Immobilize Trap",
+                "name": "Bear Trap",
+                "as":"Immobilize Trap",
                 "count": 6,
                 "type":"Trap"
             },
             {
                 "name": "Rubble",
                 "count": 6,
-                "type":"Difficult"
+                "type":"Difficult Terrain"
             },
             {
                 "name": "Small Debris",
