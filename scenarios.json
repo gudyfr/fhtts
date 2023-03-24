@@ -5726,6 +5726,11 @@
             },
             {
                 "name": "PiranhaPig"
+            },
+            {
+                "name": "PiranhaPig",
+                "as" : "Giant Piranha Pig",
+                "boss": true
             }
         ],
         "overlays": [
@@ -5802,7 +5807,9 @@
         "overlays": [
             {
                 "name": "Spike Pit",
-                "count": 5
+                "count": 5,
+                "as" : "Damage Trap",
+                "type": "Trap"
             }
         ],
         "page": 104,
