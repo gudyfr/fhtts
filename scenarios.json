@@ -680,7 +680,8 @@
             },
             {
                 "name": "Sarcophagus",
-                "count": 4
+                "count": 4,
+                "size": 2
             },
             {
                 "name": "Spike Pit",
@@ -4892,7 +4893,8 @@
             },
             {
                 "name": "Sarcophagus",
-                "count": 4
+                "count": 4,
+                "size": 2
             },
             {
                 "name": "Stairs",
@@ -6791,7 +6793,8 @@
         "overlays": [
             {
                 "name": "Sarcophagus",
-                "count": 1
+                "count": 1,
+                "size": 2
             },
             {
                 "name": "Small Snow Corridor",
@@ -7343,8 +7346,7 @@
         "requirements": [
             ""
         ],
-        "tiles": [            
-        ],
+        "tiles": [],
         "title": "Into the Black"
     },
     "103": {
@@ -7389,7 +7391,7 @@
             {
                 "name": "Ice Pillar",
                 "count": 6,
-                "renamed":"by nr",
+                "renamed": "by nr",
                 "trackable": true
             },
             {
@@ -7579,8 +7581,8 @@
             {
                 "name": "Altar",
                 "count": 4,
-                "renamed":"by nr",
-                "trackable":true
+                "renamed": "by nr",
+                "trackable": true
             },
             {
                 "name": "Dungeon Door",
@@ -7680,7 +7682,8 @@
             },
             {
                 "name": "Sarcophagus",
-                "count": 2
+                "count": 2,
+                "size": 2
             }
         ],
         "page": 131,
@@ -8145,7 +8148,7 @@
             {
                 "name": "Ice Pillar",
                 "count": 8,
-                "renamed":"by nr",
+                "renamed": "by nr",
                 "trackable": true
             },
             {
@@ -8288,31 +8291,31 @@
                 "count": 2
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
                 "name": "1",
-                "as" : "Caravan Wagon 1",
-                "trackable" : true
+                "as": "Caravan Wagon 1",
+                "trackable": true
             },
             {
                 "name": "2",
-                "as" : "Caravan Wagon 2",
-                "trackable" : true
+                "as": "Caravan Wagon 2",
+                "trackable": true
             },
             {
                 "name": "3",
-                "as" : "Caravan Wagon 3",
-                "trackable" : true
+                "as": "Caravan Wagon 3",
+                "trackable": true
             },
             {
                 "name": "4",
-                "as" : "Caravan Wagon 4",
-                "trackable" : true
+                "as": "Caravan Wagon 4",
+                "trackable": true
             },
             {
                 "name": "5",
-                "as" : "Caravan Wagon 5",
-                "trackable" : true
+                "as": "Caravan Wagon 5",
+                "trackable": true
             }
         ],
         "page": 140,
@@ -8572,11 +8575,18 @@
             },
             {
                 "name": "Dungeon Door",
-                "count": 2
+                "count": 1
+            },
+            {
+                "name": "Dungeon Door",
+                "as": "Door 2",
+                "trackable": true,
+                "count": 1
             },
             {
                 "name": "Glowing Orb",
-                "count": 1
+                "count": 1,
+                "trackable": true
             },
             {
                 "name": "Treasure Chest",
@@ -8612,21 +8622,25 @@
         },
         "monsters": [
             {
-                "name": "PolarBear"
-            },
-            {
-                "name": "SteelAutomaton"
-            },
-            {
                 "name": "VermlingPriest"
             },
             {
                 "name": "VermlingScout"
+            },
+            {
+                "name": "VermlingScout",
+                "as": "Large Vermling Scout"
+            },
+            {
+                "name": "SteelAutomaton",
+                "as": "Augmented Mindthief",
+                "boss": true
             }
         ],
         "overlays": [
             {
-                "name": "DarkFog",
+                "name": "Cave Door",
+                "as": "Dark Fog",
                 "count": 2
             },
             {
@@ -8644,7 +8658,8 @@
             },
             {
                 "name": "Sarcophagus",
-                "count": 3
+                "count": 3,
+                "size": 2
             }
         ],
         "page": 146,
@@ -10144,7 +10159,8 @@
             },
             {
                 "name": "Sarcophagus",
-                "count": 2
+                "count": 2,
+                "size": 2
             },
             {
                 "name": "Snow Door",
