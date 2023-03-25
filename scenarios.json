@@ -8691,9 +8691,6 @@
         },
         "monsters": [
             {
-                "name": "FrozenCorpse"
-            },
-            {
                 "name": "IceWraith"
             },
             {
@@ -8701,6 +8698,11 @@
             },
             {
                 "name": "SnowImp"
+            },
+            {
+                "name": "FrozenCorpse",
+                "as": "Hungry Maw",
+                "boss": true
             }
         ],
         "overlays": [
@@ -8793,7 +8795,8 @@
                 "name": "AncientArtillery"
             },
             {
-                "name": "IceWraith"
+                "name": "IceWraith",
+                "as": "Power Core"
             }
         ],
         "overlays": [
@@ -8988,6 +8991,8 @@
         "overlays": [
             {
                 "name": "Barrels",
+                "renamed": "by nr",
+                "trackable": true,
                 "count": 3
             },
             {
@@ -8996,6 +9001,8 @@
             },
             {
                 "name": "Crate",
+                "renamed": "by nr",
+                "trackable": true,
                 "count": 2
             },
             {
@@ -9020,6 +9027,43 @@
                 "name": "Supply Shelf",
                 "size": 2,
                 "count": 1
+            }
+        ],
+        "tokens": [
+            {
+                "name": "1",
+                "as": "Helper 1",
+                "trackable": true
+            },
+            {
+                "name": "2",
+                "as": "Helper 2",
+                "trackable": true
+            },
+            {
+                "name": "3",
+                "as": "Helper 3",
+                "trackable": true
+            },
+            {
+                "name": "4",
+                "as": "Helper 4",
+                "trackable": true
+            },
+            {
+                "name": "5",
+                "as": "Helper 5",
+                "trackable": true
+            },
+            {
+                "name": "6",
+                "as": "Helper 6",
+                "trackable": true
+            },
+            {
+                "name": "7",
+                "as": "Helper 7",
+                "trackable": true
             }
         ],
         "page": 151,
@@ -9636,10 +9680,12 @@
                 "name": "RendingDrake"
             },
             {
-                "name": "SavvasLavaflow"
+                "name": "SunDemon"
             },
             {
-                "name": "SunDemon"
+                "name": "SavvasLavaflow",
+                "as": "Belara",
+                "boss": true
             }
         ],
         "overlays": [
