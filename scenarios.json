@@ -261,21 +261,21 @@
         ],
         "title": "Algox Offensive"
     },
-    "4" : {
-            "title" : "Heart of Ice",
-            "choices" : [
-                {
-                    "token" : "a",
-                    "title" : "Introduction A - Algox Offensive is complete",
-                    "value": "A"
-                },
-                {
-                    "token" : "b",
-                    "title" : "Introduction B - Algox Scouting is complete",
-                    "value": "B"
-                }
-            ],
-            "page": 7
+    "4": {
+        "title": "Heart of Ice",
+        "choices": [
+            {
+                "token": "a",
+                "title": "Introduction A - Algox Offensive is complete",
+                "value": "A"
+            },
+            {
+                "token": "b",
+                "title": "Introduction B - Algox Scouting is complete",
+                "value": "B"
+            }
+        ],
+        "page": 7
     },
     "4A": {
         "errata": "The special rules should not mention Priests. There are no Priests in this scenario.",
@@ -6560,7 +6560,8 @@
             },
             {
                 "name": "AlgoxSnowspeaker",
-                "as": "Yoglang"
+                "as": "Yoglang",
+                "boss": true
             },
             {
                 "name": "Hound"
@@ -6570,7 +6571,8 @@
             },
             {
                 "name": "VermlingPriest",
-                "as": "Scabwit"
+                "as": "Scabwit",
+                "boss": true
             },
             {
                 "name": "VermlingScout"
@@ -6633,7 +6635,8 @@
             },
             {
                 "name": "AlgoxSnowspeaker",
-                "as":"Yoglang"
+                "as": "Yoglang",
+                "boss": true
             },
             {
                 "name": "Hound"
@@ -6643,8 +6646,8 @@
             },
             {
                 "name": "VermlingPriest",
-                "as": "Scabwit"
-
+                "as": "Scabwit",
+                "boss": true
             },
             {
                 "name": "VermlingScout"
