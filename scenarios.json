@@ -5945,8 +5945,7 @@
             },
             {
                 "name": "IceWraith",
-                "as" : "Lady in White",
-                "boss": true
+                "as" : "Lady in White"
             }
         ],
         "overlays": [
@@ -6049,6 +6048,18 @@
             {
                 "name": "Treasure Chest",
                 "count": 2
+            }
+        ],
+        "tokens" : [
+            {
+                "name": "a",
+                "as": "Brother 1",
+                "trackable":true
+            },
+            {
+                "name": "b",
+                "as": "Brother 2",
+                "trackable":true
             }
         ],
         "page": 108,
