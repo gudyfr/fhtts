@@ -7388,7 +7388,9 @@
             },
             {
                 "name": "Ice Pillar",
-                "count": 6
+                "count": 6,
+                "renamed":"by nr",
+                "trackable": true
             },
             {
                 "name": "Large Metal Corridor",
@@ -7576,7 +7578,9 @@
         "overlays": [
             {
                 "name": "Altar",
-                "count": 4
+                "count": 4,
+                "renamed":"by nr",
+                "trackable":true
             },
             {
                 "name": "Dungeon Door",
@@ -7933,7 +7937,9 @@
                 "name": "NightDemon"
             },
             {
-                "name": "SavvasIcestorm"
+                "name": "SavvasIcestorm",
+                "as": "The Shimmer",
+                "boss": true
             },
             {
                 "name": "WindDemon"
