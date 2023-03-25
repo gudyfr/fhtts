@@ -261,7 +261,86 @@
         ],
         "title": "Algox Offensive"
     },
-    "4": {
+    "4" : {
+            "title" : "Heart of Ice",
+            "choices" : [
+                {
+                    "token" : "a",
+                    "title" : "Introduction A - Algox Offensive is complete",
+                    "value": "A"
+                },
+                {
+                    "token" : "b",
+                    "title" : "Introduction B - Algox Scouting is complete",
+                    "value": "B"
+                }
+            ]
+    },
+    "4A": {
+        "errata": "The special rules should not mention Priests. There are no Priests in this scenario.",
+        "loot": {
+            "Arrowvine": 0,
+            "Axenut": 0,
+            "Coins": 6,
+            "Corpsecap": 1,
+            "Flamefruit": 0,
+            "Hide": 2,
+            "Item": 1,
+            "Lumber": 3,
+            "Metal": 5,
+            "Rockroot": 2,
+            "Snowthistle": 0
+        },
+        "monsters": [
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "FrozenFist",
+                "boss": true
+            },
+            {
+                "name": "Snowdancer",
+                "boss": true
+            }
+        ],
+        "overlays": [
+            {
+                "name": "Cave Door",
+                "count": 1
+            },
+            {
+                "name": "Large Ice Crystal",
+                "size": 2,
+                "count": 1
+            },
+            {
+                "name": "Ice Pillar",
+                "count": 3
+            },
+            {
+                "name": "Treasure Chest",
+                "count": 1
+            }
+        ],
+        "page": 7,
+        "requirements": [
+            ""
+        ],
+        "tiles": [
+            "11-B",
+            "15-A",
+            "16-B"
+        ],
+        "title": "Heart of Ice"
+    },
+    "4B": {
         "errata": "The special rules should not mention Priests. There are no Priests in this scenario.",
         "loot": {
             "Arrowvine": 0,
