@@ -1368,49 +1368,49 @@
             {
                 "name": "Dungeon Door",
                 "count": 3,
-                "type" : "Door"
+                "type": "Door"
             },
             {
                 "name": "Bear Trap",
                 "count": 3,
-                "as" : "Damage Trap",
-                "type" : "Trap"
+                "as": "Damage Trap",
+                "type": "Trap"
             },
             {
                 "name": "Ice Spikes",
                 "count": 3,
-                "type" : "Hazardous Terrain"
+                "type": "Hazardous Terrain"
             },
             {
                 "name": "Ice Pillar",
                 "count": 5,
-                "type" : "Obstacle"
+                "type": "Obstacle"
             },
             {
                 "name": "Bookshelf",
                 "size": 2,
                 "count": 3,
-                "renamed":"by nr",
-                "trackable":true,
-                "type" : "Objective"
+                "renamed": "by nr",
+                "trackable": true,
+                "type": "Objective"
             },
             {
                 "name": "Crate",
                 "count": 3,
-                "renamed":"by nr",
-                "trackable":true,
-                "type" : "Objective"
-            },           
+                "renamed": "by nr",
+                "trackable": true,
+                "type": "Objective"
+            },
             {
                 "name": "Glowing Orb",
                 "count": 1,
                 "trackable": true,
-                "type" : "Objective"
+                "type": "Objective"
             },
             {
                 "name": "Treasure Chest",
                 "count": 1,
-                "type" : "Treasure"
+                "type": "Treasure"
             }
         ],
         "page": 27,
@@ -5567,65 +5567,65 @@
                 "count": 1,
                 "trackable": true,
                 "as": "Door 1",
-                "type":"Door"
+                "type": "Door"
             },
             {
                 "name": "Metal Door",
                 "count": 2,
                 "trackable": true,
                 "as": "Door 2",
-                "type":"Door"
+                "type": "Door"
             },
             {
                 "name": "Large Metal Corridor",
                 "size": 2,
                 "count": 2,
-                "type":"Corridor"
+                "type": "Corridor"
             },
             {
                 "name": "Pressure Plate",
                 "count": 2,
-                "type":"Pressure Plate"
+                "type": "Pressure Plate"
             },
             {
                 "name": "Bear Trap",
-                "as":"Immobilize Trap",
+                "as": "Immobilize Trap",
                 "count": 6,
-                "type":"Trap"
+                "type": "Trap"
             },
             {
                 "name": "Rubble",
                 "count": 6,
-                "type":"Difficult Terrain"
+                "type": "Difficult Terrain"
             },
             {
                 "name": "Small Debris",
                 "count": 4,
-                "type":"Obstacle"
+                "type": "Obstacle"
             },
             {
                 "name": "Large Debris",
                 "size": 2,
                 "count": 4,
-                "type":"Obstacle"
+                "type": "Obstacle"
             },
             {
                 "name": "Barricade",
                 "size": 2,
                 "count": 1,
                 "trackable": true,
-                "type":"Objective"
+                "type": "Objective"
             },
             {
                 "name": "Barricade",
                 "size": 2,
                 "count": 5,
-                "type":"Wall"
-            },        
+                "type": "Wall"
+            },
             {
                 "name": "Treasure Chest",
                 "count": 2,
-                "Type":"Treasure"
+                "Type": "Treasure"
             }
         ],
         "page": 100,
@@ -5729,7 +5729,7 @@
             },
             {
                 "name": "PiranhaPig",
-                "as" : "Giant Piranha Pig",
+                "as": "Giant Piranha Pig",
                 "boss": true
             }
         ],
@@ -5808,7 +5808,7 @@
             {
                 "name": "Spike Pit",
                 "count": 5,
-                "as" : "Damage Trap",
+                "as": "Damage Trap",
                 "type": "Trap"
             }
         ],
@@ -5945,7 +5945,7 @@
             },
             {
                 "name": "IceWraith",
-                "as" : "Lady in White"
+                "as": "Lady in White"
             }
         ],
         "overlays": [
@@ -6050,16 +6050,16 @@
                 "count": 2
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
                 "name": "a",
                 "as": "Brother 1",
-                "trackable":true
+                "trackable": true
             },
             {
                 "name": "b",
                 "as": "Brother 2",
-                "trackable":true
+                "trackable": true
             }
         ],
         "page": 108,
@@ -6177,7 +6177,9 @@
         "overlays": [
             {
                 "name": "Altar",
-                "count": 2
+                "count": 2,
+                "renamed": "by letter",
+                "trackable": true
             },
             {
                 "name": "Barricade",
@@ -6216,6 +6218,13 @@
             {
                 "name": "Small Water",
                 "count": 4
+            }
+        ],
+        "tokens" : [
+            {
+                "name" : "1",
+                "as" : "Faye",
+                "trackable" : true
             }
         ],
         "page": 110,
