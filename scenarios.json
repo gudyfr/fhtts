@@ -6438,6 +6438,80 @@
         "title": "Sinking Ship"
     },
     "93": {
+        "choices" : [ "a", "b"]
+    },
+    "93A": {
+        "errata": "",
+        "loot": {
+            "Arrowvine": 0,
+            "Axenut": 1,
+            "Coins": 9,
+            "Corpsecap": 0,
+            "Flamefruit": 1,
+            "Hide": 2,
+            "Item": 1,
+            "Lumber": 4,
+            "Metal": 2,
+            "Rockroot": 0,
+            "Snowthistle": 0
+        },
+        "monsters": [
+            {
+                "name": "AlgoxArcher"
+            },
+            {
+                "name": "AlgoxGuard"
+            },
+            {
+                "name": "AlgoxScout"
+            },
+            {
+                "name": "AlgoxSnowspeaker"
+            },
+            {
+                "name": "Hound"
+            },
+            {
+                "name": "PolarBear"
+            },
+            {
+                "name": "VermlingPriest"
+            },
+            {
+                "name": "VermlingScout"
+            }
+        ],
+        "overlays": [
+            {
+                "name": "Barrels",
+                "count": 2
+            },
+            {
+                "name": "Small Cave Corridor",
+                "count": 1
+            },
+            {
+                "name": "Large Cave Corridor",
+                "size": 2,
+                "count": 2
+            },
+            {
+                "name": "Supply Shelf",
+                "size": 2,
+                "count": 2
+            }
+        ],
+        "page": 115,
+        "requirements": [
+            ""
+        ],
+        "tiles": [
+            "13-B",
+            "13-D"
+        ],
+        "title": "Midwinter Brawl"
+    },
+    "93B": {
         "errata": "",
         "loot": {
             "Arrowvine": 0,
