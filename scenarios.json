@@ -1825,7 +1825,9 @@
         "overlays": [
             {
                 "name": "Altar",
-                "count": 6
+                "count": 9,
+                "renamed":"by nr",
+                "trackable":true
             },
             {
                 "name": "Dungeon Door",
