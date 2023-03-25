@@ -6222,11 +6222,11 @@
                 "count": 4
             }
         ],
-        "tokens" : [
+        "tokens": [
             {
-                "name" : "1",
-                "as" : "Faye",
-                "trackable" : true
+                "name": "1",
+                "as": "Faye",
+                "trackable": true
             }
         ],
         "page": 110,
@@ -6438,7 +6438,16 @@
         "title": "Sinking Ship"
     },
     "93": {
-        "choices" : [ "a", "b"]
+        "choices": [
+            {
+                "token": "a",
+                "value": "A"
+            },
+            {
+                "token": "b",
+                "value": "B"
+            }
+        ]
     },
     "93A": {
         "errata": "",
