@@ -183,8 +183,8 @@ function toggle(scenario,field)
     removeButtons(scenario)
     addButtons(scenario)
 
-    if field == "unlocked" then
-        local params = {scenario, isUnlocked(scenario)}
+    if field == "unlocked" or field == "completed" then
+        local params = {scenario, isUnlocked(scenario), isCompleted(scenario)}
         getObjectFromGUID('d17d72').call("toggleDecal", params)
     end
 
