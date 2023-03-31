@@ -171,6 +171,19 @@ function addButtons(scenario)
     end
 end
 
+function toggleCompleted(params)
+    -- print(JSON.encode(params))
+    local scenario = "ct" .. params[1]
+    local completed = params[2]
+    -- Check that this scenario is handled on this tracker instance
+    if scenarioData ~= nil and scenarioData[scenario] ~= nil then
+        local state = ensureState(scenario)
+        if state["completed"] ~= completed then
+            toggle(scenario, "completed")
+        end
+    end
+end
+
 function toggle(scenario,field)
     print('toggle ' .. scenario .. " / " .. field)
     if ensureState(scenario)[field] then
@@ -185,7 +198,14 @@ function toggle(scenario,field)
 
     if field == "unlocked" or field == "completed" then
         local params = {scenario, isUnlocked(scenario), isCompleted(scenario)}
+
+        -- notify the map
         getObjectFromGUID('d17d72').call("toggleDecal", params)
+
+        -- notify the books for completed change
+        if field == "completed" then
+            getObjectFromGUID('2a1fbe').call("toggleCompleted", params)
+        end
     end
 
     if field == "completed" then
