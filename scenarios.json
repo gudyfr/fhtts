@@ -3433,14 +3433,14 @@
             {
                 "name": "Spike Pit",
                 "type": "Trap",
-                "as":"Damage and Immobilize Trap",
+                "as": "Damage and Immobilize Trap",
                 "count": 4
             },
             {
                 "name": "Ice Spikes",
                 "type": "Hazardous Terrain",
                 "count": 10
-            },            
+            },
             {
                 "name": "Treasure Chest",
                 "type": "Treasure",
@@ -3683,9 +3683,9 @@
             {
                 "name": "Ice Corridor",
                 "type": "Icy Terrain",
-                "as" : "Ice",
+                "as": "Ice",
                 "count": 6
-            },            
+            },
             {
                 "name": "Snowdrift",
                 "type": "Difficult Terrain",
@@ -3732,6 +3732,9 @@
         },
         "monsters": [
             {
+                "name": "Seeker of the Abyss"
+            },
+            {
                 "name": "Lurker Clawcrusher"
             },
             {
@@ -3739,9 +3742,6 @@
             },
             {
                 "name": "Lurker Soldier"
-            },
-            {
-                "name": "Seeker of the Abyss"
             }
         ],
         "overlays": [
@@ -3752,6 +3752,7 @@
             },
             {
                 "name": "Large Cave Rock",
+                "type": "Obstacle",
                 "size": 2,
                 "count": 2
             },
@@ -3788,6 +3789,9 @@
         },
         "monsters": [
             {
+                "name": "Seeker of the Abyss"
+            },
+            {
                 "name": "Lightning Eel"
             },
             {
@@ -3801,15 +3805,12 @@
             },
             {
                 "name": "Lurker Wavethrower"
-            },
-            {
-                "name": "Seeker of the Abyss"
             }
         ],
         "overlays": [
             {
-                "name": "Cave Corridor",
-                "type": "Corridor",
+                "name": "Cave Door",
+                "type": "Door",
                 "count": 2
             },
             {
@@ -3819,19 +3820,20 @@
                 "count": 2
             },
             {
-                "name": "Cave Door",
-                "type": "Door",
+                "name": "Cave Corridor",
+                "type": "Corridor",
                 "count": 2
             },
             {
-                "name": "Large Cave Rock",
-                "size": 2,
-                "count": 6
+                "name": "Ice Pillar",
+                "type": "Objective",
+                "count": 9
             },
             {
-                "name": "Ice Pillar",
-                "type": "Obstacle",
-                "count": 9
+                "name": "Large Cave Rock",
+                "type": "Objective",
+                "size": 2,
+                "count": 6
             },
             {
                 "name": "Treasure Chest",
@@ -3868,6 +3870,14 @@
         },
         "monsters": [
             {
+                "name": "Frozen Fist",
+                "boss": true
+            },
+            {
+                "name": "Snowdancer",
+                "boss": true
+            },
+            {
                 "name": "Algox Archer"
             },
             {
@@ -3875,14 +3885,6 @@
             },
             {
                 "name": "Algox Priest"
-            },
-            {
-                "name": "Frozen Fist",
-                "boss": true
-            },
-            {
-                "name": "Snowdancer",
-                "boss": true
             }
         ],
         "overlays": [
@@ -3892,15 +3894,15 @@
                 "count": 1
             },
             {
-                "name": "Large Ice Crystal",
-                "type": "Obstacle",
-                "size": 2,
-                "count": 1
-            },
-            {
                 "name": "Ice Pillar",
                 "type": "Obstacle",
                 "count": 3
+            },
+            {
+                "name": "Large Ice Crystal",
+                "type": "Objective",
+                "size": 2,
+                "count": 1
             },
             {
                 "name": "Treasure Chest",
@@ -3935,6 +3937,9 @@
         },
         "monsters": [
             {
+                "name": "Harbinger of Shadow"
+            },
+            {
                 "name": "Black Imp"
             },
             {
@@ -3942,18 +3947,9 @@
             },
             {
                 "name": "Shrike Fiend"
-            },
-            {
-                "name": "Harbingerof Shadow"
             }
         ],
         "overlays": [
-            {
-                "name": "Altar",
-                "count": 3,
-                "trackable": true,
-                "renamed": "by nr"
-            },
             {
                 "name": "Cave Door",
                 "type": "Door",
@@ -3961,12 +3957,21 @@
             },
             {
                 "name": "Large Cave Rock",
+                "type": "Obstacle",
                 "size": 2,
                 "count": 1
             },
             {
                 "name": "Nest",
+                "type": "Obstacle",
                 "count": 3
+            },
+            {
+                "name": "Altar",
+                "type": "Objective",
+                "count": 3,
+                "trackable": true,
+                "renamed": "by nr"
             },
             {
                 "name": "Treasure Chest",
@@ -4003,23 +4008,23 @@
         },
         "monsters": [
             {
-                "name": "Wind Demon"
+                "name": "Render"
             },
             {
-                "name": "Render"
+                "name": "Wind Demon"
             }
         ],
         "overlays": [
-            {
-                "name": "Snow Corridor",
-                "type": "Corridor",
-                "count": 1
-            },
             {
                 "name": "Large Snow Corridor",
                 "type": "Corridor",
                 "size": 2,
                 "count": 3
+            },
+            {
+                "name": "Snow Corridor",
+                "type": "Corridor",
+                "count": 1
             },
             {
                 "name": "Snowdrift",
@@ -4032,14 +4037,15 @@
                 "count": 2
             },
             {
+                "name": "Tree",
+                "type": "Obstacle",
+                "size": 3,
+                "count": 3
+            },
+            {
                 "name": "Treasure Chest",
                 "type": "Treasure",
                 "count": 1
-            },
-            {
-                "name": "Tree",
-                "size": 3,
-                "count": 3
             }
         ],
         "page": 67,
@@ -4069,6 +4075,9 @@
         },
         "monsters": [
             {
+                "name": "The Orphan"
+            },
+            {
                 "name": "Flaming Bladespinner"
             },
             {
@@ -4076,12 +4085,31 @@
             },
             {
                 "name": "Steel Automaton"
-            },
-            {
-                "name": "The Orphan"
             }
         ],
         "overlays": [
+            {
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 1
+            },
+            {
+                "name": "Large Metal Corridor",
+                "type": "Corridor",
+                "size": 2,
+                "count": 2
+            },
+            {
+                "name": "Metal Corridor",
+                "type": "Corridor",
+                "count": 2
+            },
+            {
+                "name": "Power Conduit",
+                "type": "Difficult Terrain",
+                "size": 2,
+                "count": 4
+            },
             {
                 "name": "Control Console",
                 "type": "Obstacle",
@@ -4092,28 +4120,6 @@
                 "name": "Glowing Orb",
                 "type": "Objective",
                 "count": 1
-            },
-            {
-                "name": "Metal Corridor",
-                "type": "Corridor",
-                "count": 2
-            },
-            {
-                "name": "Large Metal Corridor",
-                "type": "Corridor",
-                "size": 2,
-                "count": 2
-            },
-            {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 1
-            },
-            {
-                "name": "Power Conduit",
-                "type": "Difficult Terrain",
-                "size": 2,
-                "count": 4
             },
             {
                 "name": "Treasure Chest",
@@ -4163,10 +4169,9 @@
         ],
         "overlays": [
             {
-                "name": "Control Console",
-                "type": "Obstacle",
-                "size": 2,
-                "count": 3
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 2
             },
             {
                 "name": "Large Metal Corridor",
@@ -4175,15 +4180,16 @@
                 "count": 2
             },
             {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 2
-            },
-            {
                 "name": "Power Conduit",
                 "type": "Difficult Terrain",
                 "size": 2,
                 "count": 5
+            },
+            {
+                "name": "Control Console",
+                "type": "Obstacle",
+                "size": 2,
+                "count": 3
             },
             {
                 "name": "Treasure Chest",
@@ -4227,6 +4233,9 @@
         },
         "monsters": [
             {
+                "name": "Fracture of the Deep"
+            },
+            {
                 "name": "Lightning Eel"
             },
             {
@@ -4237,21 +4246,9 @@
             },
             {
                 "name": "Lurker Wavethrower"
-            },
-            {
-                "name": "Fracture of the Deep"
             }
         ],
         "overlays": [
-            {
-                "name": "Altar",
-                "count": 2
-            },
-            {
-                "name": "Cave Corridor",
-                "type": "Corridor",
-                "count": 4
-            },
             {
                 "name": "Large Cave Corridor",
                 "type": "Corridor",
@@ -4259,9 +4256,19 @@
                 "count": 4
             },
             {
+                "name": "Cave Corridor",
+                "type": "Corridor",
+                "count": 4
+            },
+            {
                 "name": "Rubble",
                 "type": "Difficult Terrain",
                 "count": 5
+            },
+            {
+                "name": "Altar",
+                "type": "Obstacle",
+                "count": 2
             },
             {
                 "name": "Stalagmites",
@@ -4313,23 +4320,10 @@
                 "count": 3
             },
             {
-                "name": "Large Cave Rock",
-                "size": 2,
+                "name": "Huge Water",
+                "type": "Difficult Terrain",
+                "size": 3,
                 "count": 2
-            },
-            {
-                "name": "Ice Corridor",
-                "count": 10
-            },
-            {
-                "name": "Stalagmites",
-                "type": "Obstacle",
-                "count": 5
-            },
-            {
-                "name": "Treasure Chest",
-                "type": "Treasure",
-                "count": 1
             },
             {
                 "name": "Water",
@@ -4343,10 +4337,26 @@
                 "count": 4
             },
             {
-                "name": "Huge Water",
-                "type": "Difficult Terrain",
-                "size": 3,
+                "name": "Ice Corridor",
+                "type": "Icy Terrain",
+                "as": "Ice",
+                "count": 10
+            },
+            {
+                "name": "Large Cave Rock",
+                "type": "Obstacle",
+                "size": 2,
                 "count": 2
+            },
+            {
+                "name": "Stalagmites",
+                "type": "Obstacle",
+                "count": 5
+            },
+            {
+                "name": "Treasure Chest",
+                "type": "Treasure",
+                "count": 1
             }
         ],
         "tokens": [
@@ -4396,24 +4406,24 @@
         ],
         "overlays": [
             {
-                "name": "Metal Corridor",
-                "type": "Corridor",
-                "count": 2
-            },
-            {
                 "name": "Large Metal Corridor",
                 "type": "Corridor",
                 "size": 2,
                 "count": 2
             },
             {
-                "name": "Metal Cabinet",
-                "type": "Obstacle",
-                "count": 4
+                "name": "Metal Corridor",
+                "type": "Corridor",
+                "count": 2
             },
             {
                 "name": "Rubble",
                 "type": "Difficult Terrain",
+                "count": 4
+            },
+            {
+                "name": "Metal Cabinet",
+                "type": "Obstacle",
                 "count": 4
             },
             {
@@ -4532,6 +4542,9 @@
         },
         "monsters": [
             {
+                "name": "Vestige of the Imprisoned God"
+            },
+            {
                 "name": "Burrowing Blade"
             },
             {
@@ -4545,10 +4558,7 @@
             },
             {
                 "name": "Shrike Fiend"
-            },
-            {
-                "name": "Vestige of the Imprisoned God"
-            }
+            }            
         ],
         "overlays": [
             {
@@ -4564,6 +4574,7 @@
             },
             {
                 "name": "Tree",
+                "type": "Objective",
                 "size": 3,
                 "count": 1,
                 "trackable": true
@@ -10415,6 +10426,7 @@
             },
             {
                 "name": "Nest",
+                "type": "Obstacle",
                 "count": 4
             },
             {
@@ -10767,6 +10779,7 @@
             },
             {
                 "name": "Nest",
+                "type": "Obstacle",
                 "count": 2
             },
             {
@@ -11835,6 +11848,7 @@
             },
             {
                 "name": "Nest",
+                "type": "Obstacle",
                 "count": 3
             },
             {
