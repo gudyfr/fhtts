@@ -609,6 +609,7 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
                 "as": "Damage and Poison Trap",
                 "type": "Trap",
                 "count": 5
@@ -2425,7 +2426,7 @@
             {
                 "name": "Spike Pit",
                 "type": "Trap",
-                "as" : "Damage and Wound Trap",
+                "as": "Damage and Wound Trap",
                 "count": 2
             },
             {
@@ -2462,22 +2463,19 @@
         },
         "monsters": [
             {
-                "name": ""
-            },
-            {
-                "name": "Lordof Chaos"
+                "name": "Lord of Chaos"
             }
         ],
         "overlays": [
             {
-                "name": "Metal Corridor",
-                "type": "Corridor",
-                "count": 3
-            },
-            {
                 "name": "Large Metal Corridor",
                 "type": "Corridor",
                 "size": 2,
+                "count": 3
+            },
+            {
+                "name": "Metal Corridor",
+                "type": "Corridor",
                 "count": 3
             }
         ],
@@ -2524,14 +2522,14 @@
                 "count": 1
             },
             {
-                "name": "Debris",
-                "type": "Obstacle",
-                "count": 4
-            },
-            {
                 "name": "Large Debris",
                 "type": "Obstacle",
                 "size": 2,
+                "count": 4
+            },
+            {
+                "name": "Debris",
+                "type": "Obstacle",
                 "count": 4
             },
             {
@@ -2578,6 +2576,11 @@
         ],
         "overlays": [
             {
+                "name": "Rubble",
+                "type": "Difficult Terrain",
+                "count": 4
+            },
+            {
                 "name": "Large Debris",
                 "type": "Obstacle",
                 "size": 2,
@@ -2585,16 +2588,11 @@
             },
             {
                 "name": "Metal Door",
-                "type": "Door",
+                "type": "Objective",
                 "count": 4,
                 "as": "Door",
                 "trackable": true,
                 "renamed": "by nr"
-            },
-            {
-                "name": "Rubble",
-                "type": "Difficult Terrain",
-                "count": 4
             }
         ],
         "page": 44,
@@ -2634,9 +2632,20 @@
         ],
         "overlays": [
             {
-                "name": "Debris",
-                "type": "Obstacle",
-                "count": 1
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 3
+            },
+            {
+                "name": "Spike Pit",
+                "type": "Trap",
+                "as": "Damage and Immobilize Trap",
+                "count": 4
+            },
+            {
+                "name": "Rubble",
+                "type": "Difficult Terrain",
+                "count": 6
             },
             {
                 "name": "Large Debris",
@@ -2645,19 +2654,9 @@
                 "count": 4
             },
             {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 3
-            },
-            {
-                "name": "Rubble",
-                "type": "Difficult Terrain",
-                "count": 6
-            },
-            {
-                "name": "Spike Pit",
-                "type": "Trap",
-                "count": 4
+                "name": "Debris",
+                "type": "Obstacle",
+                "count": 1
             },
             {
                 "name": "Treasure Chest",
@@ -2703,7 +2702,8 @@
         ],
         "overlays": [
             {
-                "name": "Altar",
+                "name": "Cave Door",
+                "type": "Door",
                 "count": 1
             },
             {
@@ -2718,14 +2718,10 @@
                 "count": 1
             },
             {
-                "name": "Cave Door",
-                "type": "Door",
-                "count": 1
-            },
-            {
-                "name": "Glowing Orb",
-                "type": "Objective",
-                "count": 1
+                "name": "Poison Trap",
+                "type": "Trap",
+                "as": "Damage and Poison Trap",
+                "count": 4
             },
             {
                 "name": "Log",
@@ -2734,17 +2730,23 @@
                 "count": 2
             },
             {
-                "name": "Poison Trap",
+                "name": "Stairs",
+                "type": "Difficult Terrain",
                 "count": 4
+            },
+            {
+                "name": "Altar",
+                "type": "Obstacle",
+                "count": 1
+            },
+            {
+                "name": "Glowing Orb",
+                "type": "Obstacle",
+                "count": 1
             },
             {
                 "name": "Snow Rock",
                 "type": "Obstacle",
-                "count": 4
-            },
-            {
-                "name": "Stairs",
-                "type": "Difficult Terrain",
                 "count": 4
             },
             {
@@ -2813,6 +2815,28 @@
         ],
         "overlays": [
             {
+                "name": "Dungeon Door",
+                "type": "Door",
+                "count": 4
+            },
+            {
+                "name": "Large Snow Corridor",
+                "type": "Corridor",
+                "size": 2,
+                "count": 4
+            },
+            {
+                "name": "Snow Corridor",
+                "type": "Corridor",
+                "count": 3
+            },
+            {
+                "name": "Poison Trap",
+                "type": "Trap",
+                "as": "Damage and Poison Trap",
+                "count": 6
+            },
+            {
                 "name": "Bookshelf",
                 "type": "Obstacle",
                 "size": 2,
@@ -2821,26 +2845,6 @@
             {
                 "name": "Large Debris",
                 "type": "Obstacle",
-                "size": 2,
-                "count": 4
-            },
-            {
-                "name": "Dungeon Door",
-                "type": "Door",
-                "count": 4
-            },
-            {
-                "name": "Poison Trap",
-                "count": 6
-            },
-            {
-                "name": "Snow Corridor",
-                "type": "Corridor",
-                "count": 3
-            },
-            {
-                "name": "Large Snow Corridor",
-                "type": "Corridor",
                 "size": 2,
                 "count": 4
             },
@@ -2904,14 +2908,14 @@
         ],
         "overlays": [
             {
-                "name": "Rubble",
-                "type": "Difficult Terrain",
-                "count": 4
-            },
-            {
                 "name": "Snow Door",
                 "type": "Door",
                 "count": 2
+            },
+            {
+                "name": "Rubble",
+                "type": "Difficult Terrain",
+                "count": 4
             },
             {
                 "name": "Treasure Chest",
@@ -2961,17 +2965,8 @@
         ],
         "overlays": [
             {
-                "name": "Altar",
-                "count": 1
-            },
-            {
-                "name": "Cave Door",
-                "type": "Door",
-                "as": "Dark Fog",
-                "count": 3
-            },
-            {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
@@ -2979,6 +2974,17 @@
                 "type": "Corridor",
                 "size": 2,
                 "count": 2
+            },
+            {
+                "name": "Altar",
+                "type": "Obstacle",
+                "count": 1
+            },
+            {
+                "name": "Cave Door",
+                "type": "Wall",
+                "as": "Shadow Wall",
+                "count": 3
             }
         ],
         "page": 49,
@@ -3025,6 +3031,8 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
+                "as": "Damage Trap",
                 "count": 5
             },
             {
@@ -3083,6 +3091,16 @@
         ],
         "overlays": [
             {
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 2
+            },
+            {
+                "name": "Rubble",
+                "type": "Difficult Terrain",
+                "count": 4
+            },
+            {
                 "name": "Barricade",
                 "type": "Obstacle",
                 "size": 2,
@@ -3092,16 +3110,6 @@
                 "name": "Debris",
                 "type": "Obstacle",
                 "count": 2
-            },
-            {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 2
-            },
-            {
-                "name": "Rubble",
-                "type": "Difficult Terrain",
-                "count": 4
             }
         ],
         "page": 51,
@@ -3146,16 +3154,16 @@
         ],
         "overlays": [
             {
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 2
+            },
+            {
                 "name": "Metal Cabinet",
                 "type": "Obstacle",
                 "count": 4,
                 "renamed": "by nr",
                 "trackable": true
-            },
-            {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 2
             },
             {
                 "name": "Treasure Chest",
@@ -3205,51 +3213,20 @@
         ],
         "overlays": [
             {
-                "name": "Barrels",
-                "type": "Obstacle",
-                "count": 3
-            },
-            {
-                "name": "Ice Pillar",
-                "type": "Obstacle",
-                "count": 1
-            },
-            {
                 "name": "Snow Door",
                 "type": "Door",
                 "count": 1
             },
             {
-                "name": "Snow Rock",
-                "type": "Obstacle",
-                "count": 5
-            },
-            {
-                "name": "Large Snow Rock",
-                "type": "Obstacle",
-                "size": 2,
-                "count": 4
-            },
-            {
                 "name": "Stairs",
+                "type": "Corridor",
+                "count": 1
+            },
+            {
+                "name": "Huge Water",
                 "type": "Difficult Terrain",
-                "count": 1
-            },
-            {
-                "name": "Supply Shelf",
-                "type": "Obstacle",
-                "size": 2,
-                "count": 1
-            },
-            {
-                "name": "Treasure Chest",
-                "type": "Treasure",
-                "count": 1
-            },
-            {
-                "name": "Water",
-                "type": "Difficult Terrain",
-                "count": 4
+                "size": 3,
+                "count": 2
             },
             {
                 "name": "Large Water",
@@ -3258,10 +3235,41 @@
                 "count": 3
             },
             {
-                "name": "Huge Water",
+                "name": "Water",
                 "type": "Difficult Terrain",
-                "size": 3,
-                "count": 2
+                "count": 4
+            },
+            {
+                "name": "Barrels",
+                "type": "Obstacle",
+                "count": 3
+            },
+            {
+                "name": "Large Snow Rock",
+                "type": "Obstacle",
+                "size": 2,
+                "count": 4
+            },
+            {
+                "name": "Snow Rock",
+                "type": "Obstacle",
+                "count": 5
+            },
+            {
+                "name": "Supply Shelf",
+                "type": "Obstacle",
+                "size": 2,
+                "count": 1
+            },
+            {
+                "name": "Ice Pillar",
+                "type": "Objective",
+                "count": 1
+            },
+            {
+                "name": "Treasure Chest",
+                "type": "Treasure",
+                "count": 1
             }
         ],
         "page": 53,
@@ -3368,13 +3376,14 @@
                 "count": 3
             },
             {
-                "name": "Treasure Chest",
-                "type": "Treasure",
+                "name": "Tree",
+                "type": "Obstacle",
+                "size": 3,
                 "count": 1
             },
             {
-                "name": "Tree",
-                "size": 3,
+                "name": "Treasure Chest",
+                "type": "Treasure",
                 "count": 1
             }
         ],
@@ -3417,11 +3426,6 @@
         ],
         "overlays": [
             {
-                "name": "Ice Spikes",
-                "type": "Hazardous Terrain",
-                "count": 10
-            },
-            {
                 "name": "Snow Door",
                 "type": "Door",
                 "count": 2
@@ -3429,8 +3433,14 @@
             {
                 "name": "Spike Pit",
                 "type": "Trap",
+                "as":"Damage and Immobilize Trap",
                 "count": 4
             },
+            {
+                "name": "Ice Spikes",
+                "type": "Hazardous Terrain",
+                "count": 10
+            },            
             {
                 "name": "Treasure Chest",
                 "type": "Treasure",
@@ -3481,25 +3491,26 @@
                 "count": 3
             },
             {
+                "name": "Ice Pillar",
+                "type": "Objective",
+                "count": 9
+            },
+            {
                 "name": "Large Cave Rock",
+                "type": "Objective",
                 "size": 2,
                 "count": 6
+            },
+            {
+                "name": "Stalagmites",
+                "type": "Objective",
+                "count": 5
             },
             {
                 "name": "Large Ice Crystal",
                 "type": "Obstacle",
                 "size": 2,
                 "count": 1
-            },
-            {
-                "name": "Ice Pillar",
-                "type": "Obstacle",
-                "count": 9
-            },
-            {
-                "name": "Stalagmites",
-                "type": "Obstacle",
-                "count": 5
             },
             {
                 "name": "Treasure Chest",
@@ -3550,7 +3561,7 @@
         "overlays": [
             {
                 "name": "Metal Cabinet",
-                "type": "Obstacle",
+                "type": "Objective",
                 "count": 1,
                 "as": "Pulse Emitter",
                 "trackable": true
@@ -3596,15 +3607,9 @@
         ],
         "overlays": [
             {
-                "name": "Control Console",
-                "type": "Obstacle",
-                "size": 2,
-                "count": 4
-            },
-            {
-                "name": "Metal Corridor",
-                "type": "Corridor",
-                "count": 2
+                "name": "Metal Door",
+                "type": "Door",
+                "count": 3
             },
             {
                 "name": "Large Metal Corridor",
@@ -3613,14 +3618,20 @@
                 "count": 3
             },
             {
-                "name": "Metal Cabinet",
+                "name": "Metal Corridor",
+                "type": "Corridor",
+                "count": 2
+            },
+            {
+                "name": "Control Console",
                 "type": "Obstacle",
+                "size": 2,
                 "count": 4
             },
             {
-                "name": "Metal Door",
-                "type": "Door",
-                "count": 3
+                "name": "Metal Cabinet",
+                "type": "Obstacle",
+                "count": 4
             },
             {
                 "name": "Treasure Chest",
@@ -3665,14 +3676,16 @@
         ],
         "overlays": [
             {
-                "name": "Ice Corridor",
-                "count": 6
-            },
-            {
                 "name": "Snow Door",
                 "type": "Door",
                 "count": 4
             },
+            {
+                "name": "Ice Corridor",
+                "type": "Icy Terrain",
+                "as" : "Ice",
+                "count": 6
+            },            
             {
                 "name": "Snowdrift",
                 "type": "Difficult Terrain",
@@ -4540,6 +4553,7 @@
         "overlays": [
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 2
             },
             {
@@ -5161,6 +5175,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 2
             },
             {
@@ -5669,6 +5684,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
@@ -6307,6 +6323,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 3
             },
             {
@@ -8106,6 +8123,7 @@
         "overlays": [
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 4
             },
             {
@@ -8125,6 +8143,7 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
                 "count": 6
             },
             {
@@ -8195,6 +8214,7 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
                 "count": 2
             },
             {
@@ -8917,6 +8937,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 4
             },
             {
@@ -9334,6 +9355,7 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
                 "count": 2
             },
             {
@@ -9836,6 +9858,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
@@ -10230,6 +10253,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
@@ -10572,6 +10596,7 @@
             },
             {
                 "name": "Poison Trap",
+                "type": "Trap",
                 "count": 6
             },
             {
@@ -10650,6 +10675,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
@@ -11152,6 +11178,7 @@
             },
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 4
             },
             {
@@ -11668,6 +11695,7 @@
         "overlays": [
             {
                 "name": "Dungeon Corridor",
+                "type": "Corridor",
                 "count": 1
             },
             {
