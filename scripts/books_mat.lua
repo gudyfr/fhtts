@@ -197,6 +197,19 @@ function onPageChanged()
     refreshDecals()
 end
 
+function addRulebookSticker(params)
+    local page = params[1]
+    local name = "fh-rule-sticker-" .. params[2]
+    local decals = state["rulebook"].decals
+    if decals == nil then
+        decals = {}
+        state["rulebook"].decals = decals
+    end
+    decals[name] = true
+    changePage("rulebook", page)
+    refreshDecals()
+end
+
 function toggleDecal(name)
     local decals = state["rulebook"].decals
     if decals == nil then
