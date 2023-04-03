@@ -1406,8 +1406,25 @@ conditionStickerUrls = {
     wound = "http://cloud-3.steamusercontent.com/ugc/2035103391708915110/06281870BFC2A6ABE6F02B095F48DFBFCAC3567E/",
     disarm = "http://cloud-3.steamusercontent.com/ugc/2035103391708914666/0B131D55F65331E55962A34A4EFB5A1433193AEE/",
     brittle = "http://cloud-3.steamusercontent.com/ugc/2035103391708914586/88F7DA427C9C3A0F57EA8E86CBB769DEF4FCF892/",
-    bane = "http://cloud-3.steamusercontent.com/ugc/2035103391708914520/C764491CDC2E58A3CF6A712F49834B9D9880DC07/"
+    bane = "http://cloud-3.steamusercontent.com/ugc/2035103391708914520/C764491CDC2E58A3CF6A712F49834B9D9880DC07/",
+
+    shield1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290311/BC64F39C512867AD9DAC68E988076778F0C1AD40/",
+    shield2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290346/2CED35E5F7C08F748B30FEB1E0EBDB340BA8F417/",
+    shield3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290383/8BE64C6BF3D625B69AC7F76BBF96D2EE3E4B6226/",
+    shield4 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290421/E0D90BF752DD955A10E9948DDE673709D7483795/",
+    shield5 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290457/E00FB544D07EB25C3AC1FB50FB5F2154C3D6693E/",
+    shield6 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290493/0F8ACAB61F2557A652236A94BFA28534DA2CF189/",
+    shield7 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290524/4943CFFD29863CCE0BD548FF024A7AC40591D6F1/",
+
+    retaliate1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290031/F9438EC6FEDADFFDF133C9899ED803BA483772E6/",
+    retaliate2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290078/7743C4D2AF0E4789711BB108DFB9BE959DB1298C/",
+    retaliate3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290133/26F17FBAFDFE932CA8D592222C08D80C9BEAF6AF/",
+    retaliate4 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290177/8C4E1B7AF413B73F556D96D1B6C391D2FD84D670/",
+    retaliate5 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290210/CAD469ECFFFCE1B43EA584919AA672E70AD7A31E/",
+    retaliate6 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290242/7156C7C6CDA299221D3E993626F79FF21385D0BD/",
+    retaliate7 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290274/6D68236D0648C02DBDBDFBF70289B0B732CA81A5/",
 }
+
 
 conditionsOrder = {
     "stun",
@@ -1472,6 +1489,46 @@ function refreshStandee(standee, instance)
         name = standee.guid .. "_hp_" .. hp
     }
     table.insert(stickers, hpSticker)
+
+    local xPosition = 0.53
+    if (instance.shield or 0) > 0 then      
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
+        local shieldIconSticker =  {
+            position = { vec.x, vec.y, vec.z },
+            rotation = { 35, baseYRot, 0 },
+            scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
+            url = conditionStickerUrls["shield" .. instance.shield],
+            name = standee.guid .. "_shield_" .. instance.shield
+        }       
+        table.insert(stickers, shieldIconSticker)
+        xPosition = xPosition + 0.15
+    end
+
+    if (instance.retaliate or 0) > 0 then
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
+        local retaliateIconSticker =  {
+            position = { vec.x, vec.y, vec.z },
+            rotation = { 35, baseYRot, 0 },
+            scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
+            url = conditionStickerUrls["retaliate" .. instance.retaliate],
+            name = standee.guid .. "_retaliate_" .. instance.retaliate
+        }       
+        table.insert(stickers, retaliateIconSticker)
+        xPosition = xPosition + 0.1
+    end
+
+    -- if (instance.pierce or 0) > 0 then
+    --     vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
+    --     local retaliateIconSticker =  {
+    --         position = { vec.x, vec.y, vec.z },
+    --         rotation = { 35, baseYRot, 0 },
+    --         scale = { 1 * xScaleFactor, 0.16 * yScaleFactor, 0.1 },
+    --         url = conditionStickerUrls["pierce" .. instance.pierce],
+    --         name = standee.guid .. "_pierce_" .. instance.pierce
+    --     }       
+    --     table.insert(stickers, retaliateIconSticker)
+    --     xPosition = xPosition + 0.1
+    -- end
 
     local btnWidth = 0
     -- Create / Update a button for the HP
