@@ -72,7 +72,9 @@
             "13-C",
             "16-A"
         ],
-        "title": "Howling in the Snow"
+        "title": "Howling in the Snow",
+        "location": "N6",
+        "difficulty": 1
     },
     "1": {
         "errata": "",
@@ -152,7 +154,9 @@
             "13-A",
             "13-C"
         ],
-        "title": "A Town in Flames"
+        "title": "A Town in Flames",
+        "location": "FR",
+        "difficulty": 1
     },
     "2": {
         "errata": "The door is placed incorrectly after opening the final section. Don't move the door.",
@@ -216,7 +220,9 @@
             "11-C",
             "14-B"
         ],
-        "title": "Algox Scouting"
+        "title": "Algox Scouting",
+        "location": "K8",
+        "difficulty": 1
     },
     "3": {
         "errata": "",
@@ -285,7 +291,9 @@
             "13-A",
             "13-C"
         ],
-        "title": "Algox Offensive"
+        "title": "Algox Offensive",
+        "location": "L7",
+        "difficulty": 2
     },
     "4": {
         "title": "Heart of Ice",
@@ -301,7 +309,9 @@
                 "value": "B"
             }
         ],
-        "page": 7
+        "page": 7,
+        "location": "M8",
+        "difficulty": 2
     },
     "4A": {
         "errata": "The special rules should not mention Priests. There are no Priests in this scenario.",
@@ -501,7 +511,9 @@
             "07-A",
             "13-E"
         ],
-        "title": "Frozen Crypt"
+        "title": "Frozen Crypt",
+        "location": "I6",
+        "difficulty": 2
     },
     "6": {
         "errata": "",
@@ -564,7 +576,9 @@
             "07-B",
             "13-A"
         ],
-        "title": "Avalanche"
+        "title": "Avalanche",
+        "location": "L8",
+        "difficulty": 2
     },
     "7": {
         "errata": "",
@@ -635,7 +649,9 @@
             "06-A",
             "11-B"
         ],
-        "title": "Edge of the World"
+        "title": "Edge of the World",
+        "location": "K3",
+        "difficulty": 1
     },
     "8": {
         "errata": "",
@@ -684,7 +700,9 @@
             "07-B",
             "11-A"
         ],
-        "title": "Crystal Trench"
+        "title": "Crystal Trench",
+        "location": "G8",
+        "difficulty": 1
     },
     "9": {
         "errata": "The switches are the wall hexes.They are targetable in melee by standing in the adjacent hex,or ranged by targeting that wall hex",
@@ -770,7 +788,9 @@
             "12-B",
             "16-C"
         ],
-        "title": "Glowing Catacombs"
+        "title": "Glowing Catacombs",
+        "location": "J6",
+        "difficulty": 1
     },
     "10": {
         "errata": "",
@@ -841,13 +861,15 @@
         ],
         "page": 14,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "13-A",
             "16-A"
         ],
-        "title": "Crystal Enclosure"
+        "title": "Crystal Enclosure",
+        "location": "F6",
+        "difficulty": 2
     },
     "11": {
         "errata": "",
@@ -912,13 +934,15 @@
         ],
         "page": 15,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "11-A",
             "15-A"
         ],
-        "title": "Snowscorn Peak"
+        "title": "Snowscorn Peak",
+        "location": "M6",
+        "difficulty": 2
     },
     "12": {
         "errata": "",
@@ -995,7 +1019,9 @@
             "15-C",
             "16-C"
         ],
-        "title": "Temple Entrance"
+        "title": "Temple Entrance",
+        "location": "K8",
+        "difficulty": 1
     },
     "13": {
         "errata": "The Shrike Fiends will not choose the scenario as a target for their multi-target attacks unless they can't find a primary focus.They will not target the scenario as a secondary target.",
@@ -1072,7 +1098,9 @@
             "07-B",
             "07-D"
         ],
-        "title": "Frozen Fjord"
+        "title": "Frozen Fjord",
+        "location": "O2",
+        "difficulty": 2
     },
     "14": {
         "errata": "",
@@ -1148,13 +1176,15 @@
         ],
         "page": 18,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "13-A",
             "16-A"
         ],
-        "title": "Jagged Shoals"
+        "title": "Jagged Shoals",
+        "location": "L2",
+        "difficulty": 2
     },
     "15": {
         "errata": "",
@@ -1226,7 +1256,9 @@
             "06-B",
             "15-D"
         ],
-        "title": "Ancient Spire"
+        "title": "Ancient Spire",
+        "location": "D7",
+        "difficulty": 2
     },
     "16": {
         "errata": "",
@@ -1275,7 +1307,9 @@
             "01-D",
             "15-D"
         ],
-        "title": "Derelict Elevator"
+        "title": "Derelict Elevator",
+        "location": "F10",
+        "difficulty": 3
     },
     "17": {
         "errata": "",
@@ -1344,7 +1378,9 @@
             "07-E",
             "09-B"
         ],
-        "title": "Haunted Vault"
+        "title": "Haunted Vault",
+        "location": "H6",
+        "difficulty": 3
     },
     "18": {
         "errata": "",
