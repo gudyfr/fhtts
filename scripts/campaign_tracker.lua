@@ -224,6 +224,14 @@ function toggle(scenario, field)
             getObjectFromGUID('d17d72').call("toggleDecal", params)
         end
     end
+
+    -- Always notify the scenario picker of scenario changes
+    local scenarioState = scenariosState[scenario] or {}
+    getObjectFromGUID('596fc4').call("updateScenario", {
+        string.sub(scenario,3),
+        scenarioState.unlocked or false,
+        scenarioState.locked or false,
+        scenarioState.completed or false })
 end
 
 function refreshDecals()
