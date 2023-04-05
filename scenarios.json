@@ -1445,7 +1445,9 @@
             "11-C",
             "15-A"
         ],
-        "title": "Crystal Fields"
+        "title": "Crystal Fields",
+        "location": "E7",
+        "difficulty": 1
     },
     "19": {
         "errata": "",
@@ -1505,7 +1507,9 @@
             "07-A",
             "16-B"
         ],
-        "title": "Skyhall"
+        "title": "Skyhall",
+        "location": "N7",
+        "difficulty": 3
     },
     "20": {
         "errata": "",
@@ -1575,7 +1579,9 @@
             "02-I",
             "02-K"
         ],
-        "title": "Temple of Liberation"
+        "title": "Temple of Liberation",
+        "location": "L9",
+        "difficulty": 3
     },
     "21": {
         "errata": "The special rules should include 'charactertokens' here to specifically include the Deathwalker's shadowtokens.",
@@ -1668,7 +1674,9 @@
             "14-B",
             "15-C"
         ],
-        "title": "Realm of Endless Frost"
+        "title": "Realm of Endless Frost",
+        "location": "N1",
+        "difficulty": 3
     },
     "22": {
         "errata": "",
@@ -1737,14 +1745,16 @@
         ],
         "page": 28,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "02-B",
             "07-G",
             "14-A"
         ],
-        "title": "Ice Floes"
+        "title": "Ice Floes",
+        "location": "I2",
+        "difficulty": 2
     },
     "23": {
         "errata": "",
@@ -1805,7 +1815,9 @@
             "12-A",
             "15-D"
         ],
-        "title": "Spire Basement"
+        "title": "Spire Basement",
+        "location": "B8",
+        "difficulty": 1
     },
     "24": {
         "errata": "Character summons do not treat the special corridor hexes as negative.",
@@ -1855,7 +1867,9 @@
             "08-A",
             "15-D"
         ],
-        "title": "Upper Spire"
+        "title": "Upper Spire",
+        "location": "D6",
+        "difficulty": 2
     },
     "25": {
         "errata": "",
@@ -1916,7 +1930,9 @@
             "11-F",
             "12-A"
         ],
-        "title": "Rusted Tunnels"
+        "title": "Rusted Tunnels",
+        "location": "E10",
+        "difficulty": 2
     },
     "26": {
         "errata": "",
@@ -1987,7 +2003,9 @@
             "13-F",
             "16-D"
         ],
-        "title": "Quatryl Library"
+        "title": "Quatryl Library",
+        "location": "E10",
+        "difficulty": 2
     },
     "27": {
         "errata": "",
@@ -2046,7 +2064,9 @@
             "09-B",
             "12-D"
         ],
-        "title": "Depths of Delirium"
+        "title": "Depths of Delirium",
+        "location": "H6",
+        "difficulty": 2
     },
     "28": {
         "errata": "",
@@ -2117,7 +2137,9 @@
             "11-D",
             "15-B"
         ],
-        "title": "Summit Meeting"
+        "title": "Summit Meeting",
+        "location": "J8",
+        "difficulty": 3
     },
     "29": {
         "errata": "",
@@ -2206,7 +2228,9 @@
             "13-C",
             "16-A"
         ],
-        "title": "War of the Spire A"
+        "title": "War of the Spire A",
+        "location": "F8",
+        "difficulty": 2
     },
     "30": {
         "errata": "",
@@ -2295,7 +2319,9 @@
             "13-C",
             "16-A"
         ],
-        "title": "War of the Spire B"
+        "title": "War of the Spire B",
+        "location": "E8",
+        "difficulty": 2
     },
     "31": {
         "errata": "",
@@ -2345,7 +2371,9 @@
             "07-H",
             "11-F"
         ],
-        "title": "Crackling Tunnel"
+        "title": "Crackling Tunnel",
+        "location": "F10",
+        "difficulty": 2
     },
     "32": {
         "errata": "",
@@ -2422,7 +2450,9 @@
             "13-A",
             "15-A"
         ],
-        "title": "Ravens' Roost"
+        "title": "Ravens' Roost",
+        "location": "Q3",
+        "difficulty": 2
     },
     "33": {
         "errata": "",
@@ -2480,7 +2510,9 @@
             "11-C",
             "16-B"
         ],
-        "title": "Thawed Wood"
+        "title": "Thawed Wood",
+        "location": "R2",
+        "difficulty": 3
     },
     "34": {
         "errata": "",
@@ -2523,7 +2555,9 @@
             "02-F",
             "04-B"
         ],
-        "title": "Top of the Spire"
+        "title": "Top of the Spire",
+        "location": "C6",
+        "difficulty": 2
     },
     "35": {
         "errata": "",
@@ -2582,7 +2616,9 @@
             "15-B",
             "16-B"
         ],
-        "title": "Scrap Pit"
+        "title": "Scrap Pit",
+        "location": "C10",
+        "difficulty": 2
     },
     "36": {
         "errata": "",
@@ -2638,7 +2674,9 @@
         "tiles": [
             "16-D"
         ],
-        "title": "Buried Ducts"
+        "title": "Buried Ducts",
+        "location": "C9",
+        "difficulty": 1
     },
     "37": {
         "errata": "Treasure Chest should be #56",
@@ -2708,7 +2746,9 @@
             "07-F",
             "07-H"
         ],
-        "title": "The Dead Mile"
+        "title": "The Dead Mile",
+        "location": "C11",
+        "difficulty": 1
     },
     "38": {
         "errata": "",
@@ -2815,7 +2855,9 @@
             "11-C",
             "15-A"
         ],
-        "title": "The Way Forward"
+        "title": "The Way Forward",
+        "location": "G8",
+        "difficulty": 3
     },
     "39": {
         "errata": "",
@@ -2908,7 +2950,9 @@
             "13-C",
             "16-A"
         ],
-        "title": "Corrupted Camp"
+        "title": "Corrupted Camp",
+        "location": "Q4",
+        "difficulty": 3
     },
     "40": {
         "errata": "",
@@ -2968,7 +3012,9 @@
             "11-A",
             "15-A"
         ],
-        "title": "Relief Effort"
+        "title": "Relief Effort",
+        "location": "H9",
+        "difficulty": 2
     },
     "41": {
         "errata": "",
@@ -3031,7 +3077,9 @@
             "07-E",
             "15-C"
         ],
-        "title": "Unfettered Shard"
+        "title": "Unfettered Shard",
+        "location": "E12",
+        "difficulty": 2
     },
     "42": {
         "errata": "",
@@ -3089,7 +3137,7 @@
         ],
         "page": 50,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "03-A",
@@ -3097,7 +3145,9 @@
             "11-D",
             "12-D"
         ],
-        "title": "Sunless Trench"
+        "title": "Sunless Trench",
+        "location": "J1",
+        "difficulty": 1
     },
     "43": {
         "errata": "",
@@ -3157,7 +3207,9 @@
             "10-A",
             "12-A"
         ],
-        "title": "Overrun Barricade"
+        "title": "Overrun Barricade",
+        "location": "C9",
+        "difficulty": 2
     },
     "44": {
         "errata": "",
@@ -3216,7 +3268,9 @@
             "08-A",
             "16-D"
         ],
-        "title": "Nerve Center"
+        "title": "Nerve Center",
+        "location": "B10",
+        "difficulty": 2
     },
     "45": {
         "errata": "",
@@ -3310,14 +3364,16 @@
         ],
         "page": 53,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "07-B",
             "14-A",
             "16-A"
         ],
-        "title": "Living Glacier"
+        "title": "Living Glacier",
+        "location": "C3",
+        "difficulty": 1
     },
     "46": {
         "errata": "",
@@ -3354,13 +3410,15 @@
         ],
         "page": 54,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "07-B",
             "16-A"
         ],
-        "title": "Dead Pass"
+        "title": "Dead Pass",
+        "location": "B12",
+        "difficulty": 2
     },
     "47": {
         "errata": "",
@@ -3432,7 +3490,9 @@
             "06-A",
             "16-A"
         ],
-        "title": "Carrion Ridge"
+        "title": "Carrion Ridge",
+        "location": "Q5",
+        "difficulty": 1
     },
     "48": {
         "errata": "",
@@ -3485,14 +3545,16 @@
         ],
         "page": 56,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "03-D",
             "11-A",
             "11-C"
         ],
-        "title": "Blizzard island"
+        "title": "Blizzard island",
+        "location": "D2",
+        "difficulty": 2
     },
     "49": {
         "errata": "",
@@ -3556,14 +3618,16 @@
         ],
         "page": 57,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "04-A",
             "11-D",
             "16-B"
         ],
-        "title": "Beneath Sea and Stone"
+        "title": "Beneath Sea and Stone",
+        "location": "G3",
+        "difficulty": 3
     },
     "50": {
         "errata": "",
@@ -3605,12 +3669,14 @@
         ],
         "page": 58,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "16-B"
         ],
-        "title": "Explosive Descent"
+        "title": "Explosive Descent",
+        "location": "G1",
+        "difficulty": 2
     },
     "51": {
         "errata": "",
@@ -3685,7 +3751,9 @@
             "10-A",
             "10-C"
         ],
-        "title": "Orphan's Halls"
+        "title": "Orphan's Halls",
+        "location": "B9",
+        "difficulty": 3
     },
     "52": {
         "errata": "",
@@ -3749,7 +3817,9 @@
             "11-C",
             "16-A"
         ],
-        "title": "Fleeting Permanence"
+        "title": "Fleeting Permanence",
+        "location": "G7",
+        "difficulty": 2
     },
     "53": {
         "errata": "",
@@ -3800,13 +3870,15 @@
         ],
         "page": 62,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "07-A",
             "16-B"
         ],
-        "title": "Underwater Throne"
+        "title": "Underwater Throne",
+        "location": "E2",
+        "difficulty": 2
     },
     "54": {
         "errata": "",
@@ -3879,7 +3951,7 @@
         ],
         "page": 63,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "02-J",
@@ -3887,7 +3959,9 @@
             "04-B",
             "13-B"
         ],
-        "title": "Among the Wreckage"
+        "title": "Among the Wreckage",
+        "location": "F1",
+        "difficulty": 2
     },
     "55": {
         "errata": "",
@@ -3954,7 +4028,9 @@
             "15-A",
             "16-B"
         ],
-        "title": "Change of Heart"
+        "title": "Change of Heart",
+        "location": "M8",
+        "difficulty": 2
     },
     "56": {
         "errata": "",
@@ -4025,7 +4101,9 @@
             "08-B",
             "15-B"
         ],
-        "title": "Call of the Harbinger"
+        "title": "Call of the Harbinger",
+        "location": "R4",
+        "difficulty": 3
     },
     "57": {
         "errata": "",
@@ -4086,13 +4164,15 @@
         ],
         "page": 67,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "07-B",
             "16-A"
         ],
-        "title": "Sanctuary of Snow"
+        "title": "Sanctuary of Snow",
+        "location": "D1",
+        "difficulty": 3
     },
     "58": {
         "errata": "",
@@ -4172,7 +4252,9 @@
             "02-H",
             "16-D"
         ],
-        "title": "Orphan's Core"
+        "title": "Orphan's Core",
+        "location": "A10",
+        "difficulty": 3
     },
     "59": {
         "errata": "",
@@ -4250,7 +4332,9 @@
             "08-A",
             "15-D"
         ],
-        "title": "Automaton Uprising"
+        "title": "Automaton Uprising",
+        "location": "A11",
+        "difficulty": 2
     },
     "60": {
         "errata": "",
@@ -4314,14 +4398,16 @@
         ],
         "page": 72,
         "requirements": [
-            "6Shards"
+            "Boat", "6Shards"
         ],
         "tiles": [
             "13-B",
             "13-D",
             "15-B"
         ],
-        "title": "Uniting the Crown"
+        "title": "Uniting the Crown",
+        "location": "G2",
+        "difficulty": 2
     },
     "61": {
         "errata": "",
@@ -4412,7 +4498,9 @@
             "11-B",
             "14-B"
         ],
-        "title": "Life and Death"
+        "title": "Life and Death",
+        "location": "I11",
+        "difficulty": 2
     },
     "62": {
         "errata": "",
@@ -4483,7 +4571,9 @@
             "12-A",
             "12-C"
         ],
-        "title": "The Unfettered Seal"
+        "title": "The Unfettered Seal",
+        "location": "B8",
+        "difficulty": 3
     },
     "63": {
         "errata": "",
@@ -4559,7 +4649,9 @@
             "05-A",
             "11-B"
         ],
-        "title": "The Savvas Seal"
+        "title": "The Savvas Seal",
+        "location": "G12",
+        "difficulty": 3
     },
     "64": {
         "errata": "",
@@ -4670,7 +4762,9 @@
             "13-E",
             "15-A"
         ],
-        "title": "The Frosthaven Seal"
+        "title": "The Frosthaven Seal",
+        "location": "FR",
+        "difficulty": 3
     },
     "65": {
         "errata": "",
@@ -4761,7 +4855,9 @@
             "15-A",
             "16-A"
         ],
-        "title": "A Strong Foundation"
+        "title": "A Strong Foundation",
+        "location": "L4",
+        "difficulty": 1
     },
     "66": {
         "errata": "",
@@ -4880,7 +4976,9 @@
             "12-D",
             "15-A"
         ],
-        "title": "Elemental Cores"
+        "title": "Elemental Cores",
+        "location": "L4",
+        "difficulty": 2
     },
     "67": {
         "errata": "",
@@ -4967,7 +5065,9 @@
             "11-C",
             "15-A"
         ],
-        "title": "Core Attunement"
+        "title": "Core Attunement",
+        "location": "K4",
+        "difficulty": 2
     },
     "68": {
         "errata": "",
@@ -5059,7 +5159,9 @@
             "10-D",
             "15-A"
         ],
-        "title": "The Face of Torment"
+        "title": "The Face of Torment",
+        "location": "L3",
+        "difficulty": 2
     },
     "69": {
         "errata": "",
@@ -5114,7 +5216,9 @@
             "11-A",
             "15-A"
         ],
-        "title": "Sacred Soil"
+        "title": "Sacred Soil",
+        "location": "P2",
+        "difficulty": 2
     },
     "70": {
         "errata": "Has two Random Items on the Loot Deck.This is a typo; there should be 1.",
@@ -5191,7 +5295,9 @@
             "07-D",
             "16-A"
         ],
-        "title": "The True Oak"
+        "title": "The True Oak",
+        "location": "Q2",
+        "difficulty": 1
     },
     "71": {
         "errata": "",
@@ -5293,10 +5399,11 @@
             "10-B",
             "14-A"
         ],
-        "title": "Invasion of the Dock"
+        "title": "Invasion of the Dock",
+        "location": "FR",
+        "difficulty": 3
     },
     "72": {
-        "difficulty": 2,
         "errata": "",
         "loot": {
             "Arrowvine": 0,
@@ -5390,7 +5497,9 @@
             "13-D",
             "15-D"
         ],
-        "title": "A Giant Block of Ice"
+        "title": "A Giant Block of Ice",
+        "location": "A5",
+        "difficulty": 2
     },
     "73": {
         "errata": "",
@@ -5491,7 +5600,9 @@
             "13-D",
             "16-B"
         ],
-        "title": "Flotsam"
+        "title": "Flotsam",
+        "location": "D3",
+        "difficulty": 2
     },
     "74": {
         "errata": "",
@@ -5603,7 +5714,9 @@
             "09-A",
             "13-A"
         ],
-        "title": "Gaps in the Road"
+        "title": "Gaps in the Road",
+        "location": "G6",
+        "difficulty": 2
     },
     "75": {
         "errata": "",
@@ -5691,7 +5804,7 @@
         ],
         "page": 93,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "01-F",
@@ -5700,7 +5813,9 @@
             "11-D",
             "13-D"
         ],
-        "title": "Infiltrating the Lair"
+        "title": "Infiltrating the Lair",
+        "location": "C2",
+        "difficulty": 2
     },
     "76": {
         "errata": "",
@@ -5783,7 +5898,7 @@
         ],
         "page": 94,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "01-F",
@@ -5791,7 +5906,9 @@
             "10-B",
             "15-C"
         ],
-        "title": "Apotheosis"
+        "title": "Apotheosis",
+        "location": "B2",
+        "difficulty": 3
     },
     "77": {
         "errata": "",
@@ -5855,13 +5972,15 @@
         ],
         "page": 96,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "04-A",
             "16-C"
         ],
-        "title": "Fish King's Ascension"
+        "title": "Fish King's Ascension",
+        "location": "B1",
+        "difficulty": 3
     },
     "78": {
         "errata": "",
@@ -5956,7 +6075,7 @@
         ],
         "page": 97,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "02-C",
@@ -5966,7 +6085,9 @@
             "13-B",
             "13-D"
         ],
-        "title": "The Lurker Problem"
+        "title": "The Lurker Problem",
+        "location": "H5",
+        "difficulty": 2
     },
     "79": {
         "errata": "",
@@ -6066,7 +6187,7 @@
         ],
         "page": 98,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "01-F",
@@ -6075,7 +6196,9 @@
             "11-D",
             "16-B"
         ],
-        "title": "Relic"
+        "title": "Relic",
+        "location": "B5",
+        "difficulty": 3
     },
     "80": {
         "errata": "",
@@ -6157,7 +6280,9 @@
             "12-A",
             "15-D"
         ],
-        "title": "Relic Renewed"
+        "title": "Relic Renewed",
+        "location": "FR",
+        "difficulty": 2
     },
     "81": {
         "errata": "",
@@ -6273,7 +6398,9 @@
             "11-F",
             "16-D"
         ],
-        "title": "Ruinous Research Lab"
+        "title": "Ruinous Research Lab",
+        "location": "A12",
+        "difficulty": 3
     },
     "82": {
         "errata": "",
@@ -6339,7 +6466,9 @@
             "02-J",
             "02-L"
         ],
-        "title": "Expedition North"
+        "title": "Expedition North",
+        "location": "P8",
+        "difficulty": 2
     },
     "83": {
         "errata": "",
@@ -6419,14 +6548,16 @@
         ],
         "page": 103,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "13-B",
             "13-D",
             "13-E"
         ],
-        "title": "Rising Brine"
+        "title": "Rising Brine",
+        "location": "E4",
+        "difficulty": 2
     },
     "84": {
         "errata": "",
@@ -6466,7 +6597,9 @@
         "tiles": [
             "14-B"
         ],
-        "title": "Here There Be Oozes"
+        "title": "Here There Be Oozes",
+        "location": "R5",
+        "difficulty": 3
     },
     "85": {
         "errata": "",
@@ -6562,7 +6695,7 @@
         ],
         "page": 106,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "01-F",
@@ -6575,7 +6708,9 @@
             "07-A",
             "07-C"
         ],
-        "title": "Deadly Pastimes"
+        "title": "Deadly Pastimes",
+        "location": "O5",
+        "difficulty": 3
     },
     "86": {
         "errata": "",
@@ -6662,7 +6797,9 @@
             "15-A",
             "16-A"
         ],
-        "title": "The Lady in White"
+        "title": "The Lady in White",
+        "location": "FR",
+        "difficulty": 2
     },
     "87": {
         "errata": "",
@@ -6751,7 +6888,9 @@
             "10-C",
             "15-D"
         ],
-        "title": "The Collection"
+        "title": "The Collection",
+        "location": "J7",
+        "difficulty": 1
     },
     "88": {
         "errata": "",
@@ -6826,7 +6965,9 @@
             "04-B",
             "10-C"
         ],
-        "title": "Collection's Capstone"
+        "title": "Collection's Capstone",
+        "location": "I7",
+        "difficulty": 2
     },
     "89": {
         "errata": "",
@@ -6933,7 +7074,9 @@
             "10-D",
             "11-A"
         ],
-        "title": "A Contained Fire"
+        "title": "A Contained Fire",
+        "location": "G10",
+        "difficulty": 2
     },
     "90": {
         "errata": "",
@@ -6982,7 +7125,9 @@
             "08-B",
             "15-A"
         ],
-        "title": "Frozen Treasure"
+        "title": "Frozen Treasure",
+        "location": "I3",
+        "difficulty": 2
     },
     "91": {
         "errata": "",
@@ -7079,7 +7224,9 @@
             "07-D",
             "07-G"
         ],
-        "title": "Shoreline Scramble"
+        "title": "Shoreline Scramble",
+        "location": "J4",
+        "difficulty": 2
     },
     "92": {
         "errata": "",
@@ -7135,7 +7282,7 @@
         ],
         "page": 113,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "02-B",
@@ -7143,7 +7290,9 @@
             "07-G",
             "14-A"
         ],
-        "title": "Sinking Ship"
+        "title": "Sinking Ship",
+        "location": "I4",
+        "difficulty": 3
     },
     "93": {
         "choices": [
@@ -7159,7 +7308,9 @@
             }
         ],
         "title": "Midwinter Brawl",
-        "page": 115
+        "page": 115,
+        "location": "H7",
+        "difficulty": 2
     },
     "93A": {
         "errata": "",
@@ -7238,7 +7389,9 @@
             "13-B",
             "13-D"
         ],
-        "title": "Midwinter Brawl"
+        "title": "Midwinter Brawl",
+        "location": "H7",
+        "difficulty": 2
     },
     "93B": {
         "errata": "",
@@ -7317,7 +7470,9 @@
             "13-B",
             "13-D"
         ],
-        "title": "Midwinter Brawl"
+        "title": "Midwinter Brawl",
+        "location": "H7",
+        "difficulty": 2
     },
     "94": {
         "errata": "",
@@ -7393,7 +7548,7 @@
         ],
         "page": 116,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "01-B",
@@ -7401,7 +7556,9 @@
             "13-F",
             "16-D"
         ],
-        "title": "A Grand View"
+        "title": "A Grand View",
+        "location": "B6",
+        "difficulty": 3
     },
     "95": {
         "errata": "",
@@ -7477,7 +7634,9 @@
             "11-A",
             "11-C"
         ],
-        "title": "To Burry the Dead"
+        "title": "To Burry the Dead",
+        "location": "FR",
+        "difficulty": 2
     },
     "96": {
         "errata": "",
@@ -7562,7 +7721,7 @@
         ],
         "page": 119,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "01-B",
@@ -7573,7 +7732,9 @@
             "11-F",
             "13-B"
         ],
-        "title": "Underground Station"
+        "title": "Underground Station",
+        "location": "E11",
+        "difficulty": 2
     },
     "97": {
         "errata": "",
@@ -7646,7 +7807,9 @@
             "08-A",
             "15-D"
         ],
-        "title": "Program Control Nexus"
+        "title": "Program Control Nexus",
+        "location": "D12",
+        "difficulty": 3
     },
     "98": {
         "errata": "",
@@ -7738,7 +7901,9 @@
             "11-B",
             "11-F"
         ],
-        "title": "Collapsing Vent"
+        "title": "Collapsing Vent",
+        "location": "E12",
+        "difficulty": 1
     },
     "99": {
         "errata": "",
@@ -7816,7 +7981,9 @@
             "05-A",
             "13-C"
         ],
-        "title": "Prison Break"
+        "title": "Prison Break",
+        "location": "A4",
+        "difficulty": 1
     },
     "100": {
         "errata": "",
@@ -7903,7 +8070,9 @@
             "04-C",
             "09-A"
         ],
-        "title": "Inside the Swarm"
+        "title": "Inside the Swarm",
+        "location": "A3",
+        "difficulty": 3
     },
     "101": {
         "errata": "",
@@ -7980,7 +8149,9 @@
             "13-E",
             "15-C"
         ],
-        "title": "Harrower Library"
+        "title": "Harrower Library",
+        "location": "O3",
+        "difficulty": 1
     },
     "102": {
         "errata": "",
@@ -8064,7 +8235,9 @@
             ""
         ],
         "tiles": [],
-        "title": "Into the Black"
+        "title": "Into the Black",
+        "location": "R7",
+        "difficulty": 3
     },
     "103": {
         "errata": "",
@@ -8131,7 +8304,9 @@
             "09-B",
             "09-C"
         ],
-        "title": "The Lead Door"
+        "title": "The Lead Door",
+        "location": "R8",
+        "difficulty": 2
     },
     "104": {
         "errata": "",
@@ -8190,14 +8365,16 @@
         ],
         "page": 128,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "07-E",
             "09-B",
             "16-C"
         ],
-        "title": "Ruins of the Solstice"
+        "title": "Ruins of the Solstice",
+        "location": "E5",
+        "difficulty": 2
     },
     "105": {
         "errata": "",
@@ -8267,7 +8444,7 @@
         ],
         "page": 129,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "02-C",
@@ -8275,7 +8452,9 @@
             "07-E",
             "16-C"
         ],
-        "title": "Ruins of the Equinox"
+        "title": "Ruins of the Equinox",
+        "location": "H11",
+        "difficulty": 2
     },
     "106": {
         "errata": "",
@@ -8362,7 +8541,9 @@
             "07-E",
             "10-B"
         ],
-        "title": "The Tempus Forge"
+        "title": "The Tempus Forge",
+        "location": "M5",
+        "difficulty": 2
     },
     "107": {
         "errata": "",
@@ -8433,7 +8614,7 @@
         ],
         "page": 131,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "01-B",
@@ -8443,7 +8624,9 @@
             "13-E",
             "16-C"
         ],
-        "title": "My Private Empire"
+        "title": "My Private Empire",
+        "location": "J10",
+        "difficulty": 2
     },
     "108": {
         "errata": "",
@@ -8523,7 +8706,9 @@
             "11-D",
             "16-B"
         ],
-        "title": "Lustrous Pit"
+        "title": "Lustrous Pit",
+        "location": "C12",
+        "difficulty": 2
     },
     "109": {
         "errata": "The special rule should reference Initiative 52, not 54.",
@@ -8594,7 +8779,7 @@
         ],
         "page": 133,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "04-B",
@@ -8603,7 +8788,9 @@
             "12-A",
             "12-D"
         ],
-        "title": "Furious Factory"
+        "title": "Furious Factory",
+        "location": "C8",
+        "difficulty": 3
     },
     "110": {
         "errata": "",
@@ -8675,13 +8862,15 @@
         ],
         "page": 134,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "01-F",
             "16-C"
         ],
-        "title": "Guardian's Temple"
+        "title": "Guardian's Temple",
+        "location": "R6",
+        "difficulty": 2
     },
     "111": {
         "errata": "",
@@ -8766,7 +8955,7 @@
         ],
         "page": 135,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "11-B",
@@ -8774,7 +8963,9 @@
             "15-B",
             "16-B"
         ],
-        "title": "Ice Cave"
+        "title": "Ice Cave",
+        "location": "O1",
+        "difficulty": 3
     },
     "112": {
         "errata": "",
@@ -8842,7 +9033,9 @@
             "14-B",
             "15-B"
         ],
-        "title": "Raised by Wolves"
+        "title": "Raised by Wolves",
+        "location": "FR",
+        "difficulty": 1
     },
     "113": {
         "errata": "",
@@ -8916,7 +9109,9 @@
             "07-B",
             "13-C"
         ],
-        "title": "Lush Grotto"
+        "title": "Lush Grotto",
+        "location": "G9",
+        "difficulty": 1
     },
     "114": {
         "errata": "",
@@ -8971,7 +9166,9 @@
             "13-A",
             "13-C"
         ],
-        "title": "Work Freeze"
+        "title": "Work Freeze",
+        "location": "O7",
+        "difficulty": 2
     },
     "115": {
         "errata": "",
@@ -9033,7 +9230,9 @@
             "11-C",
             "13-A"
         ],
-        "title": "Pylon Problems"
+        "title": "Pylon Problems",
+        "location": "O8",
+        "difficulty": 2
     },
     "116": {
         "errata": "",
@@ -9140,7 +9339,9 @@
             "13-C",
             "16-A"
         ],
-        "title": "Caravan Guards"
+        "title": "Caravan Guards",
+        "location": "O8",
+        "difficulty": 2
     },
     "117": {
         "errata": "",
@@ -9209,7 +9410,9 @@
             "10-D",
             "15-A"
         ],
-        "title": "A Waiting Game"
+        "title": "A Waiting Game",
+        "location": "F7",
+        "difficulty": 2
     },
     "118": {
         "errata": "",
@@ -9264,14 +9467,16 @@
         ],
         "page": 143,
         "requirements": [
-            ""
+            "Sled"
         ],
         "tiles": [
             "03-D",
             "12-B",
             "15-B"
         ],
-        "title": "Lurker Necromancy"
+        "title": "Lurker Necromancy",
+        "location": "F4",
+        "difficulty": 1
     },
     "119": {
         "errata": "",
@@ -9358,7 +9563,9 @@
             "13-C",
             "15-A"
         ],
-        "title": "Radiant Dust"
+        "title": "Radiant Dust",
+        "location": "Q1",
+        "difficulty": 2
     },
     "120": {
         "errata": "",
@@ -9441,7 +9648,9 @@
             "07-E",
             "10-B"
         ],
-        "title": "Under the Influence"
+        "title": "Under the Influence",
+        "location": "FR",
+        "difficulty": 1
     },
     "121": {
         "errata": "",
@@ -9516,7 +9725,9 @@
             "13-E",
             "15-C"
         ],
-        "title": "Black Memories"
+        "title": "Black Memories",
+        "location": "C13",
+        "difficulty": 3
     },
     "122": {
         "errata": "",
@@ -9630,7 +9841,9 @@
             "12-B",
             "15-C"
         ],
-        "title": "The Eternal Crave"
+        "title": "The Eternal Crave",
+        "location": "H10",
+        "difficulty": 2
     },
     "123": {
         "errata": "",
@@ -9704,7 +9917,9 @@
             "12-C",
             "15-D"
         ],
-        "title": "The Titan"
+        "title": "The Titan",
+        "location": "K5",
+        "difficulty": 3
     },
     "124": {
         "errata": "",
@@ -9771,7 +9986,9 @@
             "09-A",
             "13-C"
         ],
-        "title": "A Growing Problem"
+        "title": "A Growing Problem",
+        "location": "FR",
+        "difficulty": 2
     },
     "125": {
         "errata": "",
@@ -9839,7 +10056,9 @@
             "12-C",
             "16-D"
         ],
-        "title": "The Longest Second"
+        "title": "The Longest Second",
+        "location": "FR",
+        "difficulty": 2
     },
     "126": {
         "errata": "",
@@ -9963,7 +10182,9 @@
             "07-B",
             "16-A"
         ],
-        "title": "Joseph the Lion"
+        "title": "Joseph the Lion",
+        "location": "FR",
+        "difficulty": 2
     },
     "127": {
         "errata": "",
@@ -10045,7 +10266,9 @@
             "07-G",
             "14-A"
         ],
-        "title": "Derelict Freighter"
+        "title": "Derelict Freighter",
+        "location": "FR",
+        "difficulty": 1
     },
     "128": {
         "errata": "",
@@ -10130,7 +10353,9 @@
             "02-I",
             "15-A"
         ],
-        "title": "A Tall Drunken Tale"
+        "title": "A Tall Drunken Tale",
+        "location": "FR",
+        "difficulty": 3
     },
     "129": {
         "errata": "",
@@ -10235,7 +10460,9 @@
             "10-D",
             "15-A"
         ],
-        "title": "How to Lay an Ambush"
+        "title": "How to Lay an Ambush",
+        "location": "J9",
+        "difficulty": 3
     },
     "130": {
         "errata": "",
@@ -10325,7 +10552,9 @@
             "02-J",
             "16-A"
         ],
-        "title": "And Then, a Stream"
+        "title": "And Then, a Stream",
+        "location": "H8",
+        "difficulty": 3
     },
     "131": {
         "errata": "",
@@ -10370,7 +10599,9 @@
         "tiles": [
             "15-A"
         ],
-        "title": "The Dancing Iceberg"
+        "title": "The Dancing Iceberg",
+        "location": "K2",
+        "difficulty": 3
     },
     "132": {
         "errata": "",
@@ -10432,14 +10663,16 @@
         ],
         "page": 160,
         "requirements": [
-            ""
+            "Climbing Gear"
         ],
         "tiles": [
             "07-E",
             "10-B",
             "16-C"
         ],
-        "title": "Temple of Feline Power"
+        "title": "Temple of Feline Power",
+        "location": "Q6",
+        "difficulty": 2
     },
     "133": {
         "errata": "",
@@ -10513,7 +10746,9 @@
             "10-B",
             "13-E"
         ],
-        "title": "Bolt"
+        "title": "Bolt",
+        "location": "P6",
+        "difficulty": 2
     },
     "134": {
         "errata": "",
@@ -10607,7 +10842,9 @@
             "12-A",
             "12-C"
         ],
-        "title": "Tower of Knowledge"
+        "title": "Tower of Knowledge",
+        "location": "R1",
+        "difficulty": 3
     },
     "135": {
         "errata": "",
@@ -10699,7 +10936,9 @@
             "07-E",
             "12-B"
         ],
-        "title": "Belara's Keep"
+        "title": "Belara's Keep",
+        "location": "O4",
+        "difficulty": 3
     },
     "136": {
         "errata": "",
@@ -10781,14 +11020,16 @@
         ],
         "page": 165,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "10-B",
             "11-B",
             "16-B"
         ],
-        "title": "Abandoned Hideout"
+        "title": "Abandoned Hideout",
+        "location": "I2",
+        "difficulty": 2
     },
     "137": {
         "errata": "",
@@ -10900,7 +11141,7 @@
         ],
         "page": 166,
         "requirements": [
-            ""
+            "Boat"
         ],
         "tiles": [
             "04-A",
@@ -10908,7 +11149,9 @@
             "12-B",
             "14-A"
         ],
-        "title": "Pirate Queen's Haul"
+        "title": "Pirate Queen's Haul",
+        "location": "D3",
+        "difficulty": 1
     },
     "138": {
         "campaign": "Solo",
