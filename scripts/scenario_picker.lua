@@ -214,8 +214,26 @@ function addTabButton(index, tab, active)
     end
 end
 
-function addScenarioButton(stickers, index, scenario)
-    -- Stickers
+function addScenarioButton(index, scenario)
+    local fName = "loadScenario_" .. scenario
+    self.setVar(fName, function() loadScenario(scenario) end)
+    local params = {
+        function_owner = self,
+        click_function = fName,
+        label          = "",
+        position       = { 0, 0.06,  -1.40 + index * 0.25 },
+        width          = 1600,
+        height         = 220,
+        font_size      = 100,
+        color          = { 1, 1, 1, 0 },
+        scale          = { 1, 1, .5 },
+        font_color     = { 0, 0, 0, 100 },
+    }
+    self.createButton(params)
+end
+
+function loadScenario(scenario)
+    Global.call("prepareFrosthavenScenario", scenario)
 end
 
 function toggleTab(tab)

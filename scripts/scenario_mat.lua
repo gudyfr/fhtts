@@ -677,7 +677,7 @@ function refreshDecals()
             local characterName = playerMat.call("getCharacterName")
             if characterName ~= nil then
                 local state = characterStates[characterName]
-                print("refreshing decals")
+                -- print("refreshing decals")
                 for category, positions in pairs(categories) do
                     local labelPosition = positions["label"]
                     if labelPosition ~= nil then
@@ -1366,6 +1366,7 @@ conditionStickerUrls = {
     disarm = "http://cloud-3.steamusercontent.com/ugc/2035103391708914666/0B131D55F65331E55962A34A4EFB5A1433193AEE/",
     brittle = "http://cloud-3.steamusercontent.com/ugc/2035103391708914586/88F7DA427C9C3A0F57EA8E86CBB769DEF4FCF892/",
     bane = "http://cloud-3.steamusercontent.com/ugc/2035103391708914520/C764491CDC2E58A3CF6A712F49834B9D9880DC07/",
+    impair = "http://cloud-3.steamusercontent.com/ugc/2035105196640585380/D8773B0CA29FE916D0185AB9F03172F39818E537/",
 
     shield1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290311/BC64F39C512867AD9DAC68E988076778F0C1AD40/",
     shield2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290346/2CED35E5F7C08F748B30FEB1E0EBDB340BA8F417/",
@@ -1409,6 +1410,19 @@ conditionsOrder = {
     "dodge",
 }
 
+StandeeNumbers = {
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017140/C7314EC36DA07F3C95057D82FED46234229ABE4D/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017186/9D3341710CB0D905566471243B604FCB9BB35363/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017242/EA13B96F92143743E6AE713E939E235B3D06462E/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017291/EF26D47DC570B7D9ED361F1C586D1571D8CF56BB/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017336/EA86AD5B583E16A08B6D0F9E66335D0EC73A0A7E/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017372/A53C35E23B1133A4A3C5DC6C5730C1DCBEC2F303/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017427/8210A7D989F7C8E6717F7F88C51CB4C35DEB6E98/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017480/E499AE08EE5B39619E48BC02572126A40160A540/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017527/6DB6B52BA864453C5775A44F7A84E511B3C6A286/",
+    "http://cloud-3.steamusercontent.com/ugc/2035105196646017567/954EAE53C45DAE328BCF1D9F386AF1826DC65931/",
+}
+
 function noop()
 end
 
@@ -1438,6 +1452,24 @@ function refreshStandee(standee, instance)
     end
     standee.addTag("lootable")
     local stickers = {}
+
+    local inputs = standee.getInputs()
+    if inputs ~= nil then
+        local nr = tonumber(inputs[1].value or 0)
+        if nr >= 1 and nr <= 10 then
+            -- Apply the standeeNr sticker
+            local sticker = {
+                position = {-0.2,0.5,-0.05},
+                rotation = { 0, baseYRot, 0 },
+                scale = {0.2,0.2,0.2},
+                url = StandeeNumbers[nr],
+                name = standee.guid .. "_nr_" .. nr
+            }
+            table.insert(stickers, sticker)
+        end
+    end
+
+
     local hp = math.ceil(instance.health * 24 / instance.maxHealth)
     local vec = mapToStandeeInfoArea(-0.05, 0, 0, xScaleFactor, yScaleFactor, flip)
     local hpSticker = {

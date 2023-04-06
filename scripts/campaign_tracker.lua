@@ -230,7 +230,7 @@ function toggle(scenario, field)
     getObjectFromGUID('596fc4').call("updateScenario", {
         string.sub(scenario,3),
         scenarioState.unlocked or false,
-        scenarioState.locked or false,
+        scenarioState.blocked or false,
         scenarioState.completed or false })
 end
 

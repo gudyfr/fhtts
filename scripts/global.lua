@@ -161,7 +161,7 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                local pos = { position.x, position.y + 1.4, position.z }
                --clone.setLock(true)
                clone.setPosition(pos)
-               clone.setRotation({ 0, 180, 0 })
+               -- clone.setRotation({ 0, 180, 0 })
             else
                getObjectFromGUID(scenarioBagId).putObject(clone)
             end
