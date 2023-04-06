@@ -597,7 +597,9 @@
         },
         "monsters": [
             {
-                "name": "Frozen Corpse"
+                "name": "Frozen Corpse",
+                "as" : "Coral Corpse",
+                "boss" : true
             },
             {
                 "name": "Lurker Clawcrusher"
