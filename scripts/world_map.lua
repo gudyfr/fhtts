@@ -207,7 +207,15 @@ function change_building(name, alt)
         level = #decals + info.min
     end
     state.buildings[name] = level
-    --print(JSON.encode(state.buildings))
+    refreshDecals()
+    local outpost = getObjectFromGUID('756956')
+    outpost.call("setBuildingLevel", {name, level})
+end
+
+function setBuildingLevel(params)
+    local name = params[1]
+    local level = params[2]
+    state.buildings[name] = level
     refreshDecals()
 end
 

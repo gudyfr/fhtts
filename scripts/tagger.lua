@@ -54,7 +54,7 @@ function tag()
             type         = 2,
             size         = { 1, 1, 1 },
             max_distance = 0,
-            debug        = true
+            debug        = false
         })
 
         for _, j in pairs(hitlist) do
