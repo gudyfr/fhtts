@@ -1482,27 +1482,27 @@ function refreshStandee(standee, instance)
     table.insert(stickers, hpSticker)
 
     local xPosition = 0.53
-    if (instance.shield or 0) > 0 then      
+    if (instance.baseShield or 0) > 0 then      
         vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
         local shieldIconSticker =  {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
             scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
-            url = conditionStickerUrls["shield" .. instance.shield],
-            name = standee.guid .. "_shield_" .. instance.shield
+            url = conditionStickerUrls["shield" .. instance.baseShield],
+            name = standee.guid .. "_shield_" .. instance.baseShield
         }       
         table.insert(stickers, shieldIconSticker)
         xPosition = xPosition + 0.15
     end
 
-    if (instance.retaliate or 0) > 0 then
+    if (instance.baseRetaliate or 0) > 0 then
         vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
         local retaliateIconSticker =  {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
             scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
-            url = conditionStickerUrls["retaliate" .. instance.retaliate],
-            name = standee.guid .. "_retaliate_" .. instance.retaliate
+            url = conditionStickerUrls["retaliate" .. instance.baseRetaliate],
+            name = standee.guid .. "_retaliate_" .. instance.baseRetaliate
         }       
         table.insert(stickers, retaliateIconSticker)
         xPosition = xPosition + 0.1
