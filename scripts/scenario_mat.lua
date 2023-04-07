@@ -71,8 +71,10 @@ function onLoad(state)
 
     for _, guid in ipairs(trackedGuids) do
         local obj = getObjectFromGUID(guid)
-        obj.removeTag("lootable")
-        onStandeeRegistered(obj)
+        if obj ~= nil then
+            obj.removeTag("lootable")
+            onStandeeRegistered(obj)
+        end
     end
 
     --self.interactable = false
