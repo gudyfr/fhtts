@@ -3777,10 +3777,12 @@
         },
         "monsters": [
             {
-                "name": "Frost Demon"
+                "name": "Frost Demon",
+                "lootAsBody" : true
             },
             {
-                "name": "Snow Imp"
+                "name": "Snow Imp",
+                "lootAsBody" : true
             }
         ],
         "overlays": [

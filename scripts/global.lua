@@ -147,6 +147,10 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                clone.addTag("boss")
             end
 
+            if monster.lootAsBody or false then
+               clone.addTag("loot as body")
+            end
+
             if monster.as ~= nil then
                -- We need to get a monster out of the bad, reset the bag and put the monster back in the bag.
                -- And rename both
