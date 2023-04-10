@@ -147,10 +147,6 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                clone.addTag("boss")
             end
 
-            if monster.lootAsBody or false then
-               clone.addTag("loot as body")
-            end
-
             if monster.as ~= nil then
                -- We need to get a monster out of the bad, reset the bag and put the monster back in the bag.
                -- And rename both
@@ -159,6 +155,10 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                clone.setName(monster.as .. "s")
                clone.reset()
                clone.putObject(obj)
+            end
+
+            if monster.lootAsBody or false then
+               clone.addTag("loot as body")
             end
 
             if position ~= nil then
@@ -579,6 +579,10 @@ function onObjectLeaveContainer(container, leave_object)
       if container.hasTag("boss") then
          leave_object.addTag("boss")
          leave_object.setColorTint({ r = 1, g = 0, b = 0 })
+      end
+      if container.hasTag("loot as body") then
+         leave_object.addTag("loot as body")
+         leave_object.setGMNotes(JSON.encode({container = container.getGUID()}))
       end
       --print(params)
       getScenarioMat().call("spawned", params)
