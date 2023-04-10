@@ -147,7 +147,7 @@ function onLoad(state)
     self.createButton(button_parameters)
 
     button_parameters = getButtonParams("onCleanup", "Delete all elements on the lighter section of the mat",
-    { -15.5, 0.06, -10.25 }, 1100, 400)
+        { -15.5, 0.06, -10.25 }, 1100, 400)
     self.createButton(button_parameters)
 
     if debugSnapPoints then
@@ -225,7 +225,7 @@ function onLoad(state)
     for name, pos in pairs(BackButtons) do
         local fName = "returnChallenge_" .. name
         self.setVar(fName, function() returnChallenge(name) end)
-        local params = getButtonParams(fName, "Return to bottom of draw deck",  { -pos.x, pos.y + 0.02, pos.z })
+        local params = getButtonParams(fName, "Return to bottom of draw deck", { -pos.x, pos.y + 0.02, pos.z })
         self.createButton(params)
     end
 
@@ -1157,7 +1157,7 @@ function damageStandee(color, position, standee)
     if inputs ~= nil then
         nr = tonumber(inputs[1].value)
     end
-    updateAssistant("POST", "change", { target = name, nr = nr, what="hp", change = -1 }, updateState)
+    updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = -1 }, updateState)
 end
 
 function undamageStandee(color, position, standee)
@@ -1167,7 +1167,7 @@ function undamageStandee(color, position, standee)
     if inputs ~= nil then
         nr = tonumber(inputs[1].value)
     end
-    updateAssistant("POST", "change", { target = name, nr = nr, what="hp", change = 1 }, updateState)
+    updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = 1 }, updateState)
 end
 
 function unregisterStandee(standee)
@@ -1239,14 +1239,14 @@ function processState(state)
         -- print(JSON.encode(entry))
         local id = entry.id
         -- We need to get rid of some of the (FH) and scenario specific monster names
-        local searches = {' (FH)', ' Scenario 0'}
-        for _,s in ipairs(searches) do
+        local searches = { ' (FH)', ' Scenario 0' }
+        for _, s in ipairs(searches) do
             local search = string.find(id, s, 1, true)
             if search ~= nil then
                 id = string.sub(id, 1, search - 1)
             end
         end
-        
+
         newState[id] = entry
         -- Handle summons separately
         if entry.characterState ~= nil then
@@ -1320,9 +1320,31 @@ function refreshStandees(state)
             end
             if not found and standee.hasTag("deletable") and standee.hasTag("lootable") then
                 local position = standee.getPosition()
+                local lootAsBody = standee.hasTag("loot as body")
+                local name = standee.getName()
+                local container = getObjectFromGUID(getGMNotes(standee).container or '')
                 standee.destroyObject()
                 -- loot
-                getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
+                if not lootAsBody then
+                    getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
+                else
+                    if container ~= nil then
+                        -- Spawn a "body" token
+                        local obj = spawnObject({
+                            type = "Custom_Model",
+                            position = position,
+                            scale = { .7, 1, .7 },
+                            sound = false
+                        })
+                        obj.setCustomObject({
+                            mesh = container.getCustomObject().mesh,
+                            type = 0,
+                            material = 3,
+                            diffuse = container.getCustomObject().diffuse,
+                        })
+                        obj.addTag("deletable")
+                    end
+                end
             end
             if not found and standee.hasTag("trackable") then
                 clearStandee(standee)
@@ -1369,7 +1391,6 @@ conditionStickerUrls = {
     brittle = "http://cloud-3.steamusercontent.com/ugc/2035103391708914586/88F7DA427C9C3A0F57EA8E86CBB769DEF4FCF892/",
     bane = "http://cloud-3.steamusercontent.com/ugc/2035103391708914520/C764491CDC2E58A3CF6A712F49834B9D9880DC07/",
     impair = "http://cloud-3.steamusercontent.com/ugc/2035105196640585380/D8773B0CA29FE916D0185AB9F03172F39818E537/",
-
     shield1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290311/BC64F39C512867AD9DAC68E988076778F0C1AD40/",
     shield2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290346/2CED35E5F7C08F748B30FEB1E0EBDB340BA8F417/",
     shield3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290383/8BE64C6BF3D625B69AC7F76BBF96D2EE3E4B6226/",
@@ -1377,7 +1398,6 @@ conditionStickerUrls = {
     shield5 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290457/E00FB544D07EB25C3AC1FB50FB5F2154C3D6693E/",
     shield6 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290493/0F8ACAB61F2557A652236A94BFA28534DA2CF189/",
     shield7 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290524/4943CFFD29863CCE0BD548FF024A7AC40591D6F1/",
-
     retaliate1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290031/F9438EC6FEDADFFDF133C9899ED803BA483772E6/",
     retaliate2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290078/7743C4D2AF0E4789711BB108DFB9BE959DB1298C/",
     retaliate3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290133/26F17FBAFDFE932CA8D592222C08D80C9BEAF6AF/",
@@ -1461,9 +1481,9 @@ function refreshStandee(standee, instance)
         if nr >= 1 and nr <= 10 then
             -- Apply the standeeNr sticker
             local sticker = {
-                position = {-0.2,0.5,-0.05},
+                position = { -0.2, 0.5, -0.05 },
                 rotation = { 0, baseYRot, 0 },
-                scale = {0.2,0.2,0.2},
+                scale = { 0.2, 0.2, 0.2 },
                 url = StandeeNumbers[nr],
                 name = standee.guid .. "_nr_" .. nr
             }
@@ -1484,41 +1504,41 @@ function refreshStandee(standee, instance)
     table.insert(stickers, hpSticker)
 
     local xPosition = 0.53
-    if (instance.baseShield or 0) > 0 then      
-        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
-        local shieldIconSticker =  {
+    if (instance.baseShield or 0) > 0 then
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
+        local shieldIconSticker = {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
             scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
             url = conditionStickerUrls["shield" .. instance.baseShield],
             name = standee.guid .. "_shield_" .. instance.baseShield
-        }       
+        }
         table.insert(stickers, shieldIconSticker)
         xPosition = xPosition + 0.15
     end
 
     if (instance.baseRetaliate or 0) > 0 then
-        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
-        local retaliateIconSticker =  {
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
+        local retaliateIconSticker = {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
             scale = { 0.15 * xScaleFactor, 0.16 * yScaleFactor, 0.2 },
             url = conditionStickerUrls["retaliate" .. instance.baseRetaliate],
             name = standee.guid .. "_retaliate_" .. instance.baseRetaliate
-        }       
+        }
         table.insert(stickers, retaliateIconSticker)
         xPosition = xPosition + 0.1
     end
 
     -- if (instance.pierce or 0) > 0 then
-    --     vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)  
+    --     vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
     --     local retaliateIconSticker =  {
     --         position = { vec.x, vec.y, vec.z },
     --         rotation = { 35, baseYRot, 0 },
     --         scale = { 1 * xScaleFactor, 0.16 * yScaleFactor, 0.1 },
     --         url = conditionStickerUrls["pierce" .. instance.pierce],
     --         name = standee.guid .. "_pierce_" .. instance.pierce
-    --     }       
+    --     }
     --     table.insert(stickers, retaliateIconSticker)
     --     xPosition = xPosition + 0.1
     -- end
@@ -1767,13 +1787,12 @@ function updateAssistant(method, command, params, callback)
     end
 end
 
-
 function getGMNotes(obj)
     local current = obj.getGMNotes()
     if current == nil or current == "" then
-       current = {}
+        current = {}
     else
-       current = JSON.decode(current)
+        current = JSON.decode(current)
     end
     return current
- end
+end
