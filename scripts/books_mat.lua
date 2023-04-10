@@ -481,5 +481,5 @@ function onClick(target, action, obj, color, alt)
 end
 
 function setScenarioPage(page)
-    goToPage("scenario book", page)
+    changePage("scenario book", page)
 end
