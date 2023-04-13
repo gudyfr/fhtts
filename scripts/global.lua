@@ -444,6 +444,7 @@ function prepareFrosthavenScenario(name)
       local title = "#" .. name .. " " .. (scenario.title or "")
       prepareScenario(name, "Frosthaven", title)
    end
+   -- playNarration({"Scenarios", tonumber(name)})
 end
 
 function prepareScenario(name, campaign, title)
@@ -492,7 +493,7 @@ function prepareScenario(name, campaign, title)
          end
          if elements.page ~= nil then
             -- Tell the book mat to go to the right scenario page
-            getObjectFromGUID('2a1fbe').call("setScenarioPage", elements.page)
+            getObjectFromGUID('2a1fbe').call("setScenarioPage", {elements.page,tonumber(name),"Scenarios"})
          end
          return
       end
@@ -554,7 +555,11 @@ function prepareScenario(name, campaign, title)
 
       if elements.page ~= nil then
          -- Tell the book mat to go to the right scenario page
-         getObjectFromGUID('2a1fbe').call("setScenarioPage", elements.page)
+         local folder = "Scenarios"
+         if campaign == "Solo" then
+            folder = "Solo"
+         end
+         getObjectFromGUID('2a1fbe').call("setScenarioPage", {elements.page, name, folder})
       end
 
       if elements.errata ~= nil then
@@ -999,4 +1004,21 @@ end
 function onObjectPageChange(object)
    -- send to books mat
    getObjectFromGUID('2a1fbe').call("onPageChanged", object)
+end
+
+function playNarration(params)
+   local settings = JSON.decode(getSettings())
+   local address = settings["address"]
+   local port = settings["port"] or 8080
+   local folder = params[1]
+   local file = params[2]
+   if folder ~= nil and file ~= nil and address ~= nil then
+      local url = "http://" .. address .. ":" .. port .. "/file/" .. folder .. "/" .. file .. ".mp3"
+      -- print(url)
+      MusicPlayer.setCurrentAudioclip({
+         url = url,
+         title = folder .. " : " .. file
+      })
+      MusicPlayer.play()
+   end
 end

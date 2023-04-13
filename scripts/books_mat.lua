@@ -328,7 +328,7 @@ function addButton(point, tagsMap)
         self.createButton(params)
         return
     end
-    local specialAction = getTarget(tagsMap, { "rewind", "forward" })
+    local specialAction = getTarget(tagsMap, { "rewind", "forward", "audio play" })
     if target ~= nil and specialAction ~= nil then
         local fName = "onClick_" .. target .. "_" .. specialAction
         self.setVar(fName, function(obj, color, alt) onClick(target, specialAction, obj, color, alt) end)
@@ -362,7 +362,7 @@ function onEdit(target, obj, color, value, selected)
     if not selected then
         local page = tonumber(value)
         if page ~= nil then
-            changePage(target, page)
+            changePage(target, page, value)
         end
     else
         local len = string.len(value)
@@ -376,7 +376,7 @@ function onEdit(target, obj, color, value, selected)
             -- end
             local page = tonumber(value)
             if page ~= nil then
-                changePage(target, page)
+                changePage(target, page, value)
             end
         end
     end
@@ -402,7 +402,7 @@ function forward(target)
     end
 end
 
-function changePage(target, page)
+function changePage(target, page, value)
     local bookState = state[target]
     if bookState ~= nil then
         -- avoid updating the history if we end up loading the same page
@@ -431,11 +431,11 @@ function changePage(target, page)
             print(JSON.encode(currentState.getSnapPoints()))
         end
         -- still load the page though, just in case ...
-        goToPage(target, page)
+        goToPage(target, page, value)
     end
 end
 
-function goToPage(target, page)
+function goToPage(target, page, value)
     local model = bookModels[target]
     if model ~= nil then
         -- First we need to locate the book
@@ -455,6 +455,9 @@ function goToPage(target, page)
             end
         end
     end
+    if target == "section book" and value ~= nil then
+        LoadedSection = value
+    end
 end
 
 function findObject(model)
@@ -472,6 +475,8 @@ function onClick(target, action, obj, color, alt)
         forward(target)
     elseif action == "rewind" then
         rewind(target)
+    elseif action == "audio play" then
+        audioPlay(target)
     else
         local page = buttonTargets[action]
         if page ~= nil then
@@ -480,6 +485,17 @@ function onClick(target, action, obj, color, alt)
     end
 end
 
-function setScenarioPage(page)
-    changePage("scenario book", page)
+function setScenarioPage(params)
+    local page = params[1]
+    LoadedScenarioNumber = params[2]
+    LoadedScenarioType = params[3] or "Scenarios"
+    changePage("scenario book", page, value)
+end
+
+function audioPlay(target)
+    if target == "scenario book" and LoadedScenarioNumber ~= nil and LoadedScenarioType ~= nil then
+        Global.call("playNarration",{LoadedScenarioType, LoadedScenarioNumber})
+    elseif target == "section book" and LoadedSection ~= nil then
+        Global.call("playNarration", {"sections", LoadedSection})        
+    end
 end
