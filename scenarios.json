@@ -3778,11 +3778,11 @@
         "monsters": [
             {
                 "name": "Frost Demon",
-                "lootAsBody" : true
+                "loot" : "as body"
             },
             {
                 "name": "Snow Imp",
-                "lootAsBody" : true
+                "loot" : "as body"
             }
         ],
         "overlays": [
@@ -9438,10 +9438,12 @@
         },
         "monsters": [
             {
-                "name": "Frozen Corpse"
+                "name": "Frozen Corpse",
+                "loot": "none"
             },
             {
-                "name": "Living Bones"
+                "name": "Living Bones",
+                "loot": "none"
             },
             {
                 "name": "Lurker Mindsnipper"

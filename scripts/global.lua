@@ -157,8 +157,12 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                clone.putObject(obj)
             end
 
-            if monster.lootAsBody or false then
-               clone.addTag("loot as body")
+            if monster.loot ~= nil then
+               if monster.loot == "as body" then
+                  clone.addTag("loot as body")
+               elseif monster.loot == "none" then
+                  clone.addTag("no loot")
+               end
             end
 
             if position ~= nil then
@@ -588,6 +592,9 @@ function onObjectLeaveContainer(container, leave_object)
       if container.hasTag("loot as body") then
          leave_object.addTag("loot as body")
          leave_object.setGMNotes(JSON.encode({container = container.getGUID()}))
+      end
+      if container.hasTag("no loot") then
+         leave_object.addTag("no loot")   
       end
       --print(params)
       getScenarioMat().call("spawned", params)

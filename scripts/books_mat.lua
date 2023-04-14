@@ -496,6 +496,6 @@ function audioPlay(target)
     if target == "scenario book" and LoadedScenarioNumber ~= nil and LoadedScenarioType ~= nil then
         Global.call("playNarration",{LoadedScenarioType, LoadedScenarioNumber})
     elseif target == "section book" and LoadedSection ~= nil then
-        Global.call("playNarration", {"sections", LoadedSection})        
+        Global.call("playNarration", {"Sections", LoadedSection})        
     end
 end

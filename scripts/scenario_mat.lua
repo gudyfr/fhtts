@@ -229,7 +229,8 @@ function onLoad(state)
         self.createButton(params)
     end
 
-    refreshDecals()
+    updateCharacters()
+    -- refreshDecals() -- Called by updateCharacters above
 end
 
 function getButtonParams(fName, tooltip, pos, width, height)
@@ -629,7 +630,6 @@ function maybeRemoveInitiativeToggleButton(color)
 end
 
 function updateCharacters()
-    print("updateCharacters")
     for _, color in ipairs(colors) do
         local playerMat = Global.call("getPlayerMatExt", { color })
         if playerMat ~= nil then
@@ -1321,11 +1321,12 @@ function refreshStandees(state)
             if not found and standee.hasTag("deletable") and standee.hasTag("lootable") then
                 local position = standee.getPosition()
                 local lootAsBody = standee.hasTag("loot as body")
+                local noLoot = standee.hasTag("no loot")
                 local name = standee.getName()
                 local container = getObjectFromGUID(getGMNotes(standee).container or '')
                 standee.destroyObject()
                 -- loot
-                if not lootAsBody then
+                if not lootAsBody and not noLoot then
                     getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
                 else
                     if container ~= nil then
