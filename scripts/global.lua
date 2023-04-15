@@ -306,26 +306,58 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                if info.type ~= nil then
                   local type = info.type
                   local color = nil
+                  local underlay = {
+                     name = "underlay_" .. type,
+                     position = {0,0,0},
+                     scale = {.75,.75,.75},
+                     rotation = { 90, 0, 0 },
+                  }
+                  local overlay = {
+                     name = "overlay_" .. type,
+                     position = {0,0.025,-.25},
+                     scale = {0.2,0.2,0.2},
+                     rotation = { 90, 0, 0 },
+                  }
                   if type == "Obstacle" then
-                     color = { 29, 126, 59 }
+                     -- color = { 29, 126, 59 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237165/2678AF8F59D023C77DF641FEC8910835D182257E/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236688/D9F31375FC450BD9BE3984EB47FD1E3C5E758A17/"                     
                   elseif type == "Pressure Plate" then
-                     color = { 173, 173, 173 }
+                     -- color = { 173, 173, 173 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237206/6A0777484779A8722080530B0C43D1C82473A0C5/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236727/7D01B94C25BEA92CBE0957ECC6A422429EDD44CD/"
                   elseif type == "Trap" then
-                     color = { 228, 19, 19 }
+                     -- color = { 228, 19, 19 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237268/7A7C3B0E0060C8FE23A359463F9A12C22FFA17DA/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236774/BCB319F990BE7A9127849A4615486318C987AD7C/"
                   elseif type == "Wall" then
-                     color = { 53, 52, 53 }
+                     -- color = { 53, 52, 53 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237311/0E7EBC101D0643E90645E0AFED2534DCD30CA7C9/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236827/8B11DFC742D94410A3A220903F37894D384F5098/"
                   elseif type == "Corridor" then
-                     color = { 172, 172, 172 }
+                     -- color = { 172, 172, 172 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236874/45C3A28338A6EFCB0A2FEE9332D3F6033CCB6F9B/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236428/A0AF561889DB69EC01F03BBBE560396F343ADE69/"
                   elseif type == "Difficult Terrain" then
-                     color = { 121, 58, 210 }
+                     -- color = { 121, 58, 210 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236926/31F6DFAA41FDB6649461472B1F8D3129E60CB4E4/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236470/666B6A71A88CFFA389AAD94DB74060F77192063B/"
                   elseif type == "Door" then
-                     color = { 34, 96, 209 }
+                     -- color = { 34, 96, 209 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236982/77263BF7C8933BF32D3F3C54BC5D13493B54D1CF/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236511/1C789E9836AF1DC13FFFDABB239CBE3A19C0B3C5/"
                   elseif type == "Hazardous Terrain" then
-                     color = { 244, 127, 32 }
+                     -- color = { 244, 127, 32 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237027/9EF685D0E353DB1ADE2826410AA3195F3095E8FB/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236545/DD2676FE8B97B20F2C671803FED9BCC0C137B17D/"
                   elseif type == "Icy Terrain" then
-                     color = { 83, 205, 20 }
+                     -- color = { 83, 205, 20 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237076/93DC787398B26C6263924F3AD2E1A03AA13A6162/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236588/7A1556D352C180A003F8D5BC44BE6BB2FE1B486B/"
                   elseif type == "Objective" then
-                     color = { 238, 189, 38 }
+                     -- color = { 238, 189, 38 }
+                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237113/AD6DDE3352CA5168C1FCCE247AF5BD9C3E544494/"
+                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236640/33AF2DDD8AB13544A4954EBDD194CCD746BFE146/"
                   end
 
                   if color ~= nil then
@@ -335,6 +367,35 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                      end
                      updateGMNotes(obj, {highlight=color})
                   end
+                  local decals = {}
+                  if underlay.url ~= nil then
+                     table.insert(decals, underlay)
+                     if (info.size or 1) > 1  then
+                        underlay2 = {
+                           name = underlay.name .. "_2",
+                           url = underlay.url,
+                           position = {-0.665,0,0},
+                           rotation = underlay.rotation,
+                           scale = underlay.scale,
+                        }
+                        table.insert(decals, underlay2)
+                        if info.size > 2 then
+                           underlay3 = {
+                              name = underlay.name .. "_3",
+                              url = underlay.url,
+                              position = {-0.3325,0,-0.665},
+                              rotation = underlay.rotation,
+                              scale = underlay.scale,
+                           }
+                           table.insert(decals, underlay3)
+                        end
+                     end
+                  end
+                  if overlay.url ~= nil then
+                     table.insert(decals, overlay)
+                  end
+                  obj.setDecals(decals)
+
                end
      
 
