@@ -309,7 +309,7 @@
                 "value": "B"
             }
         ],
-        "page": 7,
+        "page": 7,        
         "location": "M8",
         "difficulty": 2
     },
@@ -372,6 +372,7 @@
             }
         ],
         "page": 7,
+        "otherPages" : [8],
         "requirements": [
             ""
         ],
@@ -822,7 +823,7 @@
         ],
         "overlays": [
             {
-                "name": "Snow Door",
+                "name": "Cave Door",
                 "type": "Door",
                 "count": 3
             },
@@ -1053,7 +1054,7 @@
         ],
         "overlays": [
             {
-                "name": "Snow Door",
+                "name": "Cave Door",
                 "type": "Door",
                 "count": 4
             },
@@ -1354,6 +1355,16 @@
                 "name": "Treasure Chest",
                 "type": "Treasure",
                 "count": 1
+            },
+            {
+                "name": "Poison Trap",
+                "type": "Pressure Plate",
+                "count": 0
+            },
+            {
+                "name": "Bear Trap",
+                "type": "Pressure Plate",
+                "count": 0
             }
         ],
         "tokens": [
@@ -1412,7 +1423,7 @@
         ],
         "overlays": [
             {
-                "name": "Snow Door",
+                "name": "Cave Door",
                 "type": "Door",
                 "count": 2
             },
@@ -1502,6 +1513,7 @@
             }
         ],
         "page": 24,
+        "otherPages" : [25],
         "requirements": [
             ""
         ],
@@ -1572,6 +1584,7 @@
             }
         ],
         "page": 25,
+        "otherPages" : [26],
         "requirements": [
             ""
         ],
@@ -2223,6 +2236,7 @@
             }
         ],
         "page": 35,
+        "otherPages": [36],
         "requirements": [
             ""
         ],
@@ -2314,6 +2328,7 @@
             }
         ],
         "page": 37,
+        "otherPages" : [38],
         "requirements": [
             ""
         ],
