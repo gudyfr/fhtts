@@ -1,0 +1,106 @@
+{
+   "page": 131,
+   "results": [
+      {
+         "name": "10-B",
+         "variant": "",
+         "orientation": "-180",
+         "type": "tile",
+         "results": [
+            {
+               "position": {
+                  "x": 1062,
+                  "y": 2468
+               },
+               "score": 0.9814350008964539
+            }
+         ]
+      },
+      {
+         "name": "Dungeon Door",
+         "type": "overlay",
+         "results": [
+            {
+               "position": {
+                  "x": 1409,
+                  "y": 2429
+               },
+               "score": 0.9845551252365112
+            }
+         ]
+      },
+      {
+         "name": "Door.png",
+         "type": "overlay types",
+         "results": [
+            {
+               "position": {
+                  "x": 1442,
+                  "y": 2502
+               },
+               "score": 0.9672255516052246
+            }
+         ]
+      },
+      {
+         "name": "1.png",
+         "type": "tokens",
+         "results": [
+            {
+               "position": {
+                  "x": 1436,
+                  "y": 2431
+               },
+               "score": 1.000000238418579
+            }
+         ]
+      },
+      {
+         "name": "a.png",
+         "type": "tokens",
+         "results": [
+            {
+               "position": {
+                  "x": 1501,
+                  "y": 2784
+               },
+               "score": 1.0000003576278687
+            }
+         ]
+      },
+      {
+         "name": "start.png",
+         "type": "tokens",
+         "results": [
+            {
+               "position": {
+                  "x": 1236,
+                  "y": 3018
+               },
+               "score": 0.9831489324569702
+            },
+            {
+               "position": {
+                  "x": 1368,
+                  "y": 3018
+               },
+               "score": 0.9924684762954712
+            },
+            {
+               "position": {
+                  "x": 1502,
+                  "y": 3018
+               },
+               "score": 0.9897903800010681
+            },
+            {
+               "position": {
+                  "x": 1634,
+                  "y": 3018
+               },
+               "score": 0.9906997084617615
+            }
+         ]
+      }
+   ]
+}

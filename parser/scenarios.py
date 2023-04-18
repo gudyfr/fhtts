@@ -28,7 +28,7 @@ def identify(out, img, templateFile, xOffset, yOffset):
     # template_gray = cv.cvtColor(template, cv.COLOR_RGBA2GRAY)
     w, h = mask.shape[::-1]
     res = cv.matchTemplate(img, template, cv.TM_CCOEFF_NORMED, mask=mask)
-    loc = np.where((res >= 0.95) & (res <= 1.01))
+    loc = np.where((res >= 0.96) & (res <= 1.01))
     result = []
     for pt in zip(*loc[::-1]):
         close = False
@@ -105,17 +105,19 @@ for nb,scenario in scenarios.items():
                 tiles = []
                 if 'tiles' in scenario:
                     for tile in scenario['tiles']:
-                        orientations = ["-0","-60","-90","-120","-180","-240","-270","-300"]
+                        variants = ["","-Alt"]
                         found = False
-                        for orientation in orientations:        
-                            tileFile = 'assets/tiles/maps/{}{}.png'.format(tile,orientation)
-                            if os.path.exists(tileFile):                            
-                                print("\tLooking for Tile {}{}".format(tile, orientation))     
-                                result = identify(out, img, tileFile, 0, 0)
-                                if len(result) > 0:
-                                    found = True
-                                    results.append({"name" : tile, "type": "tile", "results" : result, "orientation" : orientation})
-                                    tiles.append({"name" : f"{tile}{orientation}", "positions" : result})    
+                        for variant in variants:
+                            orientations = ["-0","-60","-90","-120","-180","-240","-270","-300"]                            
+                            for orientation in orientations:        
+                                tileFile = f'assets/tiles/maps/{tile}{orientation}{variant}.png'
+                                if os.path.exists(tileFile):                            
+                                    print(f"\tLooking for Tile {tile}{orientation}{variant}")     
+                                    result = identify(out, img, tileFile, 0, 0)
+                                    if len(result) > 0:
+                                        found = True
+                                        results.append({"name" : tile, "variant": variant, "orientation": orientation, "type": "tile", "results" : result, "orientation" : orientation})
+                                        tiles.append({"name" : tile, "variant": variant, "orientation": orientation, "positions" : result})    
                         if not found:
                             print(f"{bcolors.WARNING}Couldn't find tile {tile}{bcolors.ENDC}")
 
@@ -126,7 +128,10 @@ for nb,scenario in scenarios.items():
                 minY = h
                 maxY = 0
                 for tile in tiles:
-                    id = "-".join(tile["name"].split("-")[::2])
+                    variant = tile["variant"]
+                    name = tile["name"].split("-")[0]
+                    orientation = tile["orientation"]
+                    id = f"{name}{orientation}{variant}"
                     tileInfo = tileInfos[id]
                     if tileInfo is not None:
                         for result in tile["positions"]:
@@ -156,7 +161,7 @@ for nb,scenario in scenarios.items():
                     
                     for overlay in scenario['overlays']:
                         name = overlay['name']
-                        orientations = ["","-0","-60","-90","-120","-180","-240","-270","-300"]
+                        orientations = ["","-0","-60","-90","-120","-150","-180","-240","-270","-300"]
                         found = False
                         for orientation in orientations:        
                             overlayFile = 'assets/tiles/overlays/{}{}.png'.format(name,orientation)
@@ -178,8 +183,8 @@ for nb,scenario in scenarios.items():
                             if len(result) > 0:         
                                 results.append({"name" : subEntry, "type": entry, "results" : result})
 
-                    cv.imwrite("out/p{}.png".format(page), out)
-                    with open("out/p{}.json".format(page), "w") as outfile:
+                    cv.imwrite(f"out/{nb}-p{page}.png", out)
+                    with open(f"out/{nb}-p{page}.json", "w") as outfile:
                         json.dump({"page" : page, "results":results}, outfile, indent=3, cls=NpEncoder)
                 else:
                     print(f"{bcolors.WARNING}No tile found on page {page}, skipping analysis{bcolors.ENDC}")
