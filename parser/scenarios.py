@@ -19,7 +19,7 @@ def positionToJson(pt,score, xOffset, yOffset):
         "score" : score
     }
 
-def identify(out, img, templateFile, xOffset, yOffset):
+def identify(out, img, templateFile, xOffset, yOffset, threshold=0.96):
     template = cv.imread(templateFile, flags=cv.IMREAD_UNCHANGED)
     assert template is not None, "template file could not be read, check with os.path.exists()"
     _, _, _, a_channel = cv.split(template)
@@ -28,7 +28,7 @@ def identify(out, img, templateFile, xOffset, yOffset):
     # template_gray = cv.cvtColor(template, cv.COLOR_RGBA2GRAY)
     w, h = mask.shape[::-1]
     res = cv.matchTemplate(img, template, cv.TM_CCOEFF_NORMED, mask=mask)
-    loc = np.where((res >= 0.96) & (res <= 1.01))
+    loc = np.where((res >= threshold) & (res <= 1.01))
     result = []
     for pt in zip(*loc[::-1]):
         close = False
@@ -113,7 +113,7 @@ for nb,scenario in scenarios.items():
                                 tileFile = f'assets/tiles/maps/{tile}{orientation}{variant}.png'
                                 if os.path.exists(tileFile):                            
                                     print(f"\tLooking for Tile {tile}{orientation}{variant}")     
-                                    result = identify(out, img, tileFile, 0, 0)
+                                    result = identify(out, img, tileFile, 0, 0, 0.92)
                                     if len(result) > 0:
                                         found = True
                                         results.append({"name" : tile, "variant": variant, "orientation": orientation, "type": "tile", "results" : result, "orientation" : orientation})
@@ -163,19 +163,24 @@ for nb,scenario in scenarios.items():
                         name = overlay['name']
                         orientations = ["","-0","-60","-90","-120","-150","-180","-240","-270","-300"]
                         found = False
-                        for orientation in orientations:        
-                            overlayFile = 'assets/tiles/overlays/{}{}.png'.format(name,orientation)
-                            if os.path.exists(overlayFile):
-                                found = True
-                                print(f"\tLooking for overlay {name} ({orientation})")     
-                                result = identify(out, img, overlayFile, minX, minY)
-                                if len(result) > 0:         
-                                    results.append({"name" : name, "type": "overlay", "results" : result})                    
+                        for orientation in orientations:
+                            variants = ["","-1","-2","-3"]
+                            for variant in variants:   
+                                overlayFile = f'assets/tiles/overlays/{name}{orientation}{variant}.png'
+                                if os.path.exists(overlayFile):
+                                    found = True
+                                    print(f"\tLooking for overlay {name} ({orientation}/{variant})")     
+                                    result = identify(out, img, overlayFile, minX, minY)
+                                    if len(result) > 0:         
+                                        results.append({"name" : name, "orientation":orientation, "type": "overlay", "results" : result})                    
                         if not found:
                             print(f"{bcolors.WARNING}Missing overlay template {name} at {overlayFile}{bcolors.ENDC}") 
 
                     entries = os.listdir('assets/tiles/all')
                     for entry in entries:
+                        threshold = 0.96
+                        if entry == 'overlay types':
+                            threshold = 0.94
                         subEntries = os.listdir(os.path.join('assets/tiles/all/', entry))        
                         for subEntry in subEntries:
                             print("\tLooking for {}".format(subEntry))
