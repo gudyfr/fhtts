@@ -64,6 +64,8 @@
             }
         ],
         "page": 3,
+        "sections": [],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -146,6 +148,7 @@
             }
         ],
         "page": 4,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -212,6 +215,7 @@
             }
         ],
         "page": 5,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -282,6 +286,7 @@
             }
         ],
         "page": 6,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -309,7 +314,7 @@
                 "value": "B"
             }
         ],
-        "page": 7,        
+        "page": 7,
         "location": "M8",
         "difficulty": 2
     },
@@ -372,7 +377,10 @@
             }
         ],
         "page": 7,
-        "otherPages" : [8],
+        "otherPages": [
+            8
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -442,6 +450,7 @@
             }
         ],
         "page": 7,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -504,6 +513,7 @@
             }
         ],
         "page": 9,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -568,6 +578,7 @@
             }
         ],
         "page": 10,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -599,8 +610,8 @@
         "monsters": [
             {
                 "name": "Frozen Corpse",
-                "as" : "Coral Corpse",
-                "boss" : true
+                "as": "Coral Corpse",
+                "boss": true
             },
             {
                 "name": "Lurker Clawcrusher"
@@ -643,6 +654,7 @@
             }
         ],
         "page": 11,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -695,6 +707,7 @@
             }
         ],
         "page": 12,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -782,6 +795,7 @@
             }
         ],
         "page": 13,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -863,6 +877,7 @@
             }
         ],
         "page": 14,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -936,6 +951,7 @@
             }
         ],
         "page": 15,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -1014,6 +1030,7 @@
             }
         ],
         "page": 16,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1088,6 +1105,7 @@
             }
         ],
         "page": 17,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1178,6 +1196,7 @@
             }
         ],
         "page": 18,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -1250,6 +1269,7 @@
             }
         ],
         "page": 19,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1302,6 +1322,7 @@
             }
         ],
         "page": 21,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1380,6 +1401,7 @@
             }
         ],
         "page": 22,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1450,6 +1472,7 @@
             }
         ],
         "page": 23,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1513,7 +1536,10 @@
             }
         ],
         "page": 24,
-        "otherPages" : [25],
+        "otherPages": [
+            25
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1584,7 +1610,10 @@
             }
         ],
         "page": 25,
-        "otherPages" : [26],
+        "otherPages": [
+            26
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1680,6 +1709,7 @@
             }
         ],
         "page": 27,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1759,6 +1789,7 @@
             }
         ],
         "page": 28,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -1792,7 +1823,7 @@
             },
             {
                 "name": "Living Doom",
-                "as" : "Hateful Corpse",
+                "as": "Hateful Corpse",
                 "boss": true
             },
             {
@@ -1824,6 +1855,7 @@
             }
         ],
         "page": 29,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1876,6 +1908,7 @@
             }
         ],
         "page": 30,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -1939,6 +1972,7 @@
             }
         ],
         "page": 31,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2013,6 +2047,7 @@
             }
         ],
         "page": 32,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2070,6 +2105,7 @@
             }
         ],
         "page": 33,
+        "sections": [],
         "requirements": [
             "Shard Seeker"
         ],
@@ -2145,6 +2181,7 @@
             }
         ],
         "page": 34,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2236,7 +2273,10 @@
             }
         ],
         "page": 35,
-        "otherPages": [36],
+        "otherPages": [
+            36
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2328,7 +2368,10 @@
             }
         ],
         "page": 37,
-        "otherPages" : [38],
+        "otherPages": [
+            38
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2382,6 +2425,7 @@
             }
         ],
         "page": 39,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2461,6 +2505,7 @@
             }
         ],
         "page": 40,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2522,6 +2567,7 @@
             }
         ],
         "page": 41,
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -2567,6 +2613,7 @@
             }
         ],
         "page": 42,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2628,6 +2675,7 @@
             }
         ],
         "page": 43,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2687,6 +2735,7 @@
             }
         ],
         "page": 44,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2758,6 +2807,7 @@
             }
         ],
         "page": 45,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2863,6 +2913,7 @@
             }
         ],
         "page": 46,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -2958,6 +3009,7 @@
             }
         ],
         "page": 47,
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -3023,6 +3075,7 @@
             }
         ],
         "page": 48,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3089,6 +3142,7 @@
             }
         ],
         "page": 49,
+        "sections": [],
         "requirements": [
             "Shard Seeker"
         ],
@@ -3155,6 +3209,7 @@
             }
         ],
         "page": 50,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -3218,6 +3273,7 @@
             }
         ],
         "page": 51,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3279,6 +3335,7 @@
             }
         ],
         "page": 52,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3383,6 +3440,7 @@
             }
         ],
         "page": 53,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -3429,6 +3487,7 @@
             }
         ],
         "page": 54,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -3502,6 +3561,7 @@
             }
         ],
         "page": 55,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3564,6 +3624,7 @@
             }
         ],
         "page": 56,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -3637,6 +3698,7 @@
             }
         ],
         "page": 57,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -3688,6 +3750,7 @@
             }
         ],
         "page": 58,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -3762,6 +3825,7 @@
             }
         ],
         "page": 60,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3793,11 +3857,11 @@
         "monsters": [
             {
                 "name": "Frost Demon",
-                "loot" : "as body"
+                "loot": "as body"
             },
             {
                 "name": "Snow Imp",
-                "loot" : "as body"
+                "loot": "as body"
             }
         ],
         "overlays": [
@@ -3829,6 +3893,7 @@
             }
         ],
         "page": 61,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -3891,7 +3956,10 @@
             }
         ],
         "page": 62,
-        "otherPages" : [63],
+        "otherPages": [
+            63
+        ],
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -3973,7 +4041,10 @@
             }
         ],
         "page": 63,
-        "otherPages": [64],
+        "otherPages": [
+            64
+        ],
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -4045,6 +4116,7 @@
             }
         ],
         "page": 65,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4116,6 +4188,7 @@
             }
         ],
         "page": 66,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4187,7 +4260,10 @@
             }
         ],
         "page": 67,
-        "otherPages":[68],
+        "otherPages": [
+            68
+        ],
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -4269,6 +4345,7 @@
             }
         ],
         "page": 69,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4348,6 +4425,7 @@
             }
         ],
         "page": 70,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4422,9 +4500,13 @@
             }
         ],
         "page": 72,
-        "otherPages" : [73],
+        "otherPages": [
+            73
+        ],
+        "sections": [],
         "requirements": [
-            "Boat", "6Shards"
+            "Boat",
+            "6Shards"
         ],
         "tiles": [
             "13-B",
@@ -4515,6 +4597,7 @@
             }
         ],
         "page": 73,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4590,6 +4673,7 @@
             }
         ],
         "page": 75,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4667,7 +4751,10 @@
             }
         ],
         "page": 77,
-        "otherPages" : [78],
+        "otherPages": [
+            78
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4778,7 +4865,11 @@
             }
         ],
         "page": 79,
-        "otherPages": [80,81],
+        "otherPages": [
+            80,
+            81
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4875,6 +4966,7 @@
             }
         ],
         "page": 82,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -4990,6 +5082,7 @@
             }
         ],
         "page": 83,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5085,7 +5178,10 @@
             }
         ],
         "page": 84,
-        "otherPages": [85],
+        "otherPages": [
+            85
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5181,7 +5277,10 @@
             }
         ],
         "page": 85,
-        "otherPages": [86],
+        "otherPages": [
+            86
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5238,6 +5337,7 @@
             }
         ],
         "page": 87,
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -5316,6 +5416,7 @@
             }
         ],
         "page": 88,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5419,6 +5520,7 @@
             }
         ],
         "page": 89,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5517,6 +5619,7 @@
             }
         ],
         "page": 90,
+        "sections": [],
         "region": "",
         "requirements": [
             ""
@@ -5621,6 +5724,7 @@
             }
         ],
         "page": 91,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5735,6 +5839,7 @@
             }
         ],
         "page": 92,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -5833,6 +5938,7 @@
             }
         ],
         "page": 93,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -5927,7 +6033,10 @@
             }
         ],
         "page": 94,
-        "otherPages":[95],
+        "otherPages": [
+            95
+        ],
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -6002,6 +6111,7 @@
             }
         ],
         "page": 96,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -6105,6 +6215,7 @@
             }
         ],
         "page": 97,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -6217,6 +6328,7 @@
             }
         ],
         "page": 98,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -6303,7 +6415,10 @@
             }
         ],
         "page": 99,
-        "otherPages": [100],
+        "otherPages": [
+            100
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6420,7 +6535,10 @@
             }
         ],
         "page": 100,
-        "otherPages": [101],
+        "otherPages": [
+            101
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6487,6 +6605,7 @@
             }
         ],
         "page": 101,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6580,7 +6699,10 @@
             }
         ],
         "page": 103,
-        "otherPages":[104],
+        "otherPages": [
+            104
+        ],
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -6625,7 +6747,10 @@
             }
         ],
         "page": 104,
-        "otherPages":[105],
+        "otherPages": [
+            105
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6729,6 +6854,7 @@
             }
         ],
         "page": 106,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -6824,6 +6950,7 @@
             }
         ],
         "page": 107,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6913,6 +7040,7 @@
             }
         ],
         "page": 108,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -6992,6 +7120,7 @@
             }
         ],
         "page": 109,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7098,6 +7227,7 @@
             }
         ],
         "page": 110,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7151,6 +7281,7 @@
             }
         ],
         "page": 111,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7251,7 +7382,10 @@
             }
         ],
         "page": 112,
-        "otherPages": [113],
+        "otherPages": [
+            113
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7317,6 +7451,7 @@
             }
         ],
         "page": 113,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -7345,6 +7480,7 @@
         ],
         "title": "Midwinter Brawl",
         "page": 115,
+        "sections": [],
         "location": "H7",
         "difficulty": 2
     },
@@ -7418,7 +7554,10 @@
             }
         ],
         "page": 115,
-        "otherPages":[116],
+        "otherPages": [
+            116
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7500,7 +7639,10 @@
             }
         ],
         "page": 115,
-        "otherPages":[116],
+        "otherPages": [
+            116
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7585,7 +7727,10 @@
             }
         ],
         "page": 116,
-        "otherPages":[117],
+        "otherPages": [
+            117
+        ],
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -7664,6 +7809,7 @@
             }
         ],
         "page": 118,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7759,6 +7905,7 @@
             }
         ],
         "page": 119,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -7838,6 +7985,7 @@
             }
         ],
         "page": 120,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -7930,6 +8078,7 @@
             }
         ],
         "page": 121,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8009,6 +8158,7 @@
             }
         ],
         "page": 122,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8099,6 +8249,7 @@
             }
         ],
         "page": 123,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8178,6 +8329,7 @@
             }
         ],
         "page": 124,
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -8270,6 +8422,7 @@
             }
         ],
         "page": 125,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8334,6 +8487,7 @@
             }
         ],
         "page": 127,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8403,6 +8557,7 @@
             }
         ],
         "page": 128,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -8482,6 +8637,7 @@
             }
         ],
         "page": 129,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -8569,6 +8725,7 @@
             }
         ],
         "page": 130,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8652,6 +8809,7 @@
             }
         ],
         "page": 131,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -8736,6 +8894,7 @@
             }
         ],
         "page": 132,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -8817,6 +8976,7 @@
             }
         ],
         "page": 133,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -8900,6 +9060,7 @@
             }
         ],
         "page": 134,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -8993,6 +9154,7 @@
             }
         ],
         "page": 135,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -9064,6 +9226,7 @@
             }
         ],
         "page": 136,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9138,6 +9301,7 @@
             }
         ],
         "page": 137,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9198,6 +9362,7 @@
             }
         ],
         "page": 138,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9261,7 +9426,10 @@
             }
         ],
         "page": 139,
-        "otherPages": [140],
+        "otherPages": [
+            140
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9372,6 +9540,7 @@
             }
         ],
         "page": 140,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9441,6 +9610,7 @@
             }
         ],
         "page": 142,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9508,6 +9678,7 @@
             }
         ],
         "page": 143,
+        "sections": [],
         "requirements": [
             "Sled"
         ],
@@ -9595,6 +9766,7 @@
             }
         ],
         "page": 144,
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -9681,6 +9853,7 @@
             }
         ],
         "page": 145,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9758,6 +9931,7 @@
             }
         ],
         "page": 146,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9872,6 +10046,7 @@
             }
         ],
         "page": 147,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -9916,7 +10091,7 @@
         ],
         "overlays": [
             {
-                "name": "Metal Door",
+                "name": "Dungeon Door",
                 "type": "Door",
                 "count": 4
             },
@@ -9949,6 +10124,7 @@
             }
         ],
         "page": 148,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10020,6 +10196,7 @@
             }
         ],
         "page": 149,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10090,6 +10267,7 @@
             }
         ],
         "page": 150,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10217,7 +10395,10 @@
             }
         ],
         "page": 151,
-        "otherPages": [152],
+        "otherPages": [
+            152
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10300,6 +10481,7 @@
             }
         ],
         "page": 153,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10386,7 +10568,10 @@
             }
         ],
         "page": 154,
-        "otherPages": [155],
+        "otherPages": [
+            155
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10494,6 +10679,7 @@
             }
         ],
         "page": 155,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10587,7 +10773,10 @@
             }
         ],
         "page": 157,
-        "otherPages": [158],
+        "otherPages": [
+            158
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10638,6 +10827,7 @@
             }
         ],
         "page": 158,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10707,6 +10897,7 @@
             }
         ],
         "page": 160,
+        "sections": [],
         "requirements": [
             "Climbing Gear"
         ],
@@ -10782,6 +10973,7 @@
             }
         ],
         "page": 161,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -10876,7 +11068,10 @@
             }
         ],
         "page": 162,
-        "otherPages": [163],
+        "otherPages": [
+            163
+        ],
+        "sections": [],
         "requirements": [
             "Into the Forest"
         ],
@@ -10971,7 +11166,10 @@
             }
         ],
         "page": 163,
-        "otherPages": [164],
+        "otherPages": [
+            164
+        ],
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11066,6 +11264,7 @@
             }
         ],
         "page": 165,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -11187,6 +11386,7 @@
             }
         ],
         "page": 166,
+        "sections": [],
         "requirements": [
             "Boat"
         ],
@@ -11256,6 +11456,7 @@
             }
         ],
         "page": 170,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11327,6 +11528,7 @@
             }
         ],
         "page": 171,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11394,6 +11596,7 @@
             }
         ],
         "page": 172,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11458,6 +11661,7 @@
             }
         ],
         "page": 174,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11522,6 +11726,7 @@
             }
         ],
         "page": 175,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11605,6 +11810,7 @@
             }
         ],
         "page": 176,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11688,6 +11894,7 @@
             }
         ],
         "page": 177,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11741,6 +11948,7 @@
             }
         ],
         "page": 179,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11799,6 +12007,7 @@
             }
         ],
         "page": 180,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11874,6 +12083,7 @@
             }
         ],
         "page": 182,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -11938,6 +12148,7 @@
             }
         ],
         "page": 183,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12067,6 +12278,7 @@
             }
         ],
         "page": 184,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12134,6 +12346,7 @@
             }
         ],
         "page": 185,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12201,6 +12414,7 @@
             }
         ],
         "page": 186,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12267,6 +12481,7 @@
             }
         ],
         "page": 188,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12325,6 +12540,7 @@
             }
         ],
         "page": 189,
+        "sections": [],
         "requirements": [
             ""
         ],
@@ -12374,6 +12590,7 @@
             }
         ],
         "page": 190,
+        "sections": [],
         "requirements": [
             ""
         ],
