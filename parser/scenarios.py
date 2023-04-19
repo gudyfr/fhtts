@@ -114,7 +114,7 @@ for id in scenarioIds:
         path = "scenarios/p" if page["type"] == "scenario"  else "sections/"
         imgFile = os.path.join(f"assets/pages/{path}{page['page']}.png")
         if os.path.exists(imgFile):        
-            print(f"{bcolors.OKBLUE}Identifying elements in {path}{imgFile}{bcolors.ENDC}")
+            print(f"{bcolors.OKBLUE}Identifying elements in {imgFile}{bcolors.ENDC}")
             img = cv.imread(imgFile, flags=cv.IMREAD_UNCHANGED)
             assert img is not None, "image file could not be read, check with os.path.exists()"
             out = cv.cvtColor(img, cv.COLOR_RGBA2RGB)
@@ -240,9 +240,7 @@ for id in scenarioIds:
                         result = identify(out, img, os.path.join('assets/tiles/all/', entry, subEntry), minX, minY)
                         if len(result) > 0:         
                             results.append({"name" : subEntry, "type": entry, "results" : result})
-                t = "p" if page["type"] == "scenario" else "s"
-                cv.imwrite(f"out/{nb}-{t}{page['page']}.png", out)
-                with open(f"out/{nb}-{t}{page['page']}.json", "w") as outfile:
-                    json.dump({"scenario": id, "layout" : mapTiles, "type":page['type'], "page" : page['page'], "results":results}, outfile, indent=3, cls=NpEncoder)
-            else:
-                print(f"{bcolors.WARNING}No tile found on page {page['page']}, skipping analysis{bcolors.ENDC}")
+            t = "p" if page["type"] == "scenario" else "s"
+            cv.imwrite(f"out/{nb}-{t}{page['page']}.png", out)
+            with open(f"out/{nb}-{t}{page['page']}.json", "w") as outfile:
+                json.dump({"scenario": id, "layout" : mapTiles, "type":page['type'], "page" : page['page'], "results":results}, outfile, indent=3, cls=NpEncoder)
