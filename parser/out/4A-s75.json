@@ -769,6 +769,40 @@
          ]
       },
       {
+         "name": "Frozen Fist",
+         "type": "monster",
+         "results": [
+            {
+               "position": {
+                  "x": 1490,
+                  "y": 1416
+               },
+               "size": {
+                  "x": 103,
+                  "y": 127
+               },
+               "score": 1.0000001192092896
+            }
+         ]
+      },
+      {
+         "name": "Snowdancer",
+         "type": "monster",
+         "results": [
+            {
+               "position": {
+                  "x": 1488,
+                  "y": 957
+               },
+               "size": {
+                  "x": 104,
+                  "y": 126
+               },
+               "score": 1.0000011920928955
+            }
+         ]
+      },
+      {
          "name": "Large Ice Crystal",
          "orientation": "-120",
          "type": "overlay",
