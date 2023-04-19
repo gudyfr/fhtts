@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import math
 import cv2 as cv
@@ -10,11 +11,15 @@ def distance(pt1, pt2):
      dY = pt1[1] - pt2[1]
      return math.sqrt(dX*dX+dY*dY)
 
-def positionToJson(pt,score, xOffset, yOffset):
+def positionToJson(pt,w,h,score, xOffset, yOffset):
     return {
         "position" : {
            "x" : pt[0] + xOffset,
            "y" : pt[1] + yOffset
+        },
+        "size" : {
+            "x" : w,
+            "y" : h,
         },
         "score" : score
     }
@@ -47,7 +52,7 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.96):
         print("\t\tFound {} at ({}, {}) {}".format(
             templateFile, pt[0], pt[1], score))
         cv.rectangle(out, (pt[0] + xOffset, pt[1]+yOffset), (pt[0] + w + xOffset, pt[1] + h+yOffset), (0, 0, 255), 1)
-        output.append(positionToJson(pt,score,xOffset,yOffset))
+        output.append(positionToJson(pt,w,h,score,xOffset,yOffset))
 
     return output
 
@@ -83,113 +88,161 @@ class NpEncoder(json.JSONEncoder):
 # maps = os.listdir('assets/images/')
 scenarios = loadScenarios()
 tileInfos = loadTiles()
-pagesDone = []
-for nb,scenario in scenarios.items():
+scenarioIds = []
+args = sys.argv[1:]
+if "-all" in args:
+    scenarioIds = scenarios.keys()
+else:
+    for arg in args:
+        scenarioIds.append(arg)
+
+for id in scenarioIds:
+    nb = id
+    scenario = scenarios[id]
     results = []
     pagesToCover = []
-    pagesToCover.append(scenario['page'])
+    pagesToCover.append({"type" : "scenario", "page" : scenario["page"]})
     if 'otherPages' in scenario:
         for otherPage in scenario['otherPages']:
-            pagesToCover.append(otherPage)
-    # Possibly try the next page if we didn't find anything in the first one
+            pagesToCover.append({"type" : "scenario", "page" : otherPage})
+    if 'sections' in scenario:
+        for section in scenario['sections']:
+            pagesToCover.append({"type" : "section", "page" : int(float(section))})
+    
+    layoutFound = False
     for page in pagesToCover:
-        if not page in pagesDone:
-            imgFile = os.path.join("assets/images/p{}.png".format(page))
-            if os.path.exists(imgFile):        
-                print(f"{bcolors.OKBLUE}Identifying elements in {imgFile}{bcolors.ENDC}")
-                img = cv.imread(imgFile, flags=cv.IMREAD_UNCHANGED)
-                assert img is not None, "image file could not be read, check with os.path.exists()"
-                out = cv.cvtColor(img, cv.COLOR_RGBA2RGB)
-                img_gray = cv.cvtColor(img, cv.COLOR_RGBA2GRAY)
+        path = "scenarios/p" if page["type"] == "scenario"  else "sections/"
+        imgFile = os.path.join(f"assets/pages/{path}{page['page']}.png")
+        if os.path.exists(imgFile):        
+            print(f"{bcolors.OKBLUE}Identifying elements in {path}{imgFile}{bcolors.ENDC}")
+            img = cv.imread(imgFile, flags=cv.IMREAD_UNCHANGED)
+            assert img is not None, "image file could not be read, check with os.path.exists()"
+            out = cv.cvtColor(img, cv.COLOR_RGBA2RGB)
+            img_gray = cv.cvtColor(img, cv.COLOR_RGBA2GRAY)
 
-                tiles = []
-                if 'tiles' in scenario:
-                    for tile in scenario['tiles']:
-                        variants = ["","-Alt"]
-                        found = False
+            pageHasLayout = False
+            layoutPosition = []
+            # See if this page has a layout definition
+            if not layoutFound:
+                mapLayout = 'assets/tiles/layout/Map Layout.png'
+                result = identify(out, img, mapLayout, 0, 0, 0.90)
+                if len(result) > 0:
+                    pageHasLayout = True
+                    layoutPosition = result[0]["position"]
+
+            w = img.shape[1]
+            h = img.shape[0]
+
+            tiles = []
+            mapTiles = []
+            mapImg = None
+            mapMinX = 0
+            mapMinY = 0
+            if pageHasLayout:
+                mapMinX = max(0, layoutPosition["x"] - 50)
+                mapMinY = max(0, layoutPosition["y"] - 50)                            
+                mapMaxX = min(w, layoutPosition["x"] + 1000)
+                mapMaxY = min(h, layoutPosition["y"] + 1000)    
+                mapImg = img[mapMinY:mapMaxY, mapMinX:mapMaxX]
+                cv.rectangle(out, (mapMinX,mapMinY), (mapMaxX, mapMaxY), (255, 0, 0), 2)
+
+            if 'tiles' in scenario:
+                for tile in scenario['tiles']:                    
+                    found = False                    
+                    orientations = ["-0","-30", "-60","-90","-120","-180","-240","-270","-300"]                            
+                    for orientation in orientations:
+                        if pageHasLayout:
+                            mapTileFile = f'assets/tiles/layout/tiles/{tile}{orientation}.png'
+                            if os.path.exists(mapTileFile):
+                                result = identify(out, mapImg, mapTileFile, mapMinX, mapMinY, 0.92)
+                                if len(result) > 0:
+                                    mapTiles.append({"name" : tile, "orientation": orientation, "positions" : result})
+
+                        variants = ["","-Alt"]                    
                         for variant in variants:
-                            orientations = ["-0","-60","-90","-120","-180","-240","-270","-300"]                            
-                            for orientation in orientations:        
-                                tileFile = f'assets/tiles/maps/{tile}{orientation}{variant}.png'
-                                if os.path.exists(tileFile):                            
-                                    print(f"\tLooking for Tile {tile}{orientation}{variant}")     
-                                    result = identify(out, img, tileFile, 0, 0, 0.92)
-                                    if len(result) > 0:
-                                        found = True
-                                        results.append({"name" : tile, "variant": variant, "orientation": orientation, "type": "tile", "results" : result, "orientation" : orientation})
-                                        tiles.append({"name" : tile, "variant": variant, "orientation": orientation, "positions" : result})    
-                        if not found:
-                            print(f"{bcolors.WARNING}Couldn't find tile {tile}{bcolors.ENDC}")
-
-                w = img.shape[1]
-                h = img.shape[0]
-                minX = w
-                maxX = 0
-                minY = h
-                maxY = 0
-                for tile in tiles:
-                    variant = tile["variant"]
-                    name = tile["name"].split("-")[0]
-                    orientation = tile["orientation"]
-                    id = f"{name}{orientation}{variant}"
-                    tileInfo = tileInfos[id]
-                    if tileInfo is not None:
-                        for result in tile["positions"]:
-                            x = result["position"]["x"]
-                            y = result["position"]["y"]
-                            minX = min(minX, max(x + tileInfo["minX"] ,0))
-                            maxX = max(maxX, min(x + tileInfo["maxX"], w))
-                            minY = min(minY, max(y + tileInfo["minY"], 0))
-                            maxY = max(maxY, min(y + tileInfo["maxY"], h))
-
-                if len(tiles) > 0:
-                    print(f"Lookup Area : ({minX},{minY}) -> ({maxX}, {maxY})")
-
-                    cv.rectangle(out, (minX,minY), (maxX, maxY), (0, 0, 255), 2)
-                    img = img[minY:maxY, minX:maxX]
-
-                    for monster in scenario['monsters']:
-                        name = monster['name']
-                        variants = ['', ' Small']
-                        for variant in variants:        
-                            monsterFile = f'assets/tiles/monsters/{name}{variant}.png'
-                            if os.path.exists(monsterFile):
-                                print(f"\tLooking for monster {name}{variant}") 
-                                result = identify(out, img, monsterFile, minX, minY)
-                                if len(result) > 0:         
-                                    results.append({"name" : name, "type": "monster", "results" : result})                            
-                    
-                    for overlay in scenario['overlays']:
-                        name = overlay['name']
-                        orientations = ["","-0","-60","-90","-120","-150","-180","-240","-270","-300"]
-                        found = False
-                        for orientation in orientations:
-                            variants = ["","-1","-2","-3"]
-                            for variant in variants:   
-                                overlayFile = f'assets/tiles/overlays/{name}{orientation}{variant}.png'
-                                if os.path.exists(overlayFile):
+                            tileFile = f'assets/tiles/maps/{tile}{orientation}{variant}.png'
+                            if os.path.exists(tileFile):                            
+                                print(f"\tLooking for Tile {tile}{orientation}{variant}")     
+                                result = identify(out, img, tileFile, 0, 0, 0.92)
+                                if len(result) > 0:
                                     found = True
-                                    print(f"\tLooking for overlay {name} ({orientation}/{variant})")     
-                                    result = identify(out, img, overlayFile, minX, minY)
-                                    if len(result) > 0:         
-                                        results.append({"name" : name, "orientation":orientation, "type": "overlay", "results" : result})                    
-                        if not found:
-                            print(f"{bcolors.WARNING}Missing overlay template {name} at {overlayFile}{bcolors.ENDC}") 
+                                    results.append({"name" : tile, "variant": variant, "orientation": orientation, "type": "tile", "results" : result, "orientation" : orientation})
+                                    tiles.append({"name" : tile, "variant": variant, "orientation": orientation, "positions" : result})    
+                    if not found:
+                        print(f"{bcolors.WARNING}Couldn't find tile {tile}{bcolors.ENDC}")
 
-                    entries = os.listdir('assets/tiles/all')
-                    for entry in entries:
-                        threshold = 0.96
-                        if entry == 'overlay types':
-                            threshold = 0.94
-                        subEntries = os.listdir(os.path.join('assets/tiles/all/', entry))        
-                        for subEntry in subEntries:
-                            print("\tLooking for {}".format(subEntry))
-                            result = identify(out, img, os.path.join('assets/tiles/all/', entry, subEntry), minX, minY)
+            w = img.shape[1]
+            h = img.shape[0]
+            minX = w
+            maxX = 0
+            minY = h
+            maxY = 0
+            for tile in tiles:
+                variant = tile["variant"]
+                name = tile["name"].split("-")[0]
+                orientation = tile["orientation"]
+                id = f"{name}{orientation}{variant}"
+                tileInfo = tileInfos[id]
+                if tileInfo is not None:
+                    for result in tile["positions"]:
+                        x = result["position"]["x"]
+                        y = result["position"]["y"]
+                        minX = min(minX, max(x + tileInfo["minX"] ,0))
+                        maxX = max(maxX, min(x + tileInfo["maxX"], w))
+                        minY = min(minY, max(y + tileInfo["minY"], 0))
+                        maxY = max(maxY, min(y + tileInfo["maxY"], h))
+
+            if len(scenario["tiles"] if "tiles" in scenario else []) == len(mapTiles):
+                layoutFound = True
+
+            if len(tiles) > 0:
+                print(f"Lookup Area : ({minX},{minY}) -> ({maxX}, {maxY})")
+
+                cv.rectangle(out, (minX,minY), (maxX, maxY), (0, 0, 255), 2)
+                img = img[minY:maxY, minX:maxX]
+
+                for monster in scenario['monsters']:
+                    name = monster['name']
+                    variants = ['', ' Small']
+                    for variant in variants:        
+                        monsterFile = f'assets/tiles/monsters/{name}{variant}.png'
+                        if os.path.exists(monsterFile):
+                            print(f"\tLooking for monster {name}{variant}") 
+                            result = identify(out, img, monsterFile, minX, minY)
                             if len(result) > 0:         
-                                results.append({"name" : subEntry, "type": entry, "results" : result})
+                                results.append({"name" : name, "type": "monster", "results" : result})                            
+                
+                for overlay in scenario['overlays']:
+                    name = overlay['name']
+                    orientations = ["","-0","-60","-90","-120","-150","-180","-240","-270","-300"]
+                    found = False
+                    for orientation in orientations:
+                        variants = ["","-1","-2","-3"]
+                        for variant in variants:   
+                            overlayFile = f'assets/tiles/overlays/{name}{orientation}{variant}.png'
+                            if os.path.exists(overlayFile):
+                                found = True
+                                print(f"\tLooking for overlay {name} ({orientation}/{variant})")     
+                                result = identify(out, img, overlayFile, minX, minY)
+                                if len(result) > 0:         
+                                    results.append({"name" : name, "orientation":orientation, "type": "overlay", "results" : result})                    
+                    if not found:
+                        print(f"{bcolors.WARNING}Missing overlay template {name} at {overlayFile}{bcolors.ENDC}") 
 
-                    cv.imwrite(f"out/{nb}-p{page}.png", out)
-                    with open(f"out/{nb}-p{page}.json", "w") as outfile:
-                        json.dump({"page" : page, "results":results}, outfile, indent=3, cls=NpEncoder)
-                else:
-                    print(f"{bcolors.WARNING}No tile found on page {page}, skipping analysis{bcolors.ENDC}")
+                entries = os.listdir('assets/tiles/all')
+                for entry in entries:
+                    threshold = 0.96
+                    if entry == 'overlay types':
+                        threshold = 0.94
+                    subEntries = os.listdir(os.path.join('assets/tiles/all/', entry))        
+                    for subEntry in subEntries:
+                        print("\tLooking for {}".format(subEntry))
+                        result = identify(out, img, os.path.join('assets/tiles/all/', entry, subEntry), minX, minY)
+                        if len(result) > 0:         
+                            results.append({"name" : subEntry, "type": entry, "results" : result})
+                t = "p" if page["type"] == "scenario" else "s"
+                cv.imwrite(f"out/{nb}-{t}{page['page']}.png", out)
+                with open(f"out/{nb}-{t}{page['page']}.json", "w") as outfile:
+                    json.dump({"scenario": id, "layout" : mapTiles, "type":page['type'], "page" : page['page'], "results":results}, outfile, indent=3, cls=NpEncoder)
+            else:
+                print(f"{bcolors.WARNING}No tile found on page {page['page']}, skipping analysis{bcolors.ENDC}")
