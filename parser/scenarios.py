@@ -163,7 +163,7 @@ for id in scenarioIds:
                             tileFile = f'assets/tiles/maps/{tile}{orientation}{variant}.png'
                             if os.path.exists(tileFile):                            
                                 print(f"\tLooking for Tile {tile}{orientation}{variant}")     
-                                result = identify(out, img, tileFile, 0, 0, 0.92)
+                                result = identify(out, img, tileFile, 0, 0, 0.90)
                                 if len(result) > 0:
                                     found = True
                                     results.append({"name" : tile, "variant": variant, "orientation": orientation, "type": "tile", "results" : result, "orientation" : orientation})
