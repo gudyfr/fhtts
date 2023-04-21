@@ -27,13 +27,23 @@ def positionToJson(pt, w, h, score, xOffset, yOffset):
     }
 
 
-def identify(out, img, templateFile, xOffset, yOffset, threshold=0.96, showMatch=True, printMatch=True):
-    template = cv.imread(templateFile, flags=cv.IMREAD_UNCHANGED)
-    assert template is not None, "template file could not be read, check with os.path.exists()"
-    _, _, _, a_channel = cv.split(template)
-    _, mask = cv.threshold(a_channel, thresh=254,
-                           maxval=255, type=cv.THRESH_BINARY)
-    # template_gray = cv.cvtColor(template, cv.COLOR_RGBA2GRAY)
+templateCache = {}
+
+def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch=True, printMatch=True):
+    template = None
+    mask = None
+    if templateFile in templateCache:
+        cache = templateCache[templateFile]
+        template = cache["template"]
+        mask = cache["mask"]
+    else:
+        template = cv.imread(templateFile, flags=cv.IMREAD_UNCHANGED)
+        assert template is not None, "template file could not be read, check with os.path.exists()"
+        _, _, _, a_channel = cv.split(template)
+        _, mask = cv.threshold(a_channel, thresh=254,
+                            maxval=255, type=cv.THRESH_BINARY)
+        templateCache[templateFile] = {"template" : template, "mask" : mask}
+    
     w, h = mask.shape[::-1]
     res = cv.matchTemplate(img, template, cv.TM_CCOEFF_NORMED, mask=mask)
     loc = np.where((res >= threshold) & (res <= 1.01))
