@@ -44,6 +44,9 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch
                             maxval=255, type=cv.THRESH_BINARY)
         templateCache[templateFile] = {"template" : template, "mask" : mask}
     
+    if printMatch:
+        print(f"Checking {templateFile}")
+
     w, h = mask.shape[::-1]
     res = cv.matchTemplate(img, template, cv.TM_CCOEFF_NORMED, mask=mask)
     loc = np.where((res >= threshold) & (res <= 1.01))
@@ -114,6 +117,7 @@ args = sys.argv[1:]
 parseLayouts = False
 parseMaps = False
 verbose = False
+startAt = 0
 if "-verbose" in args:
     args.remove("-verbose")
     verbose = True
@@ -125,6 +129,12 @@ if "-map" in args:
     parseMaps = True
 if "-all" in args:
     scenarioIds = scenarios.keys()
+if "-after" in args:
+    args.remove('-after')
+    startAt = int(args[0]) + 1    
+    scenarioIds = list(scenarios.keys())
+    index = scenarioIds.index(f"{startAt}")
+    scenarioIds = scenarioIds[index:]
 else:
     for arg in args:
         scenarioIds.append(arg)
@@ -186,8 +196,8 @@ for id in scenarioIds:
                     if len(result) > 0:
                         position = result[0]["position"]
                         size = result[0]["size"]
-                        layoutEnd["x"] = position["x"] + size["x"]
-                        layoutEnd["y"] = position["y"] + size["y"]
+                        layoutEnd["x"] =  min(w, position["x"] + size["x"] + 100)
+                        layoutEnd["y"] = min(h, position["y"] + size["y"] + 100)
             tiles = []
             mapTiles = []
             mapImg = None
@@ -197,8 +207,8 @@ for id in scenarioIds:
                 if not "x" in layoutEnd:
                     layoutEnd["x"] = min(w, layoutPosition["x"] + 1500)
                     layoutEnd["y"] = min(h, layoutPosition["y"] + 1000)
-                mapMinX = layoutPosition["x"] - 50
-                mapMinY = layoutPosition["y"] - 50
+                mapMinX = max(0, layoutPosition["x"] - 100)
+                mapMinY = max(0, layoutPosition["y"] - 100)
                 mapMaxX = layoutEnd["x"]
                 mapMaxY = layoutEnd["y"]
                 mapImg = img[mapMinY:mapMaxY, mapMinX:mapMaxX]

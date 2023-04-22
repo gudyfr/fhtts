@@ -926,6 +926,12 @@ function spawned(params)
                         input = inputs[1]
                         monster.editInput({ index = input.index, value = re.text })
                     end
+                    for i, postponed in ipairs(NeedsToSwitch) do
+                        if postponed == monster.guid then
+                            table.remove(NeedsToSwitch, i)
+                            toggled(monster)
+                        end
+                    end
                 else
                     print("Could not fetch Standee number")
                 end
@@ -935,11 +941,28 @@ function spawned(params)
     registerStandee(monster)
 end
 
+NeedsToSwitch = {}
+
 function toggled(monster)
-    updateAssistant("POST", "switchMonster", {
-        monster = monster.getName(),
-        nr = monster.getInputs()[1]["value"]
-    })
+    local inputs = monster.getInputs() or {}
+    if #inputs > 0 then
+        local input = inputs[1]
+        if input ~= nil then
+            local nr = input["value"]
+            if nr ~= nil then
+                updateAssistant("POST", "switchMonster", {
+                    monster = monster.getName(),
+                    nr = nr
+                })
+                return
+            end
+        end
+    end
+
+    -- We haven't received the standee number for this monster yet, so postpone switching to elite
+    if isXHavenEnabled() then
+        table.insert(NeedsToSwitch, monster.guid)
+    end
 end
 
 function locateBoardElementsFromTags()

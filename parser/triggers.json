@@ -1,0 +1,22 @@
+{
+    "1" : [
+          {
+            "in" : {
+                "type": "scenario",
+                "name": 4
+            },
+            "target" : {
+                "type" : "token",
+                "name" : "1"
+            },
+            "data" : {
+                "type" : "door",
+                "action" : "reveal",
+                "what" : {
+                    "type": "section",
+                    "name": "5.3" 
+                }
+            }
+          }
+        ]
+}

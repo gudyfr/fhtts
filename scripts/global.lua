@@ -1,3 +1,5 @@
+require("json")
+
 scenarioPickerPage = 0
 minScenarioPickerPage = 0
 maxScenarioPickerPage = math.floor(154 / 10)
@@ -39,6 +41,7 @@ end
 function refreshScenarioData()
    print("Loading Scenario Data")
    WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
+   WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
 end
 
 function processScenarioData(request)
@@ -48,9 +51,9 @@ function processScenarioData(request)
    print("Scenario Data loaded")
 end
 
---[[ The onUpdate event is called once per frame. --]]
-function onUpdate()
-   --[[ print('onUpdate loop!') --]]
+function processAdditionalScenarioData(request)
+   ScenarioInfos = jsonDecode(request.text)
+   print("Scenario Layout Data loaded")
 end
 
 letterConfigs = {
@@ -104,28 +107,66 @@ letterConfigs = {
    },
 }
 
-function getMapTile(mapName)
+AdditionalRotation = {}
+AdditionalRotation["16-A"] = 90
+AdditionalRotation["16-B"] = -90
+AdditionalRotation["06-A"] = 90
+AdditionalRotation["06-B"] = -90
+AdditionalRotation["07-A"] = -90
+AdditionalRotation["07-B"] = 90
+AdditionalRotation["11-A"] = -60
+TileLetterMappings = {A="A", B="B", C="A", D="B", E="A", F="B", G="A", H="B", I="A", J="B", K="A", L="B"} 
+
+function getWorldPositionFromHexPosition(x,y)
+   return 0.43 + 1.15 * x + y * 0.575, y + 5.29
+end
+
+function getMapTile(mapName, layout)
    nameLen = string.len(mapName)
    letter = string.sub(mapName, nameLen)
    config = letterConfigs[letter]
    mapTileName = string.sub(mapName, 1, nameLen - 1) .. config.tile
    mapBag = getObjectFromGUID(mapTilesBagId)
-   for id, tile in pairs(mapBag.getObjects())
-   do
-      if tile.name == mapTileName
-      then
+   for _, tile in pairs(mapBag.getObjects()) do
+      if tile.name == mapTileName then
          mapTile = mapBag.takeObject({ guid = tile.guid })
          clone = mapTile.clone()
          mapBag.putObject(mapTile)
+         local targetZRot = 0
          if config.flip then
-            if clone.getRotation().z > 90 then
-               clone.setRotation({ 0, 0, 0 })
-            else
-               clone.setRotation({ 0, 0, 180 })
-            end
+            targetZRot = 180
+         else
+            targetZRot = 0
          end
          clone.addTag("deletable")
-         getObjectFromGUID(scenarioBagId).putObject(clone)
+         local handled = false
+         if layout ~= nil then
+            for _, tileLayout in ipairs(layout) do
+               if not handled and tileLayout.name == mapName then
+                  print(JSON.encode(tileLayout))
+                  local center = tileLayout.center
+                  local tileNumber = string.sub(mapName,1,2)
+                  local tileLetter = string.sub(mapName,4,4)
+                  local mappedTileLetter = TileLetterMappings[tileLetter]
+
+                  -- Hacky Fixes, we should fix the assets themselves instead
+                  local orientation = (tonumber(tileLayout.orientation) or 0)
+                  orientation = orientation + (AdditionalRotation[tileNumber] or 0)
+                  orientation = orientation + (AdditionalRotation[tileNumber .. "-" .. mappedTileLetter] or 0)
+
+                  if orientation > 180 then orientation = orientation - 360 end
+                  clone.setRotation({ 0, -orientation, targetZRot })
+                  hx,hz = getWorldPositionFromHexPosition(center.x, center.y)
+                  clone.setPosition({ hx, 1.39, hz })
+                  clone.setLock(true)
+                  handled = true
+               end
+            end
+         end
+         if not handled then
+            getObjectFromGUID(scenarioBagId).putObject(clone)
+         end
+         return
       end
    end
 end
@@ -203,6 +244,8 @@ tokenBagsGuids = {
    j = '7da71f',
    k = '196642',
    m = '45fdef',
+   start = '0511b3',
+   loot = '5e0624'
 }
 
 function getToken(token, scenarioElementPositions, currentScenarioElementPosition)
@@ -302,62 +345,82 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                      obj.setName(obj.getName() .. " " .. letter)
                   end
                end
-              
+
                if info.type ~= nil then
                   local type = info.type
                   local color = nil
                   local underlay = {
                      name = "underlay_" .. type,
-                     position = {0,0,0},
-                     scale = {.75,.75,.75},
+                     position = { 0, 0, 0 },
+                     scale = { .75, .75, .75 },
                      rotation = { 90, 0, 0 },
                   }
                   local overlay = {
                      name = "overlay_" .. type,
-                     position = {0,0.025,-.25},
-                     scale = {0.2,0.2,0.2},
+                     position = { 0, 0.025, -.25 },
+                     scale = { 0.2, 0.2, 0.2 },
                      rotation = { 90, 0, 0 },
                   }
                   if type == "Obstacle" then
                      -- color = { 29, 126, 59 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237165/2678AF8F59D023C77DF641FEC8910835D182257E/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236688/D9F31375FC450BD9BE3984EB47FD1E3C5E758A17/"                     
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237165/2678AF8F59D023C77DF641FEC8910835D182257E/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236688/D9F31375FC450BD9BE3984EB47FD1E3C5E758A17/"
                   elseif type == "Pressure Plate" then
                      -- color = { 173, 173, 173 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237206/6A0777484779A8722080530B0C43D1C82473A0C5/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236727/7D01B94C25BEA92CBE0957ECC6A422429EDD44CD/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237206/6A0777484779A8722080530B0C43D1C82473A0C5/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236727/7D01B94C25BEA92CBE0957ECC6A422429EDD44CD/"
                   elseif type == "Trap" then
                      -- color = { 228, 19, 19 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237268/7A7C3B0E0060C8FE23A359463F9A12C22FFA17DA/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236774/BCB319F990BE7A9127849A4615486318C987AD7C/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237268/7A7C3B0E0060C8FE23A359463F9A12C22FFA17DA/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236774/BCB319F990BE7A9127849A4615486318C987AD7C/"
                   elseif type == "Wall" then
                      -- color = { 53, 52, 53 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237311/0E7EBC101D0643E90645E0AFED2534DCD30CA7C9/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236827/8B11DFC742D94410A3A220903F37894D384F5098/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237311/0E7EBC101D0643E90645E0AFED2534DCD30CA7C9/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236827/8B11DFC742D94410A3A220903F37894D384F5098/"
                   elseif type == "Corridor" then
                      -- color = { 172, 172, 172 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236874/45C3A28338A6EFCB0A2FEE9332D3F6033CCB6F9B/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236428/A0AF561889DB69EC01F03BBBE560396F343ADE69/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236874/45C3A28338A6EFCB0A2FEE9332D3F6033CCB6F9B/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236428/A0AF561889DB69EC01F03BBBE560396F343ADE69/"
                   elseif type == "Difficult Terrain" then
                      -- color = { 121, 58, 210 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236926/31F6DFAA41FDB6649461472B1F8D3129E60CB4E4/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236470/666B6A71A88CFFA389AAD94DB74060F77192063B/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236926/31F6DFAA41FDB6649461472B1F8D3129E60CB4E4/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236470/666B6A71A88CFFA389AAD94DB74060F77192063B/"
                   elseif type == "Door" then
                      -- color = { 34, 96, 209 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236982/77263BF7C8933BF32D3F3C54BC5D13493B54D1CF/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236511/1C789E9836AF1DC13FFFDABB239CBE3A19C0B3C5/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236982/77263BF7C8933BF32D3F3C54BC5D13493B54D1CF/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236511/1C789E9836AF1DC13FFFDABB239CBE3A19C0B3C5/"
                   elseif type == "Hazardous Terrain" then
                      -- color = { 244, 127, 32 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237027/9EF685D0E353DB1ADE2826410AA3195F3095E8FB/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236545/DD2676FE8B97B20F2C671803FED9BCC0C137B17D/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237027/9EF685D0E353DB1ADE2826410AA3195F3095E8FB/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236545/DD2676FE8B97B20F2C671803FED9BCC0C137B17D/"
                   elseif type == "Icy Terrain" then
                      -- color = { 83, 205, 20 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237076/93DC787398B26C6263924F3AD2E1A03AA13A6162/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236588/7A1556D352C180A003F8D5BC44BE6BB2FE1B486B/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237076/93DC787398B26C6263924F3AD2E1A03AA13A6162/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236588/7A1556D352C180A003F8D5BC44BE6BB2FE1B486B/"
                   elseif type == "Objective" then
                      -- color = { 238, 189, 38 }
-                     underlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219237113/AD6DDE3352CA5168C1FCCE247AF5BD9C3E544494/"
-                     overlay.url = "http://cloud-3.steamusercontent.com/ugc/2035105992219236640/33AF2DDD8AB13544A4954EBDD194CCD746BFE146/"
+                     underlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219237113/AD6DDE3352CA5168C1FCCE247AF5BD9C3E544494/"
+                     overlay.url =
+                     "http://cloud-3.steamusercontent.com/ugc/2035105992219236640/33AF2DDD8AB13544A4954EBDD194CCD746BFE146/"
                   end
 
                   if color ~= nil then
@@ -365,16 +428,16 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                      if settings["enable-highlight-tiles-by-type"] or false then
                         obj.highlightOn(color)
                      end
-                     updateGMNotes(obj, {highlight=color})
+                     updateGMNotes(obj, { highlight = color })
                   end
                   local decals = {}
                   if underlay.url ~= nil then
                      table.insert(decals, underlay)
-                     if (info.size or 1) > 1  then
+                     if (info.size or 1) > 1 then
                         underlay2 = {
                            name = underlay.name .. "_2",
                            url = underlay.url,
-                           position = {-0.665,0,0},
+                           position = { -0.665, 0, 0 },
                            rotation = underlay.rotation,
                            scale = underlay.scale,
                         }
@@ -383,7 +446,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                            underlay3 = {
                               name = underlay.name .. "_3",
                               url = underlay.url,
-                              position = {-0.3325,0,-0.665},
+                              position = { -0.3325, 0, -0.665 },
                               rotation = underlay.rotation,
                               scale = underlay.scale,
                            }
@@ -395,9 +458,8 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                      table.insert(decals, overlay)
                   end
                   obj.setDecals(decals)
-
                end
-     
+
 
                if not addedToScenarioMat then
                   destination.putObject(obj)
@@ -413,9 +475,9 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
    return currentScenarioElementPosition
 end
 
-function updateGMNotes(obj,update)
-  local current = getGMNotes(obj)
-   for key,value in pairs(update) do
+function updateGMNotes(obj, update)
+   local current = getGMNotes(obj)
+   for key, value in pairs(update) do
       current[key] = value
    end
    obj.setGMNotes(JSON.encode(current))
@@ -558,7 +620,7 @@ function prepareScenario(name, campaign, title)
          end
          if elements.page ~= nil then
             -- Tell the book mat to go to the right scenario page
-            getObjectFromGUID('2a1fbe').call("setScenarioPage", {elements.page,tonumber(name),"Scenarios"})
+            getObjectFromGUID('2a1fbe').call("setScenarioPage", { elements.page, tonumber(name), "Scenarios" })
          end
          return
       end
@@ -571,7 +633,7 @@ function prepareScenario(name, campaign, title)
 
 
       for _, info in ipairs(elements.overlays) do
-         local name = info.name
+         local overlayName = info.name
          local count = info.count
          local size = 1
          if info.size ~= nil then
@@ -582,14 +644,26 @@ function prepareScenario(name, campaign, title)
             end
          end
          currentScenarioElementPosition = currentScenarioElementPosition + size
-         print("Adding " .. count .. " " .. name .. " to the scenario bag at pos " .. currentScenarioElementPosition)
-         currentScenarioElementPosition = spawnNElementsIn(count, trackables, name, info, scenarioBag,
+         print("Adding " ..
+         count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
+         currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
       end
 
-      for index, name in ipairs(elements.tiles) do
-         print("Adding Map Tile " .. name .. " to the scenario bag")
-         getMapTile(name)
+      local scenarioInfo = nil
+      local layout = nil
+      if ScenarioInfos ~= nil then
+         scenarioInfo = ScenarioInfos["" .. name]
+         if scenarioInfo ~= nil then
+            layout = scenarioInfo.layout
+         end
+      end
+
+      -- print(JSON.encode(layout))
+
+      for _, tileName in ipairs(elements.tiles) do
+         print("Adding Map Tile " .. tileName .. " to the scenario bag")
+         getMapTile(tileName, layout)
       end
 
       -- offset by 2 for the monsters
@@ -612,19 +686,13 @@ function prepareScenario(name, campaign, title)
          end
       end
 
-      if elements.grid == "Horizontal" or elements.grid == "horizontal" then
-         Grid.type = 2
-      else
-         Grid.type = 3
-      end
-
       if elements.page ~= nil then
          -- Tell the book mat to go to the right scenario page
          local folder = "Scenarios"
          if campaign == "Solo" then
             folder = "Solo"
          end
-         getObjectFromGUID('2a1fbe').call("setScenarioPage", {elements.page, name, folder})
+         getObjectFromGUID('2a1fbe').call("setScenarioPage", { elements.page, name, folder })
       end
 
       if elements.errata ~= nil then
@@ -633,7 +701,158 @@ function prepareScenario(name, campaign, title)
          getObjectFromGUID('a46bc7').setDescription("")
       end
 
+      local settings = JSON.decode(getSettings())
+      if settings["enable-automatic-scenario-layout"] or false then
+         Wait.time(function() layoutScenarioElements(elements, scenarioInfo) end, 0.5)
+      end
+
       getScenarioMat().call("setScenario", { scenario = title, campaign = campaign })
+   end
+end
+
+function layoutScenarioElements(elements, scenarioInfo)
+   -- Locate the scenario entry map(s)
+   for _,map in ipairs(scenarioInfo['maps']) do
+      if map.type == "scenario" then
+         layoutMap(elements, map, scenarioInfo)
+      end
+   end
+end
+
+function layoutMap(elements, map, scenarioInfo)
+   -- Determine number of players
+   local playerCount = getPlayerCount()
+   local reference = map.reference
+   if reference == nil then
+      return
+   end
+   local origin = nil
+   for _,layout in ipairs(scenarioInfo['layout']) do
+      if layout.name == reference.tile then
+         origin = layout.origin
+      end
+   end
+   if origin ~= nil then
+      local zone = getObjectFromGUID('1f0c29')
+      local objects = zone.getObjects(true)
+      -- Overlays
+      for _,overlay in ipairs(map.overlays) do
+         -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
+         for _,position in ipairs(overlay.positions) do
+            -- print(" to put at location " .. JSON.encode(position))
+            local obj = locateScenarioElementWithName(overlay.name, objects, true)
+            if obj ~= nil then
+               local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
+               obj.setPosition({x, 1.44, z})
+               local orientation = overlay.orientation
+               if orientation > 180 then
+                  orientation = orientation - 360               
+               end
+               obj.setRotation({0,-orientation,0})
+
+               -- Handle potential triggers
+               if position.trigger ~= nil then
+                  attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+               end
+
+            else
+               print(" could not find object in prepare area")
+            end
+         end
+      end
+      for _,token in ipairs(map.tokens) do
+         for _,position in ipairs(token.positions) do
+            local obj = takeToken(token.name)
+            if obj ~= nil then
+               local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
+               obj.setPosition({x, 2.21, z})
+            end
+         end
+      end
+      for _,monster in ipairs(map.monsters) do
+         for _, position in ipairs(monster.positions) do
+            local levels = position.levels
+            if levels ~= nil then
+               local level = string.sub(levels, playerCount-1, playerCount-1)
+               if level == 'n' or level == 'e' or level == 'b' then
+                  print("Adding a " .. level .. " " .. monster.name)
+                  local monsterBag = locateScenarioElementWithName(monster.name, objects, false)
+                  if monsterBag ~= nil then
+                     local obj = monsterBag.takeObject({callback_function=function(spawned) if level == 'e' then makeElite(spawned) end end, smooth=false})
+                     local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
+                     obj.setPosition({x, 2.35, z})
+                  end
+               end
+            end
+         end
+      end
+   end
+end
+
+function makeElite(obj)
+   obj.setColorTint("Yellow")
+   Global.call("getScenarioMat").call("toggled", obj)
+end
+
+function attachTriggerToElement(trigger, obj, scenarioId)
+   if trigger.type == "door" then
+      -- Let's create an open button
+      local payload = JSON.encode({scenarioId, trigger.what})
+      local fName = "open_" .. payload
+      self.setVar("open_" .. payload, function() Global.call("revealScenarioMap",payload) end)
+      local params = {
+         click_function = fName,
+         function_owner = self,
+         label = '',
+         position = { 0, 0.1, 0 },
+         rotation = { 0, 0, 0 },
+         width = 100,
+         height = 100,
+         color = { 1, 1, 1, 1 },
+         font_size = 50,
+         tooltip = "Open"
+      }
+      obj.createButton(params)
+   end
+end
+
+function revealScenarioMap(payload)
+   local params = JSON.decode(payload)
+   local id = params[1]
+   local what = params[2]
+   if ScenarioInfos ~= nil then
+      local scenarioInfo = ScenarioInfos[id]
+      if scenarioInfo ~= nil then
+         for _, map in scenarioInfo.maps do
+            if map.type == what.type and map.name == what.name then
+               layoutMap(nil, map, id)
+            end
+         end
+      end
+   end
+end
+
+function takeToken(name)
+   local bagId = tokenBagsGuids[name]
+   if bagId == nil then
+      bagId = tokenBagsGuids["n" .. name]
+   end
+   if bagId ~= nil then
+      local bag = getObjectFromGUID(bagId)
+      if bag ~= nil then
+         return bag.takeObject()
+      end
+   end
+end
+
+function locateScenarioElementWithName(name, objects, remove)
+   for i, occupyingObject in ipairs(objects) do
+      if occupyingObject.getName() == name then
+         if remove then
+            table.remove(objects, i)
+         end
+         return occupyingObject
+      end
    end
 end
 
@@ -652,10 +871,10 @@ function onObjectLeaveContainer(container, leave_object)
       end
       if container.hasTag("loot as body") then
          leave_object.addTag("loot as body")
-         leave_object.setGMNotes(JSON.encode({container = container.getGUID()}))
+         leave_object.setGMNotes(JSON.encode({ container = container.getGUID() }))
       end
       if container.hasTag("no loot") then
-         leave_object.addTag("no loot")   
+         leave_object.addTag("no loot")
       end
       --print(params)
       getScenarioMat().call("spawned", params)
@@ -954,8 +1173,27 @@ function playerOpenSectionBook(player, text)
    openSectionBookAtPage(tonumber(text))
 end
 
+function getPlayerCount()
+   -- return 2
+   local count = 0
+   for _,color in ipairs({ "Green", "Red", "White", "Blue" }) do
+      if isPlayerPresent(color) then
+         count = count + 1
+      end
+   end
+   return count
+end
+
+function isPlayerPresent(color)
+   local mat = getPlayerMatExt({color})
+   if mat ~= nil then
+      return mat.call('getCharacterName') ~= nil
+   end
+   return false
+end
+
 function getPlayerMat(player)
-   playerMatId = playerMats[player.color]
+   local playerMatId = playerMats[player.color]
    if playerMatId ~= nil then
       return getObjectFromGUID(playerMatId)
    end
@@ -963,7 +1201,7 @@ function getPlayerMat(player)
 end
 
 function getPlayerMatExt(params)
-   playerMatId = playerMats[params[1]]
+   local playerMatId = playerMats[params[1]]
    if playerMatId ~= nil then
       return getObjectFromGUID(playerMatId)
    end
@@ -1057,11 +1295,11 @@ function sortHand(color)
    for _, player in ipairs(Player.getPlayers()) do
       if player.color == color then
          local cards = player.getHandObjects()
-         local cardPositions = {}   
+         local cardPositions = {}
          for _, card in ipairs(cards) do
             table.insert(cardPositions, card.getPosition())
          end
-         table.sort(cards, function(c1,c2) return c1.getName() < c2.getName() end)
+         table.sort(cards, function(c1, c2) return c1.getName() < c2.getName() end)
          for i, card in ipairs(cards) do
             card.setPosition(cardPositions[i])
          end

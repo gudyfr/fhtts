@@ -23,6 +23,7 @@ function onLoad(save)
         { "enable-highlight-current-figurines", "checkbox"},
         { "enable-highlight-past-figurines", "checkbox"},
         { "enable-highlight-tiles-by-type", "checkbox"},
+        { "enable-automatic-scenario-layout", "checkbox"},
         { "onRefreshData", "button"}
     }
 
