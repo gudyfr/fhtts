@@ -206,6 +206,44 @@
                 "action": "open"                
             }
         }
+    ],
+    "25": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 31
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "58.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 31
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "61.2"
+                }                
+            }
+        }
     ]
 
 }
