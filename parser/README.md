@@ -106,6 +106,7 @@ levels corresponds to 2p,3p and 4p monster levels concatenated into a single str
  
  ## Triggers
  Triggers represent links between maps. Currently, there is only one trigger being handled, which is the `door` type with a `reveal` action. `what points to the type and name of the map that should be layed out upon opening the corresponding door.
+ Triggers are **not** parsed from the books, but are merged from the triggers.json file when running the process.py script.
  
  
  
