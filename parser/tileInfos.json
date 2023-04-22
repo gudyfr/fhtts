@@ -81,6 +81,10 @@
         "origin": {
             "x":1,
             "y":-4
+        },
+        "origin_flipped": {
+            "x":3,
+            "y":-4
         }
     },
     "07": {
@@ -198,11 +202,11 @@
             "x":0,
             "y":0
         },
-        "origin": {
+        "origin_flipped": {
             "x":4,
             "y":1
         },
-        "origin_flipped": {
+        "origin": {
             "x":-4,
             "y":-1
         },

@@ -457,7 +457,9 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                   if overlay.url ~= nil then
                      table.insert(decals, overlay)
                   end
-                  obj.setDecals(decals)
+                  if settings["enable-highlight-tiles-by-type"] or false then
+                     obj.setDecals(decals)
+                  end
                end
 
 
@@ -722,6 +724,38 @@ end
 function layoutMap(elements, map, scenarioInfo)
    -- Determine number of players
    local playerCount = getPlayerCount()
+
+   -- Calculate all name mappings
+   local nameMappings = {}
+   local categories = {"monsters", "overlays", "tokens"}
+   for _,category in ipairs(categories) do
+      for _,entry in ipairs(elements[category] or {}) do
+         local name = entry.name
+         local to = entry.as or name
+         local tos = {}
+         if entry.renamed ~= nil then
+            local count = entry.count
+            if entry.renamed == "by nr" then
+               local start_nr = entry.start_nr or 1
+               for i=1,count do
+                  table.insert(tos, to .. " " .. (start_nr + count - i))
+               end
+            elseif entry.renamed == "by letter" then
+               local letters = "abcdefghijklmnopqrstuvwxyz"
+               local start_nr = entry.start_nr or 1
+               for i=1,count do
+                  local letter = string.sub(letters, start_nr + count - i, start_nr + count - i)
+                  table.insert(tos, to .. " " .. letter)
+               end
+            end
+         else
+            tos = {to}
+         end
+         nameMappings[name] = tos
+      end
+   end
+   
+
    local reference = map.reference
    if reference == nil then
       return
@@ -740,7 +774,7 @@ function layoutMap(elements, map, scenarioInfo)
          -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
          for _,position in ipairs(overlay.positions) do
             -- print(" to put at location " .. JSON.encode(position))
-            local obj = locateScenarioElementWithName(overlay.name, objects, true)
+            local obj = locateScenarioElementWithName(overlay.name, objects, true, nameMappings)
             if obj ~= nil then
                local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
                obj.setPosition({x, 1.44, z})
@@ -766,6 +800,7 @@ function layoutMap(elements, map, scenarioInfo)
             if obj ~= nil then
                local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
                obj.setPosition({x, 2.21, z})
+               obj.setRotation({0,180,0})
             end
          end
       end
@@ -776,7 +811,7 @@ function layoutMap(elements, map, scenarioInfo)
                local level = string.sub(levels, playerCount-1, playerCount-1)
                if level == 'n' or level == 'e' or level == 'b' then
                   print("Adding a " .. level .. " " .. monster.name)
-                  local monsterBag = locateScenarioElementWithName(monster.name, objects, false)
+                  local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
                   if monsterBag ~= nil then
                      local obj = monsterBag.takeObject({callback_function=function(spawned) if level == 'e' then makeElite(spawned) end end, smooth=false})
                      local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
@@ -796,23 +831,25 @@ end
 
 function attachTriggerToElement(trigger, obj, scenarioId)
    if trigger.type == "door" then
-      -- Let's create an open button
-      local payload = JSON.encode({scenarioId, trigger.what})
-      local fName = "open_" .. payload
-      self.setVar("open_" .. payload, function() Global.call("revealScenarioMap",payload) end)
-      local params = {
-         click_function = fName,
-         function_owner = self,
-         label = '',
-         position = { 0, 0.1, 0 },
-         rotation = { 0, 0, 0 },
-         width = 100,
-         height = 100,
-         color = { 1, 1, 1, 1 },
-         font_size = 50,
-         tooltip = "Open"
-      }
-      obj.createButton(params)
+      if trigger.action == "reveal" then
+         -- Let's create an open button
+         local payload = JSON.encode({scenarioId, trigger.what, obj.guid})
+         local fName = "open_" .. obj.guid
+         self.setVar(fName, function() Global.call("revealScenarioMap",payload) end)
+         local params = {
+            click_function = fName,
+            function_owner = self,
+            label = 'Open',
+            position = { 0, 0.01, 0 },
+            rotation = { 0, 0, 0 },
+            width = 250,
+            height = 250,
+            color = { 1, 1, 1, 0 },
+            font_size = 50,
+            tooltip = "Open"
+         }
+         obj.createButton(params)
+      end
    end
 end
 
@@ -820,23 +857,29 @@ function revealScenarioMap(payload)
    local params = JSON.decode(payload)
    local id = params[1]
    local what = params[2]
+   local door = getObjectFromGUID(params[3])
+   if door ~= nil then
+      door.removeButton(0)
+      self.setVar("open_" .. door.guid, nil)
+      door.setState(2)
+   end
    if ScenarioInfos ~= nil then
       local scenarioInfo = ScenarioInfos[id]
       if scenarioInfo ~= nil then
-         for _, map in scenarioInfo.maps do
+         for _, map in ipairs(scenarioInfo.maps) do
             if map.type == what.type and map.name == what.name then
-               layoutMap(nil, map, id)
+               layoutMap(scenarios[id], map, scenarioInfo)
             end
          end
       end
+   end
+   if what.type == "section" then
+      getObjectFromGUID('2a1fbe').call('setSection', what.name)
    end
 end
 
 function takeToken(name)
    local bagId = tokenBagsGuids[name]
-   if bagId == nil then
-      bagId = tokenBagsGuids["n" .. name]
-   end
    if bagId ~= nil then
       local bag = getObjectFromGUID(bagId)
       if bag ~= nil then
@@ -845,13 +888,17 @@ function takeToken(name)
    end
 end
 
-function locateScenarioElementWithName(name, objects, remove)
+function locateScenarioElementWithName(name, objects, remove, nameMappings)
+   local alternateNames = nameMappings[name] or {name}
    for i, occupyingObject in ipairs(objects) do
-      if occupyingObject.getName() == name then
-         if remove then
-            table.remove(objects, i)
+      local candidateName = occupyingObject.getName()
+      for _,alternateName in ipairs(alternateNames) do
+         if alternateName == candidateName then
+            if remove then
+               table.remove(objects, i)
+            end
+            return occupyingObject
          end
-         return occupyingObject
       end
    end
 end

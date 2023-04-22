@@ -492,6 +492,12 @@ function setScenarioPage(params)
     changePage("scenario book", page, value)
 end
 
+function setSection(section)
+    local page = math.floor(section)
+    LoadedSection = section
+    changePage("section book", page, section)
+end
+
 function audioPlay(target)
     if target == "scenario book" and LoadedScenarioNumber ~= nil and LoadedScenarioType ~= nil then
         Global.call("playNarration",{LoadedScenarioType, LoadedScenarioNumber})

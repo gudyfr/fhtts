@@ -107,8 +107,9 @@ def removeTriggers(entries, mapTriggers):
             for entry in entries:
                 if entry['name'] == target['name']:
                     entries.remove(entry)
-                    locationKey = positionToKey(entry['positions'][0])
-                    triggerLocations[locationKey] = trigger
+                    for position in entry['positions']:
+                        locationKey = positionToKey(position)
+                        triggerLocations[locationKey] = trigger
     return triggerLocations
 
 def attachTriggersToOverlays(overlays, triggerLocations):
@@ -161,6 +162,7 @@ def processMap(tileInfos, map, mapTriggers):
     tiles = list(filter(lambda e : e['type'] == "tile", entries))
     # First we should try and find tiles    
     if len(tiles) > 0:
+        tiles.sort(key= lambda e: e['results'][0]['score'], reverse=True)
         reference = tiles[0]
         tileNumber = reference['name'].split("-")[0]
         tileOrientation = reference['orientation'].split("-")[1]
