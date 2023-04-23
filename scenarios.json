@@ -450,7 +450,6 @@
             {
                 "name": "Large Ice Crystal",
                 "type": "Obstacle",
-                "type": "Obstacle",
                 "size": 2,
                 "count": 1
             },
@@ -461,6 +460,7 @@
             }
         ],
         "page": 7,
+        "otherPages" : [8],
         "sections": [
             "75.1"
         ],
@@ -517,7 +517,9 @@
             {
                 "name": "Altar",
                 "type": "Objective",
-                "count": 1
+                "count": 1,
+                "as" : "Altar a",
+                "trackable" : true
             },
             {
                 "name": "Treasure Chest",
@@ -568,7 +570,12 @@
             {
                 "name": "Snow Door",
                 "type": "Door",
-                "count": 2
+                "count": 1
+            },
+            {
+                "name": "Cave Door",
+                "type": "Door",
+                "count": 1
             },
             {
                 "name": "Large Snow Corridor",

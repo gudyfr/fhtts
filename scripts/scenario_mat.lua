@@ -1820,3 +1820,9 @@ function getGMNotes(obj)
     end
     return current
 end
+
+function setSection(section)
+    if isXHavenEnabled() then
+        updateAssistant("POST", "setSection", { section = section })
+    end
+end

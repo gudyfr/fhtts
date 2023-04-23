@@ -40,7 +40,8 @@ end
 
 function refreshScenarioData()
    print("Loading Scenario Data")
-   WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
+   -- WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
+   WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
    WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
 end
 
@@ -108,13 +109,15 @@ letterConfigs = {
 }
 
 AdditionalRotation = {}
-AdditionalRotation["16-A"] = 90
-AdditionalRotation["16-B"] = -90
+AdditionalRotation["03-A"] = 90
+AdditionalRotation["03-B"] = -90
 AdditionalRotation["06-A"] = 90
 AdditionalRotation["06-B"] = -90
 AdditionalRotation["07-A"] = -90
 AdditionalRotation["07-B"] = 90
 AdditionalRotation["11-A"] = -60
+AdditionalRotation["16-A"] = 90
+AdditionalRotation["16-B"] = -90
 TileLetterMappings = {A="A", B="B", C="A", D="B", E="A", F="B", G="A", H="B", I="A", J="B", K="A", L="B"} 
 
 function getWorldPositionFromHexPosition(x,y)
@@ -189,11 +192,11 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
             end
 
             if monster.as ~= nil then
-               -- We need to get a monster out of the bad, reset the bag and put the monster back in the bag.
+               -- We need to get a monster out of the bag, reset the bag and put the monster back in the bag.
                -- And rename both
                local obj = clone.takeObject()
                obj.setName(monster.as)
-               clone.setName(monster.as .. "s")
+               clone.setName(monster.as)
                clone.reset()
                clone.putObject(obj)
             end
@@ -504,7 +507,8 @@ function cleanupPrepareArea()
    end
 end
 
-function cleanup()
+function cleanup(forceDelete)
+   local guids = {}
    local zones = { 'e1e978', '1f0c29' }
    local highlighted = false
    local deleted = false
@@ -512,14 +516,17 @@ function cleanup()
       local zone = getObjectFromGUID(zoneGuid)
       -- Iterate through object occupying the zone
       for _, occupyingObject in ipairs(zone.getObjects(true)) do
-         if occupyingObject.hasTag("deletable") then
-            if occupyingObject.hasTag("about to delete") then
-               occupyingObject.destroyObject()
-               deleted = true
-            else
-               highlighted = true
-               occupyingObject.highlightOn('Red')
-               occupyingObject.addTag("about to delete")
+         if guids[occupyingObject.guid] == nil then
+            guids[occupyingObject.guid] = 1
+            if occupyingObject.hasTag("deletable") then
+               if occupyingObject.hasTag("about to delete") or forceDelete then
+                  occupyingObject.destroyObject()
+                  deleted = true
+               else
+                  highlighted = true
+                  occupyingObject.highlightOn('Red')
+                  occupyingObject.addTag("about to delete")
+               end
             end
          end
       end
@@ -777,7 +784,7 @@ function layoutMap(elements, map, scenarioInfo)
             local obj = locateScenarioElementWithName(overlay.name, objects, true, nameMappings)
             if obj ~= nil then
                local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
-               obj.setPosition({x, 1.44, z})
+               obj.setPosition({x, 1.44, z})               
                local orientation = overlay.orientation
                if orientation > 180 then
                   orientation = orientation - 360               
@@ -863,6 +870,10 @@ function revealScenarioMap(payload)
       self.setVar("open_" .. door.guid, nil)
       door.setState(2)
    end
+   if what.type == "section" then
+      getObjectFromGUID('2a1fbe').call('setSection', what.name)
+      getScenarioMat().call("setSection", what.name)
+   end
    if ScenarioInfos ~= nil then
       local scenarioInfo = ScenarioInfos[id]
       if scenarioInfo ~= nil then
@@ -873,9 +884,7 @@ function revealScenarioMap(payload)
          end
       end
    end
-   if what.type == "section" then
-      getObjectFromGUID('2a1fbe').call('setSection', what.name)
-   end
+   
 end
 
 function takeToken(name)
@@ -1005,6 +1014,7 @@ end
 function chooseScenario(i)
    n = scenarioPickerPage * 10 + i
    print("Chosen Scenario : " .. n)
+   cleanup(true)
    prepareFrosthavenScenario(n)
 end
 
