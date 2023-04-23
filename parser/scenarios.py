@@ -128,6 +128,7 @@ if "-map" in args:
     args.remove('-map')
     parseMaps = True
 if "-all" in args:
+    args.remove('-all')
     scenarioIds = scenarios.keys()
 if "-after" in args:
     args.remove('-after')
@@ -135,14 +136,37 @@ if "-after" in args:
     scenarioIds = list(scenarios.keys())
     index = scenarioIds.index(f"{startAt}")
     scenarioIds = scenarioIds[index:]
-else:
-    for arg in args:
-        scenarioIds.append(arg)
+
+for arg in args:
+    scenarioIds.append(arg)
 
 
 def getScore(elem):
     return elem["score"]
 
+def removeDuplicateTilesWihtWrongOrientation(tiles, scenarioData):
+    if 'layout' in scenarioData:
+        scenarioLayout = scenarioData['layout']
+        tilesByName = {}
+        for tile in tiles:
+            name = tile["name"]
+            if not name in tilesByName:
+                tilesByName[name] = []
+            tilesByName[name].append(tile)
+        for key,foundTiles in tilesByName.items():
+            if len(foundTiles) > 1:
+                # Do we have this tile in the layout?
+                for layoutTile in scenarioLayout:
+                    if layoutTile['name'] == key:
+                        # If one matches the target orientation, let's keep remove the others
+                        toKeep = None
+                        for tile in foundTiles:
+                            if tile['orientation'] == layoutTile['orientation']:
+                                toKeep = tile
+                        if toKeep != None:
+                            for tile in tiles:
+                                if tile != toKeep:
+                                    tiles.remove(tile)
 
 for id in scenarioIds:
     nb = id
@@ -220,7 +244,7 @@ for id in scenarioIds:
                     found = False
                     orientations = ["-0", "-30", "-60", "-90",
                                     "-120", "-180", "-210", "-240", "-270", "-300"]
-                    variants = ["", "-Alt"]
+                    variants = ["", "-Alt", "-Alt-2"]
                     for variant in variants:
                         for orientation in orientations:
                             if pageHasLayout and parseLayouts:
@@ -253,6 +277,11 @@ for id in scenarioIds:
             maxX = 0
             minY = h
             maxY = 0
+
+            # if we have duplicate tiles, and we already know the scenario layout,
+            # we should give preference to the one with the right orientation
+            removeDuplicateTilesWihtWrongOrientation(tiles, scenarioData)
+
             for tile in tiles:
                 variant = tile["variant"]
                 name = tile["name"].split("-")[0]
@@ -270,8 +299,7 @@ for id in scenarioIds:
 
             if parseLayouts:
                 if pageHasLayout:
-                    found = len(scenarioData["layout"]
-                                ) if "layout" in scenarioData else 0
+                    found = len(scenarioData["layout"]) if "layout" in scenarioData else 0
                     if len(mapTiles) > found:
                         scenarioData["layout"] = mapTiles
 
@@ -317,7 +345,7 @@ for id in scenarioIds:
                                         {"name": name, "orientation": orientation, "type": "overlay", "results": result})
                     if not found:
                         print(
-                            f"{bcolors.WARNING}Missing overlay template {name} at {overlayFile}{bcolors.ENDC}")
+                            f"{bcolors.WARNING}Missing overlay template for `{name}` {bcolors.ENDC}")
 
                 entries = os.listdir('assets/tiles/all')
                 for entry in entries:

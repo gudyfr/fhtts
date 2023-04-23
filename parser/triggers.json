@@ -115,6 +115,46 @@
             }
         }
     ],
+    "4A": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 7
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "75.1"
+                }
+            }
+        }
+    ],
+    "4B": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 8
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "75.1"
+                }
+            }
+        }
+    ],
     "5": [
         {
             "in": {
@@ -169,6 +209,120 @@
                 "what": {
                     "type": "section",
                     "name": "22.2"
+                }
+            }
+        }
+    ],
+    "7": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 11
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "42.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "42.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "48.4"
+                }
+            }
+        }
+    ],
+    "8": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 12
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "21.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "21.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "12.1"
+                }
+            }
+        }
+    ],
+    "9": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 13
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "78.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "78.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "26.1"
                 }
             }
         }

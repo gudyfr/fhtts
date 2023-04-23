@@ -1,0 +1,30 @@
+{
+    "4A": {
+        "remove-maps": [
+            {
+                "type": "scenario",
+                "name": 8
+            }
+        ],
+        "remove-tiles": [
+            "11-B"
+        ]
+    },
+    "4B": {
+        "remove-maps": [
+            {
+                "type": "scenario",
+                "name": 7
+            }
+        ],
+        "remove-tiles": [
+            "16-B"
+        ]
+    },
+    "5": {
+        "remove-tokens" : ["a"]
+    },
+    "7": {
+        "bosses": ["Frozen Corpse"]
+    }
+}
