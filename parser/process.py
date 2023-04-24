@@ -2,7 +2,7 @@ import os
 import json
 import math
 
-doubleTiles = ["Large Snow Corridor", "Log", "Large Water", "Bookshelf", "Control Console", "Large Debris", "Large Cave Rock", "Large Dungeon Corridor", "Large Ice Corridor", "Large Cave Corridor", "Large Metal Corridor", "Large Snow Rock", "Power Conduit", "Supply Shelf", "Sarcophagus"]
+doubleTiles = ["Barricade", "Large Snow Corridor", "Log", "Large Water", "Bookshelf", "Control Console", "Large Debris", "Large Cave Rock", "Large Dungeon Corridor", "Large Ice Corridor", "Large Cave Corridor", "Large Metal Corridor", "Large Snow Rock", "Power Conduit", "Supply Shelf", "Sarcophagus"]
 tripleTiles = ["Tree", "Huge Water", "Large Ice Crystal"]
 
 yDisplacement = [66, -114]
@@ -128,6 +128,12 @@ def removeTriggers(entries, mapTriggers):
                         triggerLocations[locationKey] = trigger
     return triggerLocations
 
+def ensureId(trigger):
+    if not id in trigger['data']:
+        _in = trigger["in"]
+        _target = trigger["target"]
+        trigger['data']['id'] = f"{_in['type']}/{_in['name']}/{_target['type']}/{_target['name']}"
+
 def attachTriggersToOverlays(overlays, triggerLocations):
     if len(triggerLocations) == 0:
         return
@@ -135,7 +141,8 @@ def attachTriggersToOverlays(overlays, triggerLocations):
         for position in overlay["positions"]:
             key = positionToKey(position)
             if key in triggerLocations:
-                position['trigger'] = triggerLocations[key]['data']
+                trigger = triggerLocations[key]
+                position['trigger'] = trigger['data']
 
 def positionToKey(position):
     return f"({position['x']},{position['y']})"
@@ -316,7 +323,11 @@ def processLayout(layout:list, removedTiles:list):
 
 def loadTriggers():
     with open("triggers.json", 'r') as f:
-        return json.load(f)
+        triggers = json.load(f)
+        for key,scenarioTriggers in triggers.items():
+            for trigger in scenarioTriggers:
+                ensureId(trigger)
+        return triggers
 
 def loadSpecials():
     with open("specials.json", 'r') as f:

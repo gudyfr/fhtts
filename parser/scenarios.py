@@ -265,9 +265,7 @@ for id in scenarioIds:
                                     result = identify(
                                         out, img, tileFile, 0, 0, 0.90, printMatch=verbose)
                                     if len(result) > 0:
-                                        found = True
-                                        results.append({"name": tile, "variant": variant, "orientation": orientation,
-                                                       "type": "tile", "results": result, "orientation": orientation})
+                                        found = True                                        
                                         tiles.append(
                                             {"name": tile, "variant": variant, "orientation": orientation, "positions": result})
 
@@ -281,6 +279,9 @@ for id in scenarioIds:
             # if we have duplicate tiles, and we already know the scenario layout,
             # we should give preference to the one with the right orientation
             removeDuplicateTilesWihtWrongOrientation(tiles, scenarioData)
+            for tile in tiles:
+                results.append({"name": tile['name'], "variant": tile['variant'], "orientation": tile['orientation'],
+                                                       "type": "tile", "results": tile['positions']})
 
             for tile in tiles:
                 variant = tile["variant"]
