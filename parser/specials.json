@@ -22,9 +22,49 @@
         ]
     },
     "5": {
-        "remove-tokens" : ["a"]
+        "remove-tokens": [
+            "a"
+        ]
     },
     "7": {
-        "bosses": ["Frozen Corpse"]
+        "bosses": [
+            {
+                "from": "Frozen Corpse",
+                "to": "Coral Corpse"
+            }
+        ]
+    },
+    "17": {
+        "rename": [
+            {
+                "from": "Bear Trap",
+                "to": "Pressure Plate"
+            },
+            {
+                "from": "Poison Trap",
+                "to": "Pressure Plate"
+            },
+            {
+                "from": "Spike Pit",
+                "to": "Pressure Plate"
+            }
+        ]
+    },
+    "23": {
+        "bosses": [
+            {
+                "from": "Living Doom",
+                "to": "Hateful Corpse"
+            }
+        ]
+    },
+    "70": {
+        "bosses": [
+            {
+                "in" : "106.2",
+                "from": "City Guard",
+                "to": "Flaming Sword of Justice"
+            }
+        ]
     }
 }

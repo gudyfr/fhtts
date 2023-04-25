@@ -77,15 +77,17 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch
 
 
 def loadScenarios():
-    with open('../scenarios.json', 'r') as openfile:
+    with open('out/scenarios.json', 'r') as openfile:
         return json.load(openfile)
-
 
 def loadTiles():
     with open('tiles.json', 'r') as openfile:
         return json.load(openfile)
 
-
+def loadPatches():
+    with open('parserPatches.json','r') as f:
+        return json.load(f)
+    
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -109,9 +111,11 @@ class NpEncoder(json.JSONEncoder):
         return super(NpEncoder, self).default(obj)
 
 
+
 # maps = os.listdir('assets/images/')
 scenarios = loadScenarios()
 tileInfos = loadTiles()
+patches = loadPatches()
 scenarioIds = []
 args = sys.argv[1:]
 parseLayouts = False
@@ -155,21 +159,37 @@ def removeDuplicateTilesWihtWrongOrientation(tiles, scenarioData):
             tilesByName[name].append(tile)
         for key,foundTiles in tilesByName.items():
             if len(foundTiles) > 1:
+                foundTiles.sort(key=lambda e:e['positions'][0]['score'], reverse=True)
                 # Do we have this tile in the layout?
                 for layoutTile in scenarioLayout:
                     if layoutTile['name'] == key:
                         # If one matches the target orientation, let's keep remove the others
                         toKeep = None
                         for tile in foundTiles:
-                            if tile['orientation'] == layoutTile['orientation']:
+                            if toKeep == None and tile['orientation'] == layoutTile['orientation']:
                                 toKeep = tile
                         if toKeep != None:
-                            for tile in tiles:
+                            for tile in foundTiles:
                                 if tile != toKeep:
                                     tiles.remove(tile)
 
+def applyOverrides(overrides, items):
+    for override in overrides:
+        where = override['where']
+        for item in items:
+            match = True
+            for key,value in where.items():
+                if key in item:
+                    if item[key] != value:
+                        match = False
+                else:
+                    match = False
+            if match:
+                if 'with' in override:
+                    for key,value in override['with'].items():
+                        item[key] = value
+
 for id in scenarioIds:
-    nb = id
     scenario = scenarios[id]
     print(
         f"{bcolors.HEADER}Analyzing Scenario #{id} : {scenario['title']}{bcolors.ENDC}")
@@ -190,9 +210,15 @@ for id in scenarioIds:
 
     layoutFound = False
     for page in pagesToCover:
+        pageNumber = page['page']
+        pagePatches = {}
+        if id in patches:
+            if f"{pageNumber}" in patches[id]:
+                pagePatches = patches[id][f"{pageNumber}"]
+        
         results = []
         path = "scenarios/p" if page["type"] == "scenario" else "sections/"
-        imgFile = os.path.join(f"assets/pages/{path}{page['page']}.png")
+        imgFile = os.path.join(f"assets/pages/{path}{pageNumber}.png")
         if os.path.exists(imgFile):
             print(f"{bcolors.OKBLUE}Identifying elements in {imgFile}{bcolors.ENDC}")
             img = cv.imread(imgFile, flags=cv.IMREAD_UNCHANGED)
@@ -240,7 +266,9 @@ for id in scenarioIds:
                              (mapMaxX, mapMaxY), (0, 255, 0), 2)
 
             if 'tiles' in scenario and (parseMaps or parseLayouts):
-                for tile in scenario['tiles']:
+                tilesToLookFor = pagePatches['tiles'] if 'tiles' in pagePatches else scenario['tiles']
+                
+                for tile in tilesToLookFor:
                     found = False
                     orientations = ["-0", "-30", "-60", "-90",
                                     "-120", "-180", "-210", "-240", "-270", "-300"]
@@ -279,16 +307,24 @@ for id in scenarioIds:
             # if we have duplicate tiles, and we already know the scenario layout,
             # we should give preference to the one with the right orientation
             removeDuplicateTilesWihtWrongOrientation(tiles, scenarioData)
+
+            # Apply overrides to layouts
+            overrides = pagePatches['overrides'] if 'overrides' in pagePatches else []
+            applyOverrides(overrides, mapTiles)
+
             for tile in tiles:
                 results.append({"name": tile['name'], "variant": tile['variant'], "orientation": tile['orientation'],
                                                        "type": "tile", "results": tile['positions']})
+
+           
+
 
             for tile in tiles:
                 variant = tile["variant"]
                 name = tile["name"].split("-")[0]
                 orientation = tile["orientation"]
-                id = f"{name}{orientation}{variant}"
-                tileInfo = tileInfos[id]
+                tileId = f"{name}{orientation}{variant}"
+                tileInfo = tileInfos[tileId]
                 if tileInfo is not None:
                     for result in tile["positions"]:
                         x = result["position"]["x"]
@@ -348,6 +384,9 @@ for id in scenarioIds:
                         print(
                             f"{bcolors.WARNING}Missing overlay template for `{name}` {bcolors.ENDC}")
 
+                # Apply overrides to results
+                applyOverrides(overrides, results)
+
                 entries = os.listdir('assets/tiles/all')
                 for entry in entries:
                     threshold = 0.96
@@ -364,7 +403,7 @@ for id in scenarioIds:
                             results.append(
                                 {"name": subEntry, "type": entry, "results": result})
             t = "p" if page["type"] == "scenario" else "s"
-            cv.imwrite(f"out/{nb}-{t}{page['page']}.png", out)
+            cv.imwrite(f"out/{id}-{t}{page['page']}.png", out)
             scenarioData["maps"].append(
                 {"type": page['type'], "page": page['page'], "name": page['name'], "results": results})
 
@@ -377,5 +416,5 @@ for id in scenarioIds:
         printColor = bcolors.OKGREEN
     print(f"{printColor}Found {nbFoundTiles} out of {nbTotalTiles} layout tiles{bcolors.ENDC}")
 
-    with open(f"out/{nb}.json", "w") as outfile:
+    with open(f"out/{id}.json", "w") as outfile:
         json.dump(scenarioData, outfile, indent=3, cls=NpEncoder)

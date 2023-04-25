@@ -142,7 +142,17 @@ def attachTriggersToOverlays(overlays, triggerLocations):
             key = positionToKey(position)
             if key in triggerLocations:
                 trigger = triggerLocations[key]
-                position['trigger'] = trigger['data']
+                overlay_type = trigger['target']['overlay_type'] if 'overlay_type' in trigger['target'] else None
+                if overlay_type == None or overlay_type == (position['type'] if 'type' in position else None):
+                    position['trigger'] = trigger['data']
+
+def attachOverlayTriggersToOverlays(overlays, overlayTriggers):
+    for overlayTrigger in overlayTriggers:
+        overlayName = overlayTrigger['target']['name']
+        for overlay in overlays:
+            if overlay['name'] == overlayName:
+                for position in overlay['positions']:
+                    position['trigger'] = overlayTrigger['data']
 
 def positionToKey(position):
     return f"({position['x']},{position['y']})"
@@ -160,15 +170,28 @@ def mapToPositions(entries):
                     result[name] = {"name" : entry['name'], "score" : position['score']}
     return result
 
-def addToEntries(entries, positions, key, bosses=[]):
-    for entry in entries:
+def addToEntries(entries, positions, key, bosses=[]):    
+    extractedBosses = []
+    for entry in entries:        
         for position in entry['positions']:
             name = positionToKey(position)
             if name in positions:
-                if entry['name'] in bosses:
-                    position[key] = 'bbb'
-                else:
-                    position[key] = positions[name]['name'].split('.')[0]
+                position[key] = positions[name]['name'].split('.')[0]
+                # Some elite monsters are really bosses
+                if position[key] == 'eee':
+                    for boss in bosses:
+                        if entry['name'] == boss['from']:
+                            position[key] = 'bbb'
+                            extractedBosses.append({"name" : boss['to'], "orientation": entry['orientation'], "positions" : [position]})
+                            entry['positions'].remove(position)
+
+        # If we've removed the only instance of that monster, let's remove it
+        if len(entry['positions']) == 0:
+            entries.remove(entry)
+        
+    for boss in extractedBosses:
+        entries.append(boss)
+                    
 
 def rotateHexCoordinates(x,y,orientation):
     match int(orientation):
@@ -191,6 +214,7 @@ def removeTokens(tokens, scenarioSpecials):
 
 def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
     bosses = scenarioSpecials['bosses'] if 'bosses' in scenarioSpecials else []
+    renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else []
     result = {"type" : map["type"], "name" : map["name"]}
     entries = map['results']
     tiles = list(filter(lambda e : e['type'] == "tile", entries))
@@ -203,11 +227,13 @@ def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
         if tileNumber in tileInfos:
             tileInfo = tileInfos[tileNumber]
             tileOffset = tileInfo['offset']
+            angle = tileInfo['angle'] if 'angle' in tileInfo else 0
             tileX,tileY = getCenterPoint(reference["results"][0])
-            tOX,tOY = rotateVector(tileOffset["x"], tileOffset["y"], int(tileOrientation))
+            effectiveOrientation = int(tileOrientation) - angle
+            tOX,tOY = rotateVector(tileOffset["x"], tileOffset["y"], effectiveOrientation)
             xOffset = tileX + tOX
             yOffset = tileY + tOY
-            result['reference'] = {"tile" : reference['name'], "tileOrientation" : tileOrientation}
+            result['reference'] = {"tile" : reference['name'], "tileOrientation" : f"{effectiveOrientation}"}
             # We now have a reference point (0,0) at tileOffset
             # map every object we've found to its tile coordinate
             overlays = filter(lambda e :e['type'] == 'overlay', entries)
@@ -228,7 +254,10 @@ def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
                 output = []
                 for item in items:
                     name = getName(item)
-                    orientation = getOrientation(item)                
+                    orientation = getOrientation(item)
+                    for nameMapping in renamed:
+                        if nameMapping['from'] == name:
+                            name = nameMapping['to']    
                     itemOutput = {"name" : name, "orientation" : orientation}
                     positions = []
                     for r in item['results']:
@@ -244,15 +273,18 @@ def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
             processedTokens = removeScore(processed["tokens"])
             removeTokens(processed["tokens"], scenarioSpecials)
 
-            triggerLocations = removeTriggers(processedTokens, mapTriggers)
+            tokenTriggerLocations = removeTriggers(processedTokens, mapTriggers)
             result["tokens"] = processedTokens
 
-            attachTriggersToOverlays(processed['overlays'], triggerLocations)
+
+            overlayTriggers = list(filter(lambda e: e['target']['type'] == 'overlay', mapTriggers))
+            attachOverlayTriggersToOverlays(processed['overlays'], overlayTriggers)
 
             positionToMonsterLevels = mapToPositions(processed['monsterLevels'])
             positionToOverlayTypes = mapToPositions(processed['overlayTypes'])
-            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", bosses)
+            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", filter(lambda e: e['in'] == map["name"] if 'in' in e else True, bosses))
             addToEntries(processed['overlays'], positionToOverlayTypes, "type")
+            attachTriggersToOverlays(processed['overlays'], tokenTriggerLocations)
 
             result["monsters"] = removeScore(processed['monsters'])
             result["overlays"] = removeScore(processed['overlays'])
@@ -355,7 +387,7 @@ with open("tileInfos.json", 'r') as tf:
                         if removedMap['type'] == map['type'] and removedMap['name'] == map['name']:
                             removed = True
                     if not removed :
-                        mapTriggers = filter(lambda e : e['in']['type'] == map['type'] and e['in']['name'] == map['name'], scenarioTriggers)        
+                        mapTriggers = list(filter(lambda e : e['in']['type'] == map['type'] and e['in']['name'] == map['name'], scenarioTriggers))     
                         result = processMap(tileInfos, map, mapTriggers, scenarioSpecials)
                         mapsOutput.append(result)
                 scenarioOutput['maps'] = mapsOutput
