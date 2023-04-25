@@ -109,18 +109,21 @@ letterConfigs = {
 }
 
 AdditionalRotation = {}
-AdditionalRotation["03-A"] = 90
+AdditionalRotation["03-A"] = 30
 AdditionalRotation["03-B"] = -90
 AdditionalRotation["06-A"] = 90
 AdditionalRotation["06-B"] = -90
 AdditionalRotation["07-A"] = -90
 AdditionalRotation["07-B"] = 90
+AdditionalRotation["10-A"] = 90
+AdditionalRotation["10-B"] = -90
 AdditionalRotation["11-A"] = -60
 AdditionalRotation["16-A"] = 90
 AdditionalRotation["16-B"] = -90
-TileLetterMappings = {A="A", B="B", C="A", D="B", E="A", F="B", G="A", H="B", I="A", J="B", K="A", L="B"} 
+TileLetterMappings = { A = "A", B = "B", C = "A", D = "B", E = "A", F = "B", G = "A", H = "B", I = "A", J = "B", K = "A",
+   L = "B" }
 
-function getWorldPositionFromHexPosition(x,y)
+function getWorldPositionFromHexPosition(x, y)
    return 0.43 + 1.15 * x + y * 0.575, y + 5.29
 end
 
@@ -148,8 +151,8 @@ function getMapTile(mapName, layout)
                if not handled and tileLayout.name == mapName then
                   print(JSON.encode(tileLayout))
                   local center = tileLayout.center
-                  local tileNumber = string.sub(mapName,1,2)
-                  local tileLetter = string.sub(mapName,4,4)
+                  local tileNumber = string.sub(mapName, 1, 2)
+                  local tileLetter = string.sub(mapName, 4, 4)
                   local mappedTileLetter = TileLetterMappings[tileLetter]
 
                   -- Hacky Fixes, we should fix the assets themselves instead
@@ -159,7 +162,7 @@ function getMapTile(mapName, layout)
 
                   if orientation > 180 then orientation = orientation - 360 end
                   clone.setRotation({ 0, -orientation, targetZRot })
-                  hx,hz = getWorldPositionFromHexPosition(center.x, center.y)
+                  hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
                   clone.setPosition({ hx, 1.39, hz })
                   clone.setLock(true)
                   handled = true
@@ -586,6 +589,11 @@ end
 function prepareScenario(name, campaign, title)
    print("Requesting scenario '" .. name .. "'")
    cleanupPrepareArea()
+   ScenarioTriggers = {
+      byTriggerId = {},
+      byObjectGuid = {},
+      triggered = {}
+   }
    scenarioBag = getObjectFromGUID('cd31b5')
    scenarioBag.reset()
    settings = JSON.decode(getSettings())
@@ -654,7 +662,7 @@ function prepareScenario(name, campaign, title)
          end
          currentScenarioElementPosition = currentScenarioElementPosition + size
          print("Adding " ..
-         count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
+            count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
          currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
       end
@@ -675,7 +683,7 @@ function prepareScenario(name, campaign, title)
          getMapTile(tileName, layout)
       end
 
-      -- offset by 2 for the monsters
+      -- offset by 2 before the monsters
       currentScenarioElementPosition = currentScenarioElementPosition + 2
       if elements.monsters ~= nil then
          for index, monster in ipairs(elements.monsters) do
@@ -683,7 +691,7 @@ function prepareScenario(name, campaign, title)
             getMonster(monster, scenarioElementPositions, currentScenarioElementPosition)
 
             -- and they take a bit of space
-            currentScenarioElementPosition = currentScenarioElementPosition + 2
+            currentScenarioElementPosition = currentScenarioElementPosition + 1
          end
       end
 
@@ -721,7 +729,7 @@ end
 
 function layoutScenarioElements(elements, scenarioInfo)
    -- Locate the scenario entry map(s)
-   for _,map in ipairs(scenarioInfo['maps']) do
+   for _, map in ipairs(scenarioInfo['maps']) do
       if map.type == "scenario" then
          layoutMap(elements, map, scenarioInfo)
       end
@@ -734,9 +742,9 @@ function layoutMap(elements, map, scenarioInfo)
 
    -- Calculate all name mappings
    local nameMappings = {}
-   local categories = {"monsters", "overlays", "tokens"}
-   for _,category in ipairs(categories) do
-      for _,entry in ipairs(elements[category] or {}) do
+   local categories = { "monsters", "overlays", "tokens" }
+   for _, category in ipairs(categories) do
+      for _, entry in ipairs(elements[category] or {}) do
          local name = entry.name
          local to = entry.as or name
          local tos = {}
@@ -744,31 +752,31 @@ function layoutMap(elements, map, scenarioInfo)
             local count = entry.count
             if entry.renamed == "by nr" then
                local start_nr = entry.start_nr or 1
-               for i=1,count do
-                  table.insert(tos, to .. " " .. (start_nr + count - i))
+               for i = 1, count do
+                  table.insert(tos, to .. " " .. (start_nr + i - 1))
                end
             elseif entry.renamed == "by letter" then
                local letters = "abcdefghijklmnopqrstuvwxyz"
                local start_nr = entry.start_nr or 1
-               for i=1,count do
-                  local letter = string.sub(letters, start_nr + count - i, start_nr + count - i)
+               for i = 1, count do
+                  local letter = string.sub(letters, start_nr + i - 1, start_nr + i - 1)
                   table.insert(tos, to .. " " .. letter)
                end
             end
          else
-            tos = {to}
+            tos = { to }
          end
          nameMappings[name] = tos
       end
    end
-   
+
 
    local reference = map.reference
    if reference == nil then
       return
    end
    local origin = nil
-   for _,layout in ipairs(scenarioInfo['layout']) do
+   for _, layout in ipairs(scenarioInfo['layout']) do
       if layout.name == reference.tile then
          origin = layout.origin
       end
@@ -777,52 +785,53 @@ function layoutMap(elements, map, scenarioInfo)
       local zone = getObjectFromGUID('1f0c29')
       local objects = zone.getObjects(true)
       -- Overlays
-      for _,overlay in ipairs(map.overlays) do
+      for _, overlay in ipairs(map.overlays) do
          -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
-         for _,position in ipairs(overlay.positions) do
+         for _, position in ipairs(overlay.positions) do
             -- print(" to put at location " .. JSON.encode(position))
             local obj = locateScenarioElementWithName(overlay.name, objects, true, nameMappings)
             if obj ~= nil then
-               local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
-               obj.setPosition({x, 1.44, z})               
+               local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+               obj.setPosition({ x, 1.44, z })
                local orientation = overlay.orientation
                if orientation > 180 then
-                  orientation = orientation - 360               
+                  orientation = orientation - 360
                end
-               obj.setRotation({0,-orientation,0})
+               obj.setRotation({ 0, -orientation, 0 })
 
                -- Handle potential triggers
                if position.trigger ~= nil then
                   attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                end
-
             else
                print(" could not find object in prepare area")
             end
          end
       end
-      for _,token in ipairs(map.tokens) do
-         for _,position in ipairs(token.positions) do
+      for _, token in ipairs(map.tokens) do
+         for _, position in ipairs(token.positions) do
             local obj = takeToken(token.name)
             if obj ~= nil then
-               local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
-               obj.setPosition({x, 2.21, z})
-               obj.setRotation({0,180,0})
+               local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+               obj.setPosition({ x, 2.21, z })
+               obj.setRotation({ 0, 180, 0 })
             end
          end
       end
-      for _,monster in ipairs(map.monsters) do
+      for _, monster in ipairs(map.monsters) do
          for _, position in ipairs(monster.positions) do
             local levels = position.levels
             if levels ~= nil then
-               local level = string.sub(levels, playerCount-1, playerCount-1)
+               local level = string.sub(levels, playerCount - 1, playerCount - 1)
                if level == 'n' or level == 'e' or level == 'b' then
                   print("Adding a " .. level .. " " .. monster.name)
                   local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
                   if monsterBag ~= nil then
-                     local obj = monsterBag.takeObject({callback_function=function(spawned) if level == 'e' then makeElite(spawned) end end, smooth=false})
-                     local x,z = getWorldPositionFromHexPosition(position.x+origin.x, position.y+origin.y)
-                     obj.setPosition({x, 2.35, z})
+                     local obj = monsterBag.takeObject({
+                        callback_function = function(spawned) if level == 'e' then makeElite(spawned) end end,
+                        smooth = false })
+                     local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                     obj.setPosition({ x, 2.35, z })
                   end
                end
             end
@@ -836,55 +845,133 @@ function makeElite(obj)
    Global.call("getScenarioMat").call("toggled", obj)
 end
 
-function attachTriggerToElement(trigger, obj, scenarioId)
-   if trigger.type == "door" then
-      if trigger.action == "reveal" then
-         -- Let's create an open button
-         local payload = JSON.encode({scenarioId, trigger.what, obj.guid})
-         local fName = "open_" .. obj.guid
-         self.setVar(fName, function() Global.call("revealScenarioMap",payload) end)
-         local params = {
-            click_function = fName,
-            function_owner = self,
-            label = 'Open',
-            position = { 0, 0.01, 0 },
-            rotation = { 0, 0, 0 },
-            width = 250,
-            height = 250,
-            color = { 1, 1, 1, 0 },
-            font_size = 50,
-            tooltip = "Open"
-         }
-         obj.createButton(params)
-      end
+function updateTriggers(trigger, obj)
+   local objs = ScenarioTriggers.byTriggerId[trigger.id]
+   if objs == nil then
+      objs = {}
+      ScenarioTriggers.byTriggerId[trigger.id] = objs
    end
+   local triggers = ScenarioTriggers.byObjectGuid[obj.guid]
+   if triggers == nil then
+      triggers = {}
+      ScenarioTriggers.byObjectGuid[obj.guid] = triggers
+   end
+   table.insert(triggers, trigger)
+   table.insert(objs, obj.guid)
 end
 
-function revealScenarioMap(payload)
-   local params = JSON.decode(payload)
-   local id = params[1]
-   local what = params[2]
-   local door = getObjectFromGUID(params[3])
-   if door ~= nil then
-      door.removeButton(0)
-      self.setVar("open_" .. door.guid, nil)
-      door.setState(2)
-   end
-   if what.type == "section" then
-      getObjectFromGUID('2a1fbe').call('setSection', what.name)
-      getScenarioMat().call("setSection", what.name)
-   end
-   if ScenarioInfos ~= nil then
-      local scenarioInfo = ScenarioInfos[id]
-      if scenarioInfo ~= nil then
-         for _, map in ipairs(scenarioInfo.maps) do
-            if map.type == what.type and map.name == what.name then
-               layoutMap(scenarios[id], map, scenarioInfo)
+function triggered(payload)
+   params = JSON.decode(payload)
+   scenarioId = params[1]
+   trigger = params[2]
+   objGuid = params[3]
+   if trigger.type == "door" or trigger.type == "on-death" then
+      local doorGuidsToOpen
+      local mode = trigger.mode or "first"
+      if mode == "all" or mode == "removeall" then
+         -- We need to open all doors for this trigger
+         doorGuidsToOpen = ScenarioTriggers.byTriggerId[trigger.id]
+      else
+         doorGuidsToOpen = { objGuid }
+      end
+      for _, guid in ipairs(doorGuidsToOpen) do
+         local door = getObjectFromGUID(guid)
+         if door ~= nil then
+            if mode == "removeall" then
+               destroyObject(door)
+            else
+               door.setState(2)
+            end
+         end
+      end
+      if trigger.action == "reveal" then
+         if not (ScenarioTriggers.triggered[trigger.id] or false) then
+            ScenarioTriggers.triggered[trigger.id] = true
+            local what = trigger.what
+            if what.type == "section" then
+               getObjectFromGUID('2a1fbe').call('setSection', what.name)
+               getScenarioMat().call("setSection", what.name)
+            end
+            if ScenarioInfos ~= nil then
+               local scenarioInfo = ScenarioInfos[scenarioId]
+               if scenarioInfo ~= nil then
+                  for _, map in ipairs(scenarioInfo.maps) do
+                     if map.type == what.type and map.name == what.name then
+                        layoutMap(scenarios[scenarioId], map, scenarioInfo)
+                     end
+                  end
+               end
+            end
+         end
+      end
+      if trigger.action == "choice" then
+         broadcastToAll("Please Choose")
+         if ScenarioInfos ~= nil then
+            local scenarioInfo = ScenarioInfos[scenarioId]
+            if scenarioInfo ~= nil then
+               local choices = trigger.choices
+               for _, choice in ipairs(choices) do
+                  if choice.tile ~= nil then
+                     local origin = nil
+                     for _, layout in ipairs(scenarioInfo['layout']) do
+                        if layout.name == choice.tile then
+                           origin = layout.origin
+                        end
+                     end
+                     if origin ~= nil then
+                        local obj = takeToken(choice.token)
+                        if obj ~= nil then
+                           local position = choice.position
+                           local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                           obj.setPosition({ x, 2.21, z })
+                           obj.setRotation({ 0, 180, 0 })
+                           local subTrigger = choice.data
+                           subTrigger.id = trigger.id .. "/choice"
+                           subTrigger.mode = "removeall"
+                           attachTriggerToElement(subTrigger, obj, scenarioId,2)
+                        end
+                     end
+                  end
+               end
             end
          end
       end
    end
-   
+end
+
+function attachTriggerToElement(trigger, obj, scenarioId,scale)
+   updateTriggers(trigger, obj)
+   local payload = JSON.encode({ scenarioId, trigger, obj.guid })
+   print(payload)
+   local fName = "trigger_" .. obj.guid .. "_" .. trigger.id
+   self.setVar(fName, function() Global.call("triggered", payload) end)
+   local label = trigger.display
+   if label == nil then
+      if trigger.type == "door" then
+         label = "Open"
+      elseif trigger.type == "on-death" then
+         label = "Destroy"
+      end
+   end
+   -- Let's create a button
+   local params = {
+      click_function = fName,
+      function_owner = self,
+      label = label,
+      position = { 0, 0.01, 0 },
+      rotation = { 0, 0, 0 },
+      width = 250 * (scale or 1),
+      height = 250 * (scale or 1),
+      color = { 1, 1, 1, 0 },
+      font_size = 50,
+      tooltip = label
+   }
+   obj.createButton(params)
+
+   if trigger.type == "on-death" then
+      -- We can also hook up a callback for when this item hit point reaches 0
+      obj.setGMNotes(JSON.encode({ onDeath = payload }))
+   end
 end
 
 function takeToken(name)
@@ -898,10 +985,22 @@ function takeToken(name)
 end
 
 function locateScenarioElementWithName(name, objects, remove, nameMappings)
-   local alternateNames = nameMappings[name] or {name}
+   -- Look for the original name first, scenario 70 needs this as we have City Guards renamed and not at the same time
    for i, occupyingObject in ipairs(objects) do
       local candidateName = occupyingObject.getName()
-      for _,alternateName in ipairs(alternateNames) do
+      if name == candidateName then
+         if remove then
+            table.remove(objects, i)
+         end
+         return occupyingObject
+      end
+   end
+
+   -- Then look for renamed items. Also, this works in scenario 70 because the renamed City Guard has been renamed in the layout data
+   local alternateNames = nameMappings[name] or {}
+   for _, alternateName in ipairs(alternateNames) do
+      for i, occupyingObject in ipairs(objects) do
+         local candidateName = occupyingObject.getName()
          if alternateName == candidateName then
             if remove then
                table.remove(objects, i)
@@ -1233,7 +1332,7 @@ end
 function getPlayerCount()
    -- return 2
    local count = 0
-   for _,color in ipairs({ "Green", "Red", "White", "Blue" }) do
+   for _, color in ipairs({ "Green", "Red", "White", "Blue" }) do
       if isPlayerPresent(color) then
          count = count + 1
       end
@@ -1242,7 +1341,7 @@ function getPlayerCount()
 end
 
 function isPlayerPresent(color)
-   local mat = getPlayerMatExt({color})
+   local mat = getPlayerMatExt({ color })
    if mat ~= nil then
       return mat.call('getCharacterName') ~= nil
    end

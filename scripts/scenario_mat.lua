@@ -1371,6 +1371,12 @@ function refreshStandees(state)
                 end
             end
             if not found and standee.hasTag("trackable") then
+                local notes = standee.getGMNotes()
+                if notes.onDeath ~= nil then
+                    Global.call("triggered", notes.onDeath)
+                    notes.onDeath = nil
+                    standee.setGMNotes(notes)
+                end
                 clearStandee(standee)
             end
         end
