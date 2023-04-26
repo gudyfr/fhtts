@@ -1156,7 +1156,7 @@ function registerStandee(standee)
 end
 
 function onStandeeRegistered(standee)
-    print("Tracking " .. standee.getName())
+    -- print("Tracking " .. standee.getName())
 
     -- We need to wait a bit to register for Collisions
     -- probably as the object isn't fully loaded yet?
@@ -1166,7 +1166,7 @@ function onStandeeRegistered(standee)
 end
 
 function onStandeeUnregistered(standee)
-    print("Untracking " .. standee.getName())
+    -- print("Untracking " .. standee.getName())
     standee.removeTag("tracked")
     standee.removeTag("lootable")
     standee.unregisterCollisions()
@@ -1252,12 +1252,23 @@ function updateState(request)
     end
 end
 
+CurrentRound = {
+    round = -1,
+    state = -1
+}
+
 function processState(state)
     local newState = {}
     newState.round = {
         round = state.round,
         state = state.roundState
     }
+    if state.roundState ~= CurrentRound.state or CurrentRound.round ~= state.round then
+        CurrentRound.round = state.round
+        CurrentRound.state = state.roundState
+        Global.call("roundUpdate", JSON.encode(CurrentRound))
+    end
+
     for _, entry in ipairs(state.currentList) do
         -- print(JSON.encode(entry))
         local id = entry.id
@@ -1800,12 +1811,12 @@ function updateAssistant(method, command, params, callback)
                 end
                 if callback ~= nil then
                     local payload = JSON.encode(params)
-                    print(command .. ":" .. payload)
+                    -- print(command .. ":" .. payload)
                     WebRequest.post(url, payload, callback)
                 else
                     -- fire and forget
                     local payload = JSON.encode(params)
-                    print(command .. ":" .. payload)
+                    -- print(command .. ":" .. payload)
                     WebRequest.post(url, payload)
                 end
             end

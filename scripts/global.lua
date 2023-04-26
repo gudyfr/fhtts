@@ -120,8 +120,20 @@ AdditionalRotation["10-B"] = -90
 AdditionalRotation["11-A"] = -60
 AdditionalRotation["16-A"] = 90
 AdditionalRotation["16-B"] = -90
-TileLetterMappings = { A = "A", B = "B", C = "A", D = "B", E = "A", F = "B", G = "A", H = "B", I = "A", J = "B", K = "A",
-   L = "B" }
+TileLetterMappings = {
+   A = "A",
+   B = "B",
+   C = "A",
+   D = "B",
+   E = "A",
+   F = "B",
+   G = "A",
+   H = "B",
+   I = "A",
+   J = "B",
+   K = "A",
+   L = "B"
+}
 
 function getWorldPositionFromHexPosition(x, y)
    return 0.43 + 1.15 * x + y * 0.575, y + 5.29
@@ -149,20 +161,23 @@ function getMapTile(mapName, layout)
          if layout ~= nil then
             for _, tileLayout in ipairs(layout) do
                if not handled and tileLayout.name == mapName then
-                  print(JSON.encode(tileLayout))
+                  -- print(JSON.encode(tileLayout))
                   local center = tileLayout.center
+                  
+                  -- Hacky Fixes, we should fix the assets themselves instead
                   local tileNumber = string.sub(mapName, 1, 2)
                   local tileLetter = string.sub(mapName, 4, 4)
                   local mappedTileLetter = TileLetterMappings[tileLetter]
-
-                  -- Hacky Fixes, we should fix the assets themselves instead
                   local orientation = (tonumber(tileLayout.orientation) or 0)
                   orientation = orientation + (AdditionalRotation[tileNumber] or 0)
                   orientation = orientation + (AdditionalRotation[tileNumber .. "-" .. mappedTileLetter] or 0)
 
-                  if orientation > 180 then orientation = orientation - 360 end
+                  if orientation > 180 then
+                     orientation = orientation - 360
+                  end
+                  
                   clone.setRotation({ 0, -orientation, targetZRot })
-                  hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
+                  local hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
                   clone.setPosition({ hx, 1.39, hz })
                   clone.setLock(true)
                   handled = true
@@ -186,7 +201,7 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
          if candidate.name == name then
             local position = scenarioElementPositions[currentScenarioElementPosition]
             local monsterStandees = monsterBag.takeObject({ guid = candidate.guid, smooth = false })
-            clone = monsterStandees.clone()
+            local clone = monsterStandees.clone()
             monsterBag.putObject(monsterStandees)
             clone.addTag("deletable")
             clone.addTag("spawner")
@@ -587,12 +602,14 @@ function prepareFrosthavenScenario(name)
 end
 
 function prepareScenario(name, campaign, title)
-   print("Requesting scenario '" .. name .. "'")
+   -- print("Requesting scenario '" .. name .. "'")
+   broadcastToAll("Preparing " .. title)
    cleanupPrepareArea()
    ScenarioTriggers = {
       byTriggerId = {},
       byObjectGuid = {},
-      triggered = {}
+      triggered = {},
+      triggersById = {}
    }
    scenarioBag = getObjectFromGUID('cd31b5')
    scenarioBag.reset()
@@ -608,6 +625,8 @@ function prepareScenario(name, campaign, title)
          -- We first need to let players make a choice
          -- which we'll represent with tokens
 
+         broadcastToAll("Please choose")
+
          -- We want to center the choices, and space them by two
          local firstPosition = (#scenarioElementPositions - #choices) / 2
          for _, choice in ipairs(choices) do
@@ -616,7 +635,6 @@ function prepareScenario(name, campaign, title)
             if token ~= nil and value ~= nil then
                local title = choice.title or ("Choose " .. token)
                local obj = getToken({ name = token }, scenarioElementPositions, firstPosition)
-               print(obj)
                if obj ~= nil then
                   self.setVar("scenarioChoice_" .. token, function() prepareFrosthavenScenario(name .. value) end)
                   local params = {
@@ -661,8 +679,8 @@ function prepareScenario(name, campaign, title)
             end
          end
          currentScenarioElementPosition = currentScenarioElementPosition + size
-         print("Adding " ..
-            count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
+         -- print("Adding " ..
+         --    count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
          currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
       end
@@ -679,7 +697,7 @@ function prepareScenario(name, campaign, title)
       -- print(JSON.encode(layout))
 
       for _, tileName in ipairs(elements.tiles) do
-         print("Adding Map Tile " .. tileName .. " to the scenario bag")
+         -- print("Adding Map Tile " .. tileName .. " to the scenario bag")
          getMapTile(tileName, layout)
       end
 
@@ -687,7 +705,7 @@ function prepareScenario(name, campaign, title)
       currentScenarioElementPosition = currentScenarioElementPosition + 2
       if elements.monsters ~= nil then
          for index, monster in ipairs(elements.monsters) do
-            print("Adding Monster " .. JSON.encode(monster))
+            -- print("Adding Monster " .. JSON.encode(monster))
             getMonster(monster, scenarioElementPositions, currentScenarioElementPosition)
 
             -- and they take a bit of space
@@ -697,7 +715,7 @@ function prepareScenario(name, campaign, title)
 
       if elements.tokens ~= nil then
          for index, token in ipairs(elements.tokens) do
-            print("Adding token " .. token.name)
+            -- print("Adding token " .. token.name)
             getToken(token, scenarioElementPositions, currentScenarioElementPosition)
             currentScenarioElementPosition = currentScenarioElementPosition + 1
          end
@@ -728,10 +746,13 @@ function prepareScenario(name, campaign, title)
 end
 
 function layoutScenarioElements(elements, scenarioInfo)
-   -- Locate the scenario entry map(s)
-   for _, map in ipairs(scenarioInfo['maps']) do
-      if map.type == "scenario" then
-         layoutMap(elements, map, scenarioInfo)
+   if scenarioInfo ~= nil then
+      CurrentScenarioId = scenarioInfo.id
+      -- Locate the scenario entry map(s)
+      for _, map in ipairs(scenarioInfo['maps']) do
+         if map.type == "scenario" then
+            layoutMap(elements, map, scenarioInfo)
+         end
       end
    end
 end
@@ -824,18 +845,25 @@ function layoutMap(elements, map, scenarioInfo)
             if levels ~= nil then
                local level = string.sub(levels, playerCount - 1, playerCount - 1)
                if level == 'n' or level == 'e' or level == 'b' then
-                  print("Adding a " .. level .. " " .. monster.name)
+                  -- print("Adding a " .. level .. " " .. monster.name)
                   local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
                   if monsterBag ~= nil then
                      local obj = monsterBag.takeObject({
                         callback_function = function(spawned) if level == 'e' then makeElite(spawned) end end,
-                        smooth = false })
+                        smooth = false
+                     })
                      local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
                      obj.setPosition({ x, 2.35, z })
                   end
                end
             end
          end
+      end
+   end
+
+   if map.triggers ~= nil then
+      for _, trigger in ipairs(map.triggers) do
+         ScenarioTriggers.triggersById[trigger.id] = trigger
       end
    end
 end
@@ -856,16 +884,63 @@ function updateTriggers(trigger, obj)
       triggers = {}
       ScenarioTriggers.byObjectGuid[obj.guid] = triggers
    end
-   table.insert(triggers, trigger)
+   ScenarioTriggers.triggersById[trigger.id] = trigger
+   table.insert(triggers, trigger.id)
    table.insert(objs, obj.guid)
 end
 
+function roundUpdate(payload)
+   local currentRound = JSON.decode(payload)
+   -- Check potential triggers
+   if ScenarioTriggers ~= nil and ScenarioTriggers.triggersById ~= nil then
+      for id, trigger in pairs(ScenarioTriggers.triggersById) do
+         if trigger.type == "round" then
+            if trigger.when.round == currentRound.round and trigger.when.state == currentRound.state then
+               handleTriggerAction(trigger, CurrentScenarioId, nil)
+            end
+         end
+      end
+   end
+end
+
+function triggeredById(triggerId)
+   actualTriggered(CurrentScenarioId, triggerId, nil)
+end
+
 function triggered(payload)
-   params = JSON.decode(payload)
-   scenarioId = params[1]
-   trigger = params[2]
-   objGuid = params[3]
-   if trigger.type == "door" or trigger.type == "on-death" then
+   local params = JSON.decode(payload)
+   local scenarioId = params[1]
+   local triggerId = params[2]
+   local objGuid = params[3]
+   actualTriggered(scenarioId, triggerId, objGuid)
+end
+
+function actualTriggered(scenarioId, triggerId, objGuid, undo)
+   undo = undo or false
+   local trigger = ScenarioTriggers.triggersById[triggerId]
+   local type = trigger.type or ""
+
+   if type == "countDown" then
+      if trigger.current == 'playerCount' then
+         trigger.current = getPlayerCount()
+      end
+      if undo then
+         trigger.current = trigger.current + 1
+      else
+         trigger.current = trigger.current - 1
+      end
+      if trigger.current ~= 0 then
+         -- Prevent triggering the countDown actions
+         return
+      end
+   end
+
+   if type == "door" or type == "on-death" then
+      if trigger.locked or false then
+         broadcastToAll("Locked")
+         -- Prevent trigerring the door actions
+         return
+      end
       local doorGuidsToOpen
       local mode = trigger.mode or "first"
       if mode == "all" or mode == "removeall" then
@@ -884,93 +959,178 @@ function triggered(payload)
             end
          end
       end
-      if trigger.action == "reveal" then
-         if not (ScenarioTriggers.triggered[trigger.id] or false) then
-            ScenarioTriggers.triggered[trigger.id] = true
-            local what = trigger.what
-            if what.type == "section" then
-               getObjectFromGUID('2a1fbe').call('setSection', what.name)
-               getScenarioMat().call("setSection", what.name)
+   end
+
+   handleTriggerAction(trigger, scenarioId, objGuid, undo)
+end
+
+function handleTriggerAction(action, scenarioId, objGuid, undo)
+   -- print("Performing action on : " .. JSON.encode(action))
+   local dedupMode = action.dedupMode or "obj"
+
+   local triggerKey = action.id
+   if dedupMode == "obj" then
+      triggerKey = triggerKey .. "/" .. (objGuid or "scenario")
+   elseif dedupMode == "first" then
+      triggerKey = triggerKey .. "/first"
+   else
+      print("Unknown dedupMode : " .. dedupMode .. " in " .. JSON.encode(action))
+   end
+
+   local triggered = ScenarioTriggers.triggered[triggerKey] or false
+   if triggered == undo then
+      ScenarioTriggers.triggered[triggerKey] = not undo
+   else
+      print("Not performing action, as trigger has already been triggered")
+      -- We've already triggered this one, avoid triggering again
+      return
+   end
+
+   if action.action == "reveal" then
+      local what = action.what
+      if what.type == "section" then
+         getObjectFromGUID('2a1fbe').call('setSection', what.name)
+         getScenarioMat().call("setSection", what.name)
+      end
+      local key = what.type .. "/" .. what.name
+      if not (ScenarioTriggers.triggered[key] or false) then
+         ScenarioTriggers.triggered[key] = true
+         if ScenarioInfos ~= nil then
+            local scenarioInfo = ScenarioInfos[scenarioId]
+            if scenarioInfo ~= nil then
+               for _, map in ipairs(scenarioInfo.maps) do
+                  if map.type == what.type and map.name == what.name then
+                     layoutMap(scenarios[scenarioId], map, scenarioInfo)
+                  end
+               end
             end
-            if ScenarioInfos ~= nil then
-               local scenarioInfo = ScenarioInfos[scenarioId]
-               if scenarioInfo ~= nil then
-                  for _, map in ipairs(scenarioInfo.maps) do
-                     if map.type == what.type and map.name == what.name then
-                        layoutMap(scenarios[scenarioId], map, scenarioInfo)
+         end
+      end
+   end
+
+   if action.action == "choice" then
+      broadcastToAll("Please Choose")
+      if ScenarioInfos ~= nil then
+         local scenarioInfo = ScenarioInfos[scenarioId]
+         if scenarioInfo ~= nil then
+            local choices = action.choices
+            for i, choice in ipairs(choices) do
+               if choice.tile ~= nil then
+                  local origin = nil
+                  for _, layout in ipairs(scenarioInfo['layout']) do
+                     if layout.name == choice.tile then
+                        origin = layout.origin
+                     end
+                  end
+                  if origin ~= nil then
+                     local obj = takeToken(choice.token)
+                     if obj ~= nil then
+                        local position = choice.position
+                        local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                        obj.setPosition({ x, 2.21, z })
+                        obj.setRotation({ 0, 180, 0 })
+                        local subTrigger = choice.data
+                        subTrigger.id = action.id .. "/choice/" .. i
+                        subTrigger.also = { { type = "removeMatching", what = (action.id .. "/choice") } }
+                        ScenarioTriggers.triggersById[subTrigger.id] = subTrigger
+                        attachTriggerToElement(subTrigger, obj, scenarioId, 2)
                      end
                   end
                end
             end
          end
       end
-      if trigger.action == "choice" then
-         broadcastToAll("Please Choose")
-         if ScenarioInfos ~= nil then
-            local scenarioInfo = ScenarioInfos[scenarioId]
-            if scenarioInfo ~= nil then
-               local choices = trigger.choices
-               for _, choice in ipairs(choices) do
-                  if choice.tile ~= nil then
-                     local origin = nil
-                     for _, layout in ipairs(scenarioInfo['layout']) do
-                        if layout.name == choice.tile then
-                           origin = layout.origin
-                        end
-                     end
-                     if origin ~= nil then
-                        local obj = takeToken(choice.token)
-                        if obj ~= nil then
-                           local position = choice.position
-                           local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-                           obj.setPosition({ x, 2.21, z })
-                           obj.setRotation({ 0, 180, 0 })
-                           local subTrigger = choice.data
-                           subTrigger.id = trigger.id .. "/choice"
-                           subTrigger.mode = "removeall"
-                           attachTriggerToElement(subTrigger, obj, scenarioId,2)
-                        end
-                     end
-                  end
+   end
+
+   if action.action == "trigger" then
+      actualTriggered(scenarioId, action.what, objGuid, undo)
+   end
+
+   if action.action == "open" then
+      for _, otherTrigger in ipairs(ScenarioTriggers.byTriggerId[action.what]) do
+         local obj = getObjectFromGUID(otherTrigger)
+         if obj ~= nil then
+            obj.setState(2)
+         end
+      end
+   end
+
+   if action.action == "unlock" then
+      local otherTrigger = ScenarioTriggers.triggersById[action.what]
+      otherTrigger.locked = undo
+   end
+
+   if action.action == "lock" then
+      local otherTrigger = ScenarioTriggers.triggersById[action.what]
+      otherTrigger.locked = not undo
+   end
+
+   if action.action == "removeMatching" then
+      local pattern = action.what
+      for id, trigger in ScenarioTriggers.triggersById do
+         if string.sub(1, #pattern) == pattern then
+            for _, guid in ScenarioTriggers.byTriggerId[id] do
+               local obj = getObjectFromGUID(guid)
+               if obj ~= nil then
+                  destroyObject(obj)
                end
             end
          end
+      end
+   end
+
+   if action.also ~= nil then
+      for i, subAction in ipairs(action.also) do
+         subAction.id = action.id .. "/" .. i
+         handleTriggerAction(subAction, scenarioId, objGuid, undo)
       end
    end
 end
 
-function attachTriggerToElement(trigger, obj, scenarioId,scale)
+function attachTriggerToElement(trigger, obj, scenarioId, scale)
    updateTriggers(trigger, obj)
-   local payload = JSON.encode({ scenarioId, trigger, obj.guid })
-   print(payload)
-   local fName = "trigger_" .. obj.guid .. "_" .. trigger.id
-   self.setVar(fName, function() Global.call("triggered", payload) end)
-   local label = trigger.display
-   if label == nil then
-      if trigger.type == "door" then
-         label = "Open"
-      elseif trigger.type == "on-death" then
-         label = "Destroy"
+   local payload = JSON.encode({ scenarioId, trigger.id, obj.guid })
+   if trigger.type ~= "pressure" then
+      local fName = "trigger_" .. obj.guid .. "_" .. trigger.id
+      self.setVar(fName, function() Global.call("triggered", payload) end)
+      local label = trigger.display
+      if label == nil then
+         if trigger.type == "door" then
+            label = "Open"
+         elseif trigger.type == "on-death" then
+            label = "Destroy"
+         elseif trigger.type == "pressure" then
+            if trigger.mode == "occupy" then
+               label = "Occupy"
+            else
+               label = "Trigger"
+            end
+         end
       end
+      -- Let's create a button
+      local params = {
+         click_function = fName,
+         function_owner = self,
+         label = label,
+         position = { 0, 0.01, 0 },
+         rotation = { 0, 0, 0 },
+         width = 250 * (scale or 1),
+         height = 250 * (scale or 1),
+         color = { 1, 1, 1, 0 },
+         font_size = 50,
+         tooltip = label
+      }
+      obj.createButton(params)
    end
-   -- Let's create a button
-   local params = {
-      click_function = fName,
-      function_owner = self,
-      label = label,
-      position = { 0, 0.01, 0 },
-      rotation = { 0, 0, 0 },
-      width = 250 * (scale or 1),
-      height = 250 * (scale or 1),
-      color = { 1, 1, 1, 0 },
-      font_size = 50,
-      tooltip = label
-   }
-   obj.createButton(params)
 
    if trigger.type == "on-death" then
       -- We can also hook up a callback for when this item hit point reaches 0
       obj.setGMNotes(JSON.encode({ onDeath = payload }))
+   end
+
+   if trigger.type == "pressure" then
+      -- Register the pressure plate
+      registerPressurePlate(obj)
    end
 end
 
@@ -1112,7 +1272,7 @@ end
 
 function chooseScenario(i)
    n = scenarioPickerPage * 10 + i
-   print("Chosen Scenario : " .. n)
+   -- print("Chosen Scenario : " .. n)
    cleanup(true)
    prepareFrosthavenScenario(n)
 end
@@ -1424,8 +1584,15 @@ function registerForCollision(obj)
    collisionCallbacks[obj.guid] = obj
 end
 
+function registerPressurePlate(pressurePlate)
+   print("test")
+   print(pressurePlate)
+   pressurePlate.addTag("pressurePlate")
+   Wait.frames(function() pressurePlate.registerCollisions() end, 10)
+end
+
 function onObjectCollisionEnter(hit_object, collision_info)
-   -- print("onObjectCollisionEnter " .. JSON.encode(hit_object))
+   -- print("onObjectCollisionEnter")
    -- collision_info table:
    --   collision_object    Object
    --   contact_points      Table     {Vector, ...}
@@ -1436,9 +1603,40 @@ function onObjectCollisionEnter(hit_object, collision_info)
       destroyObject(obj)
    end
 
+
+   if hit_object.hasTag("pressurePlate") then
+      -- "looter" should be good proxy for "character"
+      if obj.hasTag("looter") then
+         print("Pressing Pressure Plate")
+         local triggerIds = ScenarioTriggers.byObjectGuid[hit_object.guid]
+         for _, triggerId in ipairs(triggerIds) do
+            Wait.frames(function()
+                  actualTriggered(CurrentScenarioId, triggerId, obj.guid)
+               end,
+               1)
+         end
+      end
+   end
+
+
    for guid, obj in pairs(collisionCallbacks) do
       if guid == hit_object.guid then
          obj.call("onObjectCollisionEnter", { hit_object, collision_info })
+      end
+   end
+end
+
+function onObjectCollisionExit(hit_object, collision_info)
+   local obj = collision_info.collision_object
+   -- print("onObjectCollisionExit")
+   if hit_object.hasTag("pressurePlate") then
+      -- "looter" should be good proxy for "character"
+      if obj.hasTag("looter") then
+         print("Releasing Pressure Plate")
+         local triggerIds = ScenarioTriggers.byObjectGuid[hit_object.guid]
+         for _, triggerId in ipairs(triggerIds) do
+            actualTriggered(CurrentScenarioId, triggerId, obj.guid, true)
+         end
       end
    end
 end

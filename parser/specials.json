@@ -66,5 +66,25 @@
                 "to": "Flaming Sword of Justice"
             }
         ]
+    },
+    "89" : {
+        "bosses" : [
+            {
+                "in" : "146.3",
+                "from" : "Algox Icespeaker",
+                "to" : "Vanjal"
+            }
+        ]
+    },
+    "93A" : {
+        "remove-monsters" : [
+            "Polar Bear", "Hound", "Vermling Scout"
+        ]
+
+    },
+    "93B" : {
+        "remove-monsters" : [
+            "Algox Scout", "Algox Archer", "Algox Guard"
+        ]
     }
 }

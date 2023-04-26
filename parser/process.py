@@ -86,9 +86,9 @@ def getOrientation(item):
         else:
             result =  int(orientation)
         if item['name'] in tripleTiles:
-            result = 360 - result
-            # if result >= 360:
-            #     result -= 360
+            result = result + 180
+            if result >= 360:
+                result -= 360
         return result
     else:
         return 0
@@ -212,21 +212,31 @@ def removeTokens(tokens, scenarioSpecials):
                 if token['name'] == tokenToRemove:
                     tokens.remove(token)
 
-def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
+def removeMonsters(monsters, removedMonsters):
+    for monsterToRemove in removedMonsters:
+        for monster in monsters:
+            if monster['name'] == monsterToRemove:
+                monsters.remove(monster)
+
+def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
+    removedMonsters = scenarioSpecials['remove-monsters'] if 'remove-monsters' in scenarioSpecials else []
     bosses = scenarioSpecials['bosses'] if 'bosses' in scenarioSpecials else []
     renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else []
-    result = {"type" : map["type"], "name" : map["name"]}
-    entries = map['results']
+    result = {"type" : mapData["type"], "name" : mapData["name"]}
+    entries = mapData['results']
     tiles = list(filter(lambda e : e['type'] == "tile", entries))
     # First we should try and find tiles    
     if len(tiles) > 0:
         tiles.sort(key= lambda e: e['results'][0]['score'], reverse=True)
         reference = tiles[0]
-        tileNumber = reference['name'].split("-")[0]
+        tileNumber,tileName = getTileNumberAndName(reference['name'])
         tileOrientation = reference['orientation'].split("-")[1]
         if tileNumber in tileInfos:
             tileInfo = tileInfos[tileNumber]
             tileOffset = tileInfo['offset']
+            flipped = True if tileName in ['B','D','F','H','J','L'] else False
+            if flipped and 'offset_flipped' in tileInfo:
+                tileOffset = tileInfo['offset_flipped']
             angle = tileInfo['angle'] if 'angle' in tileInfo else 0
             tileX,tileY = getCenterPoint(reference["results"][0])
             effectiveOrientation = int(tileOrientation) - angle
@@ -280,15 +290,20 @@ def processMap(tileInfos, map, mapTriggers, scenarioSpecials):
             overlayTriggers = list(filter(lambda e: e['target']['type'] == 'overlay', mapTriggers))
             attachOverlayTriggersToOverlays(processed['overlays'], overlayTriggers)
 
+            removeMonsters(processed['monsters'], removedMonsters)
+
             positionToMonsterLevels = mapToPositions(processed['monsterLevels'])
             positionToOverlayTypes = mapToPositions(processed['overlayTypes'])
-            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", filter(lambda e: e['in'] == map["name"] if 'in' in e else True, bosses))
+            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", filter(lambda e: e['in'] == mapData["name"] if 'in' in e else True, bosses))
             addToEntries(processed['overlays'], positionToOverlayTypes, "type")
             attachTriggersToOverlays(processed['overlays'], tokenTriggerLocations)
 
             result["monsters"] = removeScore(processed['monsters'])
             result["overlays"] = removeScore(processed['overlays'])
 
+    globalTriggers = list(map(lambda e: e['data'], filter(lambda e: e['target']['type'] == 'global', mapTriggers)))
+    result['triggers'] = globalTriggers
+    
     return result
 
 def getTileNumberAndName(name):
@@ -381,18 +396,18 @@ with open("tileInfos.json", 'r') as tf:
             removedTiles = scenarioSpecials['remove-tiles'] if 'remove-tiles' in scenarioSpecials else []
             if 'maps' in scenario:
                 mapsOutput = []
-                for map in scenario['maps']:
+                for scenarioMap in scenario['maps']:
                     removed = False
                     for removedMap in removedMaps:
-                        if removedMap['type'] == map['type'] and removedMap['name'] == map['name']:
+                        if removedMap['type'] == scenarioMap['type'] and removedMap['name'] == scenarioMap['name']:
                             removed = True
                     if not removed :
-                        mapTriggers = list(filter(lambda e : e['in']['type'] == map['type'] and e['in']['name'] == map['name'], scenarioTriggers))     
-                        result = processMap(tileInfos, map, mapTriggers, scenarioSpecials)
+                        mapTriggers = list(filter(lambda e : e['in']['type'] == scenarioMap['type'] and e['in']['name'] == scenarioMap['name'], scenarioTriggers))     
+                        result = processMap(tileInfos, scenarioMap, mapTriggers, scenarioSpecials)
                         mapsOutput.append(result)
                 scenarioOutput['maps'] = mapsOutput
             if 'layout' in scenario:                
-                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles)
+                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles)            
             scenariosOutput[id] = scenarioOutput
         with open("out/processedScenarios.human.json", 'w') as fw:
             json.dump(scenariosOutput, fw, indent=2)

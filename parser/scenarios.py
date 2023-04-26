@@ -215,7 +215,8 @@ for id in scenarioIds:
         if id in patches:
             if f"{pageNumber}" in patches[id]:
                 pagePatches = patches[id][f"{pageNumber}"]
-        
+        also = pagePatches['also'] if 'also' in pagePatches else []
+        also = list(map(lambda e: {"name": e}, also))
         results = []
         path = "scenarios/p" if page["type"] == "scenario" else "sections/"
         imgFile = os.path.join(f"assets/pages/{path}{pageNumber}.png")
@@ -334,6 +335,15 @@ for id in scenarioIds:
                         minY = min(minY, max(y + tileInfo["minY"], 0))
                         maxY = max(maxY, min(y + tileInfo["maxY"], h))
 
+            if 'minX' in pagePatches:
+                minX = pagePatches['minX']
+            if 'minY' in pagePatches:
+                minY = pagePatches['minY']
+            if 'maxX' in pagePatches:
+                maxX = pagePatches['maxX']
+            if 'maxY' in pagePatches:
+                maxY = pagePatches['maxY']
+
             if parseLayouts:
                 if pageHasLayout:
                     found = len(scenarioData["layout"]) if "layout" in scenarioData else 0
@@ -347,7 +357,7 @@ for id in scenarioIds:
                 cv.rectangle(out, (minX, minY), (maxX, maxY), (255, 0, 0), 2)
                 img = img[minY:maxY, minX:maxX]
 
-                for monster in scenario['monsters']:
+                for monster in scenario['monsters'] + also:
                     name = monster['name']
                     variants = ['', ' Small']
                     for variant in variants:
@@ -361,10 +371,10 @@ for id in scenarioIds:
                                 results.append(
                                     {"name": name, "type": "monster", "results": result})
 
-                for overlay in scenario['overlays']:
+                for overlay in scenario['overlays'] + also:
                     name = overlay['name']
                     orientations = ["", "-0", "-60", "-90", "-120",
-                                    "-150", "-180", "-240", "-270", "-300"]
+                                    "-150", "-180", "-240", "-270", "-300", "-330"]
                     found = False
                     for orientation in orientations:
                         variants = ["", "-1", "-2", "-3"]
@@ -380,9 +390,6 @@ for id in scenarioIds:
                                 if len(result) > 0:
                                     results.append(
                                         {"name": name, "orientation": orientation, "type": "overlay", "results": result})
-                    if not found:
-                        print(
-                            f"{bcolors.WARNING}Missing overlay template for `{name}` {bcolors.ENDC}")
 
                 # Apply overrides to results
                 applyOverrides(overrides, results)

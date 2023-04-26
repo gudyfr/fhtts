@@ -1882,7 +1882,7 @@
             },
             "data": {
                 "type": "door",
-                "action" : "choice",
+                "action": "choice",
                 "choices": [
                     {
                         "tile": "04-D",
@@ -1919,6 +1919,3036 @@
                         }
                     }
                 ]
+            }
+        }
+    ],
+    "75": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 93
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "99.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "99.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "81.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "99.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "163.2"
+                },
+                "mode": "all"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "163.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "177.2"
+                }
+            }
+        }
+    ],
+    "78": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 97
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "19.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 97
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "59.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "59.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "92.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "92.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "133.5"
+                }
+            }
+        }
+    ],
+    "79": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 98
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "76.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "76.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "d"
+            },
+            "data": {
+                "type": "door",
+                "action": "on-death",
+                "what": {
+                    "type": "section",
+                    "name": "85.3"
+                }
+            }
+        }
+    ],
+    "85": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 106
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "130.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 106
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "110.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "130.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "9"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "82.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "110.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 175.3",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "175.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "110.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 93.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "93.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "110.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "11"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 64.2",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "64.2"
+                }
+            }
+        }
+    ],
+    "86": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 107
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "6.3"
+                }
+            }
+        }
+    ],
+    "87": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 108
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "31.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "31.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "184.6"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "31.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "77.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "31.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "73.1"
+                }
+            }
+        }
+    ],
+    "88": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 109
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "79.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "79.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "25.1"
+                }
+            }
+        }
+    ],
+    "89": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 110
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "83.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "83.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "131.5"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "83.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 36.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "36.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "83.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 119.2",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "119.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "83.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 119.2",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "119.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "131.5"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "146.3"
+                }
+            }
+        }
+    ],
+    "94": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 117
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "20.3"
+                },
+                "locked": true
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 117
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "87.3"
+                },
+                "locked": true
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 117
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 150.2",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "150.2"
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "scenario/117/token/1"
+                    },
+                    {
+                        "action": "unlock",
+                        "what": "scenario/117/token/2"
+                    },
+                    {
+                        "action": "unlock",
+                        "what": "scenario/117/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 117
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {}
+        }
+    ],
+    "95": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 118
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "84.1"
+                },
+                "mode": "all"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "84.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "149.3"
+                }
+            }
+        }
+    ],
+    "98": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 121
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "160.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "160.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "145.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "145.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "131.3"
+                }
+            }
+        }
+    ],
+    "99": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 122
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "locked": true,
+                "what": {}
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 122
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 127.3",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "127.3"
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "scenario/122/token/1"
+                    }
+                ]
+            }
+        }
+    ],
+    "100": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 123
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "141.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "141.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "102.1"
+                }
+            }
+        }
+    ],
+    "101": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 124
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "126.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "126.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "194.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "126.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "171.3"
+                }
+            }
+        }
+    ],
+    "103": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 127
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "30.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 127
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "11.7"
+                }
+            }
+        }
+    ],
+    "104": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 128
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "164.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "164.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "14.2"
+                }
+            }
+        }
+    ],
+    "105": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 129
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "191.3"
+                }
+            }
+        }
+    ],
+    "106": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 130
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "8.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 130
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "184.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 130
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "189.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 130
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "183.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 130
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "29.2"
+                }
+            }
+        }
+    ],
+    "107": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 131
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 168.4",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "168.4"
+                },
+                "also": [
+                    {
+                        "action": "unlock",
+                        "what": "scenario/131/token/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 131
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 150.3",
+                "locked": true,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "150.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "150.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 95.2",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "95.2"
+                },
+                "also": [
+                    {
+                        "action": "unlock",
+                        "what": "section/150.3/token/2"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "150.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "locked": true,
+                "display": "Section 188.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "188.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "188.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            },
+            "data": {
+                "type": "door",
+                "locked": true,
+                "display": "Section 103.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "103.1"
+                },
+                "also": [
+                    {
+                        "action": "unlock",
+                        "what": "section/188.1/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "188.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "locked": true,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "11.5"
+                }
+            }
+        }
+    ],
+    "108": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 132
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "140.1"
+                },
+                "mode": "all"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "140.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "165.5"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "140.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "192.4"
+                }
+            }
+        }
+    ],
+    "109": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "global",
+                "name": 1
+            },
+            "data": {
+                "type": "broadcast",
+                "message": "Read Section 195.2"
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "166.3"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/133/global/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "186.2"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/133/global/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "162.1"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/133/global/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "172.5"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/133/global/1"
+                    }
+                ]
+            }
+        }
+    ],
+    "110": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "182.2"
+                },
+                "mode": "all"
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 133
+            },
+            "target": {
+                "type": "section",
+                "name": "182.2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "138.2"
+                }
+            }
+        }
+    ],
+    "111": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 135
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "182.2"
+                },
+                "mode": "all"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "182.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "138.2"
+                }
+            }
+        }
+    ],
+    "112": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 136
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "97.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "97.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "156.2"
+                }
+            }
+        }
+    ],
+    "113": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 137
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "154.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 137
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "112.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "154.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "188.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "154.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "112.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "112.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "154.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "112.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "146.5"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "146.5"
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "112.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "146.5"
+            },
+            "target": {
+                "type": "token",
+                "name": "6"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "183.2"
+                }
+            }
+        }
+    ],
+    "114": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 138
+            },
+            "target": {
+                "type": "global",
+                "name": "pillars"
+            },
+            "data": {
+                "type": "countDown",
+                "current": 2,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "159.1"
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "scenario/138/token/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 138
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "on-death",
+                "action": "trigger",
+                "what": "scenario/138/global/pillars"
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 138
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {}
+        }
+    ],
+    "117": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 142
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "168.6"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 142
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "36.3"
+                }
+            }
+        }
+    ],
+    "118": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 143
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "125.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "125.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "118.2"
+                }
+            }
+        }
+    ],
+    "119": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 144
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "96.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "96.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "161.2"
+                }
+            }
+        }
+    ],
+    "120": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 145
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "101.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "101.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "157.1"
+                }
+            }
+        }
+    ],
+    "121": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 146
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "115.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "115.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "76.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "76.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 100.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "100.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "76.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 123.1",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "123.1"
+                }
+            }
+        }
+    ],
+    "122": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 147
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "98.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 147
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "152.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "152.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "179.2"
+                },
+                "also": [
+                    {
+                        "action": "lock",
+                        "what": "section/152.1/token/4"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "152.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "172.1"
+                },
+                "also": [
+                    {
+                        "action": "lock",
+                        "what": "section/152.1/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "179.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "5"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "145.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "172.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "6"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "8.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "8.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "goal"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 109.3",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "109.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "145.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "goal"
+            },
+            "data": {
+                "type": "door",
+                "display": "Section 109.3",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "109.3"
+                }
+            }
+        }
+    ],
+    "123": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 148
+            },
+            "target": {
+                "type": "global",
+                "name": "door4"
+            },
+            "data": {
+                "type": "countDown",
+                "current": 2,
+                "action": "unlock",
+                "what": "section/104.2/token/4",
+                "also": [
+                    {
+                        "action": "broadcast",
+                        "message": "Door 4 is now unlocked"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 148
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "104.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "104.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "158.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "104.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "193.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "104.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "locked": true,
+                "what": {
+                    "type": "section",
+                    "name": "128.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "158.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "action": "trigger",
+                "what": "scenario/148/global/door4"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "193.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "action": "trigger",
+                "what": "scenario/148/global/door4"
+            }
+        }
+    ],
+    "124": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 148
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "119.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "119.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "195.3"
+                }
+            }
+        }
+    ],
+    "127": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 153
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "type": "door",
+                "display": "Go Below Deck",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "153.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "153.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            },
+            "data": {
+                "type": "door",
+                "display": "Go Lower Below Deck",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "109.2"
+                }
+            }
+        }
+    ],
+    "128": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "global",
+                "name": "round2"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 2,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "170.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "170.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "round3"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 3,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "152.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "152.2"
+            },
+            "target": {
+                "type": "global",
+                "name": "round4"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 4,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "176.3"
+                }
+            }
+        }
+    ],
+    
+    "129": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "global",
+                "name": "round4"
+            },
+            "data": {
+                "type": "round",
+                "when" : {
+                    "round" : 4,
+                    "state" : 0
+                },             
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "148.5"
+                },
+                "also" : [
+                    {
+                        "action" : "open",
+                        "what" : "scenario/155/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",              
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "156.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",              
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "154.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+            }
+        }
+
+    ],
+    "130": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 158
+            },
+            "target": {
+                "type": "global",
+                "name": "round5"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 5,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "170.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "170.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "round8"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 8,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "87.1"
+                }
+            }
+        }
+    ],
+    "131": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 158
+            },
+            "target": {
+                "type": "global",
+                "name": "round3"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 3,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "120.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 158
+            },
+            "target": {
+                "type": "global",
+                "name": "round5"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 5,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "181.5"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 158
+            },
+            "target": {
+                "type": "global",
+                "name": "round7"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 7,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "185.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 158
+            },
+            "target": {
+                "type": "global",
+                "name": "round7"
+            },
+            "data": {
+                "type": "round",
+                "when": {
+                    "round": 8,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "194.2"
+                }
+            }
+        }
+    ],
+    "133": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 161
+            },
+            "target": {
+                "type": "global",
+                "name": "plates"
+            },
+            "data": {
+                "type": "countDown",
+                "current": "playerCount",
+                "action": "open",
+                "what": "scenario/161/token/3",
+                "also": [
+                    {
+                        "action": "reveal",
+                        "what": {
+                            "type": "section",
+                            "name": "124.2"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 161
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "173.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 161
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "186.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 161
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {}
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "173.3"
+            },
+            "target": {
+                "type": "overlay",
+                "name": "Pressure Plate"
+            },
+            "data": {
+                "type": "door",
+                "action": "trigger",
+                "what": "scenario/161/global/plates"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "186.1"
+            },
+            "target": {
+                "type": "overlay",
+                "name": "Pressure Plate"
+            },
+            "data": {
+                "type": "door",
+                "action": "trigger",
+                "what": "scenario/161/global/plates"
+            }
+        }
+    ],
+    "134": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 163
+            },
+            "target": {
+                "type": "global",
+                "name": "plates"
+            },
+            "data": {
+                "type": "countDown",
+                "current": 4,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "154.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 163
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "33.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 163
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "147.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 163
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "128.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 163
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "44.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "33.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "30.5"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/163/global/plates"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "147.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "data": {
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "30.5"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/163/global/plates"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "128.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "11.6"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/163/global/plates"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "44.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "data": {
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "11.6"
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/163/global/plates"
+                    }
+                ]
+            }
+        }
+    ],
+    "135": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 164
+            },
+            "target": {
+                "type": "global",
+                "name": "platesC"
+            },
+            "data": {
+                "type": "countDown",
+                "current": 2,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "87.2"
+                },
+                "also" : [
+                    {
+                        "action" : "open",
+                        "what" : "scenario/164/token/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 164
+            },
+            "target": {
+                "type": "global",
+                "name": "platesF"
+            },
+            "data": {
+                "type": "countDown",
+                "current": 2,
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "195.1"
+                },
+                "also" : [
+                    {
+                        "action" : "open",
+                        "what" : "section/87.2/token/2"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 164
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "locked" : true,
+                "action": "none",
+                "what": {                
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 164
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            },
+            "data": {
+                "type": "pressure",
+                "mode" : "occupy",
+                "action" : "trigger",
+                "what": "scenario/164/global/platesC"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "87.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "f"
+            },
+            "data": {
+                "type": "pressure",
+                "mode" : "occupy",
+                "action" : "trigger",
+                "what": "scenario/164/global/platesF"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "87.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "locked" : true,
+                "action": "none",
+                "what": {                
+                }         
+            }
+        }
+    ],
+    "136": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 165
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "170.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                    "name": "170.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "180.4"
+                }
+            }
+        }
+    ],
+    "137": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 166
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "191.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                    "name": "191.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "112.2"
+                }
             }
         }
     ]
