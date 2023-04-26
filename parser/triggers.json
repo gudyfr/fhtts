@@ -1065,6 +1065,44 @@
             }
         }
     ],
+    "45": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 53
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "data": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "85.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "85.2"
+            },
+            "target": {
+                "type": "overlay",
+                "name": "Ice Pillar"
+            },
+            "data": {
+                "type": "on-death",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "39.2"
+                }
+            }
+        }
+    ],
     "46": [
         {
             "in": {

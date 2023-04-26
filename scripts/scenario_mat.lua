@@ -5,10 +5,10 @@ require("number_decals")
 hidden_buttons = 1
 debugSnapPoints = false
 relativeStateButtonLocations = {
-    persist = { 0.4, 0.01, -2 },
-    lost = { 1.0, 0.01, -2 },
-    fast = { -0.5, 0.01, -2 },
-    slow = { -0.5, 0.01, -2 }
+    persist = { 0.5, 0.01, -1.7 },
+    lost = { 0.9, 0.01, -1.7 },
+    fast = { -0.4, 0.01, -1.7 },
+    slow = { -0.4, 0.01, -1.7 }
 }
 
 colors = { "Green", "Red", "White", "Blue" }
@@ -140,14 +140,14 @@ function onLoad(state)
     end
 
     -- round actions
-    button_parameters = getButtonParams("onStart", "Start Round", { 4.3, 0.06, -10.25 }, 1150, 400)
+    button_parameters = getButtonParams("onStart", "Start Round", flipX(ScenarioButtons["start"]), 1150, 400)
     self.createButton(button_parameters)
 
-    button_parameters = getButtonParams("onEnd", "End Round", { -4.3, 0.06, -10.25 }, 1150, 400)
+    button_parameters = getButtonParams("onEnd", "End Round", flipX(ScenarioButtons["end"]), 1150, 400)
     self.createButton(button_parameters)
 
     button_parameters = getButtonParams("onCleanup", "Delete all elements on the lighter section of the mat",
-        { -15.5, 0.06, -10.25 }, 1100, 400)
+    flipX(ScenarioButtons["cleanup"]), 1100, 400)
     self.createButton(button_parameters)
 
     if debugSnapPoints then
@@ -231,6 +231,10 @@ function onLoad(state)
 
     updateCharacters()
     -- refreshDecals() -- Called by updateCharacters above
+end
+
+function flipX(position)
+    return {x=-position.x, y=position.y, z=position.z}
 end
 
 function getButtonParams(fName, tooltip, pos, width, height)
@@ -704,11 +708,11 @@ function refreshDecals()
                 if initiativeTypes[color] ~= nil then
                     if initiativeTypes[color] == "Slow" then
                         local decal = getSlowDecal(color, 1)
-                        decal.scale[1] = .8
+                        decal.scale[1] = .5
                         table.insert(decals, decal)
                     elseif initiativeTypes[color] == "Fast" then
                         local decal = getFastDecal(color, 1)
-                        decal.scale[1] = .8
+                        decal.scale[1] = .5
                         table.insert(decals, decal)
                     end
                 end
@@ -778,7 +782,7 @@ function getDecal(color, card, state, image)
         url = image,
         position = position,
         rotation = { 90, 0, 0 },
-        scale = { .35, .35, .35 }
+        scale = { .25, .25, .25 }
     }
 end
 
@@ -1011,6 +1015,8 @@ function locateBoardElementsFromTags()
 
     BackButtons = {}
 
+    ScenarioButtons = {}
+
     for _, point in ipairs(self.getSnapPoints()) do
         local tagsMap = {}
         local tagCount = 0
@@ -1058,6 +1064,12 @@ function locateBoardElementsFromTags()
                 elseif tagsMap["active2"] ~= nil then
                     BackButtons["Active2"] = point.position
                 end
+            elseif tagsMap["start"] ~= nil then
+                ScenarioButtons["start"] = point.position
+            elseif tagsMap["end"] ~= nil then
+                ScenarioButtons["end"] = point.position 
+            elseif tagsMap["cleanup"] ~= nil then
+                ScenarioButtons["cleanup"] = point.position
             end
         end
         if tagsMap["deck"] ~= nil then
@@ -1098,21 +1110,16 @@ function locateBoardElementsFromTags()
             end
         end
 
-        if tagCount == 0 then
-            -- untagged element, if in the upper area of the board,
-            -- then this should be a scenario element point
-            if point.position.z > 5 then
-                table.insert(scenarioElementPositions, self.positionToWorld(point.position))
-            end
+        if tagsMap["scenarioElement"] ~= nil then
+            table.insert(scenarioElementPositions, self.positionToWorld(point.position))
         end
     end
 
     table.sort(scenarioElementPositions, comparePositions)
-    --print(JSON.encode(cardLocations))
 end
 
 function comparePositions(pos1, pos2)
-    if pos1.x < pos2.x then
+    if pos1.z < pos2.z then
         return true
     else
         return false

@@ -676,6 +676,9 @@ function prepareScenario(name, campaign, title)
             if size == 3 then
                -- 3 hex tiles only use 2 wide hexes
                size = 2
+            elseif size == 2 then
+               -- Now that we layout elements vertically, 2 wide elements only take 1 spot
+               size = 1
             end
          end
          currentScenarioElementPosition = currentScenarioElementPosition + size
@@ -825,7 +828,7 @@ function layoutMap(elements, map, scenarioInfo)
                   attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                end
             else
-               print(" could not find object in prepare area")
+               print(" could not find object in prepare area : " .. overlay.name)
             end
          end
       end
