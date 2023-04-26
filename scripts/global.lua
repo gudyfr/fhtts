@@ -40,9 +40,14 @@ end
 
 function refreshScenarioData()
    print("Loading Scenario Data")
-   -- WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
-   WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
-   WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
+   if false then
+      -- Switch to using fh assistant url if defined
+      WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
+      WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
+   else
+      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/scenarios.json", processScenarioData)
+      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios.json", processAdditionalScenarioData)
+   end
 end
 
 function processScenarioData(request)
@@ -1200,45 +1205,46 @@ function onObjectLeaveContainer(container, leave_object)
 end
 
 function setupScenarioPicker()
-   picker = getObjectFromGUID('98c349')
-   prevParameters = {
-      click_function = 'prevPickerPage',
-      label = '<',
-      position = { 0.4, 5.0, 0.4 },
-      rotation = { 0, 180, 0 },
-      width = 50,
-      height = 50,
-      font_size = 50,
-   }
-   picker.createButton(prevParameters)
-
-   nextParameters = {
-      click_function = 'nextPickerPage',
-      label = '>',
-      position = { -0.4, 5.0, 0.4 },
-      rotation = { 0, 180, 0 },
-      width = 50,
-      height = 50,
-      font_size = 50,
-   }
-   picker.createButton(nextParameters)
-
-
-   for i = 1, 10 do
-      self.setVar('chooseScenario' .. i, function() chooseScenario(i) end)
-      buttonParam = {
-         click_function = 'chooseScenario' .. i,
-         label = '.',
-         position = { 0.45, 4.0, 0.37 - 0.082 * i },
+   local picker = getObjectFromGUID('98c349')
+   if picker ~= nil then
+      local prevParameters = {
+         click_function = 'prevPickerPage',
+         label = '<',
+         position = { 0.4, 5.0, 0.4 },
          rotation = { 0, 180, 0 },
-         width = 25,
-         height = 25,
+         width = 50,
+         height = 50,
          font_size = 50,
       }
-      picker.createButton(buttonParam)
+      picker.createButton(prevParameters)
+
+      local nextParameters = {
+         click_function = 'nextPickerPage',
+         label = '>',
+         position = { -0.4, 5.0, 0.4 },
+         rotation = { 0, 180, 0 },
+         width = 50,
+         height = 50,
+         font_size = 50,
+      }
+      picker.createButton(nextParameters)
+
+
+      for i = 1, 10 do
+         self.setVar('chooseScenario' .. i, function() chooseScenario(i) end)
+         buttonParam = {
+            click_function = 'chooseScenario' .. i,
+            label = '.',
+            position = { 0.45, 4.0, 0.37 - 0.082 * i },
+            rotation = { 0, 180, 0 },
+            width = 25,
+            height = 25,
+            font_size = 50,
+         }
+         picker.createButton(buttonParam)
+      end
    end
 
-   --refreshPickerList()
 end
 
 function prevPickerPage()
@@ -1258,19 +1264,22 @@ function nextPickerPage()
 end
 
 function refreshPickerList()
-   description = ""
-   for i = scenarioPickerPage * 10 + 1, scenarioPickerPage * 10 + 10 do
-      scenario = scenarios[i]
-      if scenario ~= nil then
-         description = description .. "     " .. i .. ". " .. scenario.title .. "\n"
-      else
-         description = description .. "     " .. i .. ".\n"
+   local picker = getObjectFromGUID('98c349')
+   if picker ~= nil then
+      description = ""
+      for i = scenarioPickerPage * 10 + 1, scenarioPickerPage * 10 + 10 do
+         scenario = scenarios[i]
+         if scenario ~= nil then
+            description = description .. "     " .. i .. ". " .. scenario.title .. "\n"
+         else
+            description = description .. "     " .. i .. ".\n"
+         end
       end
+      
+      picker.setDescription(description)
+      title = "Scenario Picker (" .. scenarioPickerPage .. " of " .. maxScenarioPickerPage .. ")"
+      picker.setName(title)
    end
-   picker = getObjectFromGUID('98c349')
-   picker.setDescription(description)
-   title = "Scenario Picker (" .. scenarioPickerPage .. " of " .. maxScenarioPickerPage .. ")"
-   picker.setName(title)
 end
 
 function chooseScenario(i)
