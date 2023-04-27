@@ -194,7 +194,7 @@ function toggleCompleted(params)
 end
 
 function toggle(scenario, field)
-    print('toggle ' .. scenario .. " / " .. field)
+    -- print('toggle ' .. scenario .. " / " .. field)
     if ensureState(scenario)[field] then
         scenariosState[scenario][field] = false
     else
