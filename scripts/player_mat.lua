@@ -1,3 +1,6 @@
+
+ItemCardPositions = {}
+
 function onLoad()
   buttonPositions = {}
   cardLocations = {}
@@ -89,9 +92,31 @@ function locateBoardElementsFromTags()
     if tagsMap["character mat"] ~= nil then
       CharacterMatPosition = point.position
     end
+    if tagsMap["item"] ~= nil then
+      table.insert(ItemCardPositions, point.position)
+    end
+    if tagsMap["personal quest"] ~= nil then
+      PersonalQuestCardPosition = point.position
+    end
   end
   table.sort(persistPositions, compareX)
   cardLocations["persist"] = persistPositions
+end
+
+function getItemCardPositions()
+  table.sort(ItemCardPositions, function(a,b) return 30*(a.z-b.z) + b.z - a.z < 0 end)
+  local itemNames = {"hand1", "head", "hand2", "chest", "item1", "feet", "item2", "item3", "item4", "item5"}
+
+  local results = {}
+  for i,name in ipairs(itemNames) do
+    results[name] = self.positionToWorld(ItemCardPositions[i])
+  end
+ 
+  return JSON.encode(results)
+end
+
+function getPersonalQuestCardPosition()
+  return JSON.encode(self.positionToWorld(PersonalQuestCardPosition))
 end
 
 function shiftUp(position, offset)

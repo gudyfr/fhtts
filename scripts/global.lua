@@ -1694,3 +1694,39 @@ function playNarration(params)
       MusicPlayer.play()
    end
 end
+
+Savables = {}
+
+function registerSavable(savable)
+   table.insert(Savables, savable)
+end
+
+function getSave()
+   local save = {}
+   for _,savable in ipairs(Savables) do
+      local partialSave = savable.call("getSave")
+      local copy = JSON.decode(partialSave)
+      for key,value in pairs(copy) do
+         save[key] = value
+      end
+   end
+   return JSON.encode(save)
+end
+
+function loadSave(save)
+   local data = JSON.decode(save)
+   for _,savable in ipairs(Savables) do
+      local name = savable.call("getName")
+      local savableData = data[name]
+      if savableData ~= nil then
+         local encoded = JSON.encode(savableData)
+         savable.call("loadSave", encoded)
+      end      
+   end
+end
+
+function reset()
+   for _,savable in ipairs(Savables) do
+      savable.call("reset")
+   end
+end

@@ -1,16 +1,145 @@
-function onLoad()
+require("savable")
+require("deck_save_helpers")
+require("constants")
+
+-- TODO Fetch Personal Quests Cards from Player mats
+
+Categories = {}
+Categories["Road Events"] = { "Boat", "Summer", "Winter" }
+Categories["Outpost Events"] = { "Personal Quests", "Summer", "Winter" }
+Statuses = { "Inactive", "Active", "Removed" }
+Reset = {}
+Reset["Road Events"] = {}
+Reset["Road Events"]["Summer"] = {}
+Reset["Road Events"]["Summer"]["Inactive"] = { 21, 52 }
+Reset["Road Events"]["Summer"]["Active"] = { 1, 20 }
+Reset["Road Events"]["Winter"] = {}
+Reset["Road Events"]["Winter"]["Inactive"] = { 21, 49 }
+Reset["Road Events"]["Winter"]["Active"] = { 1, 20 }
+
+Reset["Outpost Events"] = {}
+Reset["Outpost Events"]["Summer"] = {}
+Reset["Outpost Events"]["Summer"]["Inactive"] = { 21, 65 }
+Reset["Outpost Events"]["Summer"]["Active"] = { 1, 20 }
+
+Reset["Outpost Events"]["Winter"] = {}
+Reset["Outpost Events"]["Winter"]["Inactive"] = { 21, 81 }
+Reset["Outpost Events"]["Winter"]["Active"] = { 1, 20 }
+Reset["Outpost Events"]["Personal Quests"] = {}
+Reset["Outpost Events"]["Personal Quests"]["Active"] = { 1, 10 }
+
+CardPrefixes = {}
+CardPrefixes["Road Events"] = {}
+CardPrefixes["Road Events"]["Summer"] = "SR-"
+CardPrefixes["Road Events"]["Winter"] = "WR-"
+CardPrefixes["Road Events"]["Boat"] = "B-"
+CardPrefixes["Outpost Events"] = {}
+CardPrefixes["Outpost Events"]["Summer"] = "SO-"
+CardPrefixes["Outpost Events"]["Winter"] = "WO-"
+CardPrefixes["Outpost Events"]["Personal Quests"] = "PQ-"
+
+function createEmptyState()
+    local categories = Categories[Name]
+    local state = {}
+    for _, category in ipairs(categories) do
+        state[category] = {}
+        for _, status in ipairs(Statuses) do
+            state[category][status] = {}
+            if Reset[Name][category] ~= nil then
+                local resetData = Reset[Name][category][status]
+                if resetData ~= nil then
+                    local cardPrefix = CardPrefixes[Name][category]
+                    for i = resetData[1], resetData[2] do
+                        local filler = ""
+                        if i < 10 then
+                            filler = "0"
+                        end
+                        table.insert(state[category][status], cardPrefix .. filler .. i)
+                    end
+                end
+            end
+        end
+    end
+    state["Search"] = {}
+    state["Active"] = {}
+    state.players = {}
+    return state
+end
+
+function getState()
+    local state = {}
+    -- Find all locations
+    table.sort(searchPositions, function(a, b) return 10 * (a.z - b.z) + (b.x - a.x) < 0 end)
+    local categories = Categories[Name]
+    local i = 1
+    for _, category in ipairs(categories) do
+        state[category] = {}
+        for _, status in ipairs(Statuses) do
+            state[category][status] = getCardList(searchPositions[i])
+            i = i + 1
+        end
+    end
+    state["Search"] = getCardList(resultPosition)
+    state["Active"] = getCardList(activePosition)
+    
+    state.players = {}
+    if Name == "Outpost Events" then        
+        for _, player in ipairs(PlayerColors) do
+            local playerMat = Global.call("getPlayerMatExt", { player })
+            if playerMat ~= nil then
+                local personalQuestCardPosition = JSON.decode(playerMat.call("getPersonalQuestCardPosition"))
+                state.players[player] = getCardList(self.positionToLocal(personalQuestCardPosition))
+            end
+        end
+    end
+    return state
+end
+
+function onStateUpdate(state)
+    table.sort(searchPositions, function(a, b) return 10 * (a.z - b.z) + (b.x - a.x) < 0 end)
+    local categories = Categories[Name]
+    local i = 1
+
+    -- Get our restore deck
+    local deck, cardGuids = getRestoreDeck(Name)
+    if deck ~= nil then
+        -- Use the deck to move card/decks into the right locations
+        for _, category in ipairs(categories) do
+            for _, status in ipairs(Statuses) do
+                rebuildDeck(deck, cardGuids, state[category][status], searchPositions[i],
+                    status == "Removed" or category == "Personal Quests")
+                i = i + 1
+            end
+        end
+        rebuildDeck(deck, cardGuids, state["Search"], resultPosition)
+        rebuildDeck(deck, cardGuids, state["Active"], activePosition)
+        if Name == "Outpost Events" then
+            for _, player in ipairs(PlayerColors) do
+                local playerMat = Global.call("getPlayerMatExt", { player })
+                if playerMat ~= nil then
+                    local personalQuestCardPosition = JSON.decode(playerMat.call("getPersonalQuestCardPosition"))
+                    rebuildDeck(deck, cardGuids, state.players[player] or {}, self.positionToLocal(personalQuestCardPosition))
+                end
+            end
+        end
+        destroyObject(deck)
+    end
+end
+
+function onLoadInternal(name, save)
+    Name = name
     searchPositions = {}
-    for _,point in pairs(self.getSnapPoints()) do
+    for _, point in pairs(self.getSnapPoints()) do
         local tagged = false
         local tags = {}
-        for _,tag in ipairs(point.tags) do
+        for _, tag in ipairs(point.tags) do
             tags[tag] = 1
         end
         -- print(JSON.encode(tags))
 
         if tags["input"] ~= nil then
-                createInput(point.position)
-                tagged = true
+            createInput(point.position)
+            tagged = true
         elseif tags["button"] ~= nil then
             if tags["search"] ~= nil then
                 createSearchButton(point.position)
@@ -21,7 +150,7 @@ function onLoad()
                     createPlayBButton(point.position)
                 else
                     createPlayButton(point.position)
-                end                
+                end
             elseif tags["return"] then
                 createReturnButton(point.position)
             end
@@ -38,14 +167,16 @@ function onLoad()
             table.insert(searchPositions, point.position)
         end
     end
+    registerSavable(name)
 end
+
 searchText = ""
 
 function createInput(position)
     local params = {
         input_function = "onTextEdit",
         function_owner = self,
-        position = {-position[1],position[2],position[3]},
+        position = { -position[1], position[2], position[3] },
         scale = { .2, 1, .2 },
         width = 1500,
         height = 250,
@@ -59,26 +190,26 @@ end
 
 function onTextEdit(obj, color, text, selected)
     local len = string.len(text)
-    lastChar = string.sub(text,len,len)
+    lastChar = string.sub(text, len, len)
     if lastChar == "\n" then
-       searchText = string.sub(text, 1, len-1)
-       obj.setValue(searchText)
-       search()
+        searchText = string.sub(text, 1, len - 1)
+        obj.setValue(searchText)
+        search()
     else
         searchText = text
     end
 end
 
 function createPlayButton(position)
-    createButton(position, "playCard" , "Play")
+    createButton(position, "playCard", "Play")
 end
 
 function createPlayAButton(position)
-    createButton(position, "playCard_A" , "Option A")
+    createButton(position, "playCard_A", "Option A")
 end
 
 function createPlayBButton(position)
-    createButton(position, "playCard_B" , "Option B")
+    createButton(position, "playCard_B", "Option B")
 end
 
 function createReturnButton(position)
@@ -86,7 +217,7 @@ function createReturnButton(position)
 end
 
 function createSearchButton(position)
-   createButton(position, "search", "Search")
+    createButton(position, "search", "Search")
 end
 
 function createButton(position, fName, tooltip)
@@ -95,41 +226,42 @@ function createButton(position, fName, tooltip)
         function_owner = self,
         click_function = fName,
         tooltip        = tooltip,
-        position       = {-position[1],position[2],position[3]},
+        position       = { -position[1], position[2], position[3] },
         width          = 200,
         height         = 200,
         font_size      = 50,
-        color          = {1,1,1,0},
-        scale          = {.3, .3, .3},
-        font_color     = {1, 1, 1, 0},
-      }
-      self.createButton(params)
+        color          = { 1, 1, 1, 0 },
+        scale          = { .3, .3, .3 },
+        font_color     = { 1, 1, 1, 0 },
+    }
+    self.createButton(params)
 end
 
 function search()
     if searchText == nil or resultPosition == nil then
         return
     end
-    for _,position in ipairs(searchPositions) do
+    for _, position in ipairs(searchPositions) do
         local hitlist = Physics.cast({
             origin       = self.positionToWorld(position),
-            direction    = {0,1,0},
+            direction    = { 0, 1, 0 },
             type         = 2,
-            size         = {1,1,1},
+            size         = { 1, 1, 1 },
             max_distance = 0,
-            debug        = false })
+            debug        = false
+        })
 
-        for _,result in ipairs(hitlist) do
+        for _, result in ipairs(hitlist) do
             if result.hit_object.tag == "Deck" then
-                for _,obj in ipairs(result.hit_object.getObjects()) do
+                for _, obj in ipairs(result.hit_object.getObjects()) do
                     if obj.name == searchText then
-                        result.hit_object.takeObject({guid=obj.guid, position=self.positionToWorld(resultPosition)})
-                        result.hit_object.highlightOn({r=0,g=1,b=0},2) 
+                        result.hit_object.takeObject({ guid = obj.guid, position = self.positionToWorld(resultPosition) })
+                        result.hit_object.highlightOn({ r = 0, g = 1, b = 0 }, 2)
                     end
                 end
             elseif result.hit_object.tag == "Card" then
-                if result.hit_object.name == searchText then
-                    result.hit_object.setPosition(resultPosition)        
+                if result.hit_object.getName() == searchText then
+                    result.hit_object.setPosition(resultPosition)
                 end
             end
         end
@@ -140,16 +272,17 @@ function getActiveCard()
     if activePosition ~= nil then
         local hitlist = Physics.cast({
             origin       = self.positionToWorld(activePosition),
-            direction    = {0,1,0},
+            direction    = { 0, 1, 0 },
             type         = 2,
-            size         = {1,1,1},
+            size         = { 1, 1, 1 },
             max_distance = 0,
-            debug        = false})
-            for _,h in ipairs(hitlist) do
-                if h.hit_object.tag == "Card" then
-                    return h.hit_object
-                end
+            debug        = false
+        })
+        for _, h in ipairs(hitlist) do
+            if h.hit_object.tag == "Card" then
+                return h.hit_object
             end
+        end
     end
     return nil
 end
@@ -164,7 +297,7 @@ function returnCard()
         elseif type == 'W' then
 
         elseif type == 'B' then
-            
+
         end
     end
 end
@@ -173,7 +306,7 @@ function playCard()
     local activeCard = getActiveCard()
     if activeCard ~= nil then
         local name = activeCard.getName()
-        Global.call("playNarration",{"Events",name})
+        Global.call("playNarration", { "events", name })
     end
 end
 
@@ -181,7 +314,7 @@ function playCard_A()
     local activeCard = getActiveCard()
     if activeCard ~= nil then
         local name = activeCard.getName()
-        Global.call("playNarration",{"Events",name .. "_A"})
+        Global.call("playNarration", { "events", name .. "_A" })
     end
 end
 
@@ -189,6 +322,6 @@ function playCard_B()
     local activeCard = getActiveCard()
     if activeCard ~= nil then
         local name = activeCard.getName()
-        Global.call("playNarration",{"Events",name .. "_B"})
+        Global.call("playNarration", { "events", name .. "_B" })
     end
 end

@@ -1,75 +1,35 @@
 require("json")
+require("savable")
 
-devMode = false
+-- Savable functions
+function getState()
+    return State
+end
+
+function onStateUpdate(state)
+    State = state
+    refreshDecals()
+end
+
+function createEmptyState()
+    return { enabledDecals = {}, buildings = {}, completedDecals = {} }
+end
 
 function onLoad(save)
-    decalInfoUrl =
-    "https://gudyfr.github.io/fhtts/map_decals.json"
+    local decalInfoUrl ="https://gudyfr.github.io/fhtts/map_decals.json"
     if save ~= nil then
-        state = JSON.decode(save)
-        if state ~= nil and state.enabledDecals == nil then
-            -- migrate from previous schema
-            local tmp = {}
-            tmp.enabledDecals = state
-            tmp.buildings = {}
-            state = tmp
-        end
+        State = JSON.decode(save)
     end
-    if state == nil then
-        state = { enabledDecals = {}, buildings = {}, completedDecals = {} }
+    if State == nil then
+        State = createEmptyState()
     end
-    if state.completedDecals == nil then
-        state.completedDecals = {}
-    end
-
-    -- Create dev buttons
-    if devMode then
-        local positions = {}
-        for _, point in ipairs(self.getSnapPoints()) do
-            table.insert(positions, point.position)
-        end
-        table.sort(positions, compareX)
-        if positions[1] ~= nil then
-            local position = positions[1]
-            local params   = {
-                function_owner = self,
-                click_function = "toggleDevMode",
-                label          = "Dev Mode",
-                position       = { -(position.x), position.y, position.z },
-                width          = 200,
-                height         = 200,
-                font_size      = 50,
-                color          = { 1, 1, 1, 1 },
-                scale          = { .3, .3, .3 },
-                font_color     = { 0, 0, 0, 1 },
-                tooltip        = ""
-            }
-            self.createButton(params)
-        end
-        if positions[2] ~= nil then
-            local position = positions[2]
-            local params   = {
-                function_owner = self,
-                click_function = "printLocations",
-                label          = "Print",
-                position       = { -(position.x), position.y, position.z },
-                width          = 200,
-                height         = 200,
-                font_size      = 50,
-                color          = { 1, 1, 1, 1 },
-                scale          = { .3, .3, .3 },
-                font_color     = { 0, 0, 0, 1 },
-                tooltip        = ""
-            }
-            self.createButton(params)
-        end
-    else
-        WebRequest.get(decalInfoUrl, processDecalInfo)
-    end
+    
+    WebRequest.get(decalInfoUrl, processDecalInfo)
+    registerSavable("World Map")
 end
 
 function onSave()
-    return JSON.encode(state)
+    return JSON.encode(State)
 end
 
 function compareX(obj1, obj2)
@@ -80,23 +40,12 @@ function compareX(obj1, obj2)
     end
 end
 
-function toggleDevMode()
-    if devMode then
-        clearButtons()
-    else
-        createButtons()
-    end
-    devMode = not devMode
-    refreshDecals()
-end
-
 function printLocations()
     local decals = self.getDecals()
     print(JSON.encode(decals))
 end
 
 function processDecalInfo(request)
-    -- print("Parsing Map")
     decalInfos = jsonDecode(request.text)
     createButtons()
 end
@@ -132,18 +81,18 @@ function createButtons()
         if outpostData.buildings ~= nil then
             for name, info in pairs(outpostData.buildings) do
                 if info ~= nil then
-                    if state.buildings[name] == nil then
-                        state.buildings[name] = info.min
+                    if State.buildings[name] == nil then
+                        State.buildings[name] = info.min
                     end
                     -- Create a button with the location of the first decal in the list of decals for that building
                     local fName = "change_building_" .. name
                     self.setVar(fName, function(obj, player, alt) change_building(name, alt) end)
 
                     local tooltip
-                    if state.buildings[name] == -1 then
+                    if State.buildings[name] == -1 then
                         tooltip = "Unlock " .. name
                     else
-                        if state.buildings[name] == 0 then
+                        if State.buildings[name] == 0 then
                             tooltip = "Build " .. name .. " (right click to lock)"
                         else
                             tooltip = "Upgrade " .. name .. " (right click to Degrade)"
@@ -174,25 +123,25 @@ function createButtons()
 end
 
 function toggle(entry)
-    if state.enabledDecals[entry.name] ~= nil and state.enabledDecals[entry.name] then
-        state.enabledDecals[entry.name] = false
+    if State.enabledDecals[entry.name] ~= nil and State.enabledDecals[entry.name] then
+        State.enabledDecals[entry.name] = false
     else
-        state.enabledDecals[entry.name] = true
+        State.enabledDecals[entry.name] = true
     end
     refreshDecals()
 end
 
 function complete(entry)
-    if state.completedDecals[entry.name] or false then
-        state.completedDecals[entry.name] = false
+    if State.completedDecals[entry.name] or false then
+        State.completedDecals[entry.name] = false
     else
-        state.completedDecals[entry.name] = true
+        State.completedDecals[entry.name] = true
     end
 end
 
 function change_building(name, alt)
     local info = decalInfos.outpost.buildings[name]
-    local level = state.buildings[name]
+    local level = State.buildings[name]
     local decals = info.decals
     local change
     if alt then
@@ -206,16 +155,16 @@ function change_building(name, alt)
     elseif level - info.min > #decals then
         level = #decals + info.min
     end
-    state.buildings[name] = level
+    State.buildings[name] = level
     refreshDecals()
     local outpost = getObjectFromGUID('756956')
-    outpost.call("setBuildingLevel", {name, level})
+    outpost.call("setBuildingLevel", { name, level })
 end
 
 function setBuildingLevel(params)
     local name = params[1]
     local level = params[2]
-    state.buildings[name] = level
+    State.buildings[name] = level
     refreshDecals()
 end
 
@@ -223,8 +172,8 @@ function toggleDecal(params)
     local name = params[1]
     local on = params[2]
     local completed = params[3] or false
-    state.enabledDecals[name] = on
-    state.completedDecals[name] = completed
+    State.enabledDecals[name] = on
+    State.completedDecals[name] = completed
     refreshDecals()
 end
 
@@ -239,8 +188,8 @@ function refreshDecals()
             -- Scenario decals
             if decalInfos.scenarios ~= nil then
                 for _, entry in ipairs(decalInfos.scenarios) do
-                    if state.enabledDecals[entry.name] or false then
-                        if state.completedDecals[entry.name] or false then
+                    if State.enabledDecals[entry.name] or false then
+                        if State.completedDecals[entry.name] or false then
                             entry.url = entry.completed
                         else
                             entry.url = entry.revealed
@@ -255,12 +204,12 @@ function refreshDecals()
                 -- Buildings
                 if decalInfos.outpost.buildings ~= nil then
                     for building, info in pairs(decalInfos.outpost.buildings) do
-                        if state.buildings[building] == nil then
-                            state.buildings[building] = info.min
+                        if State.buildings[building] == nil then
+                            State.buildings[building] = info.min
                         end
                         local index
-                        if state.buildings[building] ~= info.min then
-                            index = state.buildings[building] - info.min
+                        if State.buildings[building] ~= info.min then
+                            index = State.buildings[building] - info.min
                         end
                         local decal = info.decals[index]
                         if decal ~= nil then
@@ -271,7 +220,7 @@ function refreshDecals()
                 -- Others
                 if decalInfos.outpost.others ~= nil then
                     for _, entry in ipairs(decalInfos.outpost.others) do
-                        if state.enabledDecals[entry.name] ~= nil and state.enabledDecals[entry.name] then
+                        if State.enabledDecals[entry.name] ~= nil and State.enabledDecals[entry.name] then
                             table.insert(stickers, entry)
                         end
                     end

@@ -972,7 +972,7 @@
             {
                 "name": "Snow Rock",
                 "type": "Obstacle",
-                "count": 3
+                "count": 4
             },
             {
                 "name": "Large Snow Rock",
@@ -1038,7 +1038,7 @@
                 "count": 2
             },
             {
-                "name": "Spike Pit",
+                "name": "Bear Trap",
                 "as": "Damage Trap",
                 "type": "Trap",
                 "count": 6
@@ -1920,7 +1920,7 @@
         ],
         "page": 29,
         "sections": [
-            "38.4"
+            "38.4","55.3"
         ],
         "requirements": [
             ""
@@ -5229,7 +5229,7 @@
                 "name": "Large Cave Rock",
                 "type": "Obstacle",
                 "size": 2,
-                "count": 3
+                "count": 2
             },
             {
                 "name": "Large Snow Rock",
@@ -5542,6 +5542,11 @@
                 "name": "City Guard"
             },
             {
+                "name": "City Guard",
+                "as" : "Flaming Sword of Justice",
+                "boss" : true
+            },
+            {
                 "name": "Hound"
             },
             {
@@ -5746,7 +5751,7 @@
             {
                 "name": "Cave Door",
                 "type": "Door",
-                "count": 6
+                "count": 9
             },
             {
                 "name": "Dungeon Door",
@@ -5967,7 +5972,7 @@
             {
                 "name": "Snow Door",
                 "type": "Door",
-                "count": 1
+                "count": 2
             },
             {
                 "name": "Bear Trap",
@@ -6190,7 +6195,7 @@
                 "count": 1
             },
             {
-                "name": "Large Cave Corridor",
+                "name": "Large Dungeon Corridor",
                 "type": "Corridor",
                 "size": 2,
                 "count": 2
@@ -6875,7 +6880,7 @@
             {
                 "name": "Cave Corridor",
                 "type": "Corridor",
-                "count": 5
+                "count": 3
             },
             {
                 "name": "Dungeon Corridor",
@@ -6886,13 +6891,13 @@
                 "name": "Large Cave Corridor",
                 "type": "Corridor",
                 "size": 2,
-                "count": 2
+                "count": 4
             },
             {
                 "name": "Large Dungeon Corridor",
                 "type": "Corridor",
                 "size": 2,
-                "count": 3
+                "count": 4
             },
             {
                 "name": "Water",
@@ -9245,7 +9250,7 @@
             {
                 "name": "Dungeon Door",
                 "type": "Door",
-                "count": 3
+                "count": 4
             },
             {
                 "name": "Metal Door",

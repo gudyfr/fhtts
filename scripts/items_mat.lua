@@ -1,10 +1,113 @@
 require('sorter')
 require('search')
+require('savable')
+require('deck_save_helpers')
+require('constants')
+-- TODO Save cards from player decks
+
+function createEmptyState()
+    return {
+        craftable = {},
+        purchasable = {},
+        other = {},
+        players = {}
+    }
+end
+
+function getState()
+    local result = {}
+    for category, model in pairs(AvailableDecks) do
+        result[category] = getCardList(model.deck)
+    end
+    result["scenario discard"] = getCardList(DiscardedRandomScenarioPosition)
+    result["players"] = {}
+    for _, player in ipairs(PlayerColors) do
+        local playerMat = Global.call("getPlayerMatExt", { player })
+        if playerMat ~= nil then
+            result.players[player] = {}
+            local playerItemCardPositions = JSON.decode(playerMat.call("getItemCardPositions"))
+            for name, position in pairs(playerItemCardPositions) do
+                result.players[player][name] = getCardList(self.positionToLocal(position))
+            end
+        end
+    end
+    return result
+end
+
+function onStateUpdate(state)
+    -- Get the items deck out of the save container
+    deck, cardGuids = getRestoreDeck("Items")
+    if deck ~= nil then
+        -- First we can rebuild our craftable, purchasable and other decks
+        for category, model in pairs(AvailableDecks) do
+            local cards = state[category]
+            table.sort(cards, function(a, b) return a < b end)
+            rebuildDeck(deck, cardGuids, cards, model.deck)
+        end
+        rebuildDeck(deck, cardGuids, state["scenario discard"] or {}, DiscardedRandomScenarioPosition)
+
+        -- Then restore player items
+        for _, player in ipairs(PlayerColors) do
+            local playerMat = Global.call("getPlayerMatExt", { player })
+            if playerMat ~= nil then
+                local playerItemCardPositions = JSON.decode(playerMat.call("getItemCardPositions"))
+                local playerCards = state.players[player] or {}
+                for name, position in pairs(playerItemCardPositions) do
+                    local cardNames = playerCards[name] or {}
+                    rebuildDeck(deck, cardGuids, cardNames, self.positionToLocal(position))
+                end
+            end
+        end
+
+        -- Now we should rebuild all the other decks
+        table.sort(ItemPositions, function(a, b) return 30 * (a.z - b.z) + b.x - a.x < 0 end)
+        local slots = { 0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 58, 65, 82, 119, 128, 137, 146, 155, 159, 163, 167, 192,
+            247, 264 }
+        for i = 1, #slots - 1 do
+            local cardNames = {}
+            for c = slots[i] + 1, slots[i + 1] do
+                local cardName = "" .. c
+                if c < 10 then
+                    cardName = "0" .. cardName
+                end
+                if c < 100 then
+                    cardName = "0" .. cardName
+                end
+                -- Most cards appear twice, and if they don't the 2nd will just be ignored
+                table.insert(cardNames, cardName)
+                table.insert(cardNames, cardName)
+                if c == 245 then
+                    -- There are 4 items # 245
+                    table.insert(cardNames, cardName)
+                    table.insert(cardNames, cardName)
+                end
+            end
+            table.sort(cardNames, function(a, b) return a > b end)
+            rebuildDeck(deck, cardGuids, cardNames, ItemPositions[i], true)
+        end
+
+        -- And finally, we can move the remaining cards, if any, to their place\
+        -- At this point they should all be random scenarios
+        deleteCardsAt(ItemPositions[#slots])
+        if deck ~= nil then
+            if not deck.isDestroyed() then
+                if deck.remainder ~= nil then
+                    deck.remainder.setPosition(self.positionToWorld(shiftUp(ItemPositions[#slots])))
+                    deck.remainder.setRotation({ 0, 180, 180 })
+                else
+                    deck.setPosition(self.positionToWorld(shiftUp(ItemPositions[#slots])))
+                    deck.setRotation({ 0, 180, 180 })
+                end
+            end
+        end
+    end
+end
 
 function onLoad(save)
     locateBoardElementsFromTags()
     Global.call("registerForCollision", self)
     createControls()
+    registerSavable("Items")
 end
 
 function onSave()
@@ -16,6 +119,7 @@ SearchInputPosition = {}
 SearchButtonPosition = {}
 SortInputPosition = {}
 SortResultPosition = {}
+DiscardedRandomScenarioPosition = {}
 
 ScenarioMatZoneGuid = 'e1e978'
 
@@ -53,6 +157,9 @@ function locateBoardElementsFromTags()
                     if tagsMap[key] ~= nil then
                         AvailableDecks[key].deck = position
                     end
+                end
+                if tagsMap['discard'] ~= nil then
+                    DiscardedRandomScenarioPosition = position
                 end
             end
         end
@@ -163,14 +270,14 @@ function clean(str)
 end
 
 function onLayout(category)
-    print('onLayout : ' .. category)
+    -- print('onLayout : ' .. category)
     -- Let's see if we have a deck at the source
     local deck = findDeck(AvailableDecks[category].deck)
     if deck == nil then
         -- We may have layout our deck on the scenario mat, let's get the cards back now
         local cards = findCardsInLayoutArea(category)
-        if #cards > 0  then
-            table.sort(cards, function(a,b) return a.getName() < b.getName() end)
+        if #cards > 0 then
+            table.sort(cards, function(a, b) return a.getName() < b.getName() end)
             -- Bring those cards back into a deck
             local deck = nil
             for _, card in ipairs(cards) do
@@ -180,7 +287,12 @@ function onLayout(category)
                     deck = card
                 end
             end
-            deck.setPosition(self.positionToWorld(shiftUp(AvailableDecks[category].deck)))
+            -- Adding a delay before moving the deck, as it seems that sometimes cards struggle to get in the deck.
+            Wait.time(
+                function()
+                    deck.setPosition(self.positionToWorld(shiftUp(AvailableDecks[category].deck)))
+                end,
+                0.5)
         end
     else
         -- Let's make sure there is nothing in the layout area
@@ -190,16 +302,16 @@ function onLayout(category)
             local w = 1.5
             local h = 2.25
             local cardsToLayout = deck.getObjects()
-            table.sort(cardsToLayout, function(a,b) return a.name < b.name end)
+            table.sort(cardsToLayout, function(a, b) return a.name < b.name end)
 
             local cardCount = #cardsToLayout
-            local width = math.ceil(math.sqrt(cardCount*1.5))
+            local width = math.ceil(math.sqrt(cardCount * 1.5))
             local center = getCenterOfLayoutArea()
-            local xOffset =  width / 2
-            local zOffset =  width / 3 
+            local xOffset = width / 2
+            local zOffset = width / 3
 
-            for _,obj in ipairs(cardsToLayout) do
-                local position = {(x-xOffset)*w + center.x, 1.5, (zOffset-z)*h + center.z}
+            for _, obj in ipairs(cardsToLayout) do
+                local position = { (x - xOffset) * w + center.x, 1.5, (zOffset - z) * h + center.z }
                 x = x + 1
                 if x == width then
                     x = 0
@@ -208,7 +320,7 @@ function onLayout(category)
                 if deck.remainder ~= nil then
                     deck.remainder.setPosition(position)
                 else
-                    deck.takeObject({guid=obj.guid, position=position, smooth = false})
+                    deck.takeObject({ guid = obj.guid, position = position, smooth = false })
                 end
             end
         else
@@ -218,7 +330,7 @@ function onLayout(category)
 end
 
 function shiftUp(position)
-    return {x=position.x, y=position.y + 0.05, z = position.z}
+    return { x = position.x, y = position.y + 0.05, z = position.z }
 end
 
 function getCenterOfLayoutArea()

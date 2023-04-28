@@ -1,4 +1,5 @@
 require("json")
+require("savable")
 
 availableBooks = { "scenario book", "section book", "rulebook" }
 bookModels = {}
@@ -35,28 +36,19 @@ buttonTargets["index"] = 80
 buttonTargets["quick reference"] = 84
 
 function onSave()
-    return JSON.encode(state)
+    return JSON.encode(State)
 end
 
 function onLoad(save)
+    registerSavable("booksMat")
     if save ~= nil then
-        -- print(save)
-        state = JSON.decode(save)
+        State = JSON.decode(save)
     end
-    if state == nil then
-        state = {}
-        for _, book in ipairs(availableBooks) do
-            state[book] = {
-                history = { 1 },
-                historyPosition = 1,
-                historySize = 1,
-                decals = {},
-                checkmarks = {},
-            }
-        end
+    if State == nil then
+        State = createEmptyState()
     end
 
-    for book, bookState in pairs(state) do
+    for book, bookState in pairs(State) do
         goToPage(book, bookState.history[bookState.historyPosition])
     end
 
@@ -76,6 +68,30 @@ function onLoad(save)
 
     WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/rules.json", processDecals)
     WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/checkmarks.json", processCheckmarks)
+end
+
+-- Savable functions
+function createEmptyState()
+    local state = {}
+    for _, book in ipairs(availableBooks) do
+        state[book] = {
+            history = { 1 },
+            historyPosition = 1,
+            historySize = 1,
+            decals = {},
+            checkmarks = {},
+        }
+    end
+    return state
+end
+
+function getState()
+    return State
+end
+
+function onStateUpdate(state)
+    State = state
+    refreshDecals()
 end
 
 function processDecals(request)
@@ -111,7 +127,7 @@ function refreshDecals()
                 local decals = {}
                 local page = subBook.from + obj.Book.getPage()
                 -- print("page : " .. page)
-                local enabledDecals = state[name].decals or {}
+                local enabledDecals = State[name].decals or {}
                 -- print(JSON.encode(enabledDecals))
                 -- rulebook only for the decals
                 if name == "rulebook" then
@@ -162,10 +178,10 @@ function refreshDecals()
                 end
                 local bookCheckmarks = checkmarkInfos[name] or {}
                 local pageCheckmarks = bookCheckmarks["".. page] or {}
-                -- print(JSON.encode(state[name].checkmarks))
+                -- print(JSON.encode(State[name].checkmarks))
                 for i,checkmark in ipairs(pageCheckmarks) do
                     local checkmarkName = getCheckmarkName(checkmark) 
-                    local checked = ((state[name].checkmarks or {})["" .. page] or {})[checkmarkName] or false
+                    local checked = ((State[name].checkmarks or {})["" .. page] or {})[checkmarkName] or false
                     local label = ""
                     if checked then
                         label = "\u{2717}"
@@ -200,10 +216,10 @@ end
 function addRulebookSticker(params)
     local page = params[1]
     local name = "fh-rule-sticker-" .. params[2]
-    local decals = state["rulebook"].decals
+    local decals = State["rulebook"].decals
     if decals == nil then
         decals = {}
-        state["rulebook"].decals = decals
+        State["rulebook"].decals = decals
     end
     decals[name] = true
     changePage("rulebook", page)
@@ -211,10 +227,10 @@ function addRulebookSticker(params)
 end
 
 function toggleDecal(name)
-    local decals = state["rulebook"].decals
+    local decals = State["rulebook"].decals
     if decals == nil then
         decals = {}
-        state["rulebook"].decals = decals
+        State["rulebook"].decals = decals
     end
     -- print(JSON.encode(decals))
     local currentValue = decals[name] or false
@@ -241,9 +257,9 @@ function toggleCompleted(params)
         for page, entries in pairs(checkmarkInfos["scenario book"]) do
             for _,entry in ipairs(entries) do
                 if entry.name == scenario then
-                    -- get the current state
-                    local state = ((state["scenario book"] or {})["checkmarks"] or {})[page] or {}
-                    local checked = state[scenario] or false
+                    -- get the current State
+                    local State = ((State["scenario book"] or {})["checkmarks"] or {})[page] or {}
+                    local checked = State[scenario] or false
                     if checked ~= completed then
                         toggleCheckmark("scenario book", page, scenario)
                     end
@@ -255,10 +271,10 @@ end
 
 function toggleCheckmark(book, page, name)
     local pageName = "" .. page
-    local checkmarksState = state[book].checkmarks
+    local checkmarksState = State[book].checkmarks
     if checkmarksState == nil then
         checkmarksState = {}
-        state[book].checkmarks = checkmarksState
+        State[book].checkmarks = checkmarksState
     end
     local pageState = checkmarksState[pageName]
     if pageState == nil then
@@ -383,7 +399,7 @@ function onEdit(target, obj, color, value, selected)
 end
 
 function rewind(target)
-    local bookState = state[target]
+    local bookState = State[target]
     if bookState ~= nil then
         if bookState.historyPosition > 1 then
             bookState.historyPosition = bookState.historyPosition - 1
@@ -393,7 +409,7 @@ function rewind(target)
 end
 
 function forward(target)
-    local bookState = state[target]
+    local bookState = State[target]
     if bookState ~= nil then
         if bookState.historyPosition < bookState.historySize then
             bookState.historyPosition = bookState.historyPosition + 1
@@ -403,7 +419,7 @@ function forward(target)
 end
 
 function changePage(target, page, value)
-    local bookState = state[target]
+    local bookState = State[target]
     if bookState ~= nil then
         -- avoid updating the history if we end up loading the same page
         if page ~= bookState.history[bookState.historyPosition] then
@@ -441,10 +457,10 @@ function goToPage(target, page, value)
         -- First we need to locate the book
         local currentState = findObject(model)
         if currentState ~= nil then
-            -- Now we need to find the target object / state
+            -- Now we need to find the target object / State
             for idx, entry in ipairs(model) do
                 if page >= entry.from and page <= entry.to then
-                    -- Switch state if needed
+                    -- Switch State if needed
                     if currentState.guid ~= entry.guid then
                         currentState = currentState.setState(idx)
                         Wait.time(function() currentState.Book.setPage(page - entry.from) end, 0.5)

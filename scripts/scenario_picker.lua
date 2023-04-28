@@ -1,4 +1,23 @@
 require("number_decals")
+require("savable")
+
+-- Savable functions
+function getState()
+    return State
+end
+
+function onStateUpdate(state)
+    State = state
+    updateStickers()
+end
+
+function createEmptyState()
+    return {
+        active = "available",
+        page = 1,
+        scenarios = {}
+    }
+end
 
 function onLoad(save)
     if save ~= nil then
@@ -6,14 +25,11 @@ function onLoad(save)
     end
 
     if State == nil then
-        State = {
-            active = "available",
-            page = 1,
-            scenarios = {}
-        }
+        State = createEmptyState()
     end
 
     updateStickers()
+    registerSavable("Scenario Picker")
 end
 
 function onSave()
@@ -21,16 +37,16 @@ function onSave()
 end
 
 function updateStickers()
-     -- Remove all Buttons
-     local btns = self.getButtons() or {}
-     for _, btn in ipairs(btns) do
-         self.removeButton(btn.index)
-     end
+    -- Remove all Buttons
+    local btns = self.getButtons() or {}
+    for _, btn in ipairs(btns) do
+        self.removeButton(btn.index)
+    end
 
     local stickers = {}
     -- Update tabs
     local active = State.active or "available"
-    local tabs = {"available", "completed", "all"}
+    local tabs = { "available", "completed", "all" }
     for index, tab in ipairs(tabs) do
         addTabSticker(stickers, index, tab, active)
         addTabButton(index, tab, active)
@@ -40,14 +56,14 @@ function updateStickers()
     local scenarios = getActiveScenarios()
     table.sort(scenarios, compareNameAsNumber)
     local perPage = 11
-    local pages = math.floor((#scenarios+perPage-1)/perPage)
+    local pages = math.floor((#scenarios + perPage - 1) / perPage)
     local index = 1
     local startIndex = ((State.page or 1) - 1) * perPage + 1
     local endIndex = startIndex + perPage - 1
-    for _,scenario in ipairs(scenarios) do
+    for _, scenario in ipairs(scenarios) do
         if index >= startIndex and index <= endIndex then
-            addScenarioSticker(stickers, index-startIndex+1, scenario)    
-            addScenarioButton(index-startIndex+1,scenario)
+            addScenarioSticker(stickers, index - startIndex + 1, scenario)
+            addScenarioButton(index - startIndex + 1, scenario)
         end
         index = index + 1
     end
@@ -82,9 +98,9 @@ function addTabSticker(stickers, position, name, active)
         index = 1
     end
     local sticker = {
-        position = {TabPositions[position], 0.06, -1.435},
-        scale = {1,.25,.15},
-        rotation = {90,180,0},
+        position = { TabPositions[position], 0.06, -1.435 },
+        scale = { 1, .25, .15 },
+        rotation = { 90, 180, 0 },
         url = TabUrls[name][index],
         name = name .. "_" .. index,
     }
@@ -94,9 +110,9 @@ end
 function addScenarioSticker(stickers, position, name)
     local url = "https://gudyfr.github.io/fhtts/images/stickers/scenario%20picker/" .. name .. ".png"
     local sticker = {
-        position = {0, 0.06, -1.40 + position * 0.25},
-        scale = {3.6,.25,.15},
-        rotation = {90,180,0},
+        position = { 0, 0.06, -1.40 + position * 0.25 },
+        scale = { 3.6, .25, .15 },
+        rotation = { 90, 180, 0 },
         url = url,
         name = "scenario_" .. name,
     }
@@ -109,26 +125,26 @@ function addPagesStickersAndButtons(stickers, page, pages)
     local yPosition = 1.725
 
     local sticker = {
-        position = {0.1, 0.06, yPosition},
-        scale = {.25,.25,.15},
-        rotation = {90,180,0},
-        url = NumberDecals[page+1],
+        position = { 0.1, 0.06, yPosition },
+        scale = { .25, .25, .15 },
+        rotation = { 90, 180, 0 },
+        url = NumberDecals[page + 1],
         name = "page_" .. page,
     }
     table.insert(stickers, sticker)
     sticker = {
-        position = {0, 0.06, yPosition},
-        scale = {.25,.25,.15},
-        rotation = {90,180,0},
+        position = { 0, 0.06, yPosition },
+        scale = { .25, .25, .15 },
+        rotation = { 90, 180, 0 },
         url = "http://cloud-3.steamusercontent.com/ugc/2035105157823185671/49A5CAF0B4E8567D99DBB6736E739F6514244518/",
         name = "slash",
     }
     table.insert(stickers, sticker)
     sticker = {
-        position = {-0.1, 0.06, yPosition},
-        scale = {.25,.25,.15},
-        rotation = {90,180,0},
-        url = NumberDecals[pages+1],
+        position = { -0.1, 0.06, yPosition },
+        scale = { .25, .25, .15 },
+        rotation = { 90, 180, 0 },
+        url = NumberDecals[pages + 1],
         name = "pages_" .. pages,
     }
     table.insert(stickers, sticker)
@@ -136,9 +152,9 @@ function addPagesStickersAndButtons(stickers, page, pages)
     if page ~= 1 then
         -- left arrow sticker and button
         sticker = {
-            position = {0.3, 0.06, yPosition},
-            scale = {.15,.05,.05},
-            rotation = {90,180,0},
+            position = { 0.3, 0.06, yPosition },
+            scale = { .15, .05, .05 },
+            rotation = { 90, 180, 0 },
             url = "http://cloud-3.steamusercontent.com/ugc/2035105157823185573/8BABEE86FE1085D5C001E6DD4EE1F1E040BF6D1D/",
             name = "previous",
         }
@@ -151,7 +167,7 @@ function addPagesStickersAndButtons(stickers, page, pages)
             width          = 200,
             height         = 220,
             font_size      = 100,
-            color          = { 1, 1, 1, 0},
+            color          = { 1, 1, 1, 0 },
             scale          = { 0.5, 1, .25 },
             font_color     = { 0, 0, 0, 100 },
         }
@@ -161,9 +177,9 @@ function addPagesStickersAndButtons(stickers, page, pages)
     if page ~= pages then
         -- right arrow sticker and button
         sticker = {
-            position = {-0.3, 0.06, yPosition},
-            scale = {.15,.05,.05},
-            rotation = {90,180,0},
+            position = { -0.3, 0.06, yPosition },
+            scale = { .15, .05, .05 },
+            rotation = { 90, 180, 0 },
             url = "http://cloud-3.steamusercontent.com/ugc/2035105157823185619/529E35C0294D03A666C9EA9C924105F40F07697F/",
             name = "previous",
         }
@@ -176,7 +192,7 @@ function addPagesStickersAndButtons(stickers, page, pages)
             width          = 200,
             height         = 220,
             font_size      = 100,
-            color          = { 1, 1, 1, 0},
+            color          = { 1, 1, 1, 0 },
             scale          = { 0.5, 1, .25 },
             font_color     = { 0, 0, 0, 100 },
         }
@@ -221,7 +237,7 @@ function addScenarioButton(index, scenario)
         function_owner = self,
         click_function = fName,
         label          = "",
-        position       = { 0, 0.06,  -1.40 + index * 0.25 },
+        position       = { 0, 0.06, -1.40 + index * 0.25 },
         width          = 1600,
         height         = 220,
         font_size      = 100,
@@ -265,7 +281,7 @@ end
 function getActiveScenarios()
     local result = {}
     local active = State.active or "available"
-    for name,scenarioState in pairs(State.scenarios or {}) do
+    for name, scenarioState in pairs(State.scenarios or {}) do
         if scenarioState.available or false then
             if scenarioState.locked or false then
                 -- Only add locked scenarios to "All" tab

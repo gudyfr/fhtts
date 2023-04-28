@@ -1,29 +1,45 @@
 require("json")
+require("savable")
+-- Savable functions
+function getState()
+    return ScenariosState
+end
+
+function onStateUpdate(state)
+    ScenariosState = state
+    refreshDecals()
+    -- Also refresh all buttons
+    self.clearButtons()
+    for id,scenario in pairs(scenarioData) do
+        addButtons(id)
+    end
+end
 
 function load(state, url)
     if state ~= nil then
-        scenariosState = JSON.decode(state)
+        ScenariosState = JSON.decode(state)
     end
 
-    if scenariosState == nil then
-        scenariosState = {}
+    if ScenariosState == nil then
+        ScenariosState = {}
     end
     WebRequest.get(url, processDecals)
+    registerSavable("Campaign Tracker " .. self.getName())
 end
 
 function save()
-    return JSON.encode(scenariosState)
+    return JSON.encode(ScenariosState)
 end
 
 function ensureState(scenario)
-    if scenariosState[scenario] == nil then
-        scenariosState[scenario] = {
+    if ScenariosState[scenario] == nil then
+        ScenariosState[scenario] = {
             unlocked = false,
             completed = false,
             blocked = false,
         }
     end
-    return scenariosState[scenario]
+    return ScenariosState[scenario]
 end
 
 function isUnlocked(scenario)
@@ -196,9 +212,9 @@ end
 function toggle(scenario, field)
     -- print('toggle ' .. scenario .. " / " .. field)
     if ensureState(scenario)[field] then
-        scenariosState[scenario][field] = false
+        ScenariosState[scenario][field] = false
     else
-        scenariosState[scenario][field] = true
+        ScenariosState[scenario][field] = true
     end
 
     refreshDecals()
@@ -226,7 +242,7 @@ function toggle(scenario, field)
     end
 
     -- Always notify the scenario picker of scenario changes
-    local scenarioState = scenariosState[scenario] or {}
+    local scenarioState = ScenariosState[scenario] or {}
     getObjectFromGUID('596fc4').call("updateScenario", {
         string.sub(scenario,3),
         scenarioState.unlocked or false,
