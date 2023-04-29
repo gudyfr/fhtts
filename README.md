@@ -4,7 +4,7 @@ It integrates, and relies heavily on Frosthaven assistant (for monster and loot 
 The goal is to have everything scripted.
 
 # LIMITATIONS
-**There is no mechanism yet to save / load your campaign state other than the built-in mechanism from Tabletop simulator. This mod is going under very frequent updates, and there is currently no way to update to a newer version without reseting your campaign.
+**The mechanism to create a save bundle is completely untested. If you start a campaign, you may not be able to easily update to newer version of this mod.
 At this point your interest in using this mod should be in helping / contributing to finalize it.**
 
 # What's included
@@ -35,4 +35,9 @@ At this point your interest in using this mod should be in helping / contributin
  # What's buggy
   - The automatic scenario layout is still buggy, and many scenarios still need work.
   - Sometimes the overlay stickers showing health / conditions on top of figurines disapear.
+  
+# Installation
+  - Download the save file under [tts saves](https://github.com/gudyfr/fhtts/tree/main/tts%20saves)
+  - Download and build the forked assistant : [X-Haven Assistant](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver)
+  - Enable the web server in the assistant, and start the server.
   
