@@ -1,5 +1,41 @@
 require("json")
 require("number_decals")
+require("savable")
+require("deck_save_helpers")
+
+function getState()
+    local results = {}
+    -- Challenge Cards
+    local challenges = {}
+    for name,position in pairs(ChallengesDestinations) do
+        challenges[name] = getCardList(position)
+    end
+    challenges["Draw"] = getCardList(DrawDecks["Challenges"])
+    results.challenges = challenges
+    return results
+end
+
+function onStateUpdate(state)
+    -- Challenge Cards
+    local deck, guids = getRestoreDeck("Challenges")
+    local challenges = state.challenges or {}
+    if deck ~= nil then
+        for name,position in pairs(ChallengesDestinations) do
+            rebuildDeck(deck, guids, challenges[name],position, false)
+        end
+    end
+    rebuildDeck(deck, guids, challenges["Draw"], DrawDecks["Challenges"], true)
+    destroyObject(deck)
+
+    -- Battle Goals
+    local deck, guids = getRestoreDeck("Battle Goals")
+    if deck ~= nil then
+        deleteCardsAt(DrawDecks["Battle Goals"])
+        deck.setPosition(self.positionToWorld(shiftUp(DrawDecks["Battle Goals"])))
+        deck.setRotation({0,180,180})
+    end
+end
+
 
 -- scenario mat
 hidden_buttons = 1
@@ -33,7 +69,7 @@ end
 
 
 function onLoad(state)
-    self.interactable = false
+    --self.interactable = false
     if state ~= nil then
         local json = JSON.decode(state)
         if json ~= nil then
@@ -231,6 +267,7 @@ function onLoad(state)
 
     updateCharacters()
     -- refreshDecals() -- Called by updateCharacters above
+    registerSavable("Scenario Mat")
 end
 
 function flipX(position)
@@ -342,7 +379,7 @@ function getHitlist(relativePosition)
 end
 
 function findChallengeDestination()
-    for _, candidate in ipairs({ "Active1", "Active2" }) do
+    for _, candidate in ipairs({ "Active1", "Active2", "Active3" }) do
         local hl2 = Physics.cast({
             origin       = self.positionToWorld(ChallengesDestinations[candidate]),
             direction    = { 0, 1, 0 },
@@ -1085,6 +1122,8 @@ function locateBoardElementsFromTags()
                         ChallengesDestinations["Active1"] = point.position
                     elseif tagsMap["active2"] ~= nil then
                         ChallengesDestinations["Active2"] = point.position
+                    elseif tagsMap["active3"] ~= nil then
+                        ChallengesDestinations["Active3"] = point.position
                     elseif tagsMap["discard"] ~= nil then
                         ChallengesDestinations["Discard"] = point.position
                     end

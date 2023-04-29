@@ -1,3 +1,254 @@
+require("savable")
+require("deck_save_helpers")
+require("utils")
+
+CharacterBags = {
+  Boneshaper = 'b56a0c',
+  Geminate = '6bc105',
+  Deathwalker = 'b69379',
+  ["Banner Spear"] = 'b69379',
+  Blinkblade = 'c5507b',
+  Drifter = 'b2ac9c',
+  Snowdancer = 'fd8f2c',
+  ['Crashing Tide'] = '497658',
+  ['Pain Conduit'] = '535a3e',
+  Pyroclast = 'b50df3',
+  ['H.I.V.E.'] = '92f724',
+  Infuser = '620490',
+  ['Frozen Fist'] = 'fd09e5',
+  ['Metal Mosaic'] = 'de636a',
+  Shattersong = 'a6568b',
+  Trapper = '2af71d',
+  Deepwraith = '05457a'
+}
+
+function getState()
+  local state = {}
+  state.characterName = getCharacterName()
+  if state.characterName ~= nil then
+    -- We won't save anything unless we have a character loaded on the mat
+    -- We need to store all ability cards, all attack modifier decks, and the character sheet
+
+    -- Ability Cards
+    table.sort(AbilityCardPositions, XZSorter)
+    local abilityCards = {}
+    abilityCards.discard = getCardList(cardLocations["discard"])
+    abilityCards.lost = getCardList(cardLocations["lost"])
+    local persistCards = {}
+    for _, position in ipairs(cardLocations["persist"]) do
+      table.insert(persistCards, getCardList(position))
+    end
+    abilityCards.persist = persistCards
+    abilityCards.supply = getCardList(cardLocations['supply'])
+    state.abilityCards = abilityCards
+
+    -- Attack Modifiers
+    attackModifiers = {}
+    attackModifiers.draw = getCardList(AttackModifiersDrawPosition)
+    attackModifiers.discard = getCardList(AttackModifiersDiscardPosition)
+    attackModifiers.supply = getCardList(AttackModifiersSupplyPosition)
+    state.attackModifiers = attackModifiers
+
+    -- Perks
+    perks = {}
+    table.sort(PerksPositions, XZSorter)
+    for _, position in ipairs(PerksPositions) do
+      table.insert(perks, getCardList(position))
+    end
+    state.perks = perks
+
+    -- Character sheet
+    local characterSheet = getCharacterSheet()
+    if characterSheet ~= nil then
+      local sheetState = JSON.decode(characterSheet.call("forceSave"))
+      state.characterSheet = sheetState
+    end
+  end
+
+  return state
+end
+
+function onStateUpdate(state)
+  -- print(JSON.encode(state))
+  if state.characterName ~= nil then
+    local characterName = state.characterName
+    -- Get a new character box
+    local characterBagGuid = CharacterBags[characterName]
+    if characterBagGuid ~= nil then
+      local characterBag = getObjectFromGUID(characterBagGuid)
+      if characterBag ~= nil then
+        local position = self.getPosition()
+        position.z = position.z - 8
+        position.y = position.y + 3
+        characterBag.takeObject({
+          position = position,
+          rotation = { 0, 180, 0 },
+          smooth = false,
+          callback_function =
+              function(characterBox)
+                loadCharacterBox(characterBox, state)
+              end
+        })
+      end
+    end
+  else
+    -- We need to clear it all
+    clearBoard(true)
+  end
+end
+
+function loadCharacterBox(characterBox, state)
+  local playerNumber = getPlayerNumber()
+  local characterName = state.characterName
+  -- Ability Cards
+  table.sort(AbilityCardPositions, XZSorter)
+  local deck, guids = getRestoreDeckIn(characterBox, "Ability Cards", false)
+  if deck ~= nil then
+    local abilityCards = state.abilityCards
+    if abilityCards ~= nil then
+      rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"])
+      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"])
+      for i, cards in ipairs(abilityCards.persist) do
+        rebuildDeck(deck, guids, cards, cardLocations["persist"][i])
+      end
+      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"])
+      rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"])
+    else
+      setAtLocalPosition(deck, cardLocations['supply'])
+    end
+  end
+
+  -- Attack Modifiers
+  local deck, guids = getRestoreDeckIn(characterBox, "Attack Modifiers", false)
+  local baseDeck, baseGuids = getRestoreDeck("Attack Modifiers " .. playerNumber)
+  local attackModifiers = state.attackModifiers
+  if attackModifiers ~= nil then
+    rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, false, baseDeck, baseGuids)
+    rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
+      baseGuids)
+    rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
+      baseGuids)
+  else
+    setAtLocalPosition(baseDeck, AttackModifiersDrawPosition)
+    setAtLocalPosition(deck, AttackModifiersSupplyPosition)
+  end
+
+  -- Perks
+  local perks = state.perks
+  local deck, guids = getRestoreDeckIn(characterBox, "Perks", false)
+  table.sort(PerksPositions, XZSorter)
+  if perks ~= nil then
+    if deck ~= nil then
+      for i, position in ipairs(PerksPositions) do
+        rebuildDeck(deck, guids, perks[i], position, i < 3)
+      end
+    end
+  else
+    setAtLocalPosition(deck, PerksPositions[#PerksPositions])
+  end
+
+  -- Clear the non card positions
+  clearBoard(false)
+
+  -- Character sheet
+  local characterSheet = getRestoreObjectIn(characterBox, "CharacterSheet_" .. characterName, false)
+  if characterSheet ~= nil then
+    local sheetState = state.characterSheet
+    if sheetState ~= nil then
+      -- might be hacky
+      characterSheet.script_state = JSON.encode(sheetState)
+    end
+    setAtLocalPosition(characterSheet, CharacterSheetPosition)
+    -- characterSheet.setLock(true)
+  end
+
+  -- Character Mat & figurine (and potential 2nd figurine for the Geminate)
+  for i = 1, 3 do
+    local characterObject = getRestoreObjectIn(characterBox, characterName, false)
+    if characterObject ~= nil then
+      if characterObject.tag == "Tile" then
+        setAtLocalPosition(characterObject, CharacterMatPosition)
+        -- characterObject.setLock(true)
+      else
+        setAtLocalPosition(characterObject, UntaggedPositions[1])
+      end
+    end
+  end
+
+  -- Finish emptying the box
+  local currentToken = 1
+  table.sort(TokenPositions, XZSorter)
+  local currentUntagged = 2
+  local backToBox = {}
+  for _, obj in ipairs(characterBox.getObjects()) do
+    local object = characterBox.takeObject({ guid = obj.guid })
+    if object.hasTag("token") then
+      setAtLocalPosition(object, TokenPositions[currentToken])
+      currentToken = currentToken + 1
+    else
+      if currentUntagged <= #UntaggedPositions then
+        setAtLocalPosition(object, UntaggedPositions[currentUntagged])
+        currentUntagged = currentUntagged + 1
+      else
+        table.insert(backToBox, object)
+      end
+    end
+  end
+  if #backToBox > 0 then
+    for _, object in ipairs(backToBox) do
+      characterBox.putObject(object)
+    end
+    broadcastToAll("Some Summons were left in the character box")
+  end
+end
+
+function clearBoard(includeDecks)
+  includeDecks = includeDecks or false
+  local positionsToClear = { CharacterSheetPosition, CharacterMatPosition }
+  for _, position in ipairs(TokenPositions) do
+    table.insert(positionsToClear, position)
+  end
+  for _, position in ipairs(UntaggedPositions) do
+    table.insert(positionsToClear, position)
+  end
+
+  if includeDecks then
+    table.insert(positionsToClear, AttackModifiersDrawPosition)
+    table.insert(positionsToClear, AttackModifiersDiscardPosition)
+    table.insert(positionsToClear, AttackModifiersSupplyPosition)
+    for name, position in pairs(cardLocations) do
+      if name == "persist" then
+        for _, pos in ipairs(position) do
+          table.insert(positionsToClear, pos)
+        end
+      else
+        table.insert(positionsToClear, position)
+      end
+    end
+  end
+
+  for _, position in ipairs(positionsToClear) do
+    if position ~= nil then
+      local obj = findLocalObject(position)
+      if obj ~= nil then
+        destroyObject(obj)
+      end
+    end
+  end
+end
+
+function getPlayerNumber()
+  if self.getName() == "Green Player Mat" then
+    return 1
+  elseif self.getName() == "Red Player Mat" then
+    return 2
+  elseif self.getName() == "White Player Mat" then
+    return 3
+  elseif self.getName() == "Blue Player Mat" then
+    return 4
+  end
+  return -1
+end
 
 ItemCardPositions = {}
 
@@ -47,56 +298,90 @@ function onLoad()
   end
 
   setDecals()
+  registerSavable(self.getName())
 end
 
 function onObjectCollisionEnter(params)
   local obj = params[2].collision_object
   if obj.hasTag("character mat") then
     Global.call("getScenarioMat").call("updateCharacters")
+  elseif obj.hasTag("character box") then
+    -- move the container out of the mat to avoid conflicts with unpacking it
+    local pos = self.getPosition()
+    pos.y = pos.y + 3
+    pos.z = pos.z - 10
+    obj.setPosition(pos)
+    loadCharacterBox(obj, { characterName = obj.getName() })
   end
 end
+
+TokenPositions = {}
+CharacterSheetPosition = {}
+AbilityCardPositions = {}
+AttackModifiersSupplyPosition = {}
+PerksPositions = {}
+UntaggedPositions = {}
 
 function locateBoardElementsFromTags()
   local persistPositions = {}
   for _, point in ipairs(self.getSnapPoints()) do
     local tagsMap = {}
+    local nbTags = 0
+    local position = point.position
     for _, tag in ipairs(point.tags) do
       tagsMap[tag] = true
+      nbTags = nbTags + 1
     end
 
     if tagsMap["deck"] ~= nil then
       if tagsMap["attack modifier"] ~= nil then
         if tagsMap["draw"] ~= nil then
-          drawLocation = point.position
+          AttackModifiersDrawPosition = position
         elseif tagsMap["discard"] ~= nil then
-          discardLocation = point.position
+          AttackModifiersDiscardPosition = position
+        elseif tagsMap['supply'] ~= nil then
+          AttackModifiersSupplyPosition = position
         end
       end
     end
     if tagsMap["ability card"] ~= nil then
       if tagsMap["discard"] ~= nil then
-        cardLocations["discard"] = point.position
+        cardLocations["discard"] = position
       elseif tagsMap["lost"] ~= nil then
-        cardLocations["lost"] = point.position
+        cardLocations["lost"] = position
       elseif tagsMap["persist"] ~= nil then
-        table.insert(persistPositions, point.position)
+        table.insert(persistPositions, position)
+      elseif tagsMap['supply'] ~= nil then
+        cardLocations["supply"] = position
       end
     end
     if tagsMap["button"] ~= nil then
       if tagsMap["draw"] ~= nil then
-        buttonPositions["draw"] = point.position
+        buttonPositions["draw"] = position
       elseif tagsMap["shuffle"] ~= nil then
-        buttonPositions["shuffle"] = point.position
+        buttonPositions["shuffle"] = position
       end
     end
     if tagsMap["character mat"] ~= nil then
-      CharacterMatPosition = point.position
+      CharacterMatPosition = position
+    end
+    if tagsMap["character sheet"] ~= nil then
+      CharacterSheetPosition = position
+    end
+    if tagsMap["perk"] ~= nil then
+      table.insert(PerksPositions, position)
+    end
+    if tagsMap["token"] ~= nil then
+      table.insert(TokenPositions, position)
     end
     if tagsMap["item"] ~= nil then
-      table.insert(ItemCardPositions, point.position)
+      table.insert(ItemCardPositions, position)
     end
     if tagsMap["personal quest"] ~= nil then
-      PersonalQuestCardPosition = point.position
+      PersonalQuestCardPosition = position
+    end
+    if nbTags == 0 then
+      table.insert(UntaggedPositions, position)
     end
   end
   table.sort(persistPositions, compareX)
@@ -104,14 +389,14 @@ function locateBoardElementsFromTags()
 end
 
 function getItemCardPositions()
-  table.sort(ItemCardPositions, function(a,b) return 30*(a.z-b.z) + b.z - a.z < 0 end)
-  local itemNames = {"hand1", "head", "hand2", "chest", "item1", "feet", "item2", "item3", "item4", "item5"}
+  table.sort(ItemCardPositions, function(a, b) return 30 * (a.z - b.z) + b.x - a.x < 0 end)
+  local itemNames = { "hand1", "head", "hand2", "chest", "item1", "feet", "item2", "item3", "item4", "item5" }
 
   local results = {}
-  for i,name in ipairs(itemNames) do
+  for i, name in ipairs(itemNames) do
     results[name] = self.positionToWorld(ItemCardPositions[i])
   end
- 
+
   return JSON.encode(results)
 end
 
@@ -120,9 +405,7 @@ function getPersonalQuestCardPosition()
 end
 
 function shiftUp(position, offset)
-  if offset == nil then
-    offset = 0.06
-  end
+  offset = offset or 0.5
   return { position.x, position.y + offset, position.z }
 end
 
@@ -136,24 +419,24 @@ end
 
 function draw()
   local hitlist = Physics.cast({
-    origin       = self.positionToWorld(drawLocation),
+    origin       = self.positionToWorld(AttackModifiersDrawPosition),
     direction    = { 0, 1, 0 },
     type         = 2,
     size         = { 1, 1, 1 },
     max_distance = 0,
     debug        = true
-  })   -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
+  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
 
   for i, j in pairs(hitlist) do
     if j.hit_object.tag == "Deck" then
       local card = j.hit_object.takeObject({
-        position = self.positionToWorld(shiftUp(discardLocation, 0.5)),
+        position = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)),
         flip     = true
       })
       Global.call("showDrawnCard", card)
       return card
     elseif j.hit_object.tag == "Card" then
-      j.hit_object.setPosition(self.positionToWorld(shiftUp(discardLocation, 0.5)))
+      j.hit_object.setPosition(self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)))
       j.hit_object.flip()
       Global.call("showDrawnCard", j.hit_object)
       return j.hit_object
@@ -163,49 +446,40 @@ end
 
 function getCharacterName()
   if CharacterMatPosition ~= nil then
-    local hitlist = Physics.cast({
-      origin       = self.positionToWorld(CharacterMatPosition),
-      direction    = { 0, 1, 0 },
-      type         = 2,
-      size         = { 1, 1, 1 },
-      max_distance = 0,
-      debug        = false
-    })
-
-    if hitlist ~= nil then
-      for i, j in pairs(hitlist) do
-        for _, tag in ipairs(j.hit_object.getTags()) do
-          if tag == "character mat" then
-            return j.hit_object.getName()
-          end
-        end
-      end
+    local characterMat = findLocalObject(CharacterMatPosition, "", "character mat")
+    if characterMat ~= nil then
+      return characterMat.getName()
     end
   end
-
   return nil
+end
+
+function getCharacterSheet()
+  if CharacterSheetPosition ~= nil then
+    return findLocalObject(CharacterSheetPosition, "", "character sheet")
+  end
 end
 
 function shuffle()
   local hitlist = Physics.cast({
-    origin       = self.positionToWorld(discardLocation),
+    origin       = self.positionToWorld(AttackModifiersDiscardPosition),
     direction    = { 0, 1, 0 },
     type         = 2,
     size         = { 1, 1, 1 },
     max_distance = 0,
     debug        = true
-  })   -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
+  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
 
   for i, j in pairs(hitlist) do
     if j.hit_object.tag == "Deck" or j.hit_object.tag == "Card" then
       deck = Physics.cast({
-        origin       = self.positionToWorld(drawLocation),
+        origin       = self.positionToWorld(AttackModifiersDrawPosition),
         direction    = { 0, 1, 0 },
         type         = 2,
         size         = { 1, 1, 1 },
         max_distance = 0,
         debug        = false
-      })   -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
+      }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
       local shuffled = false
       for u, v in pairs(deck) do
         if v.hit_object.tag == "Deck" then
@@ -216,7 +490,7 @@ function shuffle()
         end
       end
       if not shuffled then
-        j.hit_object.setPosition(self.positionToWorld(shiftUp(drawLocation, 0.5)))
+        j.hit_object.setPosition(self.positionToWorld(shiftUp(AttackModifiersDrawPosition)))
         j.hit_object.flip()
         j.hit_object.shuffle()
         j.hit_object.shuffle()
@@ -228,13 +502,13 @@ end
 
 function getDiscard()
   local hitlist = Physics.cast({
-    origin       = self.positionToWorld(discardLocation),
+    origin       = self.positionToWorld(AttackModifiersDiscardPosition),
     direction    = { 0, 1, 0 },
     type         = 2,
     size         = { 1, 1, 1 },
     max_distance = 0,
     debug        = false
-  })   -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
+  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
 
   for i, j in pairs(hitlist) do
     if j.hit_object.tag == "Deck" or j.hit_object.tag == "Card" then
@@ -256,11 +530,11 @@ function returnCard(params)
 end
 
 function discardCard(card)
-  card.setPosition(self.positionToWorld(shiftUp(cardLocations["discard"])))
+  card.setPosition(self.positionToWorld(shiftUp(cardLocations["discard"], 0.1)))
 end
 
 function loseCard(card)
-  card.setPosition(self.positionToWorld(shiftUp(cardLocations["lost"])))
+  card.setPosition(self.positionToWorld(shiftUp(cardLocations["lost"], 0.1)))
 end
 
 function persistCard(card)
@@ -283,7 +557,7 @@ function persistCard(card)
     end
 
     if not found then
-      card.setPosition(shiftUp(location))
+      card.setPosition(shiftUp(location, 0.1))
       return
     end
   end
@@ -346,7 +620,7 @@ end
 function cleanup()
   shuffle()
   local hitlist = Physics.cast({
-    origin       = self.positionToWorld(drawLocation),
+    origin       = self.positionToWorld(AttackModifiersDrawPosition),
     direction    = { 0, 1, 0 },
     type         = 2,
     size         = { 1, 1, 1 },
@@ -354,14 +628,14 @@ function cleanup()
     debug        = true
   })
 
-  for _,hit in pairs(hitlist) do
+  for _, hit in pairs(hitlist) do
     if hit.hit_object.tag == "Deck" then
       local deck = hit.hit_object
       local cards = deck.getObjects()
-      for _,card in ipairs(cards) do
-        for _,tag in ipairs(card.tags) do
+      for _, card in ipairs(cards) do
+        for _, tag in ipairs(card.tags) do
           if tag == "player minus 1" or tag == "player curse" or tag == "bless" then
-            local card = deck.takeObject({guid=card.guid})
+            local card = deck.takeObject({ guid = card.guid })
             returnCardToScenarioMat(card)
           end
         end
@@ -416,7 +690,7 @@ function toggleItem(position)
     size         = { 1, 1, 1 },
     max_distance = 0,
     debug        = false
-  })     -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
+  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
 
   local found = false
   for i, j in pairs(hitlist) do
@@ -461,7 +735,7 @@ function addCardToAttackModifiers(params)
   card = params[1]
 
   hitlist = Physics.cast({
-    origin       = self.positionToWorld(drawLocation),
+    origin       = self.positionToWorld(AttackModifiersDrawPosition),
     direction    = { 0, 1, 0 },
     type         = 2,
     size         = { 1, 1, 1 },
@@ -475,5 +749,5 @@ function addCardToAttackModifiers(params)
       return
     end
   end
-  card.setPosition(self.positionToWorld(drawLocation))
+  card.setPosition(self.positionToWorld(AttackModifiersDrawPosition))
 end

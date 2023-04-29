@@ -14,7 +14,7 @@ function getState()
     for name, position in pairs(TownGuardElements.decks) do
         result.townGuards[name] = getCardList(position)
     end
-    print(JSON.encode(result))
+    -- print(JSON.encode(result))
     return result
 end
 

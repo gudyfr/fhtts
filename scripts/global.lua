@@ -1,4 +1,5 @@
 require("json")
+require("constants")
 
 scenarioPickerPage = 0
 minScenarioPickerPage = 0
@@ -11,13 +12,6 @@ characterStandeesBagId = '09c686'
 bossStandeesBagId = '69b1fc'
 scenarioBookId = '5cd351'
 mapTilesBagId = '9cbcab'
-
-playerMats = {
-   Blue  = 'b6aae9',
-   White = '1b07a2',
-   Red   = '24c70e',
-   Green = 'afdfff'
-}
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad()
@@ -46,7 +40,8 @@ function refreshScenarioData()
       WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
    else
       WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/scenarios.json", processScenarioData)
-      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios.json", processAdditionalScenarioData)
+      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios.json",
+         processAdditionalScenarioData)
    end
 end
 
@@ -168,7 +163,7 @@ function getMapTile(mapName, layout)
                if not handled and tileLayout.name == mapName then
                   -- print(JSON.encode(tileLayout))
                   local center = tileLayout.center
-                  
+
                   -- Hacky Fixes, we should fix the assets themselves instead
                   local tileNumber = string.sub(mapName, 1, 2)
                   local tileLetter = string.sub(mapName, 4, 4)
@@ -180,7 +175,7 @@ function getMapTile(mapName, layout)
                   if orientation > 180 then
                      orientation = orientation - 360
                   end
-                  
+
                   clone.setRotation({ 0, -orientation, targetZRot })
                   local hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
                   clone.setPosition({ hx, 1.39, hz })
@@ -530,7 +525,9 @@ function cleanupPrepareArea()
    end
 end
 
-function cleanup(forceDelete)
+function cleanup(forceDelete, noMessage)
+   forceDelete = forceDelete or false
+   noMessage = noMessage or false
    local guids = {}
    local zones = { 'e1e978', '1f0c29' }
    local highlighted = false
@@ -557,16 +554,21 @@ function cleanup(forceDelete)
 
    if deleted then
       -- Notify all player mats to also cleanup their attack modifier decks
-      for color, guid in pairs(playerMats) do
+      for color, guid in pairs(PlayerMats) do
          getObjectFromGUID(guid).call("cleanup")
       end
    end
 
    if highlighted then
-      broadcastToAll("Delete highlighted objects? Press cleanup again.", { r = 1, g = 0, b = 0 })
+      if not noMessage then
+         broadcastToAll("Delete highlighted objects? Press cleanup again.", { r = 1, g = 0, b = 0 })
+      end
+   end
+   if not deleted then
+      Wait.time(cleanupTimeout, 2)
    end
 
-   Wait.time(cleanupTimeout, 2)
+   return deleted
 end
 
 function cleanupTimeout()
@@ -607,7 +609,20 @@ function prepareFrosthavenScenario(name)
 end
 
 function prepareScenario(name, campaign, title)
-   -- print("Requesting scenario '" .. name .. "'")
+   -- This will simply highlight elements which would be destroyed if we were to prepare this scenario (if any)
+   -- However, if the user retries the prepare this scenario, it will delete the current scenario mat and prepare the scenario
+   local deleted = cleanup(false, true)
+   local empty, hasItems = isLayoutAreaEmpty()
+   if hasItems then
+      -- Remove highlights right away
+      cleanupTimeout()
+      broadcastToAll("Scenario Mat has item cards on it. Can't prepare " .. title)
+      return
+   end
+   if not deleted and not empty then
+      broadcastToAll("Scenario Mat is not empty, try again to delete highlighted objects and prepare " .. title)
+      return
+   end
    broadcastToAll("Preparing " .. title)
    cleanupPrepareArea()
    ScenarioTriggers = {
@@ -751,6 +766,23 @@ function prepareScenario(name, campaign, title)
 
       getScenarioMat().call("setScenario", { scenario = title, campaign = campaign })
    end
+end
+
+function isLayoutAreaEmpty()
+   local zone = getObjectFromGUID(ScenarioMatZoneGuid)
+   -- Iterate through object occupying the zone
+   local hasDeletables = doesZoneContain(zone, "deletable")
+   local hasItems = doesZoneContain(zone, "item")
+   return not (hasDeletables or hasItems), hasItems
+end
+
+function doesZoneContain(zone, tag)
+   for _, occupyingObject in ipairs(zone.getObjects(true)) do
+      if occupyingObject.hasTag(tag) then
+         return true
+      end
+   end
+   return false
 end
 
 function layoutScenarioElements(elements, scenarioInfo)
@@ -1244,7 +1276,6 @@ function setupScenarioPicker()
          picker.createButton(buttonParam)
       end
    end
-
 end
 
 function prevPickerPage()
@@ -1275,7 +1306,7 @@ function refreshPickerList()
             description = description .. "     " .. i .. ".\n"
          end
       end
-      
+
       picker.setDescription(description)
       title = "Scenario Picker (" .. scenarioPickerPage .. " of " .. maxScenarioPickerPage .. ")"
       picker.setName(title)
@@ -1290,7 +1321,7 @@ function chooseScenario(i)
 end
 
 function playerDraw(player)
-   playerMatId = playerMats[player.color]
+   playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then
       playerMat = getObjectFromGUID(playerMatId)
       playerMat.call("draw")
@@ -1490,7 +1521,7 @@ function resetDrawnCard()
 end
 
 function playerShuffle(player)
-   playerMatId = playerMats[player.color]
+   playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then
       playerMat = getObjectFromGUID(playerMatId)
       playerMat.call("shuffle")
@@ -1521,7 +1552,7 @@ function isPlayerPresent(color)
 end
 
 function getPlayerMat(player)
-   local playerMatId = playerMats[player.color]
+   local playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then
       return getObjectFromGUID(playerMatId)
    end
@@ -1529,7 +1560,7 @@ function getPlayerMat(player)
 end
 
 function getPlayerMatExt(params)
-   local playerMatId = playerMats[params[1]]
+   local playerMatId = PlayerMats[params[1]]
    if playerMatId ~= nil then
       return getObjectFromGUID(playerMatId)
    end
@@ -1703,10 +1734,10 @@ end
 
 function getSave()
    local save = {}
-   for _,savable in ipairs(Savables) do
+   for _, savable in ipairs(Savables) do
       local partialSave = savable.call("getSave")
       local copy = JSON.decode(partialSave)
-      for key,value in pairs(copy) do
+      for key, value in pairs(copy) do
          save[key] = value
       end
    end
@@ -1715,18 +1746,35 @@ end
 
 function loadSave(save)
    local data = JSON.decode(save)
-   for _,savable in ipairs(Savables) do
+   for i, savable in ipairs(Savables) do
       local name = savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
          local encoded = JSON.encode(savableData)
+         -- Spread the loading across multiple frames
+         -- And also helps in debugging
          savable.call("loadSave", encoded)
-      end      
+      end
    end
 end
 
 function reset()
-   for _,savable in ipairs(Savables) do
+   for _, savable in ipairs(Savables) do
       savable.call("reset")
    end
+end
+
+
+function onObjectPickUp(color, obj)
+   if obj.hasTag("character box") then
+      if #obj.getObjects() == 0 then
+         broadcastToColor("Drop on a player mat to pack that character", color)
+      else
+         broadcastToColor("Drop on a player mat to setup", color)
+      end
+   end
+end
+
+function onObjectDrop(color, obj)
+
 end

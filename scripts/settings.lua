@@ -21,9 +21,9 @@ function onLoad(save)
         { "port", "text" },
         { "enable-end-of-round-looting", "checkbox"},
         { "enable-highlight-current-figurines", "checkbox"},
-        { "enable-highlight-past-figurines", "checkbox"},
         { "enable-highlight-tiles-by-type", "checkbox"},
         { "enable-automatic-scenario-layout", "checkbox"},
+        { "enable-automatic-narration", "checkbox"},
         { "onRefreshData", "button"}
     }
 
@@ -63,7 +63,7 @@ function createInput(point, name)
         color = { 1, 1, 1, 0 },
         font_color = { .2, .24, 0.28, 100 },
         alignment = 3,
-        value = state[name]
+        value = state[name] or ""
     }
     self.createInput(params)
 end
@@ -72,7 +72,7 @@ function createCheckbox(point, name)
     local fName = "onToggle_" .. name
     self.setVar(fName, function(obj, color, alt) onToggle(name) end)
     local label = ""
-    if state[name] then
+    if state[name] or false then
         label = "\u{2717}"
     end
     local params = {

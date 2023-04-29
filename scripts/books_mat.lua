@@ -444,7 +444,7 @@ function changePage(target, page, value)
             -- Debug for now, print the stickers
             local model = bookModels[target]
             local currentState = findObject(model)
-            print(JSON.encode(currentState.getSnapPoints()))
+            -- print(JSON.encode(currentState.getSnapPoints()))
         end
         -- still load the page though, just in case ...
         goToPage(target, page, value)
@@ -506,12 +506,21 @@ function setScenarioPage(params)
     LoadedScenarioNumber = params[2]
     LoadedScenarioType = params[3] or "Scenarios"
     changePage("scenario book", page, value)
+    maybePlayAudio("scenario book")
 end
 
 function setSection(section)
     local page = math.floor(section)
     LoadedSection = section
     changePage("section book", page, section)
+    maybePlayAudio("section book")
+end
+
+function maybePlayAudio(target)
+    local settings = JSON.decode(Global.call("getSettings"))
+    if settings['enable-automatic-narration'] or false then
+        audioPlay(target)
+    end
 end
 
 function audioPlay(target)

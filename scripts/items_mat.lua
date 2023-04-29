@@ -31,6 +31,7 @@ function getState()
             end
         end
     end
+    -- print(JSON.encode(result.players))
     return result
 end
 
@@ -120,8 +121,6 @@ SearchButtonPosition = {}
 SortInputPosition = {}
 SortResultPosition = {}
 DiscardedRandomScenarioPosition = {}
-
-ScenarioMatZoneGuid = 'e1e978'
 
 AvailableDecks = {
     craftable = {
@@ -336,7 +335,6 @@ end
 function getCenterOfLayoutArea()
     local zone = getObjectFromGUID(ScenarioMatZoneGuid)
     local bounds = zone.getBounds()
-    print(JSON.encode(bounds))
     return bounds.center
 end
 
@@ -355,18 +353,11 @@ function findCardsInLayoutArea(category)
 end
 
 function isLayoutAreaEmpty()
-    local zone = getObjectFromGUID(ScenarioMatZoneGuid)
-    -- Iterate through object occupying the zone
-    for _, occupyingObject in ipairs(zone.getObjects(true)) do
-        if occupyingObject.hasTag("item") or occupyingObject.hasTag("deletable") then
-            return false
-        end
-    end
-    return true
+    return Global.call("isLayoutAreaEmpty")
 end
 
 function onSearch()
-    print('onSearch : ' .. SearchText)
+    -- print('onSearch : ' .. SearchText)
     searchCard(SearchText, ItemPositions, SearchResultPosition)
 end
 

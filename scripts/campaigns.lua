@@ -44,7 +44,7 @@ function on_reset()
 end
 
 function onObjectCollisionEnter(obj)
-    print("onObjectCollisionEnter")
+    -- print("onObjectCollisionEnter")
     local hitlist = Physics.cast({
         origin       = self.positionToWorld(LoadPosition),
         direction    = { 0, 1, 0 },
