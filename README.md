@@ -41,3 +41,9 @@ At this point your interest in using this mod should be in helping / contributin
   - Download and build the forked assistant : [X-Haven Assistant](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver)
   - Enable the web server in the assistant, and start the server.
   
+# License & Attribution
+  - This work is distributed under the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  - Frosthaven is owned by [Cephalofair](https://cephalofair.com/pages/frosthaven)
+  - Uses and Integrates with [X-Haven Assistant](https://github.com/Tarmslitaren/FrosthavenAssistant)
+  - Leverages assets from [worldhaven](https://github.com/any2cards/worldhaven)
+  
