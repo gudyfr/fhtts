@@ -98,6 +98,10 @@ function onStateUpdate(state)
 end
 
 function loadCharacterBox(characterBox, state)
+  table.sort(UntaggedPositions, XZSorter)
+  table.sort(TokenPositions, XZSorter)
+  table.sort(PerksPositions, XZSorter)
+
   local playerNumber = getPlayerNumber()
   local characterName = state.characterName
   -- Ability Cards
@@ -111,7 +115,6 @@ function loadCharacterBox(characterBox, state)
       for i, cards in ipairs(abilityCards.persist) do
         rebuildDeck(deck, guids, cards, cardLocations["persist"][i])
       end
-      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"])
       rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"])
     else
       setAtLocalPosition(deck, cardLocations['supply'])
@@ -123,11 +126,15 @@ function loadCharacterBox(characterBox, state)
   local baseDeck, baseGuids = getRestoreDeck("Attack Modifiers " .. playerNumber)
   local attackModifiers = state.attackModifiers
   if attackModifiers ~= nil then
-    rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, false, baseDeck, baseGuids)
+    rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
     rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
       baseGuids)
     rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
+      -- Detroy remaining cards form base deck
+      if baseDeck ~= nil and not baseDeck.isDestroyed() then
+        destroyObject(baseDeck)
+      end
   else
     setAtLocalPosition(baseDeck, AttackModifiersDrawPosition)
     setAtLocalPosition(deck, AttackModifiersSupplyPosition)
@@ -136,11 +143,11 @@ function loadCharacterBox(characterBox, state)
   -- Perks
   local perks = state.perks
   local deck, guids = getRestoreDeckIn(characterBox, "Perks", false)
-  table.sort(PerksPositions, XZSorter)
+  deck.addTag("perk")
   if perks ~= nil then
     if deck ~= nil then
       for i, position in ipairs(PerksPositions) do
-        rebuildDeck(deck, guids, perks[i], position, i < 3)
+        rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
       end
     end
   else
@@ -177,28 +184,34 @@ function loadCharacterBox(characterBox, state)
 
   -- Finish emptying the box
   local currentToken = 1
-  table.sort(TokenPositions, XZSorter)
   local currentUntagged = 2
-  local backToBox = {}
+
+  local itemsLeftInBox = false
   for _, obj in ipairs(characterBox.getObjects()) do
-    local object = characterBox.takeObject({ guid = obj.guid })
-    if object.hasTag("token") then
-      setAtLocalPosition(object, TokenPositions[currentToken])
-      currentToken = currentToken + 1
-    else
-      if currentUntagged <= #UntaggedPositions then
-        setAtLocalPosition(object, UntaggedPositions[currentUntagged])
-        currentUntagged = currentUntagged + 1
-      else
-        table.insert(backToBox, object)
+    local isToken = false
+    for _, tag in ipairs(obj.tags) do
+      if tag == "token" then
+        isToken = true
       end
     end
-  end
-  if #backToBox > 0 then
-    for _, object in ipairs(backToBox) do
-      characterBox.putObject(object)
+    -- Always take out tokens, but only take out other objects (Standees) if we have room
+    if isToken or currentUntagged <= #UntaggedPositions then
+      local destination
+      if isToken then
+        destination = TokenPositions[currentToken]
+        currentToken = currentToken + 1
+      else
+        destination = UntaggedPositions[currentUntagged]
+        currentUntagged = currentUntagged + 1
+      end
+      local object = characterBox.takeObject({ guid = obj.guid, })
+      setAtLocalPosition(object, destination)
+    else
+      itemsLeftInBox = true
     end
-    broadcastToAll("Some Summons were left in the character box")
+  end
+  if itemsLeftInBox then
+    broadcastToAll("Some Summons were left in the " .. characterName .. " character box")
   end
 end
 
@@ -224,6 +237,9 @@ function clearBoard(includeDecks)
       else
         table.insert(positionsToClear, position)
       end
+    end
+    for _,position in ipairs(PerksPositions) do
+      table.insert(positionsToClear, position)
     end
   end
 

@@ -6,14 +6,14 @@ function XZSorter(a, b)
     return 30 * (a.z - b.z) - a.x + b.x < 0
 end
 
-function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, otherGuids)
+function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, otherGuids, cardTransformFunction)
     cardNames = cardNames or {}
     deleteCardsAt(position)
     local deck = nil
     for _, card in ipairs(cardNames) do
         deck = rebuildCardFrom(deck, card, clone, cardGuids)
         if otherDeck ~= nil and otherGuids ~= nil then
-            deck = rebuildCardFrom(deck, card, otherDeck, otherGuids)
+            deck = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
         end
     end
     -- We've rebuilt the deck, move it to the right place
@@ -27,7 +27,7 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
     end
 end
 
-function rebuildCardFrom(deck, card, clone, cardGuids)
+function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
     local guids = cardGuids[card]
     if guids ~= nil then
         if #guids > 0 then
@@ -43,8 +43,11 @@ function rebuildCardFrom(deck, card, clone, cardGuids)
                 })
             else
                 cardObject = clone.remainder
-            end
+            end            
             if cardObject ~= nil then
+                if cardTransformFunction ~= nil then
+                    cardTransformFunction(cardObject)
+                end
                 if deck == nil then
                     deck = cardObject
                 else
@@ -87,7 +90,7 @@ function getCardList(position)
             end
         elseif result.hit_object.tag == "Card" then
             local name = result.hit_object.getName()
-            if name == "Card" then
+            if name == "Card" or name == "" then
                 name = result.hit_object.getDescription()
             end
             table.insert(results, name)

@@ -3,7 +3,6 @@ require('search')
 require('savable')
 require('deck_save_helpers')
 require('constants')
--- TODO Save cards from player decks
 
 function createEmptyState()
     return {
@@ -26,6 +25,7 @@ function getState()
         if playerMat ~= nil then
             result.players[player] = {}
             local playerItemCardPositions = JSON.decode(playerMat.call("getItemCardPositions"))
+            -- print(JSON.encode(playerItemCardPositions))
             for name, position in pairs(playerItemCardPositions) do
                 result.players[player][name] = getCardList(self.positionToLocal(position))
             end
@@ -48,11 +48,14 @@ function onStateUpdate(state)
         rebuildDeck(deck, cardGuids, state["scenario discard"] or {}, DiscardedRandomScenarioPosition)
 
         -- Then restore player items
-        for _, player in ipairs(PlayerColors) do
-            local playerMat = Global.call("getPlayerMatExt", { player })
+        for color, playerMatGuid in pairs(PlayerMats) do
+            local playerMat = getObjectFromGUID(playerMatGuid)
             if playerMat ~= nil then
-                local playerItemCardPositions = JSON.decode(playerMat.call("getItemCardPositions"))
-                local playerCards = state.players[player] or {}
+                -- print(color .. " player mat found, to restore : " .. JSON.encode(state.players[color]))
+                local positionsJson = playerMat.call("getItemCardPositions")
+                -- print("At : " .. positionsJson)
+                local playerItemCardPositions = JSON.decode(positionsJson)
+                local playerCards = state.players[color] or {}
                 for name, position in pairs(playerItemCardPositions) do
                     local cardNames = playerCards[name] or {}
                     rebuildDeck(deck, cardGuids, cardNames, self.positionToLocal(position))

@@ -81,7 +81,7 @@ function getState()
     end
     state["Search"] = getCardList(resultPosition)
     state["Active"] = getCardList(activePosition)
-    
+
     state.players = {}
     if Name == "Outpost Events" then        
         for _, player in ipairs(PlayerColors) do
@@ -126,8 +126,8 @@ function onStateUpdate(state)
     end
 end
 
-function onLoadInternal(name, save)
-    Name = name
+function onLoad(save)
+    Name = self.getName()
     searchPositions = {}
     for _, point in pairs(self.getSnapPoints()) do
         local tagged = false
@@ -167,7 +167,7 @@ function onLoadInternal(name, save)
             table.insert(searchPositions, point.position)
         end
     end
-    registerSavable(name)
+    registerSavable(Name)
 end
 
 searchText = ""

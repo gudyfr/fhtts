@@ -2,12 +2,13 @@ require("json")
 require("number_decals")
 require("savable")
 require("deck_save_helpers")
+require("utils")
 
 function getState()
     local results = {}
     -- Challenge Cards
     local challenges = {}
-    for name,position in pairs(ChallengesDestinations) do
+    for name, position in pairs(ChallengesDestinations) do
         challenges[name] = getCardList(position)
     end
     challenges["Draw"] = getCardList(DrawDecks["Challenges"])
@@ -17,25 +18,48 @@ end
 
 function onStateUpdate(state)
     -- Challenge Cards
-    local deck, guids = getRestoreDeck("Challenges")
     local challenges = state.challenges or {}
-    if deck ~= nil then
-        for name,position in pairs(ChallengesDestinations) do
-            rebuildDeck(deck, guids, challenges[name],position, false)
+    local hasChallenges = false
+    for _,cards in pairs(challenges) do
+        if #cards > 0 then
+            hasChallenges = true
         end
     end
-    rebuildDeck(deck, guids, challenges["Draw"], DrawDecks["Challenges"], true)
-    destroyObject(deck)
+    if hasChallenges then
+        local deck, guids = getRestoreDeck("Challenges")
+        if deck ~= nil then
+            for name, position in pairs(ChallengesDestinations) do
+                rebuildDeck(deck, guids, challenges[name], position, false)
+            end
+        end
+        rebuildDeck(deck, guids, challenges["Draw"], DrawDecks["Challenges"], true)
+        -- All cards should have been used, so keep on the scenario mat the unused ones
+        -- destroyObject(deck)
+    else
+        -- We don't need to bring the deck out, but we should clear the cards if they are on the board
+        for name, position in pairs(ChallengesDestinations) do
+            deleteCardsAt(position)
+        end
+        deleteCardsAt(DrawDecks["Challenges"])
+    end
+
+    -- Minus Ones, Blesses and Curses decks
+    for name, position in pairs(deckPositions) do
+        -- print(name .. " : " .. JSON.encode(position))
+        local deck, guids = getRestoreDeck(name)
+        if deck ~= nil then
+            deleteCardsAt(position)
+            setAtLocalPosition(deck, position)
+        end
+    end
 
     -- Battle Goals
     local deck, guids = getRestoreDeck("Battle Goals")
     if deck ~= nil then
         deleteCardsAt(DrawDecks["Battle Goals"])
-        deck.setPosition(self.positionToWorld(shiftUp(DrawDecks["Battle Goals"])))
-        deck.setRotation({0,180,180})
+        setAtLocalPosition(deck, DrawDecks["Battle Goals"], true)
     end
 end
-
 
 -- scenario mat
 hidden_buttons = 1
@@ -183,7 +207,7 @@ function onLoad(state)
     self.createButton(button_parameters)
 
     button_parameters = getButtonParams("onCleanup", "Delete all elements on the lighter section of the mat",
-    flipX(ScenarioButtons["cleanup"]), 1100, 400)
+        flipX(ScenarioButtons["cleanup"]), 1100, 400)
     self.createButton(button_parameters)
 
     if debugSnapPoints then
@@ -223,11 +247,11 @@ function onLoad(state)
 
         if isDeck then
             if isCurse then
-                deckPositions["player curse"] = point.position
+                deckPositions["Player Curses"] = point.position
             elseif isBless then
-                deckPositions["bless"] = point.position
+                deckPositions["Blesses"] = point.position
             elseif isPlayerMinus1 then
-                deckPositions["player minus 1"] = point.position
+                deckPositions["Player Minus Ones"] = point.position
             end
         else
             if color ~= nil then
@@ -271,7 +295,7 @@ function onLoad(state)
 end
 
 function flipX(position)
-    return {x=-position.x, y=position.y, z=position.z}
+    return { x = -position.x, y = position.y, z = position.z }
 end
 
 function getButtonParams(fName, tooltip, pos, width, height)
@@ -456,15 +480,15 @@ function createActionButton(action, color, position)
 end
 
 function onBless(color)
-    moveCardFromTo("bless", color)
+    moveCardFromTo("Blesses", color)
 end
 
 function onCurse(color)
-    moveCardFromTo("player curse", color)
+    moveCardFromTo("Player Curses", color)
 end
 
 function onMinus1(color)
-    moveCardFromTo("player minus 1", color)
+    moveCardFromTo("Player Minus Ones", color)
 end
 
 function moveCardFromTo(deck, color)
@@ -508,11 +532,11 @@ end
 function returnCard(params)
     card = params[1]
     if card.hasTag("bless") then
-        returnCardTo(card, deckPositions["bless"])
+        returnCardTo(card, deckPositions["Blesses"])
     elseif card.hasTag("player curse") then
-        returnCardTo(card, deckPositions["player curse"])
+        returnCardTo(card, deckPositions["Player Curses"])
     elseif card.hasTag("player minus 1") then
-        returnCardTo(card, deckPositions["player minus 1"])
+        returnCardTo(card, deckPositions["Player Minus Ones"])
     end
 end
 
@@ -1104,7 +1128,7 @@ function locateBoardElementsFromTags()
             elseif tagsMap["start"] ~= nil then
                 ScenarioButtons["start"] = point.position
             elseif tagsMap["end"] ~= nil then
-                ScenarioButtons["end"] = point.position 
+                ScenarioButtons["end"] = point.position
             elseif tagsMap["cleanup"] ~= nil then
                 ScenarioButtons["cleanup"] = point.position
             end

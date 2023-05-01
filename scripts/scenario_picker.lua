@@ -80,7 +80,7 @@ end
 TabPositions = { 1.2, 0, -1.2 }
 TabUrls = {
     available = {
-        "http://cloud-3.steamusercontent.com/ugc/2035105157823188234/64E5E4B8C391B2F4A1A891835A5CC70A3E83A17A/,",
+        "http://cloud-3.steamusercontent.com/ugc/2035105157823188234/64E5E4B8C391B2F4A1A891835A5CC70A3E83A17A/",
         "http://cloud-3.steamusercontent.com/ugc/2035105157823188104/1F91FAE60DA82460FEFD95754DF871AA4FA058DA/" },
     completed = {
         "http://cloud-3.steamusercontent.com/ugc/2035105157823188190/2342C867E3081E4D2B2582FB537770F54435D1C2/",
