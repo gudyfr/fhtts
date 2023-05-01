@@ -133,5 +133,5 @@ end
 
 
 function getSettings()
-    return JSON.encode(state)
+    return JSON.encode(state or {})
 end

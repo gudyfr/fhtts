@@ -463,7 +463,7 @@ function goToPage(target, page, value)
                     -- Switch State if needed
                     if currentState.guid ~= entry.guid then
                         currentState = currentState.setState(idx)
-                        Wait.time(function() currentState.Book.setPage(page - entry.from) end, 0.5)
+                        getObjectFromGUID(entry.guid).setLuaScript("function onLoad() Wait.time(function() self.Book.setPage(" .. (page - entry.from) .. ") end, 0.1, 5) end")
                     else
                         currentState.Book.setPage(page - entry.from)
                     end

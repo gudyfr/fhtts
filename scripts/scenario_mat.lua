@@ -93,7 +93,7 @@ end
 
 
 function onLoad(state)
-    --self.interactable = false
+    self.interactable = false
     if state ~= nil then
         local json = JSON.decode(state)
         if json ~= nil then

@@ -1614,6 +1614,18 @@ function toggleControls()
    end
 end
 
+function toggleUI()
+   if UI.getAttribute("ui", "active") == "false" then
+      UI.setAttribute("ui", "active", "true")
+      UI.setAttribute("uiLayout", "height", "825")
+      UIEnabled = true
+   else
+      UI.setAttribute("ui", "active", "false")
+      UI.setAttribute("uiLayout", "height", "25")
+      UIEnabled = false
+   end
+end
+
 function onObjectDestroy(object)
    if object.hasTag("tracked") then
       getScenarioMat().call('unregisterStandee', object)
@@ -1685,7 +1697,11 @@ function onObjectCollisionExit(hit_object, collision_info)
 end
 
 function getSettings()
-   return getObjectFromGUID('1a09ac').call("getSettings") or "{}"
+   local settingsMat = getObjectFromGUID('1a09ac')
+   if settingsMat ~= nil then
+      return settingsMat.call("getSettings") or "{}"
+   end
+   return "{}"
 end
 
 function sortHand(color)
