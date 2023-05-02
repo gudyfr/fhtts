@@ -50,7 +50,7 @@ The Scenario Picker shows available scenarios. You can also start a scenario fro
 ## Setting up a Scenario
 Once you load a scenario, it should be layed out automatically. **Some scenarios are not currently properly handled, and when this is the case, simply uncheck the "Automatic Scenario Layout" under Settings", try again, and manually setup the scenario. Its elements will still be provided to you.**  
 ![](images/tts_layed_out_scenario_zero.png)  
-Some components of a Scenario are actionable **The scripting of scenarios is not 100% complete, and in the even the scenario you're playing isn't complete, you will need to manually layout the subsequent rooms**  
+Some components of a Scenario are actionable **The scripting of scenarios is not 100% complete, and in the event the scenario you're playing isn't complete, you will need to manually layout the subsequent rooms.**  
 Starting locations can be clicked to make them all disapear  
 ![](images/tts_start_location.png)  
 Doors can be clicked to open them and reveal the next room  
@@ -61,17 +61,17 @@ In some scenarios, the pressure plates (or tokens) have been scripted, and a cha
 ### Overall round process
 For each round, you want to first place your ability cards on the Scenario mat, either using key bindings or simply dropping them at the right location.  
 ![](images/tts_start_round_button.png)  
-Then, once everyone is ready, you can press the "Start" button to reveal the cards. The initiative should be sent to X-Haven Assistant, which will now display the turn order.
+Then, once everyone is ready, you can press the "Start" button to reveal the cards. The initiative should be sent to X-Haven Assistant, which will now display the turn order.  
 ![](images/tts_round_started.png)  
 ![](images/xhaven_round_started.png)  
-Track the progress of the round in X-Haven assistant, and at the end of the round, you want to end the round from TTS, by pressing the "End" button.
+Track the progress of the round in X-Haven assistant, and at the end of the round, you want to end the round from TTS, by pressing the "End" button.  
 ![](images/tts_end_round_button.png)  
 Ability Cards are automatically returned to the appropriate Player mat, at the correct location  
-If a card was used as a persistent ability, or a loss, simply click the appropriate toggle **before** ending the round.
-![](images/tts_return_card_states.png)
-It should be sent to the appropriate location as well
+If a card was used as a persistent ability, or a loss, simply click the appropriate toggle **before** ending the round.  
+![](images/tts_return_card_states.png)  
+It should be sent to the appropriate location as well  
 ![](images/tts_cards_returned.png)  
-**It is currently required that you Start and End rounds from TTS. Doing so from X-Haven Assistant will not work.**
+**It is currently required that you Start and End rounds from TTS. Doing so from X-Haven Assistant will not work.**  
 
 ### Attack modidiers
 On the side of the TTS window, there is a toggle button to enable the Attack Modifier UI  
@@ -81,10 +81,11 @@ Clicking it will expand / collapse the Attack Modifier UI
 Clicking the Draw button will draw an attack modifier card for the player who pressed the button, and will display the results to all players.  
 ![](images/tts_am_ui_drawn.png)  
 Monsters and Allies Attack Modifiers should be drawn from the X-Haven Assistant UI.  
+The deck is shuffled automatically when needed. In addition Curse and Bless cards are automatically returned to their appropriate decks at the end of each round. Minus one Cards are returned to their appropriate deck whenever a "Cleanup" occurs.
 
 ### Looting
 If a monster dies it will drop a loot token (unless there are specials rules to prevent this, in which case it might drop nothing, or the appropriate item/overlay)  
 ![](images/tts_enemy_as_loot.png)  
-If a character is on top of a loot token at the end its round, the loot token will be automatically looted. **Use the Assistant UI to end a chracter round. For the loot to work, the character had to be active in the assistant, ie skipping a character's turn will result in looting not working for that character**  
-![](images/tts_figure_standing_on_loot.png)
-![](images/xhaven_end_round.png)
+If a character is on top of a loot token at the end its round, the loot token will be automatically looted. **Use the Assistant UI to end a chracter round. For the loot to work, the character had to be active in the assistant, ie skipping a character's turn will result in looting not working for that character.**  
+![](images/tts_figure_standing_on_loot.png)  
+![](images/xhaven_end_round.png)  
