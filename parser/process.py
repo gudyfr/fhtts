@@ -125,6 +125,9 @@ def removeTriggers(entries, mapTriggers):
                     if 'selfTarget' in target and target['selfTarget']:
                         if 'random' in trigger:
                             entry['random'] = trigger['random']
+                        if 'trigger' in trigger:
+                            for position in entry['positions']:
+                                position['trigger'] = trigger['trigger']
                     else:
                         entries.remove(entry)
                         for position in entry['positions']:

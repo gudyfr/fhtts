@@ -458,6 +458,132 @@
             }
         }
     ],
+    "16": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 21
+            },
+            "target": {
+                "type": "global",
+                "name": "round2"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 2,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "90.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 21
+            },
+            "target": {
+                "type": "global",
+                "name": "round4"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 4,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "27.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 21
+            },
+            "target": {
+                "type": "global",
+                "name": "round7"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 7,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "44.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 21
+            },
+            "target": {
+                "type": "global",
+                "name": "round9"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 9,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "15.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 21
+            },
+            "target": {
+                "type": "global",
+                "name": "round12"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 12,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "39.1"
+                },
+                "also" : [
+                    {
+                        "action" : "addTrigger",
+                        "what" : "scenario/21/global/enemiesdead",
+                        "trigger" : {
+                            "type" : "alldead",
+                            "action" : "reveal",
+                            "what" : {
+                                "type": "section",
+                                "name": "48.2"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "17": [
         {
             "in": {
@@ -3095,22 +3221,17 @@
             },
             "target": {
                 "type": "token",
-                "name": "a"
+                "name": "a",
+                "selfTarget": true
             },
             "trigger": {
-                "type": "door",
+                "type": "pressure",
                 "display": "Section 168.4",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "168.4"
-                },
-                "also": [
-                    {
-                        "action": "unlock",
-                        "what": "scenario/131/token/1"
-                    }
-                ]
+                }
             }
         },
         {
@@ -3124,13 +3245,42 @@
             },
             "trigger": {
                 "type": "door",
-                "display": "Section 150.3",
                 "locked": true,
+                "what": {}
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "168.4"
+            },
+            "target": {
+                "type": "global",
+                "name": "room1enemies"
+            },
+            "trigger": {
+                "type": "alldead",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "150.3"
-                }
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "scenario/131/token/1"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "168.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
             }
         },
         {
@@ -3140,22 +3290,17 @@
             },
             "target": {
                 "type": "token",
-                "name": "b"
+                "name": "b",
+                "selfTarget": true
             },
             "trigger": {
-                "type": "door",
+                "type": "pressure",
                 "display": "Section 95.2",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "95.2"
-                },
-                "also": [
-                    {
-                        "action": "unlock",
-                        "what": "section/150.3/token/2"
-                    }
-                ]
+                }
             }
         },
         {
@@ -3170,12 +3315,41 @@
             "trigger": {
                 "type": "door",
                 "locked": true,
-                "display": "Section 188.1",
+                "what": {}
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "95.2"
+            },
+            "target": {
+                "type": "global",
+                "name": "room2enemies"
+            },
+            "trigger": {
+                "type": "alldead",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "188.1"
-                }
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "section/150.3/token/2"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "95.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
             }
         },
         {
@@ -3185,23 +3359,17 @@
             },
             "target": {
                 "type": "token",
-                "name": "c"
+                "name": "c",
+                "selfTarget": true
             },
             "trigger": {
-                "type": "door",
-                "locked": true,
-                "display": "Section 103.1",
+                "type": "pressure",
+                "dedupMode": "first",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "103.1"
-                },
-                "also": [
-                    {
-                        "action": "unlock",
-                        "what": "section/188.1/token/3"
-                    }
-                ]
+                }
             }
         },
         {
@@ -3216,10 +3384,130 @@
             "trigger": {
                 "type": "door",
                 "locked": true,
+                "what": {}
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "103.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "room3enemies"
+            },
+            "trigger": {
+                "type": "alldead",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "11.5"
+                },
+                "also": [
+                    {
+                        "action": "attachTrigger",
+                        "what": "section/188.1/token/c",
+                        "trigger": {
+                            "type": "pressure",
+                            "dedupMode": "first",
+                            "action": "reveal",
+                            "what": {
+                                "type": "section",
+                                "name": "155.1"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "103.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "11.5"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "155.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "155.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "room3enemies2"
+            },
+            "trigger": {
+                "type": "alldead",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "149.4"
+                },
+                "also": [
+                    {
+                        "action": "open",
+                        "what": "section/188.1/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "149.4"
+            },
+            "target": {
+                "type": "token",
+                "name": "d",
+                "selfTarget": true
+            },
+            "trigger": {
+                "type": "pressure",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "116.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "116.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "room4ennemies"
+            },
+            "trigger": {
+                "type": "alldead",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "188.3"
                 }
             }
         }

@@ -645,6 +645,11 @@ function prepareScenario(name, campaign, title)
       triggered = {},
       triggersById = {}
    }
+
+   -- Used to avoid adding the same door twice
+   ScenarioDoors = {
+   }
+
    scenarioBag = getObjectFromGUID('cd31b5')
    scenarioBag.reset()
    settings = JSON.decode(getSettings())
@@ -881,22 +886,29 @@ function layoutMap(elements, map, scenarioInfo)
                if position.rename ~= nil then
                   name = position.rename
                end
-               local obj = locateScenarioElementWithName(name, objects, true, nameMappings)
-               if obj ~= nil then
-                  local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-                  obj.setPosition({ x, 1.44, z })
-                  local orientation = overlay.orientation
-                  if orientation > 180 then
-                     orientation = orientation - 360
-                  end
-                  obj.setRotation({ 0, -orientation, 0 })
+               local hx = position.x + origin.x
+               local hy = position.y + origin.y
+               if position.type ~= "Door" or ScenarioDoors[hx .. "," .. hy] == nil then
+                  local obj = locateScenarioElementWithName(name, objects, true, nameMappings)
+                  if obj ~= nil then
+                     local x, z = getWorldPositionFromHexPosition(hx, hy)
+                     if position.type == "Door" then
+                        ScenarioDoors[hx .. "," .. hy] = true
+                     end
+                     obj.setPosition({ x, 1.44, z })
+                     local orientation = overlay.orientation
+                     if orientation > 180 then
+                        orientation = orientation - 360
+                     end
+                     obj.setRotation({ 0, -orientation, 0 })
 
-                  -- Handle potential triggers
-                  if position.trigger ~= nil then
-                     attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+                     -- Handle potential triggers
+                     if position.trigger ~= nil then
+                        attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+                     end
+                  else
+                     print(" could not find object in prepare area : " .. overlay.name)
                   end
-               else
-                  print(" could not find object in prepare area : " .. overlay.name)
                end
             end
          end
@@ -922,7 +934,7 @@ function layoutMap(elements, map, scenarioInfo)
                name = "n" .. random[1]
                table.remove(random, 1)
             end
-            
+
             local obj = takeToken(name)
             if obj ~= nil then
                local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
@@ -932,6 +944,9 @@ function layoutMap(elements, map, scenarioInfo)
                   zRot = 180
                end
                obj.setRotation({ 0, 180, zRot })
+               if position.trigger ~= nil then
+                  attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+               end
             end
          end
       end
@@ -999,6 +1014,32 @@ function roundUpdate(payload)
    end
 end
 
+function onEnemiesUpdate(payload)
+   -- print("enemies update " .. payload)
+   local characterStatus = nil
+   -- Check potential triggers
+   if ScenarioTriggers ~= nil and ScenarioTriggers.triggersById ~= nil then
+      for id, trigger in pairs(ScenarioTriggers.triggersById) do
+         if trigger.type == "alldead" then
+            if characterStatus == nil then
+               characterStatus = JSON.decode(payload)
+            end
+            -- Let's make sure that all monsters are dead
+            local monsters = characterStatus.monsters or {}
+            local allDead = true
+            for name, hp in pairs(monsters) do
+               if hp > 0 then
+                  allDead = false
+               end
+            end
+            if allDead then
+               handleTriggerAction(trigger, CurrentScenarioId, nil, false)
+            end
+         end
+      end
+   end
+end
+
 function triggeredById(triggerId)
    actualTriggered(CurrentScenarioId, triggerId, nil)
 end
@@ -1057,27 +1098,38 @@ function actualTriggered(scenarioId, triggerId, objGuid, undo)
       end
    end
 
+   if type == "pressure" and undo and (trigger.mode ~= "occupy") then
+      -- We do not cancel non 'occupy' pressure plates
+         return
+   end
+
    handleTriggerAction(trigger, scenarioId, objGuid, undo)
 end
 
-function handleTriggerAction(action, scenarioId, objGuid, undo)
-   -- print("Performing action on : " .. JSON.encode(action))
-   local dedupMode = action.dedupMode or "obj"
+function getTriggeredKey(trigger, objGuid)
+   local dedupMode = trigger.dedupMode or "obj"
 
-   local triggerKey = action.id
+   local triggerKey = trigger.id
    if dedupMode == "obj" then
       triggerKey = triggerKey .. "/" .. (objGuid or "scenario")
    elseif dedupMode == "first" then
       triggerKey = triggerKey .. "/first"
    else
-      print("Unknown dedupMode : " .. dedupMode .. " in " .. JSON.encode(action))
+      print("Unknown dedupMode : " .. dedupMode .. " in " .. JSON.encode(trigger))
    end
+
+   return triggerKey
+end
+
+function handleTriggerAction(action, scenarioId, objGuid, undo)
+   -- print("Performing action on : " .. JSON.encode(action))
+   local triggerKey = getTriggeredKey(action, objGuid)
 
    local triggered = ScenarioTriggers.triggered[triggerKey] or false
    if triggered == undo then
       ScenarioTriggers.triggered[triggerKey] = not undo
    else
-      print("Not performing action, as trigger has already been triggered")
+      print("Not performing action, as trigger has already been triggered " .. triggerKey)
       -- We've already triggered this one, avoid triggering again
       return
    end
@@ -1173,6 +1225,37 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
             end
          end
       end
+   end
+
+   if action.action == "attachTrigger" then
+      local what = action.what
+      local currentTrigger = ScenarioTriggers.triggersById[what]
+      local newTrigger = action.trigger
+      newTrigger.id = currentTrigger.id
+
+      for _, obj in ipairs(ScenarioTriggers.byTriggerId[what]) do
+         local objGuid
+         if obj ~= nil then
+            objGuid = obj.guid
+            local triggeredKey = getTriggeredKey(currentTrigger, objGuid)
+            -- Reset the triggered state
+            ScenarioTriggers.triggered[triggeredKey] = false
+         end
+      end
+
+      -- Reset the possible scenario triggered state
+      ScenarioTriggers.triggered[getTriggeredKey(currentTrigger, nil)] = false
+      -- Attach the new trigger
+      print("Replacing " .. action.what .. " into " ..JSON.encode(newTrigger))
+      ScenarioTriggers.triggersById[what] = newTrigger
+   end
+
+   if action.action == "addTrigger" then
+      local what = action.what
+      local newTrigger = action.trigger
+      newTrigger.id = what
+
+      ScenarioTriggers.triggersById[what] = newTrigger
    end
 
    if action.also ~= nil then
@@ -1725,7 +1808,7 @@ function onObjectCollisionEnter(hit_object, collision_info)
          local triggerIds = ScenarioTriggers.byObjectGuid[hit_object.guid]
          for _, triggerId in ipairs(triggerIds) do
             Wait.frames(function()
-                  actualTriggered(CurrentScenarioId, triggerId, obj.guid)
+                  actualTriggered(CurrentScenarioId, triggerId, hit_object.guid)
                end,
                1)
          end

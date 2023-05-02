@@ -1339,6 +1339,9 @@ function processState(state)
         Global.call("roundUpdate", JSON.encode(CurrentRound))
     end
 
+    local charactersStatus = {}
+    local monstersStatus = {}
+
     for _, entry in ipairs(state.currentList) do
         -- print(JSON.encode(entry))
         local id = entry.id
@@ -1362,6 +1365,12 @@ function processState(state)
                 newState[summonName] = { characterState = summon }
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
+        else
+            if entry.monsterInstances ~= nil then
+                for _, instance in ipairs(entry.monsterInstances) do
+                    monstersStatus[id .. " " .. instance.standeeNr] = instance.health
+                end
+            end
         end
     end
     local elements = state.elements
@@ -1373,6 +1382,10 @@ function processState(state)
     end
     -- print(JSON.encode(newState))
     refreshStandees(newState)
+
+    charactersStatus.monsters = monstersStatus
+    Global.call("onEnemiesUpdate", JSON.encode(charactersStatus))
+
 end
 
 function refreshStandees(state)

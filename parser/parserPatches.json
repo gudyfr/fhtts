@@ -51,29 +51,55 @@
             ]
         }
     },
-    "17" : {
-        "22" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+    "17": {
+        "22": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         },
-        "17" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        "17": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         },
-        "19" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        "19": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         },
-        "25" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]            
+        "25": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         },
-        "42" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        "42": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         },
-        "62" : {
-            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        "62": {
+            "also": [
+                "Bear Trap",
+                "Poison Trap",
+                "Spike Pit"
+            ]
         }
     },
     "18": {
         "23": {
-            "also" : ["Cave Door"],
+            "also": [
+                "Cave Door"
+            ],
             "overrides": [
                 {
                     "where": {
@@ -94,7 +120,7 @@
                 }
             ]
         },
-        "54" : {
+        "54": {
             "overrides": [
                 {
                     "where": {
@@ -104,7 +130,7 @@
                     "with": {
                         "name": "11-C"
                     }
-                }               
+                }
             ]
         }
     },
@@ -313,6 +339,13 @@
             ]
         }
     },
+    "107": {
+        "116": {
+            "tiles": [
+                "13-E"
+            ]
+        }
+    },
     "109": {
         "16": {
             "tiles": [
@@ -348,8 +381,8 @@
         }
     },
     "115": {
-        "140" : {
-            "maxY" : 1750
+        "140": {
+            "maxY": 1750
         }
     },
     "122": {
