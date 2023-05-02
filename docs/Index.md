@@ -81,10 +81,11 @@ Clicking it will expand / collapse the Attack Modifier UI
 Clicking the Draw button will draw an attack modifier card for the player who pressed the button, and will display the results to all players.  
 ![](images/tts_am_ui_drawn.png)  
 Monsters and Allies Attack Modifiers should be drawn from the X-Haven Assistant UI.  
+The deck is shuffled automatically when needed. In addition Curse and Bless cards are automatically returned to their appropriate decks at the end of each round. Minus one Cards are returned to their appropriate deck whenever a "Cleanup" occurs.
 
 ### Looting
 If a monster dies it will drop a loot token (unless there are specials rules to prevent this, in which case it might drop nothing, or the appropriate item/overlay)  
 ![](images/tts_enemy_as_loot.png)  
-If a character is on top of a loot token at the end its round, the loot token will be automatically looted. **Use the Assistant UI to end a chracter round. For the loot to work, the character had to be active in the assistant, ie skipping a character's turn will result in looting not working for that character**  
-![](images/tts_figure_standing_on_loot.png)
-![](images/xhaven_end_round.png)
+If a character is on top of a loot token at the end its round, the loot token will be automatically looted. **Use the Assistant UI to end a chracter round. For the loot to work, the character had to be active in the assistant, ie skipping a character's turn will result in looting not working for that character.**  
+![](images/tts_figure_standing_on_loot.png)  
+![](images/xhaven_end_round.png)  
