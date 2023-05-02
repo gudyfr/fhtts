@@ -38,8 +38,9 @@ At this point your interest in using this mod should be in helping / contributin
   
 # Installation
   - Download the save file under [tts saves](https://github.com/gudyfr/fhtts/tree/main/tts%20saves)
-  - Download and build the forked assistant : [X-Haven Assistant](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver)
+  - Download and build the forked assistant (or use one of the release) : [X-Haven Assistant](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver)
   - Enable the web server in the assistant, and start the server.
+  - Getting started available [here](https://github.com/gudyfr/fhtts/tree/main/docs/Index.md)
   
 # License & Attribution
   - This work is distributed under the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
