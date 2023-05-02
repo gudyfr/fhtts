@@ -885,7 +885,7 @@
             {
                 "name": "Ice Pillar",
                 "type": "Obstacle",
-                "count": 4,
+                "count": 3,
                 "trackable": true,
                 "renamed": "by nr",
                 "start_nr": 4
@@ -1109,7 +1109,7 @@
         ],
         "overlays": [
             {
-                "name": "Cave Door",
+                "name": "Snow Door",
                 "type": "Door",
                 "count": 4
             },
@@ -1424,28 +1424,20 @@
                 "name": "Treasure Chest",
                 "type": "Treasure",
                 "count": 1
-            },
-            {
-                "name": "Poison Trap",
-                "type": "Pressure Plate",
-                "count": 0
-            },
-            {
-                "name": "Bear Trap",
-                "type": "Pressure Plate",
-                "count": 0
             }
         ],
         "tokens": [
             {
                 "name": "1",
                 "as": "Spectral Helper 1",
-                "trackable": true
+                "trackable": true,
+                "tags" : ["looter"]
             },
             {
                 "name": "2",
                 "as": "Spectral Helper 2",
-                "trackable": true
+                "trackable": true,
+                "tags" : ["looter"]
             }
         ],
         "page": 22,
@@ -1499,7 +1491,7 @@
         ],
         "overlays": [
             {
-                "name": "Cave Door",
+                "name": "Snow Door",
                 "type": "Door",
                 "count": 2
             },
@@ -9744,14 +9736,15 @@
             {
                 "name": "Rubble",
                 "type": "Difficult Terrain",
-                "count": 6
+                "count": 7
             },
             {
                 "name": "Ice Pillar",
                 "type": "Objective",
                 "count": 7,
                 "trackable": true,
-                "renamed": "by nr"
+                "renamed": "by nr",
+                "tags" : ["lootable", "loot as rubble"]
             }
         ],
         "page": 139,

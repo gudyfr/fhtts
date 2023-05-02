@@ -9,7 +9,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -29,7 +29,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -49,7 +49,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -67,7 +67,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -87,7 +87,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -105,7 +105,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -125,7 +125,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -145,7 +145,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -165,7 +165,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -185,7 +185,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -203,7 +203,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -223,7 +223,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -241,7 +241,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -261,7 +261,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -279,7 +279,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -299,7 +299,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -317,7 +317,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -338,7 +338,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -347,6 +347,39 @@
                 },
                 "mode": "all"
             }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "65.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "condition": {
+                "players": [
+                    3,
+                    4
+                ]
+            },
+            "rename": "Ice Pillar A"
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "65.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "condition": {
+                "players": [
+                    4
+                ]
+            },
+            "rename": "Ice Pillar B"
         }
     ],
     "12": [
@@ -359,7 +392,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -379,7 +412,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -397,9 +430,9 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "action": "open",
+                "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "38.2"
@@ -415,9 +448,9 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "action": "open",
+                "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "12.6"
@@ -435,7 +468,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -453,7 +486,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -471,7 +504,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -489,9 +522,9 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "action": "open",
+                "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "19.3"
@@ -507,9 +540,9 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "action": "open",
+                "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "17.3"
@@ -527,7 +560,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -545,7 +578,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -565,7 +598,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -583,7 +616,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -601,7 +634,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -621,7 +654,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -639,7 +672,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -659,7 +692,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -677,7 +710,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -697,13 +730,28 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "95.1"
                 }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "95.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "condition": {
+                "players": [
+                    4
+                ]
             }
         },
         {
@@ -715,13 +763,29 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "68.3"
                 }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "68.3"
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "condition": {
+                "players": [
+                    3,
+                    4
+                ]
             }
         },
         {
@@ -733,7 +797,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -751,7 +815,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -769,7 +833,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -789,7 +853,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -809,13 +873,27 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "20.1"
                 }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "20.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a",
+                "selfTarget": true
+            },
+            "random": {
+                "max": "12"
             }
         }
     ],
@@ -829,7 +907,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -849,7 +927,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -869,7 +947,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -887,7 +965,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -905,7 +983,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -923,7 +1001,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -943,7 +1021,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -961,7 +1039,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -981,7 +1059,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -999,7 +1077,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1017,7 +1095,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1037,7 +1115,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1055,7 +1133,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1075,7 +1153,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1093,7 +1171,7 @@
                 "type": "overlay",
                 "name": "Ice Pillar"
             },
-            "data": {
+            "trigger": {
                 "type": "on-death",
                 "action": "reveal",
                 "what": {
@@ -1113,7 +1191,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1133,7 +1211,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1151,7 +1229,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1171,7 +1249,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1189,7 +1267,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1210,7 +1288,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1229,7 +1307,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1250,7 +1328,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1268,7 +1346,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1286,7 +1364,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1304,7 +1382,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1324,7 +1402,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1342,7 +1420,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1362,7 +1440,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1382,7 +1460,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1400,7 +1478,7 @@
                 "type": "overlay",
                 "name": "Altar"
             },
-            "data": {
+            "trigger": {
                 "type": "on-death",
                 "action": "reveal",
                 "what": {
@@ -1418,7 +1496,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1436,7 +1514,7 @@
                 "type": "overlay",
                 "name": "Altar"
             },
-            "data": {
+            "trigger": {
                 "type": "on-death",
                 "action": "reveal",
                 "what": {
@@ -1456,7 +1534,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1476,7 +1554,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1497,7 +1575,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1515,7 +1593,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1533,7 +1611,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1553,7 +1631,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1571,7 +1649,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1591,7 +1669,7 @@
                 "type": "token",
                 "name": "earth"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1609,7 +1687,7 @@
                 "type": "token",
                 "name": "fire"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1627,7 +1705,7 @@
                 "type": "token",
                 "name": "ice"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1645,7 +1723,7 @@
                 "type": "token",
                 "name": "air"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1663,7 +1741,7 @@
                 "type": "token",
                 "name": "light"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1681,7 +1759,7 @@
                 "type": "token",
                 "name": "darkness"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1701,7 +1779,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1720,7 +1798,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1741,7 +1819,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1759,7 +1837,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1780,7 +1858,7 @@
                 "name": "1",
                 "overlay_type": "Door"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1800,7 +1878,7 @@
                 "name": "2",
                 "overlay_type": "Door"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1820,7 +1898,7 @@
                 "name": "3",
                 "overlay_type": "Door"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1841,7 +1919,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1860,7 +1938,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1881,7 +1959,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1899,7 +1977,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1918,7 +1996,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "choice",
                 "choices": [
@@ -1929,7 +2007,7 @@
                             "y": -2
                         },
                         "token": "a",
-                        "data": {
+                        "trigger": {
                             "type": "door",
                             "display": "Friend of the Fish King on the Campaing sheet",
                             "action": "reveal",
@@ -1946,7 +2024,7 @@
                             "y": -2
                         },
                         "token": "b",
-                        "data": {
+                        "trigger": {
                             "type": "door",
                             "display": "Otherwise",
                             "action": "reveal",
@@ -1970,7 +2048,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -1988,7 +2066,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2006,7 +2084,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2025,7 +2103,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2045,7 +2123,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2063,7 +2141,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2081,7 +2159,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2099,7 +2177,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2119,7 +2197,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2137,7 +2215,7 @@
                 "type": "token",
                 "name": "d"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "on-death",
                 "what": {
@@ -2157,7 +2235,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2175,7 +2253,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2193,7 +2271,7 @@
                 "type": "token",
                 "name": "9"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2211,7 +2289,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 175.3",
                 "action": "reveal",
@@ -2230,7 +2308,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 93.1",
                 "action": "reveal",
@@ -2249,7 +2327,7 @@
                 "type": "token",
                 "name": "11"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 64.2",
                 "action": "reveal",
@@ -2270,7 +2348,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2290,7 +2368,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2308,7 +2386,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2326,7 +2404,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2344,7 +2422,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2364,7 +2442,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2382,7 +2460,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2402,7 +2480,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2420,7 +2498,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2438,7 +2516,7 @@
                 "type": "token",
                 "name": "c"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 36.1",
                 "action": "reveal",
@@ -2457,7 +2535,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 119.2",
                 "action": "reveal",
@@ -2476,7 +2554,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 119.2",
                 "action": "reveal",
@@ -2495,7 +2573,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2515,7 +2593,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2534,7 +2612,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2553,7 +2631,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 150.2",
                 "action": "reveal",
@@ -2586,7 +2664,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {}
+            "trigger": {}
         }
     ],
     "95": [
@@ -2599,7 +2677,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2618,7 +2696,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2638,7 +2716,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2656,7 +2734,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2674,7 +2752,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2694,7 +2772,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "locked": true,
@@ -2710,7 +2788,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 127.3",
                 "action": "reveal",
@@ -2737,7 +2815,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2755,7 +2833,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2775,7 +2853,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2793,7 +2871,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2811,7 +2889,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2831,7 +2909,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2849,7 +2927,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2869,7 +2947,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2887,7 +2965,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2907,7 +2985,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2927,7 +3005,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2945,7 +3023,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2963,7 +3041,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2981,7 +3059,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -2999,7 +3077,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3019,7 +3097,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 168.4",
                 "action": "reveal",
@@ -3044,7 +3122,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 150.3",
                 "locked": true,
@@ -3064,7 +3142,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 95.2",
                 "action": "reveal",
@@ -3089,7 +3167,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "locked": true,
                 "display": "Section 188.1",
@@ -3109,7 +3187,7 @@
                 "type": "token",
                 "name": "c"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "locked": true,
                 "display": "Section 103.1",
@@ -3135,7 +3213,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "locked": true,
                 "action": "reveal",
@@ -3156,7 +3234,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3175,7 +3253,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3193,7 +3271,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3213,7 +3291,7 @@
                 "type": "global",
                 "name": 1
             },
-            "data": {
+            "trigger": {
                 "type": "broadcast",
                 "message": "Read Section 195.2"
             }
@@ -3227,7 +3305,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3251,7 +3329,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3275,7 +3353,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3299,7 +3377,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3325,7 +3403,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3344,7 +3422,7 @@
                 "type": "section",
                 "name": "182.2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3364,7 +3442,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3383,7 +3461,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3403,7 +3481,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3421,7 +3499,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3441,7 +3519,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3459,7 +3537,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3477,7 +3555,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3495,7 +3573,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3513,7 +3591,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3531,7 +3609,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3549,7 +3627,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3567,7 +3645,7 @@
                 "type": "token",
                 "name": "6"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3587,7 +3665,7 @@
                 "type": "global",
                 "name": "pillars"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": 2,
                 "action": "reveal",
@@ -3612,7 +3690,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "on-death",
                 "action": "trigger",
                 "what": "scenario/138/global/pillars"
@@ -3627,7 +3705,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {}
+            "trigger": {}
         }
     ],
     "117": [
@@ -3640,7 +3718,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3658,7 +3736,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3678,7 +3756,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3696,7 +3774,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3716,7 +3794,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3734,7 +3812,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3754,7 +3832,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3772,7 +3850,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3792,7 +3870,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3810,7 +3888,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3828,7 +3906,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 100.1",
                 "action": "reveal",
@@ -3847,7 +3925,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 123.1",
                 "action": "reveal",
@@ -3868,7 +3946,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3886,7 +3964,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3904,7 +3982,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3928,7 +4006,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3952,7 +4030,7 @@
                 "type": "token",
                 "name": "5"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3970,7 +4048,7 @@
                 "type": "token",
                 "name": "6"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -3988,7 +4066,7 @@
                 "type": "token",
                 "name": "goal"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 109.3",
                 "action": "reveal",
@@ -4007,7 +4085,7 @@
                 "type": "token",
                 "name": "goal"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Section 109.3",
                 "action": "reveal",
@@ -4028,7 +4106,7 @@
                 "type": "global",
                 "name": "door4"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": 2,
                 "action": "unlock",
@@ -4050,7 +4128,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4068,7 +4146,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4086,7 +4164,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4104,7 +4182,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "locked": true,
@@ -4123,7 +4201,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "trigger",
                 "what": "scenario/148/global/door4"
@@ -4138,7 +4216,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "trigger",
                 "what": "scenario/148/global/door4"
@@ -4155,7 +4233,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4173,7 +4251,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4193,7 +4271,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Go Below Deck",
                 "action": "reveal",
@@ -4212,7 +4290,7 @@
                 "type": "token",
                 "name": "c"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "display": "Go Lower Below Deck",
                 "action": "reveal",
@@ -4233,7 +4311,7 @@
                 "type": "global",
                 "name": "round2"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 2,
@@ -4255,7 +4333,7 @@
                 "type": "global",
                 "name": "round3"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 3,
@@ -4277,7 +4355,7 @@
                 "type": "global",
                 "name": "round4"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 4,
@@ -4291,7 +4369,6 @@
             }
         }
     ],
-    
     "129": [
         {
             "in": {
@@ -4302,21 +4379,21 @@
                 "type": "global",
                 "name": "round4"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
-                "when" : {
-                    "round" : 4,
-                    "state" : 0
-                },             
+                "when": {
+                    "round": 4,
+                    "state": 0
+                },
                 "action": "reveal",
                 "what": {
                     "type": "section",
                     "name": "148.5"
                 },
-                "also" : [
+                "also": [
                     {
-                        "action" : "open",
-                        "what" : "scenario/155/token/3"
+                        "action": "open",
+                        "what": "scenario/155/token/3"
                     }
                 ]
             }
@@ -4330,8 +4407,8 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
-                "type": "door",              
+            "trigger": {
+                "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4348,8 +4425,8 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
-                "type": "door",              
+            "trigger": {
+                "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4366,10 +4443,8 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
-            }
+            "trigger": {}
         }
-
     ],
     "130": [
         {
@@ -4381,7 +4456,7 @@
                 "type": "global",
                 "name": "round5"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 5,
@@ -4403,7 +4478,7 @@
                 "type": "global",
                 "name": "round8"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 8,
@@ -4427,7 +4502,7 @@
                 "type": "global",
                 "name": "round3"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 3,
@@ -4449,7 +4524,7 @@
                 "type": "global",
                 "name": "round5"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 5,
@@ -4471,7 +4546,7 @@
                 "type": "global",
                 "name": "round7"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 7,
@@ -4493,7 +4568,7 @@
                 "type": "global",
                 "name": "round7"
             },
-            "data": {
+            "trigger": {
                 "type": "round",
                 "when": {
                     "round": 8,
@@ -4517,7 +4592,7 @@
                 "type": "global",
                 "name": "plates"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": "playerCount",
                 "action": "open",
@@ -4542,7 +4617,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4560,7 +4635,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4578,7 +4653,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {}
+            "trigger": {}
         },
         {
             "in": {
@@ -4589,7 +4664,7 @@
                 "type": "overlay",
                 "name": "Pressure Plate"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "trigger",
                 "what": "scenario/161/global/plates"
@@ -4604,7 +4679,7 @@
                 "type": "overlay",
                 "name": "Pressure Plate"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "trigger",
                 "what": "scenario/161/global/plates"
@@ -4621,7 +4696,7 @@
                 "type": "global",
                 "name": "plates"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": 4,
                 "action": "reveal",
@@ -4640,7 +4715,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4658,7 +4733,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4676,7 +4751,7 @@
                 "type": "token",
                 "name": "3"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4694,7 +4769,7 @@
                 "type": "token",
                 "name": "4"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4712,7 +4787,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4735,7 +4810,7 @@
                 "type": "token",
                 "name": "b"
             },
-            "data": {
+            "trigger": {
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4758,7 +4833,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4781,7 +4856,7 @@
                 "type": "token",
                 "name": "a"
             },
-            "data": {
+            "trigger": {
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -4806,7 +4881,7 @@
                 "type": "global",
                 "name": "platesC"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": 2,
                 "action": "reveal",
@@ -4814,10 +4889,10 @@
                     "type": "section",
                     "name": "87.2"
                 },
-                "also" : [
+                "also": [
                     {
-                        "action" : "open",
-                        "what" : "scenario/164/token/1"
+                        "action": "open",
+                        "what": "scenario/164/token/1"
                     }
                 ]
             }
@@ -4831,7 +4906,7 @@
                 "type": "global",
                 "name": "platesF"
             },
-            "data": {
+            "trigger": {
                 "type": "countDown",
                 "current": 2,
                 "action": "reveal",
@@ -4839,10 +4914,10 @@
                     "type": "section",
                     "name": "195.1"
                 },
-                "also" : [
+                "also": [
                     {
-                        "action" : "open",
-                        "what" : "section/87.2/token/2"
+                        "action": "open",
+                        "what": "section/87.2/token/2"
                     }
                 ]
             }
@@ -4856,12 +4931,11 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "locked" : true,
+                "locked": true,
                 "action": "none",
-                "what": {                
-                }
+                "what": {}
             }
         },
         {
@@ -4873,10 +4947,10 @@
                 "type": "token",
                 "name": "c"
             },
-            "data": {
+            "trigger": {
                 "type": "pressure",
-                "mode" : "occupy",
-                "action" : "trigger",
+                "mode": "occupy",
+                "action": "trigger",
                 "what": "scenario/164/global/platesC"
             }
         },
@@ -4889,10 +4963,10 @@
                 "type": "token",
                 "name": "f"
             },
-            "data": {
+            "trigger": {
                 "type": "pressure",
-                "mode" : "occupy",
-                "action" : "trigger",
+                "mode": "occupy",
+                "action": "trigger",
                 "what": "scenario/164/global/platesF"
             }
         },
@@ -4905,12 +4979,11 @@
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
-                "locked" : true,
+                "locked": true,
                 "action": "none",
-                "what": {                
-                }         
+                "what": {}
             }
         }
     ],
@@ -4924,7 +4997,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4936,13 +5009,13 @@
         {
             "in": {
                 "type": "section",
-                    "name": "170.2"
+                "name": "170.2"
             },
             "target": {
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4962,7 +5035,7 @@
                 "type": "token",
                 "name": "1"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {
@@ -4974,13 +5047,13 @@
         {
             "in": {
                 "type": "section",
-                    "name": "191.2"
+                "name": "191.2"
             },
             "target": {
                 "type": "token",
                 "name": "2"
             },
-            "data": {
+            "trigger": {
                 "type": "door",
                 "action": "reveal",
                 "what": {

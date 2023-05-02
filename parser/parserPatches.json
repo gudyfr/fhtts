@@ -2,19 +2,78 @@
     "13": {
         "12": {
             "tiles": [
-                "01-D",
-                "01-E"
+                "01-E",
+                "01-G"
+            ]
+        },
+        "17": {
+            "also": [
+                "Cave Door"
+            ],
+            "overrides": [
+                {
+                    "where": {
+                        "name": "Cave Door"
+                    },
+                    "with": {
+                        "name": "Snow Door"
+                    }
+                }
             ]
         },
         "44": {
             "tiles": [
                 "02-E",
                 "06-A"
+            ],
+            "overrides": [
+                {
+                    "where": {
+                        "name": "06-A",
+                        "orientation": "-0"
+                    },
+                    "with": {
+                        "results": [
+                            {
+                                "position": {
+                                    "x": 200,
+                                    "y": 2434
+                                },
+                                "size": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "score": 1
+                            }
+                        ]
+                    }
+                }
             ]
+        }
+    },
+    "17" : {
+        "22" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        },
+        "17" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        },
+        "19" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        },
+        "25" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]            
+        },
+        "42" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
+        },
+        "62" : {
+            "also" : ["Bear Trap", "Poison Trap", "Spike Pit"]
         }
     },
     "18": {
         "23": {
+            "also" : ["Cave Door"],
             "overrides": [
                 {
                     "where": {
@@ -24,7 +83,28 @@
                     "with": {
                         "name": "11-C"
                     }
+                },
+                {
+                    "where": {
+                        "name": "Cave Door"
+                    },
+                    "with": {
+                        "name": "Snow Door"
+                    }
                 }
+            ]
+        },
+        "54" : {
+            "overrides": [
+                {
+                    "where": {
+                        "name": "11-A",
+                        "orientation": "-300"
+                    },
+                    "with": {
+                        "name": "11-C"
+                    }
+                }               
             ]
         }
     },
@@ -62,7 +142,9 @@
             ]
         },
         "106": {
-            "tiles" : ["02-A"]            
+            "tiles": [
+                "02-A"
+            ]
         }
     },
     "47": {
@@ -208,11 +290,13 @@
     "100": {
         "102": {
             "tiles": [
-                "01-C","09-A","01-F"
+                "01-C",
+                "09-A",
+                "01-F"
             ]
         }
     },
-    "104": {       
+    "104": {
         "164": {
             "also": [
                 "Metal Door"
@@ -229,7 +313,7 @@
             ]
         }
     },
-    "109": {       
+    "109": {
         "16": {
             "tiles": [
                 "04-B"
@@ -237,7 +321,7 @@
         }
     },
     "113": {
-        "137" : {
+        "137": {
             "overrides": [
                 {
                     "where": {
@@ -263,15 +347,24 @@
             ]
         }
     },
-    "122" : {
-        "8" : {
-            "tiles" : ["11-B"]
-        },
-        "145" : {
-            "tiles" : ["11-B"]
+    "115": {
+        "140" : {
+            "maxY" : 1750
         }
     },
-    "123" : {
+    "122": {
+        "8": {
+            "tiles": [
+                "11-B"
+            ]
+        },
+        "145": {
+            "tiles": [
+                "11-B"
+            ]
+        }
+    },
+    "123": {
         "148": {
             "overrides": [
                 {
@@ -286,28 +379,34 @@
             ]
         }
     },
-    "128" : {
-        "155" : {
-            "maxY" : 1500
+    "128": {
+        "155": {
+            "maxY": 1500
         },
-        "170" : {
-            "tiles" : ["02-J"]
+        "170": {
+            "tiles": [
+                "02-J"
+            ]
         }
     },
-    "129" : {
-        "155" : {
-            "minY" : 1500
+    "129": {
+        "155": {
+            "minY": 1500
         }
     },
-    "134" : {
-        "44" : {
-           "tiles" : ["01-E"]
+    "134": {
+        "44": {
+            "tiles": [
+                "01-E"
+            ]
         }
     },
-    "135" : {
-        "87" : {
-           "tiles" : ["04-A","06-B"]
+    "135": {
+        "87": {
+            "tiles": [
+                "04-A",
+                "06-B"
+            ]
         }
     }
-    
 }

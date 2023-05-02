@@ -34,7 +34,7 @@ end
 
 function refreshScenarioData()
    print("Loading Scenario Data")
-   if false then
+   if getObjectFromGUID('1a09ac').getDescription() == "dev" or false then
       -- Switch to using fh assistant url if defined
       WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
       WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
@@ -204,6 +204,7 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
             local clone = monsterStandees.clone()
             monsterBag.putObject(monsterStandees)
             clone.addTag("deletable")
+            clone.addTag("scenarioElement")
             clone.addTag("spawner")
             if bagId == bossStandeesBagId or (monster.boss or false) then
                clone.addTag("boss")
@@ -224,6 +225,8 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
                   clone.addTag("loot as body")
                elseif monster.loot == "none" then
                   clone.addTag("no loot")
+               elseif monster.loot == "as rubble" then
+                  clone.addTag("loot as rubble")
                end
             end
 
@@ -290,6 +293,12 @@ function getToken(token, scenarioElementPositions, currentScenarioElementPositio
 
             obj.setRotation({ 0, 180, 0 })
             obj.addTag("token")
+            obj.addTag("scenarioElement")
+            if token.tags ~= nil then
+               for _, tag in ipairs(token.tags) do
+                  obj.addTag(tag)
+               end
+            end
 
             if token.as ~= nil then
                obj.setName(token.as)
@@ -345,11 +354,16 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
 
             if obj ~= nil then
                obj.addTag("deletable")
+               obj.addTag("scenarioElement")
                if (info.trackable or false) then
                   obj.addTag("trackable")
                   -- For sizing of the overlays
                   obj.addTag("overlay")
                end
+               for _, tag in ipairs(info.tags or {}) do
+                  obj.addTag(tag)
+               end
+
                -- Change the name before the applying the "renamed" field
                -- As they might combine (eg. scenario 20)
                if info.as ~= nil then
@@ -808,7 +822,7 @@ function layoutMap(elements, map, scenarioInfo)
       for _, entry in ipairs(elements[category] or {}) do
          local name = entry.name
          local to = entry.as or name
-         local tos = {}
+         local tos = nameMappings[name] or {}
          if entry.renamed ~= nil then
             local count = entry.count
             if entry.renamed == "by nr" then
@@ -825,7 +839,7 @@ function layoutMap(elements, map, scenarioInfo)
                end
             end
          else
-            tos = { to }
+            tos = table.insert(tos, to)
          end
          nameMappings[name] = tos
       end
@@ -849,33 +863,75 @@ function layoutMap(elements, map, scenarioInfo)
       for _, overlay in ipairs(map.overlays) do
          -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
          for _, position in ipairs(overlay.positions) do
-            -- print(" to put at location " .. JSON.encode(position))
-            local obj = locateScenarioElementWithName(overlay.name, objects, true, nameMappings)
-            if obj ~= nil then
-               local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-               obj.setPosition({ x, 1.44, z })
-               local orientation = overlay.orientation
-               if orientation > 180 then
-                  orientation = orientation - 360
+            local passesConditions = true
+            if position.condition ~= nil then
+               if position.condition.players ~= nil then
+                  passesConditions = false
+                  for _, pass in ipairs(position.condition.players) do
+                     if playerCount == pass then
+                        passesConditions = true
+                     end
+                  end
                end
-               obj.setRotation({ 0, -orientation, 0 })
+            end
 
-               -- Handle potential triggers
-               if position.trigger ~= nil then
-                  attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+            if passesConditions then
+               -- print(" to put at location " .. JSON.encode(position))
+               local name = overlay.name
+               if position.rename ~= nil then
+                  name = position.rename
                end
-            else
-               print(" could not find object in prepare area : " .. overlay.name)
+               local obj = locateScenarioElementWithName(name, objects, true, nameMappings)
+               if obj ~= nil then
+                  local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                  obj.setPosition({ x, 1.44, z })
+                  local orientation = overlay.orientation
+                  if orientation > 180 then
+                     orientation = orientation - 360
+                  end
+                  obj.setRotation({ 0, -orientation, 0 })
+
+                  -- Handle potential triggers
+                  if position.trigger ~= nil then
+                     attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+                  end
+               else
+                  print(" could not find object in prepare area : " .. overlay.name)
+               end
             end
          end
       end
       for _, token in ipairs(map.tokens) do
+         local random = nil
+         if token.random ~= nil then
+            random = {}
+            for i = 1, token.random.max do
+               table.insert(random, i)
+            end
+
+            -- Shuffle
+            for i = #random, 2, -1 do
+               local j = math.random(i)
+               random[i], random[j] = random[j], random[i]
+            end
+         end
+
          for _, position in ipairs(token.positions) do
-            local obj = takeToken(token.name)
+            local name = token.name
+            if random ~= nil and #random > 0 then
+               name = "n" .. random[1]
+               table.remove(random, 1)
+            end
+            
+            local obj = takeToken(name)
             if obj ~= nil then
                local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
                obj.setPosition({ x, 2.21, z })
-               obj.setRotation({ 0, 180, 0 })
+               local zRot = 0
+               if random ~= nil then
+                  zRot = 180
+               end
+               obj.setRotation({ 0, 180, zRot })
             end
          end
       end
@@ -1230,6 +1286,9 @@ function onObjectLeaveContainer(container, leave_object)
       end
       if container.hasTag("no loot") then
          leave_object.addTag("no loot")
+      end
+      if container.hasTag("loot as rubble") then
+         leave_object.addTag("loot as rubble")
       end
       --print(params)
       getScenarioMat().call("spawned", params)
@@ -1779,7 +1838,6 @@ function reset()
       savable.call("reset")
    end
 end
-
 
 function onObjectPickUp(color, obj)
    if obj.hasTag("character box") then

@@ -122,17 +122,22 @@ def removeTriggers(entries, mapTriggers):
         if target['type'] == 'token':
             for entry in entries:
                 if entry['name'] == target['name']:
-                    entries.remove(entry)
-                    for position in entry['positions']:
-                        locationKey = positionToKey(position)
-                        triggerLocations[locationKey] = trigger
+                    if 'selfTarget' in target and target['selfTarget']:
+                        if 'random' in trigger:
+                            entry['random'] = trigger['random']
+                    else:
+                        entries.remove(entry)
+                        for position in entry['positions']:
+                            locationKey = positionToKey(position)
+                            triggerLocations[locationKey] = trigger
     return triggerLocations
 
 def ensureId(trigger):
-    if not id in trigger['data']:
-        _in = trigger["in"]
-        _target = trigger["target"]
-        trigger['data']['id'] = f"{_in['type']}/{_in['name']}/{_target['type']}/{_target['name']}"
+    if 'trigger' in trigger :
+        if not id in trigger['trigger']:
+            _in = trigger["in"]
+            _target = trigger["target"]
+            trigger['trigger']['id'] = f"{_in['type']}/{_in['name']}/{_target['type']}/{_target['name']}"
 
 def attachTriggersToOverlays(overlays, triggerLocations):
     if len(triggerLocations) == 0:
@@ -144,7 +149,14 @@ def attachTriggersToOverlays(overlays, triggerLocations):
                 trigger = triggerLocations[key]
                 overlay_type = trigger['target']['overlay_type'] if 'overlay_type' in trigger['target'] else None
                 if overlay_type == None or overlay_type == (position['type'] if 'type' in position else None):
-                    position['trigger'] = trigger['data']
+                    if 'trigger' in trigger:
+                        position['trigger'] = trigger['trigger']
+                    if 'condition' in trigger:
+                        position['condition'] = trigger['condition']
+                    if 'rename' in trigger:
+                        position['rename'] = trigger['rename']
+                    if 'random' in trigger:
+                        position['random'] = trigger['random']
 
 def attachOverlayTriggersToOverlays(overlays, overlayTriggers):
     for overlayTrigger in overlayTriggers:
@@ -152,7 +164,7 @@ def attachOverlayTriggersToOverlays(overlays, overlayTriggers):
         for overlay in overlays:
             if overlay['name'] == overlayName:
                 for position in overlay['positions']:
-                    position['trigger'] = overlayTrigger['data']
+                    position['trigger'] = overlayTrigger['trigger']
 
 def positionToKey(position):
     return f"({position['x']},{position['y']})"
@@ -301,7 +313,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
             result["monsters"] = removeScore(processed['monsters'])
             result["overlays"] = removeScore(processed['overlays'])
 
-    globalTriggers = list(map(lambda e: e['data'], filter(lambda e: e['target']['type'] == 'global', mapTriggers)))
+    globalTriggers = list(map(lambda e: e['trigger'], filter(lambda e: e['target']['type'] == 'global', mapTriggers)))
     result['triggers'] = globalTriggers
     
     return result

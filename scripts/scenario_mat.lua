@@ -20,7 +20,7 @@ function onStateUpdate(state)
     -- Challenge Cards
     local challenges = state.challenges or {}
     local hasChallenges = false
-    for _,cards in pairs(challenges) do
+    for _, cards in pairs(challenges) do
         if #cards > 0 then
             hasChallenges = true
         end
@@ -1393,10 +1393,7 @@ function refreshStandees(state)
                 standeeNr = tonumber(inputs[1].value)
             end
 
-            local typeState = state[name]
-            if typeState == nil then
-                typeState = state[name .. " " .. standeeNr]
-            end
+            local typeState = state[name] or state[name .. " " .. standeeNr]
 
             if typeState ~= nil then
                 local instances = typeState.monsterInstances
@@ -1418,21 +1415,22 @@ function refreshStandees(state)
                         characterState.turnState = typeState.turnState
                         refreshStandee(standee, characterState)
                         --print("Matched Standee, health : " .. instance.health .. " / " .. instance.maxHealth)
-                        found = true
+                        found = characterState.health > 0
                     end
                 end
             end
             if not found and standee.hasTag("deletable") and standee.hasTag("lootable") then
                 local position = standee.getPosition()
                 local lootAsBody = standee.hasTag("loot as body")
+                local lootAsRubble = standee.hasTag("loot as rubble")
                 local noLoot = standee.hasTag("no loot")
                 local name = standee.getName()
                 local container = getObjectFromGUID(getGMNotes(standee).container or '')
                 standee.destroyObject()
                 -- loot
-                if not lootAsBody and not noLoot then
-                    getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
-                else
+                if noLoot then
+                    -- do nothing
+                elseif lootAsBody then
                     if container ~= nil then
                         -- Spawn a "body" token
                         local obj = spawnObject({
@@ -1449,6 +1447,20 @@ function refreshStandees(state)
                         })
                         obj.addTag("deletable")
                     end
+                elseif lootAsRubble then
+                    -- Turn into Rubble
+                    local zone = getObjectFromGUID('1f0c29')
+                    local objects = zone.getObjects(true)
+                    local foundRubble = false
+                    for _, obj in ipairs(objects) do
+                        if not foundRubble and obj.getName() == "Rubble" then
+                            obj.setPosition(position)
+                            foundRubble = true
+                        end
+                    end
+                else
+                    -- Normal loot
+                    getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
                 end
             end
             if not found and standee.hasTag("trackable") then
