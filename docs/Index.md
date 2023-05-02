@@ -49,7 +49,7 @@ The Scenario Picker shows available scenarios. You can also start a scenario fro
 
 ## Setting up a Scenario
 Once you load a scenario, it should be layed out automatically. **Some scenarios are not currently properly handled, and when this is the case, simply uncheck the "Automatic Scenario Layout" under Settings", try again, and manually setup the scenario. Its elements will still be provided to you.**  
-![](images/tts_layed_out_scenario_zero.png)
+![](images/tts_layed_out_scenario_zero.png)  
 Some components of a Scenario are actionable **The scripting of scenarios is not 100% complete, and in the even the scenario you're playing isn't complete, you will need to manually layout the subsequent rooms**  
 Starting locations can be clicked to make them all disapear  
 ![](images/tts_start_location.png)  
