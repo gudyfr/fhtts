@@ -66,8 +66,8 @@ function onLoad(save)
         end
     end
 
-    WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/rules.json", processDecals)
-    WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/checkmarks.json", processCheckmarks)
+    WebRequest.get("https://gudyfr.github.io/fhtts/rules.json", processDecals)
+    WebRequest.get("https://gudyfr.github.io/fhtts/checkmarks.json", processCheckmarks)
 end
 
 -- Savable functions

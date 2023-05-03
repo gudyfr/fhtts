@@ -63,8 +63,8 @@ function refreshScenarioData()
       WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
       WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
    else
-      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/scenarios.json", processScenarioData)
-      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios2.json",
+      WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
+      WebRequest.get("https://gudyfr.github.io/fhtts/processedScenarios2.json",
          processAdditionalScenarioData)
    end
 end
