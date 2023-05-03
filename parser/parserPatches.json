@@ -111,6 +111,47 @@
             ]
         }
     },
+    "22": {
+        "28": {
+            "overrides": [
+                {
+                    "where": {
+                        "name": "07-G",
+                        "orientation": "-0"
+                    },
+                    "with": {
+                        "orientation": "-180"
+                    }
+                }
+            ]
+        }
+    },
+    "25": {
+        "74": {
+            "also": [
+                "Dungeon Corridor",
+                "Large Dungeon Corridor"
+            ],
+            "overrides": [
+                {
+                    "where": {
+                        "name": "Dungeon Corridor"
+                    },
+                    "with": {
+                        "name": "Cave Corridor"
+                    }
+                },
+                {
+                    "where": {
+                        "name": "Large Dungeon Corridor"
+                    },
+                    "with": {
+                        "name": "Large Cave Corridor"
+                    }
+                }
+            ]
+        }
+    },
     "27": {
         "95": {
             "tiles": [
@@ -172,9 +213,14 @@
             ]
         }
     },
+    "67": {
+        "85": {
+            "maxY": 2000
+        }
+    },
     "68": {
         "85": {
-            "tiles": []
+            "minY": 2000
         }
     },
     "69": {
@@ -287,9 +333,9 @@
             ]
         }
     },
-    "81" : {
-        "101" : {
-            "maxY" : 1200
+    "81": {
+        "101": {
+            "maxY": 1200
         }
     },
     "85": {

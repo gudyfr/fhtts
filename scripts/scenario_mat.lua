@@ -1020,7 +1020,7 @@ function spawned(params)
                         end
                     end
                 else
-                    print("Could not fetch Standee number")
+                    print("Could not fetch Standee number : " .. (re.text or "<empty response>"))
                 end
             end
         )

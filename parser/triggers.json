@@ -770,6 +770,54 @@
             }
         }
     ],
+    "22": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 28
+            },
+            "target": {
+                "type": "global",
+                "name": "room1alldead"
+            },
+            "trigger": {
+                "type": "alldead",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "26.3"
+                },
+                "also": [
+                    {
+                        "action": "attachTrigger",
+                        "what": "scenario/28/token/a",
+                        "trigger": {
+                            "type": "pressure",
+                            "action": "reveal",
+                            "what": {
+                                "type": "section",
+                                "name": "41.2"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 28
+            },
+            "target": {
+                "type": "token",
+                "name": "a",
+                "selfTarget": true
+            },
+            "trigger": {
+                "display": "Nothing yet"
+            }
+        }
+    ],
     "23": [
         {
             "in": {
@@ -2814,7 +2862,7 @@
             }
         }
     ],
-    "81" : [
+    "81": [
         {
             "in": {
                 "type": "scenario",
@@ -3038,7 +3086,7 @@
                 "name": "3"
             },
             "trigger": {
-                "type": "door",                
+                "type": "door",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -3056,7 +3104,7 @@
                 "name": "5"
             },
             "trigger": {
-                "type": "pressure",                
+                "type": "pressure",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -3072,10 +3120,10 @@
             "target": {
                 "type": "token",
                 "name": "b",
-                "selfTarget":true
+                "selfTarget": true
             },
             "trigger": {
-                "display": "Section 175.3",                
+                "display": "Section 175.3",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -3091,11 +3139,11 @@
             "target": {
                 "type": "global",
                 "name": "section178_4",
-                "selfTarget":true
+                "selfTarget": true
             },
             "trigger": {
-                "type":"manual",
-                "by" : {
+                "type": "manual",
+                "by": {
                     "token": "b",
                     "at": {
                         "reference": "07-C",
@@ -3103,7 +3151,7 @@
                         "y": 1
                     }
                 },
-                "display": "Section 178.4",                
+                "display": "Section 178.4",
                 "action": "reveal",
                 "what": {
                     "type": "section",
@@ -3119,7 +3167,7 @@
             "target": {
                 "type": "token",
                 "name": "b",
-                "selfTarget":true
+                "selfTarget": true
             },
             "trigger": {
                 "display": "Section 175.3",

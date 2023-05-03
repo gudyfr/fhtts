@@ -82,6 +82,8 @@ function createEmptyState()
             checkmarks = {},
         }
     end
+    -- Set the scenario to the 2nd page
+    state["scenario book"].history[1] = 2
     return state
 end
 
@@ -91,6 +93,9 @@ end
 
 function onStateUpdate(state)
     State = state
+    for book, bookState in pairs(state) do
+        goToPage(book, bookState.history[bookState.historyPosition])
+    end
     refreshDecals()
 end
 

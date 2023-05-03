@@ -211,6 +211,8 @@ def addToEntries(entries, positions, key, bosses=[]):
                     
 
 def rotateHexCoordinates(x,y,orientation):
+    if x == 0 and y == 0:
+        return x,y
     match int(orientation):
         case 0: return x,y
         case 60: return -y,x+y
@@ -235,7 +237,84 @@ def removeMonsters(monsters, removedMonsters):
             if monster['name'] == monsterToRemove:
                 monsters.remove(monster)
 
-def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
+def elementSize(e):
+    if e in tripleTiles:
+        return 3
+    if e in doubleTiles:
+        return 2
+    return 1
+
+def getSimpleName(name):
+    name = name.replace("Huge ", "")
+    name = name.replace("Large ", "")
+    return name
+
+def cleanup(entries, layout, scenarioId):
+    # Let's remove numberred tokens
+    for entry in entries:
+        for token in entry['tokens']:
+            if token['name'] in ['1','1g','2','2g','3','3g','4','4g','5','6','7','8','9','10','11','12']:
+                hasTrigger = False
+                for position in token['positions']:
+                    if 'trigger' in position:
+                        hasTrigger = True
+                if not hasTrigger:
+                    entry['tokens'].remove(token)
+    # Let's remove duplicate overlays (same name, same position)
+    overlaysPerPosition = {}
+    for entry in entries:
+        origin = None
+        reference = entry['reference']['tile']
+        for tile in layout:
+            if tile['name'] == reference:
+                origin = tile['origin']
+        if origin != None:
+            for overlay in entry['overlays']:
+                overlayPositions = [{'x':0,'y':0}]
+                if overlay['name'] in doubleTiles:
+                    overlayPositions = [{'x':0,'y':0}, {'x':-1,'y':0}]
+                if overlay['name'] in tripleTiles:
+                    overlayPositions = [{'x':0,'y':0}, {'x':-1,'y':0}, {'x':-1, 'y':-1}]
+                actualPositions = []
+                for position in overlayPositions:
+                    x,y = rotateHexCoordinates(position['x'], position['y'], overlay['orientation'])
+                    actualPositions.append({'x' : x + origin['x'], 'y' : y+origin['y']})
+
+                for position in overlay['positions']:
+                    for subPosition in actualPositions:
+                        positionName = f"{subPosition['x']+position['x']},{subPosition['y']+position['y']}"
+                        if not positionName in overlaysPerPosition:
+                            overlaysPerPosition[positionName] = []
+                        overlays = overlaysPerPosition[positionName]
+                        overlays.append({'overlay':overlay, 'position' : position, 'reference' : reference})
+        else:
+            print(f"No reference Tile in {scenarioId}")
+    
+    for position,overlays in overlaysPerPosition.items():
+        if len(overlays) > 1:
+            # Sort the overlays by size
+            overlays.sort(key = lambda e : elementSize(e['overlay']['name']) , reverse=True)
+            validOverlays = []            
+            for overlayHolder in overlays:
+                overlay = overlayHolder['overlay']
+                simpleName = getSimpleName(overlay['name'])
+                isValid = True
+                for validOverlay in validOverlays:
+                    if getSimpleName(validOverlay['name']) == simpleName:
+                        isValid = False
+                if isValid:
+                    validOverlays.append(overlay)
+                else:
+                    if overlayHolder['position'] in overlay['positions']:
+                        print(f"Removing {overlay['name']} at {overlayHolder['position']} in reference {overlayHolder['reference']} of {scenarioId}")
+                        overlay['positions'].remove(overlayHolder['position'])
+
+    for entry in entries:
+        for overlay in entry['overlays']:
+            if len(overlay['positions']) == 0:
+                entry['overlays'].remove(overlay)
+
+def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenarioId):
     removedMonsters = scenarioSpecials['remove-monsters'] if 'remove-monsters' in scenarioSpecials else []
     bosses = scenarioSpecials['bosses'] if 'bosses' in scenarioSpecials else []
     renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else []
@@ -371,6 +450,8 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
             subResult["monsters"] = removeScore(processed['monsters'])
             subResult["overlays"] = removeScore(processed['overlays'])
             subResults.append(subResult)
+        
+        cleanup(subResults, layout, scenarioId)
         result['entries'] = subResults
 
     globalTriggers = list(map(lambda e: e['trigger'], filter(lambda e: e['target']['type'] == 'global', mapTriggers)))
@@ -468,6 +549,8 @@ with open("tileInfos.json", 'r') as tf:
             scenarioSpecials = specials[id] if id in specials else []
             removedMaps = scenarioSpecials['remove-maps'] if 'remove-maps' in scenarioSpecials else []
             removedTiles = scenarioSpecials['remove-tiles'] if 'remove-tiles' in scenarioSpecials else []
+            if 'layout' in scenario:                
+                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles, scenarioSpecials)
             if 'maps' in scenario:
                 mapsOutput = []
                 for scenarioMap in scenario['maps']:
@@ -477,13 +560,12 @@ with open("tileInfos.json", 'r') as tf:
                             removed = True
                     if not removed :
                         mapTriggers = list(filter(lambda e : e['in']['type'] == scenarioMap['type'] and e['in']['name'] == scenarioMap['name'], scenarioTriggers))     
-                        result = processMap(tileInfos, scenarioMap, mapTriggers, scenarioSpecials)
+                        result = processMap(tileInfos, scenarioMap, mapTriggers, scenarioSpecials, scenarioOutput['layout'] if 'layout' in scenario else {}, id)
                         mapsOutput.append(result)
                 scenarioOutput['maps'] = mapsOutput
-            if 'layout' in scenario:                
-                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles, scenarioSpecials)            
+                        
             scenariosOutput[id] = scenarioOutput
-        with open("out/processedScenarios.human.json", 'w') as fw:
+        with open("../processedScenarios.human.json", 'w') as fw:
             json.dump(scenariosOutput, fw, indent=2)
-        with open("out/processedScenarios.json", 'w') as fw:
+        with open("../www/processedScenarios2.json", 'w') as fw:
             json.dump(scenariosOutput, fw)

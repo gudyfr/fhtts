@@ -77,7 +77,7 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch
 
 
 def loadScenarios():
-    with open('out/scenarios.json', 'r') as openfile:
+    with open('../www/scenarios.json', 'r') as openfile:
         return json.load(openfile)
 
 def loadTiles():
@@ -350,7 +350,7 @@ for id in scenarioIds:
                     if len(mapTiles) > found:
                         scenarioData["layout"] = mapTiles
 
-            if len(tiles) > 0:
+            if len(tiles) > 0 and minX < maxX and minY < maxY:
                 if verbose:
                     print(f"Lookup Area : ({minX},{minY}) -> ({maxX}, {maxY})")
 

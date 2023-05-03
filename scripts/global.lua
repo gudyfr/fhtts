@@ -61,7 +61,7 @@ function refreshScenarioData()
    if getObjectFromGUID('1a09ac').getDescription() == "dev" or false then
       -- Switch to using fh assistant url if defined
       WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
-      WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
+      WebRequest.get("http://localhost:8080/out/processedScenarios2.json", processAdditionalScenarioData)
    else
       WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
       WebRequest.get("https://gudyfr.github.io/fhtts/processedScenarios2.json",
@@ -1309,20 +1309,22 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       local newTrigger = action.trigger
       newTrigger.id = currentTrigger.id
 
-      for _, obj in ipairs(ScenarioTriggers.byTriggerId[what]) do
-         local objGuid
-         if obj ~= nil then
-            objGuid = obj.guid
+      for _, objGuid in ipairs(ScenarioTriggers.byTriggerId[what]) do
+         if objGuid ~= nil then
             local triggeredKey = getTriggeredKey(currentTrigger, objGuid)
             -- Reset the triggered state
             ScenarioTriggers.triggered[triggeredKey] = false
+            local obj = getObjectFromGUID(objGuid)
+            if obj ~= nil then
+               attachTriggerToElement(newTrigger, obj, CurrentScenarioId, 1, true)
+            end
          end
       end
 
       -- Reset the possible scenario triggered state
       ScenarioTriggers.triggered[getTriggeredKey(currentTrigger, nil)] = false
       -- Attach the new trigger
-      print("Replacing " .. action.what .. " into " .. JSON.encode(newTrigger))
+      -- print("Replacing " .. action.what .. " into " .. JSON.encode(newTrigger))
       ScenarioTriggers.triggersById[what] = newTrigger
    end
 
@@ -1869,8 +1871,6 @@ function registerForCollision(obj)
 end
 
 function registerPressurePlate(pressurePlate)
-   print("test")
-   print(pressurePlate)
    pressurePlate.addTag("pressurePlate")
    Wait.frames(function() pressurePlate.registerCollisions() end, 10)
 end
