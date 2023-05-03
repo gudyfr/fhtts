@@ -56,6 +56,8 @@ Starting locations can be clicked to make them all disapear
 Doors can be clicked to open them and reveal the next room  
 ![](images/tts_open_door.png)  
 In some scenarios, the pressure plates (or tokens) have been scripted, and a character needs to be placed there to activate them  
+Some conditions are currently too complicated to be implemented automatically, in these situations a token will be added next to the map to trigger the appropriate section  
+![](images/tts_manual_trigger.png) 
 
 ## Playing a scenario
 ### Overall round process

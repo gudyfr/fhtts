@@ -56,6 +56,8 @@ def mapToHexCoordinate(x, y):
     mx = round(fx)
     return mx, my
 
+def mapFromHexCoordinate(x,y):
+    return x*xDisplacement[0] + y*yDisplacement[0], y*yDisplacement[1]
 
 smallYDisplacement = [14.71, -25.4]
 smallXDisplacement = [29.42, 0]
@@ -238,69 +240,122 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
     bosses = scenarioSpecials['bosses'] if 'bosses' in scenarioSpecials else []
     renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else []
     result = {"type" : mapData["type"], "name" : mapData["name"]}
+    
+    offsetsByReference = {}
+    resultsByReference = {}
+    attractorsByReference = {}
+
+    subResults = []
     entries = mapData['results']
+    
     tiles = list(filter(lambda e : e['type'] == "tile", entries))
+    tileCenters = []
     # First we should try and find tiles    
     if len(tiles) > 0:
         tiles.sort(key= lambda e: e['results'][0]['score'], reverse=True)
-        reference = tiles[0]
-        tileNumber,tileName = getTileNumberAndName(reference['name'])
-        tileOrientation = reference['orientation'].split("-")[1]
-        if tileNumber in tileInfos:
-            tileInfo = tileInfos[tileNumber]
-            tileOffset = tileInfo['offset']
-            flipped = True if tileName in ['B','D','F','H','J','L'] else False
-            if flipped and 'offset_flipped' in tileInfo:
-                tileOffset = tileInfo['offset_flipped']
-            angle = tileInfo['angle'] if 'angle' in tileInfo else 0
-            tileX,tileY = getCenterPoint(reference["results"][0])
-            effectiveOrientation = int(tileOrientation) - angle
-            tOX,tOY = rotateVector(tileOffset["x"], tileOffset["y"], effectiveOrientation)
-            xOffset = tileX + tOX
-            yOffset = tileY + tOY
-            result['reference'] = {"tile" : reference['name'], "tileOrientation" : f"{effectiveOrientation}"}
-            # We now have a reference point (0,0) at tileOffset
-            # map every object we've found to its tile coordinate
-            overlays = filter(lambda e :e['type'] == 'overlay', entries)
-            overlayTypes = filter(lambda e :e['type'] == 'overlay types', entries)
-            monsters = filter(lambda e :e['type'] == 'monster', entries)
-            monsterLevels = filter(lambda e :e['type'] == 'monster levels', entries)
-            tokens = filter(lambda e :e['type'] == 'tokens', entries)
+        for tile in tiles:
+            tileNumber,tileName = getTileNumberAndName(tile['name'])
+            tileOrientation = tile['orientation'].split("-")[1]
+            if tileNumber in tileInfos:
+                tileInfo = tileInfos[tileNumber]
+                tileOffset = tileInfo['offset']
+                flipped = True if tileName in ['B','D','F','H','J','L'] else False
+                if flipped and 'offset_flipped' in tileInfo:
+                    tileOffset = tileInfo['offset_flipped']
+                angle = tileInfo['angle'] if 'angle' in tileInfo else 0
+                tileX,tileY = getCenterPoint(tile["results"][0])
+                skip = False
+                for tileCenter in tileCenters:
+                    dx = tileCenter['x'] - tileX
+                    dy = tileCenter['y'] - tileY
+                    distance = math.sqrt(dx*dx+dy*dy)
+                    if distance < 100:
+                        skip = True
+                if not skip:
+                    tileCenters.append({'x':tileX,'y':tileY})
+                    effectiveOrientation = int(tileOrientation) - angle
+                    tOX,tOY = rotateVector(tileOffset["x"], tileOffset["y"], effectiveOrientation)
+                    xOffset = tileX + tOX
+                    yOffset = tileY + tOY
+                    # Calculate the coordinate of the attractors
+                    attractors = tileInfo['attractors'] if 'attractors' in tileInfo else [{'x':-tileInfo['origin']['x'],'y':-tileInfo['origin']['y']}]
+                    processedAttractors = []
+                    for attractor in attractors:
+                        x,y = rotateHexCoordinates(attractor['x'], attractor['y'], effectiveOrientation)
+                        dx,dy = mapFromHexCoordinate(x,y)
+                        processedAttractors.append({"x" : dx+xOffset, "y" : dy + yOffset})
+
+                    attractorsByReference[tile["name"]] = processedAttractors
+                    resultsByReference[tile["name"]] = {"reference":{"tile" : tile['name'], "tileOrientation" : f"{effectiveOrientation}"}}
+                    offsetsByReference[tile["name"]] = {"x" : xOffset, "y" : yOffset}
+
+        # We now have a reference point (0,0) at tileOffset
+        # map every object we've found to its tile coordinate
+        overlays = filter(lambda e :e['type'] == 'overlay', entries)
+        overlayTypes = filter(lambda e :e['type'] == 'overlay types', entries)
+        monsters = filter(lambda e :e['type'] == 'monster', entries)
+        monsterLevels = filter(lambda e :e['type'] == 'monster levels', entries)
+        tokens = filter(lambda e :e['type'] == 'tokens', entries)
+        
+        all = {
+            "overlays" : overlays,
+            "overlayTypes" : overlayTypes,
+            "monsters" : monsters,
+            "monsterLevels" : monsterLevels,
+            "tokens" : tokens
+        }
+        processedByReference = resultsByReference
+        for key,items in all.items():
+            outputByReference = {}
+            for ref in resultsByReference.keys():
+                outputByReference[ref] = []
+            for item in items:
+                name = getName(item)
+                orientation = getOrientation(item)
+                for nameMapping in renamed:
+                    if nameMapping['from'] == name:
+                        name = nameMapping['to']    
+                itemOutput = {"name" : name, "orientation" : orientation}
+                outputsByReference = {}
+                for r in item['results']:
+                    x,y = getCenterPoint(r, name, orientation)
+                    # Determine the best tile
+                    reference = None
+                    bestDistance = 10000                    
+                    for ref,attractors in attractorsByReference.items():
+                        for attractor in attractors:
+                            dX = x - attractor['x']
+                            dY = y - attractor['y']
+                            distance = math.sqrt(dX*dX+dY*dY)
+                            if distance < bestDistance or reference == None:
+                                bestDistance = distance
+                                reference = ref
+                    xOffset = offsetsByReference[reference]["x"]
+                    yOffset = offsetsByReference[reference]["y"]
+
+                    itemOutput = outputsByReference[reference] if reference in outputsByReference else {"name" : name, "orientation" : orientation, "positions" : []}
+                    outputsByReference[reference] = itemOutput
+                    x,y = mapToHexCoordinate(x-xOffset, y-yOffset)
+                    itemOutput["positions"].append({"x":x, "y":y, "score" : r["score"]})
+                
+                for ref,itemOutput in outputsByReference.items():
+                    outputByReference[ref].append(itemOutput)
             
-            all = {
-                "overlays" : overlays,
-                "overlayTypes" : overlayTypes,
-                "monsters" : monsters,
-                "monsterLevels" : monsterLevels,
-                "tokens" : tokens
-            }
-            processed = {}
-            for key,items in all.items():
-                output = []
-                for item in items:
-                    name = getName(item)
-                    orientation = getOrientation(item)
-                    for nameMapping in renamed:
-                        if nameMapping['from'] == name:
-                            name = nameMapping['to']    
-                    itemOutput = {"name" : name, "orientation" : orientation}
-                    positions = []
-                    for r in item['results']:
-                        x,y = getCenterPoint(r, name, orientation)
-                        x,y = mapToHexCoordinate(x-xOffset, y-yOffset)
-                        positions.append({"x":x, "y":y, "score" : r["score"]})
-                    itemOutput["positions"] = positions
-                    output.append(itemOutput)
+            
+            for ref, output in outputByReference.items():
                 output = removeDuplicates(output)
-                processed[key] = output
-            
+                processedByReference[ref][key] = output
+        
+        
+        for ref,processed in processedByReference.items():
+            subResult = {}
+            subResult['reference'] = processed['reference']
             # We simply copy over the overlays
             processedTokens = removeScore(processed["tokens"])
             removeTokens(processed["tokens"], scenarioSpecials)
 
             tokenTriggerLocations = removeTriggers(processedTokens, mapTriggers)
-            result["tokens"] = processedTokens
-
+            subResult["tokens"] = processedTokens
 
             overlayTriggers = list(filter(lambda e: e['target']['type'] == 'overlay', mapTriggers))
             attachOverlayTriggersToOverlays(processed['overlays'], overlayTriggers)
@@ -313,11 +368,13 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
             addToEntries(processed['overlays'], positionToOverlayTypes, "type")
             attachTriggersToOverlays(processed['overlays'], tokenTriggerLocations)
 
-            result["monsters"] = removeScore(processed['monsters'])
-            result["overlays"] = removeScore(processed['overlays'])
+            subResult["monsters"] = removeScore(processed['monsters'])
+            subResult["overlays"] = removeScore(processed['overlays'])
+            subResults.append(subResult)
+        result['entries'] = subResults
 
     globalTriggers = list(map(lambda e: e['trigger'], filter(lambda e: e['target']['type'] == 'global', mapTriggers)))
-    result['triggers'] = globalTriggers
+    result['triggers'] = globalTriggers    
     
     return result
 
@@ -325,7 +382,9 @@ def getTileNumberAndName(name):
     parts = name.split("-")
     return parts[0],parts[1]
 
-def processLayout(layout:list, removedTiles:list):
+def processLayout(layout:list, removedTiles:list, scenarioSpecials:dict):
+    shiftX = scenarioSpecials['shiftX'] if 'shiftX' in scenarioSpecials else 0
+    shiftY = scenarioSpecials['shiftY'] if 'shiftY' in scenarioSpecials else 0
     # Remove tiles based on special rules
     for removedTile in removedTiles:
         for tile in layout:
@@ -378,8 +437,8 @@ def processLayout(layout:list, removedTiles:list):
         averageY = int(averageY/len(result))
         for r in result:
             for key in ["center", "origin"]:
-                r[key]["x"] = r[key]["x"] - averageX
-                r[key]["y"] = r[key]["y"] - averageY
+                r[key]["x"] = r[key]["x"] - averageX + shiftX
+                r[key]["y"] = r[key]["y"] - averageY + shiftY
     return result
 
 
@@ -422,7 +481,7 @@ with open("tileInfos.json", 'r') as tf:
                         mapsOutput.append(result)
                 scenarioOutput['maps'] = mapsOutput
             if 'layout' in scenario:                
-                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles)            
+                scenarioOutput['layout'] = processLayout(scenario['layout'], removedTiles, scenarioSpecials)            
             scenariosOutput[id] = scenarioOutput
         with open("out/processedScenarios.human.json", 'w') as fw:
             json.dump(scenariosOutput, fw, indent=2)

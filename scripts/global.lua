@@ -14,7 +14,7 @@ scenarioBookId = '5cd351'
 mapTilesBagId = '9cbcab'
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
-function onLoad()
+function onLoad(save)
    -- load scenario data
    refreshScenarioData()
 
@@ -30,6 +30,30 @@ function onLoad()
    addHotkey("Play Third Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 3) end)
    addHotkey("Draw Card", function(player_color, hovered_object, point, key_up) drawCard(player_color) end)
    addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
+
+   -- Restore the triggers
+   local state = JSON.decode(save or {}) or {}
+   CurrentScenarioId = state.currentScenario
+   if state.tiggers ~= nil then
+      ScenarioTriggers = state.triggers
+
+      --We need to re-create the potential action buttons
+      for guid, triggerIds in pairs(ScenarioTriggers.byObjectGuid) do
+         local obj = getObjectFromGUID(guid)
+         if obj ~= nil then
+            for _, triggerId in ipairs(triggerIds) do
+               local trigger = ScenarioTriggers.triggersById[triggerId]
+               -- No need to update the trigger in the ScenarioTriggers
+               attachTriggerToElement(trigger, obj, CurrentScenarioId, 1, true)
+            end
+         end
+      end
+   end
+end
+
+function onSave()
+   local state = { triggers = ScenarioTriggers, currentScenario = CurrentScenarioId }
+   return JSON.encode(state)
 end
 
 function refreshScenarioData()
@@ -40,7 +64,7 @@ function refreshScenarioData()
       WebRequest.get("http://localhost:8080/out/processedScenarios.json", processAdditionalScenarioData)
    else
       WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/scenarios.json", processScenarioData)
-      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios.json",
+      WebRequest.get("https://raw.githubusercontent.com/gudyfr/fhtts/main/processedScenarios2.json",
          processAdditionalScenarioData)
    end
 end
@@ -272,7 +296,7 @@ tokenBagsGuids = {
    loot = '5e0624'
 }
 
-function getToken(token, scenarioElementPositions, currentScenarioElementPosition)
+function getToken(token, position)
    local bagId = tokenBagsGuids[token.name]
    if bagId == nil then
       bagId = tokenBagsGuids["n" .. token.name]
@@ -280,7 +304,6 @@ function getToken(token, scenarioElementPositions, currentScenarioElementPositio
    if bagId ~= nil then
       local bag = getObjectFromGUID(bagId)
       if bag ~= nil then
-         local position = scenarioElementPositions[currentScenarioElementPosition]
          local count = token.count or 1
          for i = 1, count do
             local obj
@@ -673,7 +696,7 @@ function prepareScenario(name, campaign, title)
             local value = choice.value
             if token ~= nil and value ~= nil then
                local title = choice.title or ("Choose " .. token)
-               local obj = getToken({ name = token }, scenarioElementPositions, firstPosition)
+               local obj = getToken({ name = token }, scenarioElementPositions[firstPosition])
                if obj ~= nil then
                   self.setVar("scenarioChoice_" .. token, function() prepareFrosthavenScenario(name .. value) end)
                   local params = {
@@ -758,7 +781,7 @@ function prepareScenario(name, campaign, title)
       if elements.tokens ~= nil then
          for index, token in ipairs(elements.tokens) do
             -- print("Adding token " .. token.name)
-            getToken(token, scenarioElementPositions, currentScenarioElementPosition)
+            getToken(token, scenarioElementPositions[currentScenarioElementPosition])
             currentScenarioElementPosition = currentScenarioElementPosition + 1
          end
       end
@@ -820,9 +843,24 @@ function layoutMap(elements, map, scenarioInfo)
    -- Determine number of players
    local playerCount = getPlayerCount()
 
+   local categories = { "monsters", "overlays", "tokens" }
+
+   -- Backward Compatibility
+   if map.entries == nil then
+      local entries = {}
+      local subEntry = {}
+      subEntry['reference'] = map.reference
+      map.reference = nil
+      for _, category in ipairs(categories) do
+         subEntry[category] = map[category]
+         map[category] = nil
+      end
+      table.insert(entries, subEntry)
+      map.entries = entries
+   end
+
    -- Calculate all name mappings
    local nameMappings = {}
-   local categories = { "monsters", "overlays", "tokens" }
    for _, category in ipairs(categories) do
       for _, entry in ipairs(elements[category] or {}) do
          local name = entry.name
@@ -850,121 +888,118 @@ function layoutMap(elements, map, scenarioInfo)
       end
    end
 
+   local zone = getObjectFromGUID('1f0c29')
+   local objects = zone.getObjects(true)
 
-   local reference = map.reference
-   if reference == nil then
-      return
-   end
-   local origin = nil
-   for _, layout in ipairs(scenarioInfo['layout']) do
-      if layout.name == reference.tile then
-         origin = layout.origin
+   for _, entry in ipairs(map.entries) do
+      local reference = entry.reference
+      if reference == nil then
+         return
       end
-   end
-   if origin ~= nil then
-      local zone = getObjectFromGUID('1f0c29')
-      local objects = zone.getObjects(true)
-      -- Overlays
-      for _, overlay in ipairs(map.overlays) do
-         -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
-         for _, position in ipairs(overlay.positions) do
-            local passesConditions = true
-            if position.condition ~= nil then
-               if position.condition.players ~= nil then
-                  passesConditions = false
-                  for _, pass in ipairs(position.condition.players) do
-                     if playerCount == pass then
-                        passesConditions = true
+      local origin = getOrigin(scenarioInfo, reference.tile)
+      if origin ~= nil then
+         -- Overlays
+         for _, overlay in ipairs(entry.overlays) do
+            -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
+            for _, position in ipairs(overlay.positions) do
+               local passesConditions = true
+               if position.condition ~= nil then
+                  if position.condition.players ~= nil then
+                     passesConditions = false
+                     for _, pass in ipairs(position.condition.players) do
+                        if playerCount == pass then
+                           passesConditions = true
+                        end
+                     end
+                  end
+               end
+
+               if passesConditions then
+                  -- print(" to put at location " .. JSON.encode(position))
+                  local name = overlay.name
+                  if position.rename ~= nil then
+                     name = position.rename
+                  end
+                  local hx = position.x + origin.x
+                  local hy = position.y + origin.y
+                  if position.type ~= "Door" or ScenarioDoors[hx .. "," .. hy] == nil then
+                     local obj = locateScenarioElementWithName(name, objects, true, nameMappings)
+                     if obj ~= nil then
+                        local x, z = getWorldPositionFromHexPosition(hx, hy)
+                        if position.type == "Door" then
+                           ScenarioDoors[hx .. "," .. hy] = true
+                        end
+                        obj.setPosition({ x, 1.44, z })
+                        local orientation = overlay.orientation
+                        if orientation > 180 then
+                           orientation = orientation - 360
+                        end
+                        obj.setRotation({ 0, -orientation, 0 })
+
+                        -- Handle potential triggers
+                        if position.trigger ~= nil then
+                           attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+                        end
+                     else
+                        print(" could not find object in prepare area : " .. overlay.name)
                      end
                   end
                end
             end
-
-            if passesConditions then
-               -- print(" to put at location " .. JSON.encode(position))
-               local name = overlay.name
-               if position.rename ~= nil then
-                  name = position.rename
+         end
+         for _, token in ipairs(entry.tokens) do
+            local random = nil
+            if token.random ~= nil then
+               random = {}
+               for i = 1, token.random.max do
+                  table.insert(random, i)
                end
-               local hx = position.x + origin.x
-               local hy = position.y + origin.y
-               if position.type ~= "Door" or ScenarioDoors[hx .. "," .. hy] == nil then
-                  local obj = locateScenarioElementWithName(name, objects, true, nameMappings)
-                  if obj ~= nil then
-                     local x, z = getWorldPositionFromHexPosition(hx, hy)
-                     if position.type == "Door" then
-                        ScenarioDoors[hx .. "," .. hy] = true
-                     end
-                     obj.setPosition({ x, 1.44, z })
-                     local orientation = overlay.orientation
-                     if orientation > 180 then
-                        orientation = orientation - 360
-                     end
-                     obj.setRotation({ 0, -orientation, 0 })
 
-                     -- Handle potential triggers
-                     if position.trigger ~= nil then
-                        attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
-                     end
-                  else
-                     print(" could not find object in prepare area : " .. overlay.name)
+               -- Shuffle
+               for i = #random, 2, -1 do
+                  local j = math.random(i)
+                  random[i], random[j] = random[j], random[i]
+               end
+            end
+
+            for _, position in ipairs(token.positions) do
+               local name = token.name
+               if random ~= nil and #random > 0 then
+                  name = "n" .. random[1]
+                  table.remove(random, 1)
+               end
+
+               local obj = takeToken(name)
+               if obj ~= nil then
+                  local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                  obj.setPosition({ x, 2.21, z })
+                  local zRot = 0
+                  if random ~= nil then
+                     zRot = 180
+                  end
+                  obj.setRotation({ 0, 180, zRot })
+                  if position.trigger ~= nil then
+                     attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                   end
                end
             end
          end
-      end
-      for _, token in ipairs(map.tokens) do
-         local random = nil
-         if token.random ~= nil then
-            random = {}
-            for i = 1, token.random.max do
-               table.insert(random, i)
-            end
-
-            -- Shuffle
-            for i = #random, 2, -1 do
-               local j = math.random(i)
-               random[i], random[j] = random[j], random[i]
-            end
-         end
-
-         for _, position in ipairs(token.positions) do
-            local name = token.name
-            if random ~= nil and #random > 0 then
-               name = "n" .. random[1]
-               table.remove(random, 1)
-            end
-
-            local obj = takeToken(name)
-            if obj ~= nil then
-               local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-               obj.setPosition({ x, 2.21, z })
-               local zRot = 0
-               if random ~= nil then
-                  zRot = 180
-               end
-               obj.setRotation({ 0, 180, zRot })
-               if position.trigger ~= nil then
-                  attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
-               end
-            end
-         end
-      end
-      for _, monster in ipairs(map.monsters) do
-         for _, position in ipairs(monster.positions) do
-            local levels = position.levels
-            if levels ~= nil then
-               local level = string.sub(levels, playerCount - 1, playerCount - 1)
-               if level == 'n' or level == 'e' or level == 'b' then
-                  -- print("Adding a " .. level .. " " .. monster.name)
-                  local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
-                  if monsterBag ~= nil then
-                     local obj = monsterBag.takeObject({
-                        callback_function = function(spawned) if level == 'e' then makeElite(spawned) end end,
-                        smooth = false
-                     })
-                     local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-                     obj.setPosition({ x, 2.35, z })
+         for _, monster in ipairs(entry.monsters) do
+            for _, position in ipairs(monster.positions) do
+               local levels = position.levels
+               if levels ~= nil then
+                  local level = string.sub(levels, playerCount - 1, playerCount - 1)
+                  if level == 'n' or level == 'e' or level == 'b' then
+                     -- print("Adding a " .. level .. " " .. monster.name)
+                     local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
+                     if monsterBag ~= nil then
+                        local obj = monsterBag.takeObject({
+                           callback_function = function(spawned) if level == 'e' then makeElite(spawned) end end,
+                           smooth = false
+                        })
+                        local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
+                        obj.setPosition({ x, 2.35, z })
+                     end
                   end
                end
             end
@@ -975,8 +1010,32 @@ function layoutMap(elements, map, scenarioInfo)
    if map.triggers ~= nil then
       for _, trigger in ipairs(map.triggers) do
          ScenarioTriggers.triggersById[trigger.id] = trigger
+         -- In addition, for manual triggers, we need to add a corresponding token
+         if trigger.type == "manual" then
+            local by = trigger.by
+            local token = by.token
+            local reference = by.at.reference
+            local tokenOrigin = getOrigin(scenarioInfo, reference)
+            if tokenOrigin ~= nil then
+               local hx = by.at.x + tokenOrigin.x
+               local hy = by.at.y + tokenOrigin.y
+               local x, z = getWorldPositionFromHexPosition(hx, hy)
+               local obj = getToken({ name = token }, { x = x, y = 2.35, z = z })
+               attachTriggerToElement(trigger, obj, CurrentScenarioId, 2)
+            end
+         end
       end
    end
+end
+
+function getOrigin(scenarioInfo, reference)
+   local origin = nil
+   for _, layout in ipairs(scenarioInfo['layout']) do
+      if layout.name == reference then
+         origin = layout.origin
+      end
+   end
+   return origin
 end
 
 function makeElite(obj)
@@ -1007,7 +1066,7 @@ function roundUpdate(payload)
       for id, trigger in pairs(ScenarioTriggers.triggersById) do
          if trigger.type == "round" then
             if trigger.when.round == currentRound.round and trigger.when.state == currentRound.state then
-               handleTriggerAction(trigger, CurrentScenarioId, nil)
+               handleTriggerAction(trigger, CurrentScenarioId, nil, false)
             end
          end
       end
@@ -1027,13 +1086,28 @@ function onEnemiesUpdate(payload)
             -- Let's make sure that all monsters are dead
             local monsters = characterStatus.monsters or {}
             local allDead = true
-            for name, hp in pairs(monsters) do
-               if hp > 0 then
+            for name, info in pairs(monsters) do
+               if info.current > 0 then
                   allDead = false
                end
             end
             if allDead then
                handleTriggerAction(trigger, CurrentScenarioId, nil, false)
+            end
+         end
+         if trigger.type == "health" then
+            if characterStatus == nil then
+               characterStatus = JSON.decode(payload)
+            end
+            local monsters = characterStatus.monsters or {}
+            print(JSON.encode(monsters))
+            for name, info in pairs(monsters) do
+               if name == trigger.who then
+                  local triggerLevel = math.ceil(info.max * trigger.level)
+                  if info.current <= triggerLevel then
+                     handleTriggerAction(trigger, CurrentScenarioId, nil, false)
+                  end
+               end
             end
          end
       end
@@ -1100,7 +1174,7 @@ function actualTriggered(scenarioId, triggerId, objGuid, undo)
 
    if type == "pressure" and undo and (trigger.mode ~= "occupy") then
       -- We do not cancel non 'occupy' pressure plates
-         return
+      return
    end
 
    handleTriggerAction(trigger, scenarioId, objGuid, undo)
@@ -1122,6 +1196,7 @@ function getTriggeredKey(trigger, objGuid)
 end
 
 function handleTriggerAction(action, scenarioId, objGuid, undo)
+   undo = undo or false
    -- print("Performing action on : " .. JSON.encode(action))
    local triggerKey = getTriggeredKey(action, objGuid)
 
@@ -1137,6 +1212,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
    if action.action == "reveal" then
       local what = action.what
       if what.type == "section" then
+         broadcastToAll("Reading Section " .. what.name)
          getObjectFromGUID('2a1fbe').call('setSection', what.name)
          getScenarioMat().call("setSection", what.name)
       end
@@ -1246,7 +1322,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       -- Reset the possible scenario triggered state
       ScenarioTriggers.triggered[getTriggeredKey(currentTrigger, nil)] = false
       -- Attach the new trigger
-      print("Replacing " .. action.what .. " into " ..JSON.encode(newTrigger))
+      print("Replacing " .. action.what .. " into " .. JSON.encode(newTrigger))
       ScenarioTriggers.triggersById[what] = newTrigger
    end
 
@@ -1266,8 +1342,11 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
    end
 end
 
-function attachTriggerToElement(trigger, obj, scenarioId, scale)
-   updateTriggers(trigger, obj)
+function attachTriggerToElement(trigger, obj, scenarioId, scale, skipUpdate)
+   skipUpdate = skipUpdate or false
+   if not skipUpdate then
+      updateTriggers(trigger, obj)
+   end
    local payload = JSON.encode({ scenarioId, trigger.id, obj.guid })
    if trigger.type ~= "pressure" then
       local fName = "trigger_" .. obj.guid .. "_" .. trigger.id
@@ -1284,6 +1363,8 @@ function attachTriggerToElement(trigger, obj, scenarioId, scale)
             else
                label = "Trigger"
             end
+         elseif trigger.type == "manual" and trigger.action == "reveal" then
+            label = "Reveal " .. trigger.what.type .. " " .. trigger.what.name
          end
       end
       -- Let's create a button

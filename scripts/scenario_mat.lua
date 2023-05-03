@@ -1368,7 +1368,7 @@ function processState(state)
         else
             if entry.monsterInstances ~= nil then
                 for _, instance in ipairs(entry.monsterInstances) do
-                    monstersStatus[id .. " " .. instance.standeeNr] = instance.health
+                    monstersStatus[id .. " " .. instance.standeeNr] = {current=instance.health,max=instance.maxHealth}
                 end
             end
         end

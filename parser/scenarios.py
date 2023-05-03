@@ -280,7 +280,7 @@ for id in scenarioIds:
                                 mapTileFile = f'assets/tiles/layout/tiles/{tile}{orientation}{variant}.png'
                                 if os.path.exists(mapTileFile):
                                     result = identify(
-                                        out, mapImg, mapTileFile, mapMinX, mapMinY, 0.91, printMatch=verbose)
+                                        out, mapImg, mapTileFile, mapMinX, mapMinY, 0.92, printMatch=verbose)
                                     if len(result) > 0:
                                         mapTiles.append(
                                             {"name": tile, "orientation": orientation, "variant": variant, "positions": result})
@@ -292,7 +292,7 @@ for id in scenarioIds:
                                         print(
                                             f"\tLooking for Tile {tile}{orientation}{variant}")
                                     result = identify(
-                                        out, img, tileFile, 0, 0, 0.90, printMatch=verbose)
+                                        out, img, tileFile, 0, 0, 0.92, printMatch=verbose)
                                     if len(result) > 0:
                                         found = True                                        
                                         tiles.append(
