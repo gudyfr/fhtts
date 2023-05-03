@@ -29,8 +29,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Sparse Checkout
+        uses: kimuchanman/sparse-checkout@v2.1.1
+        with:
+          directory: www
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
