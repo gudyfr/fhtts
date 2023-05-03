@@ -85,7 +85,8 @@ function onSave()
         cardStates = cardStates,
         elementStates = elementStates,
         characterStates = characterStates,
-        initiativeTypes = initiativeTypes
+        initiativeTypes = initiativeTypes,
+        chracters = Characters
     })
 end
 
@@ -109,6 +110,9 @@ function onLoad(state)
             if json.characterStates ~= nil then
                 characterStates = json.characterStates
             end
+            if json.characters ~= nil then
+                Characters = json.characters
+            end
             initiativeTypes = json.initiativeTypes or {}
         end
     end
@@ -125,6 +129,10 @@ function onLoad(state)
     if initiativeTypes == nil then
         initiativeTypes = {}
     end
+    if Characters == nil then
+        Characters = {}
+    end
+
     isUpdateRunning = false
 
     updateUpdateRunning()
@@ -699,6 +707,16 @@ function updateCharacters()
         local playerMat = Global.call("getPlayerMatExt", { color })
         if playerMat ~= nil then
             local characterName = playerMat.call("getCharacterName")
+            -- print(color .. " : " .. (characterName or "nil"))
+            if Characters[color] ~= characterName then
+                if Characters[color] ~= nil then
+                    updateAssistant("POST", "removeCharacter", { character = Characters[color] }, updateState)
+                end
+                if characterName ~= nil then
+                    updateAssistant("POST", "addCharacter", { character = characterName }, updateState)
+                end
+                Characters[color] = characterName
+            end
             if characterName ~= nil then
                 if characterName == "Blinkblade" then
                     if initiativeTypes[color] == nil or initiativeTypes[color] == "Normal" then
@@ -708,6 +726,10 @@ function updateCharacters()
                 else
                     initiativeTypes[color] = "Normal"
                     maybeRemoveInitiativeToggleButton(color)
+                end
+                local level = playerMat.call("getCharacterLevel")
+                if level ~= nil then
+                    updateAssistant("POST", "change", { target = characterName, what = "level", change = level })
                 end
             end
         else
@@ -1368,7 +1390,8 @@ function processState(state)
         else
             if entry.monsterInstances ~= nil then
                 for _, instance in ipairs(entry.monsterInstances) do
-                    monstersStatus[id .. " " .. instance.standeeNr] = {current=instance.health,max=instance.maxHealth}
+                    monstersStatus[id .. " " .. instance.standeeNr] = { current = instance.health, max = instance
+                    .maxHealth }
                 end
             end
         end
@@ -1385,7 +1408,6 @@ function processState(state)
 
     charactersStatus.monsters = monstersStatus
     Global.call("onEnemiesUpdate", JSON.encode(charactersStatus))
-
 end
 
 function refreshStandees(state)
@@ -1904,14 +1926,12 @@ function updateAssistant(method, command, params, callback)
                 if params == nil then
                     params = {}
                 end
+                local payload = JSON.encode(params)
+                -- print(command .. ":" .. payload)
                 if callback ~= nil then
-                    local payload = JSON.encode(params)
-                    -- print(command .. ":" .. payload)
                     WebRequest.post(url, payload, callback)
                 else
                     -- fire and forget
-                    local payload = JSON.encode(params)
-                    -- print(command .. ":" .. payload)
                     WebRequest.post(url, payload)
                 end
             end

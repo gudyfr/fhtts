@@ -1855,11 +1855,17 @@ function onObjectDestroy(object)
    end
 end
 
-collisionCallbacks = {}
+CollisionEnterCallbacks = {}
+CollisionExitCallbacks = {}
 
 function registerForCollision(obj)
    Wait.frames(function() obj.registerCollisions() end, 10)
-   collisionCallbacks[obj.guid] = obj
+   if obj.getVar("onObjectCollisionExit") ~= nil then
+      CollisionExitCallbacks[obj.guid] = obj
+   end
+   if obj.getVar("onObjectCollisionEnter") ~= nil then
+      CollisionEnterCallbacks[obj.guid] = obj
+   end
 end
 
 function registerPressurePlate(pressurePlate)
@@ -1897,7 +1903,7 @@ function onObjectCollisionEnter(hit_object, collision_info)
    end
 
 
-   for guid, obj in pairs(collisionCallbacks) do
+   for guid, obj in pairs(CollisionEnterCallbacks) do
       if guid == hit_object.guid then
          obj.call("onObjectCollisionEnter", { hit_object, collision_info })
       end
@@ -1915,6 +1921,12 @@ function onObjectCollisionExit(hit_object, collision_info)
          for _, triggerId in ipairs(triggerIds) do
             actualTriggered(CurrentScenarioId, triggerId, obj.guid, true)
          end
+      end
+   end
+
+   for guid, obj in pairs(CollisionExitCallbacks) do
+      if guid == hit_object.guid then
+         obj.call("onObjectCollisionExit", { hit_object, collision_info })
       end
    end
 end
@@ -2015,4 +2027,9 @@ end
 
 function onObjectDrop(color, obj)
 
+end
+
+function characterLevelChanged()
+   -- We need to delay the update as we're getting the callback *before* the change is effective in the button
+   Wait.frames(function() getScenarioMat().call("updateCharacters") end, 10)
 end

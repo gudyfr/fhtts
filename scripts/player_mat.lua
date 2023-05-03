@@ -131,10 +131,10 @@ function loadCharacterBox(characterBox, state)
       baseGuids)
     rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
-      -- Detroy remaining cards form base deck
-      if baseDeck ~= nil and not baseDeck.isDestroyed() then
-        destroyObject(baseDeck)
-      end
+    -- Detroy remaining cards form base deck
+    if baseDeck ~= nil and not baseDeck.isDestroyed() then
+      destroyObject(baseDeck)
+    end
   else
     setAtLocalPosition(baseDeck, AttackModifiersDrawPosition)
     setAtLocalPosition(deck, AttackModifiersSupplyPosition)
@@ -238,7 +238,7 @@ function clearBoard(includeDecks)
         table.insert(positionsToClear, position)
       end
     end
-    for _,position in ipairs(PerksPositions) do
+    for _, position in ipairs(PerksPositions) do
       table.insert(positionsToClear, position)
     end
   end
@@ -328,6 +328,14 @@ function onObjectCollisionEnter(params)
     pos.z = pos.z - 10
     obj.setPosition(pos)
     loadCharacterBox(obj, { characterName = obj.getName() })
+  end
+end
+
+function onObjectCollisionExit(params)
+  local obj = params[2].collision_object
+  if obj.hasTag("character mat") then
+    -- Let's give it a bit of time for the character mat to be lifted
+    Wait.time(function() Global.call("getScenarioMat").call("updateCharacters") end, 0.25)
   end
 end
 
@@ -464,8 +472,20 @@ function getCharacterName()
   if CharacterMatPosition ~= nil then
     local characterMat = findLocalObject(CharacterMatPosition, "", "character mat")
     if characterMat ~= nil then
-      return characterMat.getName()
+      local worldPos =  self.positionToWorld(CharacterMatPosition)
+      -- print(characterMat.getPosition().y .. " <-> " .. worldPos.y )
+      if characterMat.getPosition().y <= worldPos.y + 0.1 then
+        return characterMat.getName()
+      end
     end
+  end
+  return nil
+end
+
+function getCharacterLevel()
+  local characterSheet = getCharacterSheet()
+  if characterSheet ~= nil then
+    return characterSheet.call("getCharacterLevel")
   end
   return nil
 end
