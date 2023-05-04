@@ -190,6 +190,15 @@ function onLoad(state)
         self.createButton(params)
     end
 
+    -- attack modifier draw buttons
+    for color,position in pairs(AttackModifierButtons) do
+        local fName = "drawAttackModifier_" .. color
+        local buttonPosition = { -position.x, position.y + 0.02, position.z }
+        local params = getButtonParams(fName, "Draw Attack Modifier\n(right click to shuffle)", buttonPosition, 600, 400)
+        self.setVar(fName, function(obj, playerColor, alt) drawAttackModifier(color, alt) end)
+        self.createButton(params)
+    end
+
     -- Hp and Xp buttons
     local buttonsToCreate = { "increment", "decrement" }
     for color, categories in pairs(hpAndXpLocations) do
@@ -1100,7 +1109,10 @@ function locateBoardElementsFromTags()
 
     ScenarioButtons = {}
 
+    AttackModifierButtons = {}
+
     for _, point in ipairs(self.getSnapPoints()) do
+        local position = point.position
         local tagsMap = {}
         local tagCount = 0
         for _, tag in ipairs(point.tags) do
@@ -1119,59 +1131,66 @@ function locateBoardElementsFromTags()
                 else
                     cardNr = 3
                 end
-                locations[cardNr] = point.position
+                locations[cardNr] = position
             end
         end
         if tagsMap["button"] ~= nil then
             if tagsMap["fire"] ~= nil then
-                elementsLocations.fire = point.position
+                elementsLocations.fire = position
             elseif tagsMap["air"] ~= nil then
-                elementsLocations.air = point.position
+                elementsLocations.air = position
             elseif tagsMap["ice"] ~= nil then
-                elementsLocations.ice = point.position
+                elementsLocations.ice = position
             elseif tagsMap["earth"] ~= nil then
-                elementsLocations.earth = point.position
+                elementsLocations.earth = position
             elseif tagsMap["dark"] ~= nil then
-                elementsLocations.dark = point.position
+                elementsLocations.dark = position
             elseif tagsMap["light"] ~= nil then
-                elementsLocations.light = point.position
+                elementsLocations.light = position
             elseif tagsMap["draw"] ~= nil then
                 if tagsMap["challenges"] ~= nil then
-                    DrawButtons["Challenges"] = point.position
+                    DrawButtons["Challenges"] = position
                 elseif tagsMap["battle goals"] ~= nil then
-                    DrawButtons["Battle Goals"] = point.position
+                    DrawButtons["Battle Goals"] = position
                 end
             elseif tagsMap["back"] ~= nil and tagsMap["challenges"] ~= nil then
                 if tagsMap["active1"] ~= nil then
-                    BackButtons["Active1"] = point.position
+                    BackButtons["Active1"] = position
                 elseif tagsMap["active2"] ~= nil then
-                    BackButtons["Active2"] = point.position
+                    BackButtons["Active2"] = position
+                elseif tagsMap["active3"] ~= nil then
+                    BackButtons["Active3"] = position
                 end
             elseif tagsMap["start"] ~= nil then
-                ScenarioButtons["start"] = point.position
+                ScenarioButtons["start"] = position
             elseif tagsMap["end"] ~= nil then
-                ScenarioButtons["end"] = point.position
+                ScenarioButtons["end"] = position
             elseif tagsMap["cleanup"] ~= nil then
-                ScenarioButtons["cleanup"] = point.position
+                ScenarioButtons["cleanup"] = position
+            elseif tagsMap["attack modifier"]~= nil then
+                local color = getColorFromTags(tagsMap)
+                if color ~= nil then
+                    AttackModifierButtons[color] = position
+                end
             end
         end
         if tagsMap["deck"] ~= nil then
             if tagsMap["draw"] ~= nil then
                 if tagsMap["battle goals"] ~= nil then
-                    DrawDecks["Battle Goals"] = point.position
+                    DrawDecks["Battle Goals"] = position
                 elseif tagsMap["challenges"] ~= nil then
-                    DrawDecks["Challenges"] = point.position
+                    DrawDecks["Challenges"] = position
                 end
             else
                 if tagsMap["challenges"] ~= nil then
                     if tagsMap["active1"] ~= nil then
-                        ChallengesDestinations["Active1"] = point.position
+                        ChallengesDestinations["Active1"] = position
                     elseif tagsMap["active2"] ~= nil then
-                        ChallengesDestinations["Active2"] = point.position
+                        ChallengesDestinations["Active2"] = position
                     elseif tagsMap["active3"] ~= nil then
-                        ChallengesDestinations["Active3"] = point.position
+                        ChallengesDestinations["Active3"] = position
                     elseif tagsMap["discard"] ~= nil then
-                        ChallengesDestinations["Discard"] = point.position
+                        ChallengesDestinations["Discard"] = position
                     end
                 end
             end
@@ -1184,19 +1203,19 @@ function locateBoardElementsFromTags()
                 if tagsMap[category] ~= nil then
                     if tagsMap["button"] ~= nil then
                         if tagsMap["minus"] ~= nil then
-                            hpAndXpLocations[color][category]["decrement"] = point.position
+                            hpAndXpLocations[color][category]["decrement"] = position
                         elseif tagsMap["plus"] ~= nil then
-                            hpAndXpLocations[color][category]["increment"] = point.position
+                            hpAndXpLocations[color][category]["increment"] = position
                         end
                     elseif tagsMap["label"] ~= nil then
-                        hpAndXpLocations[color][category]["label"] = point.position
+                        hpAndXpLocations[color][category]["label"] = position
                     end
                 end
             end
         end
 
         if tagsMap["scenarioElement"] ~= nil then
-            table.insert(scenarioElementPositions, self.positionToWorld(point.position))
+            table.insert(scenarioElementPositions, self.positionToWorld(position))
         end
     end
 
@@ -1956,5 +1975,13 @@ end
 function setSection(section)
     if isXHavenEnabled() then
         updateAssistant("POST", "setSection", { section = section })
+    end
+end
+
+function drawAttackModifier(color, alt)
+    if alt then
+        Global.call("playerShuffle", {color=color})
+    else
+        Global.call("playerDraw", {color=color})
     end
 end
