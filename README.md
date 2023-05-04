@@ -3,10 +3,6 @@ This is a port of Frosthaven for tabletop simulator.
 It integrates, and relies heavily on Frosthaven assistant (for monster and loot management), which, as of now, requires a custom build.
 The goal is to have everything scripted.
 
-# LIMITATIONS
-**The mechanism to create a save bundle is completely untested. If you start a campaign, you may not be able to easily update to newer version of this mod.
-At this point your interest in using this mod should be in helping / contributing to finalize it.**
-
 # What's included
 - World Map, with scenario stickers added automatically upon unlocking / completing scenarios
 - Campaing tracker which lets you unlock scenarios (click on the scenario number), complete a scenario (click the checkmark), lock a scenario (click the area with the lock outline), hide a scenario (click above its title), and load a scenario (click on its title)
@@ -22,8 +18,9 @@ At this point your interest in using this mod should be in helping / contributin
 - Event card holders for all event cards (searchable)
 - Automatic retrieval of all assets needed upon choosing a scenario
 - Automatic layout of the scenario map tiles
-- Automatic layout of scenarios and sections (not complete, and still needs a fair amount of work)
+- Automatic layout of scenarios and sections (mostly complete, but needs to be verified)
 - Integration with x-haven assistant :
+  - Add characters in the assistant depending on player mats set in TTS, and update those based on level.
   - Automatically sets the scenario in the assistant when loaded in TTS
   - Monsters automatically get a standee number associated to them when pulled from their bag.
   - Start round is automated and sends initiative to assistant
@@ -33,8 +30,19 @@ At this point your interest in using this mod should be in helping / contributin
   - Highligthing of figurines whose turn it is
  
  # What's buggy
-  - The automatic scenario layout is still buggy, and many scenarios still need work.
+  - The following scenarios are not yet automated (work in progress):
+    - **37** (Map tiles need to relocate)
+    - **82** (Special setup rules, with moving corridors)
+    - **85** (It has a really high number of Section links)
+    - **91** (The layout is random from a pool of possibilities)
+    - **113** (Some doors are missing)
+    - **128** (Tiles need to flip)    
   - Sometimes the overlay stickers showing health / conditions on top of figurines disapear.
+  
+ # How you can help
+  - Find Scenario auto layout errors. The automatic scenario layout is based on a (mostly) automated parsing of the scenario and section book. As such, while a lot of scenarios seem to be ok, and were quickly checked as part of creating the various section links, they haven't been fully tested, especially for different number of players. Some overlay tiles or monsters might be missing, or may be of the wrong type (normal vs elite). Bosses in particular might not be properly spawned. If you spot errors in any scenario not mentionned above, please report a bug.
+  - Provide Usability feedback. 
+  - Join the effort
   
 # Installation
   - Download the save file under [tts saves](https://github.com/gudyfr/fhtts/tree/main/tts%20saves)
