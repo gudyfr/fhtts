@@ -61,33 +61,49 @@
     "70": {
         "bosses": [
             {
-                "in" : "106.2",
+                "in": "106.2",
                 "from": "City Guard",
                 "to": "Flaming Sword of Justice"
             }
         ]
     },
-    "81" : {
-        "shiftX" : -3
+    "81": {
+        "shiftX": -3
     },
-    "89" : {
-        "bosses" : [
+    "89": {
+        "bosses": [
             {
-                "in" : "146.3",
-                "from" : "Algox Icespeaker",
-                "to" : "Vanjal"
+                "in": "146.3",
+                "from": "Algox Icespeaker",
+                "to": "Vanjal"
             }
         ]
     },
-    "93A" : {
-        "remove-monsters" : [
-            "Polar Bear", "Hound", "Vermling Scout"
+    "91": {
+        "entry-to-map": [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 113
+                },
+                "having" : {
+                    
+                }
+            }
         ]
-
     },
-    "93B" : {
-        "remove-monsters" : [
-            "Algox Scout", "Algox Archer", "Algox Guard"
+    "93A": {
+        "remove-monsters": [
+            "Polar Bear",
+            "Hound",
+            "Vermling Scout"
+        ]
+    },
+    "93B": {
+        "remove-monsters": [
+            "Algox Scout",
+            "Algox Archer",
+            "Algox Guard"
         ]
     }
 }

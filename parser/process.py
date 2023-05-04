@@ -136,6 +136,7 @@ def removeTriggers(entries, mapTriggers):
     for trigger in mapTriggers:
         target = trigger['target']
         if target['type'] == 'token':
+            entriesToRemove = []
             for entry in entries:
                 if entry['name'] == target['name']:
                     if 'selfTarget' in target and target['selfTarget']:
@@ -145,10 +146,13 @@ def removeTriggers(entries, mapTriggers):
                             for position in entry['positions']:
                                 position['trigger'] = trigger['trigger']
                     else:
-                        entries.remove(entry)
+                        entriesToRemove.append(entry)
                         for position in entry['positions']:
                             locationKey = positionToKey(position)
                             triggerLocations[locationKey] = trigger
+            for entry in entriesToRemove:
+                entries.remove(entry)
+
     return triggerLocations
 
 
@@ -211,6 +215,7 @@ def mapToPositions(entries):
 
 def addToEntries(entries, positions, key, bosses=[]):
     extractedBosses = []
+    entriesToRemove = []
     for entry in entries:
         for position in entry['positions']:
             name = positionToKey(position)
@@ -227,11 +232,13 @@ def addToEntries(entries, positions, key, bosses=[]):
 
         # If we've removed the only instance of that monster, let's remove it
         if len(entry['positions']) == 0:
-            entries.remove(entry)
+            entriesToRemove.append(entry)
+    
+    for entry in entriesToRemove:
+        entries.remove(entry)
 
     for boss in extractedBosses:
         entries.append(boss)
-
 
 def rotateHexCoordinates(x, y, orientation):
     if x == 0 and y == 0:
@@ -247,19 +254,12 @@ def rotateHexCoordinates(x, y, orientation):
     raise ValueError(f"unhandled orientation : {orientation}")
 
 
-def removeTokens(tokens, scenarioSpecials):
-    if 'remove-tokens' in scenarioSpecials:
-        for tokenToRemove in scenarioSpecials['remove-tokens']:
-            for token in tokens:
-                if token['name'] == tokenToRemove:
-                    tokens.remove(token)
+def removeTokens(tokens, removedTokens):
+    return [token for token in tokens if token['name'] not in removedTokens]
 
 
 def removeMonsters(monsters, removedMonsters):
-    for monsterToRemove in removedMonsters:
-        for monster in monsters:
-            if monster['name'] == monsterToRemove:
-                monsters.remove(monster)
+    return [monster for monster in monsters if not monster['name'] in removedMonsters]
 
 
 def elementSize(e):
@@ -279,14 +279,18 @@ def getSimpleName(name):
 def cleanup(entries, layout, scenarioId):
     # Let's remove numberred tokens
     for entry in entries:
-        for token in entry['tokens']:
+        tokensToRemove = []
+        tokens = entry['tokens']
+        for token in tokens:
             if token['name'] in ['1', '1g', '2', '2g', '3', '3g', '4', '4g', '5', '6', '7', '8', '9', '10', '11', '12']:
                 hasTrigger = False
                 for position in token['positions']:
                     if 'trigger' in position:
                         hasTrigger = True
                 if not hasTrigger:
-                    entry['tokens'].remove(token)
+                    tokensToRemove.append(token)
+        entry['tokens'] = [token for token in tokens if token not in tokensToRemove]
+
     # Let's remove duplicate overlays (same name, same position)
     overlaysPerPosition = {}
     for entry in entries:
@@ -343,25 +347,27 @@ def cleanup(entries, layout, scenarioId):
                         overlay['positions'].remove(overlayHolder['position'])
 
     for entry in entries:
-        for overlay in entry['overlays']:
-            if len(overlay['positions']) == 0:
-                entry['overlays'].remove(overlay)
+        entry['overlays'] = [overlay for overlay in entry['overlays']
+                             if len(overlay['positions']) > 0]
+        entry['overlays'].sort(
+            key=lambda e: 'Corridor' in e['name'], reverse=True)
         for monster in entry['monsters']:
             for position in monster['positions']:
                 if 'levels' in position:
                     position['levels'] = position['levels'][0:3]
+    return [entry for entry in entries if len(entry['tokens']) > 0 or len(
+        entry['overlays']) > 0 or len(entry['monsters']) > 0]
 
-        if len(entry['tokens']) == 0 and len(entry['overlays']) == 0 and len(entry['monsters']) == 0:
-            entries.remove(entry)
-        entry['overlays'].sort(
-            key=lambda e: 'Corridor' in e['name'], reverse=True)
+
+def safeGetOrEmptyList(dict, key):
+    return dict[key] if key in dict else []
 
 
 def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenarioId):
-    removedMonsters = scenarioSpecials['remove-monsters'] if 'remove-monsters' in scenarioSpecials else []
-    bosses = scenarioSpecials['bosses'] if 'bosses' in scenarioSpecials else []
-    renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else [
-    ]
+    removedTokens = safeGetOrEmptyList(scenarioSpecials, 'remove-tokens')
+    removedMonsters = safeGetOrEmptyList(scenarioSpecials, 'remove-monsters')
+    bosses = safeGetOrEmptyList(scenarioSpecials, 'bosses')
+    renamed = safeGetOrEmptyList(scenarioSpecials, 'rename')
     result = {"type": mapData["type"], "name": mapData["name"]}
 
     # offsetsByReference = {}
@@ -507,7 +513,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             subResult['reference'] = reference['results']['reference']
             # We simply copy over the overlays
             processedTokens = removeScore(processed["tokens"])
-            removeTokens(processed["tokens"], scenarioSpecials)
+            processed['tokens'] = removeTokens(processed["tokens"], removedTokens)
 
             tokenTriggerLocations = removeTriggers(
                 processedTokens, mapTriggers)
@@ -518,7 +524,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             attachOverlayTriggersToOverlays(
                 processed['overlays'], overlayTriggers)
 
-            removeMonsters(processed['monsters'], removedMonsters)
+            processed['monsters'] = removeMonsters(processed['monsters'], removedMonsters)
 
             positionToMonsterLevels = mapToPositions(
                 processed['monsterLevels'])
@@ -533,8 +539,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             subResult["overlays"] = removeScore(processed['overlays'])
             subResults.append(subResult)
 
-        cleanup(subResults, layout, scenarioId)
-        result['entries'] = subResults
+        result['entries'] = cleanup(subResults, layout, scenarioId)
 
     globalTriggers = list(map(lambda e: e['trigger'], filter(
         lambda e: e['target']['type'] == 'global', mapTriggers)))
@@ -552,10 +557,7 @@ def processLayout(layout: list, removedTiles: list, scenarioSpecials: dict):
     shiftX = scenarioSpecials['shiftX'] if 'shiftX' in scenarioSpecials else 0
     shiftY = scenarioSpecials['shiftY'] if 'shiftY' in scenarioSpecials else 0
     # Remove tiles based on special rules
-    for removedTile in removedTiles:
-        for tile in layout:
-            if tile['name'] == removedTile:
-                layout.remove(tile)
+    layout = [tile for tile in layout if tile['name'] not in removedTiles]
 
     # larger tiles tend to be more accurate in positioning, so use those are a reference
     layout.sort(reverse=True, key=lambda e: e['name'])
@@ -635,10 +637,10 @@ with open("tileInfos.json", 'r') as tf:
         for scenario in scenarios:
             id = scenario["id"]
             scenarioOutput = {"id": id}
-            scenarioTriggers = triggers[id] if id in triggers else []
-            scenarioSpecials = specials[id] if id in specials else []
-            removedMaps = scenarioSpecials['remove-maps'] if 'remove-maps' in scenarioSpecials else []
-            removedTiles = scenarioSpecials['remove-tiles'] if 'remove-tiles' in scenarioSpecials else []
+            scenarioTriggers = safeGetOrEmptyList(triggers,id)
+            scenarioSpecials = safeGetOrEmptyList(specials,id)
+            removedMaps = safeGetOrEmptyList(scenarioSpecials,'remove-maps')
+            removedTiles = safeGetOrEmptyList(scenarioSpecials,'remove-tiles')
             if 'layout' in scenario:
                 scenarioOutput['layout'] = processLayout(
                     scenario['layout'], removedTiles, scenarioSpecials)
