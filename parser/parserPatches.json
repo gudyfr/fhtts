@@ -126,16 +126,16 @@
             ]
         }
     },
-    "25": {
+    "24": {
         "74": {
             "also": [
-                "Dungeon Corridor",
-                "Large Dungeon Corridor"
+                "Metal Corridor",
+                "Large Metal Corridor"
             ],
             "overrides": [
                 {
                     "where": {
-                        "name": "Dungeon Corridor"
+                        "name": "Metal Corridor"
                     },
                     "with": {
                         "name": "Cave Corridor"
@@ -143,7 +143,7 @@
                 },
                 {
                     "where": {
-                        "name": "Large Dungeon Corridor"
+                        "name": "Large Metal Corridor"
                     },
                     "with": {
                         "name": "Large Cave Corridor"

@@ -2649,6 +2649,22 @@
             ],
             "overlays": [
               {
+                "name": "Large Metal Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -2,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 4,
+                    "y": -4,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 180,
                 "positions": [
@@ -2664,22 +2680,6 @@
                       },
                       "id": "scenario/127/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -2,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 4,
-                    "y": -4,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -2746,6 +2746,22 @@
             ],
             "overlays": [
               {
+                "name": "Large Dungeon Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 3,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -2,
+                    "y": 1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 0,
                 "positions": [
@@ -2762,22 +2778,6 @@
                       },
                       "id": "scenario/127/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Dungeon Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 3,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": -2,
-                    "y": 1,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -3667,6 +3667,17 @@
             ],
             "overlays": [
               {
+                "name": "Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 90,
                 "positions": [
@@ -3683,17 +3694,6 @@
                       },
                       "id": "scenario/129/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 0,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -7887,6 +7887,30 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3
+                  },
+                  {
+                    "x": -1,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -7945,30 +7969,6 @@
                     "x": -2,
                     "y": 1,
                     "type": "Trap"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 3
-                  },
-                  {
-                    "x": -1,
-                    "y": 3
                   }
                 ]
               }
@@ -8209,6 +8209,38 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -8,
+                    "y": 3
+                  },
+                  {
+                    "x": -7,
+                    "y": 3
+                  },
+                  {
+                    "x": -6,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3
+                  },
+                  {
+                    "x": -2,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -8281,38 +8313,6 @@
                     "x": -2,
                     "y": 0,
                     "type": "Obstacle"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -8,
-                    "y": 3
-                  },
-                  {
-                    "x": -7,
-                    "y": 3
-                  },
-                  {
-                    "x": -6,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 3
-                  },
-                  {
-                    "x": -2,
-                    "y": 3
                   }
                 ]
               }
@@ -10666,6 +10666,28 @@
             ],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 7,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 7,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -10696,28 +10718,6 @@
                       },
                       "id": "scenario/142/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 7,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
-                "name": "Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 7,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -12561,6 +12561,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 270,
                 "positions": [
@@ -12577,16 +12587,6 @@
                       },
                       "id": "section/101.1/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 3
                   }
                 ]
               }
@@ -13245,6 +13245,16 @@
             "monsters": [],
             "overlays": [
               {
+                "name": "Large Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 1
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 0,
                 "positions": [
@@ -13297,16 +13307,6 @@
                     "x": -3,
                     "y": 1,
                     "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 1
                   }
                 ]
               },
@@ -13372,6 +13372,22 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -13411,22 +13427,6 @@
                     "x": -2,
                     "y": 4,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 3,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -2,
-                    "y": 2,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -13665,6 +13665,22 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Spike Pit",
                 "orientation": 0,
                 "positions": [
@@ -13694,22 +13710,6 @@
                     "x": -2,
                     "y": 4,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 3,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -2,
-                    "y": 2,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -13826,6 +13826,36 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": 1,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 2,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": 4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 4,
+                    "y": 0
+                  }
+                ]
+              },
+              {
                 "name": "Spike Pit",
                 "orientation": 0,
                 "positions": [
@@ -13880,36 +13910,6 @@
                     "x": 1,
                     "y": 0,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 1,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 2,
-                    "y": -1
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0
                   }
                 ]
               },
@@ -14024,6 +14024,37 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": 1
+                  },
+                  {
+                    "x": 2,
+                    "y": -1,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": 4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 4,
+                    "y": 0,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -14124,37 +14155,6 @@
                     "x": 1,
                     "y": 0,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 1
-                  },
-                  {
-                    "x": 2,
-                    "y": -1,
-                    "type": "Icy Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -14262,6 +14262,43 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": 0,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 4,
+                    "y": -1,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 6,
+                    "y": -1,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 6,
+                    "y": -2,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -1,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -14321,43 +14358,6 @@
                     "x": 3,
                     "y": -2,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": 0,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": -1,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 6,
-                    "y": -1,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 6,
-                    "y": -2,
-                    "type": "Icy Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -1,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -14470,6 +14470,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Cave Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": 1
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -14486,16 +14496,6 @@
                       },
                       "id": "section/179.2/token/5"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Cave Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": 2,
-                    "y": 1
                   }
                 ]
               },
@@ -17443,6 +17443,39 @@
             "monsters": [],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 3,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -17481,39 +17514,6 @@
                     "trigger": {
                       "id": "scenario/155/token/3"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 2,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
-                "name": "Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 3,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -18729,7 +18729,7 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -9,
+                    "x": -8,
                     "y": 4
                   }
                 ]
@@ -19496,17 +19496,6 @@
             ],
             "overlays": [
               {
-                "name": "Dungeon Door",
-                "orientation": 90,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": -1,
-                    "type": "Door"
-                  }
-                ]
-              },
-              {
                 "name": "Dungeon Corridor",
                 "orientation": 0,
                 "positions": [
@@ -19514,6 +19503,17 @@
                     "x": 8,
                     "y": -1,
                     "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Dungeon Door",
+                "orientation": 90,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Door"
                   }
                 ]
               },
@@ -19650,32 +19650,6 @@
             ],
             "overlays": [
               {
-                "name": "Bear Trap",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -1,
-                    "type": "Trap"
-                  },
-                  {
-                    "x": 7,
-                    "y": -1,
-                    "type": "Trap"
-                  },
-                  {
-                    "x": 3,
-                    "y": -4,
-                    "type": "Trap"
-                  },
-                  {
-                    "x": 7,
-                    "y": -6,
-                    "type": "Trap"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -19720,6 +19694,32 @@
                     "type": "Icy Terrain"
                   }
                 ]
+              },
+              {
+                "name": "Bear Trap",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -1,
+                    "type": "Trap"
+                  },
+                  {
+                    "x": 7,
+                    "y": -1,
+                    "type": "Trap"
+                  },
+                  {
+                    "x": 3,
+                    "y": -4,
+                    "type": "Trap"
+                  },
+                  {
+                    "x": 7,
+                    "y": -6,
+                    "type": "Trap"
+                  }
+                ]
               }
             ]
           }
@@ -19739,6 +19739,17 @@
             "monsters": [],
             "overlays": [
               {
+                "name": "Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 8,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Dungeon Door",
                 "orientation": 90,
                 "positions": [
@@ -19756,17 +19767,6 @@
                       },
                       "id": "section/171.1/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 8,
-                    "y": -1,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -20636,6 +20636,26 @@
             ],
             "overlays": [
               {
+                "name": "Large Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": -6
+                  }
+                ]
+              },
+              {
+                "name": "Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 7,
+                    "y": -6
+                  }
+                ]
+              },
+              {
                 "name": "Metal Door",
                 "orientation": 0,
                 "positions": [
@@ -20666,26 +20686,6 @@
                       },
                       "id": "scenario/163/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 6,
-                    "y": -6
-                  }
-                ]
-              },
-              {
-                "name": "Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 7,
-                    "y": -6
                   }
                 ]
               },
@@ -22080,26 +22080,6 @@
             ],
             "overlays": [
               {
-                "name": "Cave Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "170.2"
-                      },
-                      "id": "scenario/165/token/1"
-                    }
-                  }
-                ]
-              },
-              {
                 "name": "Large Cave Corridor",
                 "orientation": 0,
                 "positions": [
@@ -22133,6 +22113,26 @@
                   {
                     "x": -9,
                     "y": 5
+                  }
+                ]
+              },
+              {
+                "name": "Cave Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 3,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "170.2"
+                      },
+                      "id": "scenario/165/token/1"
+                    }
                   }
                 ]
               },
@@ -22586,6 +22586,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 4
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -22602,16 +22612,6 @@
                       },
                       "id": "scenario/166/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 4
                   }
                 ]
               },
@@ -23104,6 +23104,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -2
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 120,
                 "positions": [
@@ -23120,16 +23130,6 @@
                       },
                       "id": "section/191.2/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -2
                   }
                 ]
               },
@@ -23337,6 +23337,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Water",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Water",
                 "orientation": 0,
                 "positions": [
@@ -23376,8 +23386,8 @@
                     "type": "Difficult Terrain"
                   },
                   {
-                    "x": -7,
-                    "y": 4
+                    "x": -4,
+                    "y": 0
                   }
                 ]
               },
@@ -23406,6 +23416,11 @@
                   {
                     "x": -8,
                     "y": 6,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -3,
+                    "y": 3,
                     "type": "Obstacle"
                   }
                 ]
@@ -23598,6 +23613,10 @@
                     "x": -2,
                     "y": 1,
                     "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
                   }
                 ]
               },
@@ -28160,24 +28179,33 @@
             ],
             "overlays": [
               {
+                "name": "Huge Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": 1
+                  }
+                ]
+              },
+              {
+                "name": "Large Water",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": -2,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Water",
                 "orientation": 0,
                 "positions": [
                   {
                     "x": 3,
                     "y": 1
-                  },
-                  {
-                    "x": 5,
-                    "y": 1
-                  },
-                  {
-                    "x": 6,
-                    "y": 1
-                  },
-                  {
-                    "x": 6,
-                    "y": -3
                   }
                 ]
               },
@@ -28839,7 +28867,33 @@
                 ]
               }
             ],
-            "overlays": []
+            "overlays": [
+              {
+                "name": "Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 0
+                  },
+                  {
+                    "x": 3,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": 1
+                  }
+                ]
+              }
+            ]
           }
         ],
         "triggers": [
@@ -31022,17 +31076,6 @@
                 ]
               },
               {
-                "name": "Ice Spikes",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -4,
-                    "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -31050,6 +31093,17 @@
                     "x": 5,
                     "y": -3,
                     "type": "Objective"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -4,
+                    "type": "Hazardous Terrain"
                   }
                 ]
               },
@@ -31460,26 +31514,6 @@
             ],
             "overlays": [
               {
-                "name": "Cave Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 1,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "30.2"
-                      },
-                      "id": "scenario/6/token/1"
-                    }
-                  }
-                ]
-              },
-              {
                 "name": "Large Snow Corridor",
                 "orientation": 0,
                 "positions": [
@@ -31517,6 +31551,26 @@
                     "x": 2,
                     "y": -5,
                     "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Cave Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 1,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "30.2"
+                      },
+                      "id": "scenario/6/token/1"
+                    }
                   }
                 ]
               }
@@ -32154,17 +32208,6 @@
                 ]
               },
               {
-                "name": "Ice Spikes",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -4,
-                    "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -32182,6 +32225,17 @@
                     "x": 5,
                     "y": -3,
                     "type": "Objective"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -4,
+                    "type": "Hazardous Terrain"
                   }
                 ]
               },
@@ -35168,6 +35222,17 @@
             ],
             "overlays": [
               {
+                "name": "Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -35184,17 +35249,6 @@
                       },
                       "id": "section/23.1/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Corridor"
                   }
                 ]
               }
@@ -35457,46 +35511,6 @@
             ],
             "overlays": [
               {
-                "name": "Dungeon Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 7,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "78.3"
-                      },
-                      "id": "scenario/47/token/3"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Dungeon Door",
-                "orientation": 180,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": -1,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "91.3"
-                      },
-                      "id": "scenario/47/token/4"
-                    }
-                  }
-                ]
-              },
-              {
                 "name": "Large Snow Corridor",
                 "orientation": 0,
                 "positions": [
@@ -35535,6 +35549,46 @@
                   {
                     "x": -5,
                     "y": 1
+                  }
+                ]
+              },
+              {
+                "name": "Dungeon Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 7,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "78.3"
+                      },
+                      "id": "scenario/47/token/3"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Dungeon Door",
+                "orientation": 180,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "91.3"
+                      },
+                      "id": "scenario/47/token/4"
+                    }
                   }
                 ]
               },
@@ -40760,6 +40814,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -40776,17 +40841,6 @@
                       },
                       "id": "scenario/9/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 3,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -41361,27 +41415,6 @@
             ],
             "overlays": [
               {
-                "name": "Metal Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 5,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "137.1"
-                      },
-                      "mode": "all",
-                      "id": "section/32.1/token/2"
-                    }
-                  }
-                ]
-              },
-              {
                 "name": "Large Metal Corridor",
                 "orientation": 0,
                 "positions": [
@@ -41413,6 +41446,27 @@
                   {
                     "x": -6,
                     "y": 1
+                  }
+                ]
+              },
+              {
+                "name": "Metal Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 5,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "137.1"
+                      },
+                      "mode": "all",
+                      "id": "section/32.1/token/2"
+                    }
                   }
                 ]
               },
@@ -41801,6 +41855,41 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -2,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 4,
+                    "y": -2,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 6,
+                    "y": -2,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 6,
+                    "y": -3
+                  },
+                  {
+                    "x": 5,
+                    "y": -4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": 6,
+                    "y": -5,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -41859,41 +41948,6 @@
                       },
                       "id": "scenario/61/token/4"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -2,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": -2,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 6,
-                    "y": -2,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 6,
-                    "y": -3
-                  },
-                  {
-                    "x": 5,
-                    "y": -4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": 6,
-                    "y": -5,
-                    "type": "Icy Terrain"
                   }
                 ]
               },
@@ -44335,6 +44389,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Metal Door",
                 "orientation": 300,
                 "positions": [
@@ -44352,17 +44417,6 @@
                       "mode": "all",
                       "id": "scenario/70/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 3,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -44451,6 +44505,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -6,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Metal Door",
                 "orientation": 240,
                 "positions": [
@@ -44468,17 +44533,6 @@
                       "mode": "all",
                       "id": "scenario/70/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -6,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -46012,26 +46066,6 @@
             ],
             "overlays": [
               {
-                "name": "Cave Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "82.2"
-                      },
-                      "id": "section/105.1/token/2"
-                    }
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -46079,6 +46113,26 @@
                     "x": -1,
                     "y": -2,
                     "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Cave Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "82.2"
+                      },
+                      "id": "section/105.1/token/2"
+                    }
                   }
                 ]
               },
@@ -47411,6 +47465,36 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -8,
+                    "y": 4
+                  },
+                  {
+                    "x": -4,
+                    "y": 4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 4
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -47458,36 +47542,6 @@
                     "x": 0,
                     "y": 0,
                     "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -8,
-                    "y": 4
-                  },
-                  {
-                    "x": -4,
-                    "y": 4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -5,
-                    "y": 2,
-                    "type": "Icy Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": 4
                   }
                 ]
               },
@@ -47626,6 +47680,42 @@
             ],
             "overlays": [
               {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": 4,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -4,
+                    "y": 3,
+                    "type": "Icy Terrain"
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Ice Spikes",
                 "orientation": 0,
                 "positions": [
@@ -47669,42 +47759,6 @@
                     "x": 0,
                     "y": 0,
                     "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -2,
-                    "y": 4,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -4,
-                    "y": 3,
-                    "type": "Icy Terrain"
-                  },
-                  {
-                    "x": -3,
-                    "y": 2,
-                    "type": "Icy Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 3
                   }
                 ]
               },
@@ -47801,6 +47855,26 @@
             ],
             "overlays": [
               {
+                "name": "Large Ice Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": -2
+                  }
+                ]
+              },
+              {
+                "name": "Large Ice Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": -8
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -47845,26 +47919,6 @@
                   {
                     "x": 4,
                     "y": -9
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -8
                   }
                 ]
               },
@@ -48221,27 +48275,6 @@
             ],
             "overlays": [
               {
-                "name": "Ice Spikes",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 5,
-                    "y": 4,
-                    "type": "Hazardous Terrain"
-                  },
-                  {
-                    "x": 1,
-                    "y": 1,
-                    "type": "Hazardous Terrain"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -48263,6 +48296,27 @@
                   {
                     "x": 2,
                     "y": 1
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 5,
+                    "y": 4,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": 1,
+                    "y": 1,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": 2,
+                    "y": 0,
+                    "type": "Hazardous Terrain"
                   }
                 ]
               },
@@ -49519,16 +49573,6 @@
                 ]
               },
               {
-                "name": "Snow Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": -1
-                  }
-                ]
-              },
-              {
                 "name": "Snow Corridor",
                 "orientation": 0,
                 "positions": [
@@ -49536,6 +49580,16 @@
                     "x": -6,
                     "y": 7,
                     "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Snow Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": -1
                   }
                 ]
               },
@@ -50601,6 +50655,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": -2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -50633,17 +50698,6 @@
                       "mode": "all",
                       "id": "scenario/88/token/1"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -2,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -51845,6 +51899,63 @@
             ],
             "overlays": [
               {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "141.1"
+                      },
+                      "mode": "removeall",
+                      "id": "scenario/90/token/1"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 5,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "141.1"
+                      },
+                      "mode": "removeall",
+                      "id": "scenario/90/token/1"
+                    }
+                  },
+                  {
+                    "x": -1,
+                    "y": 4,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "141.1"
+                      },
+                      "mode": "removeall",
+                      "id": "scenario/90/token/1"
+                    }
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -51896,63 +52007,6 @@
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Large Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Large Cave Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 5,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
-                  },
-                  {
-                    "x": -1,
-                    "y": 4,
                     "type": "Door",
                     "trigger": {
                       "type": "door",
@@ -52319,6 +52373,20 @@
             ],
             "overlays": [
               {
+                "name": "Large Cave Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 0
+                  },
+                  {
+                    "x": 0,
+                    "y": -1
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -52351,20 +52419,6 @@
                       "mode": "all",
                       "id": "section/141.1/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Large Cave Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 0
-                  },
-                  {
-                    "x": 0,
-                    "y": -1
                   }
                 ]
               },
@@ -52798,6 +52852,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 0,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -52902,17 +52967,6 @@
                   {
                     "x": -5,
                     "y": 4
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Corridor",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -56813,17 +56867,6 @@
                 ]
               },
               {
-                "name": "Bear Trap",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 3,
-                    "type": "Trap"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Corridor",
                 "orientation": 0,
                 "positions": [
@@ -56841,6 +56884,17 @@
                     "x": 4,
                     "y": 3,
                     "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Bear Trap",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 3,
+                    "type": "Trap"
                   }
                 ]
               },
@@ -58022,7 +58076,8 @@
                       "action": "trigger",
                       "what": "scenario/101/global/door2",
                       "id": "scenario/101/token/2"
-                    }
+                    },
+                    "rename": "Door 2"
                   }
                 ]
               },
@@ -58150,7 +58205,8 @@
                         "name": "174.3"
                       },
                       "id": "scenario/101/token/1"
-                    }
+                    },
+                    "rename": "Door 1"
                   }
                 ]
               }
@@ -58354,38 +58410,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "01-B",
-              "tileOrientation": "180"
-            },
-            "tokens": [
-              {
-                "name": "2g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -2
-                  }
-                ]
-              }
-            ],
-            "monsters": [],
-            "overlays": [
-              {
-                "name": "Treasure Chest",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": -1,
-                    "type": "Treasure"
-                  }
-                ]
-              }
-            ]
           }
         ],
         "triggers": []
@@ -58443,6 +58467,21 @@
                     "x": 0,
                     "y": -1,
                     "type": "Corridor"
+                  },
+                  {
+                    "x": -2,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "Pressure Plate",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": -1,
+                    "type": "Wall"
                   }
                 ]
               },
@@ -58453,6 +58492,16 @@
                   {
                     "x": -3,
                     "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "Barricade",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1
                   }
                 ]
               },
@@ -67140,6 +67189,17 @@
             ],
             "overlays": [
               {
+                "name": "Snow Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 6,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Snow Door",
                 "orientation": 0,
                 "positions": [
@@ -67156,17 +67216,6 @@
                       },
                       "id": "section/84.1/token/2"
                     }
-                  }
-                ]
-              },
-              {
-                "name": "Snow Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 6,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -67518,6 +67567,16 @@
             ],
             "overlays": [
               {
+                "name": "Large Metal Corridor",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": -4
+                  }
+                ]
+              },
+              {
                 "name": "Cave Door",
                 "orientation": 0,
                 "positions": [
@@ -67525,16 +67584,6 @@
                     "x": -1,
                     "y": 1,
                     "type": "Door"
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": -4
                   }
                 ]
               },
@@ -67663,17 +67712,6 @@
             ],
             "overlays": [
               {
-                "name": "Metal Door",
-                "orientation": 270,
-                "positions": [
-                  {
-                    "x": 6,
-                    "y": -3,
-                    "type": "Door"
-                  }
-                ]
-              },
-              {
                 "name": "Cave Corridor",
                 "orientation": 0,
                 "positions": [
@@ -67697,6 +67735,17 @@
                     "x": 2,
                     "y": -4,
                     "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Metal Door",
+                "orientation": 270,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": -3,
+                    "type": "Door"
                   }
                 ]
               },
