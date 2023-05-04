@@ -91,3 +91,17 @@ If a monster dies it will drop a loot token (unless there are specials rules to 
 If a character is on top of a loot token at the end its round, the loot token will be automatically looted. **Use the Assistant UI to end a chracter round. For the loot to work, the character had to be active in the assistant, ie skipping a character's turn will result in looting not working for that character.**  
 ![](images/tts_figure_standing_on_loot.png)  
 ![](images/xhaven_end_round.png)  
+
+## Saving Progress and Updating
+In order to update to a recent version of the mod, you will first need to save your campaign progress.  
+This can be accomplished using the Campaigns mat.  
+![](images/tts_campaigns_save.png)  
+The state of all boards (except the scenario board) will be saved. You should ensure that all elements are at their appropriate locations before saving, in particular :
+ - items should be on either the items mat or player mats (in items positions)
+ - ability cards should be on player mats (only)
+Each save "box" is a container in which you can add any custom object you would have added to your campaign (notes, retired player sheets, etc ...)
+![](images/tts_campaign_saved.png)  
+From there, you want to save this object  
+![](images/tts_right_click_menu_save.png)  
+**Update your save to the latest version of the mod**  
+and import your saved object using the menu "Objects" / "Saved Objects", and drop it at the right location. Your progress should be restored.    
