@@ -27810,6 +27810,17 @@
             ],
             "monsters": [
               {
+                "name": "Prince of Frost",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 0,
+                    "levels": "bbb"
+                  }
+                ]
+              },
+              {
                 "name": "Frost Demon",
                 "orientation": 0,
                 "positions": [
