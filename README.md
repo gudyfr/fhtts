@@ -40,7 +40,7 @@ The goal is to have everything scripted.
   - Sometimes the overlay stickers showing health / conditions on top of figurines disapear.
   
  # How you can help
-  - Find Scenario auto layout errors. The automatic scenario layout is based on a (mostly) automated parsing of the scenario and section book. As such, while a lot of scenarios seem to be ok, and were quickly checked as part of creating the various section links, they haven't been fully tested, especially for different number of players. Some overlay tiles or monsters might be missing, or may be of the wrong type (normal vs elite). Bosses in particular might not be properly spawned. If you spot errors in any scenario not mentionned above, please report a bug.
+  - Find Scenario auto layout errors. The automatic scenario layout is based on a (mostly) [automated parsing](parser/) of the scenario and section book. As such, while a lot of scenarios seem to be ok, and were quickly checked as part of creating the various section links, they haven't been fully tested, especially for different number of players. Some overlay tiles or monsters might be missing, or may be of the wrong type (normal vs elite). Bosses in particular might not be properly spawned. If you spot errors in any scenario not mentionned above, please report a bug.
   - Provide Usability feedback. 
   - Join the effort
   
