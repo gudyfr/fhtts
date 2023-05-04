@@ -694,12 +694,12 @@
                   {
                     "x": -2,
                     "y": 5,
-                    "levels": "aans"
+                    "levels": "aan"
                   },
                   {
                     "x": 0,
                     "y": 1,
-                    "levels": "nnns"
+                    "levels": "nnn"
                   }
                 ]
               }
@@ -796,7 +796,7 @@
                   {
                     "x": -6,
                     "y": 4,
-                    "levels": "nnns3"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -4625,6 +4625,54 @@
         "entries": [
           {
             "reference": {
+              "tile": "01-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Ruined Machine",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "levels": "aae"
+                  },
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "aee"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "eee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "type": "Corridor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
               "tile": "06-B",
               "tileOrientation": "180"
             },
@@ -4661,21 +4709,6 @@
                     "levels": "aae"
                   },
                   {
-                    "x": 2,
-                    "y": -7,
-                    "levels": "aae"
-                  },
-                  {
-                    "x": 2,
-                    "y": -8,
-                    "levels": "aee"
-                  },
-                  {
-                    "x": 3,
-                    "y": -8,
-                    "levels": "eee"
-                  },
-                  {
                     "x": 6,
                     "y": -8,
                     "levels": "eee"
@@ -4692,17 +4725,6 @@
                     "x": 1,
                     "y": 1,
                     "type": "Door"
-                  }
-                ]
-              },
-              {
-                "name": "Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -7,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -4753,11 +4775,6 @@
                   {
                     "x": 0,
                     "y": 0,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": 1,
-                    "y": -5,
                     "levels": "eee"
                   }
                 ]
@@ -7423,7 +7440,7 @@
                   {
                     "x": -4,
                     "y": 3,
-                    "levels": "anns"
+                    "levels": "ann"
                   }
                 ]
               },
@@ -7434,12 +7451,12 @@
                   {
                     "x": -6,
                     "y": 4,
-                    "levels": "nnes"
+                    "levels": "nne"
                   },
                   {
                     "x": -5,
                     "y": 2,
-                    "levels": "eees"
+                    "levels": "eee"
                   }
                 ]
               },
@@ -7460,7 +7477,7 @@
                   {
                     "x": -7,
                     "y": 3,
-                    "levels": "nnas"
+                    "levels": "nna"
                   }
                 ]
               }
@@ -8607,15 +8624,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "14-B",
-              "tileOrientation": "240"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
           }
         ],
         "triggers": []
@@ -9805,7 +9813,7 @@
                   {
                     "x": -2,
                     "y": 4,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               }
@@ -9880,7 +9888,7 @@
                   {
                     "x": 4,
                     "y": 1,
-                    "levels": "nnns2"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -10120,12 +10128,12 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "levels": "aans"
+                    "levels": "aan"
                   },
                   {
                     "x": -5,
                     "y": 0,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               }
@@ -10267,7 +10275,7 @@
                   {
                     "x": -4,
                     "y": 3,
-                    "levels": "nnns3"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -12546,7 +12554,7 @@
                   {
                     "x": -4,
                     "y": 3,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               }
@@ -14878,7 +14886,8 @@
                 "positions": [
                   {
                     "x": -2,
-                    "y": 0
+                    "y": 0,
+                    "type": "Treasure"
                   }
                 ]
               }
@@ -17316,16 +17325,6 @@
             },
             "tokens": [
               {
-                "name": "2g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 14,
-                    "y": -6
-                  }
-                ]
-              },
-              {
                 "name": "a",
                 "orientation": 0,
                 "positions": [
@@ -17348,85 +17347,18 @@
                     "y": 0
                   },
                   {
-                    "x": 7,
-                    "y": 0
-                  },
-                  {
-                    "x": 10,
-                    "y": 0
-                  },
-                  {
-                    "x": 10,
-                    "y": -1
-                  },
-                  {
                     "x": 2,
                     "y": -3
                   },
                   {
                     "x": 2,
                     "y": -4
-                  },
-                  {
-                    "x": 10,
-                    "y": -6
                   }
                 ]
               }
             ],
             "monsters": [],
             "overlays": [
-              {
-                "name": "Snow Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 13,
-                    "y": -3,
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "156.4"
-                      },
-                      "id": "scenario/155/token/1"
-                    }
-                  },
-                  {
-                    "x": 14,
-                    "y": -6,
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "154.2"
-                      },
-                      "id": "scenario/155/token/2"
-                    }
-                  },
-                  {
-                    "x": 12,
-                    "y": -7,
-                    "type": "Difficult Terrain",
-                    "trigger": {
-                      "id": "scenario/155/token/3"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 8,
-                    "y": -4,
-                    "type": "Corridor"
-                  }
-                ]
-              },
               {
                 "name": "Snow Corridor",
                 "orientation": 0,
@@ -17439,10 +17371,6 @@
                     "x": 6,
                     "y": -2,
                     "type": "Corridor"
-                  },
-                  {
-                    "x": 7,
-                    "y": -3
                   }
                 ]
               },
@@ -17456,32 +17384,8 @@
                     "type": "Icy Terrain"
                   },
                   {
-                    "x": 12,
-                    "y": -3
-                  },
-                  {
                     "x": 7,
                     "y": -4
-                  }
-                ]
-              },
-              {
-                "name": "Log",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": 11,
-                    "y": -6
-                  }
-                ]
-              },
-              {
-                "name": "Large Snow Rock",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": 11,
-                    "y": -1
                   }
                 ]
               },
@@ -17490,23 +17394,8 @@
                 "orientation": 180,
                 "positions": [
                   {
-                    "x": 10,
-                    "y": -3
-                  },
-                  {
                     "x": 3,
                     "y": -4
-                  }
-                ]
-              },
-              {
-                "name": "Tree",
-                "orientation": 240,
-                "positions": [
-                  {
-                    "x": 7,
-                    "y": -2,
-                    "type": "Obstacle"
                   }
                 ]
               }
@@ -17517,9 +17406,160 @@
               "tile": "15-A",
               "tileOrientation": "0"
             },
-            "tokens": [],
+            "tokens": [
+              {
+                "name": "2g",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 6
+                  },
+                  {
+                    "x": -3,
+                    "y": 6
+                  },
+                  {
+                    "x": -3,
+                    "y": 5
+                  },
+                  {
+                    "x": -3,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
             "monsters": [],
-            "overlays": []
+            "overlays": [
+              {
+                "name": "Snow Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 3,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "156.4"
+                      },
+                      "id": "scenario/155/token/1"
+                    }
+                  },
+                  {
+                    "x": 1,
+                    "y": 0,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "154.2"
+                      },
+                      "id": "scenario/155/token/2"
+                    }
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Door",
+                    "trigger": {
+                      "id": "scenario/155/token/3"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 3,
+                    "type": "Icy Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 0,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Large Snow Rock",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 5
+                  }
+                ]
+              },
+              {
+                "name": "Tree",
+                "orientation": 180,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "Tree",
+                "orientation": 240,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 4,
+                    "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "triggers": [
@@ -18634,27 +18674,27 @@
                   {
                     "x": -5,
                     "y": 4,
-                    "levels": "aaes"
+                    "levels": "aae"
                   },
                   {
                     "x": -7,
                     "y": 3,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": -5,
                     "y": 3,
-                    "levels": "aeas"
+                    "levels": "aea"
                   },
                   {
                     "x": -3,
                     "y": 3,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": -5,
                     "y": 2,
-                    "levels": "aaes"
+                    "levels": "aae"
                   }
                 ]
               }
@@ -22523,12 +22563,12 @@
                   {
                     "x": -5,
                     "y": 6,
-                    "levels": "nnns3"
+                    "levels": "nnn"
                   },
                   {
                     "x": 1,
                     "y": 4,
-                    "levels": "aees"
+                    "levels": "aee"
                   }
                 ]
               },
@@ -23041,7 +23081,7 @@
                   {
                     "x": 2,
                     "y": -4,
-                    "levels": "anes"
+                    "levels": "ane"
                   }
                 ]
               },
@@ -23115,13 +23155,12 @@
                   },
                   {
                     "x": 3,
-                    "y": -4,
-                    "type": "Difficult Terrain"
+                    "y": -4
                   },
                   {
                     "x": 4,
                     "y": -4,
-                    "type": "Difficult Terrain"
+                    "type": "Obstacle"
                   },
                   {
                     "x": 2,
@@ -23270,17 +23309,17 @@
                   {
                     "x": -7,
                     "y": 4,
-                    "levels": "nees"
+                    "levels": "nee"
                   },
                   {
                     "x": -6,
                     "y": 3,
-                    "levels": "anes"
+                    "levels": "ane"
                   },
                   {
                     "x": -4,
                     "y": 0,
-                    "levels": "anns"
+                    "levels": "ann"
                   }
                 ]
               },
@@ -23457,22 +23496,22 @@
                   {
                     "x": -1,
                     "y": 4,
-                    "levels": "aans"
+                    "levels": "aan"
                   },
                   {
                     "x": -5,
                     "y": 4,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": -4,
                     "y": 3,
-                    "levels": "nnes"
+                    "levels": "nne"
                   },
                   {
                     "x": 0,
                     "y": 0,
-                    "levels": "eees"
+                    "levels": "eee"
                   }
                 ]
               },
@@ -23648,12 +23687,12 @@
                   {
                     "x": 4,
                     "y": -3,
-                    "levels": "nnns"
+                    "levels": "nnn"
                   },
                   {
                     "x": 6,
                     "y": -3,
-                    "levels": "nnns"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -24285,31 +24324,8 @@
               "tileOrientation": "0"
             },
             "tokens": [],
-            "monsters": [
-              {
-                "name": "Chaos Demon",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 2,
-                    "y": 1,
-                    "levels": "eee"
-                  }
-                ]
-              }
-            ],
+            "monsters": [],
             "overlays": [
-              {
-                "name": "Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 1,
-                    "type": "Corridor"
-                  }
-                ]
-              },
               {
                 "name": "Rubble",
                 "orientation": 0,
@@ -24325,6 +24341,39 @@
                     "type": "Difficult Terrain"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "02-H",
+              "tileOrientation": "180"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Chaos Demon",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -2,
+                    "levels": "eee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -2,
+                    "type": "Corridor"
+                  }
+                ]
               },
               {
                 "name": "Control Console",
@@ -24332,7 +24381,7 @@
                 "positions": [
                   {
                     "x": 3,
-                    "y": 0,
+                    "y": -3,
                     "type": "Obstacle"
                   }
                 ]
@@ -24343,7 +24392,7 @@
                 "positions": [
                   {
                     "x": 2,
-                    "y": 3,
+                    "y": 0,
                     "type": "Treasure"
                   }
                 ]
@@ -28047,22 +28096,22 @@
                   {
                     "x": 3,
                     "y": 1,
-                    "levels": "nnes"
+                    "levels": "nne"
                   },
                   {
                     "x": 5,
                     "y": 1,
-                    "levels": "anes"
+                    "levels": "ane"
                   },
                   {
                     "x": 6,
                     "y": 1,
-                    "levels": "nnes"
+                    "levels": "nne"
                   },
                   {
                     "x": 6,
                     "y": -3,
-                    "levels": "nees"
+                    "levels": "nee"
                   }
                 ]
               },
@@ -31506,7 +31555,7 @@
                   {
                     "x": 5,
                     "y": -2,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               },
@@ -32846,7 +32895,7 @@
                   {
                     "x": -6,
                     "y": 4,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               }
@@ -37374,12 +37423,12 @@
                   {
                     "x": 0,
                     "y": -5,
-                    "levels": "nnes"
+                    "levels": "nne"
                   },
                   {
                     "x": 1,
                     "y": -5,
-                    "levels": "anes"
+                    "levels": "ane"
                   }
                 ]
               },
@@ -37771,15 +37820,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "16-D",
-              "tileOrientation": "0"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
           }
         ],
         "triggers": []
@@ -38204,12 +38244,12 @@
                   {
                     "x": -2,
                     "y": 1,
-                    "levels": "nees"
+                    "levels": "nee"
                   },
                   {
                     "x": -5,
                     "y": 0,
-                    "levels": "eees"
+                    "levels": "eee"
                   }
                 ]
               },
@@ -38225,7 +38265,7 @@
                   {
                     "x": -3,
                     "y": 1,
-                    "levels": "anes"
+                    "levels": "ane"
                   }
                 ]
               }
@@ -38403,12 +38443,12 @@
                   {
                     "x": 7,
                     "y": -5,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": 9,
                     "y": -5,
-                    "levels": "anes"
+                    "levels": "ane"
                   }
                 ]
               },
@@ -38697,15 +38737,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "16-A",
-              "tileOrientation": "180"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
           }
         ],
         "triggers": []
@@ -39035,6 +39066,10 @@
                     "x": 0,
                     "y": 1,
                     "levels": "nnn"
+                  },
+                  {
+                    "x": 0,
+                    "y": -2
                   }
                 ]
               }
@@ -39066,8 +39101,7 @@
                 "positions": [
                   {
                     "x": -4,
-                    "y": 4,
-                    "type": "Treasure"
+                    "y": 4
                   }
                 ]
               }
@@ -39174,19 +39208,7 @@
                 ]
               }
             ],
-            "monsters": [
-              {
-                "name": "Harrower Infester",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 1,
-                    "levels": "ane"
-                  }
-                ]
-              }
-            ],
+            "monsters": [],
             "overlays": [
               {
                 "name": "Rubble",
@@ -41267,6 +41289,164 @@
         "entries": [
           {
             "reference": {
+              "tile": "10-A",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "a",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 4
+                  }
+                ]
+              },
+              {
+                "name": "b",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 2
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Ancient Artillery",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 4,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": -4,
+                    "y": 0,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
+                "name": "Ruined Machine",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
+                "name": "Steel Automaton",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 1,
+                    "levels": "nee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Metal Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 5,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "137.1"
+                      },
+                      "mode": "all",
+                      "id": "section/32.1/token/2"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Large Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 4,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -6,
+                    "y": 2,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -5,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 3,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -6,
+                    "y": 1
+                  }
+                ]
+              },
+              {
+                "name": "Control Console",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 3,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "type": "Obstacle"
+                  }
+                ]
+              },
+              {
+                "name": "Treasure Chest",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 4,
+                    "type": "Treasure"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
               "tile": "10-C",
               "tileOrientation": "0"
             },
@@ -41290,22 +41470,8 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 0,
-                    "y": 4
-                  },
-                  {
                     "x": -1,
                     "y": 0
-                  }
-                ]
-              },
-              {
-                "name": "b",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 5,
-                    "y": 2
                   }
                 ]
               }
@@ -41321,17 +41487,7 @@
                     "levels": "nne"
                   },
                   {
-                    "x": 3,
-                    "y": 4,
-                    "levels": "nne"
-                  },
-                  {
                     "x": -4,
-                    "y": 0,
-                    "levels": "nee"
-                  },
-                  {
-                    "x": 2,
                     "y": 0,
                     "levels": "nee"
                   }
@@ -41360,16 +41516,6 @@
                     "x": -5,
                     "y": 1,
                     "levels": "nne"
-                  },
-                  {
-                    "x": 5,
-                    "y": 0,
-                    "levels": "nne"
-                  },
-                  {
-                    "x": 6,
-                    "y": 0,
-                    "levels": "nee"
                   }
                 ]
               },
@@ -41381,72 +41527,11 @@
                     "x": -2,
                     "y": 3,
                     "levels": "nne"
-                  },
-                  {
-                    "x": 1,
-                    "y": 1,
-                    "levels": "nee"
                   }
                 ]
               }
             ],
             "overlays": [
-              {
-                "name": "Metal Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 5,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "137.1"
-                      },
-                      "mode": "all",
-                      "id": "section/32.1/token/2"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 4,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 1,
-                    "y": 0
-                  }
-                ]
-              },
-              {
-                "name": "Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 0,
-                    "y": 1
-                  }
-                ]
-              },
               {
                 "name": "Control Console",
                 "orientation": 0,
@@ -41457,30 +41542,9 @@
                     "type": "Obstacle"
                   },
                   {
-                    "x": 1,
-                    "y": 3,
-                    "type": "Obstacle"
-                  },
-                  {
                     "x": -1,
                     "y": 1,
                     "type": "Obstacle"
-                  },
-                  {
-                    "x": 5,
-                    "y": 1,
-                    "type": "Obstacle"
-                  }
-                ]
-              },
-              {
-                "name": "Treasure Chest",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": 4,
-                    "type": "Treasure"
                   }
                 ]
               }
@@ -44006,16 +44070,6 @@
                     "y": -2
                   }
                 ]
-              },
-              {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 6,
-                    "y": -1
-                  }
-                ]
               }
             ],
             "monsters": [
@@ -44034,16 +44088,6 @@
                     "levels": "nnn"
                   },
                   {
-                    "x": 4,
-                    "y": 0,
-                    "levels": "ann"
-                  },
-                  {
-                    "x": 6,
-                    "y": 0,
-                    "levels": "nnn"
-                  },
-                  {
                     "x": 1,
                     "y": -3,
                     "levels": "nnn"
@@ -44052,36 +44096,11 @@
                     "x": 3,
                     "y": -3,
                     "levels": "ann"
-                  },
-                  {
-                    "x": 6,
-                    "y": -3,
-                    "levels": "nnn"
-                  },
-                  {
-                    "x": 8,
-                    "y": -3,
-                    "levels": "aan"
                   }
                 ]
               }
             ],
             "overlays": [
-              {
-                "name": "Large Metal Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -1,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 5,
-                    "y": -3
-                  }
-                ]
-              },
               {
                 "name": "Metal Corridor",
                 "orientation": 0,
@@ -44097,13 +44116,76 @@
                     "type": "Corridor"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "02-H",
+              "tileOrientation": "180"
+            },
+            "tokens": [
+              {
+                "name": "a",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -1
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Ruined Machine",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "ann"
+                  },
+                  {
+                    "x": 2,
+                    "y": 0,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": 2,
+                    "y": -3,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": 4,
+                    "y": -3,
+                    "levels": "aan"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Large Metal Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 1,
+                    "y": -3
+                  }
+                ]
               },
               {
                 "name": "Control Console",
                 "orientation": 60,
                 "positions": [
                   {
-                    "x": 7,
+                    "x": 3,
                     "y": -1
                   }
                 ]
@@ -44113,7 +44195,7 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 7,
+                    "x": 3,
                     "y": -3,
                     "type": "Treasure"
                   }
@@ -49218,17 +49300,7 @@
       {
         "type": "scenario",
         "name": 85,
-        "entries": [
-          {
-            "reference": {
-              "tile": "15-A",
-              "tileOrientation": "0"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
-          }
-        ],
+        "entries": [],
         "triggers": []
       },
       {
@@ -50344,13 +50416,11 @@
                   },
                   {
                     "x": 4,
-                    "y": -3,
-                    "type": "Trap"
+                    "y": -3
                   },
                   {
                     "x": 3,
-                    "y": -4,
-                    "type": "Trap"
+                    "y": -4
                   }
                 ]
               },
@@ -50589,15 +50659,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "07-D",
-              "tileOrientation": "0"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
           }
         ],
         "triggers": []
@@ -53884,7 +53945,7 @@
                   {
                     "x": 5,
                     "y": 4,
-                    "levels": "nnns"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -53895,12 +53956,12 @@
                   {
                     "x": 2,
                     "y": 4,
-                    "levels": "nees"
+                    "levels": "nee"
                   },
                   {
                     "x": 1,
                     "y": 2,
-                    "levels": "nnes"
+                    "levels": "nne"
                   }
                 ]
               },
@@ -54654,12 +54715,12 @@
                   {
                     "x": 2,
                     "y": -1,
-                    "levels": "aees"
+                    "levels": "aee"
                   },
                   {
                     "x": 1,
                     "y": -2,
-                    "levels": "eees"
+                    "levels": "eee"
                   }
                 ]
               }
@@ -55605,12 +55666,12 @@
                   {
                     "x": 4,
                     "y": -2,
-                    "levels": "anns"
+                    "levels": "ann"
                   },
                   {
                     "x": 3,
                     "y": -5,
-                    "levels": "nnns3"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -58094,15 +58155,6 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "01-B",
-              "tileOrientation": "0"
-            },
-            "tokens": [],
-            "monsters": [],
-            "overlays": []
           }
         ],
         "triggers": [
@@ -58639,18 +58691,6 @@
         }
       },
       {
-        "name": "01-E",
-        "orientation": "180",
-        "center": {
-          "x": -2,
-          "y": 5
-        },
-        "origin": {
-          "x": -4,
-          "y": 5
-        }
-      },
-      {
         "name": "01-C",
         "orientation": "180",
         "center": {
@@ -58701,36 +58741,12 @@
                 ]
               },
               {
-                "name": "3g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 7,
-                    "y": -4
-                  }
-                ]
-              },
-              {
                 "name": "a",
                 "orientation": 0,
                 "positions": [
                   {
                     "x": 1,
                     "y": -2
-                  },
-                  {
-                    "x": 4,
-                    "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "b",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -4
                   }
                 ]
               },
@@ -58771,6 +58787,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Ice Spikes",
                 "orientation": 0,
                 "positions": [
@@ -58778,24 +58805,6 @@
                     "x": 1,
                     "y": -1,
                     "type": "Hazardous Terrain"
-                  },
-                  {
-                    "x": 5,
-                    "y": -3
-                  }
-                ]
-              },
-              {
-                "name": "Snowdrift",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 6,
-                    "y": -3
-                  },
-                  {
-                    "x": 3,
-                    "y": -4
                   }
                 ]
               },
@@ -58823,10 +58832,6 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 1,
-                    "y": 3
-                  },
-                  {
                     "x": 0,
                     "y": 2
                   }
@@ -58846,10 +58851,6 @@
                 "name": "a",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": 2,
-                    "y": 3
-                  },
                   {
                     "x": -6,
                     "y": 3
@@ -58879,16 +58880,6 @@
                     "y": -1
                   }
                 ]
-              },
-              {
-                "name": "d",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 4
-                  }
-                ]
               }
             ],
             "monsters": [
@@ -58916,6 +58907,36 @@
               }
             ],
             "overlays": [
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
               {
                 "name": "Ice Spikes",
                 "orientation": 0,
@@ -59087,6 +59108,17 @@
             ],
             "overlays": [
               {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 2,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
                 "name": "Ice Spikes",
                 "orientation": 0,
                 "positions": [
@@ -59133,27 +59165,41 @@
           },
           {
             "reference": {
-              "tile": "02-J",
-              "tileOrientation": "0"
+              "tile": "01-C",
+              "tileOrientation": "180"
             },
             "tokens": [
-              {
-                "name": "1g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 2
-                  }
-                ]
-              },
               {
                 "name": "2g",
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 4,
-                    "y": 2
+                    "x": 5,
+                    "y": -3
+                  }
+                ]
+              },
+              {
+                "name": "3g",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "a",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 1
+                  },
+                  {
+                    "x": 6,
+                    "y": -3
                   }
                 ]
               },
@@ -59162,44 +59208,84 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 4,
-                    "y": 3
-                  },
-                  {
-                    "x": 5,
-                    "y": 2
-                  },
-                  {
-                    "x": 5,
-                    "y": 1
+                    "x": 1,
+                    "y": -1
                   }
                 ]
               },
               {
-                "name": "start",
+                "name": "d",
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -4,
-                    "y": 3
-                  },
-                  {
-                    "x": -3,
-                    "y": 2
-                  },
-                  {
-                    "x": -3,
-                    "y": 1
-                  },
-                  {
-                    "x": -2,
-                    "y": 0
+                    "x": 4,
+                    "y": -3
                   }
                 ]
               }
             ],
             "monsters": [],
-            "overlays": []
+            "overlays": [
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 1,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 1,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": -3,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 6,
+                    "y": -3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 0,
+                    "type": "Hazardous Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Snowdrift",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": 0,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "triggers": []
@@ -59296,29 +59382,13 @@
             ],
             "monsters": [
               {
-                "name": "Ancient Artillery",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 5,
-                    "levels": "eee"
-                  }
-                ]
-              },
-              {
                 "name": "Lurker Mindsnipper",
                 "orientation": 0,
                 "positions": [
                   {
                     "x": 0,
                     "y": 1,
-                    "levels": "nnns"
-                  },
-                  {
-                    "x": 1,
-                    "y": 0,
-                    "levels": "aees"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -59342,11 +59412,6 @@
                   {
                     "x": -2,
                     "y": 5
-                  },
-                  {
-                    "x": -1,
-                    "y": 3,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -59357,16 +59422,6 @@
                   {
                     "x": -2,
                     "y": 6,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": -1,
-                    "y": 4,
                     "type": "Corridor"
                   },
                   {
@@ -59424,11 +59479,6 @@
                     "x": -2,
                     "y": 4,
                     "type": "Obstacle"
-                  },
-                  {
-                    "x": 0,
-                    "y": 0,
-                    "type": "Obstacle"
                   }
                 ]
               }
@@ -59446,11 +59496,6 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": -1,
-                    "levels": "nne"
-                  },
-                  {
                     "x": 4,
                     "y": -2,
                     "levels": "nee"
@@ -59459,11 +59504,6 @@
                     "x": 5,
                     "y": -4,
                     "levels": "nne"
-                  },
-                  {
-                    "x": 1,
-                    "y": -5,
-                    "levels": "aan"
                   }
                 ]
               },
@@ -59479,7 +59519,7 @@
                   {
                     "x": 1,
                     "y": -2,
-                    "levels": "aans"
+                    "levels": "aan"
                   }
                 ]
               },
@@ -59506,30 +59546,11 @@
                     "x": 4,
                     "y": -5,
                     "levels": "nee"
-                  },
-                  {
-                    "x": 1,
-                    "y": -4,
-                    "levels": "anes"
                   }
                 ]
               }
             ],
             "overlays": [
-              {
-                "name": "Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": -1
-                  },
-                  {
-                    "x": 1,
-                    "y": -3
-                  }
-                ]
-              },
               {
                 "name": "Large Dungeon Corridor",
                 "orientation": 0,
@@ -59581,14 +59602,108 @@
                     "type": "Obstacle"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "13-B",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Ancient Artillery",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 5,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -3,
+                    "y": 5,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "levels": "aan"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Mindsnipper",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "Piranha Pig",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 2,
+                    "levels": "ane"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 5
+                  },
+                  {
+                    "x": -1,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -6,
+                    "y": 4,
+                    "type": "Corridor"
+                  }
+                ]
               },
               {
                 "name": "Large Debris",
                 "orientation": 60,
                 "positions": [
                   {
-                    "x": 2,
-                    "y": -5
+                    "x": 0,
+                    "y": 1
                   }
                 ]
               },
@@ -59597,13 +59712,14 @@
                 "orientation": 300,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": -2,
+                    "x": -3,
+                    "y": 4,
                     "type": "Obstacle"
                   },
                   {
-                    "x": 0,
-                    "y": -6
+                    "x": -2,
+                    "y": 0,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -61826,101 +61942,6 @@
         "entries": [
           {
             "reference": {
-              "tile": "15-A",
-              "tileOrientation": "0"
-            },
-            "tokens": [],
-            "monsters": [
-              {
-                "name": "Earth Demon",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 4,
-                    "levels": "nee"
-                  },
-                  {
-                    "x": -4,
-                    "y": 1,
-                    "levels": "nne"
-                  }
-                ]
-              },
-              {
-                "name": "Ice Wraith",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 6,
-                    "levels": "nnn"
-                  }
-                ]
-              }
-            ],
-            "overlays": [
-              {
-                "name": "Snow Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 3,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "6.3"
-                      },
-                      "id": "scenario/107/token/1"
-                    }
-                  }
-                ]
-              },
-              {
-                "name": "Ice Spikes",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 3,
-                    "type": "Hazardous Terrain"
-                  },
-                  {
-                    "x": -2,
-                    "y": 1,
-                    "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Log",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 5
-                  }
-                ]
-              },
-              {
-                "name": "Tree",
-                "orientation": 240,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 2,
-                    "type": "Objective"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "reference": {
               "tile": "13-A",
               "tileOrientation": "0"
             },
@@ -62037,6 +62058,101 @@
                   {
                     "x": -4,
                     "y": 5
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "15-A",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Earth Demon",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 4,
+                    "levels": "nee"
+                  },
+                  {
+                    "x": -4,
+                    "y": 1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Wraith",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 6,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Snow Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3,
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "6.3"
+                      },
+                      "id": "scenario/107/token/1"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 3,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": 1,
+                    "type": "Hazardous Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 5
+                  }
+                ]
+              },
+              {
+                "name": "Tree",
+                "orientation": 240,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 2,
+                    "type": "Objective"
                   }
                 ]
               }
@@ -64527,7 +64643,7 @@
         "entries": [
           {
             "reference": {
-              "tile": "07-D",
+              "tile": "07-B",
               "tileOrientation": "0"
             },
             "tokens": [
@@ -64613,6 +64729,11 @@
                     "x": -1,
                     "y": -1,
                     "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -64643,6 +64764,293 @@
         "entries": [
           {
             "reference": {
+              "tile": "07-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "2g",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -9,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "loot",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1
+                  },
+                  {
+                    "x": -1,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Lightning Eel",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Clawcrusher",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "levels": "ane"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Mindsnipper",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 1,
+                    "levels": "eee"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Wavethrower",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 0,
+                    "levels": "eee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 2
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -6,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "07-B",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "loot",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 2
+                  },
+                  {
+                    "x": -1,
+                    "y": -1
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Lightning Eel",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Clawcrusher",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 2,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Mindsnipper",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Wavethrower",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 0,
+                    "levels": "nee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -6,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Ice Spikes",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": 1,
+                    "type": "Hazardous Terrain"
+                  },
+                  {
+                    "x": -6,
+                    "y": 0,
+                    "type": "Hazardous Terrain"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
               "tile": "07-B",
               "tileOrientation": "0"
             },
@@ -64658,56 +65066,12 @@
                 ]
               },
               {
-                "name": "2g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "3g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": -3
-                  }
-                ]
-              },
-              {
                 "name": "loot",
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 7,
-                    "y": 1
-                  },
-                  {
-                    "x": 8,
-                    "y": 0
-                  },
-                  {
-                    "x": 6,
-                    "y": -4
-                  },
-                  {
                     "x": -2,
                     "y": -1
-                  },
-                  {
-                    "x": 1,
-                    "y": -6
-                  },
-                  {
-                    "x": 2,
-                    "y": -6
-                  },
-                  {
-                    "x": 10,
-                    "y": -6
                   }
                 ]
               }
@@ -64720,22 +65084,12 @@
                   {
                     "x": -6,
                     "y": -1,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": 0,
                     "y": -1,
-                    "levels": "anes"
-                  },
-                  {
-                    "x": 9,
-                    "y": -1,
-                    "levels": "nnes"
-                  },
-                  {
-                    "x": -2,
-                    "y": -7,
-                    "levels": "nnns2"
+                    "levels": "ane"
                   }
                 ]
               },
@@ -64743,11 +65097,6 @@
                 "name": "Lurker Clawcrusher",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": 7,
-                    "y": 2,
-                    "levels": "ane"
-                  },
                   {
                     "x": -6,
                     "y": 2,
@@ -64757,15 +65106,79 @@
                     "x": -2,
                     "y": 0,
                     "levels": "nee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Log",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 1,
+                    "type": "Difficult Terrain"
                   },
                   {
-                    "x": 5,
-                    "y": -4,
-                    "levels": "nne"
+                    "x": -1,
+                    "y": 1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "07-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "3g",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -9,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "loot",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": -1
                   },
                   {
-                    "x": 2,
-                    "y": -5,
+                    "x": -1,
+                    "y": -1
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Lightning Eel",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": -1,
+                    "levels": "nnn"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Clawcrusher",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 1,
                     "levels": "nne"
                   }
                 ]
@@ -64775,18 +65188,8 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 2,
+                    "x": -7,
                     "y": 1,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": 10,
-                    "y": -4,
-                    "levels": "nee"
-                  },
-                  {
-                    "x": -4,
-                    "y": -5,
                     "levels": "eee"
                   }
                 ]
@@ -64796,455 +65199,27 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 5,
+                    "x": -1,
                     "y": 0,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": 2,
-                    "y": -6,
                     "levels": "aee"
-                  },
-                  {
-                    "x": 7,
-                    "y": -6,
-                    "levels": "nee"
                   }
                 ]
               }
             ],
             "overlays": [
               {
-                "name": "Large Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": -1,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 6,
-                    "y": -1,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 0,
-                    "y": -7
-                  },
-                  {
-                    "x": 9,
-                    "y": -7
-                  }
-                ]
-              },
-              {
                 "name": "Log",
                 "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -1,
-                    "y": 1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": 0
-                  },
-                  {
-                    "x": -2,
-                    "y": -4,
-                    "type": "Difficult Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Log",
-                "orientation": 60,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 2
-                  }
-                ]
-              },
-              {
-                "name": "Water",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -5,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -1,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 2,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 3,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 4,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 7,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": 8,
-                    "y": -1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -5,
-                    "y": -6
-                  },
-                  {
-                    "x": -4,
-                    "y": -6
-                  },
-                  {
-                    "x": 3,
-                    "y": -6
-                  },
-                  {
-                    "x": 4,
-                    "y": -6
-                  },
-                  {
-                    "x": 5,
-                    "y": -6
-                  },
-                  {
-                    "x": 6,
-                    "y": -6,
-                    "type": "Hazardous Terrain"
-                  },
-                  {
-                    "x": 9,
-                    "y": -6
-                  },
-                  {
-                    "x": -6,
-                    "y": -1
-                  },
-                  {
-                    "x": 0,
-                    "y": -1
-                  },
-                  {
-                    "x": 9,
-                    "y": -1
-                  },
-                  {
-                    "x": -2,
-                    "y": -7
-                  }
-                ]
-              },
-              {
-                "name": "Ice Spikes",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 6,
-                    "y": -3
-                  },
-                  {
-                    "x": 8,
-                    "y": -3
-                  },
-                  {
-                    "x": 6,
-                    "y": -4
-                  },
-                  {
-                    "x": 5,
-                    "y": -5
-                  }
-                ]
+                "positions": []
               },
               {
                 "name": "Barrels",
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 1,
-                    "y": -6,
-                    "type": "Obstacle"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "reference": {
-              "tile": "07-G",
-              "tileOrientation": "180"
-            },
-            "tokens": [
-              {
-                "name": "1g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 1
-                  },
-                  {
-                    "x": -4,
-                    "y": 0
-                  },
-                  {
-                    "x": -3,
-                    "y": 0
-                  },
-                  {
-                    "x": -3,
-                    "y": -1
-                  }
-                ]
-              },
-              {
-                "name": "2g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 5
-                  },
-                  {
-                    "x": 1,
-                    "y": 4
-                  },
-                  {
-                    "x": 2,
-                    "y": 4
-                  },
-                  {
-                    "x": 2,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "3g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 4,
-                    "y": -1
-                  },
-                  {
-                    "x": 4,
-                    "y": -2
-                  },
-                  {
-                    "x": 5,
-                    "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": 6
-                  },
-                  {
-                    "x": -6,
-                    "y": 6
-                  }
-                ]
-              },
-              {
-                "name": "b",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "c",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "d",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "e",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 5,
-                    "y": 3
-                  }
-                ]
-              },
-              {
-                "name": "f",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": -1
-                  }
-                ]
-              },
-              {
-                "name": "g",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 8,
-                    "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "h",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 5
-                  }
-                ]
-              },
-              {
-                "name": "start",
-                "orientation": 0,
-                "positions": [
-                  {
                     "x": -2,
-                    "y": 6
-                  },
-                  {
-                    "x": -1,
-                    "y": 6
-                  },
-                  {
-                    "x": 0,
-                    "y": 6
-                  },
-                  {
-                    "x": 1,
-                    "y": 6
-                  }
-                ]
-              }
-            ],
-            "monsters": [
-              {
-                "name": "Lightning Eel",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 12,
-                    "levels": "nnes"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Clawcrusher",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 1,
-                    "levels": "nee"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Wavethrower",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 2,
                     "y": 0,
-                    "levels": "nne"
-                  },
-                  {
-                    "x": 7,
-                    "y": 0,
-                    "levels": "aan"
-                  }
-                ]
-              }
-            ],
-            "overlays": [
-              {
-                "name": "Large Water",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 6
-                  },
-                  {
-                    "x": 2,
-                    "y": 4,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
-                "name": "Water",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 5
-                  },
-                  {
-                    "x": 2,
-                    "y": 3
-                  },
-                  {
-                    "x": 1,
-                    "y": 12
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -65403,6 +65378,96 @@
           },
           {
             "reference": {
+              "tile": "02-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "2g",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 2
+                  },
+                  {
+                    "x": -3,
+                    "y": 1
+                  },
+                  {
+                    "x": -3,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "e",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3
+                  }
+                ]
+              }
+            ],
+            "monsters": [],
+            "overlays": [
+              {
+                "name": "Large Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -3,
+                    "y": 1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 2
+                  },
+                  {
+                    "x": -3,
+                    "y": 0
+                  }
+                ]
+              },
+              {
+                "name": "Crate",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
               "tile": "07-G",
               "tileOrientation": "180"
             },
@@ -65422,16 +65487,6 @@
                   {
                     "x": 5,
                     "y": -2
-                  }
-                ]
-              },
-              {
-                "name": "e",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 5,
-                    "y": 3
                   }
                 ]
               },
@@ -65505,19 +65560,7 @@
                 "positions": [
                   {
                     "x": 0,
-                    "y": 2
-                  },
-                  {
-                    "x": 0,
                     "y": 1
-                  },
-                  {
-                    "x": 1,
-                    "y": 1
-                  },
-                  {
-                    "x": 1,
-                    "y": 0
                   }
                 ]
               },
@@ -65556,10 +65599,6 @@
                   {
                     "x": -1,
                     "y": 3
-                  },
-                  {
-                    "x": 0,
-                    "y": 3
                   }
                 ]
               }
@@ -65567,46 +65606,9 @@
             "monsters": [],
             "overlays": [
               {
-                "name": "Large Water",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 3,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 1,
-                    "y": 1,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
-                "name": "Water",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Corridor"
-                  },
-                  {
-                    "x": 1,
-                    "y": 0,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
                 "name": "Crate",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": 2,
-                    "y": 3,
-                    "type": "Obstacle"
-                  },
                   {
                     "x": -3,
                     "y": 1,
@@ -65733,92 +65735,17 @@
                     "y": 4
                   },
                   {
-                    "x": 2,
-                    "y": 4
-                  },
-                  {
-                    "x": 3,
-                    "y": 4
-                  },
-                  {
                     "x": -5,
                     "y": 2
                   },
                   {
                     "x": -4,
                     "y": 2
-                  },
-                  {
-                    "x": 3,
-                    "y": 2
-                  },
-                  {
-                    "x": 4,
-                    "y": 2
                   }
                 ]
               }
             ],
             "monsters": [
-              {
-                "name": "Algox Archer",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 5,
-                    "levels": "nne"
-                  },
-                  {
-                    "x": 1,
-                    "y": 1,
-                    "levels": "nne"
-                  }
-                ]
-              },
-              {
-                "name": "Algox Guard",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": 4,
-                    "levels": "ann"
-                  },
-                  {
-                    "x": 0,
-                    "y": 3,
-                    "levels": "naa"
-                  },
-                  {
-                    "x": 2,
-                    "y": 2,
-                    "levels": "ann"
-                  }
-                ]
-              },
-              {
-                "name": "Algox Scout",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3,
-                    "levels": "nees"
-                  }
-                ]
-              },
-              {
-                "name": "Algox Snowspeaker",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 3,
-                    "levels": "nnn"
-                  }
-                ]
-              },
               {
                 "name": "Vermling Priest",
                 "orientation": 0,
@@ -65856,9 +65783,108 @@
                     "x": -3,
                     "y": 3,
                     "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "13-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 4
                   },
                   {
-                    "x": 2,
+                    "x": -2,
+                    "y": 4
+                  },
+                  {
+                    "x": -2,
+                    "y": 2
+                  },
+                  {
+                    "x": -1,
+                    "y": 2
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Algox Archer",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 5,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": -4,
+                    "y": 1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Algox Guard",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 4,
+                    "levels": "ann"
+                  },
+                  {
+                    "x": -5,
+                    "y": 3,
+                    "levels": "naa"
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "levels": "ann"
+                  }
+                ]
+              },
+              {
+                "name": "Algox Scout",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
+                "name": "Algox Snowspeaker",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Supply Shelf",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
                     "y": 3,
                     "type": "Obstacle"
                   }
@@ -65968,60 +65994,17 @@
                     "y": 4
                   },
                   {
-                    "x": 2,
-                    "y": 4
-                  },
-                  {
-                    "x": 3,
-                    "y": 4
-                  },
-                  {
                     "x": -5,
                     "y": 2
                   },
                   {
                     "x": -4,
                     "y": 2
-                  },
-                  {
-                    "x": 3,
-                    "y": 2
-                  },
-                  {
-                    "x": 4,
-                    "y": 2
                   }
                 ]
               }
             ],
             "monsters": [
-              {
-                "name": "Algox Snowspeaker",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": 3,
-                    "levels": "nnn"
-                  }
-                ]
-              },
-              {
-                "name": "Hound",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 4,
-                    "levels": "nnes"
-                  },
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "levels": "nees"
-                  }
-                ]
-              },
               {
                 "name": "Polar Bear",
                 "orientation": 0,
@@ -66054,24 +66037,14 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": 6,
-                    "levels": "aae"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
-                    "levels": "aae"
-                  },
-                  {
                     "x": -2,
                     "y": 4,
-                    "levels": "eees"
+                    "levels": "eee"
                   },
                   {
                     "x": -1,
                     "y": 2,
-                    "levels": "eees"
+                    "levels": "eee"
                   }
                 ]
               }
@@ -66101,9 +66074,92 @@
                     "x": -3,
                     "y": 3,
                     "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "13-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 4
                   },
                   {
-                    "x": 2,
+                    "x": -2,
+                    "y": 4
+                  },
+                  {
+                    "x": -2,
+                    "y": 2
+                  },
+                  {
+                    "x": -1,
+                    "y": 2
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Algox Snowspeaker",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "levels": "nnn"
+                  }
+                ]
+              },
+              {
+                "name": "Hound",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 4,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
+                "name": "Vermling Scout",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 6,
+                    "levels": "aae"
+                  },
+                  {
+                    "x": -3,
+                    "y": 0,
+                    "levels": "aae"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Supply Shelf",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
                     "y": 3,
                     "type": "Obstacle"
                   }

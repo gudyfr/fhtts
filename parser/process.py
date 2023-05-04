@@ -313,6 +313,14 @@ def cleanup(entries, layout, scenarioId):
         for overlay in entry['overlays']:
             if len(overlay['positions']) == 0:
                 entry['overlays'].remove(overlay)
+        for monster in entry['monsters']:
+            for position in monster['positions']:
+                if 'levels' in position:
+                    position['levels'] = position['levels'][0:3]
+                    
+        if len(entry['tokens']) == 0 and len(entry['overlays']) == 0 and len(entry['monsters']) == 0:
+            entries.remove(entry)
+    
 
 def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenarioId):
     removedMonsters = scenarioSpecials['remove-monsters'] if 'remove-monsters' in scenarioSpecials else []
@@ -320,19 +328,27 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
     renamed = scenarioSpecials['rename'] if 'rename' in scenarioSpecials else []
     result = {"type" : mapData["type"], "name" : mapData["name"]}
     
-    offsetsByReference = {}
-    resultsByReference = {}
-    attractorsByReference = {}
+    # offsetsByReference = {}
+    # resultsByReference = {}
+    # attractorsByReference = {}
+    references = []
 
     subResults = []
     entries = mapData['results']
     
     tiles = list(filter(lambda e : e['type'] == "tile", entries))
     tileCenters = []
+    tileNames = []
     # First we should try and find tiles    
     if len(tiles) > 0:
-        tiles.sort(key= lambda e: e['results'][0]['score'], reverse=True)
+        # We need to flatten the tiles
+        allTiles = []
         for tile in tiles:
+            for position in tile['results']:
+                allTiles.append({'name':tile['name'], 'orientation' : tile['orientation'], 'position' : position})
+
+        allTiles.sort(key= lambda e: e['position']['score'], reverse=True)
+        for tile in allTiles:
             tileNumber,tileName = getTileNumberAndName(tile['name'])
             tileOrientation = tile['orientation'].split("-")[1]
             if tileNumber in tileInfos:
@@ -342,7 +358,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
                 if flipped and 'offset_flipped' in tileInfo:
                     tileOffset = tileInfo['offset_flipped']
                 angle = tileInfo['angle'] if 'angle' in tileInfo else 0
-                tileX,tileY = getCenterPoint(tile["results"][0])
+                tileX,tileY = getCenterPoint(tile['position'])
                 skip = False
                 for tileCenter in tileCenters:
                     dx = tileCenter['x'] - tileX
@@ -350,7 +366,13 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
                     distance = math.sqrt(dx*dx+dy*dy)
                     if distance < 100:
                         skip = True
+                if tile['name'] in tileNames:
+                    # If we already have a tile with the same name, add a higher constraint on the matching score
+                    if tile['position']['score'] < 0.95:
+                        skip = True
+
                 if not skip:
+                    tileNames.append(tile['name'])
                     tileCenters.append({'x':tileX,'y':tileY})
                     effectiveOrientation = int(tileOrientation) - angle
                     tOX,tOY = rotateVector(tileOffset["x"], tileOffset["y"], effectiveOrientation)
@@ -364,9 +386,17 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
                         dx,dy = mapFromHexCoordinate(x,y)
                         processedAttractors.append({"x" : dx+xOffset, "y" : dy + yOffset})
 
-                    attractorsByReference[tile["name"]] = processedAttractors
-                    resultsByReference[tile["name"]] = {"reference":{"tile" : tile['name'], "tileOrientation" : f"{effectiveOrientation}"}}
-                    offsetsByReference[tile["name"]] = {"x" : xOffset, "y" : yOffset}
+                    references.append({
+                        'tile':tile["name"],
+                        'attractors':processedAttractors,
+                        'results' : {"reference":{"tile" : tile['name'], "tileOrientation" : f"{effectiveOrientation}"}},
+                        'offset' : {"x" : xOffset, "y" : yOffset},
+                        'outputs' : [],
+                        'processed' : {} })
+                
+                    # attractorsByReference[tile["name"]] = processedAttractors
+                    # resultsByReference[tile["name"]] = {"reference":{"tile" : tile['name'], "tileOrientation" : f"{effectiveOrientation}"}}
+                    # offsetsByReference[tile["name"]] = {"x" : xOffset, "y" : yOffset}
 
         # We now have a reference point (0,0) at tileOffset
         # map every object we've found to its tile coordinate
@@ -383,52 +413,54 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             "monsterLevels" : monsterLevels,
             "tokens" : tokens
         }
-        processedByReference = resultsByReference
         for key,items in all.items():
-            outputByReference = {}
-            for ref in resultsByReference.keys():
-                outputByReference[ref] = []
+
+            for reference in references:
+                reference["outputs"] = []
+
             for item in items:
                 name = getName(item)
                 orientation = getOrientation(item)
                 for nameMapping in renamed:
                     if nameMapping['from'] == name:
                         name = nameMapping['to']    
-                itemOutput = {"name" : name, "orientation" : orientation}
-                outputsByReference = {}
+                for reference in references:                    
+                    reference["itemOutput"] = {"name" : name, "orientation" : orientation, "positions" : []}
                 for r in item['results']:
                     x,y = getCenterPoint(r, name, orientation)
                     # Determine the best tile
-                    reference = None
+                    bestReference = None
                     bestDistance = 10000                    
-                    for ref,attractors in attractorsByReference.items():
+                    for reference in references:
+                        attractors = reference['attractors']
+
                         for attractor in attractors:
                             dX = x - attractor['x']
                             dY = y - attractor['y']
                             distance = math.sqrt(dX*dX+dY*dY)
-                            if distance < bestDistance or reference == None:
+                            if distance < bestDistance or bestReference == None:
                                 bestDistance = distance
-                                reference = ref
-                    xOffset = offsetsByReference[reference]["x"]
-                    yOffset = offsetsByReference[reference]["y"]
+                                bestReference = reference
+                    xOffset = bestReference['offset']["x"]
+                    yOffset = bestReference['offset']["y"]
 
-                    itemOutput = outputsByReference[reference] if reference in outputsByReference else {"name" : name, "orientation" : orientation, "positions" : []}
-                    outputsByReference[reference] = itemOutput
                     x,y = mapToHexCoordinate(x-xOffset, y-yOffset)
-                    itemOutput["positions"].append({"x":x, "y":y, "score" : r["score"]})
+                    bestReference["itemOutput"]["positions"].append({"x":x, "y":y, "score" : r["score"]})
                 
-                for ref,itemOutput in outputsByReference.items():
-                    outputByReference[ref].append(itemOutput)
+                    for reference in references:
+                        if len(reference['itemOutput']["positions"]) > 0:
+                            reference["outputs"].append(reference['itemOutput'])
             
             
-            for ref, output in outputByReference.items():
-                output = removeDuplicates(output)
-                processedByReference[ref][key] = output
+            for reference in references:
+                output = removeDuplicates(reference["outputs"])
+                reference["processed"][key] = output
         
         
-        for ref,processed in processedByReference.items():
+        for reference in references:
+            processed = reference["processed"]
             subResult = {}
-            subResult['reference'] = processed['reference']
+            subResult['reference'] = reference['results']['reference']
             # We simply copy over the overlays
             processedTokens = removeScore(processed["tokens"])
             removeTokens(processed["tokens"], scenarioSpecials)

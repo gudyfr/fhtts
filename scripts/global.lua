@@ -842,6 +842,9 @@ end
 function layoutMap(elements, map, scenarioInfo)
    -- Determine number of players
    local playerCount = getPlayerCount()
+   if playerCount < 2 then
+      playerCount = 2
+   end
 
    local categories = { "monsters", "overlays", "tokens" }
 
@@ -1758,7 +1761,6 @@ function playerOpenSectionBook(player, text)
 end
 
 function getPlayerCount()
-   -- return 2
    local count = 0
    for _, color in ipairs({ "Green", "Red", "White", "Blue" }) do
       if isPlayerPresent(color) then
