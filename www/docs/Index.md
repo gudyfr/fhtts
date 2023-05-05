@@ -4,7 +4,9 @@ Open the Main menu, choose Settings :
 ![Main Menu Settings](images/xhaven_main_menu_settings.png)  
 Scroll down to "Also Enable Web Server", and enable it  
 ![Enable Web Server](images/xhaven_settings_enable_web_server.png)  
-(Optional) There is also an option to keep the Assistant on top of other windosws, which can be useful to have it visible on top of TTS  
+Make sure you turn off "Auto Add Standees" and "Auto Add Timed Spawns" as these will conflict with TTS driving the assistant to add standees.  
+![](images/xhaven_auto_add_standees.png)  
+(Optional) There is also an option to keep the Assistant on top of other windows, which can be useful to have it visible on top of TTS  
 ![Always on Top](images/xhaven_settings_always_on_top.png)  
 Finally, you need to Start the Host Server (which also starts the web server), notice that the label changes to "Stop Server"  
 ![Settings Start Server](images/xhaven_settings_menu_start_server.png)  
