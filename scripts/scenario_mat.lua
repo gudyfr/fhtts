@@ -86,7 +86,7 @@ function onSave()
         elementStates = elementStates,
         characterStates = characterStates,
         initiativeTypes = initiativeTypes,
-        chracters = Characters
+        characters = Characters
     })
 end
 

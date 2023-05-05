@@ -950,7 +950,7 @@ function layoutMap(elements, map, scenarioInfo, objects)
                            ScenarioDoors[hx .. "," .. hy] = true
                         end
                         obj.setPosition({ x, 1.44, z })
-                        local orientation = overlay.orientation
+                        local orientation = overlay.orientation or 0
                         if orientation > 180 then
                            orientation = orientation - 360
                         end
@@ -967,7 +967,7 @@ function layoutMap(elements, map, scenarioInfo, objects)
                end
             end
          end
-         for _, token in ipairs(entry.tokens) do
+         for _, token in ipairs(entry.tokens or {}) do
             local random = nil
             if token.random ~= nil then
                random = {}
@@ -1004,7 +1004,7 @@ function layoutMap(elements, map, scenarioInfo, objects)
                end
             end
          end
-         for _, monster in ipairs(entry.monsters) do
+         for _, monster in ipairs(entry.monsters or {}) do
             for _, position in ipairs(monster.positions) do
                local levels = position.levels
                if levels ~= nil then
@@ -1027,27 +1027,26 @@ function layoutMap(elements, map, scenarioInfo, objects)
       end
    end
 
-   if map.triggers ~= nil then
-      for _, trigger in ipairs(map.triggers) do
-         ScenarioTriggers.triggersById[trigger.id] = trigger
-         -- In addition, for manual triggers, we need to add a corresponding token
-         if trigger.type == "manual" then
-            local by = trigger.by
-            local token = by.token
-            local reference = by.at.reference
-            local tokenOrigin = getOrigin(scenarioInfo, reference)
-            if tokenOrigin ~= nil then
-               local hx = by.at.x + tokenOrigin.x
-               local hy = by.at.y + tokenOrigin.y
-               local x, z = getWorldPositionFromHexPosition(hx, hy)
-               local obj = getToken({ name = token }, { x = x, y = 2.35, z = z })
-               attachTriggerToElement(trigger, obj, CurrentScenarioId, 2)
-            end
+   for _, trigger in ipairs(map.triggers or {}) do
+      ScenarioTriggers.triggersById[trigger.id] = trigger
+      -- In addition, for manual triggers, we need to add a corresponding token
+      if trigger.type == "manual" then
+         local by = trigger.by
+         local token = by.token
+         local reference = by.at.reference
+         local tokenOrigin = getOrigin(scenarioInfo, reference)
+         if tokenOrigin ~= nil then
+            local hx = by.at.x + tokenOrigin.x
+            local hy = by.at.y + tokenOrigin.y
+            local x, z = getWorldPositionFromHexPosition(hx, hy)
+            local obj = getToken({ name = token }, { x = x, y = 2.35, z = z })
+            Wait.time(function() obj.setLock(true) end, 2)
+            attachTriggerToElement(trigger, obj, CurrentScenarioId, 2)
          end
-         -- Also handle custom triggers
-         if trigger.type == "onload" then
-            actualTriggered(CurrentScenarioId, trigger.id, nil, false, objects)
-         end
+      end
+      -- Also handle custom triggers
+      if trigger.type == "onload" then
+         actualTriggered(CurrentScenarioId, trigger.id, nil, false, objects)
       end
    end
 end
@@ -1308,7 +1307,7 @@ end
 function clearTriggered(trigger, guid)
    local triggeredKey = getTriggeredKey(trigger, guid)
    -- Reset the triggered state
-   print("Clearing " .. triggeredKey)
+   -- print("Clearing " .. triggeredKey)
    ScenarioTriggers.triggered[triggeredKey] = false
 
    -- Also reset poential `also` triggers
@@ -1365,7 +1364,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo, objects)
 
    local triggered = ScenarioTriggers.triggered[triggerKey] or false
    if triggered == undo then
-      print("Setting " .. triggerKey .. " to " .. tostring((not undo)))
+      -- print("Setting " .. triggerKey .. " to " .. tostring((not undo)))
       ScenarioTriggers.triggered[triggerKey] = not undo
    else
       print("Not performing action, as trigger has already been triggered " .. triggerKey)
@@ -1531,8 +1530,9 @@ function handleTriggerAction(action, scenarioId, objGuid, undo, objects)
       end
    end
 
-   if action.action == "custom" then
-      self.call(action.what)
+   if action.action == "layout" then
+      local what = action.what
+      layoutMap(scenarios[scenarioId], what, ScenarioInfos[scenarioId], objects)
    end
 
    if action.also ~= nil then

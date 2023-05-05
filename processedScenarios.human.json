@@ -61813,18 +61813,94 @@
                   "type": "tile",
                   "name": "second"
                 }
+              },
+              {
+                "action": "layout",
+                "what": {
+                  "entries": [
+                    {
+                      "reference": {
+                        "tile": "07-G"
+                      },
+                      "overlays": [
+                        {
+                          "name": "Large Snow Corridor",
+                          "orientation": 0,
+                          "positions": [
+                            {
+                              "x": 1,
+                              "y": 0,
+                              "type": "Corridor"
+                            },
+                            {
+                              "x": 0,
+                              "y": 2,
+                              "type": "Corridor"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Snow Corridor",
+                          "orientation": 0,
+                          "positions": [
+                            {
+                              "x": 0,
+                              "y": 1,
+                              "type": "Corridor"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "reference": {
+                        "tile": "07-B"
+                      },
+                      "overlays": [
+                        {
+                          "name": "Large Snow Corridor",
+                          "orientation": 0,
+                          "positions": [
+                            {
+                              "x": 1,
+                              "y": 0,
+                              "type": "Corridor"
+                            },
+                            {
+                              "x": 0,
+                              "y": 2,
+                              "type": "Corridor"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Snow Corridor",
+                          "orientation": 0,
+                          "positions": [
+                            {
+                              "x": 0,
+                              "y": 1,
+                              "type": "Corridor"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
               }
             ],
             "id": "scenario/113/global/customLayout"
           },
           {
             "type": "manual",
+            "display": "Scroll the map forward",
             "by": {
               "token": "n1",
               "at": {
-                "reference": "07-B",
-                "x": -2,
-                "y": -3
+                "reference": "07-D",
+                "x": 1,
+                "y": 1
               }
             },
             "dedupMode": "first",
@@ -61867,6 +61943,47 @@
                   },
                   "also": [
                     {
+                      "action": "layout",
+                      "what": {
+                        "entries": [
+                          {
+                            "reference": {
+                              "tile": "07-D"
+                            },
+                            "overlays": [
+                              {
+                                "name": "Large Snow Corridor",
+                                "orientation": 0,
+                                "positions": [
+                                  {
+                                    "x": 1,
+                                    "y": 0,
+                                    "type": "Corridor"
+                                  },
+                                  {
+                                    "x": 0,
+                                    "y": 2,
+                                    "type": "Corridor"
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "Snow Corridor",
+                                "orientation": 0,
+                                "positions": [
+                                  {
+                                    "x": 0,
+                                    "y": 1,
+                                    "type": "Corridor"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
                       "action": "attachTrigger",
                       "what": "scenario/113/global/slide",
                       "dedupMode": "first",
@@ -61907,7 +62024,50 @@
                               "what": {
                                 "type": "tile",
                                 "name": "fourth"
-                              }
+                              },
+                              "also": [
+                                {
+                                  "action": "layout",
+                                  "what": {
+                                    "entries": [
+                                      {
+                                        "reference": {
+                                          "tile": "07-G"
+                                        },
+                                        "overlays": [
+                                          {
+                                            "name": "Large Snow Corridor",
+                                            "orientation": 0,
+                                            "positions": [
+                                              {
+                                                "x": 1,
+                                                "y": 0,
+                                                "type": "Corridor"
+                                              },
+                                              {
+                                                "x": 0,
+                                                "y": 2,
+                                                "type": "Corridor"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "name": "Snow Corridor",
+                                            "orientation": 0,
+                                            "positions": [
+                                              {
+                                                "x": 0,
+                                                "y": 1,
+                                                "type": "Corridor"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
                             }
                           }
                         ]
