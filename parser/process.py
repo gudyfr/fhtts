@@ -233,12 +233,13 @@ def addToEntries(entries, positions, key, bosses=[]):
         # If we've removed the only instance of that monster, let's remove it
         if len(entry['positions']) == 0:
             entriesToRemove.append(entry)
-    
+
     for entry in entriesToRemove:
         entries.remove(entry)
 
     for boss in extractedBosses:
         entries.append(boss)
+
 
 def rotateHexCoordinates(x, y, orientation):
     if x == 0 and y == 0:
@@ -276,20 +277,25 @@ def getSimpleName(name):
     return name
 
 
-def cleanup(entries, layout, scenarioId):
+def cleanup(entries, layout, scenarioId, keptTokens):
     # Let's remove numberred tokens
     for entry in entries:
         tokensToRemove = []
         tokens = entry['tokens']
         for token in tokens:
-            if token['name'] in ['1', '1g', '2', '2g', '3', '3g', '4', '4g', '5', '6', '7', '8', '9', '10', '11', '12']:
+            tokenNamesToRemove = ['1', '1g', '2', '2g', '3', '3g',
+                                  '4', '4g', '5', '6', '7', '8', '9', '10', '11', '12']
+            tokenNamesToRemove = [
+                token for token in tokenNamesToRemove if token not in keptTokens]
+            if token['name'] in tokenNamesToRemove:
                 hasTrigger = False
                 for position in token['positions']:
                     if 'trigger' in position:
                         hasTrigger = True
                 if not hasTrigger:
                     tokensToRemove.append(token)
-        entry['tokens'] = [token for token in tokens if token not in tokensToRemove]
+        entry['tokens'] = [
+            token for token in tokens if token not in tokensToRemove]
 
     # Let's remove duplicate overlays (same name, same position)
     overlaysPerPosition = {}
@@ -363,7 +369,7 @@ def safeGetOrEmptyList(dict, key):
     return dict[key] if key in dict else []
 
 
-def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenarioId):
+def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):    
     removedTokens = safeGetOrEmptyList(scenarioSpecials, 'remove-tokens')
     removedMonsters = safeGetOrEmptyList(scenarioSpecials, 'remove-monsters')
     bosses = safeGetOrEmptyList(scenarioSpecials, 'bosses')
@@ -513,7 +519,8 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             subResult['reference'] = reference['results']['reference']
             # We simply copy over the overlays
             processedTokens = removeScore(processed["tokens"])
-            processed['tokens'] = removeTokens(processed["tokens"], removedTokens)
+            processed['tokens'] = removeTokens(
+                processed["tokens"], removedTokens)
 
             tokenTriggerLocations = removeTriggers(
                 processedTokens, mapTriggers)
@@ -524,7 +531,8 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             attachOverlayTriggersToOverlays(
                 processed['overlays'], overlayTriggers)
 
-            processed['monsters'] = removeMonsters(processed['monsters'], removedMonsters)
+            processed['monsters'] = removeMonsters(
+                processed['monsters'], removedMonsters)
 
             positionToMonsterLevels = mapToPositions(
                 processed['monsterLevels'])
@@ -539,10 +547,9 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials, layout, scenar
             subResult["overlays"] = removeScore(processed['overlays'])
             subResults.append(subResult)
 
-        result['entries'] = cleanup(subResults, layout, scenarioId)
+        result['entries'] = subResults #cleanup(subResults, layout, scenarioId, keepTokens)
 
-    globalTriggers = list(map(lambda e: e['trigger'], filter(
-        lambda e: e['target']['type'] == 'global', mapTriggers)))
+    globalTriggers = list(map(lambda e: e['trigger'], [trigger for trigger in mapTriggers if trigger['target']['type'] == 'global']))
     result['triggers'] = globalTriggers
 
     return result
@@ -637,10 +644,10 @@ with open("tileInfos.json", 'r') as tf:
         for scenario in scenarios:
             id = scenario["id"]
             scenarioOutput = {"id": id}
-            scenarioTriggers = safeGetOrEmptyList(triggers,id)
-            scenarioSpecials = safeGetOrEmptyList(specials,id)
-            removedMaps = safeGetOrEmptyList(scenarioSpecials,'remove-maps')
-            removedTiles = safeGetOrEmptyList(scenarioSpecials,'remove-tiles')
+            scenarioTriggers = safeGetOrEmptyList(triggers, id)
+            scenarioSpecials = safeGetOrEmptyList(specials, id)
+            removedMaps = safeGetOrEmptyList(scenarioSpecials, 'remove-maps')
+            removedTiles = safeGetOrEmptyList(scenarioSpecials, 'remove-tiles')
             if 'layout' in scenario:
                 scenarioOutput['layout'] = processLayout(
                     scenario['layout'], removedTiles, scenarioSpecials)
@@ -654,9 +661,48 @@ with open("tileInfos.json", 'r') as tf:
                     if not removed:
                         mapTriggers = list(filter(
                             lambda e: e['in']['type'] == scenarioMap['type'] and e['in']['name'] == scenarioMap['name'], scenarioTriggers))
-                        result = processMap(tileInfos, scenarioMap, mapTriggers, scenarioSpecials,
-                                            scenarioOutput['layout'] if 'layout' in scenario else {}, id)
+                        result = processMap(tileInfos, scenarioMap, mapTriggers, scenarioSpecials)
                         mapsOutput.append(result)
+                entriesToMap = safeGetOrEmptyList(
+                    scenarioSpecials, 'entries-to-map')
+                for entryToMap in entriesToMap:
+                    entryToMove = None
+                    for _map in mapsOutput:
+                        matches = True
+                        for key, value in entryToMap['in'].items():
+                            if _map[key] != value:
+                                matches = False
+                        if matches:
+                            for entry in _map['entries']:
+                                havingFullfiled = False
+                                for key, value in entryToMap['having'].items():
+                                    for item in entry[f"{key}s"]:
+                                        for fieldKey, fieldValue in value.items():
+                                            if item[fieldKey] == fieldValue:
+                                                entryToMove = entry
+                    if entryToMove != None:
+                        destination = None
+                        for _map in mapsOutput:
+                            if entryToMove in _map['entries']:
+                                _map['entries'].remove(entryToMove)
+                        for _map in mapsOutput:
+                            matches = True
+                            for key, value in entryToMap['to'].items():
+                                if _map[key] != value:
+                                    matches = False
+                            if matches:
+                                destination = _map
+                        if destination == None:
+                            destination = entryToMap['to']
+                            destination['entries'] = []
+                            mapsOutput.append(destination)
+                        destination['entries'].append(entryToMove)
+
+                keepTokens = safeGetOrEmptyList(scenarioSpecials, 'keep-tokens')
+                for _map in mapsOutput:
+                    if 'entries' in _map:
+                        _map['entries'] = cleanup(_map['entries'], scenarioOutput['layout'] if 'layout' in scenarioOutput else {}, id, keepTokens)
+
                 scenarioOutput['maps'] = mapsOutput
 
             scenariosOutput[id] = scenarioOutput

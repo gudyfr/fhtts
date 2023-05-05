@@ -474,7 +474,7 @@ function getCharacterName()
     if characterMat ~= nil then
       local worldPos =  self.positionToWorld(CharacterMatPosition)
       -- print(characterMat.getPosition().y .. " <-> " .. worldPos.y )
-      if characterMat.getPosition().y <= worldPos.y + 0.1 then
+      if characterMat.getPosition().y <= worldPos.y + 0.15 then
         return characterMat.getName()
       end
     end

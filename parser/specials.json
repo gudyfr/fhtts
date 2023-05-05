@@ -79,15 +79,66 @@
             }
         ]
     },
-    "91": {
-        "entry-to-map": [
+    "91": {        
+        "entries-to-map": [
             {
                 "in": {
                     "type": "scenario",
                     "name": 113
                 },
                 "having" : {
-                    
+                    "token" : {
+                        "name" : "1"
+                    }
+                },
+                "to" : {
+                    "type" : "choice",
+                    "name" : "1"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 113
+                },
+                "having" : {
+                    "token" : {
+                        "name" : "2"
+                    }
+                },
+                "to" : {
+                    "type" : "choice",
+                    "name" : "2"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 113
+                },
+                "having" : {
+                    "token" : {
+                        "name" : "3"
+                    }
+                },
+                "to" : {
+                    "type" : "choice",
+                    "name" : "3"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 113
+                },
+                "having" : {
+                    "token" : {
+                        "name" : "4"
+                    }
+                },
+                "to" : {
+                    "type" : "choice",
+                    "name" : "4"
                 }
             }
         ]

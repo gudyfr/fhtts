@@ -61797,6 +61797,254 @@
       {
         "type": "scenario",
         "name": 113,
+        "entries": [],
+        "triggers": [
+          {
+            "type": "onload",
+            "action": "reveal",
+            "what": {
+              "type": "tile",
+              "name": "first"
+            },
+            "also": [
+              {
+                "action": "reveal",
+                "what": {
+                  "type": "tile",
+                  "name": "second"
+                }
+              }
+            ],
+            "id": "scenario/113/global/customLayout"
+          },
+          {
+            "type": "manual",
+            "by": {
+              "token": "n1",
+              "at": {
+                "reference": "07-B",
+                "x": -2,
+                "y": -3
+              }
+            },
+            "dedupMode": "first",
+            "action": "deleteOn",
+            "what": "07-G",
+            "also": [
+              {
+                "action": "move",
+                "what": "07-G",
+                "to": {
+                  "dx": 16,
+                  "dy": 0
+                },
+                "smooth": false
+              },
+              {
+                "action": "move",
+                "what": "07-B",
+                "to": {
+                  "dx": -8,
+                  "dy": 0
+                }
+              },
+              {
+                "action": "move",
+                "what": "07-D",
+                "to": {
+                  "dx": -8,
+                  "dy": 0
+                }
+              },
+              {
+                "action": "timeout",
+                "time": 1.5,
+                "trigger": {
+                  "action": "reveal",
+                  "what": {
+                    "type": "tile",
+                    "name": "third"
+                  },
+                  "also": [
+                    {
+                      "action": "attachTrigger",
+                      "what": "scenario/113/global/slide",
+                      "dedupMode": "first",
+                      "trigger": {
+                        "action": "deleteOn",
+                        "what": "07-B",
+                        "also": [
+                          {
+                            "action": "move",
+                            "what": "07-G",
+                            "to": {
+                              "dx": -8,
+                              "dy": 0
+                            }
+                          },
+                          {
+                            "action": "move",
+                            "what": "07-B",
+                            "to": {
+                              "dx": 16,
+                              "dy": 0
+                            },
+                            "smooth": false
+                          },
+                          {
+                            "action": "move",
+                            "what": "07-D",
+                            "to": {
+                              "dx": -8,
+                              "dy": 0
+                            }
+                          },
+                          {
+                            "action": "timeout",
+                            "time": 1.5,
+                            "trigger": {
+                              "action": "reveal",
+                              "what": {
+                                "type": "tile",
+                                "name": "fourth"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "id": "scenario/113/global/slide"
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "name": "1",
+        "entries": [
+          {
+            "reference": {
+              "tile": "07-B",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "loot",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": -1
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Lightning Eel",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": -1,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "levels": "ane"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Clawcrusher",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 2,
+                    "levels": "nne"
+                  },
+                  {
+                    "x": -2,
+                    "y": 0,
+                    "levels": "nee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -6,
+                    "y": -1
+                  },
+                  {
+                    "x": 0,
+                    "y": -1
+                  },
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "name": "2",
         "entries": [
           {
             "reference": {
@@ -61933,7 +62181,156 @@
                 ]
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "name": "3",
+        "entries": [
+          {
+            "reference": {
+              "tile": "07-D",
+              "tileOrientation": "0"
+            },
+            "tokens": [
+              {
+                "name": "loot",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": -1
+                  },
+                  {
+                    "x": -1,
+                    "y": -1
+                  }
+                ]
+              }
+            ],
+            "monsters": [
+              {
+                "name": "Lightning Eel",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": -1,
+                    "levels": "nnn"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Clawcrusher",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Mindsnipper",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": 1,
+                    "levels": "eee"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Wavethrower",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "aee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Large Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": -1
+                  }
+                ]
+              },
+              {
+                "name": "Log",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 2,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -7,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -6,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -5,
+                    "y": -1
+                  },
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
+                "name": "Barrels",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 0,
+                    "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "choice",
+        "name": "4",
+        "entries": [
           {
             "reference": {
               "tile": "07-B",
@@ -62074,160 +62471,8 @@
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "07-B",
-              "tileOrientation": "0"
-            },
-            "tokens": [
-              {
-                "name": "loot",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": -1
-                  }
-                ]
-              }
-            ],
-            "monsters": [
-              {
-                "name": "Lightning Eel",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": -1,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": 0,
-                    "y": -1,
-                    "levels": "ane"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Clawcrusher",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 2,
-                    "levels": "nne"
-                  },
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "levels": "nee"
-                  }
-                ]
-              }
-            ],
-            "overlays": [
-              {
-                "name": "Log",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 1,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -1,
-                    "y": 1,
-                    "type": "Difficult Terrain"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "reference": {
-              "tile": "07-D",
-              "tileOrientation": "0"
-            },
-            "tokens": [
-              {
-                "name": "loot",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": -1
-                  },
-                  {
-                    "x": -1,
-                    "y": -1
-                  }
-                ]
-              }
-            ],
-            "monsters": [
-              {
-                "name": "Lightning Eel",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": -1,
-                    "levels": "nnn"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Clawcrusher",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 1,
-                    "levels": "nne"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Mindsnipper",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": 1,
-                    "levels": "eee"
-                  }
-                ]
-              },
-              {
-                "name": "Lurker Wavethrower",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 0,
-                    "levels": "aee"
-                  }
-                ]
-              }
-            ],
-            "overlays": [
-              {
-                "name": "Barrels",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 0,
-                    "type": "Obstacle"
-                  }
-                ]
-              }
-            ]
           }
-        ],
-        "triggers": []
+        ]
       }
     ]
   },
