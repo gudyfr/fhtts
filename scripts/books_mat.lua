@@ -509,7 +509,7 @@ end
 function setScenarioPage(params)
     local page = params[1]
     LoadedScenarioNumber = params[2]
-    LoadedScenarioType = params[3] or "Scenarios"
+    LoadedScenarioType = params[3] or "scenarios"
     changePage("scenario book", page, value)
     maybePlayAudio("scenario book")
 end
@@ -532,6 +532,6 @@ function audioPlay(target)
     if target == "scenario book" and LoadedScenarioNumber ~= nil and LoadedScenarioType ~= nil then
         Global.call("playNarration",{LoadedScenarioType, LoadedScenarioNumber})
     elseif target == "section book" and LoadedSection ~= nil then
-        Global.call("playNarration", {"Sections", LoadedSection})        
+        Global.call("playNarration", {"sections", LoadedSection})
     end
 end
