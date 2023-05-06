@@ -57,7 +57,9 @@ function onLoad(save)
       local registeredForCollitions = CurrentScenario.registeredForCollision or {}
       for _, guid in ipairs(registeredForCollitions) do
          local object = getObjectFromGUID(guid)
-         object.registerCollisions()
+         if object ~= nil then
+            object.registerCollisions()
+         end
       end
    else
       CurrentScenario = {}

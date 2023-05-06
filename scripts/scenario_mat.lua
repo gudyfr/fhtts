@@ -1387,7 +1387,7 @@ function processState(state)
         -- print(JSON.encode(entry))
         local id = entry.id
         -- We need to get rid of some of the (FH) and scenario specific monster names
-        local searches = { ' (FH)', ' Scenario 0' }
+        local searches = { ' (FH)', ' Scenario ' }
         for _, s in ipairs(searches) do
             local search = string.find(id, s, 1, true)
             if search ~= nil then
