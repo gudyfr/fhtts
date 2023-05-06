@@ -178,6 +178,8 @@ def attachTriggersToOverlays(overlays, triggerLocations):
                         position['trigger'] = trigger['trigger']
                     if 'condition' in trigger:
                         position['condition'] = trigger['condition']
+                    if 'renamed' in trigger:
+                        position['renamed'] = trigger['renamed']
                     if 'rename' in trigger:
                         position['rename'] = trigger['rename']
                     if 'random' in trigger:

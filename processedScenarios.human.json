@@ -1155,7 +1155,7 @@
                         4
                       ]
                     },
-                    "rename": "Ice Pillar A"
+                    "renamed": "Ice Pillar A"
                   },
                   {
                     "x": -2,
@@ -1166,7 +1166,7 @@
                         4
                       ]
                     },
-                    "rename": "Ice Pillar B"
+                    "renamed": "Ice Pillar B"
                   }
                 ]
               },
@@ -16066,17 +16066,35 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Door"
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "locked": true,
+                      "id": "scenario/155/token/3"
+                    },
+                    "rename": "Door 3"
                   },
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door"
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "locked": true,
+                      "id": "scenario/155/token/1"
+                    },
+                    "rename": "Door 1"
                   },
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door"
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "locked": true,
+                      "id": "scenario/155/token/2"
+                    },
+                    "rename": "Door 2"
                   },
                   {
                     "x": -1,
@@ -16123,14 +16141,56 @@
           {
             "type": "round",
             "when": {
-              "round": 2,
+              "round": 10,
               "state": 0
+            },
+            "action": "reveal",
+            "what": "196.3",
+            "id": "scenario/155/global/complete"
+          },
+          {
+            "type": "manual",
+            "by": {
+              "token": "n1",
+              "at": {
+                "reference": "01-C",
+                "x": 2,
+                "y": 0
+              }
             },
             "action": "reveal",
             "what": {
               "type": "section",
-              "name": "170.1"
+              "name": "135.3"
             },
+            "id": "scenario/155/global/exhausted"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 2,
+              "state": 0
+            },
+            "action": "flip",
+            "what": "02-I",
+            "also": [
+              {
+                "action": "rotate",
+                "what": "02-J",
+                "by": 180
+              },
+              {
+                "action": "reveal",
+                "what": {
+                  "type": "section",
+                  "name": "170.1"
+                }
+              },
+              {
+                "action": "open",
+                "what": "scenario/155/token/1"
+              }
+            ],
             "id": "scenario/155/global/round2"
           }
         ]
@@ -16218,13 +16278,201 @@
                 ]
               }
             ]
+          },
+          {
+            "reference": {
+              "tile": "02-J",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Abael Scout",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "levels": "aee"
+                  },
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "levels": "aae"
+                  },
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "eee"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Wavethrower",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "levels": "aan"
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": -1,
+                    "y": 2,
+                    "levels": "ann"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Huge Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1
+                  }
+                ]
+              }
+            ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "round",
+            "when": {
+              "round": 7,
+              "state": 0
+            },
+            "action": "reveal",
+            "what": {
+              "type": "section",
+              "name": "166.2"
+            },
+            "id": "section/139.1/global/round7"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 8,
+              "state": 0
+            },
+            "action": "reveal",
+            "what": {
+              "type": "section",
+              "name": "132.4"
+            },
+            "id": "section/139.1/global/round8"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 9,
+              "state": 0
+            },
+            "action": "reveal",
+            "what": {
+              "type": "section",
+              "name": "186.4"
+            },
+            "id": "section/139.1/global/round9"
+          }
+        ]
       },
       {
         "type": "section",
         "name": "170.1",
+        "entries": [
+          {
+            "reference": {
+              "tile": "02-J",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Abael Scout",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -2,
+                    "y": 2,
+                    "levels": "aee"
+                  },
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "levels": "aae"
+                  },
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "eee"
+                  }
+                ]
+              },
+              {
+                "name": "Lurker Wavethrower",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 3,
+                    "levels": "aan"
+                  },
+                  {
+                    "x": -3,
+                    "y": 2,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": -1,
+                    "y": 2,
+                    "levels": "ann"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Huge Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "triggers": [
           {
             "type": "round",
@@ -16238,6 +16486,35 @@
               "name": "152.2"
             },
             "id": "section/170.1/global/round3"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 4,
+              "state": 0
+            },
+            "action": "rotate",
+            "what": "01-A",
+            "by": 180,
+            "also": [
+              {
+                "action": "move",
+                "what": "01-A",
+                "smooth": false,
+                "by": {
+                  "x": 3,
+                  "y": 0
+                }
+              },
+              {
+                "action": "reveal",
+                "what": {
+                  "type": "section",
+                  "name": "176.3"
+                }
+              }
+            ],
+            "id": "section/170.1/global/round4"
           }
         ]
       },
@@ -16320,7 +16597,66 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "manual",
+            "by": {
+              "token": "n2",
+              "at": {
+                "reference": "01-A",
+                "x": 0,
+                "y": 2
+              }
+            },
+            "action": "reveal",
+            "display": "Section 172.2",
+            "what": {
+              "type": "section",
+              "name": "172.2"
+            },
+            "id": "section/176.3/global/initiative67"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 5,
+              "state": 0
+            },
+            "action": "reveal",
+            "what": {
+              "type": "section",
+              "name": "124.3"
+            },
+            "id": "section/176.3/global/round5"
+          },
+          {
+            "type": "round",
+            "when": {
+              "round": 6,
+              "state": 0
+            },
+            "display": "Section 139.1",
+            "action": "deleteOn",
+            "what": "02-J",
+            "exceptions": [
+              "Huge Water"
+            ],
+            "also": [
+              {
+                "action": "reveal",
+                "what": {
+                  "type": "section",
+                  "name": "139.1"
+                }
+              },
+              {
+                "action": "open",
+                "what": "scenario/155/token/3"
+              }
+            ],
+            "id": "section/176.3/global/round6"
+          }
+        ]
       }
     ]
   },
@@ -32699,7 +33035,8 @@
                         "name": "70.1"
                       },
                       "id": "scenario/45/token/1"
-                    }
+                    },
+                    "rename": "Door 1"
                   }
                 ]
               },
@@ -32791,7 +33128,58 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door"
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "action": "deleteOn",
+                      "what": "07-F",
+                      "exceptions": [
+                        "Door 1"
+                      ],
+                      "also": [
+                        {
+                          "action": "move",
+                          "what": "07-F",
+                          "by": {
+                            "x": -8,
+                            "y": 0
+                          }
+                        },
+                        {
+                          "action": "move",
+                          "what": "07-H",
+                          "by": {
+                            "x": -8,
+                            "y": 0
+                          }
+                        },
+                        {
+                          "action": "timeout",
+                          "time": 1.5,
+                          "trigger": {
+                            "action": "move",
+                            "what": "07-F",
+                            "by": {
+                              "x": 16,
+                              "y": 0
+                            },
+                            "smooth": false,
+                            "selfOnly": true,
+                            "also": [
+                              {
+                                "action": "reveal",
+                                "what": {
+                                  "type": "section",
+                                  "name": "81.5"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "id": "section/70.1/token/2"
+                    },
+                    "rename": "Door 2"
                   }
                 ]
               },
@@ -32926,7 +33314,58 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door"
+                    "type": "Door",
+                    "trigger": {
+                      "type": "door",
+                      "rename": "Door 3",
+                      "action": "deleteOn",
+                      "what": "07-H",
+                      "exceptions": [
+                        "Door 2"
+                      ],
+                      "also": [
+                        {
+                          "action": "move",
+                          "what": "07-F",
+                          "by": {
+                            "x": -8,
+                            "y": 0
+                          }
+                        },
+                        {
+                          "action": "move",
+                          "what": "07-H",
+                          "by": {
+                            "x": -8,
+                            "y": 0
+                          }
+                        },
+                        {
+                          "action": "timeout",
+                          "time": 1.5,
+                          "trigger": {
+                            "action": "move",
+                            "what": "07-H",
+                            "by": {
+                              "x": 16,
+                              "y": 0
+                            },
+                            "smooth": false,
+                            "selfOnly": true,
+                            "also": [
+                              {
+                                "action": "reveal",
+                                "what": {
+                                  "type": "section",
+                                  "name": "144.1"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      "id": "section/81.5/token/3"
+                    }
                   }
                 ]
               },
@@ -55540,7 +55979,7 @@
                       "what": "scenario/101/global/door2",
                       "id": "scenario/101/token/2"
                     },
-                    "rename": "Door 2"
+                    "renamed": "Door 2"
                   }
                 ]
               },
@@ -61898,50 +62337,59 @@
             "by": {
               "token": "n1",
               "at": {
-                "reference": "07-D",
-                "x": 1,
+                "reference": "07-G",
+                "x": -9,
                 "y": 1
               }
             },
             "dedupMode": "first",
             "action": "deleteOn",
-            "what": "07-G",
+            "what": "07-D",
             "also": [
               {
                 "action": "move",
-                "what": "07-G",
-                "to": {
-                  "dx": 16,
-                  "dy": 0
-                },
-                "smooth": false
-              },
-              {
-                "action": "move",
-                "what": "07-B",
-                "to": {
-                  "dx": -8,
-                  "dy": 0
+                "what": "07-D",
+                "by": {
+                  "x": 8,
+                  "y": 0
                 }
               },
               {
                 "action": "move",
-                "what": "07-D",
-                "to": {
-                  "dx": -8,
-                  "dy": 0
+                "what": "07-B",
+                "by": {
+                  "x": 8,
+                  "y": 0
+                }
+              },
+              {
+                "action": "move",
+                "what": "07-G",
+                "by": {
+                  "x": 8,
+                  "y": 0
                 }
               },
               {
                 "action": "timeout",
                 "time": 1.5,
                 "trigger": {
-                  "action": "reveal",
-                  "what": {
-                    "type": "tile",
-                    "name": "third"
+                  "action": "move",
+                  "what": "07-D",
+                  "by": {
+                    "x": -24,
+                    "y": 0
                   },
+                  "smooth": false,
+                  "selfOnly": true,
                   "also": [
+                    {
+                      "action": "reveal",
+                      "what": {
+                        "type": "tile",
+                        "name": "third"
+                      }
+                    },
                     {
                       "action": "layout",
                       "what": {
@@ -61994,45 +62442,54 @@
                           {
                             "action": "move",
                             "what": "07-G",
-                            "to": {
-                              "dx": -8,
-                              "dy": 0
+                            "by": {
+                              "x": 8,
+                              "y": 0
                             }
                           },
                           {
                             "action": "move",
                             "what": "07-B",
-                            "to": {
-                              "dx": 16,
-                              "dy": 0
-                            },
-                            "smooth": false
+                            "by": {
+                              "x": 8,
+                              "y": 0
+                            }
                           },
                           {
                             "action": "move",
                             "what": "07-D",
-                            "to": {
-                              "dx": -8,
-                              "dy": 0
+                            "by": {
+                              "x": 8,
+                              "y": 0
                             }
                           },
                           {
                             "action": "timeout",
                             "time": 1.5,
                             "trigger": {
-                              "action": "reveal",
-                              "what": {
-                                "type": "tile",
-                                "name": "fourth"
+                              "action": "move",
+                              "what": "07-B",
+                              "by": {
+                                "x": -24,
+                                "y": 0
                               },
+                              "smooth": false,
+                              "selfOnly": true,
                               "also": [
+                                {
+                                  "action": "reveal",
+                                  "what": {
+                                    "type": "tile",
+                                    "name": "fourth"
+                                  }
+                                },
                                 {
                                   "action": "layout",
                                   "what": {
                                     "entries": [
                                       {
                                         "reference": {
-                                          "tile": "07-G"
+                                          "tile": "07-B"
                                         },
                                         "overlays": [
                                           {

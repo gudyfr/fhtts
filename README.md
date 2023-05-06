@@ -31,12 +31,9 @@ The goal is to have everything scripted.
  
  # What's buggy
   - The following scenarios are not yet automated (work in progress):
-    - **37** (Map tiles need to relocate)
     - **82** (Special setup rules, with moving corridors)
     - **85** (It has a really high number of Section links)
-    - **91** (The layout is random from a pool of possibilities)
     - **113** (Some doors are missing)
-    - **128** (Tiles need to flip)    
   - Sometimes the overlay stickers showing health / conditions on top of figurines disapear.
   
  # How you can help

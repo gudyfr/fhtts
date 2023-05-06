@@ -1,3 +1,31 @@
+require('savable')
+
+function getState()
+    return { state = state, description = self.getDescription() }
+end
+
+function onStateUpdate(save)
+    state = save.state
+    self.setDescription(save.description)
+    refreshControls()
+end
+
+function createEmptyState()
+    return {
+        state = {
+            ["enable-x-haven"] = false,
+            address = "localhost",
+            port = "8080",
+            ["enable-end-of-round-looting"] = true,
+            ["enable-highlight-current-figurines"] = true,
+            ["enable-highlight-tiles-by-type"] = true,
+            ["enable-automatic-scenario-layout"] = true,
+            ["enable-automatic-narration"] = false
+        },
+        description = ""
+    }
+end
+
 function onLoad(save)
     if save ~= nil then
         state = JSON.decode(save)
@@ -8,6 +36,17 @@ function onLoad(save)
         state["address"] = ""
         state["port"] = 8080
     end
+    registerSavable("Settings")
+    refreshControls()
+end
+
+function refreshControls()
+    for _, button in ipairs(self.getButtons() or {}) do
+        self.removeButton(button.index)
+    end
+    for _, input in ipairs(self.getInputs() or {}) do
+        self.removeInput(input.index)
+    end
 
     local points = {}
     for _, point in ipairs(self.getSnapPoints()) do
@@ -15,16 +54,16 @@ function onLoad(save)
     end
     table.sort(points, compareZ)
 
-    local expectedEntries = { 
-        { "enable-x-haven", "checkbox" },
-        { "address", "text" },
-        { "port", "text" },
-        { "enable-end-of-round-looting", "checkbox"},
-        { "enable-highlight-current-figurines", "checkbox"},
-        { "enable-highlight-tiles-by-type", "checkbox"},
-        { "enable-automatic-scenario-layout", "checkbox"},
-        { "enable-automatic-narration", "checkbox"},
-        { "onRefreshData", "button"}
+    local expectedEntries = {
+        { "enable-x-haven",                     "checkbox" },
+        { "address",                            "text" },
+        { "port",                               "text" },
+        { "enable-end-of-round-looting",        "checkbox" },
+        { "enable-highlight-current-figurines", "checkbox" },
+        { "enable-highlight-tiles-by-type",     "checkbox" },
+        { "enable-automatic-scenario-layout",   "checkbox" },
+        { "enable-automatic-narration",         "checkbox" },
+        { "onRefreshData",                      "button" }
     }
 
     for idx, point in ipairs(points) do
@@ -39,6 +78,7 @@ function onLoad(save)
             end
         end
     end
+
 end
 
 function compareZ(obj1, obj2)
@@ -83,9 +123,9 @@ function createCheckbox(point, name)
         width          = 200,
         height         = 200,
         font_size      = 300,
-        color          = { 1,1,1, 0},
-        scale          = { .5,.5,.5 },
-        font_color     = { .2, .24, 0.28, 100},
+        color          = { 1, 1, 1, 0 },
+        scale          = { .5, .5, .5 },
+        font_color     = { .2, .24, 0.28, 100 },
         tooltip        = tooltip
     }
     self.createButton(params)
@@ -101,9 +141,9 @@ function createButton(point, name)
         width          = 1000,
         height         = 200,
         font_size      = 300,
-        color          = { 1,1,1, 0},
-        scale          = { .5,.5,.5 },
-        font_color     = { .2, .24, 0.28, 100},
+        color          = { 1, 1, 1, 0 },
+        scale          = { .5, .5, .5 },
+        font_color     = { .2, .24, 0.28, 100 },
         tooltip        = ""
     }
     self.createButton(params)
@@ -130,7 +170,6 @@ end
 function onSave()
     return JSON.encode(state)
 end
-
 
 function getSettings()
     return JSON.encode(state or {})

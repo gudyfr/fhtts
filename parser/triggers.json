@@ -363,7 +363,7 @@
                     4
                 ]
             },
-            "rename": "Ice Pillar A"
+            "renamed": "Ice Pillar A"
         },
         {
             "in": {
@@ -379,7 +379,7 @@
                     4
                 ]
             },
-            "rename": "Ice Pillar B"
+            "renamed": "Ice Pillar B"
         }
     ],
     "12": [
@@ -1235,6 +1235,7 @@
                 "type": "token",
                 "name": "1"
             },
+            "rename": "Door 1",
             "trigger": {
                 "type": "door",
                 "action": "reveal",
@@ -1242,6 +1243,126 @@
                     "type": "section",
                     "name": "70.1"
                 }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "70.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "rename": "Door 2",
+            "trigger": {
+                "type": "door",
+                "action": "deleteOn",
+                "what": "07-F",
+                "exceptions": [
+                    "Door 1"
+                ],
+                "also": [
+                    {
+                        "action": "move",
+                        "what": "07-F",
+                        "by": {
+                            "x": -8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "move",
+                        "what": "07-H",
+                        "by": {
+                            "x": -8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "timeout",
+                        "time": 1.5,
+                        "trigger": {
+                            "action": "move",
+                            "what": "07-F",
+                            "by": {
+                                "x": 16,
+                                "y": 0
+                            },
+                            "smooth": false,
+                            "selfOnly": true,
+                            "also": [
+                                {
+                                    "action": "reveal",
+                                    "what": {
+                                        "type": "section",
+                                        "name": "81.5"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "81.5"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "trigger": {
+                "type": "door",
+                "rename": "Door 3",
+                "action": "deleteOn",
+                "what": "07-H",
+                "exceptions": [
+                    "Door 2"
+                ],
+                "also": [
+                    {
+                        "action": "move",
+                        "what": "07-F",
+                        "by": {
+                            "x": -8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "move",
+                        "what": "07-H",
+                        "by": {
+                            "x": -8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "timeout",
+                        "time": 1.5,
+                        "trigger": {
+                            "action": "move",
+                            "what": "07-H",
+                            "by": {
+                                "x": 16,
+                                "y": 0
+                            },
+                            "smooth": false,
+                            "selfOnly": true,
+                            "also": [
+                                {
+                                    "action": "reveal",
+                                    "what": {
+                                        "type": "section",
+                                        "name": "144.1"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         }
     ],
@@ -2910,7 +3031,7 @@
                 "type": "token",
                 "name": "2"
             },
-            "rename": "Door 2",
+            "renamed": "Door 2",
             "trigger": {
                 "type": "door",
                 "action": "trigger",
@@ -3582,50 +3703,59 @@
                 "by": {
                     "token": "n1",
                     "at": {
-                        "reference": "07-D",
-                        "x": 1,
+                        "reference": "07-G",
+                        "x": -9,
                         "y": 1
                     }
                 },
                 "dedupMode": "first",
                 "action": "deleteOn",
-                "what": "07-G",
+                "what": "07-D",
                 "also": [
                     {
                         "action": "move",
-                        "what": "07-G",
-                        "to": {
-                            "dx": 16,
-                            "dy": 0
-                        },
-                        "smooth": false
-                    },
-                    {
-                        "action": "move",
-                        "what": "07-B",
-                        "to": {
-                            "dx": -8,
-                            "dy": 0
+                        "what": "07-D",
+                        "by": {
+                            "x": 8,
+                            "y": 0
                         }
                     },
                     {
                         "action": "move",
-                        "what": "07-D",
-                        "to": {
-                            "dx": -8,
-                            "dy": 0
+                        "what": "07-B",
+                        "by": {
+                            "x": 8,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "move",
+                        "what": "07-G",
+                        "by": {
+                            "x": 8,
+                            "y": 0
                         }
                     },
                     {
                         "action": "timeout",
                         "time": 1.5,
                         "trigger": {
-                            "action": "reveal",
-                            "what": {
-                                "type": "tile",
-                                "name": "third"
+                            "action": "move",
+                            "what": "07-D",
+                            "by": {
+                                "x": -24,
+                                "y": 0
                             },
+                            "smooth": false,
+                            "selfOnly": true,
                             "also": [
+                                {
+                                    "action": "reveal",
+                                    "what": {
+                                        "type": "tile",
+                                        "name": "third"
+                                    }
+                                },
                                 {
                                     "action": "layout",
                                     "what": {
@@ -3678,45 +3808,54 @@
                                             {
                                                 "action": "move",
                                                 "what": "07-G",
-                                                "to": {
-                                                    "dx": -8,
-                                                    "dy": 0
+                                                "by": {
+                                                    "x": 8,
+                                                    "y": 0
                                                 }
                                             },
                                             {
                                                 "action": "move",
                                                 "what": "07-B",
-                                                "to": {
-                                                    "dx": 16,
-                                                    "dy": 0
-                                                },
-                                                "smooth": false
+                                                "by": {
+                                                    "x": 8,
+                                                    "y": 0
+                                                }
                                             },
                                             {
                                                 "action": "move",
                                                 "what": "07-D",
-                                                "to": {
-                                                    "dx": -8,
-                                                    "dy": 0
+                                                "by": {
+                                                    "x": 8,
+                                                    "y": 0
                                                 }
                                             },
                                             {
                                                 "action": "timeout",
                                                 "time": 1.5,
                                                 "trigger": {
-                                                    "action": "reveal",
-                                                    "what": {
-                                                        "type": "tile",
-                                                        "name": "fourth"
+                                                    "action": "move",
+                                                    "what": "07-B",
+                                                    "by": {
+                                                        "x": -24,
+                                                        "y": 0
                                                     },
+                                                    "smooth": false,
+                                                    "selfOnly": true,
                                                     "also": [
+                                                        {
+                                                            "action": "reveal",
+                                                            "what": {
+                                                                "type": "tile",
+                                                                "name": "fourth"
+                                                            }
+                                                        },
                                                         {
                                                             "action": "layout",
                                                             "what": {
                                                                 "entries": [
                                                                     {
                                                                         "reference": {
-                                                                            "tile": "07-G"
+                                                                            "tile": "07-B"
                                                                         },
                                                                         "overlays": [
                                                                             {
@@ -5675,6 +5814,111 @@
             },
             "target": {
                 "type": "global",
+                "name": "complete"
+            },
+            "trigger": {
+                "type": "round",
+                "when" : {
+                    "round" : 10,
+                    "state" : 0
+                },
+                "action" : "reveal",
+                "what" : "196.3"
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "trigger": {
+                "type": "door",
+                "locked": true
+            },
+            "rename": "Door 1"
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "locked": true
+            },
+            "rename": "Door 2"
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "trigger": {
+                "type": "door",
+                "locked": true
+            },
+            "rename": "Door 3"
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "token",
+                "name": "4"
+            },
+            "trigger": {
+                "type": "door",
+                "locked": true
+            },
+            "rename": "Door 4"
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "global",
+                "name": "exhausted"
+            },
+            "trigger": {
+                "type": "manual",
+                "by": {
+                    "token": "n1",
+                    "at": {
+                        "reference": "01-C",
+                        "x": 2,
+                        "y": 0
+                    }
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "135.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 155
+            },
+            "target": {
+                "type": "global",
                 "name": "round2"
             },
             "trigger": {
@@ -5683,11 +5927,26 @@
                     "round": 2,
                     "state": 0
                 },
-                "action": "reveal",
-                "what": {
-                    "type": "section",
-                    "name": "170.1"
-                }
+                "action": "flip",
+                "what": "02-I",
+                "also": [
+                    {
+                        "action": "rotate",
+                        "what": "02-J",
+                        "by": 180
+                    },
+                    {
+                        "action": "reveal",
+                        "what": {
+                            "type": "section",
+                            "name": "170.1"
+                        }
+                    },
+                    {
+                        "action": "open",
+                        "what": "scenario/155/token/1"
+                    }
+                ]
             }
         },
         {
@@ -5715,7 +5974,7 @@
         {
             "in": {
                 "type": "section",
-                "name": "152.2"
+                "name": "170.1"
             },
             "target": {
                 "type": "global",
@@ -5727,10 +5986,177 @@
                     "round": 4,
                     "state": 0
                 },
+                "action": "rotate",
+                "what": "01-A",
+                "by": 180,
+                "also": [
+                    {
+                        "action": "move",
+                        "what": "01-A",
+                        "smooth": false,
+                        "by": {
+                            "x": 3,
+                            "y": 0
+                        }
+                    },
+                    {
+                        "action": "reveal",
+                        "what": {
+                            "type": "section",
+                            "name": "176.3"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "176.3"
+            },
+            "target": {
+                "type": "global",
+                "name": "initiative67"
+            },
+            "trigger": {
+                "type": "manual",
+                "by": {
+                    "token": "n2",
+                    "at": {
+                        "reference": "01-A",
+                        "x": 0,
+                        "y": 2
+                    }
+                },
+                "action": "reveal",
+                "display": "Section 172.2",
+                "what": {
+                    "type": "section",
+                    "name": "172.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "176.3"
+            },
+            "target": {
+                "type": "global",
+                "name": "round5"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 5,
+                    "state": 0
+                },
                 "action": "reveal",
                 "what": {
                     "type": "section",
-                    "name": "176.3"
+                    "name": "124.3"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "176.3"
+            },
+            "target": {
+                "type": "global",
+                "name": "round6"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 6,
+                    "state": 0
+                },
+                "display": "Section 139.1",
+                "action": "deleteOn",
+                "what": "02-J",
+                "exceptions": [
+                    "Huge Water"
+                ],
+                "also": [
+                    {
+                        "action": "reveal",
+                        "what": {
+                            "type": "section",
+                            "name": "139.1"
+                        }
+                    },
+                    {
+                        "action": "open",
+                        "what": "scenario/155/token/3"
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "139.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "round7"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 7,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "166.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "139.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "round8"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 8,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "132.4"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "139.1"
+            },
+            "target": {
+                "type": "global",
+                "name": "round9"
+            },
+            "trigger": {
+                "type": "round",
+                "when": {
+                    "round": 9,
+                    "state": 0
+                },
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "186.4"
                 }
             }
         }
