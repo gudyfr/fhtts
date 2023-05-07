@@ -1,5 +1,6 @@
-require("json")
-require("constants")
+require('json')
+require('constants')
+require('coordinates')
 
 scenarioPickerPage = 0
 minScenarioPickerPage = 0
@@ -149,18 +150,6 @@ letterConfigs = {
    },
 }
 
-AdditionalRotation = {}
-AdditionalRotation["03-A"] = 30
-AdditionalRotation["03-B"] = -90
-AdditionalRotation["06-A"] = 90
-AdditionalRotation["06-B"] = -90
-AdditionalRotation["07-A"] = -90
-AdditionalRotation["07-B"] = 90
-AdditionalRotation["10-A"] = 90
-AdditionalRotation["10-B"] = -90
-AdditionalRotation["11-A"] = -60
-AdditionalRotation["16-A"] = 90
-AdditionalRotation["16-B"] = -90
 TileLetterMappings = {
    A = "A",
    B = "B",
@@ -175,39 +164,6 @@ TileLetterMappings = {
    K = "A",
    L = "B"
 }
-
-function rotateHexCoordinates(x, y, orientation)
-   if x == 0 and y == 0 then
-      return x, y
-   end
-   if orientation == 0 then
-      return x, y
-   elseif orientation == 60 then
-      return -y, x + y
-   elseif orientation == 120 then
-      return -x - y, x
-   elseif orientation == 180 then
-      return -x, -y
-   elseif orientation == 240 then
-      return y, -x - y
-   elseif orientation == 200 then
-      return x + y, -x
-   end
-end
-
-function getWorldPositionFromHexPosition(x, y)
-   return 0.43 + 1.15 * x + y * 0.575, y + 5.29
-end
-
-function getHexPositionFromWorldPosition(position)
-   local px = position.x
-   local py = position.z
-   local hy = math.floor(py - 5.29 + 0.5)
-   -- px = 0.43 + 1.15 * hx + hy * 0.575
-   -- px - 0.43 - 0.575 * hy = 1.15 * hx
-   local hx = math.floor(0.5 + (px - hy * 0.575 - 0.43) / 1.15)
-   return hx, hy
-end
 
 function getMapTile(mapName, layout)
    nameLen = string.len(mapName)
@@ -227,6 +183,7 @@ function getMapTile(mapName, layout)
             targetZRot = 0
          end
          clone.addTag("deletable")
+         clone.addTag("tile")
          local handled = false
          if layout ~= nil then
             for _, tileLayout in ipairs(layout) do
@@ -250,8 +207,7 @@ function getMapTile(mapName, layout)
                   local hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
                   clone.setPosition({ hx, 1.39, hz })
                   clone.setLock(true)
-                  handled = true
-                  clone.addTag("tile")
+                  handled = true                  
                   clone.registerCollisions()
                   table.insert(CurrentScenario.registeredForCollision, clone.guid)
                   local tileGuids = CurrentScenario.tileGuids or {}
@@ -1179,7 +1135,7 @@ end
 
 function getOrigin(scenarioInfo, reference)
    local origin = nil
-   for _, layout in ipairs(scenarioInfo['layout']) do
+   for _, layout in ipairs(scenarioInfo['layout'] or {}) do
       if layout.name == reference then
          origin = layout.origin
       end
@@ -2260,15 +2216,6 @@ end
 function registerPressurePlate(pressurePlate)
    pressurePlate.addTag("pressurePlate")
    Wait.frames(function() pressurePlate.registerCollisions() end, 10)
-end
-
-function getTileNameFromObject(tile)
-   local name = tile.getName()
-   if tile.getRotation().z > 160 then
-      return string.sub(name, 1, 3) .. string.sub(name, 5, 5)
-   else
-      return string.sub(name, 1, 4)
-   end
 end
 
 function onObjectCollisionEnter(hit_object, collision_info)

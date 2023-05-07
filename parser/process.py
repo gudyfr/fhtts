@@ -278,6 +278,14 @@ def getSimpleName(name):
     name = name.replace("Large ", "")
     return name
 
+def itemSort(e):
+    if 'Corridor' in e['name']:
+        return f"AAA{e['name']}"
+    else:
+        return e['name']
+
+def positionSort(pos):
+    return f"{pos['x']},{pos['y']}"
 
 def cleanup(entries, layout, scenarioId, keptTokens):
     # Let's remove numberred tokens
@@ -357,12 +365,16 @@ def cleanup(entries, layout, scenarioId, keptTokens):
     for entry in entries:
         entry['overlays'] = [overlay for overlay in entry['overlays']
                              if len(overlay['positions']) > 0]
-        entry['overlays'].sort(
-            key=lambda e: 'Corridor' in e['name'], reverse=True)
+        entry['overlays'].sort(key=itemSort)
         for monster in entry['monsters']:
             for position in monster['positions']:
                 if 'levels' in position:
                     position['levels'] = position['levels'][0:3]
+        entry['monsters'].sort(key=itemSort)
+        for type in ['overlays', 'monsters']:
+            for item in entry[type]:
+                item['positions'].sort(key=positionSort)
+
     return [entry for entry in entries if len(entry['tokens']) > 0 or len(
         entry['overlays']) > 0 or len(entry['monsters']) > 0]
 
@@ -619,6 +631,8 @@ def processLayout(layout: list, removedTiles: list, scenarioSpecials: dict):
             for key in ["center", "origin"]:
                 r[key]["x"] = r[key]["x"] - averageX + shiftX
                 r[key]["y"] = r[key]["y"] - averageY + shiftY
+
+    result.sort(key=lambda e: e['name'])
     return result
 
 
@@ -650,9 +664,13 @@ with open("tileInfos.json", 'r') as tf:
             scenarioSpecials = safeGetOrEmptyList(specials, id)
             removedMaps = safeGetOrEmptyList(scenarioSpecials, 'remove-maps')
             removedTiles = safeGetOrEmptyList(scenarioSpecials, 'remove-tiles')
-            if 'layout' in scenario:
-                scenarioOutput['layout'] = processLayout(
-                    scenario['layout'], removedTiles, scenarioSpecials)
+            
+            if 'set-layout' in scenarioSpecials:
+                scenarioOutput['layout'] = scenarioSpecials['set-layout']
+            else:
+                if 'layout' in scenario:
+                    scenarioOutput['layout'] = processLayout(
+                        scenario['layout'], removedTiles, scenarioSpecials)
             if 'maps' in scenario:
                 mapsOutput = []
                 for scenarioMap in scenario['maps']:
@@ -678,10 +696,14 @@ with open("tileInfos.json", 'r') as tf:
                             for entry in _map['entries']:
                                 havingFullfiled = False
                                 for key, value in entryToMap['having'].items():
-                                    for item in entry[f"{key}s"]:
-                                        for fieldKey, fieldValue in value.items():
-                                            if item[fieldKey] == fieldValue:
-                                                entryToMove = entry
+                                    if key == 'reference':
+                                        if value == entry['reference']['tile']:
+                                            entryToMove = entry
+                                    else:
+                                        for item in entry[f"{key}s"]:
+                                            for fieldKey, fieldValue in value.items():
+                                                if item[fieldKey] == fieldValue:
+                                                    entryToMove = entry
                     if entryToMove != None:
                         destination = None
                         for _map in mapsOutput:

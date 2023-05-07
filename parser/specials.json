@@ -79,21 +79,21 @@
             }
         ]
     },
-    "91": {        
+    "91": {
         "entries-to-map": [
             {
                 "in": {
                     "type": "scenario",
                     "name": 113
                 },
-                "having" : {
-                    "token" : {
-                        "name" : "1"
+                "having": {
+                    "token": {
+                        "name": "1"
                     }
                 },
-                "to" : {
-                    "type" : "choice",
-                    "name" : "1"
+                "to": {
+                    "type": "choice",
+                    "name": "1"
                 }
             },
             {
@@ -101,14 +101,14 @@
                     "type": "scenario",
                     "name": 113
                 },
-                "having" : {
-                    "token" : {
-                        "name" : "2"
+                "having": {
+                    "token": {
+                        "name": "2"
                     }
                 },
-                "to" : {
-                    "type" : "choice",
-                    "name" : "2"
+                "to": {
+                    "type": "choice",
+                    "name": "2"
                 }
             },
             {
@@ -116,14 +116,14 @@
                     "type": "scenario",
                     "name": 113
                 },
-                "having" : {
-                    "token" : {
-                        "name" : "3"
+                "having": {
+                    "token": {
+                        "name": "3"
                     }
                 },
-                "to" : {
-                    "type" : "choice",
-                    "name" : "3"
+                "to": {
+                    "type": "choice",
+                    "name": "3"
                 }
             },
             {
@@ -131,14 +131,14 @@
                     "type": "scenario",
                     "name": 113
                 },
-                "having" : {
-                    "token" : {
-                        "name" : "4"
+                "having": {
+                    "token": {
+                        "name": "4"
                     }
                 },
-                "to" : {
-                    "type" : "choice",
-                    "name" : "4"
+                "to": {
+                    "type": "choice",
+                    "name": "4"
                 }
             }
         ]
@@ -155,6 +155,630 @@
             "Algox Scout",
             "Algox Archer",
             "Algox Guard"
+        ]
+    },
+    "138": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 0,
+                    "y": 4
+                },
+                "name": "15-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 3,
+                    "y": 1
+                }
+            },
+            {
+                "center": {
+                    "x": 2,
+                    "y": -3
+                },
+                "name": "05-B",
+                "orientation": 0,
+                "origin": {
+                    "x": 5,
+                    "y": -5
+                }
+            },
+            {
+                "center": {
+                    "x": -4,
+                    "y": -3
+                },
+                "name": "07-D",
+                "orientation": 180,
+                "origin": {
+                    "x": -8,
+                    "y": -2
+                }
+            }
+        ]
+    },
+    "139": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 3,
+                    "y": -2
+                },
+                "name": "11-F",
+                "orientation": 60,
+                "origin": {
+                    "x": 6,
+                    "y": 0
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": 1
+                },
+                "name": "08-A",
+                "orientation": 180,
+                "origin": {
+                    "x": -4,
+                    "y": 3
+                }
+            },
+            {
+                "center": {
+                    "x": -3,
+                    "y": -5
+                },
+                "name": "10-C",
+                "orientation": 0,
+                "origin": {
+                    "x": 1,
+                    "y": -7
+                }
+            }
+        ]
+    },
+    "140": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 2,
+                    "y": -5
+                },
+                "name": "16-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 7,
+                    "y": -8
+                }
+            },
+            {
+                "center": {
+                    "x": -1,
+                    "y": 1
+                },
+                "name": "07-B",
+                "orientation": 180,
+                "origin": {
+                    "x": -5,
+                    "y": 2
+                }
+            }
+        ]
+    },
+    "141": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": -1,
+                    "y": -1
+                },
+                "name": "15-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 2,
+                    "y": -4
+                }
+            },
+            {
+                "center": {
+                    "x": 2,
+                    "y": -7
+                },
+                "name": "02-J",
+                "orientation": 0,
+                "origin": {
+                    "x": 4,
+                    "y": -9
+                }
+            },
+            {
+                "center": {
+                    "x": -4,
+                    "y": 5
+                },
+                "name": "02-L",
+                "orientation": 180,
+                "origin": {
+                    "x": -6,
+                    "y": 7
+                }
+            }
+        ]
+    },
+    "142": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": -4,
+                    "y": 2
+                },
+                "name": "07-B",
+                "orientation": 180,
+                "origin": {
+                    "x": -8,
+                    "y": 3
+                }
+            },
+            {
+                "center": {
+                    "x": -1,
+                    "y": -4
+                },
+                "name": "16-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 4,
+                    "y": -7
+                }
+            },
+            {
+                "center": {
+                    "x": 6,
+                    "y": -4
+                },
+                "name": "13-E",
+                "orientation": 0,
+                "origin": {
+                    "x": 9,
+                    "y": -7
+                }
+            }
+        ]
+    },
+    "143": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 2,
+                    "y": -1
+                },
+                "name": "15-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 5,
+                    "y": -4
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": -1
+                },
+                "name": "11-C",
+                "orientation": 300,
+                "origin": {
+                    "x": 0,
+                    "y": -6
+                }
+            }
+        ]
+    },
+    "144": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 5,
+                    "y": -1
+                },
+                "name": "07-E",
+                "orientation": 0,
+                "origin": {
+                    "x": 9,
+                    "y": -2
+                }
+            },
+            {
+                "center": {
+                    "x": -5,
+                    "y": -1
+                },
+                "name": "04-D",
+                "orientation": 240,
+                "origin": {
+                    "x": -7,
+                    "y": -1
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": -1
+                },
+                "name": "11-E",
+                "orientation": 120,
+                "origin": {
+                    "x": -4,
+                    "y": 4
+                }
+            }
+        ]
+    },
+    "145": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 8,
+                    "y": -2
+                },
+                "name": "15-B",
+                "orientation": 0,
+                "origin": {
+                    "x": 11,
+                    "y": -5
+                }
+            },
+            {
+                "center": {
+                    "x": -4,
+                    "y": 5
+                },
+                "name": "13-D",
+                "orientation": 0,
+                "origin": {
+                    "x": 0,
+                    "y": 2
+                }
+            },
+            {
+                "center": {
+                    "x": -3,
+                    "y": -3
+                },
+                "name": "11-B",
+                "orientation": 0,
+                "origin": {
+                    "x": 2,
+                    "y": -6
+                }
+            }
+        ],
+        "entries-to-map": [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 179
+                },
+                "having": {
+                    "reference": "13-D"
+                },
+                "to": {
+                    "type": "section",
+                    "name": "1"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 180
+                },
+                "having": {
+                    "reference": "15-B"
+                },
+                "to": {
+                    "type": "section",
+                    "name": "2"
+                }
+            }
+        ]
+    },
+    "146": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 1,
+                    "y": -4
+                },
+                "name": "13-A",
+                "orientation": 180,
+                "origin": {
+                    "x": -2,
+                    "y": -1
+                }
+            },
+            {
+                "center": {
+                    "x": -5,
+                    "y": -4
+                },
+                "name": "07-B",
+                "orientation": 0,
+                "origin": {
+                    "x": -1,
+                    "y": -5
+                }
+            },
+            {
+                "center": {
+                    "x": 7,
+                    "y": -4
+                },
+                "name": "15-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 10,
+                    "y": -7
+                }
+            }
+        ]
+    },
+    "147": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": -2,
+                    "y": -1
+                },
+                "name": "16-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 3,
+                    "y": -4
+                }
+            },
+            {
+                "center": {
+                    "x": 5,
+                    "y": -1
+                },
+                "name": "13-C",
+                "orientation": 0,
+                "origin": {
+                    "x": 8,
+                    "y": -4
+                }
+            }
+        ]
+    },
+    "148": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": -1,
+                    "y": -3
+                },
+                "name": "13-D",
+                "orientation": 180,
+                "origin": {
+                    "x": -5,
+                    "y": 0
+                }
+            },
+            {
+                "center": {
+                    "x": 3,
+                    "y": -3
+                },
+                "name": "05-A",
+                "orientation": 180,
+                "origin": {
+                    "x": 1,
+                    "y": -1
+                }
+            }
+        ]
+    },
+    "149": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 2,
+                    "y": -4
+                },
+                "name": "16-A",
+                "orientation": 0,
+                "origin": {
+                    "x": 7,
+                    "y": -7
+                }
+            },
+            {
+                "center": {
+                    "x": -1,
+                    "y": 2
+                },
+                "name": "07-B",
+                "orientation": 180,
+                "origin": {
+                    "x": -5,
+                    "y": 3
+                }
+            }
+        ]
+    },
+    "150": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 2,
+                    "y": -2
+                },
+                "name": "11-F",
+                "orientation": 120,
+                "origin": {
+                    "x": 0,
+                    "y": 3
+                }
+            },
+            {
+                "center": {
+                    "x": -1,
+                    "y": -2
+                },
+                "name": "04-B",
+                "orientation": 240,
+                "origin": {
+                    "x": -3,
+                    "y": -2
+                }
+            }
+        ]
+    },
+    "151": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": -2,
+                    "y": -6
+                },
+                "name": "01-H",
+                "orientation": 300,
+                "origin": {
+                    "x": 0,
+                    "y": -8
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": 3
+                },
+                "name": "02-K",
+                "orientation": 180,
+                "origin": {
+                    "x": -4,
+                    "y": 5
+                }
+            },
+            {
+                "center": {
+                    "x": 1,
+                    "y": -3
+                },
+                "name": "15-C",
+                "orientation": 0,
+                "origin": {
+                    "x": 4,
+                    "y": -6
+                }
+            },
+            {
+                "center": {
+                    "x": 7,
+                    "y": -6
+                },
+                "name": "01-E",
+                "orientation": 60,
+                "origin": {
+                    "x": 7,
+                    "y": -4
+                }
+            }
+        ]
+    },
+    "152": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 3,
+                    "y": -6
+                },
+                "name": "15-D",
+                "orientation": 0,
+                "origin": {
+                    "x": 6,
+                    "y": -9
+                }
+            },
+            {
+                "center": {
+                    "x": -1,
+                    "y": 3
+                },
+                "name": "06-B",
+                "orientation": 0,
+                "origin": {
+                    "x": 2,
+                    "y": -1
+                }
+            },
+            {
+                "center": {
+                    "x": -5,
+                    "y": 10
+                },
+                "name": "07-H",
+                "orientation": 180,
+                "origin": {
+                    "x": -9,
+                    "y": 11
+                }
+            }
+        ]
+    },
+    "153": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 4,
+                    "y": -2
+                },
+                "name": "05-A",
+                "orientation": 180,
+                "origin": {
+                    "x": 2,
+                    "y": 0
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": 1
+                },
+                "name": "14-B",
+                "orientation": 270,
+                "origin": {
+                    "x": -1,
+                    "y": -4
+                }
+            },
+            {
+                "center": {
+                    "x": -2,
+                    "y": -5
+                },
+                "name": "11-D",
+                "orientation": 0,
+                "origin": {
+                    "x": 3,
+                    "y": -8
+                }
+            }
+        ]
+    },
+    "154": {
+        "set-layout": [
+            {
+                "center": {
+                    "x": 1,
+                    "y": -1
+                },
+                "name": "15-C",
+                "orientation": 0,
+                "origin": {
+                    "x": 4,
+                    "y": -4
+                }
+            }
         ]
     }
 }

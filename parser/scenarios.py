@@ -377,7 +377,7 @@ for id in scenarioIds:
                                     "-150", "-180", "-240", "-270", "-300", "-330"]
                     found = False
                     for orientation in orientations:
-                        variants = ["", "-1", "-2", "-3"]
+                        variants = ["", "-1", "-2", "-3", "-4"]
                         for variant in variants:
                             overlayFile = f'assets/tiles/overlays/{name}{orientation}{variant}.png'
                             if os.path.exists(overlayFile):
