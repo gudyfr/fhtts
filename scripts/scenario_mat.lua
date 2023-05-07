@@ -1895,19 +1895,18 @@ function applyCondition(params)
     updateAssistant("POST", "applyCondition", { target = name, nr = nr, condition = condition }, updateState)
 end
 
-lastSettingsUpdateTime = 0
-settings = {}
+LastSettingsUpdateTime = 0
+Settings = {}
 function updateSettings()
-    -- print(Time.time)
-    if Time.time > lastSettingsUpdateTime + 1 then
-        settings = JSON.decode(Global.call("getSettings"))
-        lastSettingsUpdateTime = Time.time
+    if Time.time > LastSettingsUpdateTime + 1 then
+        Settings = JSON.decode(Global.call("getSettings"))
+        LastSettingsUpdateTime = Time.time
     end
 end
 
 function getSettings()
     updateSettings()
-    return settings or {}
+    return Settings or {}
 end
 
 function isEndOfRoundLootingEnabled()

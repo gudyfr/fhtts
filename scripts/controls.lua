@@ -1,24 +1,23 @@
 function getState()
-    return { state = state, description = self.getDescription() }
+    return { state = State }
 end
 
 function onStateUpdate(save)
-    state = save.state
-    self.setDescription(save.description)
+    State = save.state
     refreshControls()
 end
 
 function onLoad(save)
     if save ~= nil then
-        state = JSON.decode(save)
+        State = JSON.decode(save)
     end
-    if state == nil then
-        state = {}
-        state["enable-x-haven"] = false
-        state["address"] = ""
-        state["port"] = 8080
+    if State == nil then
+        State = {}
+        State["enable-x-haven"] = false
+        State["address"] = ""
+        State["port"] = 8080
     end
-    registerSavable(getName())
+    registerSavable(self.getName())
     refreshControls()
 end
 
@@ -71,7 +70,7 @@ function createInput(point, name)
         color = { 1, 1, 1, 0 },
         font_color = { .2, .24, 0.28, 100 },
         alignment = 3,
-        value = state[name] or ""
+        value = State[name] or ""
     }
     self.createInput(params)
 end
@@ -80,7 +79,7 @@ function createCheckbox(point, name)
     local fName = "onToggle_" .. name
     self.setVar(fName, function(obj, color, alt) onToggle(name) end)
     local label = ""
-    if state[name] or false then
+    if State[name] or false then
         label = "\u{2717}"
     end
     local params = {
@@ -118,15 +117,15 @@ function createButton(point, name)
 end
 
 function onTextEdit(name, obj, color, text, selected)
-    state[name] = text
+    State[name] = text
 end
 
 function onToggle(name)
-    state[name] = not state[name]
+    State[name] = not State[name]
     for _, button in ipairs(self.getButtons()) do
         if button.click_function == "onToggle_" .. name then
             local label = ""
-            if state[name] then
+            if State[name] then
                 label = "\u{2717}"
             end
             button.label = label
@@ -136,9 +135,9 @@ function onToggle(name)
 end
 
 function onSave()
-    return JSON.encode(state)
+    return JSON.encode(State)
 end
 
 function getSettings()
-    return JSON.encode(state or {})
+    return JSON.encode(State or {})
 end

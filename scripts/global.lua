@@ -20,7 +20,7 @@ function onLoad(save)
    refreshScenarioData()
 
    setupScenarioPicker()
-   scenarioBag = getObjectFromGUID(scenarioBagId)
+   -- scenarioBag = getObjectFromGUID(scenarioBagId)
    -- scenarioBag.reset()
 
    -- getObjectFromGUID(ruleBookId).Book.setPage(83)
@@ -75,16 +75,25 @@ function onSave()
 end
 
 function refreshScenarioData()
-   print("Loading Scenario Data")
-   if getObjectFromGUID('1a09ac').getDescription() == "dev" or false then
-      -- Switch to using fh assistant url if defined
-      WebRequest.get("http://localhost:8080/out/scenarios.json", processScenarioData)
-      WebRequest.get("http://localhost:8080/out/processedScenarios2.json", processAdditionalScenarioData)
-   else
-      WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
-      WebRequest.get("https://gudyfr.github.io/fhtts/processedScenarios2.json",
-         processAdditionalScenarioData)
+   
+   local devSettings = JSON.decode(getDevSettings())
+   if devSettings['use-dev-assets'] or false then
+      local settings = JSON.decode(getSettings())
+      local address = settings.address
+      local port = settings.port
+      if address ~= nil and port ~= nil then
+         broadcastToAll("Loading Development Scenario Data from " .. address .. ":" .. port)
+         WebRequest.get("http://" .. address .. ":" .. port .. "/out/scenarios.json", processScenarioData)
+         WebRequest.get("http://" .. address .. ":" .. port .. "/out/processedScenarios2.json",
+            processAdditionalScenarioData)
+         return
+      end
    end
+
+   broadcastToAll("Loading Scenario Data")
+   WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
+   WebRequest.get("https://gudyfr.github.io/fhtts/processedScenarios2.json",
+      processAdditionalScenarioData)
 end
 
 function processScenarioData(request)
@@ -207,7 +216,7 @@ function getMapTile(mapName, layout)
                   local hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
                   clone.setPosition({ hx, 1.39, hz })
                   clone.setLock(true)
-                  handled = true                  
+                  handled = true
                   clone.registerCollisions()
                   table.insert(CurrentScenario.registeredForCollision, clone.guid)
                   local tileGuids = CurrentScenario.tileGuids or {}
@@ -357,7 +366,7 @@ function getToken(token, position)
 end
 
 function spawnNElementsIn(count, trackables, name, info, destination, scenarioElementPositions,
-                          currentScenarioElementPosition)
+                          currentScenarioElementPosition)                          
    destination = getObjectFromGUID('cd31b5')
    bag = getObjectFromGUID('5cd812')
    bag.setLock(false)
@@ -525,7 +534,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                   if overlay.url ~= nil then
                      table.insert(decals, overlay)
                   end
-                  if settings["enable-highlight-tiles-by-type"] or false then
+                  if Settings["enable-highlight-tiles-by-type"] or false then
                      obj.setDecals(decals)
                   end
                end
@@ -656,6 +665,7 @@ end
 
 function prepareScenario(name, campaign, title)
    name = tostring(name)
+   Settings = JSON.decode(getSettings())
    -- This will simply highlight elements which would be destroyed if we were to prepare this scenario (if any)
    -- However, if the user retries the prepare this scenario, it will delete the current scenario mat and prepare the scenario
    local deleted = cleanup(false, true)
@@ -702,9 +712,8 @@ function prepareScenario(name, campaign, title)
       end
    end
 
-   scenarioBag = getObjectFromGUID('cd31b5')
+   local scenarioBag = getObjectFromGUID('cd31b5')
    scenarioBag.reset()
-   settings = JSON.decode(getSettings())
    local elements = CurrentScenario.elements
    if elements ~= nil then
       local scenarioElementPositions = getScenarioMat().call("getScenarioElementPositions")
@@ -1668,7 +1677,6 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
                tile.origin.x = x + center.x
                tile.origin.y = y + center.y
                print("   " .. JSON.encode(tile.origin))
-
             end
          end
       end
@@ -2305,6 +2313,14 @@ function getSettings()
    local settingsMat = getObjectFromGUID('1a09ac')
    if settingsMat ~= nil then
       return settingsMat.call("getSettings") or "{}"
+   end
+   return "{}"
+end
+
+function getDevSettings()
+   local developmentMat = getObjectFromGUID('b297f5')
+   if developmentMat ~= nil then
+      return developmentMat.call("getSettings") or "{}"
    end
    return "{}"
 end

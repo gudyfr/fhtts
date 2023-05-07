@@ -23374,6 +23374,22 @@
                 ]
               },
               {
+                "name": "Debris",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -1,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": 6,
+                    "y": -2,
+                    "type": "Obstacle"
+                  }
+                ]
+              },
+              {
                 "name": "Ice Spikes",
                 "orientation": 0,
                 "positions": [
@@ -23501,6 +23517,27 @@
             ],
             "overlays": [
               {
+                "name": "Debris",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 1,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -5,
+                    "y": 4,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -9,
+                    "y": 5,
+                    "type": "Obstacle"
+                  }
+                ]
+              },
+              {
                 "name": "Ice Spikes",
                 "orientation": 0,
                 "positions": [
@@ -23520,6 +23557,11 @@
                 "name": "Rubble",
                 "orientation": 0,
                 "positions": [
+                  {
+                    "x": -3,
+                    "y": 3,
+                    "type": "Difficult Terrain"
+                  },
                   {
                     "x": -7,
                     "y": 5,

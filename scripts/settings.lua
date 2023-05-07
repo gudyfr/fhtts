@@ -12,8 +12,7 @@ function createEmptyState()
             ["enable-highlight-tiles-by-type"] = true,
             ["enable-automatic-scenario-layout"] = true,
             ["enable-automatic-narration"] = false
-        },
-        description = ""
+        }
     }
 end
 
@@ -26,11 +25,6 @@ function getExpectedEntries()
         { "enable-highlight-current-figurines", "checkbox" },
         { "enable-highlight-tiles-by-type",     "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
-        { "enable-automatic-narration",         "checkbox" },
-        { "onRefreshData",                      "button" }
+        { "enable-automatic-narration",         "checkbox" }
     }
-end
-
-function onRefreshData()
-    Global.call("refreshScenarioData")
 end

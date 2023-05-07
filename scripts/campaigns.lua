@@ -13,7 +13,6 @@ function onLoad()
 
     SavePosition = snapPoints[1]
     addButton("save", SavePosition)
-    addButton("reset", snapPoints[3])
     LoadPosition = snapPoints[2]
     Global.call("registerForCollision", self)
 end
@@ -37,10 +36,6 @@ end
 
 function on_save()
     createSaveBundle()
-end
-
-function on_reset()
-    Global.call("reset")
 end
 
 function onObjectCollisionEnter(obj)

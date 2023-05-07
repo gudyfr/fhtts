@@ -7,16 +7,25 @@ function createEmptyState()
     return {
         state = {
             ["use-dev-assets"] = false
-        },
-        description = ""
+        }
     }
 end
 
 function getExpectedEntries()
     return {
         { "use-dev-assets", "checkbox" },
-        { "getTileLayout",  "button" }
+        { "getTileLayout",  "button" },
+        { "onRefreshData",  "button" },
+        { "onReset",        "button" }
     }
+end
+
+function onRefreshData()
+    Global.call("refreshScenarioData")
+end
+
+function onReset()
+    Global.call("reset")
 end
 
 function getTileLayout()
@@ -34,11 +43,11 @@ function getTileLayout()
             tile.center = { x = hx, y = hy }
 
             -- Flipped or not ?
-            local flipped = (Flipped[string.sub(name,4,4)] or 0) == 1
+            local flipped = (Flipped[string.sub(name, 4, 4)] or 0) == 1
 
             -- Tile orientation
             local orientation = obj.getRotation().y
-            local mappedName = string.sub(name,1,3)
+            local mappedName = string.sub(name, 1, 3)
             if flipped then
                 mappedName = mappedName .. "B"
             else
@@ -58,8 +67,8 @@ function getTileLayout()
             end
 
             print(JSON.encode(tile))
-            local ox,oy = rotateHexCoordinates(origin.x, origin.y, orientation - (tileInfo.angle or 0))
-            tile.origin = {x=ox+hx, y=oy+hy}
+            local ox, oy = rotateHexCoordinates(origin.x, origin.y, orientation - (tileInfo.angle or 0))
+            tile.origin = { x = ox + hx, y = oy + hy }
 
             table.insert(result, tile)
         end
@@ -68,7 +77,7 @@ function getTileLayout()
 end
 
 Flipped = {
-    B=1,D=1,F=1,H=1,J=1,L=1
+    B = 1, D = 1, F = 1, H = 1, J = 1, L = 1
 }
 
 TileInfos =
