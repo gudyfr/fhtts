@@ -809,9 +809,9 @@ function prepareScenario(name, campaign, title)
 
       if elements.page ~= nil then
          -- Tell the book mat to go to the right scenario page
-         local folder = "Scenarios"
+         local folder = "scenarios"
          if campaign == "Solo" then
-            folder = "Solo"
+            folder = "solo"
          end
          getObjectFromGUID('2a1fbe').call("setScenarioPage", { elements.page, name, folder })
       end
