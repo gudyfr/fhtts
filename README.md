@@ -3,6 +3,9 @@ This is a port of Frosthaven for tabletop simulator.
 It integrates, and relies heavily on Frosthaven assistant (for monster and loot management), which, as of now, requires a custom build.
 The goal is to have everything scripted.
 
+# Contact
+ - Discord [https://discord.gg/wPxdtuF6e9](https://discord.gg/wPxdtuF6e9)
+
 # What's included
 - World Map, with scenario stickers added automatically upon unlocking / completing scenarios
 - Campaing tracker which lets you unlock scenarios (click on the scenario number), complete a scenario (click the checkmark), lock a scenario (click the area with the lock outline), hide a scenario (click above its title), and load a scenario (click on its title)
