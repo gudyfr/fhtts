@@ -31,12 +31,15 @@ bookModels["section book"] = {
     { from = 182, to = 198, guid = 'a30a42' },
 }
 
-buttonTargets = {}
-buttonTargets["index"] = 80
-buttonTargets["quick reference"] = 84
+buttonTargets = {
+    ["index"] = 80,
+    ["quick reference"] = 84
+}
 
 function onSave()
-    return JSON.encode(State)
+    local state = JSON.encode(State)
+    print(state)
+    return state
 end
 
 function onLoad(save)

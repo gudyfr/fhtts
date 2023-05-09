@@ -24,6 +24,7 @@ function getExpectedEntries()
         { "enable-end-of-round-looting",        "checkbox" },
         { "enable-highlight-current-figurines", "checkbox" },
         { "enable-highlight-tiles-by-type",     "checkbox" },
+        { "enable-automatic-characters",   "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
         { "enable-automatic-narration",         "checkbox" }
     }

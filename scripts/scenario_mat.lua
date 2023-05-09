@@ -712,6 +712,7 @@ function maybeRemoveInitiativeToggleButton(color)
 end
 
 function updateCharacters()
+    local settings = getSettings()
     local scenarioPicker = getObjectFromGUID('596fc4')
     for _, color in ipairs(colors) do
         local playerMat = Global.call("getPlayerMatExt", { color })
@@ -720,11 +721,15 @@ function updateCharacters()
             -- print(color .. " : " .. (characterName or "nil"))
             if Characters[color] ~= characterName then
                 if Characters[color] ~= nil then
-                    updateAssistant("POST", "removeCharacter", { character = Characters[color] }, updateState)
+                    if settings['enable-automatic-characters'] or false then
+                        updateAssistant("POST", "removeCharacter", { character = Characters[color] }, updateState)
+                    end
                     scenarioPicker.call('removeSoloFor', Characters[color])
                 end
-                if characterName ~= nil then
-                    updateAssistant("POST", "addCharacter", { character = characterName }, updateState)
+                if settings['enable-automatic-characters'] or false then
+                    if characterName ~= nil then
+                        updateAssistant("POST", "addCharacter", { character = characterName }, updateState)
+                    end
                 end
                 Characters[color] = characterName
             end
