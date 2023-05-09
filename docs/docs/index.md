@@ -1,4 +1,10 @@
 # Getting Started
+
+## Download and install the Frosthaven Asssitant
+Builds are available for windows, mac osx, and android.  
+[Frosthaven Assistant](https://github.com/gudyfr/FrosthavenAssistant/releases)  
+If you plan on using the narration integration, a desktop build is recommended.  
+
 ## Configure the Frosthaven Assistant
 Open the Main menu, choose Settings :  
 ![Main Menu Settings](images/xhaven_main_menu_settings.png)  
