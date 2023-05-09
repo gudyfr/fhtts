@@ -73,7 +73,7 @@ function getBaseUrl()
          return "http://" .. address .. ":" .. port .. "/out/"
       end
    end
-   
+
    return "https://gudyfr.github.io/fhtts/"
 end
 
@@ -601,7 +601,7 @@ function cleanup(forceDelete, noMessage)
          getObjectFromGUID(guid).call("cleanup")
       end
       -- And clear the errata
-      getScenarioMat().call('setErrata',nil)
+      getScenarioMat().call('setErrata', nil)
    end
 
    if highlighted then
@@ -1194,7 +1194,7 @@ function onEnemiesUpdate(payload)
             local allDead = true
             for name, info in pairs(monsters) do
                local excluded = false
-               for _,excludedName in ipairs(trigger.exclude or {}) do
+               for _, excludedName in ipairs(trigger.exclude or {}) do
                   if string.find(name, excludedName) then
                      excluded = true
                   end
@@ -1347,7 +1347,7 @@ function clearTriggered(trigger, guid)
 end
 
 -- Returns true if the targetted object was deleted, false, otherwise
-function recursiveDeleteObjectsOn(guid, deleteSelf, exceptionsMap)
+function recursiveDeleteObjectsOn(guid, deleteSelf, exceptionsMap, onlysMap)
    exceptionsMap = exceptionsMap or {}
    deleteSelf = deleteSelf or false
    local objectsOnObjects = CurrentScenario.objectsOnObjects or {}
@@ -1355,7 +1355,7 @@ function recursiveDeleteObjectsOn(guid, deleteSelf, exceptionsMap)
    -- Avoid possible endless recursion if an object is both on top and under an other one
    objectsOnObjects[guid] = {}
    for i = #objectsOnObject, 1, -1 do
-      if recursiveDeleteObjectsOn(objectsOnObject[i], true, exceptionsMap) then
+      if recursiveDeleteObjectsOn(objectsOnObject[i], true, exceptionsMap, onlysMap) then
          table.remove(objectsOnObject, i)
       end
    end
@@ -1365,18 +1365,21 @@ function recursiveDeleteObjectsOn(guid, deleteSelf, exceptionsMap)
       if object ~= nil then
          local name = object.getName()
          if object.hasTag("deletable") and exceptionsMap[name] == nil then
-            -- Check if this is a door, in which case we need to update the scenarioDoors entries
-            if string.find(name, "Door") then
-               local doorX, doorY = getHexPositionFromWorldPosition(object.getPosition())
-               local positionName = doorX .. "," .. doorY
-               local scenarioDoors = CurrentScenario.doors or {}
-               local found = scenarioDoors[positionName]
-               if found then
-                  scenarioDoors[positionName] = nil
+            print(#onlysMap)
+            if onlysMap == nil or onlysMap[name] ~= nil then
+               -- Check if this is a door, in which case we need to update the scenarioDoors entries
+               if string.find(name, "Door") then
+                  local doorX, doorY = getHexPositionFromWorldPosition(object.getPosition())
+                  local positionName = doorX .. "," .. doorY
+                  local scenarioDoors = CurrentScenario.doors or {}
+                  local found = scenarioDoors[positionName]
+                  if found then
+                     scenarioDoors[positionName] = nil
+                  end
                end
+               destroyObject(object)
+               return true
             end
-            destroyObject(object)
-            return true
          end
       end
    end
@@ -1462,7 +1465,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
          getScenarioMat().call("setSection", what.name)
       end
       if what.type == "section.solo" then
-         playNarration({"solo", what.name})
+         playNarration({ "solo", what.name })
       end
       local key = what.type .. "/" .. what.name
       if not (scenarioTriggers.triggered[key] or false) then
@@ -1586,7 +1589,14 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
          for _, exception in ipairs(action.exceptions or {}) do
             exceptions[exception] = true
          end
-         recursiveDeleteObjectsOn(tileGuid, false, exceptions)
+         local onlys = nil
+         if action.only ~= nil then
+            onlys = {}
+            for _, only in ipairs(action.only or {}) do
+               onlys[only] = true
+            end
+         end
+         recursiveDeleteObjectsOn(tileGuid, false, exceptions, onlys)
       end
    end
 
@@ -2342,7 +2352,7 @@ end
 
 function updateData()
    local baseUrl = getBaseUrl()
-   for _,updatable in ipairs(DataUpdatables) do
+   for _, updatable in ipairs(DataUpdatables) do
       updatable.call("updateData", baseUrl)
    end
    refreshScenarioData(baseUrl)

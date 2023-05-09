@@ -18,6 +18,7 @@ function getExpectedEntries()
         { "print-pinged-coordinates", "text" },
         { "getTileLayout",  "button" },
         { "onRefreshData",  "button" },
+        { "onCopy",  "button" },
         { "onReset",        "button" }
     }
 end
@@ -76,6 +77,10 @@ function getTileLayout()
         end
     end
     print(JSON.encode(result))
+end
+
+function onCopy()
+    copy("test")
 end
 
 Flipped = {

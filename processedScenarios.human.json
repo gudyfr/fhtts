@@ -15199,6 +15199,11 @@
                 "orientation": 0,
                 "positions": [
                   {
+                    "x": -3,
+                    "y": 3,
+                    "type": "Trap"
+                  },
+                  {
                     "x": -4,
                     "y": 4,
                     "type": "Trap"
@@ -24671,8 +24676,28 @@
         "entries": [
           {
             "reference": {
-              "tile": "07-E",
-              "tileOrientation": "0"
+              "tile": "04-D",
+              "tileOrientation": "240"
+            },
+            "tokens": [
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "monsters": [],
+            "overlays": []
+          },
+          {
+            "reference": {
+              "tile": "11-E",
+              "tileOrientation": "120"
             },
             "tokens": [],
             "monsters": [
@@ -24681,13 +24706,54 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -9,
-                    "y": 1,
+                    "x": 4,
+                    "y": -5,
                     "levels": "eee"
                   }
                 ]
               }
             ],
+            "overlays": [
+              {
+                "name": "Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -5
+                  },
+                  {
+                    "x": 2,
+                    "y": -6,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": 2,
+                    "y": -7,
+                    "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Large Dungeon Corridor",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": -4,
+                    "type": "Corridor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "reference": {
+              "tile": "07-E",
+              "tileOrientation": "0"
+            },
+            "tokens": [],
+            "monsters": [],
             "overlays": [
               {
                 "name": "Dungeon Corridor",
@@ -24712,6 +24778,16 @@
                     "x": -8,
                     "y": 2,
                     "type": "Corridor"
+                  }
+                ]
+              },
+              {
+                "name": "Altar",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 6
                   }
                 ]
               },
@@ -24838,7 +24914,53 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "alldead",
+            "action": "reveal",
+            "what": {
+              "type": "section.solo",
+              "name": "145.1"
+            },
+            "also": [
+              {
+                "action": "timeout",
+                "time": 1.0,
+                "trigger": {
+                  "action": "addTrigger",
+                  "what": "solo/145.1/alldead",
+                  "trigger": {
+                    "type": "alldead",
+                    "action": "reveal",
+                    "what": {
+                      "type": "section.solo",
+                      "name": "145.2"
+                    },
+                    "also": [
+                      {
+                        "action": "timeout",
+                        "time": 1.0,
+                        "trigger": {
+                          "action": "addTrigger",
+                          "what": "solo/145.2/alldead",
+                          "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                              "type": "section.solo",
+                              "name": "145.end"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "id": "scenario/179/global/tile1enemies"
+          }
+        ]
       },
       {
         "type": "scenario",
@@ -24847,8 +24969,8 @@
         "triggers": []
       },
       {
-        "type": "section",
-        "name": "1",
+        "type": "section.solo",
+        "name": "145.1",
         "entries": [
           {
             "reference": {
@@ -24901,8 +25023,8 @@
         ]
       },
       {
-        "type": "section",
-        "name": "2",
+        "type": "section.solo",
+        "name": "145.2",
         "entries": [
           {
             "reference": {
@@ -46425,6 +46547,15 @@
                         "type": "section",
                         "name": "12.2"
                       },
+                      "also": [
+                        {
+                          "action": "deleteOn",
+                          "what": "07-B",
+                          "only": [
+                            "Snowdrift"
+                          ]
+                        }
+                      ],
                       "id": "scenario/10/token/1"
                     },
                     "type": "Door"
@@ -46531,6 +46662,24 @@
                         "type": "section",
                         "name": "22.2"
                       },
+                      "also": [
+                        {
+                          "action": "deleteOn",
+                          "what": "02-E",
+                          "only": [
+                            "Snowdrift",
+                            "Snow Rock"
+                          ]
+                        },
+                        {
+                          "action": "deleteOn",
+                          "what": "02-G",
+                          "only": [
+                            "Snowdrift",
+                            "Snow Rock"
+                          ]
+                        }
+                      ],
                       "id": "section/12.2/token/2"
                     },
                     "type": "Door"
@@ -46799,7 +46948,43 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "manual",
+            "by": {
+              "token": "n1",
+              "at": {
+                "reference": "13-A",
+                "x": 0,
+                "y": -3
+              }
+            },
+            "action": "reveal",
+            "what": {
+              "type": "section",
+              "name": "65.1"
+            },
+            "also": [
+              {
+                "action": "deleteOn",
+                "what": "02-E",
+                "only": [
+                  "Snowdrift",
+                  "Snow Rock"
+                ]
+              },
+              {
+                "action": "deleteOn",
+                "what": "02-G",
+                "only": [
+                  "Snowdrift",
+                  "Snow Rock"
+                ]
+              }
+            ],
+            "id": "section/22.2/global/conclusion"
+          }
+        ]
       }
     ]
   },
