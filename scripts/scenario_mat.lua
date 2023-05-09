@@ -3,6 +3,9 @@ require("number_decals")
 require("savable")
 require("deck_save_helpers")
 require("utils")
+require('fhlog')
+
+TAG = "ScenarioMat"
 
 function getState()
     local results = {}
@@ -86,7 +89,8 @@ function onSave()
         elementStates = elementStates,
         characterStates = characterStates,
         initiativeTypes = initiativeTypes,
-        characters = Characters
+        characters = Characters,
+        characterLevels = CharacterLevels
     })
 end
 
@@ -113,6 +117,9 @@ function onLoad(state)
             if json.characters ~= nil then
                 Characters = json.characters
             end
+            if json.characterLevels ~= nil then
+                CharacterLevels = json.characterLevels
+            end
             initiativeTypes = json.initiativeTypes or {}
         end
     end
@@ -131,6 +138,9 @@ function onLoad(state)
     end
     if Characters == nil then
         Characters = {}
+    end
+    if CharacterLevels == nil then
+        CharacterLevels = {}
     end
 
     isUpdateRunning = false
@@ -309,6 +319,7 @@ function onLoad(state)
     updateCharacters()
     -- refreshDecals() -- Called by updateCharacters above
     registerSavable("Scenario Mat")
+    fhLogInit()
 end
 
 function flipX(position)
@@ -712,6 +723,7 @@ function maybeRemoveInitiativeToggleButton(color)
 end
 
 function updateCharacters()
+    fhlog(INFO,TAG,"updateCharacters()")
     local settings = getSettings()
     local scenarioPicker = getObjectFromGUID('596fc4')
     for _, color in ipairs(colors) do
@@ -732,6 +744,8 @@ function updateCharacters()
                     end
                 end
                 Characters[color] = characterName
+                -- Force a reset of the character level
+                CharacterLevels[color] = 0
             end
             if characterName ~= nil then
                 if characterName == "Blinkblade" then
@@ -745,7 +759,12 @@ function updateCharacters()
                 end
                 local level = playerMat.call("getCharacterLevel")
                 if level ~= nil then
-                    updateAssistant("POST", "change", { target = characterName, what = "level", change = level })
+                    if level ~= CharacterLevels[color] then
+                        CharacterLevels[color] = level
+                        if settings['enable-automatic-characters'] or false then
+                            updateAssistant("POST", "change", { target = characterName, what = "level", change = level })
+                        end
+                    end
                     if level < 5 then
                         scenarioPicker.call('removeSoloFor', characterName)
                     else

@@ -2372,3 +2372,21 @@ function onPlayerPing(player, position, object)
       end
    end
 end
+
+FhLoggers = {}
+
+function registerFhLogger(obj)
+   table.insert(FhLoggers, obj)
+end
+
+function fhLogSettingsUpdated()
+   local devSettings = JSON.decode(getDevSettings())
+   local enabled = devSettings['log-enabled']
+   local level = devSettings['log-level']
+   local tags = devSettings['log-tags']
+
+   local payload = JSON.encode({enabled=enabled, level=level,tags=tags})
+   for _,obj in ipairs(FhLoggers) do
+      obj.call("onFhLogSettingsUpdated", payload)
+   end
+end

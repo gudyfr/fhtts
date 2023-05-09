@@ -38,7 +38,7 @@ buttonTargets = {
 
 function onSave()
     local state = JSON.encode(State)
-    print(state)
+    -- print(state)
     return state
 end
 

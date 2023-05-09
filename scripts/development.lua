@@ -7,7 +7,10 @@ function createEmptyState()
     return {
         state = {
             ["use-dev-assets"] = false,
-            ["print-pinged-coordinates"] = ""
+            ["print-pinged-coordinates"] = "",
+            ["log-enabled"] = true,
+            ["log-level"] = "debug",
+            ["log-tags"] = "",
         }
     }
 end
@@ -16,9 +19,11 @@ function getExpectedEntries()
     return {
         { "use-dev-assets", "checkbox" },
         { "print-pinged-coordinates", "text" },
+        { "log-enabled",  "checkbox", onFhLogUpdate},
+        { "log-level", "text", onFhLogUpdate},
+        { "log-tags", "text", onFhLogUpdate},
         { "getTileLayout",  "button" },
         { "onRefreshData",  "button" },
-        { "onCopy",  "button" },
         { "onReset",        "button" }
     }
 end
@@ -77,6 +82,10 @@ function getTileLayout()
         end
     end
     print(JSON.encode(result))
+end
+
+function onFhLogUpdate()
+    Global.call("fhLogSettingsUpdated")
 end
 
 function onCopy()

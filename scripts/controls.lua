@@ -12,10 +12,7 @@ function onLoad(save)
         State = JSON.decode(save)
     end
     if State == nil then
-        State = {}
-        State["enable-x-haven"] = false
-        State["address"] = ""
-        State["port"] = 8080
+        State = createEmptyState()
     end
     registerSavable(self.getName())
     refreshControls()
@@ -37,6 +34,7 @@ function refreshControls()
 
     local expectedEntries = getExpectedEntries()
 
+    Callbacks = {}
     for idx, point in ipairs(points) do
         local entry = expectedEntries[idx]
         if entry ~= nil then
@@ -47,13 +45,16 @@ function refreshControls()
             elseif entry[2] == "button" then
                 createButton(point, entry[1])
             end
+
+            if entry[3] ~= nil then
+                Callbacks[entry[1]] = entry[3]
+            end
         end
     end
-
 end
 
 function compareZ(obj1, obj2)
-    return obj1.z < obj2.z
+    return (obj1.z - obj2.z) * 10 + (obj2.x - obj1.x) < 0
 end
 
 function createInput(point, name)
@@ -118,6 +119,12 @@ end
 
 function onTextEdit(name, obj, color, text, selected)
     State[name] = text
+    if not selected then
+        local callback = Callbacks[name]
+        if callback ~= nil then
+            callback()
+        end
+    end
 end
 
 function onToggle(name)
@@ -131,6 +138,11 @@ function onToggle(name)
             button.label = label
             self.editButton(button)
         end
+    end
+    
+    local callback = Callbacks[name]
+    if callback ~= nil then
+        callback()
     end
 end
 
