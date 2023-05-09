@@ -31,7 +31,7 @@ And set them up appropriately. **You may want to check that those keys are not a
 ![](images/tts_custom_controls.png) 
 
 ## Setting up Characters
-To setup characters you simply drop a character envelope onto a player mat. The first six character classes are unlocked at the beginning of a campaign. They are grouped together on the left of all character envelopes.
+To setup characters you simply drop a character envelope onto a player mat. The starting six character classes are grouped together on the left of all character envelopes.  
 ![](images/tts_character_envelopes.png)  
 ![](images/tts_drop_character_box.png)  
 ![](images/tts_setup_character.png)  
