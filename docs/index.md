@@ -1,2 +1,2 @@
 # Frosthaven TTS Mod
-# [Getting Started](docs/Index.md)
+# [Getting Started](docs/)
