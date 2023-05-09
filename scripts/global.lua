@@ -56,6 +56,7 @@ function onLoad(save)
    CurrentScenarioObjects = getScenarioElementObjects()
 
    Wait.frames(updateData, 1)
+   Wait.frames(fhLogSettingsUpdated, 1)
 end
 
 function onSave()
@@ -2385,8 +2386,8 @@ function fhLogSettingsUpdated()
    local level = devSettings['log-level']
    local tags = devSettings['log-tags']
 
-   local payload = JSON.encode({enabled=enabled, level=level,tags=tags})
-   for _,obj in ipairs(FhLoggers) do
+   local payload = JSON.encode({ enabled = enabled, level = level, tags = tags })
+   for _, obj in ipairs(FhLoggers) do
       obj.call("onFhLogSettingsUpdated", payload)
    end
 end

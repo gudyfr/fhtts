@@ -143,8 +143,6 @@ function onLoad(state)
         CharacterLevels = {}
     end
 
-    isUpdateRunning = false
-
     updateUpdateRunning()
 
     for _, guid in ipairs(trackedGuids) do
@@ -723,7 +721,7 @@ function maybeRemoveInitiativeToggleButton(color)
 end
 
 function updateCharacters()
-    fhlog(INFO,TAG,"updateCharacters()")
+    fhlog(INFO, TAG, "updateCharacters()")
     local settings = getSettings()
     local scenarioPicker = getObjectFromGUID('596fc4')
     for _, color in ipairs(colors) do
@@ -1351,27 +1349,26 @@ function unregisterStandee(standee)
     updateUpdateRunning()
 end
 
+UpdaterID = nil
+
 function updateUpdateRunning()
-    if isUpdateRunning then
-        for _, _ in ipairs(trackedGuids) do
-            return
+    if UpdaterID ~= nil then
+        if #trackedGuids == 0 then
+            fhlog(DEBUG, TAG, "Stopping X-haven updates : %s", UpdaterID)
+            Wait.stop(UpdaterID)
+            UpdaterID = nil
         end
-        isUpdateRunning = false
-        print("isUpdateRunning : ", isUpdateRunning)
     else
-        for _, _ in ipairs(trackedGuids) do
-            isUpdateRunning = true
-            refreshState()
-            print("isUpdateRunning : ", isUpdateRunning)
+        if #trackedGuids > 0 then
+            UpdaterID = Wait.time(refreshState, 0.5, -1)
+            fhlog(DEBUG, TAG, "Started X-haven updates : %s", UpdaterID)
             return
         end
     end
 end
 
 function refreshState()
-    if isUpdateRunning then
-        updateAssistant("GET", "state", {}, updateState)
-    end
+    updateAssistant("GET", "state", {}, updateState)
 end
 
 previousHash = ""
@@ -1381,9 +1378,6 @@ function updateState(request)
     if request.is_done and not request.is_error then
         local hash = request.getResponseHeader("hash")
         if hash ~= nil and hash == previousHash then
-            if isUpdateRunning then
-                Wait.time(refreshState, 0.5)
-            end
             return
         end
         previousHash = hash
@@ -1392,9 +1386,6 @@ function updateState(request)
         processState(fullState)
     else
         print("Error Fetching State : ", request.error)
-    end
-    if isUpdateRunning then
-        Wait.time(refreshState, 0.5)
     end
 end
 
@@ -1964,8 +1955,12 @@ function isXHavenEnabled()
 end
 
 function updateAssistant(method, command, params, callback)
-    -- print("updateAssistant")
     if isXHavenEnabled() then
+        local level = DEBUG
+        if method == "GET" and command == "state" then
+            level = INFO
+        end
+        fhlog(level, TAG, "updateAssistant: %s %s %s", method, command, params or "")
         local address = getSettings()["address"] or ""
         local port = getSettings()["port"] or ""
         if address ~= "" and port ~= "" then
@@ -1991,10 +1986,6 @@ function updateAssistant(method, command, params, callback)
                     WebRequest.post(url, payload)
                 end
             end
-        end
-    else
-        if isUpdateRunning then
-            Wait.time(refreshState, 0.5)
         end
     end
 end

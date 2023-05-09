@@ -31,7 +31,7 @@ function onFhLogSettingsUpdated(payload)
         CurrentLogLevel = 20
     end
     
-    CurrentLogTags = params.tags
+    CurrentLogTags = setLogTags(params.tags)
 end
 
 function split(str, sep)
@@ -59,16 +59,18 @@ function fhlogObject(level, tag, object)
 end
 
 function fhlog(level, tag, message, ...)
-    if CurrentLogEnabled and level >= CurrentLogLevel then
+    -- print(string.format("level %d / %d , %s, %s, %s", level, CurrentLogLevel, tag, JSON.encode(CurrentLogTags), message))
+    if CurrentLogEnabled and (level >= CurrentLogLevel) then
         if CurrentLogTags == nil or CurrentLogTags[tag] ~= nil then
             local params = {}
+            table.insert(params, Time.time)
             table.insert(params, LevelsOutput[level])
             table.insert(params, tag)
-            for _,a in ipairs(arg) do
+            for _,a in ipairs(table.pack(...)) do
                 table.insert(params, JSON.encode(a))
             end
-            local fmt = "%s %-20.19s" .. message
-            local log = string.format(fmt, params)
+            local fmt = "%.2f %s %-20s " .. message
+            local log = string.format(fmt, table.unpack(params))
             print(log)
         end
     end
