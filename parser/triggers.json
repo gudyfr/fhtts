@@ -5818,12 +5818,12 @@
             },
             "trigger": {
                 "type": "round",
-                "when" : {
-                    "round" : 10,
-                    "state" : 0
+                "when": {
+                    "round": 10,
+                    "state": 0
                 },
-                "action" : "reveal",
-                "what" : "196.3"
+                "action": "reveal",
+                "what": "196.3"
             }
         },
         {
@@ -6925,6 +6925,317 @@
                 "what": {
                     "type": "section",
                     "name": "112.2"
+                }
+            }
+        }
+    ],
+    "138": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 170
+            },
+            "target": {
+                "type": "overlay",
+                "name": "Snow Door"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo.noaudio",
+                    "name": "138.0"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 170
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "138.1"
+                },
+                "also": [
+                    {
+                        "action": "addTrigger",
+                        "what": "solo/138/global/enemiesdead",
+                        "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                                "type": "section.solo",
+                                "name": "138.end"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "139": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 171
+            },
+            "target": {
+                "type": "global",
+                "name": "room1enemies"
+            },
+            "trigger": {
+                "type": "alldead",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "139.1"
+                },
+                "also": [
+                    {
+                        "action": "layout",
+                        "what": {
+                            "entries": [
+                                {
+                                    "reference": {
+                                        "tile": "10-C"
+                                    },
+                                    "overlays": [
+                                        {
+                                            "name": "Large Metal Corridor",
+                                            "orientation": 0,
+                                            "positions": [
+                                                {
+                                                    "x": 0,
+                                                    "y": 2,
+                                                    "type": "Corridor"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 171
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "139.2"
+                },
+                "also": [
+                    {
+                        "action": "addTrigger",
+                        "what": "solo/139/global/enemiesdead",
+                        "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                                "type": "section.solo",
+                                "name": "139.end"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "140": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 173
+            },
+            "target": {
+                "type": "global",
+                "name": "room1enemies"
+            },
+            "trigger": {
+                "type": "alldead",
+                "exclude": [
+                    "City Guard"
+                ],
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "140.end"
+                }
+            }
+        }
+    ],
+    "141": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 174
+            },
+            "target": {
+                "type": "global",
+                "name": "room1enemies"
+            },
+            "trigger": {
+                "type": "alldead",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "141.end"
+                }
+            }
+        }
+    ],
+    "142": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 175
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "142.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 175
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "mode": "all",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "142.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 175
+            },
+            "target": {
+                "type": "monster",
+                "name": "Living Bones"
+            },
+            "trigger": {
+                "type": "on-death",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "142.end"
+                }
+            }
+        }
+    ],
+    "143": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 176
+            },
+            "target": {
+                "type": "global",
+                "name": "section1"
+            },
+            "trigger": {
+                "type": "manual",
+                "by": {
+                    "token": "n1",
+                    "at": {
+                        "reference": "15-A",
+                        "x": 0,
+                        "y": -2
+                    }
+                },
+                "display": "Section 1",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "143.1"
+                },
+                "also": [
+                    {
+                        "action": "addTrigger",
+                        "what": "solo/143/alldead",
+                        "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                                "type": "section.solo",
+                                "name": "143.end"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 175
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "mode": "all",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "142.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 175
+            },
+            "target": {
+                "type": "monster",
+                "name": "Living Bones"
+            },
+            "trigger": {
+                "type": "on-death",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "142.end"
                 }
             }
         }

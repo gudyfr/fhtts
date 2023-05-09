@@ -15,6 +15,7 @@ function onStateUpdate(state)
     end
 end
 
+Path = ""
 function load(state, url)
     if state ~= nil then
         ScenariosState = JSON.decode(state)
@@ -23,8 +24,14 @@ function load(state, url)
     if ScenariosState == nil then
         ScenariosState = {}
     end
-    WebRequest.get(url, processDecals)
     registerSavable("Campaign Tracker " .. self.getName())
+    Path = url
+    Global.call('registerDataUpdatable',self)
+end
+
+function updateData(baseUrl)
+    local url = baseUrl .. Path
+    WebRequest.get(url, processDecals)
 end
 
 function save()

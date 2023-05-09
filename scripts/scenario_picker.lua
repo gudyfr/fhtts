@@ -1,6 +1,9 @@
 require("number_decals")
 require("savable")
 
+DevMatGuid = '91d8f9'
+IsDevMat = false
+
 -- Savable functions
 function getState()
     return State
@@ -12,20 +15,40 @@ function onStateUpdate(state)
 end
 
 function createEmptyState()
-    return {
+    local state = {
         active = "available",
         page = 1,
-        scenarios = {}
+        scenarios = {},
+        soloCompletion = {},
     }
+    if IsDevMat then
+        -- Development scenario picker
+        for i=0,153 do
+            state.scenarios[tostring(i)] = {
+                available = true,
+                locked = false,
+                completed = false,
+                solo = i > 137
+            }
+        end
+    end
+
+    return state
 end
 
 function onLoad(save)
+    IsDevMat = self.guid == DevMatGuid
+    
     if save ~= nil then
         State = JSON.decode(save)
     end
 
     if State == nil then
         State = createEmptyState()
+    end
+
+    if State.soloCompletion == nil then
+        State.soloCompletion = {}
     end
 
     updateStickers()
@@ -45,17 +68,22 @@ function updateStickers()
 
     local stickers = {}
     -- Update tabs
-    local active = State.active or "available"
-    local tabs = { "available", "completed", "all" }
-    for index, tab in ipairs(tabs) do
-        addTabSticker(stickers, index, tab, active)
-        addTabButton(index, tab, active)
+    if not IsDevMat then
+        local active = State.active or "available"
+        local tabs = { "available", "completed", "all" }
+        for index, tab in ipairs(tabs) do
+            addTabSticker(stickers, index, tab, active)
+            addTabButton(index, tab, active)
+        end
     end
 
     -- Update scenarios
     local scenarios = getActiveScenarios()
     table.sort(scenarios, compareNameAsNumber)
     local perPage = 11
+    if IsDevMat then
+        perPage = 12
+    end
     local pages = math.floor((#scenarios + perPage - 1) / perPage)
     local index = 1
     local startIndex = ((State.page or 1) - 1) * perPage + 1
@@ -109,8 +137,13 @@ end
 
 function addScenarioSticker(stickers, position, name)
     local url = "https://gudyfr.github.io/fhtts/images/stickers/scenario%20picker/" .. name .. ".png"
+    local minZ = -1.40
+    if IsDevMat then
+        minZ = -1.65
+    end
+
     local sticker = {
-        position = { 0, 0.06, -1.40 + position * 0.25 },
+        position = { 0, 0.06, minZ+ position * 0.25 },
         scale = { 3.6, .25, .15 },
         rotation = { 90, 180, 0 },
         url = url,
@@ -233,11 +266,15 @@ end
 function addScenarioButton(index, scenario)
     local fName = "loadScenario_" .. scenario
     self.setVar(fName, function() loadScenario(scenario) end)
+    local minZ = -1.40
+    if IsDevMat then
+        minZ = -1.65
+    end
     local params = {
         function_owner = self,
         click_function = fName,
         label          = "",
-        position       = { 0, 0.06, -1.40 + index * 0.25 },
+        position       = { 0, 0.06, minZ + index * 0.25 },
         width          = 1600,
         height         = 220,
         font_size      = 100,
@@ -249,7 +286,11 @@ function addScenarioButton(index, scenario)
 end
 
 function loadScenario(scenario)
-    Global.call("prepareFrosthavenScenario", scenario)
+    if State.scenarios[scenario].solo or false then
+        Global.call("prepareSoloScenario", scenario)
+    else
+        Global.call("prepareFrosthavenScenario", scenario)
+    end
 end
 
 function toggleTab(tab)
@@ -274,6 +315,17 @@ function updateScenario(params)
             locked = locked,
             completed = completed
         }
+        updateStickers()
+    end
+end
+
+function updateSoloScenario(params)
+    local name = params[1]
+    local completed = params[2]
+    State.soloCompletion[name] = completed
+    local scenario = State.scenarios[name]
+    if scenario ~= nil then
+        scenario.completed = params
         updateStickers()
     end
 end
@@ -303,4 +355,60 @@ function getActiveScenarios()
     end
 
     return result
+end
+
+local CharacterNamesToSoloScenario = {
+    Drifter = "138",
+    Blinkblade = "139",
+    ["Banner Spear"] = "140",
+    Deathwalker = "141",
+    Boneshaper = "142",
+    Geminate = "143",
+    Infuser = "144",
+    Pyroclast = "145",
+    Shattersong = "146",
+    Trapper = "147",
+    ['Pain Conduit'] = "148",
+    Snowdancer = "149",
+    ['Frozen Fist'] = "150",
+    ['H.I.V.E.'] = "151",
+    ['Metal Mosaic'] = "152",
+    Deepwraith = "153",
+    ['Crashing Tide'] = "154",
+}
+
+function addSoloFor(characterName)
+    local scenario = CharacterNamesToSoloScenario[characterName]
+    if scenario ~= nil then
+        local scenarios = State.scenarios
+        if scenarios == nil then
+            scenarios = {}
+            State.scenarios = scenarios
+        end
+        scenarios[scenario] = {
+            available = true,
+            locked = false,
+            completed = State.soloCompletion[scenario] or false,
+            solo = true
+        }
+        updateStickers()
+    end
+end
+
+function removeSoloFor(characterName)
+    local scenario = CharacterNamesToSoloScenario[characterName]
+    if scenario ~= nil then
+        local scenarios = State.scenarios
+        if scenarios == nil then
+            scenarios = {}
+            State.scenarios = scenarios
+        end
+        scenarios[scenario] = {
+            available = false,
+            locked = false,
+            completed = false,
+            solo = true,
+        }
+        updateStickers()
+    end
 end

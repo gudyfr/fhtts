@@ -109,7 +109,6 @@
                   {
                     "x": 2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -118,7 +117,8 @@
                         "name": "2.1"
                       },
                       "id": "scenario/3/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -990,7 +990,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1000,12 +999,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/14/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1015,12 +1014,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/14/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1030,7 +1029,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/14/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -1133,13 +1133,13 @@
                   {
                     "x": -2,
                     "y": 2,
-                    "type": "Objective",
                     "condition": {
                       "players": [
                         4
                       ]
                     },
-                    "renamed": "Ice Pillar B"
+                    "renamed": "Ice Pillar B",
+                    "type": "Objective"
                   },
                   {
                     "x": -3,
@@ -1154,14 +1154,14 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Objective",
                     "condition": {
                       "players": [
                         3,
                         4
                       ]
                     },
-                    "renamed": "Ice Pillar A"
+                    "renamed": "Ice Pillar A",
+                    "type": "Objective"
                   },
                   {
                     "x": -8,
@@ -1352,7 +1352,6 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1361,7 +1360,8 @@
                         "name": "141.3"
                       },
                       "id": "scenario/123/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -1721,7 +1721,6 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1730,7 +1729,8 @@
                         "name": "102.1"
                       },
                       "id": "section/141.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -1915,7 +1915,6 @@
                   {
                     "x": 6,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -1924,7 +1923,8 @@
                         "name": "126.2"
                       },
                       "id": "scenario/124/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -2163,7 +2163,6 @@
                   {
                     "x": -6,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -2172,7 +2171,8 @@
                         "name": "194.4"
                       },
                       "id": "section/126.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -2183,7 +2183,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -2192,7 +2191,8 @@
                         "name": "171.3"
                       },
                       "id": "section/126.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -2617,7 +2617,6 @@
                   {
                     "x": -2,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -2626,7 +2625,8 @@
                         "name": "30.4"
                       },
                       "id": "scenario/127/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -2859,7 +2859,6 @@
                   {
                     "x": -5,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -2868,7 +2867,8 @@
                         "name": "164.3"
                       },
                       "id": "scenario/128/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3121,7 +3121,7 @@
                   {
                     "x": -1,
                     "y": 6,
-                    "levels": "nna"
+                    "levels": "nnn"
                   }
                 ]
               }
@@ -3134,7 +3134,6 @@
                   {
                     "x": -4,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3143,7 +3142,8 @@
                         "name": "14.2"
                       },
                       "id": "section/164.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3491,7 +3491,6 @@
                   {
                     "x": -8,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3500,7 +3499,8 @@
                         "name": "191.3"
                       },
                       "id": "scenario/129/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3777,7 +3777,6 @@
                   {
                     "x": -5,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3786,7 +3785,8 @@
                         "name": "29.2"
                       },
                       "id": "scenario/130/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3797,7 +3797,6 @@
                   {
                     "x": -8,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3806,7 +3805,8 @@
                         "name": "8.1"
                       },
                       "id": "scenario/130/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3817,7 +3817,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3826,7 +3825,8 @@
                         "name": "189.2"
                       },
                       "id": "scenario/130/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -3837,7 +3837,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3846,7 +3845,8 @@
                         "name": "183.1"
                       },
                       "id": "scenario/130/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -3867,7 +3867,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -3876,7 +3875,8 @@
                         "name": "184.4"
                       },
                       "id": "scenario/130/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -4346,13 +4346,13 @@
                   {
                     "x": 2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "what": {},
                       "id": "scenario/131/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -4799,13 +4799,13 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "what": {},
                       "id": "section/150.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -4971,7 +4971,7 @@
                   {
                     "x": 2,
                     "y": -3,
-                    "levels": "nnn"
+                    "levels": "ann"
                   },
                   {
                     "x": 2,
@@ -5090,13 +5090,13 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "what": {},
                       "id": "section/188.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -5285,7 +5285,6 @@
                   {
                     "x": 7,
                     "y": -7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -5295,12 +5294,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/132/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 8,
                     "y": -7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -5310,7 +5309,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/132/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -5490,7 +5490,6 @@
                   {
                     "x": -1,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -5499,12 +5498,12 @@
                         "name": "192.4"
                       },
                       "id": "section/140.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 5,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -5513,7 +5512,8 @@
                         "name": "165.5"
                       },
                       "id": "section/140.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -5967,7 +5967,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -5982,7 +5981,8 @@
                         }
                       ],
                       "id": "scenario/133/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -5993,7 +5993,6 @@
                   {
                     "x": 0,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -6008,7 +6007,8 @@
                         }
                       ],
                       "id": "scenario/133/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -6044,7 +6044,6 @@
                   {
                     "x": 5,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -6059,7 +6058,8 @@
                         }
                       ],
                       "id": "scenario/133/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -7460,7 +7460,6 @@
                   {
                     "x": -5,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -7470,12 +7469,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/135/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -6,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -7485,7 +7484,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/135/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -7756,7 +7756,6 @@
                   {
                     "x": -10,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -7765,12 +7764,12 @@
                         "name": "138.2"
                       },
                       "id": "section/182.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -6,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -7779,7 +7778,8 @@
                         "name": "138.2"
                       },
                       "id": "section/182.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -7974,7 +7974,6 @@
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -7983,7 +7982,8 @@
                         "name": "97.1"
                       },
                       "id": "scenario/136/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -8060,7 +8060,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -8069,7 +8068,8 @@
                         "name": "156.2"
                       },
                       "id": "section/97.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -8396,7 +8396,6 @@
                   {
                     "x": 3,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -8405,12 +8404,12 @@
                         "name": "154.1"
                       },
                       "id": "scenario/137/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 6,
                     "y": -7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -8419,7 +8418,8 @@
                         "name": "112.1"
                       },
                       "id": "scenario/137/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -8502,7 +8502,6 @@
                   {
                     "x": -3,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -8511,12 +8510,12 @@
                         "name": "154.1"
                       },
                       "id": "section/112.1/token/4"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -8525,7 +8524,8 @@
                         "name": "146.5"
                       },
                       "id": "section/112.1/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -8914,13 +8914,13 @@
                   {
                     "x": -1,
                     "y": 2,
-                    "type": "Objective",
                     "trigger": {
                       "type": "on-death",
                       "action": "trigger",
                       "what": "scenario/138/global/pillars",
                       "id": "scenario/138/token/b"
-                    }
+                    },
+                    "type": "Objective"
                   },
                   {
                     "x": -3,
@@ -8930,13 +8930,13 @@
                   {
                     "x": -3,
                     "y": 6,
-                    "type": "Objective",
                     "trigger": {
                       "type": "on-death",
                       "action": "trigger",
                       "what": "scenario/138/global/pillars",
                       "id": "scenario/138/token/b"
-                    }
+                    },
+                    "type": "Objective"
                   },
                   {
                     "x": -4,
@@ -8952,26 +8952,26 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/138/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/138/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/138/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -10138,7 +10138,6 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -10147,12 +10146,12 @@
                         "name": "168.6"
                       },
                       "id": "scenario/142/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -10161,7 +10160,8 @@
                         "name": "36.3"
                       },
                       "id": "scenario/142/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -10479,7 +10479,6 @@
                   {
                     "x": -2,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -10488,7 +10487,8 @@
                         "name": "125.2"
                       },
                       "id": "scenario/143/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -10668,7 +10668,6 @@
                   {
                     "x": -7,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -10677,7 +10676,8 @@
                         "name": "118.2"
                       },
                       "id": "section/125.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -10897,7 +10897,6 @@
                   {
                     "x": 2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -10906,7 +10905,8 @@
                         "name": "96.2"
                       },
                       "id": "scenario/144/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -11364,7 +11364,6 @@
                   {
                     "x": 9,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -11373,7 +11372,8 @@
                         "name": "34.1"
                       },
                       "id": "scenario/16/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -11745,7 +11745,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -11754,7 +11753,8 @@
                         "name": "101.1"
                       },
                       "id": "scenario/145/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -11894,7 +11894,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -11903,7 +11902,8 @@
                         "name": "157.1"
                       },
                       "id": "section/101.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -12115,7 +12115,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -12124,7 +12123,8 @@
                         "name": "115.2"
                       },
                       "id": "scenario/146/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -12166,7 +12166,6 @@
                   {
                     "x": 4,
                     "y": -1,
-                    "type": "Corridor",
                     "trigger": {
                       "type": "door",
                       "display": "Section 123.1",
@@ -12176,7 +12175,8 @@
                         "name": "123.1"
                       },
                       "id": "section/76.2/token/b"
-                    }
+                    },
+                    "type": "Corridor"
                   }
                 ]
               },
@@ -12263,7 +12263,6 @@
                   {
                     "x": -5,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -12272,7 +12271,8 @@
                         "name": "76.2"
                       },
                       "id": "section/115.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -12546,7 +12546,6 @@
                   {
                     "x": -3,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -12555,7 +12554,8 @@
                         "name": "98.1"
                       },
                       "id": "scenario/147/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -12566,7 +12566,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -12575,7 +12574,8 @@
                         "name": "152.1"
                       },
                       "id": "scenario/147/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -12747,7 +12747,6 @@
                   {
                     "x": -3,
                     "y": 5,
-                    "type": "Treasure",
                     "trigger": {
                       "type": "door",
                       "display": "Section 109.3",
@@ -12757,7 +12756,8 @@
                         "name": "109.3"
                       },
                       "id": "section/8.4/token/goal"
-                    }
+                    },
+                    "type": "Treasure"
                   },
                   {
                     "x": 0,
@@ -13019,7 +13019,6 @@
                   {
                     "x": -3,
                     "y": 5,
-                    "type": "Treasure",
                     "trigger": {
                       "type": "door",
                       "display": "Section 109.3",
@@ -13029,7 +13028,8 @@
                         "name": "109.3"
                       },
                       "id": "section/145.1/token/goal"
-                    }
+                    },
+                    "type": "Treasure"
                   },
                   {
                     "x": 0,
@@ -13313,7 +13313,6 @@
                   {
                     "x": 2,
                     "y": -2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13328,12 +13327,12 @@
                         }
                       ],
                       "id": "section/152.1/token/4"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 6,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13348,7 +13347,8 @@
                         }
                       ],
                       "id": "section/152.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -13547,7 +13547,6 @@
                   {
                     "x": 8,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13556,7 +13555,8 @@
                         "name": "8.4"
                       },
                       "id": "section/172.1/token/6"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -13718,7 +13718,6 @@
                   {
                     "x": 5,
                     "y": -2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13727,7 +13726,8 @@
                         "name": "145.1"
                       },
                       "id": "section/179.2/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -13883,7 +13883,6 @@
                   {
                     "x": -6,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13892,7 +13891,8 @@
                         "name": "104.2"
                       },
                       "id": "scenario/148/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -13989,7 +13989,6 @@
                   {
                     "x": -5,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -13999,7 +13998,8 @@
                         "name": "128.4"
                       },
                       "id": "section/104.2/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -14170,13 +14170,13 @@
                   {
                     "x": -9,
                     "y": 5,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "door",
                       "action": "trigger",
                       "what": "scenario/148/global/door4",
                       "id": "section/158.1/token/a"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               },
@@ -15531,7 +15531,6 @@
                   {
                     "x": -4,
                     "y": 4,
-                    "type": "Difficult Terrain",
                     "trigger": {
                       "type": "door",
                       "display": "Go Below Deck",
@@ -15541,7 +15540,8 @@
                         "name": "153.1"
                       },
                       "id": "scenario/153/token/a"
-                    }
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               }
@@ -15796,7 +15796,6 @@
                   {
                     "x": 4,
                     "y": -2,
-                    "type": "Difficult Terrain",
                     "trigger": {
                       "type": "door",
                       "display": "Go Lower Below Deck",
@@ -15806,7 +15805,8 @@
                         "name": "109.2"
                       },
                       "id": "section/153.1/token/c"
-                    }
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -16097,13 +16097,13 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "id": "scenario/155/token/2"
                     },
-                    "rename": "Door 2"
+                    "rename": "Door 2",
+                    "type": "Door"
                   },
                   {
                     "x": -1,
@@ -16113,24 +16113,24 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "id": "scenario/155/token/3"
                     },
-                    "rename": "Door 3"
+                    "rename": "Door 3",
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "id": "scenario/155/token/1"
                     },
-                    "rename": "Door 1"
+                    "rename": "Door 1",
+                    "type": "Door"
                   }
                 ]
               }
@@ -16904,15 +16904,14 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/155/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -16921,12 +16920,12 @@
                         "name": "156.4"
                       },
                       "id": "scenario/155/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -16935,7 +16934,8 @@
                         "name": "154.2"
                       },
                       "id": "scenario/155/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -17394,7 +17394,6 @@
                   {
                     "x": 8,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -17403,7 +17402,8 @@
                         "name": "44.1"
                       },
                       "id": "scenario/17/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -17473,7 +17473,6 @@
                   {
                     "x": 5,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -17482,7 +17481,8 @@
                         "name": "44.1"
                       },
                       "id": "scenario/17/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -17685,7 +17685,6 @@
                   {
                     "x": -3,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -17694,12 +17693,12 @@
                         "name": "38.2"
                       },
                       "id": "section/44.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -17708,7 +17707,8 @@
                         "name": "12.6"
                       },
                       "id": "section/44.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -18763,10 +18763,10 @@
                   {
                     "x": 4,
                     "y": -1,
-                    "type": "Obstacle",
                     "trigger": {
                       "id": "section/110.2/token/b"
-                    }
+                    },
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -18996,7 +18996,6 @@
                   {
                     "x": 4,
                     "y": -1,
-                    "type": "Obstacle",
                     "trigger": {
                       "display": "Section 110.2",
                       "action": "reveal",
@@ -19011,7 +19010,8 @@
                         }
                       ],
                       "id": "section/171.1/token/b"
-                    }
+                    },
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -19022,7 +19022,6 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
@@ -19032,7 +19031,8 @@
                         "name": "129.4"
                       },
                       "id": "section/171.1/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -19223,18 +19223,18 @@
                   {
                     "x": -4,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/161/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -5,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/161/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -19245,7 +19245,6 @@
                   {
                     "x": -7,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -19254,7 +19253,8 @@
                         "name": "173.3"
                       },
                       "id": "scenario/161/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -19265,7 +19265,6 @@
                   {
                     "x": 0,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -19274,7 +19273,8 @@
                         "name": "186.1"
                       },
                       "id": "scenario/161/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -19885,7 +19885,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -19894,12 +19893,12 @@
                         "name": "33.3"
                       },
                       "id": "scenario/163/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 5,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -19908,7 +19907,8 @@
                         "name": "147.4"
                       },
                       "id": "scenario/163/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -20009,7 +20009,6 @@
                   {
                     "x": -5,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -20018,12 +20017,12 @@
                         "name": "128.1"
                       },
                       "id": "scenario/163/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -20032,7 +20031,8 @@
                         "name": "44.3"
                       },
                       "id": "scenario/163/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -20082,7 +20082,6 @@
                   {
                     "x": 0,
                     "y": 0,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "action": "reveal",
                       "what": {
@@ -20096,7 +20095,8 @@
                         }
                       ],
                       "id": "section/33.3/token/b"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }
@@ -20135,7 +20135,6 @@
                   {
                     "x": 0,
                     "y": 0,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "action": "reveal",
                       "what": {
@@ -20149,7 +20148,8 @@
                         }
                       ],
                       "id": "section/44.3/token/a"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }
@@ -20239,7 +20239,6 @@
                   {
                     "x": -1,
                     "y": 1,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "action": "reveal",
                       "what": {
@@ -20253,7 +20252,8 @@
                         }
                       ],
                       "id": "section/147.4/token/b"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }
@@ -20602,14 +20602,14 @@
                   {
                     "x": -5,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "action": "none",
                       "what": {},
                       "id": "scenario/164/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -20620,14 +20620,14 @@
                   {
                     "x": -5,
                     "y": 2,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "pressure",
                       "mode": "occupy",
                       "action": "trigger",
                       "what": "scenario/164/global/platesC",
                       "id": "scenario/164/token/c"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }
@@ -20747,14 +20747,14 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "action": "none",
                       "what": {},
                       "id": "section/87.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -20765,14 +20765,14 @@
                   {
                     "x": 1,
                     "y": -1,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "pressure",
                       "mode": "occupy",
                       "action": "trigger",
                       "what": "scenario/164/global/platesF",
                       "id": "section/87.2/token/f"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               },
@@ -20872,14 +20872,14 @@
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
                       "action": "none",
                       "what": {},
                       "id": "section/87.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -20890,14 +20890,14 @@
                   {
                     "x": 1,
                     "y": 2,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "pressure",
                       "mode": "occupy",
                       "action": "trigger",
                       "what": "scenario/164/global/platesF",
                       "id": "section/87.2/token/f"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               },
@@ -21241,7 +21241,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -21250,7 +21249,8 @@
                         "name": "170.2"
                       },
                       "id": "scenario/165/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -21363,7 +21363,6 @@
                   {
                     "x": 1,
                     "y": -2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -21372,7 +21371,8 @@
                         "name": "180.4"
                       },
                       "id": "section/170.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -21700,7 +21700,6 @@
                   {
                     "x": -7,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -21709,7 +21708,8 @@
                         "name": "191.2"
                       },
                       "id": "scenario/166/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -22197,7 +22197,6 @@
                   {
                     "x": 0,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -22206,7 +22205,8 @@
                         "name": "112.2"
                       },
                       "id": "section/191.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -22372,6 +22372,15 @@
                   {
                     "x": 8,
                     "y": -1,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo.noaudio",
+                        "name": "138.0"
+                      },
+                      "id": "scenario/170/overlay/Snow Door"
+                    },
                     "type": "Door"
                   }
                 ]
@@ -22409,7 +22418,14 @@
                 ]
               }
             ]
-          },
+          }
+        ],
+        "triggers": []
+      },
+      {
+        "type": "section.solo.noaudio",
+        "name": "138.0",
+        "entries": [
           {
             "reference": {
               "tile": "05-B",
@@ -22476,9 +22492,49 @@
                     "type": "Obstacle"
                   }
                 ]
+              },
+              {
+                "name": "Snow Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 5,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "138.1"
+                      },
+                      "also": [
+                        {
+                          "action": "addTrigger",
+                          "what": "solo/138/global/enemiesdead",
+                          "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                              "type": "section.solo",
+                              "name": "138.end"
+                            }
+                          }
+                        }
+                      ],
+                      "id": "scenario/170/token/1"
+                    },
+                    "type": "Door"
+                  }
+                ]
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "type": "section.solo",
+        "name": "138.1",
+        "entries": [
           {
             "reference": {
               "tile": "15-A",
@@ -22524,21 +22580,10 @@
                     "y": 3
                   }
                 ]
-              },
-              {
-                "name": "Snow Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": -1
-                  }
-                ]
               }
             ]
           }
-        ],
-        "triggers": []
+        ]
       }
     ]
   },
@@ -22589,8 +22634,8 @@
         "entries": [
           {
             "reference": {
-              "tile": "11-F",
-              "tileOrientation": "60"
+              "tile": "10-C",
+              "tileOrientation": "0"
             },
             "tokens": [
               {
@@ -22598,12 +22643,117 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -6,
-                    "y": -5
+                    "x": 0,
+                    "y": 2
+                  }
+                ]
+              },
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 0
+                  },
+                  {
+                    "x": -2,
+                    "y": 0
                   }
                 ]
               }
             ],
+            "monsters": [
+              {
+                "name": "Robotic Boltshooter",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 4,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": -5,
+                    "y": 4,
+                    "levels": "nnn"
+                  }
+                ]
+              },
+              {
+                "name": "Ruined Machine",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 3,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -5,
+                    "y": 0,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
+            "overlays": []
+          }
+        ],
+        "triggers": [
+          {
+            "type": "alldead",
+            "action": "reveal",
+            "what": {
+              "type": "section.solo",
+              "name": "139.1"
+            },
+            "also": [
+              {
+                "action": "layout",
+                "what": {
+                  "entries": [
+                    {
+                      "reference": {
+                        "tile": "10-C"
+                      },
+                      "overlays": [
+                        {
+                          "name": "Large Metal Corridor",
+                          "orientation": 0,
+                          "positions": [
+                            {
+                              "x": 0,
+                              "y": 2,
+                              "type": "Corridor"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "id": "scenario/171/global/room1enemies"
+          }
+        ]
+      },
+      {
+        "type": "section.solo",
+        "name": "139.1",
+        "entries": [
+          {
+            "reference": {
+              "tile": "11-F",
+              "tileOrientation": "60"
+            },
+            "tokens": [],
             "monsters": [
               {
                 "name": "Ancient Artillery",
@@ -22688,74 +22838,41 @@
                   {
                     "x": -6,
                     "y": -2,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "139.2"
+                      },
+                      "also": [
+                        {
+                          "action": "addTrigger",
+                          "what": "solo/139/global/enemiesdead",
+                          "trigger": {
+                            "type": "alldead",
+                            "action": "reveal",
+                            "what": {
+                              "type": "section.solo",
+                              "name": "139.end"
+                            }
+                          }
+                        }
+                      ],
+                      "id": "scenario/171/token/2"
+                    },
                     "type": "Door"
                   }
                 ]
               }
             ]
-          },
-          {
-            "reference": {
-              "tile": "10-C",
-              "tileOrientation": "0"
-            },
-            "tokens": [
-              {
-                "name": "start",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 0
-                  },
-                  {
-                    "x": -2,
-                    "y": 0
-                  }
-                ]
-              }
-            ],
-            "monsters": [
-              {
-                "name": "Robotic Boltshooter",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 4,
-                    "levels": "nnn"
-                  },
-                  {
-                    "x": -5,
-                    "y": 4,
-                    "levels": "nnn"
-                  }
-                ]
-              },
-              {
-                "name": "Ruined Machine",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 3,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": -5,
-                    "y": 0,
-                    "levels": "nnn"
-                  },
-                  {
-                    "x": 0,
-                    "y": 0,
-                    "levels": "nnn"
-                  }
-                ]
-              }
-            ],
-            "overlays": []
-          },
+          }
+        ]
+      },
+      {
+        "type": "section.solo",
+        "name": "139.2",
+        "entries": [
           {
             "reference": {
               "tile": "08-A",
@@ -22789,8 +22906,7 @@
               }
             ]
           }
-        ],
-        "triggers": []
+        ]
       }
     ]
   },
@@ -23572,7 +23688,20 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "alldead",
+            "exclude": [
+              "City Guard"
+            ],
+            "action": "reveal",
+            "what": {
+              "type": "section.solo",
+              "name": "140.end"
+            },
+            "id": "scenario/173/global/room1enemies"
+          }
+        ]
       }
     ]
   },
@@ -23755,7 +23884,7 @@
                   {
                     "x": -1,
                     "y": 0,
-                    "levels": "ann"
+                    "levels": "nnn"
                   }
                 ]
               }
@@ -23860,7 +23989,17 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "alldead",
+            "action": "reveal",
+            "what": {
+              "type": "section.solo",
+              "name": "141.end"
+            },
+            "id": "scenario/174/global/room1enemies"
+          }
+        ]
       }
     ]
   },
@@ -23956,22 +24095,56 @@
                   {
                     "x": 4,
                     "y": -3,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "142.1"
+                      },
+                      "id": "scenario/175/token/1"
+                    },
                     "type": "Door"
                   },
                   {
                     "x": 5,
                     "y": -3,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "142.1"
+                      },
+                      "id": "scenario/175/token/1"
+                    },
                     "type": "Door"
                   },
                   {
                     "x": 6,
                     "y": -3,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "142.1"
+                      },
+                      "id": "scenario/175/token/1"
+                    },
                     "type": "Door"
                   }
                 ]
               }
             ]
-          },
+          }
+        ],
+        "triggers": []
+      },
+      {
+        "type": "section.solo",
+        "name": "142.1",
+        "entries": [
           {
             "reference": {
               "tile": "16-A",
@@ -24035,6 +24208,27 @@
                 ]
               },
               {
+                "name": "Snow Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "trigger": {
+                      "type": "door",
+                      "mode": "all",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "142.2"
+                      },
+                      "id": "scenario/175/token/2"
+                    },
+                    "type": "Door"
+                  }
+                ]
+              },
+              {
                 "name": "Tree",
                 "orientation": 180,
                 "positions": [
@@ -24045,7 +24239,13 @@
                 ]
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "type": "section.solo",
+        "name": "142.2",
+        "entries": [
           {
             "reference": {
               "tile": "13-E",
@@ -24065,13 +24265,22 @@
                 ]
               },
               {
-                "name": "Living Bones",
+                "name": "Hollow Scholar",
                 "orientation": 0,
                 "positions": [
                   {
                     "x": -4,
                     "y": 6,
-                    "levels": "eee"
+                    "trigger": {
+                      "type": "on-death",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "142.end"
+                      },
+                      "id": "scenario/175/monster/Living Bones"
+                    },
+                    "levels": "bbb"
                   }
                 ]
               },
@@ -24113,22 +24322,10 @@
                     "type": "Obstacle"
                   }
                 ]
-              },
-              {
-                "name": "Snow Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": 1,
-                    "type": "Door"
-                  }
-                ]
               }
             ]
           }
-        ],
-        "triggers": []
+        ]
       }
     ]
   },
@@ -24385,7 +24582,40 @@
             ]
           }
         ],
-        "triggers": []
+        "triggers": [
+          {
+            "type": "manual",
+            "by": {
+              "token": "n1",
+              "at": {
+                "reference": "15-A",
+                "x": 0,
+                "y": -2
+              }
+            },
+            "display": "Section 1",
+            "action": "reveal",
+            "what": {
+              "type": "section.solo",
+              "name": "143.1"
+            },
+            "also": [
+              {
+                "action": "addTrigger",
+                "what": "solo/143/alldead",
+                "trigger": {
+                  "type": "alldead",
+                  "action": "reveal",
+                  "what": {
+                    "type": "section.solo",
+                    "name": "143.end"
+                  }
+                }
+              }
+            ],
+            "id": "scenario/176/global/section1"
+          }
+        ]
       }
     ]
   },
@@ -26810,7 +27040,7 @@
                   {
                     "x": 4,
                     "y": -4,
-                    "levels": "nnn"
+                    "levels": "ann"
                   }
                 ]
               }
@@ -27498,7 +27728,6 @@
                   {
                     "x": -4,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -27507,7 +27736,8 @@
                         "name": "62.3"
                       },
                       "id": "scenario/22/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -27518,7 +27748,6 @@
                   {
                     "x": -7,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -27527,7 +27756,8 @@
                         "name": "42.3"
                       },
                       "id": "scenario/22/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -27538,7 +27768,6 @@
                   {
                     "x": 0,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -27547,7 +27776,8 @@
                         "name": "25.3"
                       },
                       "id": "scenario/22/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -27730,7 +27960,6 @@
                   {
                     "x": -4,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -27739,7 +27968,8 @@
                         "name": "17.3"
                       },
                       "id": "section/19.3/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -27970,7 +28200,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -27979,7 +28208,8 @@
                         "name": "19.3"
                       },
                       "id": "section/62.3/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -28130,7 +28360,6 @@
                   {
                     "x": -6,
                     "y": -4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -28139,7 +28368,8 @@
                         "name": "91.2"
                       },
                       "id": "scenario/23/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -28366,7 +28596,6 @@
                   {
                     "x": -4,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -28375,7 +28604,8 @@
                         "name": "54.1"
                       },
                       "id": "section/91.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -28730,7 +28960,6 @@
                   {
                     "x": 6,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -28739,7 +28968,8 @@
                         "name": "27.1"
                       },
                       "id": "scenario/5/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -29484,7 +29714,6 @@
                   {
                     "x": -3,
                     "y": 9,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -29493,7 +29722,8 @@
                         "name": "51.1"
                       },
                       "id": "scenario/27/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -29664,7 +29894,6 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -29673,7 +29902,8 @@
                         "name": "53.1"
                       },
                       "id": "section/48.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -29755,7 +29985,6 @@
                   {
                     "x": -5,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -29764,7 +29993,8 @@
                         "name": "48.1"
                       },
                       "id": "section/51.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -30117,7 +30347,7 @@
                   {
                     "x": 5,
                     "y": 1,
-                    "levels": "ane"
+                    "levels": "nee"
                   },
                   {
                     "x": 6,
@@ -30385,7 +30615,6 @@
                   {
                     "x": -2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -30394,7 +30623,8 @@
                         "name": "38.4"
                       },
                       "id": "scenario/29/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -30426,7 +30656,7 @@
                   {
                     "x": 6,
                     "y": -7,
-                    "levels": "ane"
+                    "levels": "aan"
                   }
                 ]
               },
@@ -31125,7 +31355,6 @@
                   {
                     "x": 5,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -31134,7 +31363,8 @@
                         "name": "58.2"
                       },
                       "id": "scenario/31/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -31145,7 +31375,6 @@
                   {
                     "x": 8,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -31154,7 +31383,8 @@
                         "name": "61.2"
                       },
                       "id": "scenario/31/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -31840,7 +32070,6 @@
                   {
                     "x": -4,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -31849,7 +32078,8 @@
                         "name": "69.2"
                       },
                       "id": "scenario/33/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -31860,7 +32090,6 @@
                   {
                     "x": -7,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -31869,7 +32098,8 @@
                         "name": "95.1"
                       },
                       "id": "scenario/33/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -31880,7 +32110,6 @@
                   {
                     "x": 0,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -31889,7 +32118,8 @@
                         "name": "68.3"
                       },
                       "id": "scenario/33/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -31945,13 +32175,13 @@
                   {
                     "x": 4,
                     "y": -3,
-                    "type": "Objective",
                     "condition": {
                       "players": [
                         3,
                         4
                       ]
-                    }
+                    },
+                    "type": "Objective"
                   }
                 ]
               }
@@ -32022,7 +32252,6 @@
                   {
                     "x": -1,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -32031,7 +32260,8 @@
                         "name": "148.4"
                       },
                       "id": "section/69.2/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -32042,7 +32272,6 @@
                   {
                     "x": 7,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -32051,7 +32280,8 @@
                         "name": "71.5"
                       },
                       "id": "section/69.2/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -32184,12 +32414,12 @@
                   {
                     "x": 1,
                     "y": -3,
-                    "type": "Objective",
                     "condition": {
                       "players": [
                         4
                       ]
-                    }
+                    },
+                    "type": "Objective"
                   }
                 ]
               }
@@ -33443,7 +33673,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -33452,7 +33681,8 @@
                         "name": "30.2"
                       },
                       "id": "scenario/6/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -33592,7 +33822,7 @@
                   {
                     "x": 1,
                     "y": 0,
-                    "levels": "nnn"
+                    "levels": "ann"
                   },
                   {
                     "x": 2,
@@ -33669,7 +33899,6 @@
                   {
                     "x": -1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -33678,7 +33907,8 @@
                         "name": "28.2"
                       },
                       "id": "section/30.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -34752,7 +34982,6 @@
                   {
                     "x": 5,
                     "y": -2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -34761,7 +34990,8 @@
                         "name": "66.1"
                       },
                       "id": "scenario/40/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -35092,7 +35322,6 @@
                   {
                     "x": -3,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -35101,7 +35330,8 @@
                         "name": "20.1"
                       },
                       "id": "scenario/41/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -35510,7 +35740,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -35519,7 +35748,8 @@
                         "name": "104.4"
                       },
                       "id": "scenario/43/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -36118,7 +36348,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -36128,7 +36357,8 @@
                       },
                       "id": "scenario/45/token/1"
                     },
-                    "rename": "Door 1"
+                    "rename": "Door 1",
+                    "type": "Door"
                   }
                 ]
               },
@@ -36231,7 +36461,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "deleteOn",
@@ -36282,7 +36511,8 @@
                       ],
                       "id": "section/70.1/token/2"
                     },
-                    "rename": "Door 2"
+                    "rename": "Door 2",
+                    "type": "Door"
                   }
                 ]
               },
@@ -36406,7 +36636,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "rename": "Door 3",
@@ -36457,7 +36686,8 @@
                         }
                       ],
                       "id": "section/81.5/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -36877,7 +37107,6 @@
                   {
                     "x": -3,
                     "y": 3,
-                    "type": "Obstacle",
                     "trigger": {
                       "display": "Section 23.1",
                       "action": "reveal",
@@ -36886,7 +37115,8 @@
                         "name": "23.1"
                       },
                       "id": "scenario/46/token/c"
-                    }
+                    },
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -37080,7 +37310,6 @@
                   {
                     "x": -4,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -37089,7 +37318,8 @@
                         "name": "75.3"
                       },
                       "id": "section/23.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -37389,7 +37619,6 @@
                   {
                     "x": -5,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -37398,7 +37627,8 @@
                         "name": "78.3"
                       },
                       "id": "scenario/47/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -37409,7 +37639,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -37418,7 +37647,8 @@
                         "name": "91.3"
                       },
                       "id": "scenario/47/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -37552,7 +37782,6 @@
                   {
                     "x": -7,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -37561,7 +37790,8 @@
                         "name": "106.1"
                       },
                       "id": "scenario/47/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -37572,7 +37802,6 @@
                   {
                     "x": -5,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -37581,7 +37810,8 @@
                         "name": "120.1"
                       },
                       "id": "scenario/47/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -38086,7 +38316,6 @@
                   {
                     "x": -3,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -38095,7 +38324,8 @@
                         "name": "115.3"
                       },
                       "id": "scenario/48/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -38245,7 +38475,6 @@
                   {
                     "x": -1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -38254,7 +38483,8 @@
                         "name": "123.3"
                       },
                       "id": "section/115.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -38743,7 +38973,6 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -38752,12 +38981,12 @@
                         "name": "63.3"
                       },
                       "id": "scenario/50/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -38766,12 +38995,12 @@
                         "name": "103.3"
                       },
                       "id": "scenario/50/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 9,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -38780,7 +39009,8 @@
                         "name": "135.2"
                       },
                       "id": "scenario/50/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -39426,7 +39656,6 @@
                   {
                     "x": 1,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -39435,7 +39664,8 @@
                         "name": "2.3"
                       },
                       "id": "section/117.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -39863,7 +40093,7 @@
                   {
                     "x": 5,
                     "y": -4,
-                    "levels": "nne"
+                    "levels": "ann"
                   }
                 ]
               }
@@ -40028,7 +40258,6 @@
                   {
                     "x": -3,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -40037,7 +40266,8 @@
                         "name": "85.2"
                       },
                       "id": "scenario/53/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -40428,7 +40658,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -40437,7 +40666,8 @@
                         "name": "40.2"
                       },
                       "id": "scenario/54/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -41079,7 +41309,6 @@
                   {
                     "x": 3,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -41088,7 +41317,8 @@
                         "name": "130.5"
                       },
                       "id": "scenario/56/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -41282,7 +41512,6 @@
                   {
                     "x": 9,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -41291,7 +41520,8 @@
                         "name": "31.1"
                       },
                       "id": "section/130.5/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -41476,7 +41706,6 @@
                   {
                     "x": 1,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -41485,7 +41714,8 @@
                         "name": "94.2"
                       },
                       "id": "scenario/57/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -41810,7 +42040,6 @@
                   {
                     "x": 3,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -41820,7 +42049,8 @@
                       },
                       "mode": "all",
                       "id": "section/94.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -41980,7 +42210,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -41989,7 +42218,8 @@
                         "name": "75.1"
                       },
                       "id": "scenario/7/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -42396,7 +42626,6 @@
                   {
                     "x": -6,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -42405,7 +42634,8 @@
                         "name": "7.2"
                       },
                       "id": "scenario/9/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -42868,7 +43098,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -42878,12 +43107,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/60/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -42893,7 +43122,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/60/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -43037,7 +43267,6 @@
                   {
                     "x": -5,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -43047,7 +43276,8 @@
                       },
                       "mode": "all",
                       "id": "section/32.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -43426,7 +43656,6 @@
                   {
                     "x": 1,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -43435,12 +43664,12 @@
                         "name": "80.1"
                       },
                       "id": "scenario/61/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -43449,12 +43678,12 @@
                         "name": "133.3"
                       },
                       "id": "scenario/61/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 5,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -43463,12 +43692,12 @@
                         "name": "36.5"
                       },
                       "id": "scenario/61/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 9,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -43477,7 +43706,8 @@
                         "name": "29.4"
                       },
                       "id": "scenario/61/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -44133,7 +44363,6 @@
                   {
                     "x": -3,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -44142,7 +44371,8 @@
                         "name": "167.1"
                       },
                       "id": "scenario/63/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -44325,7 +44555,6 @@
                   {
                     "x": -6,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -44334,7 +44563,8 @@
                         "name": "13.3"
                       },
                       "id": "section/167.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -44508,7 +44738,7 @@
                   {
                     "x": -5,
                     "y": 2,
-                    "levels": "ann"
+                    "levels": "nnn"
                   },
                   {
                     "x": -7,
@@ -44537,7 +44767,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -44546,7 +44775,8 @@
                         "name": "80.2"
                       },
                       "id": "scenario/65/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -44787,7 +45017,6 @@
                   {
                     "x": -5,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -44796,7 +45025,8 @@
                         "name": "99.4"
                       },
                       "id": "scenario/66/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -45005,7 +45235,6 @@
                   {
                     "x": -4,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -45014,7 +45243,8 @@
                         "name": "90.4"
                       },
                       "id": "section/99.4/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -45475,7 +45705,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -45484,7 +45713,8 @@
                         "name": "61.1"
                       },
                       "id": "scenario/69/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -45824,7 +46054,6 @@
                   {
                     "x": 3,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -45834,7 +46063,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/70/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -45940,7 +46170,6 @@
                   {
                     "x": 4,
                     "y": -4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -45950,7 +46179,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/70/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -46188,7 +46418,6 @@
                   {
                     "x": -8,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -46197,7 +46426,8 @@
                         "name": "12.2"
                       },
                       "id": "scenario/10/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -46294,7 +46524,6 @@
                   {
                     "x": -4,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -46303,7 +46532,8 @@
                         "name": "22.2"
                       },
                       "id": "section/12.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -47062,7 +47292,6 @@
                   {
                     "x": 6,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -47071,7 +47300,8 @@
                         "name": "105.1"
                       },
                       "id": "scenario/73/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -47159,7 +47389,6 @@
                   {
                     "x": -8,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -47168,7 +47397,8 @@
                         "name": "97.3"
                       },
                       "id": "section/82.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -47461,7 +47691,6 @@
                   {
                     "x": -2,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -47470,7 +47699,8 @@
                         "name": "82.2"
                       },
                       "id": "section/105.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -48886,7 +49116,6 @@
                   {
                     "x": -9,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -48895,7 +49124,8 @@
                         "name": "142.2"
                       },
                       "id": "scenario/82/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -49209,7 +49439,6 @@
                   {
                     "x": 0,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49218,7 +49447,8 @@
                         "name": "89.1"
                       },
                       "id": "section/142.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 2,
@@ -49454,7 +49684,6 @@
                   {
                     "x": -1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49463,12 +49692,12 @@
                         "name": "144.4"
                       },
                       "id": "scenario/83/token/air"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49477,12 +49706,12 @@
                         "name": "127.2"
                       },
                       "id": "scenario/83/token/light"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -4,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49491,12 +49720,12 @@
                         "name": "162.4"
                       },
                       "id": "scenario/83/token/darkness"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -5,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49505,12 +49734,12 @@
                         "name": "68.2"
                       },
                       "id": "scenario/83/token/earth"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49519,12 +49748,12 @@
                         "name": "47.5"
                       },
                       "id": "scenario/83/token/ice"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -49533,7 +49762,8 @@
                         "name": "175.4"
                       },
                       "id": "scenario/83/token/fire"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -50053,7 +50283,7 @@
                   {
                     "x": 0,
                     "y": -5,
-                    "levels": "nnn"
+                    "levels": "ann"
                   }
                 ]
               },
@@ -51676,7 +51906,6 @@
                   {
                     "x": -3,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -51685,7 +51914,8 @@
                         "name": "48.4"
                       },
                       "id": "section/42.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -51963,7 +52193,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -51973,12 +52202,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/88/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -51988,7 +52217,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/88/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -52090,7 +52320,6 @@
                   {
                     "x": -2,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -52100,12 +52329,12 @@
                       },
                       "mode": "all",
                       "id": "section/46.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -3,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -52115,12 +52344,12 @@
                       },
                       "mode": "all",
                       "id": "section/46.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -7,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -52130,12 +52359,12 @@
                       },
                       "mode": "all",
                       "id": "section/46.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -8,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -52145,7 +52374,8 @@
                       },
                       "mode": "all",
                       "id": "section/46.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -52843,7 +53073,7 @@
                   {
                     "x": 6,
                     "y": -7,
-                    "levels": "nnn"
+                    "levels": "ann"
                   }
                 ]
               },
@@ -52870,7 +53100,7 @@
                   {
                     "x": 1,
                     "y": -1,
-                    "levels": "nna"
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -52897,12 +53127,12 @@
                   {
                     "x": 3,
                     "y": -3,
-                    "levels": "nnn"
+                    "levels": "ann"
                   },
                   {
                     "x": 4,
                     "y": -6,
-                    "levels": "nne"
+                    "levels": "ann"
                   },
                   {
                     "x": 6,
@@ -53150,17 +53380,7 @@
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   }
                 ]
               },
@@ -53171,32 +53391,12 @@
                   {
                     "x": -1,
                     "y": 4,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   }
                 ]
               },
@@ -53207,62 +53407,22 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": -1,
                     "y": 4,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "141.1"
-                      },
-                      "mode": "removeall",
-                      "id": "scenario/90/token/1"
-                    }
+                    "type": "Door"
                   }
                 ]
               },
@@ -53349,47 +53509,17 @@
                   {
                     "x": 3,
                     "y": -1,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "132.2"
-                      },
-                      "mode": "all",
-                      "id": "section/105.3/token/3"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": 4,
                     "y": -2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "132.2"
-                      },
-                      "mode": "all",
-                      "id": "section/105.3/token/3"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": 4,
                     "y": -3,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "132.2"
-                      },
-                      "mode": "all",
-                      "id": "section/105.3/token/3"
-                    }
+                    "type": "Door"
                   }
                 ]
               }
@@ -53592,32 +53722,12 @@
                   {
                     "x": 3,
                     "y": -1,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "105.3"
-                      },
-                      "mode": "all",
-                      "id": "section/141.1/token/2"
-                    }
+                    "type": "Door"
                   },
                   {
                     "x": 4,
                     "y": -2,
-                    "type": "Door",
-                    "trigger": {
-                      "type": "door",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "105.3"
-                      },
-                      "mode": "all",
-                      "id": "section/141.1/token/2"
-                    }
+                    "type": "Door"
                   }
                 ]
               },
@@ -53797,7 +53907,6 @@
                   {
                     "x": -1,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -53807,12 +53916,12 @@
                       },
                       "mode": "removeall",
                       "id": "scenario/91/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -53822,12 +53931,12 @@
                       },
                       "mode": "removeall",
                       "id": "scenario/91/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -53837,7 +53946,8 @@
                       },
                       "mode": "removeall",
                       "id": "scenario/91/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -53848,7 +53958,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -53858,12 +53967,12 @@
                       },
                       "mode": "removeall",
                       "id": "scenario/91/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -53873,7 +53982,8 @@
                       },
                       "mode": "removeall",
                       "id": "scenario/91/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -54071,7 +54181,6 @@
                   {
                     "x": -1,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54081,12 +54190,12 @@
                       },
                       "mode": "all",
                       "id": "section/28.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54096,12 +54205,12 @@
                       },
                       "mode": "all",
                       "id": "section/28.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54111,12 +54220,12 @@
                       },
                       "mode": "all",
                       "id": "section/28.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54126,7 +54235,8 @@
                       },
                       "mode": "all",
                       "id": "section/28.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -54137,7 +54247,6 @@
                   {
                     "x": -2,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54147,7 +54256,8 @@
                       },
                       "mode": "all",
                       "id": "section/28.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -54522,7 +54632,6 @@
                   {
                     "x": 0,
                     "y": 6,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54531,7 +54640,8 @@
                         "name": "55.2"
                       },
                       "id": "scenario/92/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -54666,7 +54776,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "choice",
@@ -54707,7 +54816,8 @@
                         }
                       ],
                       "id": "section/52.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -54798,7 +54908,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -54808,7 +54917,8 @@
                       },
                       "mode": "all",
                       "id": "section/55.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -55165,7 +55275,6 @@
                   {
                     "x": 6,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -55174,7 +55283,8 @@
                         "name": "99.2"
                       },
                       "id": "scenario/93/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -55398,7 +55508,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -55408,12 +55517,12 @@
                       },
                       "mode": "all",
                       "id": "section/99.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -55423,7 +55532,8 @@
                       },
                       "mode": "all",
                       "id": "section/99.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -55434,7 +55544,6 @@
                   {
                     "x": 6,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -55443,7 +55552,8 @@
                         "name": "81.2"
                       },
                       "id": "section/99.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -55589,7 +55699,6 @@
                   {
                     "x": -5,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -55598,7 +55707,8 @@
                         "name": "177.2"
                       },
                       "id": "section/163.2/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -56680,7 +56790,6 @@
                   {
                     "x": -3,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -56695,7 +56804,8 @@
                         }
                       ],
                       "id": "scenario/97/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -56706,7 +56816,6 @@
                   {
                     "x": -4,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -56721,7 +56830,8 @@
                         }
                       ],
                       "id": "scenario/97/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -56812,7 +56922,6 @@
                   {
                     "x": 1,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "locked": true,
@@ -56822,7 +56931,8 @@
                         "name": "51.2"
                       },
                       "id": "section/19.1/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -56997,7 +57107,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -57006,7 +57115,8 @@
                         "name": "133.5"
                       },
                       "id": "section/51.2/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -57109,7 +57219,6 @@
                   {
                     "x": -6,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -57118,7 +57227,8 @@
                         "name": "92.3"
                       },
                       "id": "section/59.2/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -57384,7 +57494,6 @@
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -57393,7 +57502,8 @@
                         "name": "133.5"
                       },
                       "id": "section/92.3/token/5"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -57743,7 +57853,6 @@
                   {
                     "x": -9,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -57752,7 +57861,8 @@
                         "name": "76.1"
                       },
                       "id": "scenario/98/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -58314,7 +58424,6 @@
                   {
                     "x": -1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -58323,7 +58432,8 @@
                         "name": "21.1"
                       },
                       "id": "scenario/12/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -58440,7 +58550,6 @@
                   {
                     "x": 1,
                     "y": 7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -58449,7 +58558,8 @@
                         "name": "12.1"
                       },
                       "id": "section/21.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -59069,14 +59179,14 @@
                   {
                     "x": 0,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "trigger",
                       "what": "scenario/101/global/door2",
                       "id": "scenario/101/token/2"
                     },
-                    "renamed": "Door 2"
+                    "renamed": "Door 2",
+                    "type": "Door"
                   }
                 ]
               },
@@ -59174,7 +59284,6 @@
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -59184,7 +59293,8 @@
                       },
                       "id": "scenario/101/token/1"
                     },
-                    "rename": "Door 1"
+                    "rename": "Door 1",
+                    "type": "Door"
                   }
                 ]
               }
@@ -59590,14 +59700,14 @@
                   {
                     "x": 8,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "dedupMode": "first",
                       "action": "trigger",
                       "what": "scenario/101/global/door2",
                       "id": "section/174.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -61005,7 +61115,6 @@
                   {
                     "x": -1,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -61014,12 +61123,12 @@
                         "name": "130.1"
                       },
                       "id": "scenario/106/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": -2,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -61028,7 +61137,8 @@
                         "name": "110.4"
                       },
                       "id": "scenario/106/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -61442,7 +61552,7 @@
                   {
                     "x": -7,
                     "y": 1,
-                    "levels": "ann"
+                    "levels": "nna"
                   },
                   {
                     "x": -8,
@@ -61485,7 +61595,6 @@
                   {
                     "x": -5,
                     "y": 0,
-                    "type": "Difficult Terrain",
                     "trigger": {
                       "type": "pressure",
                       "action": "reveal",
@@ -61494,7 +61603,8 @@
                         "name": "93.1"
                       },
                       "id": "section/47.3/token/5"
-                    }
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -61742,7 +61852,6 @@
                   {
                     "x": 3,
                     "y": -4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -61751,7 +61860,8 @@
                         "name": "4.2"
                       },
                       "id": "section/82.3/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -61772,7 +61882,6 @@
                   {
                     "x": 0,
                     "y": 0,
-                    "type": "Difficult Terrain",
                     "trigger": {
                       "type": "pressure",
                       "action": "reveal",
@@ -61781,7 +61890,8 @@
                         "name": "159.3"
                       },
                       "id": "section/82.3/token/7"
-                    }
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               }
@@ -61964,7 +62074,6 @@
                   {
                     "x": -5,
                     "y": 0,
-                    "type": "Difficult Terrain",
                     "trigger": {
                       "type": "door",
                       "display": "Section 93.1",
@@ -61974,7 +62083,8 @@
                         "name": "93.1"
                       },
                       "id": "section/110.4/token/5"
-                    }
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -62838,7 +62948,6 @@
                   {
                     "x": -6,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -62847,7 +62956,8 @@
                         "name": "6.3"
                       },
                       "id": "scenario/107/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -63126,7 +63236,6 @@
                   {
                     "x": -5,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63135,7 +63244,8 @@
                         "name": "31.2"
                       },
                       "id": "scenario/108/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -63202,7 +63312,6 @@
                   {
                     "x": -5,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63211,7 +63320,8 @@
                         "name": "73.1"
                       },
                       "id": "section/31.2/token/4"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -63222,7 +63332,6 @@
                   {
                     "x": -7,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63231,7 +63340,8 @@
                         "name": "184.6"
                       },
                       "id": "section/31.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -63242,7 +63352,6 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63251,7 +63360,8 @@
                         "name": "77.2"
                       },
                       "id": "section/31.2/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -63614,7 +63724,6 @@
                   {
                     "x": -2,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63623,7 +63732,8 @@
                         "name": "79.3"
                       },
                       "id": "scenario/109/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -63762,7 +63872,6 @@
                   {
                     "x": 0,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63771,7 +63880,8 @@
                         "name": "25.1"
                       },
                       "id": "section/79.3/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -63939,7 +64049,6 @@
                   {
                     "x": -5,
                     "y": 5,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -63948,7 +64057,8 @@
                         "name": "83.1"
                       },
                       "id": "scenario/110/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -63999,7 +64109,6 @@
                   {
                     "x": -3,
                     "y": 4,
-                    "type": "Obstacle",
                     "trigger": {
                       "type": "door",
                       "display": "Section 36.1",
@@ -64009,7 +64118,8 @@
                         "name": "36.1"
                       },
                       "id": "section/83.1/token/c"
-                    }
+                    },
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -64031,7 +64141,6 @@
                   {
                     "x": -6,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64040,7 +64149,8 @@
                         "name": "131.5"
                       },
                       "id": "section/83.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -64201,7 +64311,6 @@
                   {
                     "x": -8,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64210,7 +64319,8 @@
                         "name": "146.3"
                       },
                       "id": "section/131.5/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -64522,7 +64632,6 @@
                   {
                     "x": 9,
                     "y": -3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64531,7 +64640,8 @@
                         "name": "78.2"
                       },
                       "id": "scenario/13/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -64723,7 +64833,6 @@
                   {
                     "x": 1,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64733,12 +64842,12 @@
                       },
                       "mode": "all",
                       "id": "section/78.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": -2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64748,12 +64857,12 @@
                       },
                       "mode": "all",
                       "id": "section/78.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 0,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -64763,7 +64872,8 @@
                       },
                       "mode": "all",
                       "id": "section/78.2/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -67238,7 +67348,6 @@
                   {
                     "x": 6,
                     "y": -3,
-                    "type": "Obstacle",
                     "trigger": {
                       "type": "door",
                       "display": "Section 150.2",
@@ -67262,7 +67371,8 @@
                         }
                       ],
                       "id": "scenario/117/token/b"
-                    }
+                    },
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -67321,7 +67431,6 @@
                   {
                     "x": 3,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -67331,7 +67440,8 @@
                       },
                       "locked": true,
                       "id": "scenario/117/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -67342,7 +67452,6 @@
                   {
                     "x": 7,
                     "y": -7,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -67352,7 +67461,8 @@
                       },
                       "locked": true,
                       "id": "scenario/117/token/3"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -67363,18 +67473,18 @@
                   {
                     "x": 10,
                     "y": -5,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/117/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 8,
                     "y": -1,
-                    "type": "Door",
                     "trigger": {
                       "id": "scenario/117/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               }
@@ -67823,7 +67933,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -67833,12 +67942,12 @@
                       },
                       "mode": "all",
                       "id": "scenario/118/token/1"
-                    }
+                    },
+                    "type": "Door"
                   },
                   {
                     "x": 1,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -67848,7 +67957,8 @@
                       },
                       "mode": "all",
                       "id": "scenario/118/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -67966,7 +68076,6 @@
                   {
                     "x": -1,
                     "y": 2,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -67975,7 +68084,8 @@
                         "name": "149.3"
                       },
                       "id": "section/84.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -69667,7 +69777,6 @@
                   {
                     "x": 6,
                     "y": 4,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -69676,7 +69785,8 @@
                         "name": "160.1"
                       },
                       "id": "scenario/121/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -70039,7 +70149,6 @@
                   {
                     "x": 6,
                     "y": 1,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
@@ -70048,7 +70157,8 @@
                         "name": "145.3"
                       },
                       "id": "section/160.1/token/2"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -70300,14 +70410,14 @@
                   {
                     "x": -1,
                     "y": 3,
-                    "type": "Door",
                     "trigger": {
                       "type": "door",
                       "action": "reveal",
                       "locked": true,
                       "what": {},
                       "id": "scenario/122/token/1"
-                    }
+                    },
+                    "type": "Door"
                   }
                 ]
               },
@@ -70426,7 +70536,6 @@
                   {
                     "x": 4,
                     "y": 0,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "door",
                       "display": "Section 127.3",
@@ -70442,7 +70551,8 @@
                         }
                       ],
                       "id": "scenario/122/token/a"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }
@@ -70491,7 +70601,6 @@
                   {
                     "x": 0,
                     "y": 0,
-                    "type": "Pressure Plate",
                     "trigger": {
                       "type": "door",
                       "display": "Section 127.3",
@@ -70507,7 +70616,8 @@
                         }
                       ],
                       "id": "scenario/122/token/a"
-                    }
+                    },
+                    "type": "Pressure Plate"
                   }
                 ]
               }

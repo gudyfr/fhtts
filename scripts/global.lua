@@ -2,10 +2,6 @@ require('json')
 require('constants')
 require('coordinates')
 
-scenarioPickerPage = 0
-minScenarioPickerPage = 0
-maxScenarioPickerPage = math.floor(154 / 10)
-
 scenarioBagId = 'cd31b5'
 ruleBookId = '0ea82e'
 monsterStandeesBagId = '454465'
@@ -16,15 +12,6 @@ mapTilesBagId = '9cbcab'
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad(save)
-   -- load scenario data
-   refreshScenarioData()
-
-   setupScenarioPicker()
-   -- scenarioBag = getObjectFromGUID(scenarioBagId)
-   -- scenarioBag.reset()
-
-   -- getObjectFromGUID(ruleBookId).Book.setPage(83)
-
    addHotkey("Play Initiative Card",
       function(player_color, hovered_object, pointer, key_up) playCard(player_color, 1) end)
    addHotkey("Play Second Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 2) end)
@@ -67,6 +54,8 @@ function onLoad(save)
    end
 
    CurrentScenarioObjects = getScenarioElementObjects()
+
+   Wait.frames(updateData, 1)
 end
 
 function onSave()
@@ -74,32 +63,30 @@ function onSave()
    return JSON.encode(state)
 end
 
-function refreshScenarioData()
-   
+function getBaseUrl()
    local devSettings = JSON.decode(getDevSettings())
    if devSettings['use-dev-assets'] or false then
       local settings = JSON.decode(getSettings())
       local address = settings.address
       local port = settings.port
       if address ~= nil and port ~= nil then
-         broadcastToAll("Loading Development Scenario Data from " .. address .. ":" .. port)
-         WebRequest.get("http://" .. address .. ":" .. port .. "/out/scenarios.json", processScenarioData)
-         WebRequest.get("http://" .. address .. ":" .. port .. "/out/processedScenarios2.json",
-            processAdditionalScenarioData)
-         return
+         return "http://" .. address .. ":" .. port .. "/out/"
       end
    end
+   
+   return "https://gudyfr.github.io/fhtts/"
+end
 
+function refreshScenarioData(baseUrl)
    broadcastToAll("Loading Scenario Data")
-   WebRequest.get("https://gudyfr.github.io/fhtts/scenarios.json", processScenarioData)
-   WebRequest.get("https://gudyfr.github.io/fhtts/processedScenarios2.json",
+   WebRequest.get(baseUrl .. "scenarios.json", processScenarioData)
+   WebRequest.get(baseUrl .. "processedScenarios2.json",
       processAdditionalScenarioData)
 end
 
 function processScenarioData(request)
    -- print("Parsing Scenario Data")
    scenarios = json.parse(request.text)
-   refreshPickerList()
    print("Scenario Data loaded")
 end
 
@@ -366,7 +353,7 @@ function getToken(token, position)
 end
 
 function spawnNElementsIn(count, trackables, name, info, destination, scenarioElementPositions,
-                          currentScenarioElementPosition)                          
+                          currentScenarioElementPosition)
    destination = getObjectFromGUID('cd31b5')
    bag = getObjectFromGUID('5cd812')
    bag.setLock(false)
@@ -613,6 +600,8 @@ function cleanup(forceDelete, noMessage)
       for color, guid in pairs(PlayerMats) do
          getObjectFromGUID(guid).call("cleanup")
       end
+      -- And clear the errata
+      getScenarioMat().call('setErrata',nil)
    end
 
    if highlighted then
@@ -825,11 +814,7 @@ function prepareScenario(name, campaign, title)
          getObjectFromGUID('2a1fbe').call("setScenarioPage", { elements.page, name, folder })
       end
 
-      if elements.errata ~= nil then
-         getObjectFromGUID('a46bc7').setDescription(elements.errata)
-      else
-         getObjectFromGUID('a46bc7').setDescription("")
-      end
+      getScenarioMat().call("setErrata", elements.errata)
 
       local settings = JSON.decode(getSettings())
       if settings["enable-automatic-scenario-layout"] or false then
@@ -1033,6 +1018,10 @@ function layoutMap(map)
                         })
                         local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
                         obj.setPosition({ x, 2.35, z })
+                        -- Handle potential triggers
+                        if position.trigger ~= nil then
+                           attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
+                        end
                      end
                   end
                end
@@ -1193,6 +1182,7 @@ function onEnemiesUpdate(payload)
    -- print("enemies update " .. payload)
    local characterStatus = nil
    -- Check potential triggers
+   local scenarioTriggers = CurrentScenario.triggers
    if scenarioTriggers ~= nil and scenarioTriggers.triggersById ~= nil then
       for id, trigger in pairs(scenarioTriggers.triggersById) do
          if trigger.type == "alldead" then
@@ -1203,7 +1193,14 @@ function onEnemiesUpdate(payload)
             local monsters = characterStatus.monsters or {}
             local allDead = true
             for name, info in pairs(monsters) do
-               if info.current > 0 then
+               local excluded = false
+               for _,excludedName in ipairs(trigger.exclude or {}) do
+                  if string.find(name, excludedName) then
+                     excluded = true
+                  end
+                  -- print(excludedName .. ", " .. name .. ", excluded : " .. tostring(excluded))
+               end
+               if not excluded and info.current > 0 then
                   allDead = false
                end
             end
@@ -1294,7 +1291,7 @@ function actualTriggered(scenarioId, triggerId, objGuid, undo)
       for _, guid in ipairs(doorGuidsToOpen) do
          local door = getObjectFromGUID(guid)
          if door ~= nil then
-            if mode == "removeall" then
+            if mode == "removeall" or type == "on-death" then
                destroyObject(door)
             else
                openDoor(door)
@@ -1464,6 +1461,9 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
          getObjectFromGUID('2a1fbe').call('setSection', what.name)
          getScenarioMat().call("setSection", what.name)
       end
+      if what.type == "section.solo" then
+         playNarration({"solo", what.name})
+      end
       local key = what.type .. "/" .. what.name
       if not (scenarioTriggers.triggered[key] or false) then
          scenarioTriggers.triggered[key] = true
@@ -1553,6 +1553,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       local newTrigger = action.trigger
       newTrigger.id = currentTrigger.id
 
+      -- Reset the possible scenario triggered state
       clearTriggered(currentTrigger, nil)
       for _, objGuid in ipairs(scenarioTriggers.byTriggerId[what]) do
          if objGuid ~= nil then
@@ -1564,8 +1565,6 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
          end
       end
 
-      -- Reset the possible scenario triggered state
-      -- scenarioTriggers.triggered[getTriggeredKey(currentTrigger, nil)] = false
       -- Attach the new trigger
       -- print("Replacing " .. action.what .. " into " .. JSON.encode(newTrigger))
       scenarioTriggers.triggersById[what] = newTrigger
@@ -1811,90 +1810,6 @@ function onObjectLeaveContainer(container, leave_object)
       --print(params)
       getScenarioMat().call("spawned", params)
    end
-end
-
-function setupScenarioPicker()
-   local picker = getObjectFromGUID('98c349')
-   if picker ~= nil then
-      local prevParameters = {
-         click_function = 'prevPickerPage',
-         label = '<',
-         position = { 0.4, 5.0, 0.4 },
-         rotation = { 0, 180, 0 },
-         width = 50,
-         height = 50,
-         font_size = 50,
-      }
-      picker.createButton(prevParameters)
-
-      local nextParameters = {
-         click_function = 'nextPickerPage',
-         label = '>',
-         position = { -0.4, 5.0, 0.4 },
-         rotation = { 0, 180, 0 },
-         width = 50,
-         height = 50,
-         font_size = 50,
-      }
-      picker.createButton(nextParameters)
-
-
-      for i = 1, 10 do
-         self.setVar('chooseScenario' .. i, function() chooseScenario(i) end)
-         buttonParam = {
-            click_function = 'chooseScenario' .. i,
-            label = '.',
-            position = { 0.45, 4.0, 0.37 - 0.082 * i },
-            rotation = { 0, 180, 0 },
-            width = 25,
-            height = 25,
-            font_size = 50,
-         }
-         picker.createButton(buttonParam)
-      end
-   end
-end
-
-function prevPickerPage()
-   scenarioPickerPage = scenarioPickerPage - 1
-   if scenarioPickerPage < 0 then
-      scenarioPickerPage = 0
-   end
-   refreshPickerList()
-end
-
-function nextPickerPage()
-   scenarioPickerPage = scenarioPickerPage + 1
-   if scenarioPickerPage > maxScenarioPickerPage then
-      scenarioPickerPage = maxScenarioPickerPage
-   end
-   refreshPickerList()
-end
-
-function refreshPickerList()
-   local picker = getObjectFromGUID('98c349')
-   if picker ~= nil then
-      description = ""
-      for i = scenarioPickerPage * 10 + 1, scenarioPickerPage * 10 + 10 do
-         scenario = scenarios[i]
-         if scenario ~= nil then
-            description = description .. "     " .. i .. ". " .. scenario.title .. "\n"
-         else
-            description = description .. "     " .. i .. ".\n"
-         end
-      end
-
-      picker.setDescription(description)
-      title = "Scenario Picker (" .. scenarioPickerPage .. " of " .. maxScenarioPickerPage .. ")"
-      picker.setName(title)
-   end
-end
-
-function chooseScenario(i)
-   n = scenarioPickerPage * 10 + i
-   -- print("Chosen Scenario : " .. n)
-   cleanup(true)
-   prepareFrosthavenScenario(n)
 end
 
 function playerDraw(player)
@@ -2418,4 +2333,32 @@ end
 function characterLevelChanged()
    -- We need to delay the update as we're getting the callback *before* the change is effective in the button
    Wait.frames(function() getScenarioMat().call("updateCharacters") end, 10)
+end
+
+DataUpdatables = {}
+function registerDataUpdatable(object)
+   table.insert(DataUpdatables, object)
+end
+
+function updateData()
+   local baseUrl = getBaseUrl()
+   for _,updatable in ipairs(DataUpdatables) do
+      updatable.call("updateData", baseUrl)
+   end
+   refreshScenarioData(baseUrl)
+end
+
+function onPlayerPing(player, position, object)
+   local devSettings = JSON.decode(getDevSettings())
+   local printPingedCoordinates = devSettings['print-pinged-coordinates']
+   if printPingedCoordinates ~= nil then
+      if printPingedCoordinates == 'Global' then
+         print(JSON.encode(position))
+      else
+         local target = getObjectFromGUID(printPingedCoordinates)
+         if target ~= nil then
+            print(JSON.encode(target.positionToLocal(position)))
+         end
+      end
+   end
 end

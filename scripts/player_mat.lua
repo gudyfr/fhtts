@@ -6,7 +6,7 @@ CharacterBags = {
   Boneshaper = 'b56a0c',
   Geminate = '6bc105',
   Deathwalker = 'b69379',
-  ["Banner Spear"] = 'b69379',
+  ["Banner Spear"] = '3f3078',
   Blinkblade = 'c5507b',
   Drifter = 'b2ac9c',
   Snowdancer = 'fd8f2c',
@@ -131,12 +131,12 @@ function loadCharacterBox(characterBox, state)
       baseGuids)
     rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
-    -- Detroy remaining cards form base deck
+    -- Detroy remaining cards from base deck
     if baseDeck ~= nil and not baseDeck.isDestroyed() then
       destroyObject(baseDeck)
     end
   else
-    setAtLocalPosition(baseDeck, AttackModifiersDrawPosition)
+    setAtLocalPosition(baseDeck, AttackModifiersDrawPosition, true)
     setAtLocalPosition(deck, AttackModifiersSupplyPosition)
   end
 

@@ -186,32 +186,36 @@ def attachTriggersToOverlays(overlays, triggerLocations):
                         position['random'] = trigger['random']
 
 
-def attachOverlayTriggersToOverlays(overlays, overlayTriggers):
-    for overlayTrigger in overlayTriggers:
-        overlayName = overlayTrigger['target']['name']
-        for overlay in overlays:
-            if overlay['name'] == overlayName:
-                for position in overlay['positions']:
-                    position['trigger'] = overlayTrigger['trigger']
-
+def attachItemTriggersToItems(items, triggers):
+    for trigger in triggers:
+        itemName = trigger['target']['name']
+        for item in items:
+            if item['name'] == itemName:
+                for position in item['positions']:
+                    position['trigger'] = trigger['trigger']
 
 def positionToKey(position):
     return f"({position['x']},{position['y']})"
 
+def positionToScore(position):
+    if 'deltaY' in position:
+        return 0.75 * position['score'] + 0.25 * (1 / (1 + position['deltaY']))
+    return position['score']
 
 def mapToPositions(entries):
     result = {}
     for entry in entries:
         for position in entry['positions']:
             name = positionToKey(position)
+            score = positionToScore(position)
             if not name in result:
                 result[name] = {"name": entry['name'],
-                                "score": position['score']}
+                                "score": score}
             else:
                 existing = result[name]
-                if existing['score'] < position['score']:
+                if existing['score'] < score:
                     result[name] = {"name": entry['name'],
-                                    "score": position['score']}
+                                    "score": score}
     return result
 
 
@@ -388,6 +392,8 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
     removedMonsters = safeGetOrEmptyList(scenarioSpecials, 'remove-monsters')
     bosses = safeGetOrEmptyList(scenarioSpecials, 'bosses')
     renamed = safeGetOrEmptyList(scenarioSpecials, 'rename')
+    tileOrder = safeGetOrEmptyList(scenarioSpecials, 'tile-order')
+
     result = {"type": mapData["type"], "name": mapData["name"]}
 
     # offsetsByReference = {}
@@ -465,6 +471,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                     # attractorsByReference[tile["name"]] = processedAttractors
                     # resultsByReference[tile["name"]] = {"reference":{"tile" : tile['name'], "tileOrientation" : f"{effectiveOrientation}"}}
                     # offsetsByReference[tile["name"]] = {"x" : xOffset, "y" : yOffset}
+        references.sort(key= lambda e : tileOrder.index(e['tile']) if e['tile'] in tileOrder else 99)
 
         # We now have a reference point (0,0) at tileOffset
         # map every object we've found to its tile coordinate
@@ -508,15 +515,26 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                             dX = x - attractor['x']
                             dY = y - attractor['y']
                             distance = math.sqrt(dX*dX+dY*dY)
-                            if distance < bestDistance or bestReference == None:
+                            betterMatch = bestReference == None                            
+                            if distance < bestDistance:
+                                fuzzyDoorMatch = len(tileOrder) > 0 and ("Door" in name or key == "tokens")
+                                if not fuzzyDoorMatch or distance < bestDistance-300:
+                                    betterMatch = True
+                            if betterMatch:
                                 bestDistance = distance
                                 bestReference = reference
                     xOffset = bestReference['offset']["x"]
                     yOffset = bestReference['offset']["y"]
 
+                    relativeX = x-xOffset
+                    relativeY = y-yOffset
                     x, y = mapToHexCoordinate(x-xOffset, y-yOffset)
-                    bestReference["itemOutput"]["positions"].append(
-                        {"x": x, "y": y, "score": r["score"]})
+                    outputPosition = {"x": x, "y": y, "score": r["score"]}
+                    if key == "monsterLevels":
+                        # Calculate the deviation from the ideal position
+                        tx,ty = mapFromHexCoordinate(x,y)
+                        outputPosition['deltaY'] = abs(relativeY-ty)
+                    bestReference["itemOutput"]["positions"].append(outputPosition)
 
                     for reference in references:
                         if len(reference['itemOutput']["positions"]) > 0:
@@ -542,8 +560,15 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
 
             overlayTriggers = list(
                 filter(lambda e: e['target']['type'] == 'overlay', mapTriggers))
-            attachOverlayTriggersToOverlays(
+            attachItemTriggersToItems(
                 processed['overlays'], overlayTriggers)
+            attachTriggersToOverlays(
+                processed['overlays'], tokenTriggerLocations)
+            
+            monsterTriggers = list(
+                filter(lambda e: e['target']['type'] == 'monster', mapTriggers))
+            
+            attachItemTriggersToItems(processed['monsters'], monsterTriggers)
 
             processed['monsters'] = removeMonsters(
                 processed['monsters'], removedMonsters)
@@ -554,8 +579,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
             addToEntries(processed['monsters'], positionToMonsterLevels, "levels", filter(
                 lambda e: e['in'] == mapData["name"] if 'in' in e else True, bosses))
             addToEntries(processed['overlays'], positionToOverlayTypes, "type")
-            attachTriggersToOverlays(
-                processed['overlays'], tokenTriggerLocations)
+           
 
             subResult["monsters"] = removeScore(processed['monsters'])
             subResult["overlays"] = removeScore(processed['overlays'])

@@ -65,9 +65,12 @@ function onLoad(save)
             addButton(point, tagsMap)
         end
     end
+    Global.call('registerDataUpdatable', self)
+end
 
-    WebRequest.get("https://gudyfr.github.io/fhtts/rules.json", processDecals)
-    WebRequest.get("https://gudyfr.github.io/fhtts/checkmarks.json", processCheckmarks)
+function updateData(baseUrl)
+    WebRequest.get(baseUrl .. "rules.json", processDecals)
+    WebRequest.get(baseUrl .. "checkmarks.json", processCheckmarks)
 end
 
 -- Savable functions
@@ -116,7 +119,6 @@ function processCheckmarks(request)
         checkmarkInfos = {}
     end
 end
- 
 
 function refreshDecals()
     if decalInfos == nil then
@@ -182,10 +184,10 @@ function refreshDecals()
                     end
                 end
                 local bookCheckmarks = checkmarkInfos[name] or {}
-                local pageCheckmarks = bookCheckmarks["".. page] or {}
+                local pageCheckmarks = bookCheckmarks["" .. page] or {}
                 -- print(JSON.encode(State[name].checkmarks))
-                for i,checkmark in ipairs(pageCheckmarks) do
-                    local checkmarkName = getCheckmarkName(checkmark) 
+                for i, checkmark in ipairs(pageCheckmarks) do
+                    local checkmarkName = getCheckmarkName(checkmark)
                     local checked = ((State[name].checkmarks or {})["" .. page] or {})[checkmarkName] or false
                     local label = ""
                     if checked then
@@ -196,16 +198,16 @@ function refreshDecals()
                     local pos = checkmark.position
                     local params = {
                         function_owner = self,
-                                click_function = fName,
-                                label          = label,
-                                position       = { -pos.x, pos.y + 0.05, pos.z },
-                                width          = 150*(checkmark.size or 1),
-                                height         = 150*(checkmark.size or 1),
-                                font_size      = 100*(checkmark.size or 1),
-                                color          = { 1, 1, 1, 0 },
-                                scale          = { .20,.20,.20 },
-                                font_color     = { 0, 0, 0, 100 },
-                                tooltip        = "",
+                        click_function = fName,
+                        label          = label,
+                        position       = { -pos.x, pos.y + 0.05, pos.z },
+                        width          = 150 * (checkmark.size or 1),
+                        height         = 150 * (checkmark.size or 1),
+                        font_size      = 100 * (checkmark.size or 1),
+                        color          = { 1, 1, 1, 0 },
+                        scale          = { .20, .20, .20 },
+                        font_color     = { 0, 0, 0, 100 },
+                        tooltip        = "",
                     }
                     obj.createButton(params)
                 end
@@ -248,7 +250,7 @@ function getCheckmarkName(checkmark)
     if checkmark.name or false then
         return checkmark.name
     else
-        return checkmark.position.x .. "," ..checkmark.position.z
+        return checkmark.position.x .. "," .. checkmark.position.z
     end
 end
 
@@ -260,7 +262,7 @@ function toggleCompleted(params)
     -- Locate the appropriate checkmark
     if checkmarkInfos ~= nil then
         for page, entries in pairs(checkmarkInfos["scenario book"]) do
-            for _,entry in ipairs(entries) do
+            for _, entry in ipairs(entries) do
                 if entry.name == scenario then
                     -- get the current State
                     local State = ((State["scenario book"] or {})["checkmarks"] or {})[page] or {}
@@ -292,12 +294,18 @@ function toggleCheckmark(book, page, name)
 
     if book == "scenario book" then
         -- Tell the campaign tracker(s) this scenario is complete
-        local ctGuids = {'029e08','631fbe','7f539b','31de67','e145fb'}
+        local ctGuids = { '029e08', '631fbe', '7f539b', '31de67', 'e145fb' }
         for _, guid in ipairs(ctGuids) do
             local ct = getObjectFromGUID(guid)
             if ct ~= nil then
-                ct.call("toggleCompleted", {name, not checkmarkState})
+                ct.call("toggleCompleted", { name, not checkmarkState })
             end
+        end
+        if tonumber(name) > 137 then
+            -- Solo scenarios are NOT handled by any campaign tracker, and so we need to let the scenario picker know
+            -- about the change.
+            local picker = getObjectFromGUID('596fc4')
+            picker.call('updateSoloScenario', { name, not checkmarkState })
         end
     end
 
@@ -468,7 +476,10 @@ function goToPage(target, page, value)
                     -- Switch State if needed
                     if currentState.guid ~= entry.guid then
                         currentState = currentState.setState(idx)
-                        getObjectFromGUID(entry.guid).setLuaScript("function onLoad() Wait.time(function() self.Book.setPage(" .. (page - entry.from) .. ") end, 0.1, 5) end")
+                        getObjectFromGUID(entry.guid).setLuaScript(
+                            "function onLoad() Wait.time(function() self.Book.setPage(" ..
+                            (page - entry.from) ..
+                            ") end, 0.1, 5) getObjectFromGUID('" .. self.guid .. "').call('refreshDecals') end")
                     else
                         currentState.Book.setPage(page - entry.from)
                     end
@@ -478,6 +489,10 @@ function goToPage(target, page, value)
     end
     if target == "section book" and value ~= nil then
         LoadedSection = value
+    end
+    if target == "scenario book" and page == 2 then
+        LoadedScenarioType = "scenarios"
+        LoadedScenarioNumber = "Welcome To Frosthaven"
     end
 end
 
@@ -530,8 +545,8 @@ end
 
 function audioPlay(target)
     if target == "scenario book" and LoadedScenarioNumber ~= nil and LoadedScenarioType ~= nil then
-        Global.call("playNarration",{LoadedScenarioType, LoadedScenarioNumber})
+        Global.call("playNarration", { LoadedScenarioType, LoadedScenarioNumber })
     elseif target == "section book" and LoadedSection ~= nil then
-        Global.call("playNarration", {"sections", LoadedSection})
+        Global.call("playNarration", { "sections", LoadedSection })
     end
 end

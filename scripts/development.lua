@@ -6,7 +6,8 @@ require('coordinates')
 function createEmptyState()
     return {
         state = {
-            ["use-dev-assets"] = false
+            ["use-dev-assets"] = false,
+            ["print-pinged-coordinates"] = ""
         }
     }
 end
@@ -14,6 +15,7 @@ end
 function getExpectedEntries()
     return {
         { "use-dev-assets", "checkbox" },
+        { "print-pinged-coordinates", "text" },
         { "getTileLayout",  "button" },
         { "onRefreshData",  "button" },
         { "onReset",        "button" }
@@ -21,7 +23,7 @@ function getExpectedEntries()
 end
 
 function onRefreshData()
-    Global.call("refreshScenarioData")
+    Global.call("updateData")
 end
 
 function onReset()

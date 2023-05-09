@@ -195,6 +195,35 @@
                     "y": -2
                 }
             }
+        ],
+        "tile-order" : ["07-D","05-B","15-A"],
+        "entries-to-map": [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 170
+                },
+                "having": {
+                    "reference": "05-B"
+                },
+                "to": {
+                    "type": "section.solo.noaudio",
+                    "name": "138.0"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 170
+                },
+                "having": {
+                    "reference": "15-A"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "138.1"
+                }
+            }
         ]
     },
     "139": {
@@ -233,6 +262,35 @@
                 "origin": {
                     "x": 1,
                     "y": -7
+                }
+            }
+        ],
+        "tile-order" : [ "10-C", "11-F", "08-A"],
+        "entries-to-map" : [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 171
+                },
+                "having": {
+                    "reference": "11-F"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "139.1"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 171
+                },
+                "having": {
+                    "reference": "08-A"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "139.2"
                 }
             }
         ]
@@ -342,6 +400,42 @@
                     "x": 9,
                     "y": -7
                 }
+            }
+        ],
+        "tile-order" : ["07-B", "16-A", "13-E"],
+        "entries-to-map" : [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 175
+                },
+                "having": {
+                    "reference": "16-A"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "142.1"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 175
+                },
+                "having": {
+                    "reference": "13-E"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "142.2"
+                }
+            }
+        ],
+        "bosses" : [
+            {
+                "in": 175,
+                "from": "Living Bones",
+                "to": "Hollow Scholar"
             }
         ]
     },

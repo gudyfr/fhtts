@@ -33,7 +33,7 @@ end
 
 function setAtLocalPosition(object, position, flipped)
     flipped = flipped or false
-    local finalPosition = {position.x, position.y+0.5, position.z}
+    local finalPosition = {position.x, position.y+1.5, position.z}
     object.setPosition(self.positionToWorld(finalPosition))
     local zRot = 0
     if flipped then

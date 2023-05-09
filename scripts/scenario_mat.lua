@@ -191,7 +191,7 @@ function onLoad(state)
     end
 
     -- attack modifier draw buttons
-    for color,position in pairs(AttackModifierButtons) do
+    for color, position in pairs(AttackModifierButtons) do
         local fName = "drawAttackModifier_" .. color
         local buttonPosition = { -position.x, position.y + 0.02, position.z }
         local params = getButtonParams(fName, "Draw Attack Modifier\n(right click to shuffle)", buttonPosition, 600, 400)
@@ -712,6 +712,7 @@ function maybeRemoveInitiativeToggleButton(color)
 end
 
 function updateCharacters()
+    local scenarioPicker = getObjectFromGUID('596fc4')
     for _, color in ipairs(colors) do
         local playerMat = Global.call("getPlayerMatExt", { color })
         if playerMat ~= nil then
@@ -720,6 +721,7 @@ function updateCharacters()
             if Characters[color] ~= characterName then
                 if Characters[color] ~= nil then
                     updateAssistant("POST", "removeCharacter", { character = Characters[color] }, updateState)
+                    scenarioPicker.call('removeSoloFor', Characters[color])
                 end
                 if characterName ~= nil then
                     updateAssistant("POST", "addCharacter", { character = characterName }, updateState)
@@ -739,6 +741,11 @@ function updateCharacters()
                 local level = playerMat.call("getCharacterLevel")
                 if level ~= nil then
                     updateAssistant("POST", "change", { target = characterName, what = "level", change = level })
+                    if level < 5 then
+                        scenarioPicker.call('removeSoloFor', characterName)
+                    else
+                        scenarioPicker.call('addSoloFor', characterName)
+                    end
                 end
             end
         else
@@ -1167,7 +1174,7 @@ function locateBoardElementsFromTags()
                 ScenarioButtons["end"] = position
             elseif tagsMap["cleanup"] ~= nil then
                 ScenarioButtons["cleanup"] = position
-            elseif tagsMap["attack modifier"]~= nil then
+            elseif tagsMap["attack modifier"] ~= nil then
                 local color = getColorFromTags(tagsMap)
                 if color ~= nil then
                     AttackModifierButtons[color] = position
@@ -1216,6 +1223,10 @@ function locateBoardElementsFromTags()
 
         if tagsMap["scenarioElement"] ~= nil then
             table.insert(scenarioElementPositions, self.positionToWorld(position))
+        end
+
+        if tagsMap["errata"] ~= nil then
+            ErrataPosition = position
         end
     end
 
@@ -1387,7 +1398,7 @@ function processState(state)
         -- print(JSON.encode(entry))
         local id = entry.id
         -- We need to get rid of some of the (FH) and scenario specific monster names
-        local searches = { ' (FH)', ' Scenario ' }
+        local searches = { ' (', ' Scenario ' }
         for _, s in ipairs(searches) do
             local search = string.find(id, s, 1, true)
             if search ~= nil then
@@ -1409,8 +1420,11 @@ function processState(state)
         else
             if entry.monsterInstances ~= nil then
                 for _, instance in ipairs(entry.monsterInstances) do
-                    monstersStatus[id .. " " .. instance.standeeNr] = { current = instance.health, max = instance
-                    .maxHealth }
+                    monstersStatus[id .. " " .. instance.standeeNr] = {
+                        current = instance.health,
+                        max = instance
+                            .maxHealth
+                    }
                 end
             end
         end
@@ -1979,8 +1993,43 @@ end
 
 function drawAttackModifier(color, alt)
     if alt then
-        Global.call("playerShuffle", {color=color})
+        Global.call("playerShuffle", { color = color })
     else
-        Global.call("playerDraw", {color=color})
+        Global.call("playerDraw", { color = color })
+    end
+end
+
+function setErrata(errata)
+    if ErrataPosition ~= nil then
+        -- Clear possible existing errata 'button'
+        for _, button in ipairs(self.getButtons() or {}) do
+            if button.width == 0 and button.height == 0 then
+                local buttonPosition = button.position
+                local dx = buttonPosition.x + ErrataPosition.x -- x is flipped
+                local dz = buttonPosition.z - ErrataPosition.z
+
+                if dx * dx + dz * dz < 0.1 then
+                    self.removeButton(button.index)
+                end
+            end
+        end
+
+        -- No need to add an errata button if there's nothing to show
+        if errata ~= nil and errata ~= "" then
+            local params = {
+                function_owner = self,
+                click_function = "noop",
+                label = "Errata : " .. errata,
+                position = { -ErrataPosition.x, ErrataPosition.y + 0.5, ErrataPosition.z },
+                width = 0,
+                height = 0,
+                font_size = 200,
+                color = { 0, 0, 0, 1 },
+                scale = { 1, 1, 1 },
+                font_color = { 1, 1, 1, 1 },
+                rotation = { 0, 180, 0 },
+            }
+            self.createButton(params)
+        end
     end
 end
