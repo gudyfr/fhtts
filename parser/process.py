@@ -756,5 +756,5 @@ with open("tileInfos.json", 'r') as tf:
             scenariosOutput[id] = scenarioOutput
         with open("../processedScenarios.human.json", 'w') as fw:
             json.dump(scenariosOutput, fw, indent=2)
-        with open("../www/processedScenarios2.json", 'w') as fw:
+        with open("../docs/processedScenarios2.json", 'w') as fw:
             json.dump(scenariosOutput, fw)

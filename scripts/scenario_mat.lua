@@ -4,6 +4,7 @@ require("savable")
 require("deck_save_helpers")
 require("utils")
 require('fhlog')
+require('standees')
 
 TAG = "ScenarioMat"
 
@@ -66,7 +67,6 @@ end
 
 -- scenario mat
 hidden_buttons = 1
-debugSnapPoints = false
 relativeStateButtonLocations = {
     persist = { 0.5, 0.01, -1.7 },
     lost = { 0.9, 0.01, -1.7 },
@@ -94,10 +94,8 @@ function onSave()
     })
 end
 
--- current bg : http://cloud-3.steamusercontent.com/ugc/2035103391730369424/AFC2649C41791FBFF1C74226198868D4AE7506F5/
-
-
 function onLoad(state)
+    fhLogInit()
     self.interactable = false
     if state ~= nil then
         local json = JSON.decode(state)
@@ -153,7 +151,6 @@ function onLoad(state)
         end
     end
 
-    --self.interactable = false
     if cardStates == nil then
         cardStates = {
             Green = { 0, 0, 0 },
@@ -166,13 +163,6 @@ function onLoad(state)
     deckPositions = {}
 
     locateBoardElementsFromTags()
-
-    -- print(JSON.encode({
-    --     DrawButtons = DrawButtons,
-    --     DrawDecks = DrawDecks,
-    --     ChallengesDestinations = ChallengesDestinations,
-    --     BackButtons = BackButtons
-    -- }))
 
     -- toggle buttons for the various cards played
     for color, locations in pairs(cardLocations) do
@@ -235,12 +225,6 @@ function onLoad(state)
         flipX(ScenarioButtons["cleanup"]), 1100, 400)
     self.createButton(button_parameters)
 
-    if debugSnapPoints then
-        for _, point in pairs(self.getSnapPoints()) do
-            print(point.position)
-        end
-    end
-
     -- tag based actions
     for _, point in pairs(self.getSnapPoints()) do
         tags = point.tags
@@ -294,7 +278,7 @@ function onLoad(state)
     -- Deck buttons
     if DrawButtons["Battle Goals"] ~= nil and DrawDecks["Battle Goals"] ~= nil then
         local pos = DrawButtons["Battle Goals"]
-        local params = getButtonParams("drawBattleGoal", "Deal to all players", { -pos.x, pos.y + 0.02, pos.z })
+        local params = getButtonParams("drawBattleGoal", "Shuffle and deal 3 to all players", { -pos.x, pos.y + 0.02, pos.z })
         self.createButton(params)
     end
 
@@ -315,9 +299,7 @@ function onLoad(state)
     end
 
     updateCharacters()
-    -- refreshDecals() -- Called by updateCharacters above
-    registerSavable("Scenario Mat")
-    fhLogInit()
+    registerSavable("Scenario Mat")    
 end
 
 function flipX(position)
@@ -341,6 +323,7 @@ function getButtonParams(fName, tooltip, pos, width, height)
 end
 
 function drawBattleGoal()
+    fhlog(INFO, TAG, "drawBattleGoal()")
     -- Locate the deck
     local hitlist = Physics.cast({
         origin       = self.positionToWorld(DrawDecks["Battle Goals"]),
@@ -353,12 +336,14 @@ function drawBattleGoal()
 
     for i, j in pairs(hitlist) do
         if j.hit_object.tag == "Deck" then
-            j.hit_object.deal(1)
+            j.hit_object.shuffle()
+            j.hit_object.deal(3)
         end
     end
 end
 
 function drawChallenge()
+    fhlog(INFO, TAG, "drawChallenge()")
     -- find a destination
     local destination = findChallengeDestination()
     -- print(JSON.encode(destination))
@@ -388,6 +373,7 @@ function drawChallenge()
 end
 
 function returnChallenge(source)
+    fhlog(INFO, TAG, "returnChallenge(%s)", source)
     local destination = getChallengeDeck()
 
     local hitlist = getHitlist(ChallengesDestinations[source])
@@ -702,7 +688,7 @@ function maybeAddInitiativeToggleButton(color)
 end
 
 function toggleInitiative(color)
-    print("Toggle initiative " .. color)
+    fhlog(DEBUG,TAG, "Toggle initiative ", color)
     if initiativeTypes[color] == nil or initiativeTypes[color] == "Fast" then
         initiativeTypes[color] = "Slow"
     else
@@ -1058,7 +1044,7 @@ function spawned(params)
                         end
                     end
                 else
-                    print("Could not fetch Standee number : " .. (re.text or "<empty response>"))
+                    fhlog(ERROR, TAG, "Could not fetch Standee number : %s" ,(re.text or "<empty response>"))
                 end
             end
         )
@@ -1373,19 +1359,29 @@ end
 
 previousHash = ""
 hasTrackedChanged = false
+ConsecutiveErrors = 0
 function updateState(request)
     -- print("Updating state")
     if request.is_done and not request.is_error then
-        local hash = request.getResponseHeader("hash")
-        if hash ~= nil and hash == previousHash then
-            return
+        if math.floor(request.response_code / 100) == 2 then
+            ConsecutiveErrors = 0
+            local hash = request.getResponseHeader("hash")
+            if hash ~= nil and hash == previousHash then
+                return
+            end
+            previousHash = hash
+            -- Parse and process the response
+            local fullState = jsonDecode(request.text)
+            processState(fullState)
+        else
+            fhlog(WARNING,TAG,"Error Fetching State (%s) : %s", request.response_code, request.text)
         end
-        previousHash = hash
-        -- Parse and process the response
-        local fullState = jsonDecode(request.text)
-        processState(fullState)
     else
-        print("Error Fetching State : ", request.error)
+        fhlog(WARNING,TAG,"Error Fetching State : %s", request.error)
+        ConsecutiveErrors = ConsecutiveErrors + 1
+        if ConsecutiveErrors % 10 == 9 then
+            broadcastToAll("Error connecting to X-Haven assistant. Is it running with the server enabled?", {r=1,g=0,b=0})
+        end
     end
 end
 
@@ -1559,97 +1555,7 @@ function refreshStandees(state)
     end
 end
 
-conditionStickerUrls = {
-    hp1 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055343/7A64B372E18684E1E9DAB433C02217133D4DCCA3/",
-    hp2 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055385/AA663B8A8D8A1997060B9D4D3D7600617CAE8332/",
-    hp3 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055446/78B1A3C2C4E00F07B01BA81A108DD52156D7BBAE/",
-    hp4 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055481/625109B6E542E9B178441B7474F6207993B4CE9D/",
-    hp5 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055520/A4E6D2F93126548037DDA5FB8B6217EF1E01058A/",
-    hp6 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055566/7C3B6D8772CCE1EEF33CA6C22F2AE473ED969D32/",
-    hp7 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055620/0CE305DD7B81DEF45C48FEE25932E3599C6C5230/",
-    hp8 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055666/C832C26D2AEE472C233C4DABCC468680EF4965CF/",
-    hp9 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055713/124BE0A20873A0A286C206487BB05EC1BB3DE0B0/",
-    hp10 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055762/48D67B1D41430B081C975956A8AE06C792A58714/",
-    hp11 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055809/23ECF3DAE5372B72EA48A22CC57B74470B2ED5CB/",
-    hp12 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055863/8E747809AC673892E7D092B4D31FE121B7B67E69/",
-    hp13 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055906/209766A075F6DA806A6F9DAA25F910C01EAC9149/",
-    hp14 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055953/A8B9B9F4B64C7906CC84A7FD9D64AD8DD2A72707/",
-    hp15 = "http://cloud-3.steamusercontent.com/ugc/2035103391709055999/7F9D1A06187C83F3031ACF92F6FB0682C0D99245/",
-    hp16 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056034/8929A4EC2C80A92B818AEF20CF67D026ECEDC6D7/",
-    hp17 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056078/A4BC8999CDB5D264D6395BD0C200FD46694E19B1/",
-    hp18 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056108/18147D154C883EEF05C1D027C9042B0E00CD96DA/",
-    hp19 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056140/7F8FFA939B5B601C9E2F68EEAA4E8B8643F83DB8/",
-    hp20 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056188/E96FA7B2FBD19672D299F80185F9BDF55EE1CFF6/",
-    hp21 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056216/F1568D22D7B317A20DAB8A9EF6DC2FE90441CE35/",
-    hp22 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056261/E928B4D5E8C65B63A297D4D828769DFB640552E4/",
-    hp23 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056306/0EB79936BCD1EFA1D337E700B7041C0A1A0C68CE/",
-    hp24 = "http://cloud-3.steamusercontent.com/ugc/2035103391709056351/AFB76162D1CFB02E57163E3C037344BA8AA4C887/",
-    immobilize = "http://cloud-3.steamusercontent.com/ugc/2035103391708914698/544D391BC3FFA0710CDCA0455E069D0BA3A0E516/",
-    invisible = "http://cloud-3.steamusercontent.com/ugc/2035103391708914745/B7778CB621FAC723D1DCF709C6DD5F831D6BBD9B/",
-    muddle = "http://cloud-3.steamusercontent.com/ugc/2035103391708914772/A1453591AAD62662071B05FF31327EF8724DB3D0/",
-    poison = "http://cloud-3.steamusercontent.com/ugc/2035103391708914856/3D9BB599D8414AD9CE0C43A07C825D0092F26B84/",
-    regenerate = "http://cloud-3.steamusercontent.com/ugc/2035103391708914955/5DE151FC580FC26277350DDA552C61E5CA0ED02C/",
-    strengthen = "http://cloud-3.steamusercontent.com/ugc/2035103391708915016/45A93A5447EE74C6B981ED9CC7992AE26BE5EC5A/",
-    stun = "http://cloud-3.steamusercontent.com/ugc/2035103391708915049/9B5A10A5C652DB0333BD177B66F09348DE05BF68/",
-    ward = "http://cloud-3.steamusercontent.com/ugc/2035103391708915078/60939930CF3E926157A5BD018A5ABDC194C95147/",
-    wound = "http://cloud-3.steamusercontent.com/ugc/2035103391708915110/06281870BFC2A6ABE6F02B095F48DFBFCAC3567E/",
-    disarm = "http://cloud-3.steamusercontent.com/ugc/2035103391708914666/0B131D55F65331E55962A34A4EFB5A1433193AEE/",
-    brittle = "http://cloud-3.steamusercontent.com/ugc/2035103391708914586/88F7DA427C9C3A0F57EA8E86CBB769DEF4FCF892/",
-    bane = "http://cloud-3.steamusercontent.com/ugc/2035103391708914520/C764491CDC2E58A3CF6A712F49834B9D9880DC07/",
-    impair = "http://cloud-3.steamusercontent.com/ugc/2035105196640585380/D8773B0CA29FE916D0185AB9F03172F39818E537/",
-    shield1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290311/BC64F39C512867AD9DAC68E988076778F0C1AD40/",
-    shield2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290346/2CED35E5F7C08F748B30FEB1E0EBDB340BA8F417/",
-    shield3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290383/8BE64C6BF3D625B69AC7F76BBF96D2EE3E4B6226/",
-    shield4 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290421/E0D90BF752DD955A10E9948DDE673709D7483795/",
-    shield5 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290457/E00FB544D07EB25C3AC1FB50FB5F2154C3D6693E/",
-    shield6 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290493/0F8ACAB61F2557A652236A94BFA28534DA2CF189/",
-    shield7 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290524/4943CFFD29863CCE0BD548FF024A7AC40591D6F1/",
-    retaliate1 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290031/F9438EC6FEDADFFDF133C9899ED803BA483772E6/",
-    retaliate2 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290078/7743C4D2AF0E4789711BB108DFB9BE959DB1298C/",
-    retaliate3 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290133/26F17FBAFDFE932CA8D592222C08D80C9BEAF6AF/",
-    retaliate4 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290177/8C4E1B7AF413B73F556D96D1B6C391D2FD84D670/",
-    retaliate5 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290210/CAD469ECFFFCE1B43EA584919AA672E70AD7A31E/",
-    retaliate6 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290242/7156C7C6CDA299221D3E993626F79FF21385D0BD/",
-    retaliate7 = "http://cloud-3.steamusercontent.com/ugc/2035104740167290274/6D68236D0648C02DBDBDFBF70289B0B732CA81A5/",
-}
 
-
-conditionsOrder = {
-    "stun",
-    "immobilize",
-    "disarm",
-    "wound",
-    "wound2",
-    "muddle",
-    "poison",
-    "poison2",
-    "poison3",
-    "poison4",
-    "bane",
-    "brittle",
-    "chill",
-    "infect",
-    "impair",
-    "rupture",
-    "strengthen",
-    "invisible",
-    "regenerate",
-    "ward",
-    "dodge",
-}
-
-StandeeNumbers = {
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017140/C7314EC36DA07F3C95057D82FED46234229ABE4D/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017186/9D3341710CB0D905566471243B604FCB9BB35363/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017242/EA13B96F92143743E6AE713E939E235B3D06462E/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017291/EF26D47DC570B7D9ED361F1C586D1571D8CF56BB/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017336/EA86AD5B583E16A08B6D0F9E66335D0EC73A0A7E/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017372/A53C35E23B1133A4A3C5DC6C5730C1DCBEC2F303/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017427/8210A7D989F7C8E6717F7F88C51CB4C35DEB6E98/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017480/E499AE08EE5B39619E48BC02572126A40160A540/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017527/6DB6B52BA864453C5775A44F7A84E511B3C6A286/",
-    "http://cloud-3.steamusercontent.com/ugc/2035105196646017567/954EAE53C45DAE328BCF1D9F386AF1826DC65931/",
-}
 
 function noop()
 end
@@ -1686,8 +1592,9 @@ function refreshStandee(standee, instance)
         local nr = tonumber(inputs[1].value or 0)
         if nr >= 1 and nr <= 10 then
             -- Apply the standeeNr sticker
+            local position = StandeeNrPositions[standee.getName()] or { -0.2, 0.5, -0.05 }
             local sticker = {
-                position = { -0.2, 0.5, -0.05 },
+                position = position,
                 rotation = { 0, baseYRot, 0 },
                 scale = { 0.2, 0.2, 0.2 },
                 url = StandeeNumbers[nr],
@@ -1696,7 +1603,6 @@ function refreshStandee(standee, instance)
             table.insert(stickers, sticker)
         end
     end
-
 
     local hp = math.ceil(instance.health * 24 / instance.maxHealth)
     local vec = mapToStandeeInfoArea(-0.05, 0, 0, xScaleFactor, yScaleFactor, flip)
@@ -1806,7 +1712,7 @@ function refreshStandee(standee, instance)
             standeeStates[standee.guid].turnState ~= nil and
             standeeStates[standee.guid].turnState == 1 and
             instance.turnState == 2 then
-            print("End of round looting for " .. standee.getName())
+            fhlog(DEBUG, TAG, "End of round looting for %s", standee.getName())
             local position = standee.getPosition()
             local hitlist = Physics.cast({
                 origin       = position,
@@ -1818,7 +1724,7 @@ function refreshStandee(standee, instance)
             local nbLoot = 0
             for _, item in pairs(hitlist) do
                 if item.hit_object.getName() == "Loot" then
-                    print("Found loot")
+                    fhlog(DEBUG, TAG, "Found loot")
                     log(item.hit_object)
                     nbLoot = nbLoot + 1
                     destroyObject(item.hit_object)

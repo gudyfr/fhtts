@@ -8,7 +8,6 @@ function createEmptyState()
         state = {
             ["use-dev-assets"] = false,
             ["print-pinged-coordinates"] = "",
-            ["log-enabled"] = true,
             ["log-level"] = "debug",
             ["log-tags"] = "",
         }
@@ -19,7 +18,6 @@ function getExpectedEntries()
     return {
         { "use-dev-assets", "checkbox" },
         { "print-pinged-coordinates", "text" },
-        { "log-enabled",  "checkbox", onFhLogUpdate},
         { "log-level", "text", onFhLogUpdate},
         { "log-tags", "text", onFhLogUpdate},
         { "getTileLayout",  "button" },
@@ -38,7 +36,8 @@ end
 
 function getTileLayout()
     local objects = getObjectFromGUID(ScenarioMatZoneGuid).getObjects(true)
-    local result = {}
+    local tileResults = {}
+    local stickerResults = {}
     for _, obj in ipairs(objects) do
         if obj.hasTag("tile") then
             -- Tile name
@@ -78,10 +77,16 @@ function getTileLayout()
             local ox, oy = rotateHexCoordinates(origin.x, origin.y, orientation - (tileInfo.angle or 0))
             tile.origin = { x = ox + hx, y = oy + hy }
 
-            table.insert(result, tile)
+            table.insert(tileResults, tile)
+        end
+        for _,decal in ipairs(obj.getDecals() or {}) do
+            if decal.name == "standee_nr" then
+                table.insert(stickerResults, {name=obj.getName(), position=decal.position})
+            end
         end
     end
-    print(JSON.encode(result))
+    print(JSON.encode(tileResults))
+    print(JSON.encode(stickerResults))
 end
 
 function onFhLogUpdate()

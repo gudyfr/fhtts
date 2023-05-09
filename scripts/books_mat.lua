@@ -258,7 +258,7 @@ function getCheckmarkName(checkmark)
 end
 
 function toggleCompleted(params)
-    print(JSON.encode(params))
+    
     local scenario = string.sub(params[1], 3)
     local completed = params[3]
 

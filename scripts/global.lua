@@ -1,6 +1,9 @@
 require('json')
 require('constants')
 require('coordinates')
+require('fhlog')
+
+TAG = "Global"
 
 scenarioBagId = 'cd31b5'
 ruleBookId = '0ea82e'
@@ -12,6 +15,7 @@ mapTilesBagId = '9cbcab'
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad(save)
+   fhLogInit()
    addHotkey("Play Initiative Card",
       function(player_color, hovered_object, pointer, key_up) playCard(player_color, 1) end)
    addHotkey("Play Second Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 2) end)
@@ -88,12 +92,12 @@ end
 function processScenarioData(request)
    -- print("Parsing Scenario Data")
    scenarios = json.parse(request.text)
-   print("Scenario Data loaded")
+   fhlog(DEBUG, TAG, "Scenario Data loaded")
 end
 
 function processAdditionalScenarioData(request)
    ScenarioInfos = jsonDecode(request.text)
-   print("Scenario Layout Data loaded")
+   fhlog(DEBUG, TAG,"Scenario Layout Data loaded")
 end
 
 letterConfigs = {
@@ -532,7 +536,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                   destination.putObject(obj)
                end
             else
-               print("Error finding overlay " .. name)
+               fhlog(ERROR, TAG, "Error finding overlay %s", name)
             end
          end
          bag.putObject(container)
@@ -961,7 +965,7 @@ function layoutMap(map)
                            attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                         end
                      else
-                        print(" could not find object in prepare area : " .. overlay.name)
+                        fhlog(WARNING, TAG, "Could not find object in prepare area : %s", overlay.name)
                      end
                   end
                end
@@ -1314,14 +1318,14 @@ function getTriggeredKey(trigger, objGuid)
 
    local triggerKey = trigger.id
    if triggerKey == nil then
-      print("No trigger id in " .. JSON.encode(trigger))
+      fhlog(WARNING, TAG, "No trigger id in %s", trigger)
    end
    if dedupMode == "obj" then
       triggerKey = triggerKey .. "/" .. (objGuid or "scenario")
    elseif dedupMode == "first" then
       triggerKey = triggerKey .. "/first"
    else
-      print("Unknown dedupMode : " .. dedupMode .. " in " .. JSON.encode(trigger))
+      fhlog(WARNING, TAG, "Unknown dedupMode : %s in %s",dedupMode, trigger)
    end
 
    return triggerKey
@@ -1366,7 +1370,6 @@ function recursiveDeleteObjectsOn(guid, deleteSelf, exceptionsMap, onlysMap)
       if object ~= nil then
          local name = object.getName()
          if object.hasTag("deletable") and exceptionsMap[name] == nil then
-            print(#onlysMap)
             if onlysMap == nil or onlysMap[name] ~= nil then
                -- Check if this is a door, in which case we need to update the scenarioDoors entries
                if string.find(name, "Door") then
@@ -1448,7 +1451,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       -- print("Setting " .. triggerKey .. " to " .. tostring((not undo)))
       scenarioTriggers.triggered[triggerKey] = not undo
    else
-      print("Not performing action, as trigger has already been triggered " .. triggerKey)
+      fhlog(DEBUG, TAG, "Not performing action, as trigger %s has already been triggered", triggerKey)
       -- We've already triggered this one, avoid triggering again
       return
    end
@@ -1683,10 +1686,10 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
                local dx = origin.x - center.x
                local dy = origin.y - center.y
                local x, y = rotateHexCoordinates(dx, dy, action.by or 0)
-               print("Remapping tile origin from " .. JSON.encode(tile.origin) .. " to :")
+               local originalOrigin = deepCopy(tile.origin)
                tile.origin.x = x + center.x
                tile.origin.y = y + center.y
-               print("   " .. JSON.encode(tile.origin))
+               fhlog(DEBUG, TAG, "Remapped tile origin from %s to %s ", originalOrigin, tile.origin)
             end
          end
       end
@@ -2168,7 +2171,7 @@ function onObjectCollisionEnter(hit_object, collision_info)
    if hit_object.hasTag("pressurePlate") then
       -- "looter" should be good proxy for "character"
       if obj.hasTag("looter") then
-         print("Pressing Pressure Plate")
+         fhlog(DEBUG, TAG, "Pressing Pressure Plate")
          local scenarioTriggers = CurrentScenario.triggers
          local triggerIds = scenarioTriggers.byObjectGuid[hit_object.guid]
          for _, triggerId in ipairs(triggerIds) do
@@ -2207,7 +2210,7 @@ function onObjectCollisionExit(hit_object, collision_info)
    if hit_object.hasTag("pressurePlate") then
       -- "looter" should be good proxy for "character"
       if obj.hasTag("looter") then
-         print("Releasing Pressure Plate")
+         fhlog(DEBUG, TAG,"Releasing Pressure Plate")
          local scenarioTriggers = CurrentScenario.triggers
          local triggerIds = scenarioTriggers.byObjectGuid[hit_object.guid]
          for _, triggerId in ipairs(triggerIds) do
@@ -2382,11 +2385,10 @@ end
 
 function fhLogSettingsUpdated()
    local devSettings = JSON.decode(getDevSettings())
-   local enabled = devSettings['log-enabled']
    local level = devSettings['log-level']
    local tags = devSettings['log-tags']
 
-   local payload = JSON.encode({ enabled = enabled, level = level, tags = tags })
+   local payload = JSON.encode({level = level, tags = tags })
    for _, obj in ipairs(FhLoggers) do
       obj.call("onFhLogSettingsUpdated", payload)
    end
