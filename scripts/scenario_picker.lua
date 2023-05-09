@@ -23,7 +23,7 @@ function createEmptyState()
     }
     if IsDevMat then
         -- Development scenario picker
-        for i=0,153 do
+        for i=0,154 do
             state.scenarios[tostring(i)] = {
                 available = true,
                 locked = false,
