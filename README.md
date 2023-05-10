@@ -47,7 +47,7 @@ The goal is to have everything scripted.
 # Installation
   - Download the save file under [tts saves](https://github.com/gudyfr/fhtts/tree/main/tts%20saves)
   - Download the [Assistant](https://github.com/gudyfr/FrosthavenAssistant/releases/tag/v1.7.2_web) (builds available for windows, macos and android, or build your own : [github project](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver) )
-  - Follow the [Getting Started Guide](https://github.com/gudyfr/fhtts/tree/main/www/docs/Index.md)
+  - Follow the [Getting Started Guide](https://github.com/gudyfr/fhtts/tree/main/docs/docs/Index.md)
   
 # License & Attribution
   - This work is distributed under the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
