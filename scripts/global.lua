@@ -97,7 +97,7 @@ end
 
 function processAdditionalScenarioData(request)
    ScenarioInfos = jsonDecode(request.text)
-   fhlog(DEBUG, TAG,"Scenario Layout Data loaded")
+   fhlog(DEBUG, TAG, "Scenario Layout Data loaded")
 end
 
 letterConfigs = {
@@ -300,8 +300,9 @@ tokenBagsGuids = {
    j = '7da71f',
    k = '196642',
    m = '45fdef',
-   start = '0511b3',
-   loot = '5e0624'
+   start = '2a4be3',
+   loot = '5e0624',
+   section = '9ddb6d'
 }
 
 function getToken(token, position)
@@ -321,8 +322,9 @@ function getToken(token, position)
             else
                obj = bag.takeObject()
             end
-
-            obj.setRotation({ 0, 180, 0 })
+            if token.name ~= "start" and token.name ~= "section" then
+               obj.setRotation({ 0, 180, 0 })
+            end
             obj.addTag("token")
             obj.addTag("scenarioElement")
             if token.tags ~= nil then
@@ -426,79 +428,62 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                   }
                   local overlay = {
                      name = "overlay_" .. type,
-                     position = { 0, 0.025, -.25 },
+                     position = { 0, 0.05, -.25 },
                      scale = { 0.2, 0.2, 0.2 },
                      rotation = { 90, 0, 0 },
                   }
                   if type == "Obstacle" then
-                     -- color = { 29, 126, 59 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237165/2678AF8F59D023C77DF641FEC8910835D182257E/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236688/D9F31375FC450BD9BE3984EB47FD1E3C5E758A17/"
                   elseif type == "Pressure Plate" then
-                     -- color = { 173, 173, 173 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237206/6A0777484779A8722080530B0C43D1C82473A0C5/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236727/7D01B94C25BEA92CBE0957ECC6A422429EDD44CD/"
                   elseif type == "Trap" then
-                     -- color = { 228, 19, 19 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237268/7A7C3B0E0060C8FE23A359463F9A12C22FFA17DA/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236774/BCB319F990BE7A9127849A4615486318C987AD7C/"
                   elseif type == "Wall" then
-                     -- color = { 53, 52, 53 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237311/0E7EBC101D0643E90645E0AFED2534DCD30CA7C9/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236827/8B11DFC742D94410A3A220903F37894D384F5098/"
                   elseif type == "Corridor" then
-                     -- color = { 172, 172, 172 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236874/45C3A28338A6EFCB0A2FEE9332D3F6033CCB6F9B/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236428/A0AF561889DB69EC01F03BBBE560396F343ADE69/"
                   elseif type == "Difficult Terrain" then
-                     -- color = { 121, 58, 210 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236926/31F6DFAA41FDB6649461472B1F8D3129E60CB4E4/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236470/666B6A71A88CFFA389AAD94DB74060F77192063B/"
                   elseif type == "Door" then
-                     -- color = { 34, 96, 209 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236982/77263BF7C8933BF32D3F3C54BC5D13493B54D1CF/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236511/1C789E9836AF1DC13FFFDABB239CBE3A19C0B3C5/"
                   elseif type == "Hazardous Terrain" then
-                     -- color = { 244, 127, 32 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237027/9EF685D0E353DB1ADE2826410AA3195F3095E8FB/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236545/DD2676FE8B97B20F2C671803FED9BCC0C137B17D/"
                   elseif type == "Icy Terrain" then
-                     -- color = { 83, 205, 20 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237076/93DC787398B26C6263924F3AD2E1A03AA13A6162/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236588/7A1556D352C180A003F8D5BC44BE6BB2FE1B486B/"
                   elseif type == "Objective" then
-                     -- color = { 238, 189, 38 }
                      underlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219237113/AD6DDE3352CA5168C1FCCE247AF5BD9C3E544494/"
                      overlay.url =
                      "http://cloud-3.steamusercontent.com/ugc/2035105992219236640/33AF2DDD8AB13544A4954EBDD194CCD746BFE146/"
                   end
 
-                  if color ~= nil then
-                     color = { color[1] / 255, color[2] / 255, color[3] / 255 }
-                     if settings["enable-highlight-tiles-by-type"] or false then
-                        obj.highlightOn(color)
-                     end
-                     updateGMNotes(obj, { highlight = color })
-                  end
                   local decals = {}
                   if underlay.url ~= nil then
                      table.insert(decals, underlay)
@@ -1001,7 +986,11 @@ function layoutMap(map)
                   if random ~= nil then
                      zRot = 180
                   end
-                  obj.setRotation({ 0, 180, zRot })
+                  local yRot = 180
+                  if name == "start" or name == "section" then
+                     yRot = 0
+                  end
+                  obj.setRotation({ 0, yRot, zRot })
                   if position.trigger ~= nil then
                      attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                   end
@@ -1325,7 +1314,7 @@ function getTriggeredKey(trigger, objGuid)
    elseif dedupMode == "first" then
       triggerKey = triggerKey .. "/first"
    else
-      fhlog(WARNING, TAG, "Unknown dedupMode : %s in %s",dedupMode, trigger)
+      fhlog(WARNING, TAG, "Unknown dedupMode : %s in %s", dedupMode, trigger)
    end
 
    return triggerKey
@@ -1717,33 +1706,61 @@ function attachTriggerToElement(trigger, obj, scenarioId, scale, skipUpdate)
    if trigger.type ~= "pressure" then
       local fName = "trigger_" .. obj.guid .. "_" .. trigger.id
       self.setVar(fName, function() Global.call("triggered", payload) end)
-      local label = trigger.display
-      if label == nil then
+      local tooltip = trigger.display
+      if tooltip == nil then
          if trigger.type == "door" then
-            label = "Open"
+            tooltip = "Open"
          elseif trigger.type == "on-death" then
-            label = "Destroy"
+            tooltip = "Destroy"
          elseif trigger.type == "pressure" then
             if trigger.mode == "occupy" then
-               label = "Occupy"
+               tooltip = "Occupy"
             else
-               label = "Trigger"
+               tooltip = "Trigger"
             end
          elseif trigger.type == "manual" and trigger.action == "reveal" then
-            label = "Reveal " .. trigger.what.type .. " " .. trigger.what.name
+            tooltip = "Reveal " .. trigger.what.type .. " " .. trigger.what.name
          end
+      end
+      local label = ""
+      if obj.getName() == "Section Link" and trigger.action == "reveal" then
+         label = trigger.what.name
+         -- Fake button as a label
+         local params = {
+            click_function = "noop",
+            label = label,
+            position = { 0, 0.01, -0.1 },
+            rotation = { 0, 180, 0 },
+            width = 0,
+            height = 0,
+            font_size = 50,
+            font_color = { 0, 0, 0, 1 },
+         }
+         obj.createButton(params)
+         scale = 0.75
+      else
+         -- Let's add the reveal sticker to the object
+         local decal = {
+            name = "section link",
+            position = { 0, 0.01, 0 },
+            url = "http://cloud-3.steamusercontent.com/ugc/2036234265704024562/6F6BE585CFC15298B022BEA3CE1F25D8AE7EE612/",
+            scale = { 0.25, 0.25, 0.25 },
+            rotation = { 90, -obj.getRotation().y, 0 }
+         }
+         obj.addDecal(decal)
       end
       -- Let's create a button
       local params = {
          click_function = "triggerClicked_" .. scenarioId,
-         label = label,
+         label = "",
          position = { 0, 0.01, 0 },
          rotation = { 0, 0, 0 },
          width = 250 * (scale or 1),
          height = 250 * (scale or 1),
          color = { 1, 1, 1, 0 },
          font_size = 50,
-         tooltip = label
+         font_color = { 0, 0, 0, 0 },
+         tooltip = tooltip
       }
       obj.createButton(params)
    end
@@ -1757,6 +1774,9 @@ function attachTriggerToElement(trigger, obj, scenarioId, scale, skipUpdate)
       -- Register the pressure plate
       registerPressurePlate(obj)
    end
+end
+
+function noop()
 end
 
 function takeToken(name)
@@ -2210,7 +2230,7 @@ function onObjectCollisionExit(hit_object, collision_info)
    if hit_object.hasTag("pressurePlate") then
       -- "looter" should be good proxy for "character"
       if obj.hasTag("looter") then
-         fhlog(DEBUG, TAG,"Releasing Pressure Plate")
+         fhlog(DEBUG, TAG, "Releasing Pressure Plate")
          local scenarioTriggers = CurrentScenario.triggers
          local triggerIds = scenarioTriggers.byObjectGuid[hit_object.guid]
          for _, triggerId in ipairs(triggerIds) do
@@ -2388,7 +2408,7 @@ function fhLogSettingsUpdated()
    local level = devSettings['log-level']
    local tags = devSettings['log-tags']
 
-   local payload = JSON.encode({level = level, tags = tags })
+   local payload = JSON.encode({ level = level, tags = tags })
    for _, obj in ipairs(FhLoggers) do
       obj.call("onFhLogSettingsUpdated", payload)
    end

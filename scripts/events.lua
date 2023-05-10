@@ -1,6 +1,7 @@
 require("savable")
 require("deck_save_helpers")
 require("constants")
+require('cards')
 
 -- TODO Fetch Personal Quests Cards from Player mats
 
@@ -135,6 +136,7 @@ function onLoad(save)
         for _, tag in ipairs(point.tags) do
             tags[tag] = 1
         end
+        local position = point.position        
         -- print(JSON.encode(tags))
 
         if tags["input"] ~= nil then
@@ -167,6 +169,7 @@ function onLoad(save)
             table.insert(searchPositions, point.position)
         end
     end
+    table.sort(searchPositions, function(a,b) return (a.z-b.z) * 10 + b.x - a.x < 0 end)
     registerSavable(Name)
 end
 
@@ -293,11 +296,14 @@ function returnCard()
         -- We need to determine the appropriate deck to return this card to
         local type = string.sub(activeCard.getName(), 1, 1)
         if type == 'S' then
-
+            -- Summer event card
+            addCardToDeckAt(activeCard, searchPositions[5], true)
         elseif type == 'W' then
-
-        elseif type == 'B' then
-
+            -- Winter event card
+            addCardToDeckAt(activeCard, searchPositions[8], true)
+        elseif type == 'B' or type == 'P' then
+            -- Boat or Personal Quest
+            addCardToDeckAt(activeCard, searchPositions[2], true)
         end
     end
 end
