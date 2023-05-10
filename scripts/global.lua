@@ -2302,13 +2302,16 @@ function playNarration(params)
    local folder = params[1]
    local file = params[2]
    if folder ~= nil and file ~= nil and address ~= nil then
-      local url = "http://" .. address .. ":" .. port .. "/file/" .. folder .. "/" .. file .. ".mp3"
-      -- print(url)
-      MusicPlayer.setCurrentAudioclip({
-         url = url,
-         title = folder .. " : " .. file
-      })
-      MusicPlayer.play()
+      if settings["play-narration-in-assistant"] or false then
+         getScenarioMat().call("playNarrationInAssistant", folder .. "/" .. file .. ".mp3")
+      else
+         local url = "http://" .. address .. ":" .. port .. "/file/" .. folder .. "/" .. file .. ".mp3"
+         MusicPlayer.setCurrentAudioclip({
+            url = url,
+            title = folder .. " : " .. file
+         })
+         MusicPlayer.play()
+      end      
    end
 end
 

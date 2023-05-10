@@ -1954,3 +1954,7 @@ function setErrata(errata)
         end
     end
 end
+
+function playNarrationInAssistant(file)
+    updateAssistant("GET","play/" .. file)
+end
