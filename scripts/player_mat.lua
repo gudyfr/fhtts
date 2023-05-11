@@ -97,6 +97,11 @@ function onStateUpdate(state)
   end
 end
 
+function applyEnhancementsToCard(card)
+  -- Delegate to enhancer
+  getObjectFromGUID('b2dcae').call('applyEnhancementsToCard', card)
+end
+
 function loadCharacterBox(characterBox, state)
   table.sort(UntaggedPositions, XZSorter)
   table.sort(TokenPositions, XZSorter)
@@ -110,14 +115,18 @@ function loadCharacterBox(characterBox, state)
   if deck ~= nil then
     local abilityCards = state.abilityCards
     if abilityCards ~= nil then
-      rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"])
-      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"])
+      rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil, applyEnhancementsToCard)
+      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
       for i, cards in ipairs(abilityCards.persist) do
-        rebuildDeck(deck, guids, cards, cardLocations["persist"][i])
+        rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
       end
-      rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"])
+      rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
     else
-      setAtLocalPosition(deck, cardLocations['supply'])
+      local remaining = {}
+      for _,obj in ipairs(deck.getObjects()) do
+        table.insert(remaining, obj.name)
+      end
+      rebuildDeck(deck, guids, remaining, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
     end
   end
 

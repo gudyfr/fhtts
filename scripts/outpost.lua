@@ -322,7 +322,7 @@ function getBuildingLevel(name)
     if last_number then
         return tonumber(last_number)
     else
-        return nil
+        return 0
     end
 end
 
@@ -566,4 +566,21 @@ function createGardenDecal(stickers, index, pos)
         scale = { 0.05, 0.05, 0.05 },
     }
     table.insert(stickers, sticker)
+end
+
+function getBuildingInfo(buildingNumber)
+    local buildingPosition = self.positionToWorld(BuildingElements["buildings"][buildingNumber])
+
+    -- Determine current level
+    local currentCard, level = getCurrentCardAndLevel(buildingPosition)
+
+    local wrecked = false
+    if currentCard ~= nil then
+        local zRot = currentCard.getRotation().z
+        if zRot > 160 and zRot < 200 then
+            wrecked = true
+        end
+    end
+
+    return JSON.encode({level=level, wrecked=wrecked})
 end

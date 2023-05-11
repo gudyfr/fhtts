@@ -2,9 +2,10 @@
 
 Savable = {}
 
-function registerSavable(name)
+function registerSavable(name, priority)
+    priority = priority or 1
     Savable.name = name
-    Global.call("registerSavable", self)
+    Global.call("registerSavable", {savable=self,priority=priority})
 end
 
 function getName()

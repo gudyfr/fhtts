@@ -11,7 +11,7 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
     deleteCardsAt(position)
     local deck = nil
     for _, card in ipairs(cardNames) do
-        deck = rebuildCardFrom(deck, card, clone, cardGuids)
+        deck = rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
         if otherDeck ~= nil and otherGuids ~= nil then
             deck = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
         end

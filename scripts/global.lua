@@ -2317,14 +2317,14 @@ end
 
 Savables = {}
 
-function registerSavable(savable)
-   table.insert(Savables, savable)
+function registerSavable(info)
+   table.insert(Savables, info)
 end
 
 function getSave()
    local save = {}
-   for _, savable in ipairs(Savables) do
-      local partialSave = savable.call("getSave")
+   for _, info in ipairs(Savables) do
+      local partialSave = info.savable.call("getSave")
       local copy = JSON.decode(partialSave)
       for key, value in pairs(copy) do
          save[key] = value
@@ -2334,22 +2334,23 @@ function getSave()
 end
 
 function loadSave(save)
+   table.sort(Savables, function(a,b) return a.priority < b.priority end)
    local data = JSON.decode(save)
-   for i, savable in ipairs(Savables) do
-      local name = savable.call("getName")
+   for i, info in ipairs(Savables) do
+      local name = info.savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
          local encoded = JSON.encode(savableData)
          -- Spread the loading across multiple frames
          -- And also helps in debugging
-         savable.call("loadSave", encoded)
+         info.savable.call("loadSave", encoded)
       end
    end
 end
 
 function reset()
-   for _, savable in ipairs(Savables) do
-      savable.call("reset")
+   for _, info in ipairs(Savables) do
+      info.savable.call("reset")
    end
 end
 
