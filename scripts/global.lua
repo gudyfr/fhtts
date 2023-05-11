@@ -2385,6 +2385,12 @@ function updateData()
    refreshScenarioData(baseUrl)
 end
 
+PingListeners = {}
+
+function registerForPing(obj)
+   table.insert(PingListeners, obj)
+end
+
 function onPlayerPing(player, position, object)
    local devSettings = JSON.decode(getDevSettings())
    local printPingedCoordinates = devSettings['print-pinged-coordinates']
@@ -2397,6 +2403,11 @@ function onPlayerPing(player, position, object)
             print(JSON.encode(target.positionToLocal(position)))
          end
       end
+   end
+
+   for _,obj in ipairs(PingListeners) do
+      local payload = JSON.encode(position)
+      obj.call("onPing", payload)
    end
 end
 
