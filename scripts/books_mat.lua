@@ -258,7 +258,6 @@ function getCheckmarkName(checkmark)
 end
 
 function toggleCompleted(params)
-    
     local scenario = string.sub(params[1], 3)
     local completed = params[3]
 
@@ -390,25 +389,26 @@ function getTarget(tagsMap, candidates)
     return nil
 end
 
+function trim(s)
+    s = s:gsub('\r', '')
+    s = s:gsub('\n', '')
+    return s:match '^%s*(.*%S)' or ''
+end
+
 function onEdit(target, obj, color, value, selected)
+    local cleanValue = trim(value)
     if not selected then
-        local page = tonumber(value)
+        local page = tonumber(cleanValue)
         if page ~= nil then
-            changePage(target, page, value)
+            changePage(target, page, cleanValue)
         end
     else
         local len = string.len(value)
-        lastChar = string.sub(value, len, len)
+        local lastChar = string.sub(value, len, len)
         if lastChar == "\n" then
-            searchValue = string.sub(value, 1, len - 1)
-            -- for _, input in ipairs(self.getInputs()) do
-            --     if input.value == value then
-            --         self.editInput({index=input.index, value=searchValue})
-            --     end
-            -- end
-            local page = tonumber(value)
+            local page = tonumber(cleanValue)
             if page ~= nil then
-                changePage(target, page, value)
+                changePage(target, page, cleanValue)
             end
         end
     end
