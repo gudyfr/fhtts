@@ -105,6 +105,16 @@ Clicking the Draw button will draw an attack modifier card for the player who pr
 Monsters and Allies Attack Modifiers should be drawn from the X-Haven Assistant UI.  
 The deck is shuffled automatically when needed. In addition Curse and Bless cards are automatically returned to their appropriate decks at the end of each round. Minus one Cards are returned to their appropriate deck whenever a "Cleanup" occurs.
 
+### Spawning monsters
+To spawn a monster simply grab a new one from the corresponding monster bag  
+![](images/tts_monster_bag.png)  
+The new monster will automatically get assigned a standee number from the assistant   
+![](images/tts_monster_spawned.png)  
+The base of the standee has an invisible button, which can be used to switch between normal and elite  
+![](images/tts_monster_switch.png)  
+The standee number label can also be edited, however, this is not synchronized with the assistant, and should only be used when things get out of sync.  
+![](images/tts_monster_elite.png)  
+
 ### Looting
 If a monster dies it will drop a loot token (unless there are specials rules to prevent this, in which case it might drop nothing, or the appropriate item/overlay)  
 ![](images/tts_enemy_as_loot.png)  
