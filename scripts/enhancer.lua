@@ -48,7 +48,7 @@ function onLoad(save)
 end
 
 function onSave()
-    return JSON.encode({})
+    return JSON.encode(CardEnhancements)
 end
 
 function updateData(baseUrl)
