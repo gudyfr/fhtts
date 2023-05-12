@@ -1,15 +1,17 @@
 # Getting Started
 
 ## Download and install the Frosthaven Asssitant (required for ALL players)
+All players have to use the modified assistant, even if only one player (typically the host) needs to run the web server.  
 Builds are available for windows, mac osx, and android.  
 [Frosthaven Assistant](https://github.com/gudyfr/FrosthavenAssistant/releases)  
 If you plan on using the narration integration, a desktop build is recommended.  
 
-## Configure the Frosthaven Assistant
+## Configure the Frosthaven Assistant [Host only]
 Open the Main menu, choose Settings :  
 ![Main Menu Settings](images/xhaven_main_menu_settings.png)  
 Scroll down to "Also Enable Web Server", and enable it  
 ![Enable Web Server](images/xhaven_settings_enable_web_server.png)  
+Please note that the two ports (the web server port and the Server port) **cannot** be the same.  
 Make sure you turn off "Auto Add Standees" and "Auto Add Timed Spawns" as these will conflict with TTS driving the assistant to add standees.  
 ![](images/xhaven_auto_add_standees.png)  
 (Optional) There is also an option to keep the Assistant on top of other windows, which can be useful to have it visible on top of TTS  
@@ -19,11 +21,21 @@ Finally, you need to Start the Host Server (which also starts the web server), n
 **Upon next launches of the Assistant, you can simply start the server from the main menu**  
 ![Settings Start Server](images/xhaven_main_menu_start_server.png)  
 
+## Configure the Frosthaven Assistant [other players]  
+Other players should simply connect to the host's assistant using the regular assistant client / server mechanism.
+
 ## Setup TTS
 Locate the Settings mat and make sure that "Enable X-Haven assistant is checked", in addition the address and port should be valid for you if you are the host and do not plan on using the narration.
 ![](images/tts_settings.png)  
 ### If you plan on using the narration integration
-The assistant can download the narration files, assuming you provide it with a valid email and password and that you have purchased the narration. For other players to access the narration audio, you will need to change the Address settings to your public IP Address, and setup proper port forwarding to the Assistant.
+The assistant can download the narration files, assuming you provide it with a valid email and password and that you have purchased the narration.
+You have two options for other players to access the narration.
+ 1. Let other players connect to your assistant on the Web Server port  
+ For this option to work, you will need to properly open and route (port forward) your assistant web server port to the public internet, and you will need to configure TTS with your public IP Address. This might create some tricky network configuration depending on your equipment.
+ 
+ 2. Let all other players download the narration in their assistant. (**recommended**)  
+ Each player enters its forteller login information, and gets the audio files. In TTS Settings check the box "Play narration in Assistant instead of TTS". This will make the assistant application play the narration audio files (assuming players have downloaded it). The speaker icon in the assistant is clickable, and will pause/resume the narration for all players (more or less in sync).  
+ 
 ### Key bindings
 There are custom key bindings for common actions, to set these up locate the Game Keys menu under Options  
 ![](images/tts_game_keys.png) 
