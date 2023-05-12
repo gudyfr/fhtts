@@ -1,6 +1,7 @@
 # Getting Started
 
 ## Download and install the Frosthaven Asssitant (required for ALL players)
+All players have to use the modified assistant, even if only one player (typically the host) needs to run the web server.  
 Builds are available for windows, mac osx, and android.  
 [Frosthaven Assistant](https://github.com/gudyfr/FrosthavenAssistant/releases)  
 If you plan on using the narration integration, a desktop build is recommended.  
