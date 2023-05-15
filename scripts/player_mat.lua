@@ -1,26 +1,9 @@
 require("savable")
 require("deck_save_helpers")
 require("utils")
-
-CharacterBags = {
-  Boneshaper = 'b56a0c',
-  Geminate = '6bc105',
-  Deathwalker = 'b69379',
-  ["Banner Spear"] = '3f3078',
-  Blinkblade = 'c5507b',
-  Drifter = 'b2ac9c',
-  Snowdancer = 'fd8f2c',
-  ['Crashing Tide'] = '497658',
-  ['Pain Conduit'] = '535a3e',
-  Pyroclast = 'b50df3',
-  ['H.I.V.E.'] = '92f724',
-  Infuser = '620490',
-  ['Frozen Fist'] = 'fd09e5',
-  ['Metal Mosaic'] = 'de636a',
-  Shattersong = 'a6568b',
-  Trapper = '2af71d',
-  Deepwraith = '05457a'
-}
+require("fhlog")
+require('player_mat_data')
+require('cards')
 
 function getState()
   local state = {}
@@ -123,7 +106,7 @@ function loadCharacterBox(characterBox, state)
       rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
     else
       local remaining = {}
-      for _,obj in ipairs(deck.getObjects()) do
+      for _, obj in ipairs(deck.getObjects()) do
         table.insert(remaining, obj.name)
       end
       rebuildDeck(deck, guids, remaining, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
@@ -179,6 +162,7 @@ function loadCharacterBox(characterBox, state)
   end
 
   -- Character Mat & figurine (and potential 2nd figurine for the Geminate)
+  local currentUntagged = 1
   for i = 1, 3 do
     local characterObject = getRestoreObjectIn(characterBox, characterName, false)
     if characterObject ~= nil then
@@ -186,16 +170,15 @@ function loadCharacterBox(characterBox, state)
         setAtLocalPosition(characterObject, CharacterMatPosition)
         -- characterObject.setLock(true)
       else
-        setAtLocalPosition(characterObject, UntaggedPositions[1])
+        setAtLocalPosition(characterObject, UntaggedPositions[currentUntagged])
+        currentUntagged = currentUntagged + 1
       end
     end
   end
 
   -- Finish emptying the box
   local currentToken = 1
-  local currentUntagged = 2
-
-  local itemsLeftInBox = false
+  local zShift = 0
   for _, obj in ipairs(characterBox.getObjects()) do
     local isToken = false
     for _, tag in ipairs(obj.tags) do
@@ -204,24 +187,27 @@ function loadCharacterBox(characterBox, state)
       end
     end
     -- Always take out tokens, but only take out other objects (Standees) if we have room
-    if isToken or currentUntagged <= #UntaggedPositions then
-      local destination
-      if isToken then
-        destination = TokenPositions[currentToken]
-        currentToken = currentToken + 1
-      else
-        destination = UntaggedPositions[currentUntagged]
-        currentUntagged = currentUntagged + 1
-      end
-      local object = characterBox.takeObject({ guid = obj.guid, })
-      setAtLocalPosition(object, destination)
+    local destination, rotation
+    if isToken then
+      destination = TokenPositions[currentToken]
+      currentToken = currentToken + 1
+      rotation = {0,0,180}
     else
-      itemsLeftInBox = true
+      destination = UntaggedPositions[currentUntagged]
+      destination.z = destination.z + zShift
+      currentUntagged = currentUntagged + 1
+      if currentUntagged > #UntaggedPositions then
+        currentUntagged = 1
+        zShift = zShift - 0.2
+      end
+      rotation = {0,0,0}
     end
+    destination.y = destination.y + 1.5
+    characterBox.takeObject({ guid = obj.guid, position = self.positionToWorld(destination), rotation = rotation, smooth=false})
   end
-  if itemsLeftInBox then
-    broadcastToAll("Some Summons were left in the " .. characterName .. " character box")
-  end
+
+  -- detroy the box
+  destroyObject(characterBox)
 end
 
 function clearBoard(includeDecks)
@@ -278,6 +264,8 @@ end
 ItemCardPositions = {}
 
 function onLoad()
+  TAG = self.getDescription()
+  fhLogInit()
   buttonPositions = {}
   cardLocations = {}
   locateBoardElementsFromTags()
@@ -303,7 +291,7 @@ function onLoad()
 
   if buttonPositions["shuffle"] ~= nil then
     local pos = buttonPositions["shuffle"]
-    button_parameters = {
+    local button_parameters = {
       function_owner = self,
       click_function = "shuffle",
       label          = "Shuffle",
@@ -320,10 +308,78 @@ function onLoad()
     self.createButton(button_parameters)
 
     Global.call("registerForCollision", self)
+    self.addContextMenuItem("Pack Character", packCharacter)
   end
 
   setDecals()
   registerSavable(self.getName())
+end
+
+function packCharacter()
+  local characterName = getCharacterName()
+  if characterName == nil then
+    broadcastToAll("No character to pack")
+    return
+  end
+  local level = getCharacterLevel()
+  local character = getState()
+  local items = {}
+  -- We also need to store which items the character has
+  local itemPositions = getItemCardPositionsInternal()
+  for name, position in pairs(itemPositions) do
+    items[name] = getCardList(position)
+  end
+  local quests = getCardList(PersonalQuestCardPosition)
+  local save = { character = character, items = items, quests = quests }
+  fhlog(DEBUG, TAG, "Packing Character : %s", save)
+  local originalBag = getObjectFromGUID(CharacterBags[characterName])
+  if originalBag ~= nil then
+    local customObject = originalBag.getCustomObject()
+    local dropPosition = self.getPosition()
+    dropPosition.z = dropPosition.z + 8
+    dropPosition.y = dropPosition.y + 1
+    local box = spawnObject({
+      type = "Custom_Model",
+      position = dropPosition,
+      scale = { .5, .5, .5 },
+      sound = false
+    })
+    box.setCustomObject({
+      mesh = customObject.mesh,
+      type = 0,
+      material = 3,
+      diffuse = customObject.diffuse,
+    })
+    box.setName("Level " .. level .. " " .. characterName)
+    box.addTag("Saved Character")
+    box.setGMNotes(JSON.encode(save))
+
+    -- Get return locations from items mat
+    local cardReturnPositions = JSON.decode(getObjectFromGUID('bbcede').call("getItemsDrawPiles"))
+    -- Return all item cards to their location
+    for name, position in pairs(itemPositions) do
+      local deck = getDeckOrCardAt(position)
+      -- fhlog(DEBUG, TAG, "At item position %s found %s", position, deck ~= nil)
+      local returnCard = function(card)
+        fhlog(DEBUG, TAG, "Moving %s back to the supply", card.getName())
+        if card.hasTag("craftable") then
+          addCardToDeckAtWorldPosition(card, cardReturnPositions['craftable'])
+        elseif card.hasTag("purchasable") then
+          addCardToDeckAtWorldPosition(card, cardReturnPositions['purchasable'])
+        elseif card.hasTag("other") then
+          addCardToDeckAtWorldPosition(card, cardReturnPositions['other'])
+        end
+      end
+      forEachInDeckOrCard(deck, returnCard)
+    end
+
+    -- Return personal quest card to the "inactive" personal quest pile
+    local pqPosition = JSON.decode(getObjectFromGUID('0fa145').call('getPersonalQuestInactivePosition'))
+    local deck = getDeckOrCardAt(PersonalQuestCardPosition)
+    forEachInDeckOrCard(deck, function(card) addCardToDeckAtWorldPosition(card, pqPosition) end)
+
+    clearBoard(true)
+  end
 end
 
 function onObjectCollisionEnter(params)
@@ -337,6 +393,17 @@ function onObjectCollisionEnter(params)
     pos.z = pos.z - 10
     obj.setPosition(pos)
     loadCharacterBox(obj, { characterName = obj.getName() })
+  elseif obj.hasTag("Saved Character") then
+    -- move the container out of the mat to avoid conflicts with unpacking it
+    local pos = self.getPosition()
+    pos.y = pos.y + 3
+    pos.z = pos.z + 8
+    obj.setPosition(pos)
+    local save = JSON.decode(obj.getGMNotes())
+    onStateUpdate(save.character)
+    loadItems(save.items)
+    loadPersonalQuest(save.quests)
+    destroyObject(obj)
   end
 end
 
@@ -345,6 +412,40 @@ function onObjectCollisionExit(params)
   if obj.hasTag("character mat") then
     -- Let's give it a bit of time for the character mat to be lifted
     Wait.time(function() Global.call("getScenarioMat").call("updateCharacters") end, 0.25)
+  end
+end
+
+function loadItems(items)
+  local itemPositions = getItemCardPositionsInternal()
+  local cardSupplyPositions = JSON.decode(getObjectFromGUID('bbcede').call("getItemsDrawPiles"))
+
+  for positionName, itemsAtPosition in pairs(items) do
+    for _, item in ipairs(itemsAtPosition) do
+      fhlog(DEBUG, TAG, "Moving item %s from the supply back to board (%s position)", item, positionName)
+      local candidates = { "purchasable", "craftable", "other" }
+      local found = 0
+      for _, candidate in ipairs(candidates) do
+        local deck = getDeckOrCardAtWorldPosition(cardSupplyPositions[candidate])
+        if deck ~= nil then
+          found = found +
+          forEachInDeckOrCardIf(deck, function(card) addCardToDeckAt(card, itemPositions[positionName]) end,
+            function(entry) return entry.name == item end)
+        end
+      end
+      if found == 0 then
+        broadcastToAll(string.format("Item #%d was not found in any of the supplies. %s item was not restored", item,
+          positionName))
+      end
+    end
+  end
+end
+
+function loadPersonalQuest(quests)
+  for _, quest in ipairs(quests) do
+    local pqPosition = JSON.decode(getObjectFromGUID('0fa145').call('getPersonalQuestInactivePosition'))
+    local deck = getDeckOrCardAtWorldPosition(pqPosition)
+    forEachInDeckOrCardIf(deck, function(card) addCardToDeckAt(card, PersonalQuestCardPosition) end,
+      function(entry) return entry.name == quest end)
   end
 end
 
@@ -422,15 +523,24 @@ function locateBoardElementsFromTags()
 end
 
 function getItemCardPositions()
+  return JSON.encode(getItemCardPositionsInternal(true))
+end
+
+function getItemCardPositionsInternal(mapToWorld)
+  mapToWorld = mapToWorld or false
   table.sort(ItemCardPositions, function(a, b) return 30 * (a.z - b.z) + b.x - a.x < 0 end)
   local itemNames = { "hand1", "head", "hand2", "chest", "item1", "feet", "item2", "item3", "item4", "item5" }
 
   local results = {}
   for i, name in ipairs(itemNames) do
-    results[name] = self.positionToWorld(ItemCardPositions[i])
+    if mapToWorld then
+      results[name] = self.positionToWorld(ItemCardPositions[i])
+    else
+      results[name] = ItemCardPositions[i]
+    end
   end
 
-  return JSON.encode(results)
+  return results
 end
 
 function getPersonalQuestCardPosition()
@@ -481,7 +591,7 @@ function getCharacterName()
   if CharacterMatPosition ~= nil then
     local characterMat = findLocalObject(CharacterMatPosition, "", "character mat")
     if characterMat ~= nil then
-      local worldPos =  self.positionToWorld(CharacterMatPosition)
+      local worldPos = self.positionToWorld(CharacterMatPosition)
       -- print(characterMat.getPosition().y .. " <-> " .. worldPos.y )
       if characterMat.getPosition().y <= worldPos.y + 0.15 then
         return characterMat.getName()
@@ -620,7 +730,7 @@ function endTurn()
       end
     else
       -- Deck
-      deck = discard.getObjects()
+      local deck = discard.getObjects()
       for i, card in pairs(deck) do
         for _, tag in ipairs(card.tags) do
           if tag == "shuffle" then

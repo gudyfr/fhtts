@@ -308,6 +308,10 @@ function returnCard()
     end
 end
 
+function getPersonalQuestInactivePosition()
+    return JSON.encode(self.positionToWorld(searchPositions[1]))
+end
+
 function playCard()
     local activeCard = getActiveCard()
     if activeCard ~= nil then

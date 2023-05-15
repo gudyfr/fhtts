@@ -1044,7 +1044,7 @@ function layoutMap(map)
       end
       -- Also handle custom triggers
       if trigger.type == "onload" then
-         actualTriggered(CurrentScenario.id, trigger.id, nil, false, objects)
+         actualTriggered(CurrentScenario.id, trigger.id, nil, false)
       end
    end
 end
@@ -1507,7 +1507,7 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
    end
 
    if action.action == "trigger" then
-      actualTriggered(scenarioId, action.what, objGuid, undo, objects)
+      actualTriggered(scenarioId, action.what, objGuid, undo)
    end
 
    if action.action == "open" then
@@ -2052,10 +2052,6 @@ function playerShuffle(player)
       playerMat = getObjectFromGUID(playerMatId)
       playerMat.call("shuffle")
    end
-end
-
-function playerOpenSectionBook(player, text)
-   openSectionBookAtPage(tonumber(text))
 end
 
 function getPlayerCount()

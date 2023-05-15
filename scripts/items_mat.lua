@@ -379,3 +379,12 @@ function findDeck(position)
         end
     end
 end
+
+function getItemsDrawPiles()
+    local positions = {}
+    for name,info in pairs(AvailableDecks) do
+        local position = self.positionToWorld(info.deck)
+        positions[name] = position
+    end
+    return JSON.encode(positions)
+end

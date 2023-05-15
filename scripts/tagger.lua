@@ -93,9 +93,9 @@ function updateTag(obj)
     end
     if mode == "add" then
         print("Adding tag " .. tag .. " to object")
-        obj.addTag(currentTag)
+        obj.addTag(tag)
     elseif mode == "remove" then
         print("Removing tag " .. tag .. " from object")
-        obj.removeTag(currentTag)
+        obj.removeTag(tag)
     end
 end

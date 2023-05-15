@@ -93,10 +93,6 @@ function onFhLogUpdate()
     Global.call("fhLogSettingsUpdated")
 end
 
-function onCopy()
-    copy("test")
-end
-
 Flipped = {
     B = 1, D = 1, F = 1, H = 1, J = 1, L = 1
 }
