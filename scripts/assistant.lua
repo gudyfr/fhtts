@@ -107,6 +107,9 @@ function updateInternal()
                 local url = CharacterInitiatives[decalName]
                 if url ~= nil then
                     table.insert(decals, getDecal(decalName, url, currentX, currentZ, .7, .25))
+                else
+                    -- cancel the upcoming position change, as this is a 'fake' character
+                    currentX = currentX + 1.85
                 end
             end
 
