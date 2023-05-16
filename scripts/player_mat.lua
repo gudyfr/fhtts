@@ -561,6 +561,7 @@ function compareX(obj1, obj2)
 end
 
 function draw()
+  local player = getPlayerNumber()
   local hitlist = Physics.cast({
     origin       = self.positionToWorld(AttackModifiersDrawPosition),
     direction    = { 0, 1, 0 },
@@ -576,12 +577,12 @@ function draw()
         position = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)),
         flip     = true
       })
-      Global.call("showDrawnCard", card)
+      Global.call("showDrawnCard", {player=player, card=card})
       return card
     elseif j.hit_object.tag == "Card" then
       j.hit_object.setPosition(self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)))
       j.hit_object.flip()
-      Global.call("showDrawnCard", j.hit_object)
+      Global.call("showDrawnCard", {player=player, card=j.hit_object})
       return j.hit_object
     end
   end

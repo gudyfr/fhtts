@@ -1231,7 +1231,7 @@ function locateBoardElementsFromTags()
         end
 
         if tagsMap["scenarioElement"] ~= nil then
-            table.insert(scenarioElementPositions, self.positionToWorld(position))
+            table.insert(scenarioElementPositions, position)
         end
 
         if tagsMap["errata"] ~= nil then
@@ -1239,14 +1239,9 @@ function locateBoardElementsFromTags()
         end
     end
 
-    table.sort(scenarioElementPositions, comparePositions)
-end
-
-function comparePositions(pos1, pos2)
-    if pos1.z < pos2.z then
-        return true
-    else
-        return false
+    table.sort(scenarioElementPositions, function(a,b) return a.z - b.z < 0 end)
+    for i,position in ipairs(scenarioElementPositions) do
+        scenarioElementPositions[i] = self.positionToWorld(position)
     end
 end
 
@@ -1603,9 +1598,9 @@ function refreshStandee(standee, instance)
     local baseYRot = standee.getRotation().y
     local flip = (baseYRot > 90 and baseYRot < 270)
     if flip then
-        baseYRot = 180
-    else
         baseYRot = 0
+    else
+        baseYRot = 180
     end
     standee.addTag("lootable")
     local stickers = {}
@@ -1628,7 +1623,7 @@ function refreshStandee(standee, instance)
     end
 
     local hp = math.ceil(instance.health * 24 / instance.maxHealth)
-    local vec = mapToStandeeInfoArea(-0.05, 0, 0, xScaleFactor, yScaleFactor, flip)
+    local vec = mapToStandeeInfoArea(0.05, 0, 0, xScaleFactor, yScaleFactor, flip)
     local hpSticker = {
         position = { vec.x, vec.y, vec.z },
         rotation = { 35, baseYRot, 0 },
@@ -1638,7 +1633,7 @@ function refreshStandee(standee, instance)
     }
     table.insert(stickers, hpSticker)
 
-    local xPosition = 0.53
+    local xPosition = -0.53
     if (instance.baseShield or 0) > 0 then
         vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
         local shieldIconSticker = {
@@ -1649,7 +1644,7 @@ function refreshStandee(standee, instance)
             name = standee.guid .. "_shield_" .. instance.baseShield
         }
         table.insert(stickers, shieldIconSticker)
-        xPosition = xPosition + 0.15
+        xPosition = xPosition - 0.15
     end
 
     if (instance.baseRetaliate or 0) > 0 then
@@ -1662,7 +1657,7 @@ function refreshStandee(standee, instance)
             name = standee.guid .. "_retaliate_" .. instance.baseRetaliate
         }
         table.insert(stickers, retaliateIconSticker)
-        xPosition = xPosition + 0.1
+        xPosition = xPosition - 0.1
     end
 
     -- if (instance.pierce or 0) > 0 then
@@ -1691,7 +1686,7 @@ function refreshStandee(standee, instance)
     end
     vec = mapToStandeeInfoArea(0, 0, -0.005, xScaleFactor, yScaleFactor, flip)
     local rot = Vector(1, 0, 0)
-    if not flip then
+    if flip then
         rot:rotateOver('y', 180):normalize()
     end
     -- print("rot : " .. JSON.encode(rot) .. " hy " .. rot:heading('y'))

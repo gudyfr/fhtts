@@ -1,27 +1,48 @@
 require('json')
 
-function onLoad()
+function onLoad(save)
+    if save ~= nil then
+        UIState = JSON.decode(save)
+    end
+    if UIState == nil then
+        UIState = { minimized = true }
+    end
+    if UIState.minimized == nil then
+        UIState.minimized = true
+    end
+    self.setLock(true)
     self.interactable = false
     Global.call('registerDataUpdatable', self)
     ButtonPositions = {}
-    for _,point in ipairs(self.getSnapPoints()) do
+    for _, point in ipairs(self.getSnapPoints()) do
         table.insert(ButtonPositions, point.position)
     end
     table.sort(ButtonPositions, XZSorter)
     -- Minimize & Maximize buttons
     addButton(ButtonPositions[1], "minimize", "Hide Round Tracker")
     addButton(ButtonPositions[2], "maximize", "Show Round Tracker")
+    if UIState.minimized then
+        minimize()
+    end
     self.setDecals({})
 end
 
+function onSave()
+    return JSON.encode(UIState)
+end
+
 function maximize()
-    self.setPositionSmooth({0.5,5.4,22.50}, false, false)
-    self.setRotationSmooth({66,180,0})
+    self.setPositionSmooth({ 0, 5.48, -17.33 }, false, false)
+    self.setRotationSmooth({ 66, 0, 0 })
+    UIState.minimized = false
+    updateInternal()
 end
 
 function minimize()
-    self.setPositionSmooth({0.5,-1.83,19.28}, false, false)
-    self.setRotationSmooth({66,180,0})
+    self.setPositionSmooth({ 0, -2, -14 }, false, false)
+    self.setRotationSmooth({ 66, 0, 0 })
+    UIState.minimized = true
+    updateInternal()
 end
 
 function XZSorter(a, b)
@@ -56,7 +77,7 @@ end
 
 function updateInternal()
     self.clearButtons()
-    if State ~= nil and CharacterInitiatives ~= nil and MonsterStats ~= nil and MonsterAbilities ~= nil then
+    if not UIState.minimized and State ~= nil and CharacterInitiatives ~= nil and MonsterStats ~= nil and MonsterAbilities ~= nil then
         local decals = {}
         local currentX = 2.775
         local currentZ = -.5
@@ -94,7 +115,8 @@ function updateInternal()
                         table.insert(decals, getDecal(decalName, url, currentX + 0.55, currentZ, .887, .55))
                     end
                 else
-                    local url = "http://cloud-3.steamusercontent.com/ugc/2036234357198483076/21FC5F0477C27012058B3AC2BFD381ED5C07C04C/"
+                    local url =
+                    "http://cloud-3.steamusercontent.com/ugc/2036234357198483076/21FC5F0477C27012058B3AC2BFD381ED5C07C04C/"
                     table.insert(decals, getDecal("back", url, currentX + 0.55, currentZ, .887, .55))
                 end
             elseif type == "character" then
@@ -114,8 +136,9 @@ function updateInternal()
             end
 
             if turnState == 1 then
-                local url = "http://cloud-3.steamusercontent.com/ugc/2036234357198527450/F51CB2841C00E8ACF74FA5E00D59A018B6FA93F2/"
-                table.insert(decals, getDecal("current", url, currentX, currentZ+.25, 2.3, .05))
+                local url =
+                "http://cloud-3.steamusercontent.com/ugc/2036234357198527450/F51CB2841C00E8ACF74FA5E00D59A018B6FA93F2/"
+                table.insert(decals, getDecal("current", url, currentX, currentZ + .25, 2.3, .05))
             end
 
             -- Add a button to change the round state
@@ -132,7 +155,7 @@ function updateInternal()
                 color          = { 1, 1, 1, 0 },
                 scale          = { 0.5, 0.5, 0.5 },
                 font_color     = { 0, 0, 0, 1 },
-                tooltip = ""
+                tooltip        = ""
             }
             self.createButton(params)
 
@@ -167,7 +190,6 @@ function getDecal(name, url, x, z, w, h)
     }
 end
 
-
 function addButton(position, callback, tooltip)
     local params = {
         label          = "",
@@ -180,7 +202,7 @@ function addButton(position, callback, tooltip)
         color          = { 1, 1, 1, 0 },
         scale          = { 0.5, 0.5, 0.5 },
         font_color     = { 0, 0, 0, 1 },
-        tooltip = tooltip
+        tooltip        = tooltip
     }
     self.createButton(params)
 end

@@ -36,20 +36,22 @@ def getCenterPoint(result, name="", orientation=0):
         match orientation:
             case 0:
                 x += yDisplacement[0]
-                y += yDisplacement[1] / 2
+                y -= yDisplacement[1] / 3
             case 60:
-                y += yDisplacement[1] * 2 / 3
-            case 120:
                 x += yDisplacement[0]
-                y += yDisplacement[1] / 3
+                y += yDisplacement[1] * 1 / 3
+            case 120:
+                x += 0
+                y -= yDisplacement[1] * 2 / 3
             case 180:
                 x -= yDisplacement[0]
-                y -= yDisplacement[1] / 3
+                y += yDisplacement[1] / 3
             case 240:
-                y -= yDisplacement[1] * 2 / 3
+                x -= yDisplacement[0]
+                y += yDisplacement[1] * 1 / 3
             case 300:
-                x -= yDisplacement[0] / 2
-                y -= yDisplacement[1] / 2
+                x += 0
+                y -= yDisplacement[1] / 3
     return x, y
 
 
@@ -97,10 +99,10 @@ def getOrientation(item):
             result = 0
         else:
             result = int(orientation)
-        if item['name'] in tripleTiles:
-            result = result + 180
-            if result >= 360:
-                result -= 360
+        # if item['name'] in tripleTiles:
+        #     result = result + 180
+        #     if result >= 360:
+        #         result -= 360
         return result
     else:
         return 0
@@ -326,7 +328,7 @@ def cleanup(entries, layout, scenarioId, keptTokens):
                     overlayPositions = [{'x': 0, 'y': 0}, {'x': -1, 'y': 0}]
                 if overlay['name'] in tripleTiles:
                     overlayPositions = [{'x': 0, 'y': 0}, {
-                        'x': -1, 'y': 0}, {'x': -1, 'y': -1}]
+                        'x': -1, 'y': 0}, {'x': -1, 'y': 1}]
                 actualPositions = []
                 for position in overlayPositions:
                     x, y = rotateHexCoordinates(
@@ -756,5 +758,5 @@ with open("tileInfos.json", 'r') as tf:
             scenariosOutput[id] = scenarioOutput
         with open("../processedScenarios.human.json", 'w') as fw:
             json.dump(scenariosOutput, fw, indent=2)
-        with open("../docs/processedScenarios2.json", 'w') as fw:
+        with open("../docs/processedScenarios3.json", 'w') as fw:
             json.dump(scenariosOutput, fw)

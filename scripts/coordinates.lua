@@ -17,17 +17,24 @@ function rotateHexCoordinates(x, y, orientation)
     end
 end
 
+X0Offset = -0.15
+Y0Offset =  0.30
+XXDisplacement = -1.15
+YXDisplacement = -0.58
+YYDisplacement = -1
+
 function getWorldPositionFromHexPosition(x, y)
-    return 0.43 + 1.15 * x + y * 0.575, y + 5.29
+    return X0Offset + XXDisplacement * x + YXDisplacement * y, YYDisplacement * y + Y0Offset
 end
 
 function getHexPositionFromWorldPosition(position)
     local px = position.x
     local py = position.z
-    local hy = math.floor(py - 5.29 + 0.5)
-    -- px = 0.43 + 1.15 * hx + hy * 0.575
-    -- px - 0.43 - 0.575 * hy = 1.15 * hx
-    local hx = math.floor(0.5 + (px - hy * 0.575 - 0.43) / 1.15)
+    -- py = YYDisplacement * hy + Y0Offset
+    local hy = math.floor((py  - Y0Offset) / YYDisplacement + 0.5)
+    -- px = X0Offset + XXDisplacement * hx + YXDisplacement * hy
+    -- px - X0Offset - YXDisplacement * hy = XXDisplacement * hx
+    local hx = math.floor(0.5 + (px - hy * YXDisplacement - X0Offset) / XXDisplacement)
     return hx, hy
 end
 

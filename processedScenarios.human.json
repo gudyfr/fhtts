@@ -3018,22 +3018,22 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 4,
-                    "y": -6
+                    "x": 5,
+                    "y": -6,
+                    "type": "Obstacle"
                   }
                 ]
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": 3,
-                    "y": -2,
-                    "type": "Obstacle"
+                    "y": -1
                   }
                 ]
               }
@@ -4094,12 +4094,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": 2,
-                    "y": -2,
-                    "type": "Obstacle"
+                    "y": -1
                   }
                 ]
               }
@@ -6713,6 +6712,16 @@
                 ]
               },
               {
+                "name": "Large Ice Crystal",
+                "orientation": 60,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 3
+                  }
+                ]
+              },
+              {
                 "name": "Snow Rock",
                 "orientation": 0,
                 "positions": [
@@ -6785,17 +6794,6 @@
                     "x": 0,
                     "y": 1,
                     "type": "Hazardous Terrain"
-                  }
-                ]
-              },
-              {
-                "name": "Large Ice Crystal",
-                "orientation": 240,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 4,
-                    "type": "Obstacle"
                   }
                 ]
               },
@@ -8641,12 +8639,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -3,
-                    "y": 0,
-                    "type": "Obstacle"
+                    "y": 1
                   }
                 ]
               }
@@ -8735,11 +8732,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 3,
-                    "y": -2
+                    "x": 4,
+                    "y": -2,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -16066,10 +16064,10 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -6,
+                    "x": -5,
                     "y": 5
                   }
                 ]
@@ -16347,10 +16345,10 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 0,
+                "orientation": 180,
                 "positions": [
                   {
-                    "x": -2,
+                    "x": -3,
                     "y": 1
                   }
                 ]
@@ -16467,10 +16465,10 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 0,
+                "orientation": 180,
                 "positions": [
                   {
-                    "x": -2,
+                    "x": -3,
                     "y": 1
                   }
                 ]
@@ -16807,10 +16805,10 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 3,
+                    "x": 4,
                     "y": -4
                   }
                 ]
@@ -16946,22 +16944,22 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -3,
-                    "y": 3
+                    "x": -2,
+                    "y": 3,
+                    "type": "Obstacle"
                   }
                 ]
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -6,
-                    "y": 4,
-                    "type": "Obstacle"
+                    "y": 5
                   }
                 ]
               }
@@ -17905,11 +17903,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": 0,
-                    "y": -2
+                    "y": -1
                   }
                 ]
               }
@@ -18022,20 +18020,20 @@
               },
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -7,
+                    "x": -6,
                     "y": 3
                   }
                 ]
               },
               {
                 "name": "Huge Water",
-                "orientation": 0,
+                "orientation": 180,
                 "positions": [
                   {
-                    "x": -8,
+                    "x": -9,
                     "y": 4
                   }
                 ]
@@ -18052,6 +18050,10 @@
                   {
                     "x": -5,
                     "y": 2
+                  },
+                  {
+                    "x": -5,
+                    "y": 4
                   },
                   {
                     "x": -7,
@@ -18197,11 +18199,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -4,
-                    "y": 3
+                    "x": -3,
+                    "y": 3,
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -18303,11 +18306,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -4,
-                    "y": 1
+                    "x": -3,
+                    "y": 1,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -22228,11 +22232,12 @@
               },
               {
                 "name": "Large Ice Crystal",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 2,
-                    "y": -3
+                    "x": 3,
+                    "y": -3,
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -23036,6 +23041,17 @@
             ],
             "overlays": [
               {
+                "name": "Huge Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -8,
+                    "y": 4,
+                    "type": "Difficult Terrain"
+                  }
+                ]
+              },
+              {
                 "name": "Large Snow Rock",
                 "orientation": 60,
                 "positions": [
@@ -23281,16 +23297,11 @@
               },
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": 4
-                  },
-                  {
-                    "x": -5,
-                    "y": 3,
-                    "type": "Difficult Terrain"
+                    "x": -4,
+                    "y": 3
                   }
                 ]
               },
@@ -24235,11 +24246,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -5,
-                    "y": 1
+                    "x": -4,
+                    "y": 1,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -25437,22 +25449,22 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -6,
-                    "y": 1
+                    "x": -5,
+                    "y": 1,
+                    "type": "Obstacle"
                   }
                 ]
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -4,
-                    "y": 4,
-                    "type": "Obstacle"
+                    "y": 5
                   }
                 ]
               }
@@ -25541,11 +25553,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -5,
-                    "y": 0
+                    "x": -4,
+                    "y": 0,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -30545,10 +30558,10 @@
               },
               {
                 "name": "Huge Water",
-                "orientation": 0,
+                "orientation": 180,
                 "positions": [
                   {
-                    "x": 6,
+                    "x": 5,
                     "y": 1
                   }
                 ]
@@ -33438,12 +33451,11 @@
               },
               {
                 "name": "Large Ice Crystal",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -5,
-                    "y": 1,
-                    "type": "Obstacle"
+                    "y": 2
                   }
                 ]
               },
@@ -34199,12 +34211,11 @@
               },
               {
                 "name": "Large Ice Crystal",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -5,
-                    "y": 1,
-                    "type": "Obstacle"
+                    "y": 2
                   }
                 ]
               },
@@ -35230,12 +35241,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -2,
-                    "y": 2,
-                    "type": "Objective"
+                    "y": 3
                   }
                 ]
               }
@@ -35475,12 +35485,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -4,
-                    "y": 0,
-                    "type": "Obstacle"
+                    "y": 1
                   }
                 ]
               }
@@ -40351,14 +40360,15 @@
               },
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -2,
-                    "y": 0
+                    "x": -1,
+                    "y": 0,
+                    "type": "Difficult Terrain"
                   },
                   {
-                    "x": -5,
+                    "x": -4,
                     "y": 0
                   }
                 ]
@@ -40408,10 +40418,6 @@
                 "name": "Water",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": -2,
-                    "y": 1
-                  },
                   {
                     "x": -6,
                     "y": 0,
@@ -41059,12 +41065,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -6,
-                    "y": 3,
-                    "type": "Obstacle"
+                    "y": 4
                   }
                 ]
               }
@@ -41926,11 +41931,12 @@
               },
               {
                 "name": "Large Ice Crystal",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 7,
-                    "y": -3
+                    "x": 8,
+                    "y": -3,
+                    "type": "Obstacle"
                   }
                 ]
               },
@@ -42408,12 +42414,11 @@
             "overlays": [
               {
                 "name": "Large Ice Crystal",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -2,
-                    "y": 2,
-                    "type": "Obstacle"
+                    "y": 3
                   }
                 ]
               },
@@ -42623,12 +42628,11 @@
             "overlays": [
               {
                 "name": "Large Ice Crystal",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -2,
-                    "y": 2,
-                    "type": "Obstacle"
+                    "y": 3
                   }
                 ]
               },
@@ -44954,12 +44958,11 @@
             "overlays": [
               {
                 "name": "Large Ice Crystal",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -2,
-                    "y": 2,
-                    "type": "Objective"
+                    "y": 3
                   }
                 ]
               },
@@ -45542,22 +45545,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 5
-                  }
-                ]
-              },
-              {
-                "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -6,
-                    "y": 1,
-                    "type": "Obstacle"
+                    "y": 2
                   }
                 ]
               }
@@ -45654,11 +45646,16 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 3,
-                    "y": -1
+                    "x": 4,
+                    "y": -1,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": 9,
+                    "y": -5
                   }
                 ]
               }
@@ -47724,15 +47721,17 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 1,
-                    "y": 1
+                    "x": 2,
+                    "y": 1,
+                    "type": "Difficult Terrain"
                   },
                   {
-                    "x": 4,
-                    "y": -2
+                    "x": 5,
+                    "y": -2,
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -49062,12 +49061,11 @@
             "overlays": [
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -3,
-                    "y": 3,
-                    "type": "Objective"
+                    "y": 4
                   }
                 ]
               }
@@ -51541,11 +51539,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -3,
-                    "y": 2
+                    "x": -2,
+                    "y": 2,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -51691,12 +51690,11 @@
             "overlays": [
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -1,
-                    "y": 1,
-                    "type": "Obstacle"
+                    "y": 2
                   }
                 ]
               }
@@ -52566,12 +52564,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -4,
-                    "y": 1,
-                    "type": "Objective"
+                    "y": 2
                   }
                 ]
               }
@@ -52698,11 +52695,12 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 6,
-                    "y": -6
+                    "x": 7,
+                    "y": -6,
+                    "type": "Objective"
                   }
                 ]
               }
@@ -55008,15 +55006,17 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 2,
-                    "y": -2
+                    "x": 3,
+                    "y": -2,
+                    "type": "Obstacle"
                   },
                   {
-                    "x": 4,
-                    "y": -5
+                    "x": 5,
+                    "y": -5,
+                    "type": "Obstacle"
                   }
                 ]
               }
@@ -57507,11 +57507,12 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -2,
-                    "y": -2
+                    "x": -1,
+                    "y": -2,
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -57776,11 +57777,12 @@
             "overlays": [
               {
                 "name": "Huge Water",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -2,
-                    "y": -2
+                    "x": -1,
+                    "y": -2,
+                    "type": "Difficult Terrain"
                   }
                 ]
               }
@@ -63148,12 +63150,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": -4,
-                    "y": 2,
-                    "type": "Objective"
+                    "y": 3
                   }
                 ]
               }
@@ -63256,21 +63257,22 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 7,
-                    "y": -6
+                    "x": 8,
+                    "y": -6,
+                    "type": "Objective"
                   }
                 ]
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": 2,
-                    "y": -1
+                    "y": 0
                   }
                 ]
               }
@@ -68160,12 +68162,11 @@
               },
               {
                 "name": "Tree",
-                "orientation": 240,
+                "orientation": 60,
                 "positions": [
                   {
                     "x": 5,
-                    "y": -3,
-                    "type": "Obstacle"
+                    "y": -2
                   }
                 ]
               }
@@ -68276,15 +68277,17 @@
               },
               {
                 "name": "Tree",
-                "orientation": 180,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": 2,
-                    "y": 1
+                    "x": 3,
+                    "y": 1,
+                    "type": "Obstacle"
                   },
                   {
-                    "x": 4,
-                    "y": 5
+                    "x": 5,
+                    "y": 5,
+                    "type": "Obstacle"
                   }
                 ]
               }

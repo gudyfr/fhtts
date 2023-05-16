@@ -23,7 +23,7 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
         if flip or false then
             zRot = 180
         end
-        deck.setRotation({ 0, 180, zRot })
+        deck.setRotation({ 0, 0, zRot })
     end
 end
 

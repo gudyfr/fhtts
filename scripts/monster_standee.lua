@@ -12,8 +12,8 @@ function onLoad(save_state)
 		alignment = 3,
 		value = state['nr'] or '1',
 		scale = { .4,.4,.4 },
-		position = { 0, -0.72, -0.14 },
-		rotation = {0,180,0},
+		position = { 0, -0.72, 0.14 },
+		rotation = {0,0,0},
 		color = { 1, 1, 1, 0 },
 		font_color = { 0, 0, 0, 100 }
 	}

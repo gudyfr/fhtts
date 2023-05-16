@@ -39,5 +39,5 @@ function setAtLocalPosition(object, position, flipped)
     if flipped then
         zRot = 180
     end
-    object.setRotation({0, 180, zRot})
+    object.setRotation({0, 0, zRot})
 end
