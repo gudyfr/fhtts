@@ -7,6 +7,7 @@ require('fhlog')
 require('standees')
 
 TAG = "ScenarioMat"
+CURRENT_ASSISTANT_VERSION = 1
 
 function getState()
     local results = {}
@@ -1390,7 +1391,16 @@ CurrentRound = {
     state = -1
 }
 
+VersionMessageCount = 0
+
 function processState(state)
+    local version = state.version or 0
+    if version < CURRENT_ASSISTANT_VERSION then
+        if VersionMessageCount % 10 == 0 then
+            broadcastToAll("The Assistant is outdated. Please download the latest version of the Assistant to enable all features.", {1,0,0})
+        end
+        VersionMessageCount = VersionMessageCount + 1
+    end
     local newState = {}
     newState.round = {
         round = state.round,
@@ -1404,10 +1414,12 @@ function processState(state)
 
     local charactersStatus = {}
     local monstersStatus = {}
+    local assistantData = {}
 
     for _, entry in ipairs(state.currentList) do
         -- print(JSON.encode(entry))
         local id = entry.id
+        local originalId = id
         -- We need to get rid of some of the (FH) and scenario specific monster names
         local searches = { ' (', ' Scenario ' }
         for _, s in ipairs(searches) do
@@ -1428,18 +1440,29 @@ function processState(state)
                 newState[summonName] = { characterState = summon }
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
+            table.insert(assistantData, {name=originalId, type="character", turnState=entry.turnState})
         else
-            if entry.monsterInstances ~= nil then
-                for _, instance in ipairs(entry.monsterInstances) do
+            local instances = entry.monsterInstances
+            if instances ~= nil then
+                for _, instance in ipairs(instances) do
                     monstersStatus[id .. " " .. instance.standeeNr] = {
                         current = instance.health,
                         max = instance
                             .maxHealth
                     }
                 end
+                if #instances > 0 or (entry.isActive or false) then
+                    table.insert(assistantData, {name=originalId, type="monster", turnState=entry.turnState, level=entry.level, card=entry.currentCard})
+                end
             end
         end
     end
+
+    local assistantMat = getObjectFromGUID('c64592')
+    if assistantMat ~= nil then
+        assistantMat.call("updateState", JSON.encode(assistantData))
+    end
+
     local elements = state.elements
     if elements ~= nil then
         for element, value in pairs(elements) do
