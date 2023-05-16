@@ -7,7 +7,7 @@ require('fhlog')
 require('standees')
 
 TAG = "ScenarioMat"
-CURRENT_ASSISTANT_VERSION = 1
+CURRENT_ASSISTANT_VERSION = 2
 
 function getState()
     local results = {}
@@ -1980,4 +1980,8 @@ end
 
 function playNarrationInAssistant(file)
     updateAssistant("GET","play/" .. file)
+end
+
+function setCurrentTurn(name)
+    updateAssistant("POST", "setCurrentTurn", {name=name}, updateState)
 end
