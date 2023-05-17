@@ -191,7 +191,7 @@ function loadCharacterBox(characterBox, state)
     if isToken then
       destination = TokenPositions[currentToken]
       currentToken = currentToken + 1
-      rotation = {0,0,180}
+      rotation = { 0, 0, 180 }
     else
       destination = UntaggedPositions[currentUntagged]
       destination.z = destination.z + zShift
@@ -200,10 +200,11 @@ function loadCharacterBox(characterBox, state)
         currentUntagged = 1
         zShift = zShift - 0.2
       end
-      rotation = {0,0,0}
+      rotation = { 0, 0, 0 }
     end
     destination.y = destination.y + 1.5
-    characterBox.takeObject({ guid = obj.guid, position = self.positionToWorld(destination), rotation = rotation, smooth=false})
+    characterBox.takeObject({ guid = obj.guid, position = self.positionToWorld(destination), rotation = rotation,
+      smooth = false })
   end
 
   -- detroy the box
@@ -430,8 +431,8 @@ function loadItems(items)
         local deck = getDeckOrCardAtWorldPosition(cardSupplyPositions[candidate])
         if deck ~= nil then
           found = found +
-          forEachInDeckOrCardIf(deck, function(card) addCardToDeckAt(card, itemPositions[positionName]) end,
-            function(entry) return entry.name == item end)
+              forEachInDeckOrCardIf(deck, function(card) addCardToDeckAt(card, itemPositions[positionName]) end,
+                function(entry) return entry.name == item end)
         end
       end
       if found == 0 then
@@ -570,16 +571,16 @@ function drawInternal()
 end
 
 function draw(internal)
-  internal = internal or false 
+  internal = internal or false
   local absoluteTarget
   if internal then
     absoluteTarget = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition))
   else
-    local target = {x=-2.7, y=0.7, z=-9.2}
-  local scenarioMat = getObjectFromGUID('4aa570')
-  absoluteTarget = scenarioMat.positionToWorld(target)
+    local target = { x = -2.7, y = 0.7, z = -9.2 }
+    local scenarioMat = getObjectFromGUID('4aa570')
+    absoluteTarget = scenarioMat.positionToWorld(target)
   end
-  
+
 
   local player = getPlayerNumber()
   local hitlist = Physics.cast({
@@ -598,14 +599,14 @@ function draw(internal)
     DrawnReturnTimer = Wait.time(returnDrawnCards, 5.0)
     absoluteTarget.x = absoluteTarget.x - #Drawn * 1.5
   end
-  
+
   for i, j in pairs(hitlist) do
     if j.hit_object.tag == "Deck" then
       local card = j.hit_object.takeObject({
         position = absoluteTarget,
         flip     = true
       })
-      Global.call("showDrawnCard", {player=player, card=card})
+      Global.call("showDrawnCard", { player = player, card = card })
       if not internal then
         table.insert(Drawn, card)
       end
@@ -614,7 +615,7 @@ function draw(internal)
       local card = j.hit_object
       card.setPosition(absoluteTarget)
       card.flip()
-      Global.call("showDrawnCard", {player=player, card=card})
+      Global.call("showDrawnCard", { player = player, card = card })
       if not internal then
         table.insert(Drawn, card)
       end
@@ -845,6 +846,14 @@ function cleanup()
       end
     end
   end
+
+  -- Restore items
+  for _, position in ipairs(ItemCardPositions) do
+    local deckOrCard = getDeckOrCardAt(position)
+    if deckOrCard ~= nil then
+      deckOrCard.setRotationSmooth({ 0, 0, 0 })
+    end
+  end
 end
 
 function returnCardToScenarioMat(card)
@@ -900,14 +909,14 @@ function toggleItem(position)
     if j.hit_object.tag == "Card" then
       card = j.hit_object
       rot = card.getRotation()[2]
-      if rot > 179 and rot < 181 then
+      if rot > -1 and rot < 1 then
         if card.hasTag("lost") then
           card.flip()
         else
-          card.setRotationSmooth({ 0, 270, 0 }, false, false)
+          card.setRotationSmooth({ 0, 90, 0 }, false, false)
         end
       else
-        card.setRotationSmooth({ 0, 180, 0 }, false, false)
+        card.setRotationSmooth({ 0, 0, 0 }, false, false)
       end
     end
   end
@@ -953,4 +962,17 @@ function addCardToAttackModifiers(params)
     end
   end
   card.setPosition(self.positionToWorld(AttackModifiersDrawPosition))
+end
+
+function endScenario(payload)
+  cleanup()
+  local xp = payload.xp
+  local loot = payload.loot
+  local characterSheet = getCharacterSheet()
+  if characterSheet ~= nil then
+    characterSheet.call("addEx", {name='xp', amount=xp})
+    for name,value in pairs(loot) do
+      characterSheet.call("addEx", {name=name, amount=value})
+    end
+  end
 end

@@ -649,6 +649,10 @@ function prepareFrosthavenScenario(name)
    end
 end
 
+function prepareScenarioEx(params)
+   prepareScenario(params.name, params.campaign, params.scenario)
+end
+
 function prepareScenario(name, campaign, title)
    name = tostring(name)
    Settings = JSON.decode(getSettings())
@@ -821,7 +825,7 @@ function prepareScenario(name, campaign, title)
          Wait.time(function() layoutScenarioElements(name) end, 0.5)
       end
 
-      getScenarioMat().call("setScenario", { scenario = title, campaign = campaign })
+      getScenarioMat().call("setScenario", { scenario = title, campaign = campaign, name = name })
    end
 end
 

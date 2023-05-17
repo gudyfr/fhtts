@@ -1,10 +1,11 @@
-function findLocalObject(localPosition, type, tag)
-    return findGlobalObject(self.positionToWorld(localPosition), type, tag)
+function findLocalObject(localPosition, type, tag, name)
+    return findGlobalObject(self.positionToWorld(localPosition), type, tag, name)
 end
 
-function findGlobalObject(position, type, tag)
+function findGlobalObject(position, type, tag, name)
     type = type or ""
     tag = tag or ""
+    name = name or ""
     local hitlist = Physics.cast({
         origin       = position,
         direction    = { 0, 1, 0 },
@@ -20,9 +21,11 @@ function findGlobalObject(position, type, tag)
             local obj = hit.hit_object
             -- Always filter out the table and self
             if obj.guid ~= selfGuid and obj.guid ~= 'a25ab2' then
-                if type == "" or type == hit.hit_object.tag then
-                    if tag == "" or hit.hit_object.hasTag(tag) then
-                        return hit.hit_object
+                if type == "" or type == obj.tag then
+                    if tag == "" or obj.hasTag(tag) then
+                        if name == "" or name == obj.getName() then
+                            return obj
+                        end
                     end
                 end
             end

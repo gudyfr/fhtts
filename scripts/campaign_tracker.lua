@@ -1,5 +1,7 @@
 require("json")
 require("savable")
+require("constants")
+
 -- Savable functions
 function getState()
     return ScenariosState
@@ -10,7 +12,7 @@ function onStateUpdate(state)
     refreshDecals()
     -- Also refresh all buttons
     self.clearButtons()
-    for id,scenario in pairs(scenarioData) do
+    for id, scenario in pairs(scenarioData) do
         addButtons(id)
     end
 end
@@ -26,7 +28,7 @@ function load(state, url)
     end
     registerSavable("Campaign Tracker " .. self.getName())
     Path = url
-    Global.call('registerDataUpdatable',self)
+    Global.call('registerDataUpdatable', self)
 end
 
 function updateData(baseUrl)
@@ -212,8 +214,46 @@ function toggleCompleted(params)
         local state = ensureState(scenario)
         if state["completed"] ~= completed then
             toggle(scenario, "completed")
+        end        
+    end
+end
+
+function setFieldOn(params)
+    local name = params.name
+    local field = params.field
+    local scenario = "ct" .. name
+    -- Check that this scenario is handled on this tracker instance
+    if scenarioData ~= nil and scenarioData[scenario] ~= nil then
+        local state = ensureState(scenario)
+        if not state[field] then
+            toggle(scenario, field)
+            local verb = ""
+            if field == "unlocked" then
+                broadcastToAll("Unlocked scenario " .. name)
+            end
+            if field == "blocked" then
+                broadcastToAll("Locked out scenario " .. name)
+            end
         end
     end
+end
+
+function trySetFieldEverywhere(name, field)
+    local params = { name = name, field = field }
+    for _, guid in ipairs(CampaignTrackerGuids) do
+        local ct = getObjectFromGUID(guid)
+        if ct ~= nil then
+            ct.call('setFieldOn', params)
+        end
+    end
+end
+
+function blockScenario(name)
+    trySetFieldEverywhere(name, "blocked")
+end
+
+function unlockScenario(name)
+    trySetFieldEverywhere(name, "unlocked")
 end
 
 function toggle(scenario, field)
@@ -246,12 +286,43 @@ function toggle(scenario, field)
             local params = { scenarioData[scenario].trigger, isCompleted(scenario) }
             getObjectFromGUID('d17d72').call("toggleDecal", params)
         end
+
+        -- If we have completed a scenario, check which other ones it unlocks
+        if ScenariosState[scenario]["completed"] then
+            -- Unlock other scenarios
+            for _, name in ipairs(scenarioData[scenario].unlocks or {}) do
+                unlockScenario(name)
+            end
+
+            -- Conditional unlocks
+            for _, info in ipairs(scenarioData[scenario].unlocksIf or {}) do
+                local test = "ct" .. info.complete
+                if ensureState(test)["completed"] then
+                    unlockScenario(info.target)
+                end
+            end
+
+            --Block other scenarios
+            for _, name in ipairs(scenarioData[scenario].blocks or {}) do
+                blockScenario(name)
+            end
+
+            for _,later in ipairs(scenarioData[scenario].later or {}) do
+                local outpostMat = getObjectFromGUID(OutpostMatGuid)
+                if outpostMat ~= nil then
+                    local campaignSheet = outpostMat.call("getCampaignSheet")
+                    if campaignSheet ~= nil then
+                        campaignSheet.call("addInNWeeksEx", later)
+                    end
+                end
+            end
+        end
     end
 
     -- Always notify the scenario picker of scenario changes
     local scenarioState = ScenariosState[scenario] or {}
     getObjectFromGUID('596fc4').call("updateScenario", {
-        string.sub(scenario,3),
+        string.sub(scenario, 3),
         scenarioState.unlocked or false,
         scenarioState.blocked or false,
         scenarioState.completed or false })

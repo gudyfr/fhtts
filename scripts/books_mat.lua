@@ -1,5 +1,6 @@
 require("json")
 require("savable")
+require('constants')
 
 availableBooks = { "scenario book", "section book", "rulebook" }
 bookModels = {}
@@ -296,8 +297,7 @@ function toggleCheckmark(book, page, name)
 
     if book == "scenario book" then
         -- Tell the campaign tracker(s) this scenario is complete
-        local ctGuids = { '029e08', '631fbe', '7f539b', '31de67', 'e145fb' }
-        for _, guid in ipairs(ctGuids) do
+        for _, guid in ipairs(CampaignTrackerGuids) do
             local ct = getObjectFromGUID(guid)
             if ct ~= nil then
                 ct.call("toggleCompleted", { name, not checkmarkState })

@@ -5,9 +5,10 @@ require("deck_save_helpers")
 require("utils")
 require('fhlog')
 require('standees')
+require('constants')
 
 TAG = "ScenarioMat"
-CURRENT_ASSISTANT_VERSION = 2
+CURRENT_ASSISTANT_VERSION = 3
 TAG_5_PLAYERS = "5 players"
 
 function getState()
@@ -92,7 +93,8 @@ function onSave()
         characterStates = characterStates,
         initiativeTypes = initiativeTypes,
         characters = Characters,
-        characterLevels = CharacterLevels
+        characterLevels = CharacterLevels,
+        currentScenario = CurrentScenario
     })
 end
 
@@ -122,6 +124,7 @@ function onLoad(state)
             if json.characterLevels ~= nil then
                 CharacterLevels = json.characterLevels
             end
+            CurrentScenario = json.currentScenario or {}
             initiativeTypes = json.initiativeTypes or {}
         end
     end
@@ -160,8 +163,8 @@ function onLoad(state)
             Green = { 0, 0, 0 },
             Red = { 0, 0, 0 },
             White = { 0, 0, 0 },
-            Blue = { 0, 0, 0 }            
-        }        
+            Blue = { 0, 0, 0 }
+        }
     end
 
     if self.hasTag(TAG_5_PLAYERS) then
@@ -169,7 +172,7 @@ function onLoad(state)
     else
         cardStates["Yellow"] = nil
     end
-    
+
     deckPositions = {}
 
     locateBoardElementsFromTags()
@@ -232,7 +235,7 @@ function onLoad(state)
     button_parameters = getButtonParams("onEnd", "End Round", flipX(ScenarioButtons["end"]), 1150, 400)
     self.createButton(button_parameters)
 
-    button_parameters = getButtonParams("onCleanup", "Delete all elements on the lighter section of the mat",
+    button_parameters = getButtonParams("onCleanup", "Right click to cleanup",
         flipX(ScenarioButtons["cleanup"]), 1100, 400)
     self.createButton(button_parameters)
 
@@ -1030,6 +1033,7 @@ function onEnd()
 end
 
 function setScenario(params)
+    CurrentScenario = params
     updateAssistant("POST", "setScenario", params)
 end
 
@@ -1096,7 +1100,7 @@ function locateBoardElementsFromTags()
         Green = { {}, {}, {} },
         Red = { {}, {}, {} },
         White = { {}, {}, {} },
-        Blue = { {}, {}, {} },        
+        Blue = { {}, {}, {} },
     }
 
     elementsLocations = {
@@ -1129,7 +1133,7 @@ function locateBoardElementsFromTags()
 
     if self.hasTag(TAG_5_PLAYERS) then
         cardLocations["Yellow"] = { {}, {}, {} }
-        hpAndXpLocations["Yellow"] =  {
+        hpAndXpLocations["Yellow"] = {
             hp = { decrement = {}, label = {}, increment = {} },
             xp = { decrement = {}, label = {}, increment = {} }
         }
@@ -1289,9 +1293,19 @@ function sendCard(params)
     card.setPosition(destination)
 end
 
-function onCleanup()
-    -- print(JSON.encode(self.getSnapPoints()))
-    Global.call('cleanup')
+function onCleanup(obj,color,alt)
+    if alt then
+        Global.call("cleanup")
+    else
+        toggleEndScenarioUI()
+    end
+end
+
+function toggleEndScenarioUI()
+    local endScenarioBoard = getObjectFromGUID('0d92fb')
+    if endScenarioBoard ~= nil then
+        endScenarioBoard.call("toggleVisibility")
+    end
 end
 
 -- Standee functions
@@ -1399,8 +1413,12 @@ function updateState(request)
         fhlog(WARNING, TAG, "Error Fetching State : %s", request.error)
         ConsecutiveErrors = ConsecutiveErrors + 1
         if ConsecutiveErrors % 10 == 9 then
-            broadcastToAll("Error connecting to X-Haven assistant. Is it running with the server enabled?", { r = 1, g = 0,
-                b = 0 })
+            broadcastToAll("Error connecting to X-Haven assistant. Is it running with the server enabled?",
+                {
+                    r = 1,
+                    g = 0,
+                    b = 0
+                })
         end
     end
 end
@@ -1417,7 +1435,7 @@ function processState(state)
     if version < CURRENT_ASSISTANT_VERSION then
         if VersionMessageCount % 10 == 0 then
             broadcastToAll(
-            "The Assistant is outdated. Please download the latest version of the Assistant to enable all features.",
+                "The Assistant is outdated. Please download the latest version of the Assistant to enable all features.",
                 { 1, 0, 0 })
         end
         VersionMessageCount = VersionMessageCount + 1
@@ -1474,8 +1492,13 @@ function processState(state)
                 end
                 if #instances > 0 or (entry.isActive or false) then
                     table.insert(assistantData,
-                        { name = originalId, type = "monster", turnState = entry.turnState, level = entry.level,
-                            card = entry.currentCard })
+                        {
+                            name = originalId,
+                            type = "monster",
+                            turnState = entry.turnState,
+                            level = entry.level,
+                            card = entry.currentCard
+                        })
                 end
             end
         end
@@ -2010,4 +2033,139 @@ end
 
 function setCurrentTurn(name)
     updateAssistant("POST", "setCurrentTurn", { name = name }, updateState)
+end
+
+function onScenarioCompleted()
+    if isXHavenEnabled() then
+        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "complete") end)
+    else
+        broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
+    end
+end
+
+function onScenarioLost()
+    if isXHavenEnabled() then
+        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "returnToFrosthaven") end)
+    else
+        broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
+    end
+end
+
+function onScenarioRetry()
+    if isXHavenEnabled() then
+        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "retry") end)
+    else
+        broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
+    end
+end
+
+function findPlayerMat(characterName)
+    for color, guid in pairs(PlayerMats) do
+        local mat = getObjectFromGUID(guid)
+        if mat ~= nil then
+            if mat.call('getCharacterName') == characterName then
+                return mat
+            end
+        end
+    end
+    return nil
+end
+
+function onLootReceived(request, mode)
+    if request.is_done and not request.is_error then
+        if math.floor(request.response_code / 100) == 2 then
+            local lootTable = JSON.decode(request.text)
+            local lootByCharacter = {}
+            -- Filter loot based on mode
+            for name, loot in pairs(lootTable.loot) do
+                local actualLoot = {}
+                for item, count in pairs(loot) do
+                    if item == "coin" or mode == "complete" or mode == "returnToFrosthaven" then
+                        if count > 0 then
+                            actualLoot[item] = count
+                        end
+                    end
+                end
+                lootByCharacter[name] = actualLoot
+            end
+
+            -- print(JSON.encode(characterStates))
+
+            for name, loot in pairs(lootByCharacter) do
+                local playerMat = findPlayerMat(name)
+
+                local message = ""
+                for item, count in pairs(loot) do
+                    local additional = ""
+                    if item == "coin" then
+                        additional = " (" .. count * (lootTable.coinValue or 1) .. " gold)"
+                    end
+                    message = message .. count .. " " .. item .. additional .. ", "
+                end
+                local xp = (characterStates[name] or {})['xp'] or 0
+                if mode == "complete" then
+                    xp = xp + lootTable.baseXp
+                end
+                if #loot > 0 then
+                    message = message .. "and "
+                end
+                message = message .. xp .. " xp"
+                if playerMat ~= nil then
+                    broadcastToAll(name .. " received " .. message)
+                    if loot.coin ~= nil then
+                        loot.gold = loot.coin * (lootTable.coinValue or 1)
+                        loot.coin = nil
+                    end
+                    playerMat.call("endScenario", { loot = loot, xp = xp })
+                else
+                    broadcastToAll("Could not find " .. name .. " player mat. " .. message .. " not collected")
+                end
+            end
+
+
+            if mode == "complete" then
+                -- Inpiration
+                local inspiration = 4 - Global.call("getPlayerCount")
+                if inspiration > 0 then
+                    local outpostMat = getObjectFromGUID(OutpostMatGuid)
+                    if outpostMat ~= nil then
+                        local campaignSheet = outpostMat.call("getCampaignSheet")
+                        if campaignSheet ~= nil then
+                            broadcastToAll("Party gained " .. inspiration .. " inspiration")
+                            campaignSheet.call("addEx", { name = "inspiration", amount = inspiration })
+                        end
+                    end
+                end
+
+                -- Mark scenario complete
+                -- Tell the campaign tracker(s) this scenario is complete
+                if CurrentScenario ~= nil and CurrentScenario.name ~= nil then
+                    for _, guid in ipairs(CampaignTrackerGuids) do
+                        local ct = getObjectFromGUID(guid)
+                        if ct ~= nil then
+                            ct.call("setFieldOn", {field="completed", name=CurrentScenario.name})
+                        end
+                    end
+                end
+            end
+
+            -- Cleanup the assistant
+            updateAssistant("POST", "endScenario", {}, updateState)
+
+            -- Cleanup the scenario mat
+            Global.call("cleanup", true)
+
+            -- If retry, re-layout the scenario
+            local oldScenario = CurrentScenario
+            CurrentScenario = nil
+            if mode == "retry" then
+                Wait.time(function() Global.call("prepareScenarioEx",oldScenario) end, 1.0)
+            end
+
+            -- Collapse the End scenario UI
+            toggleEndScenarioUI()
+            return
+        end
+    end
+    broadcastToAll("Error fetching loot from assistant")
 end

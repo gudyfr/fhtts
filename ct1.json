@@ -73,47 +73,8 @@
             "y": 0.221,
             "z": 1.750
         },
-        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802549/626C66DE369C1E4B7DE672F02587AD0CC3F04D17/"
-    },
-    {
-        "name": "ct9",
-        "position": {
-            "x": 0.166,
-            "y": 0.110,
-            "z": -0.564
-        },
-        "rotation": {
-            "x": 90,
-            "y": 179.833,
-            "z": 0
-        },
-        "scale": {
-            "x": 0.270,
-            "y": 0.221,
-            "z": 1.750
-        },
-        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046810518/AF3AE0F0C5C15E51B678D8007333D9E2175DF59D/"
-    },
-    {
-        "name": "ct3",
-        "lockable": true,
-        "trigger": "map_w",
-        "position": {
-            "x": -0.164,
-            "y": 0.110,
-            "z": -0.564
-        },
-        "rotation": {
-            "x": 90,
-            "y": 179.833,
-            "z": 0
-        },
-        "scale": {
-            "x": 0.270,
-            "y": 0.221,
-            "z": 1.750
-        },
-        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802619/44CEA1491AC60F63550EC7721257E9E0021A6BD7/"
+        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802549/626C66DE369C1E4B7DE672F02587AD0CC3F04D17/",
+        "unlocks" : [2,3]
     },
     {
         "name": "ct2",
@@ -134,7 +95,32 @@
             "y": 0.221,
             "z": 1.750
         },
-        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802581/DB6C2FF38E292F4542FA9FE9649E62668546CE1B/"
+        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802581/DB6C2FF38E292F4542FA9FE9649E62668546CE1B/",
+        "unlocks" : [4],
+        "blocks" : [3]
+    },
+    {
+        "name": "ct3",
+        "lockable": true,
+        "trigger": "map_w",
+        "position": {
+            "x": -0.164,
+            "y": 0.110,
+            "z": -0.564
+        },
+        "rotation": {
+            "x": 90,
+            "y": 179.833,
+            "z": 0
+        },
+        "scale": {
+            "x": 0.270,
+            "y": 0.221,
+            "z": 1.750
+        },
+        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802619/44CEA1491AC60F63550EC7721257E9E0021A6BD7/",
+        "unlocks" : [4],
+        "blocks" : [2]
     },
     {
         "name": "ct4",
@@ -192,6 +178,25 @@
             "z": 1.750
         },
         "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046802734/B2FAC9C2D13C5A56FE08EDBA6EC1D368A587C225/"
+    },
+    {
+        "name": "ct9",
+        "position": {
+            "x": 0.166,
+            "y": 0.110,
+            "z": -0.564
+        },
+        "rotation": {
+            "x": 90,
+            "y": 179.833,
+            "z": 0
+        },
+        "scale": {
+            "x": 0.270,
+            "y": 0.221,
+            "z": 1.750
+        },
+        "url": "http://cloud-3.steamusercontent.com/ugc/2015962364046810518/AF3AE0F0C5C15E51B678D8007333D9E2175DF59D/"
     },
     {
         "name": "ct10",
