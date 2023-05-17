@@ -1847,6 +1847,14 @@ function onObjectLeaveContainer(container, leave_object)
    end
 end
 
+function recoverAttackModifiers(color)
+   playerMatId = PlayerMats[color]
+   if playerMatId ~= nil then
+      playerMat = getObjectFromGUID(playerMatId)
+      playerMat.call("returnDrawnCards")
+   end
+end
+
 function playerDraw(player)
    playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then

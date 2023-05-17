@@ -274,7 +274,7 @@ function onLoad()
     local pos = buttonPositions["draw"]
     local button_parameters = {
       function_owner = self,
-      click_function = "draw",
+      click_function = "drawInternal",
       label          = "Draw",
       position       = { -pos.x, pos.y, pos.z },
       width          = 200,
@@ -560,7 +560,25 @@ function compareX(obj1, obj2)
   end
 end
 
-function draw()
+Drawn = {}
+DrawnReturnTimer = nil
+
+function drawInternal()
+  draw(true)
+end
+
+function draw(internal)
+  internal = internal or false 
+  local absoluteTarget
+  if internal then
+    absoluteTarget = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition))
+  else
+    local target = {x=-2.7, y=0.7, z=-9.2}
+  local scenarioMat = getObjectFromGUID('4aa570')
+  absoluteTarget = scenarioMat.positionToWorld(target)
+  end
+  
+
   local player = getPlayerNumber()
   local hitlist = Physics.cast({
     origin       = self.positionToWorld(AttackModifiersDrawPosition),
@@ -571,21 +589,48 @@ function draw()
     debug        = true
   }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
 
+  if not internal then
+    if DrawnReturnTimer ~= nil then
+      Wait.stop(DrawnReturnTimer)
+    end
+    DrawnReturnTimer = Wait.time(returnDrawnCards, 5.0)
+    absoluteTarget.x = absoluteTarget.x - #Drawn * 1.5
+  end
+  
   for i, j in pairs(hitlist) do
     if j.hit_object.tag == "Deck" then
       local card = j.hit_object.takeObject({
-        position = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)),
+        position = absoluteTarget,
         flip     = true
       })
       Global.call("showDrawnCard", {player=player, card=card})
+      if not internal then
+        table.insert(Drawn, card)
+      end
       return card
     elseif j.hit_object.tag == "Card" then
-      j.hit_object.setPosition(self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)))
-      j.hit_object.flip()
-      Global.call("showDrawnCard", {player=player, card=j.hit_object})
-      return j.hit_object
+      local card = j.hit_object
+      card.setPosition(absoluteTarget)
+      card.flip()
+      Global.call("showDrawnCard", {player=player, card=card})
+      if not internal then
+        table.insert(Drawn, card)
+      end
+      return card
     end
   end
+end
+
+function returnDrawnCards()
+  for _, card in ipairs(Drawn) do
+    if card.hasTag("return") then
+      returnCardToScenarioMat(card)
+    else
+      card.setPositionSmooth(self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)))
+    end
+  end
+  Drawn = {}
+  DrawnReturnTimer = nil
 end
 
 function getCharacterName()

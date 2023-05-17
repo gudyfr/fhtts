@@ -1930,7 +1930,12 @@ function setSection(section)
     end
 end
 
+LastColorToDraw = nil
 function drawAttackModifier(color, alt)
+    if LastColorToDraw ~= nil and color ~= LastColorToDraw then
+        Global.call("recoverAttackModifiers", LastColorToDraw)
+    end
+    LastColorToDraw = color
     if alt then
         Global.call("playerShuffle", { color = color })
     else
