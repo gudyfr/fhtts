@@ -868,9 +868,14 @@ function layoutMap(map)
    local objects = CurrentScenarioObjects
    -- Determine number of players
    local playerCount = getPlayerCount()
+   local originalPlayerCount = playerCount
    if playerCount < 2 then
       playerCount = 2
+   elseif playerCount > 4 then
+      playerCount = 4
    end
+
+   broadcastToAll(originalPlayerCount .." players detected. Laying out map for " .. playerCount .. " players.")
 
    local categories = { "monsters", "overlays", "tokens" }
 
@@ -1902,7 +1907,7 @@ end
 
 function getPlayerCount()
    local count = 0
-   for _, color in ipairs({ "Green", "Red", "White", "Blue" }) do
+   for _, color in ipairs({ "Green", "Red", "White", "Blue", "Yellow"}) do
       if isPlayerPresent(color) then
          count = count + 1
       end
