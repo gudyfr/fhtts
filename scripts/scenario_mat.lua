@@ -8,6 +8,7 @@ require('standees')
 
 TAG = "ScenarioMat"
 CURRENT_ASSISTANT_VERSION = 2
+TAG_5_PLAYERS = "5 players"
 
 function getState()
     local results = {}
@@ -75,7 +76,7 @@ relativeStateButtonLocations = {
     slow = { -0.4, 0.01, -1.7 }
 }
 
-colors = { "Green", "Red", "White", "Blue" }
+colors = { "Green", "Red", "White", "Blue", "Yellow" }
 
 stateValues = {
     none = 0,
@@ -98,6 +99,8 @@ end
 function onLoad(state)
     fhLogInit()
     self.interactable = false
+    -- print(JSON.encode(self.getSnapPoints()))
+
     if state ~= nil then
         local json = JSON.decode(state)
         if json ~= nil then
@@ -157,10 +160,16 @@ function onLoad(state)
             Green = { 0, 0, 0 },
             Red = { 0, 0, 0 },
             White = { 0, 0, 0 },
-            Blue = { 0, 0, 0 }
-        }
+            Blue = { 0, 0, 0 }            
+        }        
     end
 
+    if self.hasTag(TAG_5_PLAYERS) then
+        cardStates["Yellow"] = { 0, 0, 0 }
+    else
+        cardStates["Yellow"] = nil
+    end
+    
     deckPositions = {}
 
     locateBoardElementsFromTags()
@@ -190,6 +199,7 @@ function onLoad(state)
     end
 
     -- attack modifier draw buttons
+
     for color, position in pairs(AttackModifierButtons) do
         local fName = "drawAttackModifier_" .. color
         local buttonPosition = { -position.x, position.y + 0.02, position.z }
@@ -242,6 +252,7 @@ function onLoad(state)
         isRed = mTags["Red"] ~= nil
         isWhite = mTags["White"] ~= nil
         isBlue = mTags["Blue"] ~= nil
+        isYellow = mTags["Yellow"] ~= nil
 
         color = nil
         if isGreen then
@@ -252,6 +263,8 @@ function onLoad(state)
             color = "White"
         elseif isBlue then
             color = "Blue"
+        elseif isYellow then
+            color = "Yellow"
         end
 
 
@@ -279,7 +292,8 @@ function onLoad(state)
     -- Deck buttons
     if DrawButtons["Battle Goals"] ~= nil and DrawDecks["Battle Goals"] ~= nil then
         local pos = DrawButtons["Battle Goals"]
-        local params = getButtonParams("drawBattleGoal", "Shuffle and deal 3 to all players", { -pos.x, pos.y + 0.02, pos.z })
+        local params = getButtonParams("drawBattleGoal", "Shuffle and deal 3 to all players",
+            { -pos.x, pos.y + 0.02, pos.z })
         self.createButton(params)
     end
 
@@ -300,7 +314,7 @@ function onLoad(state)
     end
 
     updateCharacters()
-    registerSavable("Scenario Mat")    
+    registerSavable("Scenario Mat")
 end
 
 function flipX(position)
@@ -689,7 +703,7 @@ function maybeAddInitiativeToggleButton(color)
 end
 
 function toggleInitiative(color)
-    fhlog(DEBUG,TAG, "Toggle initiative ", color)
+    fhlog(DEBUG, TAG, "Toggle initiative ", color)
     if initiativeTypes[color] == nil or initiativeTypes[color] == "Fast" then
         initiativeTypes[color] = "Slow"
     else
@@ -883,7 +897,7 @@ function getInactiveLostDecal(color, card)
 end
 
 function getDecal(color, card, state, image)
-    position = getStatePosition(color, card, state)
+    local position = getStatePosition(color, card, state)
     --position[1] = -position[1]
     return {
         name = state,
@@ -896,8 +910,8 @@ end
 
 function getStatePosition(color, card, state)
     -- print(JSON.encode({ color = color, card = card, state = state }))
-    cardPosition = cardLocations[color][card]
-    offset = relativeStateButtonLocations[state]
+    local cardPosition = cardLocations[color][card]
+    local offset = relativeStateButtonLocations[state]
     -- print(JSON.encode({ cardPosition = cardPosition, offset=offset }))
     return {
         cardPosition[1] + offset[1],
@@ -1045,7 +1059,7 @@ function spawned(params)
                         end
                     end
                 else
-                    fhlog(ERROR, TAG, "Could not fetch Standee number : %s" ,(re.text or "<empty response>"))
+                    fhlog(ERROR, TAG, "Could not fetch Standee number : %s", (re.text or "<empty response>"))
                 end
             end
         )
@@ -1082,7 +1096,7 @@ function locateBoardElementsFromTags()
         Green = { {}, {}, {} },
         Red = { {}, {}, {} },
         White = { {}, {}, {} },
-        Blue = { {}, {}, {} }
+        Blue = { {}, {}, {} },        
     }
 
     elementsLocations = {
@@ -1110,8 +1124,16 @@ function locateBoardElementsFromTags()
         Blue = {
             hp = { decrement = {}, label = {}, increment = {} },
             xp = { decrement = {}, label = {}, increment = {} }
-        },
+        }
     }
+
+    if self.hasTag(TAG_5_PLAYERS) then
+        cardLocations["Yellow"] = { {}, {}, {} }
+        hpAndXpLocations["Yellow"] =  {
+            hp = { decrement = {}, label = {}, increment = {} },
+            xp = { decrement = {}, label = {}, increment = {} }
+        }
+    end
 
     scenarioElementPositions = {}
 
@@ -1239,8 +1261,8 @@ function locateBoardElementsFromTags()
         end
     end
 
-    table.sort(scenarioElementPositions, function(a,b) return a.z - b.z < 0 end)
-    for i,position in ipairs(scenarioElementPositions) do
+    table.sort(scenarioElementPositions, function(a, b) return a.z - b.z < 0 end)
+    for i, position in ipairs(scenarioElementPositions) do
         scenarioElementPositions[i] = self.positionToWorld(position)
     end
 end
@@ -1268,6 +1290,7 @@ function sendCard(params)
 end
 
 function onCleanup()
+    -- print(JSON.encode(self.getSnapPoints()))
     Global.call('cleanup')
 end
 
@@ -1370,13 +1393,14 @@ function updateState(request)
             local fullState = jsonDecode(request.text)
             processState(fullState)
         else
-            fhlog(WARNING,TAG,"Error Fetching State (%s) : %s", request.response_code, request.text)
+            fhlog(WARNING, TAG, "Error Fetching State (%s) : %s", request.response_code, request.text)
         end
     else
-        fhlog(WARNING,TAG,"Error Fetching State : %s", request.error)
+        fhlog(WARNING, TAG, "Error Fetching State : %s", request.error)
         ConsecutiveErrors = ConsecutiveErrors + 1
         if ConsecutiveErrors % 10 == 9 then
-            broadcastToAll("Error connecting to X-Haven assistant. Is it running with the server enabled?", {r=1,g=0,b=0})
+            broadcastToAll("Error connecting to X-Haven assistant. Is it running with the server enabled?", { r = 1, g = 0,
+                b = 0 })
         end
     end
 end
@@ -1392,7 +1416,9 @@ function processState(state)
     local version = state.version or 0
     if version < CURRENT_ASSISTANT_VERSION then
         if VersionMessageCount % 10 == 0 then
-            broadcastToAll("The Assistant is outdated. Please download the latest version of the Assistant to enable all features.", {1,0,0})
+            broadcastToAll(
+            "The Assistant is outdated. Please download the latest version of the Assistant to enable all features.",
+                { 1, 0, 0 })
         end
         VersionMessageCount = VersionMessageCount + 1
     end
@@ -1435,7 +1461,7 @@ function processState(state)
                 newState[summonName] = { characterState = summon }
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
-            table.insert(assistantData, {name=originalId, type="character", turnState=entry.turnState})
+            table.insert(assistantData, { name = originalId, type = "character", turnState = entry.turnState })
         else
             local instances = entry.monsterInstances
             if instances ~= nil then
@@ -1447,7 +1473,9 @@ function processState(state)
                     }
                 end
                 if #instances > 0 or (entry.isActive or false) then
-                    table.insert(assistantData, {name=originalId, type="monster", turnState=entry.turnState, level=entry.level, card=entry.currentCard})
+                    table.insert(assistantData,
+                        { name = originalId, type = "monster", turnState = entry.turnState, level = entry.level,
+                            card = entry.currentCard })
                 end
             end
         end
@@ -1572,8 +1600,6 @@ function refreshStandees(state)
         end
     end
 end
-
-
 
 function noop()
 end
@@ -1979,9 +2005,9 @@ function setErrata(errata)
 end
 
 function playNarrationInAssistant(file)
-    updateAssistant("GET","play/" .. file)
+    updateAssistant("GET", "play/" .. file)
 end
 
 function setCurrentTurn(name)
-    updateAssistant("POST", "setCurrentTurn", {name=name}, updateState)
+    updateAssistant("POST", "setCurrentTurn", { name = name }, updateState)
 end

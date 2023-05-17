@@ -592,7 +592,10 @@ function cleanup(forceDelete, noMessage)
    if deleted then
       -- Notify all player mats to also cleanup their attack modifier decks
       for color, guid in pairs(PlayerMats) do
-         getObjectFromGUID(guid).call("cleanup")
+         local mat = getObjectFromGUID(guid)
+         if mat ~= nil then
+            mat.call("cleanup")
+         end
       end
       -- And clear the errata
       getScenarioMat().call('setErrata', nil)
@@ -1848,18 +1851,22 @@ function onObjectLeaveContainer(container, leave_object)
 end
 
 function recoverAttackModifiers(color)
-   playerMatId = PlayerMats[color]
+   local playerMatId = PlayerMats[color]
    if playerMatId ~= nil then
-      playerMat = getObjectFromGUID(playerMatId)
-      playerMat.call("returnDrawnCards")
+      local playerMat = getObjectFromGUID(playerMatId)
+      if playerMat ~= nil then
+         playerMat.call("returnDrawnCards")
+      end
    end
 end
 
 function playerDraw(player)
-   playerMatId = PlayerMats[player.color]
+   local playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then
-      playerMat = getObjectFromGUID(playerMatId)
-      playerMat.call("draw")
+      local playerMat = getObjectFromGUID(playerMatId)
+      if playerMat ~= nil then
+         playerMat.call("draw")
+      end
    end
 end
 
@@ -1884,10 +1891,12 @@ function resetDrawnCard()
 end
 
 function playerShuffle(player)
-   playerMatId = PlayerMats[player.color]
+   local playerMatId = PlayerMats[player.color]
    if playerMatId ~= nil then
-      playerMat = getObjectFromGUID(playerMatId)
-      playerMat.call("shuffle")
+      local playerMat = getObjectFromGUID(playerMatId)
+      if playerMat ~= nil then
+         playerMat.call("shuffle")
+      end
    end
 end
 

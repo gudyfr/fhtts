@@ -26,6 +26,10 @@ function getExpectedEntries()
     }
 end
 
+function getRelativeScale()
+    return 1.0
+end
+
 function onRefreshData()
     Global.call("updateData")
 end

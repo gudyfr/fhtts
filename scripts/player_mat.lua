@@ -257,6 +257,8 @@ function getPlayerNumber()
     return 3
   elseif self.getName() == "Blue Player Mat" then
     return 4
+  elseif self.getName() == "Yellow Player Mat" then
+    return 5
   end
   return -1
 end

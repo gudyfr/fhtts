@@ -19,6 +19,12 @@ function onLoad(save)
 end
 
 function refreshControls()
+    local success, scale = pcall(getRelativeScale)
+    if success then
+        RelativeScale = scale
+    else
+        RelativeScale = 1
+    end
     for _, button in ipairs(self.getButtons() or {}) do
         self.removeButton(button.index)
     end
@@ -54,7 +60,7 @@ function refreshControls()
 end
 
 function compareZ(obj1, obj2)
-    return (obj1.z - obj2.z) * 10 + (obj2.x - obj1.x) < 0
+    return (obj1.z - obj2.z) * 20 + (obj2.x - obj1.x) < 0
 end
 
 function createInput(point, name)
@@ -64,7 +70,7 @@ function createInput(point, name)
         input_function = fName,
         function_owner = self,
         position = { -(point.x), point.y, point.z },
-        scale = { .5, .5, .5 },
+        scale = { .5 * RelativeScale, .5 * RelativeScale, .5 * RelativeScale },
         width = 2200,
         height = 220,
         font_size = 180,
@@ -92,7 +98,7 @@ function createCheckbox(point, name)
         height         = 200,
         font_size      = 300,
         color          = { 1, 1, 1, 0 },
-        scale          = { .5, .5, .5 },
+        scale          = { .5 * RelativeScale, .5 * RelativeScale, .5 * RelativeScale },
         font_color     = { .2, .24, 0.28, 100 },
         tooltip        = tooltip
     }
@@ -110,7 +116,7 @@ function createButton(point, name)
         height         = 200,
         font_size      = 300,
         color          = { 1, 1, 1, 0 },
-        scale          = { .5, .5, .5 },
+        scale          = { .5 * RelativeScale, .5 * RelativeScale, .5 * RelativeScale },
         font_color     = { .2, .24, 0.28, 100 },
         tooltip        = ""
     }
@@ -139,7 +145,7 @@ function onToggle(name)
             self.editButton(button)
         end
     end
-    
+
     local callback = Callbacks[name]
     if callback ~= nil then
         callback()
