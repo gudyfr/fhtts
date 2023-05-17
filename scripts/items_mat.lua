@@ -313,7 +313,7 @@ function onLayout(category)
             local zOffset = width / 3
 
             for _, obj in ipairs(cardsToLayout) do
-                local position = { (x - xOffset) * w + center.x, 1.5, (zOffset - z) * h + center.z }
+                local position = { (xOffset - x) * w + center.x, 1.5, (z - zOffset) * h + center.z }
                 x = x + 1
                 if x == width then
                     x = 0

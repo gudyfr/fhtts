@@ -11,6 +11,12 @@ end
 
 function onStateUpdate(state)
     State = state
+
+    -- For older saves
+    if State.soloCompletion == nil then
+        State.soloCompletion = {}
+    end
+    
     updateStickers()
 end
 

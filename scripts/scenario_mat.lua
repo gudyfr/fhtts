@@ -1932,7 +1932,7 @@ end
 
 LastColorToDraw = nil
 function drawAttackModifier(color, alt)
-    if LastColorToDraw ~= nil and color ~= LastColorToDraw then
+    if not alt and LastColorToDraw ~= nil and color ~= LastColorToDraw then
         Global.call("recoverAttackModifiers", LastColorToDraw)
     end
     LastColorToDraw = color
