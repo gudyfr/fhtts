@@ -1,3 +1,5 @@
+require('text_utils')
+
 function getState()
     return { state = State }
 end
@@ -124,7 +126,7 @@ function createButton(point, name)
 end
 
 function onTextEdit(name, obj, color, text, selected)
-    State[name] = text
+    State[name] = trim(text)
     if not selected then
         local callback = Callbacks[name]
         if callback ~= nil then

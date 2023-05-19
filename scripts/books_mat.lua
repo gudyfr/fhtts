@@ -1,6 +1,7 @@
 require("json")
 require("savable")
 require('constants')
+require('text_utils')
 
 availableBooks = { "scenario book", "section book", "rulebook" }
 bookModels = {}
@@ -387,12 +388,6 @@ function getTarget(tagsMap, candidates)
         if tagsMap[candidate] ~= nil then return candidate end
     end
     return nil
-end
-
-function trim(s)
-    s = s:gsub('\r', '')
-    s = s:gsub('\n', '')
-    return s:match '^%s*(.*%S)' or ''
 end
 
 function onEdit(target, obj, color, value, selected)
