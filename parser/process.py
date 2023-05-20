@@ -535,7 +535,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                     if key == "monsterLevels":
                         # Calculate the deviation from the ideal position
                         tx,ty = mapFromHexCoordinate(x,y)
-                        outputPosition['deltaY'] = abs(relativeY-ty)
+                        outputPosition['deltaY'] = abs(relativeY-ty-10)
                     bestReference["itemOutput"]["positions"].append(outputPosition)
 
                     for reference in references:
