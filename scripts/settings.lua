@@ -9,12 +9,14 @@ function createEmptyState()
             ["enable-x-haven"] = false,
             address = "localhost",
             port = "8080",
+            ["difficulty-normal"] = true,
             ["play-narration-in-assistant"] = true,
             ["enable-end-of-round-looting"] = true,
             ["enable-highlight-current-figurines"] = true,
             ["enable-highlight-tiles-by-type"] = true,
             ["enable-automatic-scenario-layout"] = true,
-            ["enable-automatic-narration"] = false
+            ["enable-automatic-narration"] = false,
+            difficulty = 0
         }
     }
 end
@@ -29,6 +31,10 @@ function getExpectedEntries()
         { "enable-internal-game-state",         "checkbox"},
         { "enable-end-of-round-looting",        "checkbox" },
         { "enable-highlight-current-figurines", "checkbox" },
+        { "difficulty-easy",                    "checkbox",     onDifficultyEasy },
+        { "difficulty-normal",                    "checkbox",   onDifficultyNormal },
+        { "difficulty-hard",                    "checkbox",     onDifficultyHard },
+        { "difficulty-insane",                    "checkbox",   onDifficultyInsane },
         { "enable-highlight-tiles-by-type",     "checkbox" },
         { "enable-automatic-characters",        "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
@@ -78,4 +84,57 @@ function on5pToggled()
     scenarioMat.setCustomObject(customObject)
     scenarioMat.setSnapPoints(snapPoints)
     scenarioMat.reload()
+end
+
+function onDifficultyEasy(set)
+    if set then
+        setDifficulty("easy")
+    end
+end
+
+function onDifficultyNormal(set)
+    if set then
+        setDifficulty("normal")
+    end
+end
+
+function onDifficultyHard(set)
+    if set then
+        setDifficulty("hard")
+    end
+end
+
+function onDifficultyInsane(set)
+    if set then
+        setDifficulty("insane")
+    end
+end
+
+function setDifficulty(level)
+    local entries = {"easy", "normal", "hard", "insane"}
+    for _, button in ipairs(self.getButtons()) do        
+        for _, entry in ipairs(entries) do
+            if entry ~= level then
+                local name = "difficulty-" .. entry
+                State[name] = false
+                if button.click_function == "onToggle_" .. name then
+                    local label = ""
+                    button.label = label
+                    self.editButton(button)
+                end
+            end
+        end
+    end
+    local difficulty = 0
+    if level == "easy" then
+        difficulty = -1
+    elseif level == "hard" then
+        difficulty = 1
+    elseif level == "insane" then
+        difficulty = 2
+    end
+    State.difficulty = difficulty
+
+    local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
+    scenarioMat.call('updateDifficulty', difficulty)
 end

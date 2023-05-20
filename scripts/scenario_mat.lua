@@ -575,8 +575,12 @@ function takeCardFrom(deck)
     return nil
 end
 
+function getPlayerMat(color)
+    return Global.call("getPlayerMatExt", {color})
+end
+
 function sendCardTo(card, color)
-    playerMat = Global.call("getPlayerMatExt", { color })
+    playerMat = getPlayerMat(color)
     if playerMat ~= nil then
         playerMat.call("addCardToAttackModifiers", { card })
     end
@@ -751,12 +755,14 @@ function updateCharacters()
     fhlog(INFO, TAG, "updateCharacters()")
     local settings = getSettings()
     local scenarioPicker = getObjectFromGUID('596fc4')
+    local hasChanged = false
     for _, color in ipairs(colors) do
-        local playerMat = Global.call("getPlayerMatExt", { color })
+        local playerMat =  getPlayerMat(color)
         if playerMat ~= nil then
             local characterName = playerMat.call("getCharacterName")
             -- print(color .. " : " .. (characterName or "nil"))
             if Characters[color] ~= characterName then
+                hasChanged = true
                 if Characters[color] ~= nil then
                     if settings['enable-automatic-characters'] or false then
                         updateAssistant("POST", "removeCharacter", { character = Characters[color] }, updateState)
@@ -785,6 +791,7 @@ function updateCharacters()
                 local level = playerMat.call("getCharacterLevel")
                 if level ~= nil then
                     if level ~= CharacterLevels[color] then
+                        hasChanged = true
                         CharacterLevels[color] = level
                         if settings['enable-automatic-characters'] or false then
                             updateAssistant("POST", "change", { target = characterName, what = "level", change = level })
@@ -800,6 +807,9 @@ function updateCharacters()
         else
             log("Could not find player mat " .. color)
         end
+    end
+    if hasChanged then
+        updateDifficulty(settings.difficulty or 0)
     end
     refreshDecals()
 end
@@ -824,7 +834,7 @@ function refreshDecals()
     end
 
     for color, categories in pairs(hpAndXpLocations) do
-        local playerMat = Global.call("getPlayerMatExt", { color })
+        local playerMat =  getPlayerMat(color)
         if playerMat == nil then
             log("Could not find player mat for " .. color)
         else
@@ -970,7 +980,7 @@ function onStart()
     if isXHavenEnabled() then
         local initiatives = {}
         for color, cards in pairs(cardLocations) do
-            playerMat = Global.call("getPlayerMatExt", { color })
+            playerMat =  getPlayerMat(color)
             if playerMat ~= nil then
                 characterName = playerMat.call("getCharacterName")
                 if characterName ~= nil then
@@ -1015,7 +1025,7 @@ end
 function onEnd()
     -- return cards to their respective mats
     for color, cards in pairs(cardLocations) do
-        playerMat = Global.call("getPlayerMatExt", { color })
+        local playerMat =  getPlayerMat(color)
         if playerMat ~= nil then
             for n, card in pairs(cards) do
                 local hitlist = Physics.cast({
@@ -1880,7 +1890,7 @@ function mapToStandeeInfoArea(x, y, z, scaleX, scaleY, flip)
     -- base position in x/y plane
     local vec = Vector(x * scaleX, y * scaleY, z)
     -- incline the plane by 35 degrees
-    vec:rotateOver('x', 35)
+    vec:rotateOver('x', -35)
     -- go up towards the standee top
     vec:add(Vector(0, 0.95 * scaleY, 0))
     -- counter the standee rotation
@@ -2028,6 +2038,10 @@ function updateAssistant(method, command, params, callback)
                 handled = true
             elseif command == "endScenario" then
                 CurrentGameState:endScenario()
+                updateCurrentState()
+                handled = true
+            elseif command == 'setLevel' then
+                CurrentGameState:setLevel(params.level or 0)
                 updateCurrentState()
                 handled = true
             end
@@ -2273,4 +2287,30 @@ function onLootReceived(request, mode)
         end
     end
     broadcastToAll("Error fetching loot from assistant")
+end
+
+
+function updateDifficulty(difficulty)
+    -- determine base difficulty
+    local playerCount = 0
+    local playerLevelSum = 0
+    for _,color in ipairs(PlayerColors) do
+        local playerMat = getPlayerMat(color)
+        if playerMat ~= nil then
+            local character = playerMat.call("getCharacterName")
+            if character ~= nil then
+                playerCount = playerCount + 1
+                local level = playerMat.call("getCharacterLevel") or 1
+                playerLevelSum = playerLevelSum + level
+            end
+        end
+    end
+    local baseLevel = 0
+    if playerCount > 0 then
+        baseLevel = math.ceil(playerLevelSum / (playerCount*2))
+    end
+    local level = baseLevel + difficulty
+    if level < 0 then level = 0 end
+    if level > 7 then level = 7 end
+    updateAssistant("POST","setLevel",{level=level},updateState)
 end

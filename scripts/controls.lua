@@ -150,7 +150,7 @@ function onToggle(name)
 
     local callback = Callbacks[name]
     if callback ~= nil then
-        callback()
+        callback(State[name])
     end
 end
 
