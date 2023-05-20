@@ -6,6 +6,7 @@ require("utils")
 require('fhlog')
 require('standees')
 require('constants')
+require('game_state')
 
 TAG = "ScenarioMat"
 CURRENT_ASSISTANT_VERSION = 3
@@ -94,7 +95,8 @@ function onSave()
         initiativeTypes = initiativeTypes,
         characters = Characters,
         characterLevels = CharacterLevels,
-        currentScenario = CurrentScenario
+        currentScenario = CurrentScenario,
+        gameState = CurrentGameState:save()
     })
 end
 
@@ -124,6 +126,7 @@ function onLoad(state)
             if json.characterLevels ~= nil then
                 CharacterLevels = json.characterLevels
             end
+            SavedGameState = json.gameState            
             CurrentScenario = json.currentScenario or {}
             initiativeTypes = json.initiativeTypes or {}
         end
@@ -318,6 +321,26 @@ function onLoad(state)
 
     updateCharacters()
     registerSavable("Scenario Mat")
+    Global.call("registerDataUpdatable", self)
+end
+
+function updateData(baseUrl)
+    local url = baseUrl .. "gameData.json"
+    WebRequest.get(url, updateGameData)
+end
+
+function updateGameData(request)
+    local gameData = jsonDecode(request.text)
+    if CurrentGameState ~= nil then
+        CurrentGameState:updateGameData(gameData)
+    else
+        if SavedGameState ~= nil then
+            CurrentGameState = GameState.newFromSave(gameData, SavedGameState)
+            updateCurrentState()
+        else
+            CurrentGameState = GameState.new(gameData)
+        end
+    end
 end
 
 function flipX(position)
@@ -1053,7 +1076,7 @@ function spawned(params)
                 if re.response_code == 200 and re.text ~= nil and re.text ~= "" then
                     local inputs = monster.getInputs()
                     if inputs ~= nil then
-                        input = inputs[1]
+                        local input = inputs[1]
                         monster.editInput({ index = input.index, value = re.text })
                     end
                     for i, postponed in ipairs(NeedsToSwitch) do
@@ -1293,7 +1316,7 @@ function sendCard(params)
     card.setPosition(destination)
 end
 
-function onCleanup(obj,color,alt)
+function onCleanup(obj, color, alt)
     if alt then
         Global.call("cleanup")
     else
@@ -1531,14 +1554,14 @@ function refreshStandees(state)
             local name = standee.getName()
             local standeeNr = 1
             if name:sub(#name - 1, #name - 1) == " " and name:sub(#name, #name):find("%d") ~= nil then
-                standeeNr = tonumber(name:sub(#name))
+                standeeNr = tonumber(name:sub(#name)) or 1
                 name = name:sub(1, #name - 2)
             end
             -- log(name, standeeNr)
             -- We can't always assume there is a standeeNr, as bosses do not have one
             local inputs = standee.getInputs()
             if inputs ~= nil and inputs[1] ~= nil then
-                standeeNr = tonumber(inputs[1].value)
+                standeeNr = tonumber(inputs[1].value) or 1
             end
 
             local typeState = state[name] or state[name .. " " .. standeeNr]
@@ -1764,7 +1787,7 @@ function refreshStandee(standee, instance)
 
     local nbConditions = 0
     local conditions = {}
-    for _, idx in ipairs(instance.conditions) do
+    for _, idx in ipairs(instance.conditions or {}) do
         local condition = conditionsOrder[idx + 1]
         if condition ~= nil then
             table.insert(conditions, condition)
@@ -1927,8 +1950,90 @@ function isXHavenEnabled()
     return getSettings()["enable-x-haven"] or false
 end
 
+function isInternalGameStateEnabled()
+    return getSettings()["enable-internal-game-state"] or false
+end
+
+function hash(str)
+    local h = 5381
+
+    for c in str:gmatch "." do
+        h = (bit.lshift(h, 5) + h) + string.byte(c)
+    end
+    return h
+end
+
+function updateCurrentState()
+    processState(CurrentGameState:toState())
+end
+
 function updateAssistant(method, command, params, callback)
-    if isXHavenEnabled() then
+    local handled = false
+    if isInternalGameStateEnabled() then
+        if method == "GET" then
+            if command == "state" then
+                -- ignore recurring state updates whne embedding the assistant, no state change
+                -- can happen without our input
+                --returnCurrentState(callback)
+                handled = true
+            end
+        elseif method == "POST" then
+            if command == "addCharacter" then
+                print("booh")
+                CurrentGameState:addCharacter(params.character)
+                updateCurrentState()
+                handled = true
+            elseif command == "removeCharacter" then
+                CurrentGameState:removeCharacter(params.character)
+                updateCurrentState()
+                handled = true
+            elseif command == "setScenario" then
+                CurrentGameState:prepareScenario(params.scenario)
+                handled = true
+            elseif command == "addMonster" then
+                local instance = CurrentGameState:newMonsterInstance(params.monster, params.isBoss and "boss" or "normal")
+                if instance ~= nil then
+                    Wait.frames(
+                    function()
+                        callback({ response_code = 200, text = tostring(instance.nr) })
+                        updateCurrentState()
+                    end, 1)
+                else
+                    callback({ response_code = 404 })
+                end
+                handled = true
+            elseif command == "change" then
+                CurrentGameState:change(params.what, params.target, params.nr, params.change)
+                updateCurrentState()
+                handled = true
+            elseif command == "startRound" then
+                CurrentGameState:startRound(params)
+                updateCurrentState()
+                handled = true
+            elseif command == "endRound" then
+                CurrentGameState:endRound()
+                updateCurrentState()
+                handled = true
+            elseif command == "applyCondition" then
+                CurrentGameState:toggleCondition(params.condition, params.target, tonumber(params.nr))
+                updateCurrentState()
+                handled = true
+            elseif command == "switchMonster" then
+                CurrentGameState:switchMonster(params.monster, tonumber(params.nr))
+                updateCurrentState()
+                handled = true
+            elseif command == "setElement" then
+                CurrentGameState:infuse(params.element,state == 1)
+                updateCurrentState()
+                handled = true
+            elseif command == "endScenario" then
+                CurrentGameState:endScenario()
+                updateCurrentState()
+                handled = true
+            end
+        end
+    end
+    if not handled and isXHavenEnabled() then
         local level = DEBUG
         if method == "GET" and command == "state" then
             level = INFO
@@ -2143,7 +2248,7 @@ function onLootReceived(request, mode)
                     for _, guid in ipairs(CampaignTrackerGuids) do
                         local ct = getObjectFromGUID(guid)
                         if ct ~= nil then
-                            ct.call("setFieldOn", {field="completed", name=CurrentScenario.name})
+                            ct.call("setFieldOn", { field = "completed", name = CurrentScenario.name })
                         end
                     end
                 end
@@ -2159,7 +2264,7 @@ function onLootReceived(request, mode)
             local oldScenario = CurrentScenario
             CurrentScenario = nil
             if mode == "retry" then
-                Wait.time(function() Global.call("prepareScenarioEx",oldScenario) end, 1.0)
+                Wait.time(function() Global.call("prepareScenarioEx", oldScenario) end, 1.0)
             end
 
             -- Collapse the End scenario UI
