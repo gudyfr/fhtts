@@ -1,5 +1,4 @@
--- require('json')
--- require('fhlog')
+local luaxp = require('luaxp')
 
 -- A collection of Lua objects to capture game state
 
@@ -185,43 +184,13 @@ Formula.__index = Formula
 
 function Formula.new(str)
     local self = setmetatable({}, Formula)
-    self:parse(str)
+    self.str = str
     return self
 end
 
-function Formula:parse(str)
-    -- fhlog(INFO, "Formula", "parsing %s", str)
-    local operators = { "/", "x" }
-    local foundOperator = false
-    for _, operator in ipairs(operators) do
-        local idx = string.find(str, operator)
-        if idx and not foundOperator then
-            self.operator = operator
-            self.left = Formula.new(string.sub(str, 1, idx - 1))
-            self.right = Formula.new(string.sub(str, idx + 1))
-            foundOperator = true
-        end
-    end
-    if not foundOperator then
-        self.value = str
-    end
-end
-
-function Formula:eval(nbCharacters)
-    if self.value ~= nil then
-        if self.value == "C" then
-            return nbCharacters
-        else
-            return tonumber(self.value)
-        end
-    else
-        if self.operator == "/" then
-            return self.left:eval(nbCharacters) / self.right:eval(nbCharacters)
-        elseif self.operator == "x" then
-            return self.left:eval(nbCharacters) * self.right:eval(nbCharacters)
-        end
-    end
-    return 0
+function Formula:eval(gameState)
+    local context = {L=gameState.level or 1, C=gameState:nbCharacters()}
+    return luaxp.evaluate(self.str, context)
 end
 
 -- MonsterInstance class
@@ -243,9 +212,7 @@ end
 function MonsterInstance:updateBaseStats()
     local damage = (self.maxHp or 0) - (self.hp or 0)
     local monsterLevel = self.monster.levels[self.level + 1][self.type]
-    -- Fix boss hps dependent on "C"
-    local nbCharacters = self.monster.gameState:nbCharacters()
-    local maxHp = monsterLevel.hp:eval(nbCharacters)
+    local maxHp = monsterLevel.hp:eval(self.monster.gameState)
     self.hp = maxHp - damage
     self.maxHp = maxHp
     self.baseShield = monsterLevel.baseShield or 0
