@@ -2044,6 +2044,10 @@ function updateAssistant(method, command, params, callback)
                 CurrentGameState:setLevel(params.level or 0)
                 updateCurrentState()
                 handled = true
+            elseif command == 'setCurrentTurn' then
+                CurrentGameState:setCurrentTurn(params.name or "")
+                updateCurrentState()
+                handled = true
             end
         end
     end

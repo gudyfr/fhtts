@@ -185,7 +185,7 @@ Formula.__index = Formula
 
 function Formula.new(str)
     local self = setmetatable({}, Formula)
-    self:parse(str)    
+    self:parse(str)
     return self
 end
 
@@ -536,7 +536,7 @@ function Summon:changeHp(amount)
 end
 
 function Summon:toggleCondition(condition)
-    local current = self.conditions[condition] or false    
+    local current = self.conditions[condition] or false
     self.conditions[condition] = not current or nil
 end
 
@@ -555,6 +555,7 @@ Character.__index = Character
 function Character.new(json)
     local self = setmetatable({}, Character)
     self.name = json.name
+    self.internal = json.name
     self.hps = json.hps
     self.level = 1
     self.summons = json.summons or {}
@@ -568,6 +569,7 @@ end
 function Character.newFromSave(json, save)
     local self = setmetatable({}, Character)
     self.name = save.name
+    self.internal = save.name
     self.hps = json.hps
     self.level = save.level
     self.initiative = save.initiative
@@ -682,7 +684,7 @@ function Character:toState()
             level = self.level,
             xp = self.xp,
             summonList = map(self.summons, Summon.toState),
-            conditions = mapDictToList(self.conditions, function(k,v) return ConditionMapping[k] end)
+            conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
         }
     }
 end
@@ -825,6 +827,10 @@ function GameState:startRound(characterInitiatives)
     for _, monster in pairs(self.monsters) do
         monster:startRound()
     end
+    local currentList = self:getCurrentList()
+    if #currentList > 0 then
+        currentList[1].turnState = 1
+    end
     self.roundState = 1
 end
 
@@ -931,15 +937,47 @@ function GameState:switchMonster(name, nr)
     end
 end
 
-function GameState:toState()
-    local currentList = {}
-    for name, character in pairs(self.characters) do
-        table.insert(currentList, character:toState())
+function GameState:setCurrentTurn(name)
+    fhlog(DEBUG,"GameState", "setCurrentTurn : %s", name)
+    if self.roundState ~= 1 then
+        return
     end
-    for name, monster in pairs(self.monsters) do
-        table.insert(currentList, monster:toState())
+    local currentList = self:getCurrentList()
+    local found = false
+    for _, entry in ipairs(currentList) do
+        if entry.internal == name then
+            found = true
+            if entry.turnState == 0 then
+                entry.turnState = 1
+            elseif entry.turnState == 1 then
+                entry.turnState = 2
+            elseif entry.turnState == 2 then
+                entry.turnState = 1
+            end
+        else
+            if not found then
+                entry.turnState = 2
+            else
+                entry.turnState = 0
+            end
+        end
+    end
+end
+
+function GameState:getCurrentList()
+    local currentList = {}
+    for _, character in pairs(self.characters) do
+        table.insert(currentList, character)
+    end
+    for _, monster in pairs(self.monsters) do
+        table.insert(currentList, monster)
     end
     table.sort(currentList, function(a, b) return (a.initiative or 0) < (b.initiative or 0) end)
+    return currentList
+end
+
+function GameState:toState()
+    local currentList = map(self:getCurrentList(), function(e) return e:toState() end)
     local result = {
         version = 100,
         level = self.level,
