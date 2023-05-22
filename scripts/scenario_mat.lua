@@ -126,7 +126,7 @@ function onLoad(state)
             if json.characterLevels ~= nil then
                 CharacterLevels = json.characterLevels
             end
-            SavedGameState = json.gameState            
+            SavedGameState = json.gameState
             CurrentScenario = json.currentScenario or {}
             initiativeTypes = json.initiativeTypes or {}
         end
@@ -576,7 +576,7 @@ function takeCardFrom(deck)
 end
 
 function getPlayerMat(color)
-    return Global.call("getPlayerMatExt", {color})
+    return Global.call("getPlayerMatExt", { color })
 end
 
 function sendCardTo(card, color)
@@ -757,7 +757,7 @@ function updateCharacters()
     local scenarioPicker = getObjectFromGUID('596fc4')
     local hasChanged = false
     for _, color in ipairs(colors) do
-        local playerMat =  getPlayerMat(color)
+        local playerMat = getPlayerMat(color)
         if playerMat ~= nil then
             local characterName = playerMat.call("getCharacterName")
             -- print(color .. " : " .. (characterName or "nil"))
@@ -834,7 +834,7 @@ function refreshDecals()
     end
 
     for color, categories in pairs(hpAndXpLocations) do
-        local playerMat =  getPlayerMat(color)
+        local playerMat = getPlayerMat(color)
         if playerMat == nil then
             log("Could not find player mat for " .. color)
         else
@@ -980,7 +980,7 @@ function onStart()
     if isXHavenEnabled() then
         local initiatives = {}
         for color, cards in pairs(cardLocations) do
-            playerMat =  getPlayerMat(color)
+            playerMat = getPlayerMat(color)
             if playerMat ~= nil then
                 characterName = playerMat.call("getCharacterName")
                 if characterName ~= nil then
@@ -1025,7 +1025,7 @@ end
 function onEnd()
     -- return cards to their respective mats
     for color, cards in pairs(cardLocations) do
-        local playerMat =  getPlayerMat(color)
+        local playerMat = getPlayerMat(color)
         if playerMat ~= nil then
             for n, card in pairs(cards) do
                 local hitlist = Physics.cast({
@@ -1512,7 +1512,8 @@ function processState(state)
                 newState[summonName] = { characterState = summon }
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
-            table.insert(assistantData, { name = originalId, type = "character", turnState = entry.turnState })
+            table.insert(assistantData,
+                { name = originalId, type = "character", turnState = entry.turnState, active = entry.active })
         else
             local instances = entry.monsterInstances
             if instances ~= nil then
@@ -1523,23 +1524,22 @@ function processState(state)
                             .maxHealth
                     }
                 end
-                if #instances > 0 or (entry.isActive or false) then
-                    table.insert(assistantData,
-                        {
-                            name = originalId,
-                            type = "monster",
-                            turnState = entry.turnState,
-                            level = entry.level,
-                            card = entry.currentCard
-                        })
-                end
+                table.insert(assistantData,
+                    {
+                        name = originalId,
+                        type = "monster",
+                        turnState = entry.turnState,
+                        level = entry.level,
+                        card = entry.currentCard,
+                        active = entry.active
+                    })
             end
         end
     end
 
     local assistantMat = getObjectFromGUID('c64592')
     if assistantMat ~= nil then
-        assistantMat.call("updateState", JSON.encode(assistantData))
+        assistantMat.call("updateState", { entries = assistantData, round = newState.round, notes = state.notes or {} })
     end
 
     local elements = state.elements
@@ -1999,15 +1999,16 @@ function updateAssistant(method, command, params, callback)
                 handled = true
             elseif command == "setScenario" then
                 CurrentGameState:prepareScenario(params.scenario)
+                updateCurrentState()
                 handled = true
             elseif command == "addMonster" then
                 local instance = CurrentGameState:newMonsterInstance(params.monster, params.isBoss and "boss" or "normal")
                 if instance ~= nil then
                     Wait.frames(
-                    function()
-                        callback({ response_code = 200, text = tostring(instance.nr) })
-                        updateCurrentState()
-                    end, 1)
+                        function()
+                            callback({ response_code = 200, text = tostring(instance.nr) })
+                            updateCurrentState()
+                        end, 1)
                 else
                     callback({ response_code = 404 })
                 end
@@ -2033,7 +2034,7 @@ function updateAssistant(method, command, params, callback)
                 updateCurrentState()
                 handled = true
             elseif command == "setElement" then
-                CurrentGameState:infuse(params.element,state == 1)
+                CurrentGameState:infuse(params.element, state == 1)
                 updateCurrentState()
                 handled = true
             elseif command == "endScenario" then
@@ -2046,6 +2047,14 @@ function updateAssistant(method, command, params, callback)
                 handled = true
             elseif command == 'setCurrentTurn' then
                 CurrentGameState:setCurrentTurn(params.name or "")
+                updateCurrentState()
+                handled = true
+            elseif command == "changeInitiative" then
+                CurrentGameState:changeInitiative(params.name, params.direction)
+                updateCurrentState()
+                handled = true
+            elseif command == "setSection" then
+                CurrentGameState:prepareSection(params.section or "<invalid>")
                 updateCurrentState()
                 handled = true
             end
@@ -2293,12 +2302,11 @@ function onLootReceived(request, mode)
     broadcastToAll("Error fetching loot from assistant")
 end
 
-
 function updateDifficulty(difficulty)
     -- determine base difficulty
     local playerCount = 0
     local playerLevelSum = 0
-    for _,color in ipairs(PlayerColors) do
+    for _, color in ipairs(PlayerColors) do
         local playerMat = getPlayerMat(color)
         if playerMat ~= nil then
             local character = playerMat.call("getCharacterName")
@@ -2311,10 +2319,14 @@ function updateDifficulty(difficulty)
     end
     local baseLevel = 0
     if playerCount > 0 then
-        baseLevel = math.ceil(playerLevelSum / (playerCount*2))
+        baseLevel = math.ceil(playerLevelSum / (playerCount * 2))
     end
     local level = baseLevel + difficulty
     if level < 0 then level = 0 end
     if level > 7 then level = 7 end
-    updateAssistant("POST","setLevel",{level=level},updateState)
+    updateAssistant("POST", "setLevel", { level = level }, updateState)
+end
+
+function changeInitiative(params)
+    updateAssistant("POST", "changeInitiative", params, updateState)
 end

@@ -71,17 +71,33 @@ function updateMonsterAbilities(request)
 end
 
 function updateState(state)
-    State = JSON.decode(state)
+    State = state
     updateInternal()
 end
 
+PreviousNotes = ""
 function updateInternal()
     self.clearButtons()
+    -- Let's show one note at this time
+    if State ~= nil then
+        if State.notes ~= nil and #State.notes > 0 then
+            if State.notes[1] ~= PreviousNotes then
+                PreviousNotes = State.notes[1]
+                broadcastToAll(PreviousNotes)
+            end
+        end
+    end
     if not UIState.minimized and State ~= nil and CharacterInitiatives ~= nil and MonsterStats ~= nil and MonsterAbilities ~= nil then
         local decals = {}
         local currentX = 2.775
         local currentZ = -.5
-        for i, entry in ipairs(State) do
+        local lastActive = 0
+        for i, entry in ipairs(State.entries) do
+            if entry.active or false then
+                lastActive = i
+            end
+        end
+        for i, entry in ipairs(State.entries) do
             local name = entry.name
             local type = entry.type
             local turnState = entry.turnState
@@ -89,7 +105,7 @@ function updateInternal()
             if type == "monster" then
                 -- Render the monster image
                 local grey = ""
-                if turnState == 2 then
+                if turnState == 2 or not entry.active then
                     grey = ".grey"
                 end
                 local decalName = name .. grey
@@ -133,6 +149,30 @@ function updateInternal()
                     -- cancel the upcoming position change, as this is a 'fake' character
                     currentX = currentX + 1.85
                 end
+
+                -- Render controls to override a player turn order, if the round has started
+                if State.round.state == 1 then
+                    if i ~= 1 then
+                        -- Add a button to lower the player initiative
+                        local url =
+                        "http://cloud-3.steamusercontent.com/ugc/2035105157823185573/8BABEE86FE1085D5C001E6DD4EE1F1E040BF6D1D/"
+                        table.insert(decals, getDecal(name .. "_faster", url, currentX + 0.55, currentZ, .1, .05))
+
+                        local fName = "changeInitiative_down_" .. name
+                        self.setVar(fName, function() changeInitiative(name, -1) end)
+                        self.createButton(getButton(fName, currentX + 0.55, currentZ, 350, 350))
+                    end
+                    if i ~= lastActive then
+                        -- Add a button to increase the player intitiative
+                        local url =
+                        "http://cloud-3.steamusercontent.com/ugc/2035105157823185619/529E35C0294D03A666C9EA9C924105F40F07697F/"
+                        table.insert(decals, getDecal(name .. "_slower", url, currentX - 0.55, currentZ, .1, .05))
+
+                        local fName = "changeInitiative_up_" .. name
+                        self.setVar(fName, function() changeInitiative(name, 1) end)
+                        self.createButton(getButton(fName, currentX - 0.55, currentZ, 350, 350))
+                    end
+                end
             end
 
             if turnState == 1 then
@@ -141,23 +181,12 @@ function updateInternal()
                 table.insert(decals, getDecal("current", url, currentX, currentZ + .25, 2.3, .05))
             end
 
-            -- Add a button to change the round state
-            local fName = "setCurrent_" .. i
-            self.setVar(fName, function() setCurrent(name) end)
-            local params = {
-                label          = "",
-                function_owner = self,
-                click_function = fName,
-                position       = { -currentX, 0.06, currentZ },
-                width          = 350,
-                height         = 350,
-                font_size      = 40,
-                color          = { 1, 1, 1, 0 },
-                scale          = { 0.5, 0.5, 0.5 },
-                font_color     = { 0, 0, 0, 1 },
-                tooltip        = ""
-            }
-            self.createButton(params)
+            -- Add a button to change the turn state, if the round has started
+            if State.round.state == 1 then
+                local fName = "setCurrent_" .. i
+                self.setVar(fName, function() setCurrent(name) end)
+                self.createButton(getButton(fName, currentX, currentZ, 350, 350))
+            end
 
             -- Vertical layout
             -- currentZ = currentZ + 0.55
@@ -190,6 +219,22 @@ function getDecal(name, url, x, z, w, h)
     }
 end
 
+function getButton(fName, x, z, w, h)
+    return {
+        label          = "",
+        function_owner = self,
+        click_function = fName,
+        position       = { -x, 0.06, z },
+        width          = w,
+        height         = h,
+        font_size      = 40,
+        color          = { 1, 1, 1, 0 },
+        scale          = { 0.5, 0.5, 0.5 },
+        font_color     = { 0, 0, 0, 1 },
+        tooltip        = ""
+    }
+end
+
 function addButton(position, callback, tooltip)
     local params = {
         label          = "",
@@ -211,5 +256,12 @@ function setCurrent(name)
     local scenarioMat = getObjectFromGUID('4aa570')
     if scenarioMat ~= nil then
         scenarioMat.call("setCurrentTurn", name)
+    end
+end
+
+function changeInitiative(name, direction)
+    local scenarioMat = getObjectFromGUID('4aa570')
+    if scenarioMat ~= nil then
+        scenarioMat.call("changeInitiative", { name = name, direction = direction })
     end
 end

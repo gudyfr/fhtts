@@ -189,7 +189,7 @@ function Formula.new(str)
 end
 
 function Formula:eval(gameState)
-    local context = {L=gameState.level or 1, C=gameState:nbCharacters()}
+    local context = { L = gameState.level or 1, C = gameState:nbCharacters() }
     return luaxp.evaluate(self.str, context)
 end
 
@@ -352,6 +352,7 @@ function Monster.new(gameState, json)
     self.level = gameState.level
     self.levels = map(json.levels, MonsterLevel.new)
     self.turnState = 0
+    self.active = false
     return self
 end
 
@@ -370,6 +371,7 @@ function Monster.newFromSave(gameState, json, save)
     self.initiative = save.initiative
     self.currentCard = save.currentCard ~= nil and Card.newFromSave(save.currentCard) or nil
     self.turnState = save.turnState
+    self.active = #self.instances > 0
     return self
 end
 
@@ -390,6 +392,7 @@ end
 function Monster:newInstance(type)
     local standees = self.remainingStandees
     if #standees > 0 then
+        self.active = true
         local nr = standees[#standees]
         table.remove(standees, #standees)
         local instance = MonsterInstance.new(self, nr, self.level, type)
@@ -401,6 +404,7 @@ function Monster:newInstance(type)
 end
 
 function Monster:removeInstance(instance)
+    -- We're actually not updating the active state of this monter here, as we don't want to change its sorting in the middle of a turn
     for i = #self.instances, 1, -1 do
         if self.instances[i] == instance then
             local nr = instance.nr
@@ -427,12 +431,16 @@ function Monster:startRound()
             fhlog(ERROR, "GameState", "Monster type %s drew no card", self.name)
         end
         self.initiative = self.currentCard.initiative
+    else
+        self.initiative = 100
     end
+    self.active = #self.instances > 0
 end
 
 function Monster:endRound()
     self.currentCard = nil
     self.initiative = 100
+    self.active = #self.instances > 0
     self.deck:shuffleIfNeeded()
 end
 
@@ -446,6 +454,7 @@ end
 function Monster:toState()
     local result = {
         id = self.internal,
+        active = self.active,
         name = self.name,
         turnState = self.turnState,
         level = self.level,
@@ -529,6 +538,7 @@ function Character.new(json)
     self.activeSummons = {}
     self.turnState = 0
     self.conditions = {}
+    self.active = true
     self:reset()
     return self
 end
@@ -547,6 +557,7 @@ function Character.newFromSave(json, save)
     self.activeSummons = map(save.summons, function(summon) return Summon.newFromSave(self, summon) end)
     self.turnState = save.turnState
     self.conditions = save.conditions
+    self.active = true
     return self
 end
 
@@ -643,6 +654,7 @@ end
 function Character:toState()
     return {
         id = self.name,
+        active = self.hp > 0,
         turnState = self.turnState,
         initiative = self.initiative,
         characterState = {
@@ -656,6 +668,96 @@ function Character:toState()
     }
 end
 
+Npc = {}
+Npc.__index = Npc
+
+function Npc.new(gameState, json)
+    local self = setmetatable({}, Npc)
+    self.gameState = gameState
+    self.type = json.type
+    self.name = json.name
+    self.internal = json.internal
+    self.initiative = json.init or 100
+    local hp = luaxp.evaluate(json.health, {L=gameState.level, C=gameState:nbCharacters()})
+    self.hp = hp
+    self.maxHp = hp
+    self.conditions = {}
+    return self
+end
+
+function Npc.newFromSave(gameState, save)
+    local self = setmetatable({}, Npc)
+    self.gameState = gameState
+    self.type = save.type
+    self.name = save.name
+    self.internal = save.name
+    self.hp = save.hp
+    self.maxHp = save.maxHp
+    self.conditions = save.conditions
+    return self
+end
+
+function Npc:save()
+    return {
+        type = self.type,
+        hp = self.hp,
+        maxHp = self.maxHp,
+        name = self.name,
+        conditions = self.conditions,
+    }
+end
+
+function Npc:changeHp(amount)
+    self.hp = self.hp + amount
+    if self.hp > self.maxHp then
+        self.hp = self.maxHp
+    end
+    if self.Hp <= 0 then
+        self.gameState:removeNpc(self)
+    end
+end
+
+function Npc:toState()
+    return {
+        id = self.name,
+        active = self.hp > 0 and type == "Escort",
+        turnState = self.turnState,
+        initiative = self.initiative,
+        characterState = {
+            health = self.hp,
+            maxHealth = self.maxHp,
+            conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
+        }
+    }
+end
+
+Timer = {}
+Timer.__index = Timer
+
+function Timer.new(json)
+    local self = setmetatable({}, Timer)
+    if json.startOfRound then
+        self.roundState = 0
+    else
+        self.roundState = 1
+    end
+    self.list = json.list
+    self.note = json.note
+    return self
+end
+
+function Timer.newFromSave(save)
+    return Timer.new(save)
+end
+
+function Timer:save()
+    return {
+        startOfRound = self.roundState == 0 and true or false,
+        list = self.list,
+        note = self.note
+    }
+end
+
 GameState = {}
 GameState.__index = GameState
 
@@ -665,11 +767,13 @@ function GameState.new(gameData)
     self.gameData = gameData
     self.characters = {}
     self.monsters = {}
+    self.npcs = {}
     self.round = 1
     self.roundState = 0
     self.level = 0
     self.decks = {}
     self.elements = { fire = 0, ice = 0, air = 0, earth = 0, light = 0, dark = 0 }
+    self.timers = {}
     return self
 end
 
@@ -688,6 +792,9 @@ function GameState.newFromSave(gameData, save)
         local monsterData = gameData.monsters[e.internal]
         return Monster.newFromSave(self, monsterData, e)
     end)
+    self.npcs = mapDict(save.npcs or {}, function(e) return Npc.newFromSave(self, e) end)
+    self.currentScenario = gameData.scenarios[save.scenarioName or ""]
+    self.timers = map(save.timers or {}, Timer.newFromSave)
     return self
 end
 
@@ -696,11 +803,14 @@ function GameState:save()
     return {
         characters = mapDict(self.characters, Character.save),
         monsters = mapDict(self.monsters, Monster.save),
+        npcs = mapDict(self.npcs, Npc.save),
         round = self.round,
         roundState = self.roundState,
         level = self.level,
         decks = mapDict(self.decks, Deck.save),
-        elements = mapDict(self.elements, identity)
+        elements = mapDict(self.elements, identity),
+        scenarioName = self.currentScenario ~= nil and self.currentScenario.name or nil,
+        timers = map(self.timers, Timer.save),
     }
 end
 
@@ -718,6 +828,7 @@ function GameState:removeCharacter(name)
 end
 
 function GameState:addMonster(name, boss)
+    fhlog(DEBUG, "GameState", "Adding monster type %s", name)
     boss = boss or false
     local monsterData = self.gameData.monsters[name]
     if monsterData ~= nil then
@@ -855,7 +966,10 @@ function GameState:findTarget(name, nr)
         end
     end
 
-    -- NPCs ???
+    local npc = self.npcs[name]
+    if npc ~= nil then
+        return npc
+    end
 end
 
 function GameState:reset()
@@ -866,18 +980,77 @@ function GameState:reset()
     self.round = 1
     self.roundState = 0
     self.decks = {}
+    self.currentScenario = scenario
 end
 
 function GameState:prepareScenario(name)
+    fhlog(DEBUG, "GameState", "Preparing Scenario %s", name)
     self:reset()
     local scenario = self.gameData['scenarios'][name]
-    if scenario ~= nil then
-        for _, monsterName in ipairs(scenario.monsters or {}) do
+    self:prepare(scenario)
+    self.currentScenario = scenario
+    return false
+end
+
+function GameState:prepare(scenarioOrSection)
+    if scenarioOrSection ~= nil then
+        for _, monsterName in ipairs(scenarioOrSection.monsters or {}) do
             self:addMonster(monsterName)
+        end
+
+        for _, special in ipairs(scenarioOrSection.specials or {}) do
+            local passes = true
+            if special.condition then
+                passes = luaxp.evaluate(special.condition, { L = self.level, C = self:nbCharacters() }) or false
+            end
+            if passes then
+                if special.type == "Objective" then
+                    self:addNpc(special)
+                elseif special.type == "Timer" then
+                    self:addTimer(special)
+                elseif special.type == "Escort" then
+                    self:addNpc(special)
+                elseif special.type == "Allies" then
+                    self:addAllies(special)
+                elseif special.type == "ResetRound" then
+                    self.round = 1
+                else
+                    fhlog(WARNING, "GameState", "Unknown special type : %s", special.type)
+                end
+            end
         end
         return true
     end
-    return false
+end
+
+function GameState:addNpc(special)
+    local npc = Npc.new(self, special)
+    self.npcs[npc.name] = npc
+end
+
+function GameState:addTimer(special)
+    fhlog(DEBUG, "GameState", "Adding timer for rounds %s", special.list)
+    table.insert(self.timers, Timer.new(special))
+end
+
+function GameState:addAllies(special)
+    for _,ally in ipairs(special.list) do
+        self:addMonster(ally, false)
+    end
+end
+
+function GameState:prepareSection(sectionName)
+    fhlog(DEBUG, "GameState", "Preparing Section %s", sectionName)
+    if self.currentScenario ~= nil then
+        for name, section in pairs(self.currentScenario.sections or {}) do
+            local match = string.sub(name, 2, 1 + string.len(sectionName))
+            fhlog(INFO, "GameState", "Candidate : %s, matching on : %s", name, match)
+            if match == sectionName then
+                fhlog(DEBUG, "GameState", "Section found")
+                self:prepare(section)
+            end
+        end
+    end
 end
 
 function GameState:endScenario()
@@ -905,19 +1078,21 @@ function GameState:switchMonster(name, nr)
 end
 
 function GameState:setCurrentTurn(name)
-    fhlog(DEBUG,"GameState", "setCurrentTurn : %s", name)
+    fhlog(DEBUG, "GameState", "setCurrentTurn : %s", name)
     if self.roundState ~= 1 then
         return
     end
     local currentList = self:getCurrentList()
     local found = false
+    local toggleNext = false
     for _, entry in ipairs(currentList) do
-        if entry.internal == name then
+        if entry.internal == name and entry.active then
             found = true
             if entry.turnState == 0 then
                 entry.turnState = 1
             elseif entry.turnState == 1 then
                 entry.turnState = 2
+                toggleNext = true
             elseif entry.turnState == 2 then
                 entry.turnState = 1
             end
@@ -925,9 +1100,65 @@ function GameState:setCurrentTurn(name)
             if not found then
                 entry.turnState = 2
             else
-                entry.turnState = 0
+                if toggleNext and entry.active then
+                    entry.turnState = 1
+                    toggleNext = false
+                else
+                    entry.turnState = 0
+                end
             end
         end
+    end
+end
+
+function GameState:changeInitiative(name, direction)
+    local currentList = self:getCurrentList()
+    local prev2Entry = nil
+    local prevEntry = nil
+    local nextEntry = nil
+    local next2Entry = nil
+    local targetEntry = nil
+    for _, entry in ipairs(currentList) do
+        if entry.internal == name then
+            targetEntry = entry
+        elseif targetEntry == nil then
+            prev2Entry = prevEntry
+            prevEntry = entry
+        elseif nextEntry == nil and targetEntry ~= nil then
+            nextEntry = entry
+        elseif next2Entry == nil and nextEntry ~= nil then
+            next2Entry = entry
+        end
+    end
+    if prev2Entry == nil then
+        prev2Entry = { initiative = 0 }
+    end
+    if next2Entry == nil then
+        next2Entry = { initiative = 100 }
+    end
+    if targetEntry ~= nil then
+        if direction == 1 and nextEntry ~= nil then
+            -- Special casing for 2 characters to avoid converging initiative values
+            if targetEntry.__index == Character and nextEntry.__index == Character and (targetEntry.initiative ~= nextEntry.initiative) then
+                -- Swap the values
+                local ownInitiative = targetEntry.initiative
+                targetEntry.initiative = nextEntry.initiative
+                nextEntry.initiative = ownInitiative
+            else
+                targetEntry.initiative = (nextEntry.initiative + next2Entry.initiative) / 2
+            end
+        elseif direction == -1 and prevEntry ~= nil then
+            -- Special casing for 2 characters to avoid converging initiative values
+            if targetEntry.__index == Character and prevEntry.__index == Character and (targetEntry.initiative ~= prevEntry.initiative) then
+                -- Swap the values
+                local ownInitiative = targetEntry.initiative
+                targetEntry.initiative = prevEntry.initiative
+                prevEntry.initiative = ownInitiative
+            else
+                targetEntry.initiative = (prevEntry.initiative + prev2Entry.initiative) / 2
+            end
+        end
+        fhlog(DEBUG, "GameState", "Updated initiative of %s to %s", name, targetEntry.initiative)
     end
 end
 
@@ -939,8 +1170,28 @@ function GameState:getCurrentList()
     for _, monster in pairs(self.monsters) do
         table.insert(currentList, monster)
     end
-    table.sort(currentList, function(a, b) return (a.initiative or 0) < (b.initiative or 0) end)
+    table.sort(currentList, function(a, b)
+        if a.active ~= b.active then
+            if a.active then return true else return false end
+        end
+        return (a.initiative or 0) < (b.initiative or 0)
+    end)
     return currentList
+end
+
+function GameState:getActiveTimers()
+    local results = {}
+    for _,timer in ipairs(self.timers) do
+        if self.roundState == timer.roundState then
+            local correctRound = false
+            for _,round in ipairs(timer.list) do
+                if self.round == round then
+                    table.insert(results, timer)
+                end
+            end
+        end
+    end
+    return results
 end
 
 function GameState:toState()
@@ -952,10 +1203,14 @@ function GameState:toState()
         roundState = self.roundState,
         currentList = currentList,
         elements = self.elements,
+        notes = map(self:getActiveTimers(), function(e) return e.note end)
     }
     fhlog(INFO, "GameState", "Returning state : %s", result)
-    -- fhlog(INFO, "GameState", "%s", self:save())
     return result
+end
+
+function GameState:removeNpc()
+    -- we may not need to do anything as this NPC will simply appear inactive ...
 end
 
 ConditionMapping = {}

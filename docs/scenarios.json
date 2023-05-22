@@ -460,7 +460,9 @@
             }
         ],
         "page": 7,
-        "otherPages" : [8],
+        "otherPages": [
+            8
+        ],
         "sections": [
             "75.1"
         ],
@@ -518,8 +520,8 @@
                 "name": "Altar",
                 "type": "Objective",
                 "count": 1,
-                "as" : "Altar a",
-                "trackable" : true
+                "as": "Altar a",
+                "trackable": true
             },
             {
                 "name": "Treasure Chest",
@@ -1431,13 +1433,17 @@
                 "name": "1",
                 "as": "Spectral Helper 1",
                 "trackable": true,
-                "tags" : ["looter"]
+                "tags": [
+                    "looter"
+                ]
             },
             {
                 "name": "2",
                 "as": "Spectral Helper 2",
                 "trackable": true,
-                "tags" : ["looter"]
+                "tags": [
+                    "looter"
+                ]
             }
         ],
         "page": 22,
@@ -1912,7 +1918,8 @@
         ],
         "page": 29,
         "sections": [
-            "38.4","55.3"
+            "38.4",
+            "55.3"
         ],
         "requirements": [
             ""
@@ -2251,7 +2258,9 @@
             }
         ],
         "page": 34,
-        "otherPages":[35],
+        "otherPages": [
+            35
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -4821,7 +4830,9 @@
             }
         ],
         "page": 75,
-        "otherPages":[76],
+        "otherPages": [
+            76
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -5056,7 +5067,8 @@
                 "name": "Frozen Corpse"
             },
             {
-                "name": "Ice Wraith"
+                "name": "Ice Wraith",
+                "as": "Rimeheart"
             },
             {
                 "name": "Living Bones"
@@ -5535,8 +5547,8 @@
             },
             {
                 "name": "City Guard",
-                "as" : "Flaming Sword of Justice",
-                "boss" : true
+                "as": "Flaming Sword of Justice",
+                "boss": true
             },
             {
                 "name": "Hound"
@@ -7693,7 +7705,9 @@
             }
         ],
         "page": 113,
-        "otherPages": [114],
+        "otherPages": [
+            114
+        ],
         "sections": [],
         "requirements": [
             "Boat"
@@ -8239,7 +8253,9 @@
             }
         ],
         "page": 120,
-        "otherPages": [121],
+        "otherPages": [
+            121
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -9738,7 +9754,10 @@
                 "count": 7,
                 "trackable": true,
                 "renamed": "by nr",
-                "tags" : ["lootable", "loot as rubble"]
+                "tags": [
+                    "lootable",
+                    "loot as rubble"
+                ]
             }
         ],
         "page": 139,
@@ -9856,7 +9875,9 @@
             }
         ],
         "page": 140,
-        "otherPages" : [141],
+        "otherPages": [
+            141
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -10465,7 +10486,9 @@
             }
         ],
         "page": 148,
-        "otherPages": [149],
+        "otherPages": [
+            149
+        ],
         "sections": [
             "104.2",
             "128.4",
@@ -11039,7 +11062,9 @@
             }
         ],
         "page": 155,
-        "otherPages":[156],
+        "otherPages": [
+            156
+        ],
         "sections": [
             "148.5",
             "154.2",
@@ -11983,7 +12008,9 @@
             }
         ],
         "page": 172,
-        "otherPages" : [173],
+        "otherPages": [
+            173
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -12083,8 +12110,8 @@
             },
             {
                 "name": "Living Bones",
-                "as" : "Hollow Scholar",
-                "boss" : true
+                "as": "Hollow Scholar",
+                "boss": true
             },
             {
                 "name": "Snow Imp"
@@ -12284,7 +12311,9 @@
             }
         ],
         "page": 177,
-        "otherPages" : [178],
+        "otherPages": [
+            178
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -12339,7 +12368,9 @@
             }
         ],
         "page": 179,
-        "otherPages" : [180],
+        "otherPages": [
+            180
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -12399,7 +12430,9 @@
             }
         ],
         "page": 180,
-        "otherPages" : [181],
+        "otherPages": [
+            181
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -12807,7 +12840,9 @@
             }
         ],
         "page": 186,
-        "otherPages" : [187],
+        "otherPages": [
+            187
+        ],
         "sections": [],
         "requirements": [
             ""
@@ -12985,7 +13020,9 @@
             }
         ],
         "page": 190,
-        "otherPages" : [191],
+        "otherPages": [
+            191
+        ],
         "sections": [],
         "requirements": [
             ""
