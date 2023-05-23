@@ -1497,8 +1497,15 @@ function processState(state)
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
             table.insert(assistantData,
-                { name = originalId, type = "character", turnState = entry.turnState, active = entry.active,
-                    noUi = entry.noUi or false, initiative = entry.initiative, npc = entry.npc or false })
+                {
+                    name = originalId,
+                    type = "character",
+                    turnState = entry.turnState,
+                    active = entry.active,
+                    noUi = entry.noUi or false,
+                    initiative = entry.initiative,
+                    npc = entry.npc or false
+                })
         else
             local instances = entry.monsterInstances
             if instances ~= nil then
@@ -1775,9 +1782,20 @@ function refreshStandee(standee, instance)
 
     if buttonIdx == -1 then
         standee.createButton(buttonParams)
+        buttonIdx = 1
     else
         buttonParams.index = buttonIdx
         standee.editButton(buttonParams)
+    end
+
+    -- Remove all buttons after buttonIdx
+    local allButtons = standee.getButtons()
+    if allButtons ~= nil then
+        for i = #allButtons, 1, -1 do
+            if allButtons[i].index > buttonIdx then
+                standee.removeButton(allButtons[i].index)
+            end
+        end
     end
 
     local nbConditions = 0
@@ -1810,7 +1828,7 @@ function refreshStandee(standee, instance)
             for _, item in pairs(hitlist) do
                 if item.hit_object.getName() == "Loot" then
                     fhlog(DEBUG, TAG, "Found loot")
-                    log(item.hit_object)
+                    -- log(item.hit_object)
                     nbLoot = nbLoot + 1
                     destroyObject(item.hit_object)
                 end
@@ -1851,6 +1869,20 @@ function refreshStandee(standee, instance)
                     name = standee.guid .. "_" .. condition
                 }
                 table.insert(stickers, sticker)
+                local fName = "remove_" .. standee.guid .. "_" .. condition
+                self.setVar(fName, function() toggleCondition(standee.guid, condition) end)
+                local removeButton = {
+                    function_owner = self,
+                    position = { vec.x, vec.y, vec.z },
+                    rotation = { -35, -baseYRot, 0 },
+                    scale = { .23 * xScaleFactor, 0.23 * yScaleFactor, 0.23 },
+                    click_function = fName,
+                    width = 250,
+                    height = 250,
+                    color = { 1, 1, 1, 0 },
+                    tooltip = "Click to remove " .. condition
+                }
+                standee.createButton(removeButton)
                 xOffset = xOffset - 0.26 * xScaleFactor
             end
         end
@@ -1929,16 +1961,23 @@ function clearStandee(standee)
     end
 end
 
+function toggleCondition(guid, condition)
+    local standee = getObjectFromGUID(guid)
+    applyCondition{standee, condition}
+end
+
 function applyCondition(params)
     local standee = params[1]
     local condition = params[2]
-    local name = standee.getName()
-    local nr = 0
-    local inputs = standee.getInputs()
-    if inputs ~= nil then
-        nr = tonumber(inputs[1].value)
+    if standee ~= nil then
+        local name = standee.getName()
+        local nr = 0
+        local inputs = standee.getInputs()
+        if inputs ~= nil then
+            nr = tonumber(inputs[1].value)
+        end
+        updateAssistant("POST", "applyCondition", { target = name, nr = nr, condition = condition }, updateState)
     end
-    updateAssistant("POST", "applyCondition", { target = name, nr = nr, condition = condition }, updateState)
 end
 
 LastSettingsUpdateTime = 0
@@ -2015,7 +2054,7 @@ function updateAssistant(method, command, params, callback)
                 local result = CurrentGameState:prepareScenario(params.scenario)
                 local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
                 battleInterfaceMat.call('setLootDeck', CurrentGameState.loot)
-                for color,guid in ipairs(PlayerMats) do
+                for color, guid in ipairs(PlayerMats) do
                     local mat = getObjectFromGUID(guid)
                     if mat ~= nil then
                         mat.call('shuffleAttackModifiers')
