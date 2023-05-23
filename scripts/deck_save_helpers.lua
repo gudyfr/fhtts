@@ -51,6 +51,9 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                 if deck == nil then
                     deck = cardObject
                 else
+                    -- preserve order, card should be above deck
+                    local pos = deck.getPosition()
+                    cardObject.setPosition({pos.x, pos.y+0.1, pos.z})
                     deck = deck.putObject(cardObject)
                 end
             end
