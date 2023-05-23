@@ -17,6 +17,7 @@ function createEmptyState()
             ["enable-highlight-tiles-by-type"] = true,
             ["enable-automatic-scenario-layout"] = true,
             ["enable-automatic-narration"] = false,
+            ["enable-automatic-characters"] = true,
             difficulty = 0
         }
     }
@@ -28,14 +29,14 @@ function getExpectedEntries()
         { "enable-5p",                          "checkbox", on5pToggled },
         { "address",                            "text" },
         { "port",                               "text" },
-        { "play-narration-in-assistant",        "checkbox"},
-        { "enable-internal-game-state",         "checkbox"},
+        { "play-narration-in-assistant",        "checkbox" },
+        { "enable-internal-game-state",         "checkbox" },
         { "enable-end-of-round-looting",        "checkbox" },
         { "enable-highlight-current-figurines", "checkbox" },
-        { "difficulty-easy",                    "checkbox",     onDifficultyEasy },
-        { "difficulty-normal",                    "checkbox",   onDifficultyNormal },
-        { "difficulty-hard",                    "checkbox",     onDifficultyHard },
-        { "difficulty-insane",                    "checkbox",   onDifficultyInsane },
+        { "difficulty-easy",                    "checkbox", onDifficultyEasy },
+        { "difficulty-normal",                  "checkbox", onDifficultyNormal },
+        { "difficulty-hard",                    "checkbox", onDifficultyHard },
+        { "difficulty-insane",                  "checkbox", onDifficultyInsane },
         { "enable-highlight-tiles-by-type",     "checkbox" },
         { "enable-automatic-characters",        "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
@@ -55,10 +56,10 @@ function on5pToggled()
         yellowMat.setLock(true)
         if enabled then
             -- Show the 5th player mat
-            yellowMat.setPosition({-65, 1.35, 34.22})
+            yellowMat.setPosition({ -65, 1.35, 34.22 })
         else
             -- Hide the 5th player mat
-            yellowMat.setPosition({-65, 0, 34.22})
+            yellowMat.setPosition({ -65, 0, 34.22 })
         end
     end
 
@@ -105,8 +106,8 @@ function onDifficultyInsane(set)
 end
 
 function setDifficulty(level)
-    local entries = {"easy", "normal", "hard", "insane"}
-    for _, button in ipairs(self.getButtons()) do        
+    local entries = { "easy", "normal", "hard", "insane" }
+    for _, button in ipairs(self.getButtons()) do
         for _, entry in ipairs(entries) do
             if entry ~= level then
                 local name = "difficulty-" .. entry

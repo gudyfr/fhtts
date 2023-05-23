@@ -7,6 +7,7 @@ require('fhlog')
 require('standees')
 require('constants')
 require('game_state')
+require('cards')
 
 TAG = "ScenarioMat"
 CURRENT_ASSISTANT_VERSION = 3
@@ -67,6 +68,9 @@ function onStateUpdate(state)
         deleteCardsAt(DrawDecks["Battle Goals"])
         setAtLocalPosition(deck, DrawDecks["Battle Goals"], true)
     end
+
+    CurrentGameState:resetAllState()
+    updateCurrentState()
 end
 
 -- scenario mat
@@ -244,23 +248,24 @@ function onLoad(state)
 
     -- tag based actions
     for _, point in pairs(self.getSnapPoints()) do
-        tags = point.tags
-        mTags = {}
+        local tags = point.tags
+        local mTags = {}
         for _, tag in ipairs(tags) do
             mTags[tag] = true
         end
 
-        isDeck = mTags["deck"] ~= nil
-        isCurse = mTags["player curse"] ~= nil
-        isBless = mTags["bless"] ~= nil
-        isPlayerMinus1 = mTags["player minus 1"] ~= nil
-        isGreen = mTags["Green"] ~= nil
-        isRed = mTags["Red"] ~= nil
-        isWhite = mTags["White"] ~= nil
-        isBlue = mTags["Blue"] ~= nil
-        isYellow = mTags["Yellow"] ~= nil
+        local isDeck = mTags["deck"] ~= nil
+        local isCurse = mTags["player curse"] ~= nil
+        local isBless = mTags["bless"] ~= nil
+        local isPlayerMinus1 = mTags["player minus 1"] ~= nil
+        local isMonsterCurse = mTags["monster curse"] ~= nil
+        local isGreen = mTags["Green"] ~= nil
+        local isRed = mTags["Red"] ~= nil
+        local isWhite = mTags["White"] ~= nil
+        local isBlue = mTags["Blue"] ~= nil
+        local isYellow = mTags["Yellow"] ~= nil
 
-        color = nil
+        local color = nil
         if isGreen then
             color = "Green"
         elseif isRed then
@@ -281,6 +286,8 @@ function onLoad(state)
                 deckPositions["Blesses"] = point.position
             elseif isPlayerMinus1 then
                 deckPositions["Player Minus Ones"] = point.position
+            elseif isMonsterCurse then
+                deckPositions["Monster Curses"] = point.position
             end
         else
             if color ~= nil then
@@ -545,34 +552,20 @@ function onMinus1(color)
 end
 
 function moveCardFromTo(deck, color)
-    card = takeCardFrom(deck)
-    if card ~= nil then
-        card.flip()
-        sendCardTo(card, color)
+    local deckPosition = deckPositions[deck]
+    if deckPosition ~= nil then
+        local deck = getDeckOrCardAt(deckPosition)
+        local card = takeCardFrom(deck)
+        if card ~= nil then
+            card.flip()
+            sendCardTo(card, color)
+        end
     end
 end
 
-function takeCardFrom(deck)
-    deckPosition = deckPositions[deck]
-    if deckPosition ~= nil then
-        local hitlist = Physics.cast({
-            origin       = self.positionToWorld(deckPosition),
-            direction    = { 0, 1, 0 },
-            type         = 2,
-            size         = { 1, 1, 1 },
-            max_distance = 0,
-            debug        = false
-        }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-
-        for i, j in pairs(hitlist) do
-            if j.hit_object.tag == "Card" then
-                return j.hit_object
-            elseif j.hit_object.tag == "Deck" then
-                return j.hit_object.takeObject({})
-            end
-        end
-    end
-    return nil
+function getDeckPosition(params)
+    local position = self.positionToWorld(deckPositions[params.name])
+    return { x = position.x, y = position.y, z = position.z }
 end
 
 function getPlayerMat(color)
@@ -594,6 +587,8 @@ function returnCard(params)
         returnCardTo(card, deckPositions["Player Curses"])
     elseif card.hasTag("player minus 1") then
         returnCardTo(card, deckPositions["Player Minus Ones"])
+    elseif card.hasTag("monster curse") then
+        returnCardTo(card, deckPositions["Monster Curses"])
     end
 end
 
@@ -1028,28 +1023,15 @@ function onEnd()
         local playerMat = getPlayerMat(color)
         if playerMat ~= nil then
             for n, card in pairs(cards) do
-                local hitlist = Physics.cast({
-                    origin       = self.positionToWorld(card),
-                    direction    = { 0, 1, 0 },
-                    type         = 2,
-                    size         = { 1, 1, 1 },
-                    max_distance = 0,
-                    debug        = false
-                }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-
-                for i, j in pairs(hitlist) do
-                    if j.hit_object.tag == "Card" then
-                        -- destination depends on state
-                        state = cardStates[color][n]
-                        playerMat.call("returnCard", { j.hit_object, state })
-                    end
-                end
+                local object = getDeckOrCardAt(card)
+                forEachInDeckOrCard(object, function(c) playerMat.call("returnCard", { c, cardStates[color][n] }) end)
             end
-
             -- send endTurn to Player Mats
             playerMat.call("endTurn")
         end
     end
+
+    getObjectFromGUID(BattleInterfaceMat).call("onEndTurn")
 
     -- clearStates
     for color, cards in pairs(cardStates) do
@@ -1314,6 +1296,8 @@ function getColorFromTags(tagsMap)
             return color
         end
     end
+    if tagsMap['ally'] ~= nil then return 'ally' end
+    if tagsMap['monster'] ~= nil then return 'monster' end
     return nil
 end
 
@@ -1504,7 +1488,7 @@ function processState(state)
         newState[id] = entry
         -- Handle summons separately
         if entry.characterState ~= nil then
-            for _, summon in ipairs(entry.characterState.summonList) do
+            for _, summon in ipairs(entry.characterState.summonList or {}) do
                 local summonName = summon.name
                 if summonName == "Shambling Skeleton" then
                     summonName = summonName .. " " .. summon.standeeNr
@@ -1513,7 +1497,8 @@ function processState(state)
             end
             characterStates[entry.id] = { hp = entry.characterState.health, xp = entry.characterState.xp }
             table.insert(assistantData,
-                { name = originalId, type = "character", turnState = entry.turnState, active = entry.active })
+                { name = originalId, type = "character", turnState = entry.turnState, active = entry.active,
+                    noUi = entry.noUi or false, initiative = entry.initiative, npc = entry.npc or false })
         else
             local instances = entry.monsterInstances
             if instances ~= nil then
@@ -1833,6 +1818,14 @@ function refreshStandee(standee, instance)
 
             if nbLoot > 0 then
                 updateAssistant("POST", "loot", { target = standee.getName(), count = nbLoot })
+                -- update the local game state
+                local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+                -- Who's playing this standee?
+                for color, character in pairs(Characters) do
+                    if character == standee.getName() then
+                        battleInterfaceMat.call("onLootDraw", { color = color })
+                    end
+                end
             end
         end
     end
@@ -1874,6 +1867,24 @@ function refreshStandee(standee, instance)
         end
     else
         highlightOff(standee)
+    end
+end
+
+function onLootDrawn(params)
+    if isInternalGameStateEnabled() then
+        local card = params.card
+        local color = params.color
+        local enhancements = params.enhancements or 0
+        local character = Characters[color]
+        if character ~= nil and card ~= nil then
+            print(card)
+            local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
+            broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type, { r = 0.2, g = 1, b = 0.2 })
+        else
+            print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
+            broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
+                { r = 1, g = 0, b = 0 })
+        end
     end
 end
 
@@ -1986,6 +1997,9 @@ function updateAssistant(method, command, params, callback)
                 -- can happen without our input
                 --returnCurrentState(callback)
                 handled = true
+            elseif command == "getLoot" then
+                local result = GameState:getLoot()
+                onLootReceived(result, params.mode)
             end
         elseif method == "POST" then
             if command == "addCharacter" then
@@ -1998,7 +2012,15 @@ function updateAssistant(method, command, params, callback)
                 updateCurrentState()
                 handled = true
             elseif command == "setScenario" then
-                CurrentGameState:prepareScenario(params.scenario)
+                local result = CurrentGameState:prepareScenario(params.scenario)
+                local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+                battleInterfaceMat.call('setLootDeck', CurrentGameState.loot)
+                for color,guid in ipairs(PlayerMats) do
+                    local mat = getObjectFromGUID(guid)
+                    if mat ~= nil then
+                        mat.call('shuffleAttackModifiers')
+                    end
+                end
                 updateCurrentState()
                 handled = true
             elseif command == "addMonster" then
@@ -2056,6 +2078,9 @@ function updateAssistant(method, command, params, callback)
             elseif command == "setSection" then
                 CurrentGameState:prepareSection(params.section or "<invalid>")
                 updateCurrentState()
+                handled = true
+            elseif command == "loot" then
+                -- Ignoring loot commands when using the internal game state
                 handled = true
             end
         end
@@ -2169,7 +2194,9 @@ end
 
 function onScenarioCompleted()
     if isXHavenEnabled() then
-        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "complete") end)
+        -- The params are ignored by the GET, but used for the internal game state mode
+        updateAssistant("GET", "getLoot", { mode = "complete" },
+            function(request) onLootReceived(request, "complete") end)
     else
         broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
     end
@@ -2177,7 +2204,9 @@ end
 
 function onScenarioLost()
     if isXHavenEnabled() then
-        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "returnToFrosthaven") end)
+        -- The params are ignored by the GET, but used for the internal game state mode
+        updateAssistant("GET", "getLoot", { mode = "returnToFrosthaven" },
+            function(request) onLootReceived(request, "returnToFrosthaven") end)
     else
         broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
     end
@@ -2185,7 +2214,8 @@ end
 
 function onScenarioRetry()
     if isXHavenEnabled() then
-        updateAssistant("GET", "getLoot", nil, function(request) onLootReceived(request, "retry") end)
+        -- The params are ignored by the GET, but used for the internal game state mode
+        updateAssistant("GET", "getLoot", { mode = "retry" }, function(request) onLootReceived(request, "retry") end)
     else
         broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
     end
@@ -2207,99 +2237,104 @@ function onLootReceived(request, mode)
     if request.is_done and not request.is_error then
         if math.floor(request.response_code / 100) == 2 then
             local lootTable = JSON.decode(request.text)
-            local lootByCharacter = {}
-            -- Filter loot based on mode
-            for name, loot in pairs(lootTable.loot) do
-                local actualLoot = {}
-                for item, count in pairs(loot) do
-                    if item == "coin" or mode == "complete" or mode == "returnToFrosthaven" then
-                        if count > 0 then
-                            actualLoot[item] = count
-                        end
-                    end
-                end
-                lootByCharacter[name] = actualLoot
-            end
-
-            -- print(JSON.encode(characterStates))
-
-            for name, loot in pairs(lootByCharacter) do
-                local playerMat = findPlayerMat(name)
-
-                local message = ""
-                for item, count in pairs(loot) do
-                    local additional = ""
-                    if item == "coin" then
-                        additional = " (" .. count * (lootTable.coinValue or 1) .. " gold)"
-                    end
-                    message = message .. count .. " " .. item .. additional .. ", "
-                end
-                local xp = (characterStates[name] or {})['xp'] or 0
-                if mode == "complete" then
-                    xp = xp + lootTable.baseXp
-                end
-                if #loot > 0 then
-                    message = message .. "and "
-                end
-                message = message .. xp .. " xp"
-                if playerMat ~= nil then
-                    broadcastToAll(name .. " received " .. message)
-                    if loot.coin ~= nil then
-                        loot.gold = loot.coin * (lootTable.coinValue or 1)
-                        loot.coin = nil
-                    end
-                    playerMat.call("endScenario", { loot = loot, xp = xp })
-                else
-                    broadcastToAll("Could not find " .. name .. " player mat. " .. message .. " not collected")
-                end
-            end
-
-
-            if mode == "complete" then
-                -- Inpiration
-                local inspiration = 4 - Global.call("getPlayerCount")
-                if inspiration > 0 then
-                    local outpostMat = getObjectFromGUID(OutpostMatGuid)
-                    if outpostMat ~= nil then
-                        local campaignSheet = outpostMat.call("getCampaignSheet")
-                        if campaignSheet ~= nil then
-                            broadcastToAll("Party gained " .. inspiration .. " inspiration")
-                            campaignSheet.call("addEx", { name = "inspiration", amount = inspiration })
-                        end
-                    end
-                end
-
-                -- Mark scenario complete
-                -- Tell the campaign tracker(s) this scenario is complete
-                if CurrentScenario ~= nil and CurrentScenario.name ~= nil then
-                    for _, guid in ipairs(CampaignTrackerGuids) do
-                        local ct = getObjectFromGUID(guid)
-                        if ct ~= nil then
-                            ct.call("setFieldOn", { field = "completed", name = CurrentScenario.name })
-                        end
-                    end
-                end
-            end
-
-            -- Cleanup the assistant
-            updateAssistant("POST", "endScenario", {}, updateState)
-
-            -- Cleanup the scenario mat
-            Global.call("cleanup", true)
-
-            -- If retry, re-layout the scenario
-            local oldScenario = CurrentScenario
-            CurrentScenario = nil
-            if mode == "retry" then
-                Wait.time(function() Global.call("prepareScenarioEx", oldScenario) end, 1.0)
-            end
-
-            -- Collapse the End scenario UI
-            toggleEndScenarioUI()
+            processLoot(lootTable, mode)
             return
         end
     end
     broadcastToAll("Error fetching loot from assistant")
+end
+
+function processLoot(lootTable, mode)
+    local lootByCharacter = {}
+    -- Filter loot based on mode
+    for name, loot in pairs(lootTable.loot) do
+        local actualLoot = {}
+        for item, count in pairs(loot) do
+            if item == "coin" or mode == "complete" or mode == "returnToFrosthaven" then
+                if count > 0 then
+                    actualLoot[item] = count
+                end
+            end
+        end
+        lootByCharacter[name] = actualLoot
+    end
+
+    -- print(JSON.encode(characterStates))
+
+    for name, loot in pairs(lootByCharacter) do
+        local playerMat = findPlayerMat(name)
+
+        local message = ""
+        for item, count in pairs(loot) do
+            local additional = ""
+            if item == "coin" then
+                additional = " (" .. count * (lootTable.coinValue or 1) .. " gold)"
+            end
+            message = message .. count .. " " .. item .. additional .. ", "
+        end
+        local xp = (characterStates[name] or {})['xp'] or 0
+        if mode == "complete" then
+            xp = xp + lootTable.baseXp
+        end
+        if #loot > 0 then
+            message = message .. "and "
+        end
+        message = message .. xp .. " xp"
+        if playerMat ~= nil then
+            broadcastToAll(name .. " received " .. message)
+            if loot.coin ~= nil then
+                loot.gold = loot.coin * (lootTable.coinValue or 1)
+                loot.coin = nil
+            end
+            playerMat.call("endScenario", { loot = loot, xp = xp })
+        else
+            broadcastToAll("Could not find " .. name .. " player mat. " .. message .. " not collected")
+        end
+    end
+
+
+    if mode == "complete" then
+        -- Inpiration
+        local inspiration = 4 - Global.call("getPlayerCount")
+        if inspiration > 0 then
+            local outpostMat = getObjectFromGUID(OutpostMatGuid)
+            if outpostMat ~= nil then
+                local campaignSheet = outpostMat.call("getCampaignSheet")
+                if campaignSheet ~= nil then
+                    broadcastToAll("Party gained " .. inspiration .. " inspiration")
+                    campaignSheet.call("addEx", { name = "inspiration", amount = inspiration })
+                end
+            end
+        end
+
+        -- Mark scenario complete
+        -- Tell the campaign tracker(s) this scenario is complete
+        if CurrentScenario ~= nil and CurrentScenario.name ~= nil then
+            for _, guid in ipairs(CampaignTrackerGuids) do
+                local ct = getObjectFromGUID(guid)
+                if ct ~= nil then
+                    ct.call("setFieldOn", { field = "completed", name = CurrentScenario.name })
+                end
+            end
+        end
+    end
+
+    -- Cleanup the assistant
+    updateAssistant("POST", "endScenario", {}, updateState)
+
+    -- Cleanup the scenario mat
+    Global.call("cleanup", true)
+
+    -- If retry, re-layout the scenario
+    local oldScenario = CurrentScenario
+    CurrentScenario = nil
+    if mode == "retry" then
+        Wait.time(function() Global.call("prepareScenarioEx", oldScenario) end, 1.0)
+    end
+
+    -- Collapse the End scenario UI
+    toggleEndScenarioUI()
+    return
 end
 
 function updateDifficulty(difficulty)

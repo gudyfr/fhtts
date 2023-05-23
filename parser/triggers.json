@@ -224,14 +224,16 @@
                         "action": "deleteOn",
                         "what": "02-E",
                         "only": [
-                            "Snowdrift","Snow Rock"
+                            "Snowdrift",
+                            "Snow Rock"
                         ]
                     },
                     {
                         "action": "deleteOn",
                         "what": "02-G",
                         "only": [
-                            "Snowdrift","Snow Rock"
+                            "Snowdrift",
+                            "Snow Rock"
                         ]
                     }
                 ]
@@ -248,12 +250,12 @@
             },
             "trigger": {
                 "type": "manual",
-                "by" : {
-                    "token" : "section",
-                    "at" : {
-                        "reference" : "13-A",
-                        "x" : 0,
-                        "y" : -3
+                "by": {
+                    "token": "section",
+                    "at": {
+                        "reference": "13-A",
+                        "x": 0,
+                        "y": -3
                     }
                 },
                 "action": "reveal",
@@ -266,14 +268,16 @@
                         "action": "deleteOn",
                         "what": "02-E",
                         "only": [
-                            "Snowdrift","Snow Rock"
+                            "Snowdrift",
+                            "Snow Rock"
                         ]
                     },
                     {
                         "action": "deleteOn",
                         "what": "02-G",
                         "only": [
-                            "Snowdrift","Snow Rock"
+                            "Snowdrift",
+                            "Snow Rock"
                         ]
                     }
                 ]
@@ -1292,6 +1296,52 @@
             }
         }
     ],
+    "36": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 44
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "rename": "Door a"            
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 44
+            },
+            "target": {
+                "type": "token",
+                "name": "b"
+            },
+            "rename": "Door b"            
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 44
+            },
+            "target": {
+                "type": "token",
+                "name": "c"
+            },
+            "rename": "Door c"            
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 44
+            },
+            "target": {
+                "type": "token",
+                "name": "d"
+            },
+            "rename": "Door d"            
+        }
+    ],
     "37": [
         {
             "in": {
@@ -1673,6 +1723,44 @@
                 "what": {
                     "type": "section",
                     "name": "2.3"
+                }
+            }
+        }
+    ],
+    "44": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 52
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "52.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "52.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "149.1"
                 }
             }
         }

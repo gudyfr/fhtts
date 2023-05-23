@@ -1,5 +1,5 @@
 function getDeckOrCardAt(position)
-   return getDeckOrCardAtWorldPosition(self.positionToWorld(position))
+    return getDeckOrCardAtWorldPosition(self.positionToWorld(position))
 end
 
 function getDeckOrCardAtWorldPosition(position)
@@ -25,32 +25,36 @@ function getDeckOrCardAtWorldPosition(position)
 end
 
 function forEachInDeckOrCardIf(deck, cardTransform, entryTest)
-    if deck == nil or cardTransform == nil then
+    if deck == nil then
         return 0
     end
     local count = 0
     if deck.tag == "Deck" then
         local cards = deck.getObjects()
-        for _,entry in ipairs(cards) do
+        for _, entry in ipairs(cards) do
             -- Check if we need to handle the last remaining card in the deck
             if deck.remainder ~= nil then
                 local card = deck.remainder
-                local tester = {name=card.getName(), tags=card.getTags(), description=card.getDescription()}
+                local tester = { name = card.getName(), tags = card.getTags(), description = card.getDescription() }
                 if entryTest(tester) then
-                    cardTransform(deck.remainder)
+                    if cardTransform ~= nil then
+                        cardTransform(deck.remainder)
+                    end
                     count = count + 1
                 end
             else
                 if entryTest(entry) then
-                    local obj = deck.takeObject({guid=entry.guid})
-                    cardTransform(obj)
-                    count = count +1
+                    if cardTransform ~= nil then
+                        local obj = deck.takeObject({ guid = entry.guid })
+                        cardTransform(obj)
+                    end
+                    count = count + 1
                 end
             end
         end
     elseif deck.tag == "Card" then
         local card = deck
-        local tester = {name=card.getName(), tags=card.getTags(), description=card.getDescription()}
+        local tester = { name = card.getName(), tags = card.getTags(), description = card.getDescription() }
         if entryTest(tester) then
             cardTransform(card)
             count = count + 1
@@ -63,21 +67,29 @@ function forEachInDeckOrCard(deck, cardTransform)
     return forEachInDeckOrCardIf(deck, cardTransform, function(entry) return true end)
 end
 
-function addCardToDeckAt(card, position, atBottom)
-    addCardToDeckAtWorldPosition(card, self.positionToWorld(position), atBottom)
+function addCardToDeckAt(card, position, options)
+    addCardToDeckAtWorldPosition(card, self.positionToWorld(position), options)
 end
 
-function addCardToDeckAtWorldPosition(card, position, atBottom)
+function addCardToDeckAtWorldPosition(card, position, options)
     if card == nil or position == nil then
         return
     end
-    atBottom = atBottom or false
-    local current = getDeckOrCardAt(position)
+    options = options or {}
+    local atBottom = options.bottoms or false
+    local shuffle = options.shuffle or false
+    local smooth = options.smooth or false
+    local noPut = options.noPut or false
+    local current = getDeckOrCardAtWorldPosition(position)
     if current == nil then
         -- There is currently nothing at that location, simply move the card there (shifted up)
         local globalPosition = position
         globalPosition.y = globalPosition.y + 0.5
-        card.setPosition(globalPosition)
+        if smooth then
+            card.setPositionSmooth(globalPosition)
+        else
+            card.setPosition(globalPosition)
+        end
     else
         -- Move the card above or below the deck depending on where we want it to go
         local deckPosition = current.getPosition()
@@ -86,7 +98,29 @@ function addCardToDeckAtWorldPosition(card, position, atBottom)
         else
             deckPosition.y = deckPosition.y + 0.5
         end
-        card.setPosition(deckPosition)
-        current.putObject(card)
+        if smooth then
+            card.setPositionSmooth(deckPosition)
+        else
+            card.setPosition(deckPosition)
+        end
+        if not noPut then
+            current.putObject(card)
+        end
+
+        if shuffle then
+            current.shuffle()
+            -- Wait.time(function() current.shuffle() end, 0.1)
+        end
     end
+end
+
+function takeCardFrom(deckOrCard)
+    if deckOrCard ~= nil then
+        if deckOrCard.tag == "Card" then
+            return deckOrCard
+        elseif deckOrCard.tag == "Deck" then
+            return deckOrCard.takeObject({})
+        end
+    end
+    return nil
 end

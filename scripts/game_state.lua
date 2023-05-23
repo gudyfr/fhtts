@@ -178,21 +178,6 @@ function Deck:shuffleIfNeeded()
     end
 end
 
--- Formula class
-Formula = {}
-Formula.__index = Formula
-
-function Formula.new(str)
-    local self = setmetatable({}, Formula)
-    self.str = str
-    return self
-end
-
-function Formula:eval(gameState)
-    local context = { L = gameState.level or 1, C = gameState:nbCharacters() }
-    return luaxp.evaluate(self.str, context)
-end
-
 -- MonsterInstance class
 
 MonsterInstance = {}
@@ -212,7 +197,7 @@ end
 function MonsterInstance:updateBaseStats()
     local damage = (self.maxHp or 0) - (self.hp or 0)
     local monsterLevel = self.monster.levels[self.level + 1][self.type]
-    local maxHp = monsterLevel.hp:eval(self.monster.gameState)
+    local maxHp = math.ceil(self.monster.gameState:evalExpr(monsterLevel.hp))
     self.hp = maxHp - damage
     self.maxHp = maxHp
     self.baseShield = monsterLevel.baseShield or 0
@@ -301,7 +286,7 @@ MonsterLevelType = {}
 MonsterLevelType.__index = MonsterLevelType
 function MonsterLevelType.new(json)
     local self = setmetatable({}, MonsterLevelType)
-    self.hp = Formula.new(json.hp)
+    self.hp = json.hp
     self.shield = json.shield or 0
     self.retaliate = json.retaliate or 0
     self.immunities = json.immunities or {}
@@ -577,6 +562,7 @@ end
 
 function Character:reset()
     self.initiative = 0
+    self.turnState = 0
     self.hp = self.hps[self.level]
     self.maxHp = self.hps[self.level]
     self.xp = 0
@@ -662,7 +648,7 @@ function Character:toState()
             maxHealth = self.maxHp,
             level = self.level,
             xp = self.xp,
-            summonList = map(self.summons, Summon.toState),
+            summonList = map(self.activeSummons, Summon.toState),
             conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
         }
     }
@@ -678,7 +664,7 @@ function Npc.new(gameState, json)
     self.name = json.name
     self.internal = json.internal
     self.initiative = json.init or 100
-    local hp = luaxp.evaluate(json.health, {L=gameState.level, C=gameState:nbCharacters()})
+    local hp = math.ceil(gameState:evalExpr(json.hp))
     self.hp = hp
     self.maxHp = hp
     self.conditions = {}
@@ -712,7 +698,7 @@ function Npc:changeHp(amount)
     if self.hp > self.maxHp then
         self.hp = self.maxHp
     end
-    if self.Hp <= 0 then
+    if self.hp <= 0 then
         self.gameState:removeNpc(self)
     end
 end
@@ -720,14 +706,16 @@ end
 function Npc:toState()
     return {
         id = self.name,
-        active = self.hp > 0 and type == "Escort",
+        active = self.hp > 0 and self.type == "Escort",
         turnState = self.turnState,
         initiative = self.initiative,
+        npc = true,
         characterState = {
             health = self.hp,
             maxHealth = self.maxHp,
             conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
-        }
+        },
+        noUi = self.type == "Objective",
     }
 end
 
@@ -774,6 +762,8 @@ function GameState.new(gameData)
     self.decks = {}
     self.elements = { fire = 0, ice = 0, air = 0, earth = 0, light = 0, dark = 0 }
     self.timers = {}
+    self.loot = {}
+    self.looted = {}
     return self
 end
 
@@ -795,6 +785,8 @@ function GameState.newFromSave(gameData, save)
     self.npcs = mapDict(save.npcs or {}, function(e) return Npc.newFromSave(self, e) end)
     self.currentScenario = gameData.scenarios[save.scenarioName or ""]
     self.timers = map(save.timers or {}, Timer.newFromSave)
+    self.loot = save.loot
+    self.looted = save.looted
     return self
 end
 
@@ -811,6 +803,8 @@ function GameState:save()
         elements = mapDict(self.elements, identity),
         scenarioName = self.currentScenario ~= nil and self.currentScenario.name or nil,
         timers = map(self.timers, Timer.save),
+        loot = self.loot,
+        looted = self.looted,
     }
 end
 
@@ -894,6 +888,10 @@ function GameState:change(what, name, nr, amount)
     end
 end
 
+function GameState:evalExpr(str)
+    return luaxp.evaluate(str, { L = self.level, C = self:nbCharacters() })
+end
+
 function GameState:startRound(characterInitiatives)
     if self.roundState ~= 0 then
         fhlog(WARNING, "GameState", "Round is already started")
@@ -972,6 +970,11 @@ function GameState:findTarget(name, nr)
     end
 end
 
+function GameState:resetAllState()
+    self.characters = {}
+    self:reset()
+end
+
 function GameState:reset()
     self.monsters = {}
     for _, character in ipairs(self.characters) do
@@ -980,17 +983,95 @@ function GameState:reset()
     self.round = 1
     self.roundState = 0
     self.decks = {}
+    self.timers = {}
+    self.npcs = {}
+    self.loot = {}
+    self.looted = {}
     self.currentScenario = scenario
 end
+
+
 
 function GameState:prepareScenario(name)
     fhlog(DEBUG, "GameState", "Preparing Scenario %s", name)
     self:reset()
     local scenario = self.gameData['scenarios'][name]
     self:prepare(scenario)
+    self:prepareLootDeck(scenario.loot)
     self.currentScenario = scenario
-    return false
+    return true
 end
+
+function GameState:prepareLootDeck(list)
+    local cards = {}
+    for i, nb in ipairs(list) do
+        if nb > 0 then
+            -- Build the card pool
+            local cardPool = {}
+            for card = LootDeck[i].from, LootDeck[i].to do
+                table.insert(cardPool, card)
+            end
+
+            -- Randomly draw nb cards from the pool
+            for n = 1, nb do
+                if #cardPool > 0 then
+                    local pick = math.random(#cardPool)
+                    local card = cardPool[pick]
+                    table.remove(cardPool, pick)
+                    table.insert(cards, tostring(card))
+                end
+            end
+        end
+    end
+    shuffle(cards)
+    self.loot = cards
+end
+
+function GameState:setCardLooted(card, owner, enhancements)
+    local lootInfo = self:getLootCardInfo(card)
+    lootInfo.owner = owner
+    if enhancements ~= nil and enhancements > 0 then
+        lootInfo.value = lootInfo.value + enhancements
+    end
+    print(self.looted)
+    self.looted[tostring(card)] = lootInfo
+    return lootInfo
+end
+
+function GameState:getLootCardInfo(card)
+    card = tonumber(card)
+    -- Determine the card value
+    for _, cardInfo in ipairs(LootDeckValues) do
+        if cardInfo.from <= card and cardInfo.to >= card then
+            local value = self:evalExpr(cardInfo.value)
+            print(value)
+            local type = cardInfo.type
+            return { value = value, type = type }
+        end
+    end
+    fhlog(ERROR, "GameState", "Card %s not found", card or "nil")
+end
+
+function GameState:getLoot()
+    local result = {}
+    for card, owner in pairs(self.looted) do
+        if result[owner] == nil then
+            result[owner] = {}
+        end
+        if result[owner][card.type] == nil then
+            result[owner][card.type] = 0
+        end
+        result[owner][card.type] = result[owner][type] + card.value
+    end
+    return { loot = result, baseXp = BaseXps[self.level + 1], coinValue = CoinValues[self.level + 1] }
+end
+
+BaseXps = {
+    4, 6, 8, 10, 12, 14, 16, 18
+}
+CoinValues = {
+    2, 2, 3, 3, 4, 4, 5, 6
+}
 
 function GameState:prepare(scenarioOrSection)
     if scenarioOrSection ~= nil then
@@ -1034,7 +1115,7 @@ function GameState:addTimer(special)
 end
 
 function GameState:addAllies(special)
-    for _,ally in ipairs(special.list) do
+    for _, ally in ipairs(special.list) do
         self:addMonster(ally, false)
     end
 end
@@ -1170,6 +1251,9 @@ function GameState:getCurrentList()
     for _, monster in pairs(self.monsters) do
         table.insert(currentList, monster)
     end
+    for _, npc in pairs(self.npcs) do
+        table.insert(currentList, npc)
+    end
     table.sort(currentList, function(a, b)
         if a.active ~= b.active then
             if a.active then return true else return false end
@@ -1181,10 +1265,10 @@ end
 
 function GameState:getActiveTimers()
     local results = {}
-    for _,timer in ipairs(self.timers) do
+    for _, timer in ipairs(self.timers or {}) do
         if self.roundState == timer.roundState then
             local correctRound = false
-            for _,round in ipairs(timer.list) do
+            for _, round in ipairs(timer.list or {}) do
                 if self.round == round then
                     table.insert(results, timer)
                 end
@@ -1219,3 +1303,39 @@ function ensureConditionsMappings()
         ConditionMapping[condition] = i - 1
     end
 end
+
+LootDeck = {
+    { from = 1381, to = 1382 }, -- model.arrowvine,
+    { from = 1383, to = 1384 }, -- model.axenut,
+    { from = 1361, to = 1380 }, -- model.coin,
+    { from = 1385, to = 1386 }, -- model.corpsecap,
+    { from = 1387, to = 1388 }, -- model.flamefruit,
+    { from = 1393, to = 1400 }, -- model.hide,
+    { from = 1401, to = 1408 }, -- model.lumber,
+    { from = 1409, to = 1416 }, -- model.metal,
+    { from = 1389, to = 1390 }, -- model.rockroot,
+    { from = 1391, to = 1392 }, -- model.snowthistle,
+    { from = 1417, to = 1417 }, -- model.treasure
+}
+
+LootDeckValues = {
+    { from = 1361, to = 1372, value = "1",                 type = "coin" },
+    { from = 1373, to = 1378, value = "2",                 type = "coin" },
+    { from = 1379, to = 1380, value = "3",                 type = "coin" },
+    { from = 1381, to = 1382, value = "1",                 type = "arrowvine" },
+    { from = 1383, to = 1384, value = "1",                 type = "axenut" },
+    { from = 1385, to = 1386, value = "1",                 type = "corpsecap" },
+    { from = 1387, to = 1388, value = "1",                 type = "flamefruitoin" },
+    { from = 1389, to = 1390, value = "1",                 type = "rockroot" },
+    { from = 1391, to = 1392, value = "1",                 type = "snowthistle" },
+    { from = 1393, to = 1395, value = "1*(C>=4)+2*(C<=3)", type = "hide" },
+    { from = 1396, to = 1398, value = "1*(C>=3)+2*(C<=2)", type = "hide" },
+    { from = 1398, to = 1400, value = "1",                 type = "hide" },
+    { from = 1401, to = 1403, value = "1*(C>=4)+2*(C<=3)", type = "lumber" },
+    { from = 1403, to = 1406, value = "1*(C>=3)+2*(C<=2)", type = "lumber" },
+    { from = 1407, to = 1408, value = "1",                 type = "lumber" },
+    { from = 1409, to = 1411, value = "1*(C>=4)+2*(C<=3)", type = "metal" },
+    { from = 1412, to = 1414, value = "1*(C>=3)+2*(C<=2)", type = "metal" },
+    { from = 1415, to = 1416, value = "1",                 type = "metal" },
+    { from = 1417, to = 1417, value = "1",                 type = "treasure" },
+}

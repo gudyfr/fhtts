@@ -12175,8 +12175,7 @@
 						{
 							"type": "Escort",
 							"name": "Elemental Anchor",
-							"hp": "(L+1)*C*2",
-							"startOfRound": true
+							"hp": "(L+1)*C*2"
 						}
 					]
 				}
@@ -12207,8 +12206,7 @@
 				{
 					"type": "Objective",
 					"name": "Altar 1",
-					"hp": "(L+1)*C",
-					"startOfRound": true
+					"hp": "(L+1)*C"
 				}
 			],
 			"sections": {
@@ -12219,8 +12217,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 3",
-							"hp": "(L+1)*C",
-							"startOfRound": true
+							"hp": "(L+1)*C"
 						}
 					]
 				},
@@ -12231,8 +12228,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 2",
-							"hp": "(L+1)*C",
-							"startOfRound": true
+							"hp": "(L+1)*C"
 						}
 					]
 				}
@@ -12347,37 +12343,37 @@
 							"type": "Objective",
 							"name": "Dark Fog",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 1",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 2",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 3",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 4",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 5",
 							"hp": "(L+2)*C",
-							"startOfRound": true
+							"init": 1
 						}
 					]
 				}
@@ -12412,25 +12408,25 @@
 					"type": "Escort",
 					"name": "Elemental Core 1",
 					"hp": "4*(L+1)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Escort",
 					"name": "Elemental Core 2",
 					"hp": "4*(L+1)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Escort",
 					"name": "Elemental Core 3",
 					"hp": "4*(L+1)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Escort",
 					"name": "Elemental Core 4",
 					"hp": "4*(L+1)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Timer",
@@ -12517,8 +12513,7 @@
 						{
 							"type": "Objective",
 							"name": "Large Debris 1",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				},
@@ -12529,8 +12524,7 @@
 						{
 							"type": "Objective",
 							"name": "Large Debris 2",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				}
@@ -12564,8 +12558,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -12624,20 +12617,17 @@
 					"list": [
 						"Aesther Ashblade",
 						"Aesther Scout"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Objective",
 					"name": "Door 1",
-					"hp": "(1+L)*2",
-					"startOfRound": true
+					"hp": "(1+L)*2"
 				},
 				{
 					"type": "Objective",
 					"name": "Door 2",
-					"hp": "(1+L)*2",
-					"startOfRound": true
+					"hp": "(1+L)*2"
 				},
 				{
 					"type": "Timer",
@@ -12667,8 +12657,7 @@
 						{
 							"type": "Objective",
 							"name": "Barricade",
-							"hp": "L+5",
-							"startOfRound": true
+							"hp": "L+5"
 						}
 					]
 				}
@@ -12698,8 +12687,7 @@
 				{
 					"type": "Escort",
 					"name": "Crain",
-					"hp": "(L+C)*2+2",
-					"startOfRound": true
+					"hp": "(L+C)*2+2"
 				},
 				{
 					"type": "Timer",
@@ -12952,26 +12940,22 @@
 				{
 					"type": "Objective",
 					"name": "Door a",
-					"hp": "(L+3)*(C-1)d2",
-					"startOfRound": true
+					"hp": "floor((L+3)*(C-1)/2)"
 				},
 				{
 					"type": "Objective",
 					"name": "Door b",
-					"hp": "(L+3)*(C-1)d2",
-					"startOfRound": true
+					"hp": "floor((L+3)*(C-1)/2)"
 				},
 				{
 					"type": "Objective",
 					"name": "Door c",
-					"hp": "(L+3)*(C-1)d2",
-					"startOfRound": true
+					"hp": "floor((L+3)*(C-1)/2)"
 				},
 				{
 					"type": "Objective",
 					"name": "Door d",
-					"hp": "(L+3)*(C-1)d2",
-					"startOfRound": true
+					"hp": "floor((L+3)*(C-1)/2)"
 				},
 				{
 					"type": "Timer",
@@ -13129,12 +13113,10 @@
 						{
 							"type": "Objective",
 							"name": "Altar a",
-							"hp": "(L+3)*C",
-							"startOfRound": true
+							"hp": "(L+3)*C"
 						},
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -13358,8 +13340,7 @@
 				{
 					"type": "Escort",
 					"name": "Scenario",
-					"hp": "(2+L)*C*2",
-					"startOfRound": true
+					"hp": "(2+L)*C*2"
 				}
 			]
 		},
@@ -13424,8 +13405,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 1",
-							"hp": "(L+2)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+2)*C/2)"
 						}
 					]
 				},
@@ -13443,8 +13423,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 4",
-							"hp": "(L+2)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+2)*C/2)"
 						}
 					]
 				},
@@ -13463,8 +13442,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 2",
-							"hp": "(L+2)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+2)*C/2)"
 						}
 					]
 				},
@@ -13483,8 +13461,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 3",
-							"hp": "(L+2)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+2)*C/2)"
 						}
 					]
 				}
@@ -13583,75 +13560,70 @@
 					"type": "Escort",
 					"name": "Helper 1",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Helper 2",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Helper 3",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Helper 4",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Helper 5",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"condition": "C>2",
 					"name": "Helper 6",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"condition": "C>3",
 					"name": "Helper 7",
 					"hp": "2*L+3",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 1",
-					"hp": "L+1",
-					"startOfRound": true
+					"hp": "L+1"
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 2",
-					"hp": "L+1",
-					"startOfRound": true
+					"hp": "L+1"
 				},
 				{
 					"type": "Objective",
 					"name": "Barrel 1",
-					"hp": "L+1",
-					"startOfRound": true
+					"hp": "L+1"
 				},
 				{
 					"type": "Objective",
 					"name": "Barrel 2",
-					"hp": "L+1",
-					"startOfRound": true
+					"hp": "L+1"
 				},
 				{
 					"type": "Objective",
 					"name": "Barrel 3",
-					"hp": "L+1",
-					"startOfRound": true
+					"hp": "L+1"
 				},
 				{
 					"type": "Timer",
@@ -13852,25 +13824,25 @@
 					"type": "Objective",
 					"name": "Cabinet 1",
 					"hp": "C*(L+2)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Objective",
 					"name": "Cabinet 2",
 					"hp": "C*(L+2)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Objective",
 					"name": "Cabinet 3",
 					"hp": "C*(L+2)",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Objective",
 					"name": "Cabinet 4",
 					"hp": "C*(L+2)",
-					"startOfRound": true
+					"init": 1
 				}
 			],
 			"sections": {
@@ -13881,8 +13853,7 @@
 						{
 							"type": "Objective",
 							"name": "Glowing Orb",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				}
@@ -13990,8 +13961,7 @@
 					"type": "Allies",
 					"list": [
 						"Algox Guard"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -14023,8 +13993,7 @@
 					"list": [
 						"Algox Archer",
 						"Algox Guard"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -14148,8 +14117,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -14379,8 +14347,7 @@
 				{
 					"type": "Escort",
 					"name": "Infuser",
-					"hp": "3*L+5",
-					"startOfRound": true
+					"hp": "3*L+5"
 				}
 			]
 		},
@@ -14411,8 +14378,7 @@
 					"type": "Allies",
 					"list": [
 						"Algox Icespeaker"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Timer",
@@ -14493,8 +14459,7 @@
 					"list": [
 						"Fish King",
 						"Piranha Pig"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Timer",
@@ -14650,14 +14615,12 @@
 				{
 					"type": "Escort",
 					"name": "Emissary a",
-					"hp": "3*(L+2)",
-					"startOfRound": true
+					"hp": "3*(L+2)"
 				},
 				{
 					"type": "Escort",
 					"name": "Emissary b",
-					"hp": "3*(L+2)",
-					"startOfRound": true
+					"hp": "3*(L+2)"
 				}
 			],
 			"sections": {
@@ -14666,8 +14629,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -14826,8 +14788,7 @@
 					"type": "Allies",
 					"list": [
 						"City Guard (FH)"
-					],
-					"startOfRound": true
+					]
 				}
 			],
 			"sections": {
@@ -14836,8 +14797,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -14875,8 +14835,7 @@
 				{
 					"type": "Objective",
 					"name": "Tree 1",
-					"hp": "(2+L)*C",
-					"startOfRound": true
+					"hp": "(2+L)*C"
 				}
 			],
 			"sections": {
@@ -14887,14 +14846,12 @@
 						{
 							"type": "Objective",
 							"name": "Tree 2",
-							"hp": "(2+L)*C",
-							"startOfRound": true
+							"hp": "(2+L)*C"
 						},
 						{
 							"type": "Objective",
 							"name": "Tree 3",
-							"hp": "(2+L)*C",
-							"startOfRound": true
+							"hp": "(2+L)*C"
 						}
 					]
 				},
@@ -14965,20 +14922,17 @@
 					"list": [
 						"Algox Archer",
 						"Algox Icespeaker"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Escort",
 					"name": "Emissary 1",
-					"hp": "2*(L+2)",
-					"startOfRound": true
+					"hp": "2*(L+2)"
 				},
 				{
 					"type": "Escort",
 					"name": "Emissary 2",
-					"hp": "2*(L+2)",
-					"startOfRound": true
+					"hp": "2*(L+2)"
 				}
 			]
 		},
@@ -15170,8 +15124,7 @@
 					"list": [
 						"Algox Archer",
 						"Algox Guard"
-					],
-					"startOfRound": true
+					]
 				}
 			],
 			"sections": {
@@ -15253,8 +15206,7 @@
 						{
 							"type": "Objective",
 							"name": "Door 2",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				}
@@ -15495,26 +15447,22 @@
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 1",
-					"hp": "(2*L)+4",
-					"startOfRound": true
+					"hp": "(2*L)+4"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 2",
-					"hp": "(2*L)+4",
-					"startOfRound": true
+					"hp": "(2*L)+4"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 3",
-					"hp": "(2*L)+4",
-					"startOfRound": true
+					"hp": "(2*L)+4"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 4",
-					"hp": "(2*L)+4",
-					"startOfRound": true
+					"hp": "(2*L)+4"
 				}
 			],
 			"sections": {
@@ -15525,8 +15473,7 @@
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 5",
-							"hp": "(2*L)+4",
-							"startOfRound": true
+							"hp": "(2*L)+4"
 						}
 					]
 				},
@@ -15537,8 +15484,7 @@
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 6",
-							"hp": "(2*L)+4",
-							"startOfRound": true
+							"hp": "(2*L)+4"
 						}
 					]
 				}
@@ -15568,20 +15514,17 @@
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 1",
-					"hp": "(2+L)*Cd2",
-					"startOfRound": true
+					"hp": "floor((2+L)*C/2)"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 2",
-					"hp": "(2+L)*Cd2",
-					"startOfRound": true
+					"hp": "floor((2+L)*C/2)"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 3",
-					"hp": "(2+L)*Cd2",
-					"startOfRound": true
+					"hp": "floor((2+L)*C/2)"
 				}
 			],
 			"sections": {
@@ -15592,34 +15535,29 @@
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 4",
-							"hp": "4+(L*C)d2",
-							"startOfRound": true
+							"hp": "floor(4+(L*C)/2)"
 						},
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 5",
-							"hp": "4+(L*C)d2",
-							"startOfRound": true
+							"hp": "floor(4+(L*C)/2)"
 						},
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 6",
-							"hp": "4+(L*C)d2",
-							"startOfRound": true
+							"hp": "floor(4+(L*C)/2)"
 						},
 						{
 							"type": "Objective",
 							"condition": "C>2",
 							"name": "Ice Pillar A",
-							"hp": "4+(L*C)d2",
-							"startOfRound": true
+							"hp": "floor(4+(L*C)/2)"
 						},
 						{
 							"type": "Objective",
 							"condition": "C>3",
 							"name": "Ice Pillar B",
-							"hp": "4+(L*C)d2",
-							"startOfRound": true
+							"hp": "floor(4+(L*C)/2)"
 						}
 					]
 				}
@@ -15695,44 +15633,37 @@
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 1",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 2",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 3",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 4",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 5",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 6",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				},
 				{
 					"type": "Escort",
 					"name": "Ice Pillar 7",
-					"hp": "L+3",
-					"startOfRound": true
+					"hp": "L+3"
 				}
 			]
 		},
@@ -15787,8 +15718,7 @@
 					"list": [
 						"Algox Priest",
 						"Hound"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -15818,8 +15748,7 @@
 					"type": "Allies",
 					"list": [
 						"City Guard Scenario 1"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -15847,8 +15776,8 @@
 				{
 					"type": "Escort",
 					"name": "Crain",
-					"hp": "C*(L+3)d2",
-					"startOfRound": true
+					"hp": "floor(C*(L+3)/2)",
+					"init": 50
 				}
 			],
 			"sections": {
@@ -15914,8 +15843,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -15965,8 +15893,7 @@
 							"type": "Allies",
 							"list": [
 								"Brother"
-							],
-							"startOfRound": true
+							]
 						}
 					]
 				}
@@ -16000,14 +15927,12 @@
 					"type": "Allies",
 					"list": [
 						"Piranha Pig"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Objective",
 					"name": "Small Tree 1",
-					"hp": "C*L/2",
-					"startOfRound": true
+					"hp": "C*L/2"
 				}
 			],
 			"sections": {
@@ -16018,8 +15943,7 @@
 						{
 							"type": "Objective",
 							"name": "Small Tree 2",
-							"hp": "C*L/2",
-							"startOfRound": true
+							"hp": "C*L/2"
 						}
 					]
 				}
@@ -16051,7 +15975,7 @@
 					"type": "Escort",
 					"name": "Orphan",
 					"hp": "(L+C)*2",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Timer",
@@ -16213,26 +16137,22 @@
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 1",
-					"hp": "(2*L)+2",
-					"startOfRound": true
+					"hp": "(2*L)+2"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 2",
-					"hp": "(2*L)+2",
-					"startOfRound": true
+					"hp": "(2*L)+2"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 3",
-					"hp": "(2*L)+2",
-					"startOfRound": true
+					"hp": "(2*L)+2"
 				},
 				{
 					"type": "Objective",
 					"name": "Ice Pillar 4",
-					"hp": "(2*L)+2",
-					"startOfRound": true
+					"hp": "(2*L)+2"
 				}
 			],
 			"sections": {
@@ -16288,26 +16208,22 @@
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 5",
-							"hp": "(2*L)+2",
-							"startOfRound": true
+							"hp": "(2*L)+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 6",
-							"hp": "(2*L)+2",
-							"startOfRound": true
+							"hp": "(2*L)+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 7",
-							"hp": "(2*L)+2",
-							"startOfRound": true
+							"hp": "(2*L)+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Ice Pillar 8",
-							"hp": "(2*L)+2",
-							"startOfRound": true
+							"hp": "(2*L)+2"
 						}
 					]
 				}
@@ -16339,16 +16255,16 @@
 					"condition": "C<4",
 					"name": "Spectral Helper 1",
 					"hp": "2",
-					"startOfRound": true,
-					"note": "should spawn only 4-C helpers"
+					"note": "should spawn only 4-C helpers",
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"condition": "C<3",
 					"name": "Spectral Helper 2",
 					"hp": "2",
-					"startOfRound": true,
-					"note": "should spawn only 4-C helpers"
+					"note": "should spawn only 4-C helpers",
+					"init": 50
 				}
 			]
 		},
@@ -16379,8 +16295,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -16509,12 +16424,10 @@
 						{
 							"type": "Objective",
 							"name": "Raven Nest a",
-							"hp": "(L+2)*C*3",
-							"startOfRound": true
+							"hp": "(L+2)*C*3"
 						},
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -16577,7 +16490,6 @@
 					"type": "Objective",
 					"name": "Glowing Orb",
 					"hp": "(L+3)*2*C",
-					"startOfRound": true,
 					"note": "more cabinets later on: 52.1"
 				}
 			]
@@ -16607,7 +16519,7 @@
 					"type": "Escort",
 					"name": "Moonshard",
 					"hp": "(L+C*2)*2",
-					"startOfRound": true
+					"init": 50
 				}
 			]
 		},
@@ -16637,8 +16549,7 @@
 					"type": "Allies",
 					"list": [
 						"Hound Scenario 112"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -16711,26 +16622,22 @@
 				{
 					"type": "Objective",
 					"name": "Metal Cabinet a",
-					"hp": "(2+L)*C/2",
-					"startOfRound": true
+					"hp": "(2+L)*C/2"
 				},
 				{
 					"type": "Objective",
 					"name": "Metal Cabinet b",
-					"hp": "(2+L)*C/2",
-					"startOfRound": true
+					"hp": "(2+L)*C/2"
 				},
 				{
 					"type": "Objective",
 					"name": "Metal Cabinet c",
-					"hp": "(2+L)*C/2",
-					"startOfRound": true
+					"hp": "(2+L)*C/2"
 				},
 				{
 					"type": "Objective",
 					"name": "Metal Cabinet d",
-					"hp": "(2+L)*C/2",
-					"startOfRound": true
+					"hp": "(2+L)*C/2"
 				}
 			]
 		},
@@ -16947,7 +16854,7 @@
 					"type": "Escort",
 					"name": "The Great Oak",
 					"hp": "2*C*(L+3)",
-					"startOfRound": true
+					"init": 1
 				}
 			],
 			"sections": {
@@ -16958,8 +16865,7 @@
 					],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -17025,8 +16931,7 @@
 						{
 							"type": "Objective",
 							"name": "Large Ice Crystal",
-							"hp": "(L+2)*C*4",
-							"startOfRound": true
+							"hp": "(L+2)*C*4"
 						}
 					]
 				}
@@ -17136,8 +17041,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -17276,8 +17180,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -17332,8 +17235,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -17388,8 +17290,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -17523,8 +17424,7 @@
 						{
 							"type": "Objective",
 							"name": "Ice Pillar",
-							"hp": "(L+2)*C*2",
-							"startOfRound": true
+							"hp": "(L+2)*C*2"
 						}
 					]
 				}
@@ -17701,8 +17601,7 @@
 				{
 					"type": "Escort",
 					"name": "Pulse Emitter",
-					"hp": "6+(3*L)",
-					"startOfRound": true
+					"hp": "6+(3*L)"
 				}
 			]
 		},
@@ -17822,31 +17721,31 @@
 					"type": "Escort",
 					"name": "Caravan Wagon 1",
 					"hp": "C*2+L",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Caravan Wagon 2",
 					"hp": "C*2+L",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Caravan Wagon 3",
 					"hp": "C*2+L",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Caravan Wagon 4",
 					"hp": "C*2+L",
-					"startOfRound": true
+					"init": 50
 				},
 				{
 					"type": "Escort",
 					"name": "Caravan Wagon 5",
 					"hp": "C*2+L",
-					"startOfRound": true
+					"init": 50
 				}
 			]
 		},
@@ -17879,15 +17778,13 @@
 						{
 							"type": "Objective",
 							"name": "Altar 1",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"condition": "C>2",
 							"name": "Altar 2",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				},
@@ -17898,15 +17795,13 @@
 						{
 							"type": "Objective",
 							"name": "Altar 3",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"condition": "C>2",
 							"name": "Altar 4",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				},
@@ -17917,8 +17812,7 @@
 						{
 							"type": "Objective",
 							"name": "Altar 5",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				},
@@ -17929,14 +17823,12 @@
 						{
 							"type": "Objective",
 							"name": "Altar 6",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 7",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				},
@@ -17947,14 +17839,12 @@
 						{
 							"type": "Objective",
 							"name": "Altar 8",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Altar 9",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				}
@@ -17992,8 +17882,7 @@
 						{
 							"type": "Objective",
 							"name": "Door 2",
-							"hp": "(L+1)*C",
-							"startOfRound": true
+							"hp": "(L+1)*C"
 						}
 					]
 				},
@@ -18004,8 +17893,7 @@
 						{
 							"type": "Objective",
 							"name": "Glowing Orb",
-							"hp": "(L*2+3)*C",
-							"startOfRound": true
+							"hp": "(L*2+3)*C"
 						}
 					]
 				}
@@ -18048,8 +17936,7 @@
 						{
 							"type": "Objective",
 							"name": "Metal Cabinet 1",
-							"hp": "(2+L)*C/2",
-							"startOfRound": true
+							"hp": "(2+L)*C/2"
 						}
 					]
 				},
@@ -18060,8 +17947,7 @@
 						{
 							"type": "Objective",
 							"name": "Metal Cabinet 2",
-							"hp": "(2+L)*C/2",
-							"startOfRound": true
+							"hp": "(2+L)*C/2"
 						}
 					]
 				},
@@ -18072,8 +17958,7 @@
 						{
 							"type": "Objective",
 							"name": "Metal Cabinet 3",
-							"hp": "(2+L)*C/2",
-							"startOfRound": true
+							"hp": "(2+L)*C/2"
 						}
 					]
 				},
@@ -18084,8 +17969,7 @@
 						{
 							"type": "Objective",
 							"name": "Metal Cabinet 4",
-							"hp": "(2+L)*C/2",
-							"startOfRound": true
+							"hp": "(2+L)*C/2"
 						}
 					]
 				}
@@ -18159,8 +18043,7 @@
 					"list": [
 						"Algox Guard",
 						"Algox Archer"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -18194,8 +18077,7 @@
 					"type": "Allies",
 					"list": [
 						"Scabwit"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Timer",
@@ -18256,8 +18138,7 @@
 				{
 					"type": "Escort",
 					"name": "Crain",
-					"hp": "(L+C)*2+2",
-					"startOfRound": true
+					"hp": "(L+C)*2+2"
 				},
 				{
 					"type": "Timer",
@@ -18398,14 +18279,12 @@
 						{
 							"type": "Objective",
 							"name": "Altar a",
-							"hp": "(L+1)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+1)*C/2)"
 						},
 						{
 							"type": "Objective",
 							"name": "Altar b",
-							"hp": "(L+1)*Cd2",
-							"startOfRound": true
+							"hp": "floor((L+1)*C/2)"
 						}
 					]
 				},
@@ -18417,7 +18296,7 @@
 							"type": "Escort",
 							"name": "Faye",
 							"hp": "(L*3)+8",
-							"startOfRound": true
+							"init": 11
 						}
 					]
 				},
@@ -18498,14 +18377,12 @@
 				{
 					"type": "Objective",
 					"name": "Small Debris 1",
-					"hp": "L+10",
-					"startOfRound": true
+					"hp": "L+10"
 				},
 				{
 					"type": "Objective",
 					"name": "Large Debris 1",
-					"hp": "L+10",
-					"startOfRound": true
+					"hp": "L+10"
 				}
 			],
 			"sections": {
@@ -18516,20 +18393,17 @@
 						{
 							"type": "Objective",
 							"name": "Small Debris 2",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						},
 						{
 							"type": "Objective",
 							"name": "Large Debris 2",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						},
 						{
 							"type": "Objective",
 							"name": "Large Debris 3",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						}
 					]
 				},
@@ -18540,26 +18414,22 @@
 						{
 							"type": "Objective",
 							"name": "Small Debris 3",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						},
 						{
 							"type": "Objective",
 							"name": "Small Debris 4",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						},
 						{
 							"type": "Objective",
 							"name": "Small Debris 5",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						},
 						{
 							"type": "Objective",
 							"name": "Large Debris 4",
-							"hp": "L+10",
-							"startOfRound": true
+							"hp": "L+10"
 						}
 					]
 				}
@@ -18593,62 +18463,61 @@
 					"type": "Allies",
 					"list": [
 						"Guard Captain"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Escort",
 					"name": "Tree",
 					"hp": "(L+C)*3",
-					"startOfRound": true
+					"init": 1
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 1",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 2",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 3",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 4",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 5",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 6",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 7",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Escort",
 					"name": "Militia 8",
 					"hp": "L/2+2",
-					"startOfRound": true
+					"init": 51
 				},
 				{
 					"type": "Timer",
@@ -18877,8 +18746,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",
@@ -19152,38 +19020,32 @@
 				{
 					"type": "Objective",
 					"name": "Barrel 1",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				},
 				{
 					"type": "Objective",
 					"name": "Barrel 2",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 1",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 2",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 3",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				},
 				{
 					"type": "Objective",
 					"name": "Crate 4",
-					"hp": "3",
-					"startOfRound": true
+					"hp": "3"
 				}
 			]
 		},
@@ -19231,8 +19093,7 @@
 					"list": [
 						"Algox Guard",
 						"Algox Scout"
-					],
-					"startOfRound": true
+					]
 				}
 			]
 		},
@@ -19386,8 +19247,7 @@
 					"list": [
 						"Abael Scout",
 						"Piranha Pig"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Timer",
@@ -19406,8 +19266,7 @@
 						{
 							"type": "Escort",
 							"name": "Artificer",
-							"hp": "(L*C)+2",
-							"startOfRound": true
+							"hp": "(L*C)+2"
 						},
 						{
 							"type": "Timer",
@@ -19489,8 +19348,7 @@
 					"type": "Allies",
 					"list": [
 						"Yoglang"
-					],
-					"startOfRound": true
+					]
 				},
 				{
 					"type": "Timer",
@@ -19550,8 +19408,7 @@
 					"type": "Allies",
 					"list": [
 						"Algox Priest"
-					],
-					"startOfRound": true
+					]
 				}
 			],
 			"sections": {
@@ -19562,8 +19419,7 @@
 						{
 							"type": "Objective",
 							"name": "Ice Sheet",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				}
@@ -19653,38 +19509,32 @@
 						{
 							"type": "Objective",
 							"name": "Crate 1",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Crate 2",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Crate 3",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Bookshelf 1",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Bookshelf 2",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						},
 						{
 							"type": "Objective",
 							"name": "Bookshelf 3",
-							"hp": "L+2",
-							"startOfRound": true
+							"hp": "L+2"
 						}
 					]
 				},
@@ -19695,8 +19545,7 @@
 						{
 							"type": "Objective",
 							"name": "Glowing Orb",
-							"hp": "(L+2)*C",
-							"startOfRound": true
+							"hp": "(L+2)*C"
 						}
 					]
 				}
@@ -19728,10 +19577,48 @@
 					"type": "Objective",
 					"name": "Metal Cabinet 1",
 					"hp": "C*(L+3)/2",
-					"startOfRound": true,
 					"note": "more cabinets later on: 52.1"
 				}
-			]
+			],
+			"sections": {
+				"#52.1 Dead Pass (44)": {
+					"name": "#52.1 Dead Pass (44)",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "Objective",
+							"name": "Metal Cabinet 2",
+							"hp": "C*(L+3)/2"
+						},
+						{
+							"type": "Objective",
+							"name": "Metal Cabinet 3",
+							"hp": "C*(L+3)/2"
+						},
+						{
+							"type": "Objective",
+							"name": "Metal Cabinet 4",
+							"hp": "C*(L+3)/2"
+						},
+						{
+							"type": "Objective",
+							"name": "Metal Cabinet 5",
+							"hp": "C*(L+3)/2"
+						}
+					]
+				},
+				"#149.1 Dead Pass (44)": {
+					"name": "#149.1 Dead Pass (44)",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "Objective",
+							"name": "Metal Cabinet 6",
+							"hp": "C*(L+3)/2"
+						}
+					]
+				}
+			}
 		},
 		"#33 Thawed Wood": {
 			"name": "#33 Thawed Wood",
@@ -19761,8 +19648,7 @@
 					"monsters": [],
 					"specials": [
 						{
-							"type": "ResetRound",
-							"startOfRound": true
+							"type": "ResetRound"
 						},
 						{
 							"type": "Timer",

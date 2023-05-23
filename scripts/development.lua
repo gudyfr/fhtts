@@ -16,13 +16,15 @@ end
 
 function getExpectedEntries()
     return {
-        { "use-dev-assets", "checkbox" },
+        { "use-dev-assets",           "checkbox" },
         { "print-pinged-coordinates", "text" },
-        { "log-level", "text", onFhLogUpdate},
-        { "log-tags", "text", onFhLogUpdate},
-        { "getTileLayout",  "button" },
-        { "onRefreshData",  "button" },
-        { "onReset",        "button" }
+        { "printSnapPoints",          "button" },
+        { "toggleInteractable",       "button" },
+        { "log-level",                "text",    onFhLogUpdate },
+        { "log-tags",                 "text",    onFhLogUpdate },
+        { "getTileLayout",            "button" },
+        { "onRefreshData",            "button" },
+        { "onReset",                  "button" }
     }
 end
 
@@ -36,6 +38,27 @@ end
 
 function onReset()
     Global.call("reset")
+end
+
+function printSnapPoints()
+    local target = getTarget()
+    if target ~= nil then
+        print(JSON.encode(target.getSnapPoints()))
+    end
+end
+
+function getTarget()
+    local targetGuid = State['print-pinged-coordinates']
+    if targetGuid ~= nil then
+        return getObjectFromGUID(targetGuid)
+    end
+end
+
+function toggleInteractable()
+    local target = getTarget()
+    if target ~= nil then
+        target.interactable = not target.interactable
+    end
 end
 
 function getTileLayout()
@@ -83,9 +106,9 @@ function getTileLayout()
 
             table.insert(tileResults, tile)
         end
-        for _,decal in ipairs(obj.getDecals() or {}) do
+        for _, decal in ipairs(obj.getDecals() or {}) do
             if decal.name == "standee_nr" then
-                table.insert(stickerResults, {name=obj.getName(), position=decal.position})
+                table.insert(stickerResults, { name = obj.getName(), position = decal.position })
             end
         end
     end

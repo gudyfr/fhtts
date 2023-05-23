@@ -4,6 +4,7 @@ require("utils")
 require("fhlog")
 require('player_mat_data')
 require('cards')
+require('am_draw')
 
 function getState()
   local state = {}
@@ -203,8 +204,12 @@ function loadCharacterBox(characterBox, state)
       rotation = { 0, 0, 0 }
     end
     destination.y = destination.y + 1.5
-    characterBox.takeObject({ guid = obj.guid, position = self.positionToWorld(destination), rotation = rotation,
-      smooth = false })
+    characterBox.takeObject({
+      guid = obj.guid,
+      position = self.positionToWorld(destination),
+      rotation = rotation,
+      smooth = false
+    })
   end
 
   -- detroy the box
@@ -277,7 +282,7 @@ function onLoad()
     local pos = buttonPositions["draw"]
     local button_parameters = {
       function_owner = self,
-      click_function = "drawInternal",
+      click_function = "drawAttackModifier",
       label          = "Draw",
       position       = { -pos.x, pos.y, pos.z },
       width          = 200,
@@ -296,7 +301,7 @@ function onLoad()
     local pos = buttonPositions["shuffle"]
     local button_parameters = {
       function_owner = self,
-      click_function = "shuffle",
+      click_function = "shuffleAttackModifiers",
       label          = "Shuffle",
       position       = { -pos.x, pos.y, pos.z },
       width          = 200,
@@ -563,77 +568,16 @@ function compareX(obj1, obj2)
   end
 end
 
-Drawn = {}
-DrawnReturnTimer = nil
-
-function drawInternal()
-  draw(true)
+function drawAttackModifier(external)
+  if external ~= true then
+    external = false
+  end
+  draw({ type = "player", player = getPlayerNumber() }, AttackModifiersDrawPosition, AttackModifiersDiscardPosition,
+    not external)
 end
 
-function draw(internal)
-  internal = internal or false
-  local absoluteTarget
-  if internal then
-    absoluteTarget = self.positionToWorld(shiftUp(AttackModifiersDiscardPosition))
-  else
-    local target = { x = -2.7, y = 0.7, z = -9.2 }
-    local scenarioMat = getObjectFromGUID('4aa570')
-    absoluteTarget = scenarioMat.positionToWorld(target)
-  end
-
-
-  local player = getPlayerNumber()
-  local hitlist = Physics.cast({
-    origin       = self.positionToWorld(AttackModifiersDrawPosition),
-    direction    = { 0, 1, 0 },
-    type         = 2,
-    size         = { 1, 1, 1 },
-    max_distance = 0,
-    debug        = true
-  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-
-  if not internal then
-    if DrawnReturnTimer ~= nil then
-      Wait.stop(DrawnReturnTimer)
-    end
-    DrawnReturnTimer = Wait.time(returnDrawnCards, 5.0)
-    absoluteTarget.x = absoluteTarget.x - #Drawn * 1.5
-  end
-
-  for i, j in pairs(hitlist) do
-    if j.hit_object.tag == "Deck" then
-      local card = j.hit_object.takeObject({
-        position = absoluteTarget,
-        flip     = true
-      })
-      Global.call("showDrawnCard", { player = player, card = card })
-      if not internal then
-        table.insert(Drawn, card)
-      end
-      return card
-    elseif j.hit_object.tag == "Card" then
-      local card = j.hit_object
-      card.setPosition(absoluteTarget)
-      card.flip()
-      Global.call("showDrawnCard", { player = player, card = card })
-      if not internal then
-        table.insert(Drawn, card)
-      end
-      return card
-    end
-  end
-end
-
-function returnDrawnCards()
-  for _, card in ipairs(Drawn) do
-    if card.hasTag("return") then
-      returnCardToScenarioMat(card)
-    else
-      card.setPositionSmooth(self.positionToWorld(shiftUp(AttackModifiersDiscardPosition)))
-    end
-  end
-  Drawn = {}
-  DrawnReturnTimer = nil
+function shuffleAttackModifiers()
+  shuffle(AttackModifiersDrawPosition, AttackModifiersDiscardPosition)
 end
 
 function getCharacterName()
@@ -661,63 +605,6 @@ end
 function getCharacterSheet()
   if CharacterSheetPosition ~= nil then
     return findLocalObject(CharacterSheetPosition, "", "character sheet")
-  end
-end
-
-function shuffle()
-  local hitlist = Physics.cast({
-    origin       = self.positionToWorld(AttackModifiersDiscardPosition),
-    direction    = { 0, 1, 0 },
-    type         = 2,
-    size         = { 1, 1, 1 },
-    max_distance = 0,
-    debug        = true
-  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-
-  for i, j in pairs(hitlist) do
-    if j.hit_object.tag == "Deck" or j.hit_object.tag == "Card" then
-      deck = Physics.cast({
-        origin       = self.positionToWorld(AttackModifiersDrawPosition),
-        direction    = { 0, 1, 0 },
-        type         = 2,
-        size         = { 1, 1, 1 },
-        max_distance = 0,
-        debug        = false
-      }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-      local shuffled = false
-      for u, v in pairs(deck) do
-        if v.hit_object.tag == "Deck" then
-          v.hit_object.putObject(j.hit_object)
-          v.hit_object.shuffle()
-          v.hit_object.shuffle()
-          shuffled = true
-        end
-      end
-      if not shuffled then
-        j.hit_object.setPosition(self.positionToWorld(shiftUp(AttackModifiersDrawPosition)))
-        j.hit_object.flip()
-        j.hit_object.shuffle()
-        j.hit_object.shuffle()
-      end
-      return
-    end
-  end
-end
-
-function getDiscard()
-  local hitlist = Physics.cast({
-    origin       = self.positionToWorld(AttackModifiersDiscardPosition),
-    direction    = { 0, 1, 0 },
-    type         = 2,
-    size         = { 1, 1, 1 },
-    max_distance = 0,
-    debug        = false
-  }) -- returns {{Vector point, Vector normal, float distance, Object hit_object}, ...}
-
-  for i, j in pairs(hitlist) do
-    if j.hit_object.tag == "Deck" or j.hit_object.tag == "Card" then
-      return j.hit_object
-    end
   end
 end
 
@@ -768,84 +655,12 @@ function persistCard(card)
 end
 
 function endTurn()
-  returnCardsFromDiscard()
-  local discard = getDiscard()
-  if discard ~= nil then
-    if discard.tag == "Card" then
-      -- Card
-      if discard.hasTag("shuffle") then
-        shuffle()
-        return
-      end
-    else
-      -- Deck
-      local deck = discard.getObjects()
-      for i, card in pairs(deck) do
-        for _, tag in ipairs(card.tags) do
-          if tag == "shuffle" then
-            shuffle()
-            return
-          end
-        end
-      end
-    end
-  end
-end
-
-function returnCardsFromDiscard()
-  local discard = getDiscard()
-  if discard ~= nil then
-    if discard.tag == "Card" then
-      -- Card
-      if discard.hasTag("return") then
-        returnCardToScenarioMat(discard)
-      end
-    else
-      -- Deck
-      deck = discard.getObjects()
-      for i, card in pairs(deck) do
-        local target = card
-        for _, tag in ipairs(target.tags) do
-          if tag == "return" then
-            local toReturn
-            if discard.remainder ~= nil then
-              toReturn = discard.remainder
-            else
-              toReturn = discard.takeObject({ guid = card.guid, smooth = false })
-            end
-            returnCardToScenarioMat(toReturn)
-          end
-        end
-      end
-    end
-  end
+  returnCardsFromDiscard(AttackModifiersDiscardPosition)
+  shuffleIfNeeded(AttackModifiersDrawPosition, AttackModifiersDiscardPosition)
 end
 
 function cleanup()
-  shuffle()
-  local hitlist = Physics.cast({
-    origin       = self.positionToWorld(AttackModifiersDrawPosition),
-    direction    = { 0, 1, 0 },
-    type         = 2,
-    size         = { 1, 1, 1 },
-    max_distance = 0,
-    debug        = true
-  })
-
-  for _, hit in pairs(hitlist) do
-    if hit.hit_object.tag == "Deck" then
-      local deck = hit.hit_object
-      local cards = deck.getObjects()
-      for _, card in ipairs(cards) do
-        for _, tag in ipairs(card.tags) do
-          if tag == "player minus 1" or tag == "player curse" or tag == "bless" then
-            local card = deck.takeObject({ guid = card.guid })
-            returnCardToScenarioMat(card)
-          end
-        end
-      end
-    end
-  end
+  cleanupAttackModifiers(AttackModifiersDrawPosition, AttackModifiersDiscardPosition)
 
   -- Restore items
   for _, position in ipairs(ItemCardPositions) do
@@ -944,24 +759,8 @@ function getDecalPosition(position)
 end
 
 function addCardToAttackModifiers(params)
-  card = params[1]
-
-  hitlist = Physics.cast({
-    origin       = self.positionToWorld(AttackModifiersDrawPosition),
-    direction    = { 0, 1, 0 },
-    type         = 2,
-    size         = { 1, 1, 1 },
-    max_distance = 0,
-    debug        = false
-  })
-  for i, j in pairs(hitlist) do
-    if j.hit_object.tag == "Deck" or j.hit_object.tag == "Card" then
-      deck = j.hit_object.putObject(card)
-      deck.shuffle()
-      return
-    end
-  end
-  card.setPosition(self.positionToWorld(AttackModifiersDrawPosition))
+  local card = params[1]
+  addCardToDeckAt(card, AttackModifiersDrawPosition, { shuffle = true })
 end
 
 function endScenario(payload)
@@ -970,9 +769,9 @@ function endScenario(payload)
   local loot = payload.loot
   local characterSheet = getCharacterSheet()
   if characterSheet ~= nil then
-    characterSheet.call("addEx", {name='xp', amount=xp})
-    for name,value in pairs(loot) do
-      characterSheet.call("addEx", {name=name, amount=value})
+    characterSheet.call("addEx", { name = 'xp', amount = xp })
+    for name, value in pairs(loot) do
+      characterSheet.call("addEx", { name = name, amount = value })
     end
   end
 end

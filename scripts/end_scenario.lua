@@ -46,14 +46,16 @@ function show()
     Minimized = false
     updateUI()
     self.setLock(true)
-    self.setPositionSmooth({-21.88, 1.30, 16.36})
+    self.setRotation({x=45, y=0, z=0})
+    self.setPositionSmooth({-17.30, 2.26, 14.11})
 end
 
 function hide()
     Minimized = true
     updateUI()
     self.setLock(true)
-    self.setPositionSmooth({-16.5, 1.30, 16.36})
+    self.setRotation({x=45, y=0, z=0})
+    self.setPositionSmooth({-17.30, 0.29, 16.07})
 end
 
 function updateUI()

@@ -597,6 +597,11 @@ function cleanup(forceDelete, noMessage)
             mat.call("cleanup")
          end
       end
+      -- Notify the BattleInterfaceMat to cleanup as well
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("cleanup")
+      end
       -- And clear the errata
       getScenarioMat().call('setErrata', nil)
    end
@@ -879,7 +884,7 @@ function layoutMap(map)
       playerCount = 4
    end
 
-   broadcastToAll(originalPlayerCount .." players detected. Laying out map for " .. playerCount .. " players.")
+   broadcastToAll(originalPlayerCount .. " players detected. Laying out map for " .. playerCount .. " players.")
 
    local categories = { "monsters", "overlays", "tokens" }
 
@@ -1860,27 +1865,46 @@ function onObjectLeaveContainer(container, leave_object)
 end
 
 function recoverAttackModifiers(color)
-   local playerMatId = PlayerMats[color]
-   if playerMatId ~= nil then
-      local playerMat = getObjectFromGUID(playerMatId)
-      if playerMat ~= nil then
-         playerMat.call("returnDrawnCards")
+   if color == "monster" or color == "ally" then
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("returnDrawnCards", true)
+      end
+   else
+      local playerMatId = PlayerMats[color]
+      if playerMatId ~= nil then
+         local playerMat = getObjectFromGUID(playerMatId)
+         if playerMat ~= nil then
+            playerMat.call("returnDrawnCards")
+         end
       end
    end
 end
 
 function playerDraw(player)
-   local playerMatId = PlayerMats[player.color]
-   if playerMatId ~= nil then
-      local playerMat = getObjectFromGUID(playerMatId)
-      if playerMat ~= nil then
-         playerMat.call("draw")
+   if player.color == "ally" then
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("onAllyDraw", true)
+      end
+   elseif player.color == "monster" then
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("onMonsterDraw", true)
+      end
+   else
+      local playerMatId = PlayerMats[player.color]
+      if playerMatId ~= nil then
+         local playerMat = getObjectFromGUID(playerMatId)
+         if playerMat ~= nil then
+            playerMat.call("drawAttackModifier", true)
+         end
       end
    end
 end
 
 function showDrawnCard(params)
-   local player = params.player
+   local source = params.source
    local card = params.card
    local desc = card.getDescription()
    if desc ~= nil then
@@ -1891,7 +1915,13 @@ function showDrawnCard(params)
       end
    end
    local description = CardDescriptions[desc] or " an unknown card"
-   broadcastToAll("Player " .. player .. " drew : " .. description)
+   if source.type == "player" then
+      broadcastToAll("Player " .. source.player .. " drew : " .. description)
+   elseif source.type == "monster" then
+      broadcastToAll("Monster drew : " .. description)
+   elseif source.type == "ally" then
+      broadcastToAll("Ally drew : " .. description)
+   end
 end
 
 function resetDrawnCard()
@@ -1900,18 +1930,30 @@ function resetDrawnCard()
 end
 
 function playerShuffle(player)
-   local playerMatId = PlayerMats[player.color]
-   if playerMatId ~= nil then
-      local playerMat = getObjectFromGUID(playerMatId)
-      if playerMat ~= nil then
-         playerMat.call("shuffle")
+   if player.color == "ally" then
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("onAllyShuffle", true)
+      end
+   elseif player.color == "monster" then
+      local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+      if battleInterfaceMat ~= nil then
+         battleInterfaceMat.call("onMonsterShuffle", true)
+      end
+   else
+      local playerMatId = PlayerMats[player.color]
+      if playerMatId ~= nil then
+         local playerMat = getObjectFromGUID(playerMatId)
+         if playerMat ~= nil then
+            playerMat.call("shuffleAttackModifiers")
+         end
       end
    end
 end
 
 function getPlayerCount()
    local count = 0
-   for _, color in ipairs({ "Green", "Red", "White", "Blue", "Yellow"}) do
+   for _, color in ipairs({ "Green", "Red", "White", "Blue", "Yellow" }) do
       if isPlayerPresent(color) then
          count = count + 1
       end

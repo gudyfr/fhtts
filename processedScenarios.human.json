@@ -36141,46 +36141,6 @@
             },
             "tokens": [
               {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -10,
-                    "y": 7
-                  }
-                ]
-              },
-              {
-                "name": "b",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 7
-                  }
-                ]
-              },
-              {
-                "name": "c",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": -1
-                  }
-                ]
-              },
-              {
-                "name": "d",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": -1
-                  }
-                ]
-              },
-              {
                 "name": "start",
                 "orientation": 0,
                 "positions": [
@@ -36292,11 +36252,13 @@
                   {
                     "x": -10,
                     "y": 7,
+                    "rename": "Door a",
                     "type": "Objective"
                   },
                   {
                     "x": -4,
                     "y": 7,
+                    "rename": "Door b",
                     "type": "Objective"
                   }
                 ]
@@ -36308,11 +36270,13 @@
                   {
                     "x": -6,
                     "y": -1,
+                    "rename": "Door c",
                     "type": "Objective"
                   },
                   {
                     "x": 0,
                     "y": -1,
+                    "rename": "Door d",
                     "type": "Objective"
                   }
                 ]
@@ -39923,6 +39887,15 @@
                   {
                     "x": -6,
                     "y": 5,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "52.1"
+                      },
+                      "id": "scenario/52/token/1"
+                    },
                     "type": "Door"
                   }
                 ]
@@ -40026,6 +39999,15 @@
                   {
                     "x": -7,
                     "y": 7,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "149.1"
+                      },
+                      "id": "section/52.1/token/2"
+                    },
                     "type": "Door"
                   }
                 ]
