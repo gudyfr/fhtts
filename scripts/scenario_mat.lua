@@ -1842,6 +1842,9 @@ function refreshStandee(standee, instance)
                 for color, character in pairs(Characters) do
                     if character == standee.getName() then
                         battleInterfaceMat.call("onLootDraw", { color = color })
+                        for n=2,nbLoot do
+                            Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1, nbLoot-1)
+                        end
                     end
                 end
             end
@@ -2037,12 +2040,11 @@ function updateAssistant(method, command, params, callback)
                 --returnCurrentState(callback)
                 handled = true
             elseif command == "getLoot" then
-                local result = GameState:getLoot()
-                onLootReceived(result, params.mode)
+                local result = CurrentGameState:getLoot()
+                processLoot(result, params.mode)
             end
         elseif method == "POST" then
             if command == "addCharacter" then
-                print("booh")
                 CurrentGameState:addCharacter(params.character)
                 updateCurrentState()
                 handled = true

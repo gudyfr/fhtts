@@ -1033,7 +1033,6 @@ function GameState:setCardLooted(card, owner, enhancements)
     if enhancements ~= nil and enhancements > 0 then
         lootInfo.value = lootInfo.value + enhancements
     end
-    print(self.looted)
     self.looted[tostring(card)] = lootInfo
     return lootInfo
 end
@@ -1044,7 +1043,6 @@ function GameState:getLootCardInfo(card)
     for _, cardInfo in ipairs(LootDeckValues) do
         if cardInfo.from <= card and cardInfo.to >= card then
             local value = self:evalExpr(cardInfo.value)
-            print(value)
             local type = cardInfo.type
             return { value = value, type = type }
         end
@@ -1053,17 +1051,22 @@ function GameState:getLootCardInfo(card)
 end
 
 function GameState:getLoot()
-    local result = {}
-    for card, owner in pairs(self.looted) do
-        if result[owner] == nil then
-            result[owner] = {}
+    local loot = {}
+    for card, info in pairs(self.looted) do
+        local owner = info.owner
+        local value = info.value
+        local type = info.type
+        if loot[owner] == nil then
+            loot[owner] = {}
         end
-        if result[owner][card.type] == nil then
-            result[owner][card.type] = 0
+        if loot[owner][type] == nil then
+            loot[owner][type] = 0
         end
-        result[owner][card.type] = result[owner][type] + card.value
+        loot[owner][type] = loot[owner][type] + value
     end
-    return { loot = result, baseXp = BaseXps[self.level + 1], coinValue = CoinValues[self.level + 1] }
+    local result = { loot = loot, baseXp = BaseXps[self.level + 1], coinValue = CoinValues[self.level + 1] }
+    fhlog(DEBUG, "GameState", "getLoot : %s", result)
+    return result
 end
 
 BaseXps = {
