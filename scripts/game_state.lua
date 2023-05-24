@@ -479,7 +479,7 @@ function Summon.newFromSave(character, save)
     return self
 end
 
-function Summon.save()
+function Summon:save()
     return {
         name = self.name,
         nr = self.nr,
@@ -491,6 +491,9 @@ end
 
 function Summon:changeHp(amount)
     self.hp = self.hp + amount
+    if self.hp > self.maxHp then
+        self.maxHp = self.hp
+    end
     if self.hp <= 0 then
         self.character:removeSummon(self.name, self.nr)
     end
@@ -507,6 +510,7 @@ function Summon:toState()
         standeeNr = self.nr,
         health = self.hp,
         maxHealth = self.maxHp,
+        conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
     }
 end
 
@@ -569,18 +573,20 @@ function Character:reset()
 end
 
 function Character:addSummon(name)
-    local summonModel = self:findSummonModel(name)
+    fhlog(DEBUG, "GameState", "%s looking for %s summon", self.name, name)
+    local summonModel, nr = self:findSummonModel(name)
     if summonModel ~= nil then
+        fhlog(DEBUG, "GameState", "Found %s (%s)", summonModel, nr)
         -- Count currently active summons of the name
         local alreadySpawned = 0
         for _, summon in ipairs(self.activeSummons) do
-            if summon.name == name then
+            if summon.name == summonModel.name then
                 alreadySpawned = alreadySpawned + 1
             end
         end
 
         if alreadySpawned < summonModel.maxInstances then
-            local summon = Summon.new(self, summonModel, alreadySpawned + 1)
+            local summon = Summon.new(self, summonModel, nr)
             table.insert(self.activeSummons, summon)
             return summon
         end
@@ -631,8 +637,11 @@ end
 
 function Character:findSummonModel(name)
     for _, summon in ipairs(self.summons) do
-        if summon.name == name then
-            return summon
+        local summonName = summon.name
+        if summonName == name then
+            return summon, 0
+        elseif string.sub(name,1,string.len(summonName)) == summonName then
+            return summon, tonumber(string.sub(name,#summonName + 1)) or 0
         end
     end
 end
@@ -874,6 +883,14 @@ function GameState:newMonsterInstance(name, type)
     end
 end
 
+function GameState:addSummon(name)
+    fhlog(DEBUG, "GameState", "Adding summon : %s", name)
+    for _, character in pairs(self.characters) do
+       -- Blindly attempt to summon on that character
+       character:addSummon(name)
+    end
+end
+
 function GameState:change(what, name, nr, amount)
     fhlog(DEBUG, "GameState", "Change %s on %s (%s) by %s", what, name, nr or "", amount)
     local target = self:findTarget(name, nr)
@@ -958,7 +975,7 @@ function GameState:findTarget(name, nr)
     -- Summons
     for _, character in pairs(self.characters) do
         for _, summon in pairs(character.activeSummons) do
-            if summon.name == name and summon.nr == nr then
+            if summon.name == name and (summon.nr == nr) then
                 return summon
             end
         end

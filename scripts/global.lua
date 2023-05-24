@@ -2069,14 +2069,12 @@ function registerPressurePlate(pressurePlate)
 end
 
 function onObjectCollisionEnter(hit_object, collision_info)
-   -- print("onObjectCollisionEnter")
-   -- collision_info table:
-   --   collision_object    Object
-   --   contact_points      Table     {Vector, ...}
-   --   relative_velocity   Vector
    local obj = collision_info.collision_object
    if obj.hasTag("condition") then
       getScenarioMat().call("applyCondition", { hit_object, obj.getName() })
+      destroyObject(obj)
+   elseif obj.getName() == "damage" then
+      getScenarioMat().call("changeStandeeHp", { standee=hit_object, amount=-1 })
       destroyObject(obj)
    end
 

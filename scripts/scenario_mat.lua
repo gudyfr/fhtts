@@ -1331,6 +1331,9 @@ function registerStandee(standee)
     onStandeeRegistered(standee)
     table.insert(trackedGuids, standee.guid)
     updateUpdateRunning()
+    if isInternalGameStateEnabled() then
+        updateCurrentState()
+    end
     -- We can't rely on the last update anymore, as we have a new standee to update
     previousHash = ""
 end
@@ -1341,8 +1344,6 @@ function onStandeeRegistered(standee)
     -- We need to wait a bit to register for Collisions
     -- probably as the object isn't fully loaded yet?
     Wait.frames(function() standee.registerCollisions() end, 10)
-    standee.addContextMenuItem("-1 health", damageStandee, true)
-    standee.addContextMenuItem("+1 health", undamageStandee, true)
 end
 
 function onStandeeUnregistered(standee)
@@ -1351,26 +1352,29 @@ function onStandeeUnregistered(standee)
     standee.removeTag("lootable")
     standee.unregisterCollisions()
     standee.clearContextMenu()
+    standee.clearButtons()
 end
 
-function damageStandee(color, position, standee)
-    local name = standee.getName()
-    local nr = 0
-    local inputs = standee.getInputs()
-    if inputs ~= nil then
-        nr = tonumber(inputs[1].value)
+function changeStandeeHp(params)
+    local standee = params.standee
+    local amount = params.amount
+    if standee ~= nil and amount ~= nil then
+        local name = standee.getName()
+        local nr = 0
+        local inputs = standee.getInputs()
+        if inputs ~= nil then
+            nr = tonumber(inputs[1].value)
+        end
+        updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = amount }, updateState)
     end
-    updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = -1 }, updateState)
 end
 
-function undamageStandee(color, position, standee)
-    local name = standee.getName()
-    local nr = 0
-    local inputs = standee.getInputs()
-    if inputs ~= nil then
-        nr = tonumber(inputs[1].value)
-    end
-    updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = 1 }, updateState)
+function damageStandee(standee, color, alt)
+    changeStandeeHp({ standee = standee, amount = -1 })
+end
+
+function undamageStandee(standee, color, alt)
+    changeStandeeHp({ standee = standee, amount = 1 })
 end
 
 function unregisterStandee(standee)
@@ -1643,7 +1647,16 @@ function refreshStandees(state)
                     notes.onDeath = nil
                     standee.setGMNotes(notes)
                 end
-                clearStandee(standee)
+
+                if standee.hasTag("summon") then
+                    local buttons = standee.getButtons() or {}
+                    if #buttons ~=1 then
+                        clearStandee(standee)
+                        addSummonButton(standee)
+                    end
+                else
+                    clearStandee(standee)
+                end
             end
         end
     end
@@ -1652,17 +1665,60 @@ end
 function noop()
 end
 
+function addSummonButton(standee)
+    local baseYRot = standee.getRotation().y
+    local flip = (baseYRot > 90 and baseYRot < 270)
+    if flip then
+        baseYRot = 0
+    else
+        baseYRot = 180
+    end
+    local vec = mapToStandeeInfoArea(0.025, 0, -0.005, 1.1, 1.1, flip, 0.95)
+    local rot = Vector(1, 0, 0)
+    if flip then
+        rot:rotateOver('y', 180):normalize()
+    end
+
+    local buttonParams = {
+        function_owner = self,
+        click_function = "addSummon",
+        label = "Summon",
+        position = { x = vec.x, y = vec.y, z = vec.z },
+        -- Hacky rotation calculations ... might need to figure out what's going on ...
+        rotation = { -55 * rot.x, 540 - baseYRot, 55 * rot.z },
+        width = 700,
+        height = 200,
+        font_size = 160,
+        color = { 1, 1, 1, 1 },
+        scale = { .44, .44, .44 },
+        font_color = { 0, 0, 0, 1 }
+        --font_color = { 0,0,0,1 }
+    }
+    standee.createButton(buttonParams)
+end
+
+function addSummon(standee)
+    local name = standee.getName()
+    -- remove all buttons on the standee (to get rid of the summon button)
+    standee.clearButtons()
+    updateAssistant("POST", "addSummon", {name=name}, updateState)
+
+end
+
 standeeStates = {}
 function refreshStandee(standee, instance)
+    local height = 0.95
     local xScaleFactor = 1.1
     local yScaleFactor = 1.1
     if standee.hasTag("token") then
         -- tokens are smaller and need an additional scale
         xScaleFactor = 4
         yScaleFactor = 1.3
+        height = 0.2
     elseif standee.hasTag("overlay") then
         xScaleFactor = 0.6
         yScaleFactor = 0.7
+        height = 0.2
     end
     if instance.health == 0 then
         clearStandee(standee)
@@ -1684,7 +1740,8 @@ function refreshStandee(standee, instance)
         local nr = tonumber(inputs[1].value or 0)
         if nr >= 1 and nr <= 10 then
             -- Apply the standeeNr sticker
-            local position = StandeeNrPositions[standee.getName()] or { -0.2, 0.5, -0.05 }
+            local position = StandeeNrPositions[standee.getName()] or { x = -0.2, y = 0.5, z = -0.05 }
+            height = position.y + 0.35
             local sticker = {
                 position = position,
                 rotation = { 0, baseYRot, 0 },
@@ -1697,7 +1754,7 @@ function refreshStandee(standee, instance)
     end
 
     local hp = math.ceil(instance.health * 24 / instance.maxHealth)
-    local vec = mapToStandeeInfoArea(0.05, 0, 0, xScaleFactor, yScaleFactor, flip)
+    local vec = mapToStandeeInfoArea(0.05, 0, 0, xScaleFactor, yScaleFactor, flip, height)
     local hpSticker = {
         position = { vec.x, vec.y, vec.z },
         rotation = { 35, baseYRot, 0 },
@@ -1709,7 +1766,7 @@ function refreshStandee(standee, instance)
 
     local xPosition = -0.53
     if (instance.baseShield or 0) > 0 then
-        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip, height)
         local shieldIconSticker = {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
@@ -1722,7 +1779,7 @@ function refreshStandee(standee, instance)
     end
 
     if (instance.baseRetaliate or 0) > 0 then
-        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip)
+        vec = mapToStandeeInfoArea(xPosition, 0, 0, xScaleFactor, yScaleFactor, flip, height)
         local retaliateIconSticker = {
             position = { vec.x, vec.y, vec.z },
             rotation = { 35, baseYRot, 0 },
@@ -1758,7 +1815,7 @@ function refreshStandee(standee, instance)
             end
         end
     end
-    vec = mapToStandeeInfoArea(0, 0, -0.005, xScaleFactor, yScaleFactor, flip)
+    vec = mapToStandeeInfoArea(0.025, 0, -0.005, xScaleFactor, yScaleFactor, flip, height)
     local rot = Vector(1, 0, 0)
     if flip then
         rot:rotateOver('y', 180):normalize()
@@ -1768,11 +1825,11 @@ function refreshStandee(standee, instance)
         function_owner = self,
         click_function = "noop",
         label = instance.health .. " / " .. instance.maxHealth,
-        position = { vec.x, vec.y, vec.z },
+        position = { x = vec.x, y = vec.y, z = vec.z },
         -- Hacky rotation calculations ... might need to figure out what's going on ...
         rotation = { -55 * rot.x, 540 - baseYRot, 55 * rot.z },
         width = btnWidth,
-        height = 200,
+        height = 0,
         font_size = 160,
         color = { 1, 1, 1, 0 },
         scale = { .4 * xScaleFactor, .4 * yScaleFactor, .4 * yScaleFactor },
@@ -1782,17 +1839,29 @@ function refreshStandee(standee, instance)
 
     if buttonIdx == -1 then
         standee.createButton(buttonParams)
+        -- Also create hp - and hp + buttons
+        buttonParams.label = "-"
+        buttonParams.click_function = "damageStandee"
+        buttonParams.position.x = vec.x - 0.35 * xScaleFactor
+        buttonParams.width = 200
+        buttonParams.height = 200
+        standee.createButton(buttonParams)
+
+        buttonParams.label = "+"
+        buttonParams.click_function = "undamageStandee"
+        buttonParams.position.x = vec.x + 0.35 * xScaleFactor
+        standee.createButton(buttonParams)
         buttonIdx = 1
     else
         buttonParams.index = buttonIdx
         standee.editButton(buttonParams)
     end
 
-    -- Remove all buttons after buttonIdx
+    -- Remove all buttons after buttonIdx + 2 (hp - and hp +)
     local allButtons = standee.getButtons()
     if allButtons ~= nil then
         for i = #allButtons, 1, -1 do
-            if allButtons[i].index > buttonIdx then
+            if allButtons[i].index > buttonIdx + 2 then
                 standee.removeButton(allButtons[i].index)
             end
         end
@@ -1842,8 +1911,9 @@ function refreshStandee(standee, instance)
                 for color, character in pairs(Characters) do
                     if character == standee.getName() then
                         battleInterfaceMat.call("onLootDraw", { color = color })
-                        for n=2,nbLoot do
-                            Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1, nbLoot-1)
+                        for n = 2, nbLoot do
+                            Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1,
+                                nbLoot - 1)
                         end
                     end
                 end
@@ -1863,7 +1933,7 @@ function refreshStandee(standee, instance)
         for _, condition in ipairs(conditions) do
             local url = conditionStickerUrls[condition]
             if url ~= nil then
-                vec = mapToStandeeInfoArea(xOffset, 0.23, 0, xScaleFactor, yScaleFactor, flip)
+                vec = mapToStandeeInfoArea(xOffset, 0.23, 0, xScaleFactor, yScaleFactor, flip, height)
                 local sticker = {
                     position = { vec.x, vec.y, vec.z },
                     rotation = { 35, -baseYRot, 0 },
@@ -1932,13 +2002,13 @@ function highlightOff(standee)
     end
 end
 
-function mapToStandeeInfoArea(x, y, z, scaleX, scaleY, flip)
+function mapToStandeeInfoArea(x, y, z, scaleX, scaleY, flip, height)
     -- base position in x/y plane
     local vec = Vector(x * scaleX, y * scaleY, z)
     -- incline the plane by 35 degrees
     vec:rotateOver('x', -35)
     -- go up towards the standee top
-    vec:add(Vector(0, 0.95 * scaleY, 0))
+    vec:add(Vector(0, height * scaleY, 0))
     -- counter the standee rotation
     if flip then
         vec:rotateOver('y', 180)
@@ -1950,23 +2020,12 @@ end
 function clearStandee(standee)
     local stickers = {}
     standee.setDecals(stickers)
-    local buttonIdx = -1
-    local buttons = standee.getButtons()
-    if buttons ~= nil then
-        for _, button in ipairs(buttons) do
-            if button.width == 0 then
-                buttonIdx = button.index
-            end
-        end
-    end
-    if buttonIdx ~= -1 then
-        standee.removeButton(buttonIdx)
-    end
+    standee.clearButtons()
 end
 
 function toggleCondition(guid, condition)
     local standee = getObjectFromGUID(guid)
-    applyCondition{standee, condition}
+    applyCondition { standee, condition }
 end
 
 function applyCondition(params)
@@ -2027,7 +2086,9 @@ function hash(str)
 end
 
 function updateCurrentState()
-    processState(CurrentGameState:toState())
+    if isInternalGameStateEnabled() then
+        processState(CurrentGameState:toState())
+    end
 end
 
 function updateAssistant(method, command, params, callback)
@@ -2122,6 +2183,10 @@ function updateAssistant(method, command, params, callback)
                 handled = true
             elseif command == "loot" then
                 -- Ignoring loot commands when using the internal game state
+                handled = true
+            elseif command == "addSummon" then
+                CurrentGameState:addSummon(params.name)
+                updateCurrentState()
                 handled = true
             end
         end
