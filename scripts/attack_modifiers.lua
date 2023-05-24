@@ -1,6 +1,28 @@
 CardMappings = {
     -- Back
     back = "http://cloud-3.steamusercontent.com/ugc/2015962364034087078/A85EDCBFFAC5277C9D58298A5487630525205BBC/",
+
+    -- Monster Base Deck
+    mp0 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729793/1D241683AC16C4BE083C09602288C05DC392C859/",
+    mp1 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729893/924A42CB712E4D2958C1719CF7795427D65EB2A4/",
+    mm1 = "http://cloud-3.steamusercontent.com/ugc/2029480134912730067/37AB6CC5765AC944388164AC0B4E93AF3EDB266C/",
+    mp2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729977/DCA9F104C8BC06CCCC2F15458F8D6B657F8D455B/",
+    mm2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912730155/D8C13969E15E49DB5F967005621BCBF005EE6C1C/",
+    mt0 = "http://cloud-3.steamusercontent.com/ugc/2029480134912730238/B36AB47A3CE093CE8ACD6F3E022A3286C9FD4EA4/",
+    mt2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912730314/EEBF2118DE94C9F0D7A08F6B4C4999553957B307/",
+
+    -- Monster Curse
+    mmcu = "http://cloud-3.steamusercontent.com/ugc/2029480134912731794/426423F6B16DCEEF5976DE30AD72B6709BF8614B/",
+
+    -- Ally Base Deck
+    ap0 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729172/FE2CDF2E95EC5EB2D9B660410D165D17C070D975/",
+    ap1 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729253/2B1C3A1F3A03F7DED4A634945C6E518DE0041100/",
+    am1 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729413/EB539F2CC68CA2B8F2FC33D6CF79E4416E7E3C6B/",
+    ap2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729326/A15BE618223DB04EEDB3A353B99019799C4B8C9A/",
+    am2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729488/516C1BC54893DC786F31DFCC9DAEB1284E6A1442/",
+    at0 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729599/9656958BE2CED241DBAB208DC35338FFDCD3DE87/",
+    at2 = "http://cloud-3.steamusercontent.com/ugc/2029480134912729697/B237749C89B051ACB6AEDF39C3DF0EF64C986349/",
+
     -- Player 1 Base Deck
     p1p0 = "http://cloud-3.steamusercontent.com/ugc/2015962364033586707/25C4C21E6EA700B44AF19264BE650A4666D8A25C/",
     p1p1 = "http://cloud-3.steamusercontent.com/ugc/2015962364033586750/726E0EFEF806D1B1DD47CCCB4384D3D8C14431A0/",
@@ -188,6 +210,7 @@ CardDescriptions = {
 
     -- Monster Curse
     mmcu = "Curse (x0)",
+
     -- Ally Base Deck
     ap0 = "+0",
     ap1 = "+1",
