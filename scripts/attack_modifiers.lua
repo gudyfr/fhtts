@@ -177,6 +177,25 @@ CardMappings = {
 CardDescriptions = {
     -- Back
     back = "",
+    -- Monster Base Deck
+    mp0 = "+0",
+    mp1 = "+1",
+    mm1 = "-1",
+    mp2 = "+2",
+    mm2 = "-2",
+    mt0 = "miss",
+    mt2 = "2x",
+
+    -- Monster Curse
+    mmcu = "Curse (x0)",
+    -- Ally Base Deck
+    ap0 = "+0",
+    ap1 = "+1",
+    am1 = "-1",
+    ap2 = "+2",
+    am2 = "-2",
+    at0 = "miss",
+    at2 = "2x",
     -- Player 1 Base Deck
     p1p0 = "+0",
     p1p1 = "+1",
