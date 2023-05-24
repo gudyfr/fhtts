@@ -58,7 +58,7 @@ function onLoad(save)
     end
 
     updateStickers()
-    registerSavable("Scenario Picker")
+    registerSavable(self.getName())
 end
 
 function onSave()
