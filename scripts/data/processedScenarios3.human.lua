@@ -7782,6 +7782,22 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 1,
+                              levels = "nee",
+                              },
+                           {
+                              x = -5,
+                              y = 5,
+                              levels = "nne",
+                              },
+                           },
+                        },
+                     {
                         name = "Savvas Icestorm",
                         orientation = 0,
                         positions = {
@@ -39591,6 +39607,20 @@ ProcessedScenarios3 = {
                      tileOrientation = "120",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              },
+                           {
+                              x = 3,
+                              y = -9,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -39614,6 +39644,22 @@ ProcessedScenarios3 = {
                               },
                            {
                               x = 5,
+                              y = -8,
+                              levels = "nne",
+                              },
+                           },
+                        },
+                     {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 1,
+                              y = -2,
+                              levels = "nee",
+                              },
+                           {
+                              x = 4,
                               y = -8,
                               levels = "nne",
                               },
@@ -39695,8 +39741,49 @@ ProcessedScenarios3 = {
                      tileOrientation = "240",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 3,
+                              y = 3,
+                              },
+                           },
+                        },
                      },
                   monsters = {
+                     {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 1,
+                              levels = "ann",
+                              },
+                           {
+                              x = 0,
+                              y = 2,
+                              levels = "nne",
+                              },
+                           {
+                              x = 1,
+                              y = 3,
+                              levels = "aee",
+                              },
+                           {
+                              x = 3,
+                              y = 2,
+                              levels = "aan",
+                              },
+                           {
+                              x = 4,
+                              y = 1,
+                              levels = "nnn",
+                              },
+                           },
+                        },
                      },
                   overlays = {
                      {
@@ -39759,6 +39846,20 @@ ProcessedScenarios3 = {
                      tileOrientation = "120",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              },
+                           {
+                              x = 6,
+                              y = -7,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -50505,6 +50606,16 @@ ProcessedScenarios3 = {
                      tileOrientation = "240",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = -1,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -50535,6 +50646,17 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = 3,
+                              levels = "ann",
+                              },
+                           },
+                        },
+                     {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 2,
                               levels = "ann",
                               },
                            },
@@ -50614,6 +50736,16 @@ ProcessedScenarios3 = {
                      tileOrientation = "180",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -50877,6 +51009,17 @@ ProcessedScenarios3 = {
                   tokens = {
                      },
                   monsters = {
+                     {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 0,
+                              levels = "nnn",
+                              },
+                           },
+                        },
                      },
                   overlays = {
                      {
@@ -50914,6 +51057,16 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -51009,6 +51162,16 @@ ProcessedScenarios3 = {
                      tileOrientation = "120",
                      },
                   tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 6,
+                              y = -6,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -51018,6 +51181,27 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -5,
+                              levels = "nnn",
+                              },
+                           },
+                        },
+                     {
+                        name = "Night Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = -2,
+                              levels = "nne",
+                              },
+                           {
+                              x = 1,
+                              y = -2,
+                              levels = "aan",
+                              },
+                           {
+                              x = 2,
+                              y = -6,
                               levels = "nnn",
                               },
                            },
@@ -51425,6 +51609,26 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 5,
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 300,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 3,
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Door",
                         orientation = 0,
                         positions = {
@@ -51532,32 +51736,11 @@ ProcessedScenarios3 = {
                   overlays = {
                      {
                         name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -6,
-                              y = 3,
-                              },
-                           },
-                        },
-                     {
-                        name = "Large Snow Corridor",
                         orientation = 60,
                         positions = {
                            {
                               x = -7,
                               y = 5,
-                              },
-                           },
-                        },
-                     {
-                        name = "Large Snow Corridor",
-                        orientation = 300,
-                        positions = {
-                           {
-                              x = -5,
-                              y = 1,
-                              type = "Corridor",
                               },
                            },
                         },

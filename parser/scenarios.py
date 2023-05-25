@@ -77,7 +77,7 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch
 
 
 def loadScenarios():
-    with open('../www/scenarios.json', 'r') as openfile:
+    with open('../docs/scenarios.json', 'r') as openfile:
         return json.load(openfile)
 
 def loadTiles():
