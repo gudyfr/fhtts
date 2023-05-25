@@ -18,7 +18,7 @@ function onStateUpdate(state)
 end
 
 Path = ""
-function load(state, url)
+function load(state, url, data)
     if state ~= nil then
         ScenariosState = JSON.decode(state)
     end
@@ -28,12 +28,18 @@ function load(state, url)
     end
     registerSavable("Campaign Tracker " .. self.getName())
     Path = url
+    Data = data
+    processData()
     Global.call('registerDataUpdatable', self)
 end
 
-function updateData(baseUrl)
-    local url = baseUrl .. Path
-    WebRequest.get(url, processDecals)
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        local url = baseUrl .. Path
+        WebRequest.get(url, processRules)
+    end
 end
 
 function save()
@@ -69,21 +75,25 @@ function getToggleFunctionName(scenario, field)
     return "toggle_" .. field .. "_" .. scenario .. "_"
 end
 
-function processDecals(request)
+function processRules(request)
     if request.text ~= nil then
-        data = jsonDecode(request.text)
-        if data ~= nil then
-            for _, entry in pairs(data) do
-                local scenario = entry.name
-                scenarioData[scenario] = entry
-                self.setVar(getToggleFunctionName("unlocked", scenario), function() toggle(scenario, "unlocked") end)
-                self.setVar(getToggleFunctionName("blocked", scenario), function() toggle(scenario, "blocked") end)
-                self.setVar(getToggleFunctionName("completed", scenario), function() toggle(scenario, "completed") end)
-                self.setVar("load_" .. scenario .. "_", function() loadScenario(scenario) end)
-                addButtons(scenario)
-            end
-            refreshDecals()
+        Data = jsonDecode(request.text)
+        processData()
+    end
+end
+
+function processData()
+    if Data ~= nil then
+        for _, entry in pairs(Data) do
+            local scenario = entry.name
+            scenarioData[scenario] = entry
+            self.setVar(getToggleFunctionName("unlocked", scenario), function() toggle(scenario, "unlocked") end)
+            self.setVar(getToggleFunctionName("blocked", scenario), function() toggle(scenario, "blocked") end)
+            self.setVar(getToggleFunctionName("completed", scenario), function() toggle(scenario, "completed") end)
+            self.setVar("load_" .. scenario .. "_", function() loadScenario(scenario) end)
+            addButtons(scenario)
         end
+        refreshDecals()
     end
 end
 
@@ -214,7 +224,7 @@ function toggleCompleted(params)
         local state = ensureState(scenario)
         if state["completed"] ~= completed then
             toggle(scenario, "completed")
-        end        
+        end
     end
 end
 
@@ -307,7 +317,7 @@ function toggle(scenario, field)
                 blockScenario(name)
             end
 
-            for _,later in ipairs(scenarioData[scenario].later or {}) do
+            for _, later in ipairs(scenarioData[scenario].later or {}) do
                 local outpostMat = getObjectFromGUID(OutpostMatGuid)
                 if outpostMat ~= nil then
                     local campaignSheet = outpostMat.call("getCampaignSheet")
@@ -329,9 +339,9 @@ function toggle(scenario, field)
 end
 
 function refreshDecals()
-    if data ~= nil then
+    if Data ~= nil then
         stickers = {}
-        for _, entry in pairs(data) do
+        for _, entry in pairs(Data) do
             scenario = entry.name
             if isUnlocked(scenario) then
                 table.insert(stickers, entry)

@@ -2,6 +2,8 @@ require("json")
 require("savable")
 require('constants')
 require('text_utils')
+require('data/checkmarks')
+require('data/rules')
 
 availableBooks = { "scenario book", "section book", "rulebook" }
 bookModels = {}
@@ -73,9 +75,13 @@ function onLoad(save)
     Global.call('registerDataUpdatable', self)
 end
 
-function updateData(baseUrl)
-    WebRequest.get(baseUrl .. "rules.json", processDecals)
-    WebRequest.get(baseUrl .. "checkmarks.json", processCheckmarks)
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        WebRequest.get(baseUrl .. "rules.json", processRules)
+        WebRequest.get(baseUrl .. "checkmarks.json", processCheckmarks)
+    end
 end
 
 -- Savable functions
@@ -107,30 +113,30 @@ function onStateUpdate(state)
     refreshDecals()
 end
 
-function processDecals(request)
+function processRules(request)
     if request.text ~= nil then
-        decalInfos = jsonDecode(request.text)
+        Rules = jsonDecode(request.text)
         refreshDecals()
     else
-        decalInfos = {}
+        Rules = {}
     end
 end
 
 function processCheckmarks(request)
     if request.text ~= nil then
-        checkmarkInfos = jsonDecode(request.text)
+        Checkmarks = jsonDecode(request.text)
         refreshDecals()
     else
-        checkmarkInfos = {}
+        Checkmarks = {}
     end
 end
 
 function refreshDecals()
-    if decalInfos == nil then
-        decalInfos = {}
+    if Rules == nil then
+        Rules = {}
     end
-    if checkmarkInfos == nil then
-        checkmarkInfos = {}
+    if Checkmarks == nil then
+        Checkmarks = {}
     end
     for name, bookModel in pairs(bookModels) do
         for _, subBook in ipairs(bookModel) do
@@ -143,7 +149,7 @@ function refreshDecals()
                 -- print(JSON.encode(enabledDecals))
                 -- rulebook only for the decals
                 if name == "rulebook" then
-                    for _, decalInfo in ipairs(decalInfos) do
+                    for _, decalInfo in ipairs(Rules) do
                         if decalInfo.page == page then
                             if enabledDecals[decalInfo.name] or false then
                                 table.insert(decals, decalInfo)
@@ -162,7 +168,7 @@ function refreshDecals()
                     end
                 end
                 if name == "rulebook" then
-                    for _, decalInfo in ipairs(decalInfos) do
+                    for _, decalInfo in ipairs(Rules) do
                         if decalInfo.page == page then
                             -- print(JSON.encode(decalInfo))
                             local fName = "toggle_decal_" .. decalInfo.name
@@ -188,7 +194,7 @@ function refreshDecals()
                         end
                     end
                 end
-                local bookCheckmarks = checkmarkInfos[name] or {}
+                local bookCheckmarks = Checkmarks[name] or {}
                 local pageCheckmarks = bookCheckmarks["" .. page] or {}
                 -- print(JSON.encode(State[name].checkmarks))
                 for i, checkmark in ipairs(pageCheckmarks) do
@@ -264,8 +270,8 @@ function toggleCompleted(params)
     local completed = params[3]
 
     -- Locate the appropriate checkmark
-    if checkmarkInfos ~= nil then
-        for page, entries in pairs(checkmarkInfos["scenario book"]) do
+    if Checkmarks ~= nil then
+        for page, entries in pairs(Checkmarks["scenario book"]) do
             for _, entry in ipairs(entries) do
                 if entry.name == scenario then
                     -- get the current State

@@ -4,16 +4,17 @@ require('cards')
 require('enhancer_data')
 require('savable')
 require('json')
+require('data/cardEnhancements')
 
 TAG = "Enhancer"
 FUZZY_MATCH_DISTANCE = 0.1
 
 function getState()
-    return CardEnhancements
+    return ActiveEnhancements
 end
 
 function onStateUpdate(enhancements)
-    for name, cardInfo in pairs(State) do
+    for name, cardInfo in pairs(CardEnhancements) do
         local cardEnhancements = enhancements[name]
         if cardEnhancements ~= nil then
             for _, spot in ipairs(cardInfo.spots) do
@@ -37,10 +38,10 @@ function onLoad(save)
     Global.call('registerForCollision', self)
     Global.call('registerForPing', self)
     if save ~= nil then
-        CardEnhancements = JSON.decode(save)
+        ActiveEnhancements = JSON.decode(save)
     end
-    if CardEnhancements == nil then
-        CardEnhancements = {}
+    if ActiveEnhancements == nil then
+        ActiveEnhancements = {}
     end
     locateBoardElementsFromTags()
     registerSavable("enhancer", 0)
@@ -48,17 +49,21 @@ function onLoad(save)
 end
 
 function onSave()
-    return JSON.encode(CardEnhancements)
+    return JSON.encode(ActiveEnhancements)
 end
 
-function updateData(baseUrl)
-    local url = baseUrl .. "cardEnhancements.json"
-    WebRequest.get(url, updateCardDefinitions)
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        local url = baseUrl .. "cardEnhancements.json"
+        WebRequest.get(url, updateCardDefinitions)
+    end
 end
 
 function updateCardDefinitions(request)
-    State = jsonDecode(request.text)
-    onStateUpdate(CardEnhancements)
+    CardEnhancements = jsonDecode(request.text)
+    onStateUpdate(ActiveEnhancements)
 end
 
 function locateBoardElementsFromTags()
@@ -73,7 +78,7 @@ function locateBoardElementsFromTags()
     end
 end
 
-CardEnhancements = {}
+ActiveEnhancements = {}
 CurrentCard = nil
 CurrentCardInfo = nil
 CurrentSpot = nil
@@ -100,10 +105,10 @@ function setCurrentCard(card)
     if card ~= nil then
         CurrentCard = card
         local name = CurrentCard.getName()
-        if State[name] == nil then
-            State[name] = { level = 1, spots = {} }
+        if CardEnhancements[name] == nil then
+            CardEnhancements[name] = { level = 1, spots = {} }
         end
-        CurrentCardInfo = State[name]
+        CurrentCardInfo = CardEnhancements[name]
         local logLevel = isDevMode() and DEBUG or INFO
         fhlog(logLevel, TAG, "Current card : %s, state : %s", name, CurrentCardInfo)
     end
@@ -135,7 +140,7 @@ end
 
 function applyEnhancementsToCard(card)
     -- fhlog(INFO,TAG, "Checking enhancements for %s", card.getName())
-    local cardInfo = State[card.getName()]
+    local cardInfo = CardEnhancements[card.getName()]
     local stickers = getEnhancementDecals(cardInfo)
     if #stickers > 0 then
         fhlog(DEBUG, TAG, "Applying enhancements on %s", card.getName())
@@ -165,7 +170,7 @@ function onPing(payload)
         local cardPosition = CurrentCard.positionToLocal(position)
         local logLevel = isDevMode() and DEBUG or INFO
         fhlog(logLevel, TAG, "Pinged position %s", cardPosition)
-        local spots = State[name].spots
+        local spots = CardEnhancements[name].spots
         local removed = false
         for i = #spots, 1, -1 do
             if distance(spots[i].position, cardPosition) < FUZZY_MATCH_DISTANCE then
@@ -179,7 +184,7 @@ function onPing(payload)
             table.insert(spots,
                 { type = "", position = { x = round(cardPosition.x), z = round(cardPosition.z) } })
         end
-        fhlog(logLevel, TAG, "Current card : %s, state : %s", name, State[name])
+        fhlog(logLevel, TAG, "Current card : %s, state : %s", name, CardEnhancements[name])
         refreshDecals()
     end
 end
@@ -191,7 +196,7 @@ function distance(pos1, pos2)
 end
 
 function dump()
-    print(JSON.encode(State))
+    print(JSON.encode(CardEnhancements))
 end
 
 function refreshDecals()
@@ -640,10 +645,10 @@ function onEnhancementBuy(player, name, price)
         CurrentSpot.enhancement = name
         refreshDecals()
         -- Update the enhancements
-        local enhancements = CardEnhancements[CurrentCard.getName()]
+        local enhancements = ActiveEnhancements[CurrentCard.getName()]
         if enhancements == nil then
             enhancements = {}
-            CardEnhancements[CurrentCard.getName()] = enhancements
+            ActiveEnhancements[CurrentCard.getName()] = enhancements
         end
         table.insert(enhancements, { name = name, position = CurrentSpot.position })
     end
@@ -654,7 +659,7 @@ function onEnhancementRemove(player, name)
         CurrentSpot.enhancement = nil
         refreshDecals()
         -- Update the enhancements
-        local enhancements = CardEnhancements[CurrentCard.getName()]
+        local enhancements = ActiveEnhancements[CurrentCard.getName()]
         if enhancements ~= nil then
             for i = #enhancements, 1, -1 do
                 if distance(CurrentSpot.position, enhancements[i].position) < FUZZY_MATCH_DISTANCE then

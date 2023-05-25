@@ -1,0 +1,561 @@
+Ct4 = {
+   {
+      name = "ct83",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = -0.844,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246550/BD22A1EF40E3F436FE64EA8562F1B58625BF107F/",
+      },
+   {
+      name = "ct84",
+      position = {
+         x = 0.163,
+         y = 0.11,
+         z = -0.845,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246602/423ECF0BC57D74F33F3DC94801B2DA52BB88158D/",
+      },
+   {
+      name = "ct85",
+      position = {
+         x = -0.165,
+         y = 0.11,
+         z = -0.847,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246648/753FBC5A7472EE6A969D1890471AF5B6B770A8E2/",
+      },
+   {
+      name = "ct86",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = -0.846,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246688/E819599F38C356F43D3BF7A62096BC089C63F39A/",
+      },
+   {
+      name = "ct87",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = -0.566,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246721/E14A43D7D677803230AE19CF5A4A619AA5D51AC6/",
+      unlocks = {
+         88,
+         },
+      },
+   {
+      name = "ct88",
+      position = {
+         x = 0.163,
+         y = 0.11,
+         z = -0.564,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246756/72DDF16F34A610D145F40E69CB4F30CD4A4F553D/",
+      },
+   {
+      name = "ct89",
+      position = {
+         x = -0.164,
+         y = 0.11,
+         z = -0.563,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246797/33D7487F5F007B638A2A4989012C997855382C96/",
+      },
+   {
+      name = "ct90",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = -0.563,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246835/2B475E886A525672DE03BE1611A6D7F7EADBE41A/",
+      unlocks = {
+         91,
+         },
+      },
+   {
+      name = "ct91",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = -0.285,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246873/13F988D4076FB84685C0E2789AA6416A7313C241/",
+      },
+   {
+      name = "ct92",
+      position = {
+         x = -0.163,
+         y = 0.11,
+         z = -0.283,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246909/7733706AD00A337594114C39978054D245927F52/",
+      },
+   {
+      name = "ct93",
+      position = {
+         x = 0.166,
+         y = 0.11,
+         z = -0.284,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246952/C2190600219911D259F986C34385F33B63CF5A1B/",
+      },
+   {
+      name = "ct94",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = -0.284,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246985/ECDE7F627F0592AC1578B0AC7412505E7D301F7D/",
+      },
+   {
+      name = "ct95",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = -0.004,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247020/0B8F098789804B56F92F1A0288888891457FA213/",
+      },
+   {
+      name = "ct96",
+      position = {
+         x = 0.16,
+         y = 0.11,
+         z = -0.007,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247052/2F641DBDBF86A5274BF13682B766FFE720FF6B6E/",
+      unlocks = {
+         97,
+         },
+      },
+   {
+      name = "ct97",
+      position = {
+         x = -0.163,
+         y = 0.11,
+         z = -0.004,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247104/C2B5B928D340C697D3C8B7AAFFDC06C97254BFFF/",
+      unlocks = {
+         98,
+         },
+      },
+   {
+      name = "ct98",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = -0.003,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247153/D550E821D554048C70A549531C9A191621928F2A/",
+      },
+   {
+      name = "ct99",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = 0.278,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247208/DECD9B374385C63873ED3EE01EACD910814AF65B/",
+      unlocks = {
+         100,
+         },
+      },
+   {
+      name = "ct100",
+      position = {
+         x = 0.166,
+         y = 0.11,
+         z = 0.277,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247248/CF7E9766DAB9B8F2359263FC50782C23027C4152/",
+      unlocks = {
+         101,
+         },
+      },
+   {
+      name = "ct101",
+      position = {
+         x = -0.165,
+         y = 0.11,
+         z = 0.275,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247300/20059CA2059DBEA0C0AC11525DEE09F88D8BCA03/",
+      unlocks = {
+         102,
+         },
+      },
+   {
+      name = "ct102",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = 0.274,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247351/50FB2AAB39922CA4FF70993DAECCAA1D85C1AD76/",
+      },
+   {
+      name = "ct104",
+      position = {
+         x = 0.497,
+         y = 0.11,
+         z = 0.554,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247433/2FEA41346C6C15C1691FF23588423C71353AE1BF/",
+      },
+   {
+      name = "ct105",
+      position = {
+         x = 0.167,
+         y = 0.11,
+         z = 0.556,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247466/DE79F25EFE22DA7B7FF741136AD1692A5ED9D9EC/",
+      later = {
+         {
+            n = 4,
+            section = "159.4",
+            },
+         },
+      },
+   {
+      name = "ct106",
+      position = {
+         x = 0.493,
+         y = 0.11,
+         z = 0.836,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247497/52B00A866B4D657469BA6F2106B5E9B4496E7D7F/",
+      },
+   {
+      name = "ct107",
+      position = {
+         x = -0.166,
+         y = 0.11,
+         z = 0.557,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.271,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247541/A6BE2FBF9880613EB3A644D48A0D13DAC6D7137A/",
+      },
+   {
+      name = "ct103",
+      position = {
+         x = -0.493,
+         y = 0.11,
+         z = 0.557,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247393/029BEC2D5BF67D144B4D72CB5E4A99875FBB3B30/",
+      },
+   {
+      name = "ct108",
+      position = {
+         x = 0.164,
+         y = 0.11,
+         z = 0.836,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247584/8EC2D9C04901D3D65209837C838F4BCB5920C454/",
+      },
+   {
+      name = "ct109",
+      position = {
+         x = -0.165,
+         y = 0.11,
+         z = 0.838,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247627/8C36EEB70EA95E5C62C251F0BE4069F6F93C7F17/",
+      },
+   {
+      name = "ct110",
+      position = {
+         x = -0.495,
+         y = 0.11,
+         z = 0.837,
+         },
+      rotation = {
+         x = 90,
+         y = 179.5,
+         z = 0,
+         },
+      scale = {
+         x = 0.269,
+         y = 0.221,
+         z = 1.75,
+         },
+      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441247681/A8E66486B8133166E00AA2268EA58227F14495AB/",
+      },
+   }

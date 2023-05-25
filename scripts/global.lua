@@ -3,6 +3,8 @@ require('constants')
 require('coordinates')
 require('fhlog')
 require('attack_modifiers')
+require('data/scenarios')
+require('data/processedScenarios3')
 
 TAG = "Global"
 
@@ -60,7 +62,7 @@ function onLoad(save)
 
    CurrentScenarioObjects = getScenarioElementObjects()
 
-   Wait.frames(updateData, 1)
+   Wait.frames(loadData, 1)
    Wait.frames(fhLogSettingsUpdated, 1)
 end
 
@@ -83,21 +85,21 @@ function getBaseUrl()
    return "https://gudyfr.github.io/fhtts/"
 end
 
-function refreshScenarioData(baseUrl)
-   broadcastToAll("Loading Scenario Data")
-   WebRequest.get(baseUrl .. "scenarios.json", processScenarioData)
-   WebRequest.get(baseUrl .. "processedScenarios3.json",
-      processAdditionalScenarioData)
+function refreshScenarioData(baseUrl, first)
+   if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+      broadcastToAll("Reloading Scenario Data")
+      WebRequest.get(baseUrl .. "scenarios.json", processScenarioData)
+      WebRequest.get(baseUrl .. "processedScenarios3.json", processAdditionalScenarioData)
+   end
 end
 
 function processScenarioData(request)
-   -- print("Parsing Scenario Data")
-   scenarios = json.parse(request.text)
+   Scenarios = json.parse(request.text)
    fhlog(DEBUG, TAG, "Scenario Data loaded")
 end
 
 function processAdditionalScenarioData(request)
-   ScenarioInfos = jsonDecode(request.text)
+   ProcessedScenarios3 = jsonDecode(request.text)
    fhlog(DEBUG, TAG, "Scenario Layout Data loaded")
 end
 
@@ -637,7 +639,7 @@ function cleanupTimeout()
 end
 
 function prepareSoloScenario(name)
-   local scenario = scenarios["" .. name]
+   local scenario = Scenarios["" .. name]
    if scenario ~= nil then
       local title = scenario["x-haven-title"]
       if title ~= nil then
@@ -647,7 +649,7 @@ function prepareSoloScenario(name)
 end
 
 function prepareFrosthavenScenario(name)
-   local scenario = scenarios["" .. name]
+   local scenario = Scenarios["" .. name]
    if scenario ~= nil then
       local title = "#" .. name .. " " .. (scenario.title or "")
       prepareScenario(name, "Frosthaven", title)
@@ -689,7 +691,7 @@ function prepareScenario(name, campaign, title)
       tileGuids = {},
       objectsOnObjects = {},
       id = name,
-      elements = scenarios[name],
+      elements = Scenarios[name],
       registeredForCollision = {}
    }
    self.setVar("triggerClicked_" .. name,
@@ -699,8 +701,8 @@ function prepareScenario(name, campaign, title)
 
    local scenarioInfo = nil
    local layout = nil
-   if ScenarioInfos ~= nil then
-      scenarioInfo = deepCopy(ScenarioInfos[name])
+   if ProcessedScenarios3 ~= nil then
+      scenarioInfo = deepCopy(ProcessedScenarios3[name])
       CurrentScenario.scenarioInfo = scenarioInfo
       if scenarioInfo ~= nil then
          layout = scenarioInfo.layout
@@ -2074,7 +2076,7 @@ function onObjectCollisionEnter(hit_object, collision_info)
       getScenarioMat().call("applyCondition", { hit_object, obj.getName() })
       destroyObject(obj)
    elseif obj.getName() == "damage" then
-      getScenarioMat().call("changeStandeeHp", { standee=hit_object, amount=-1 })
+      getScenarioMat().call("changeStandeeHp", { standee = hit_object, amount = -1 })
       destroyObject(obj)
    end
 
@@ -2269,12 +2271,17 @@ function registerDataUpdatable(object)
    table.insert(DataUpdatables, object)
 end
 
-function updateData()
+function loadData()
+   updateData(true)
+end
+
+function updateData(first)
+   first = first or false
    local baseUrl = getBaseUrl()
    for _, updatable in ipairs(DataUpdatables) do
-      updatable.call("updateData", baseUrl)
+      updatable.call("updateData", { baseUrl = baseUrl, first = first })
    end
-   refreshScenarioData(baseUrl)
+   refreshScenarioData(baseUrl, first)
 end
 
 PingListeners = {}

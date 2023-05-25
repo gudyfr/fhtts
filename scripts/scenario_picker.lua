@@ -58,7 +58,7 @@ function onLoad(save)
     end
 
     updateStickers()
-    registerSavable(self.getName())
+    registerSavable(self.getName())    
 end
 
 function onSave()

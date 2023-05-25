@@ -1,5 +1,6 @@
 require("json")
 require("savable")
+require('data/map_decals')
 
 -- Savable functions
 function getState()
@@ -16,20 +17,29 @@ function createEmptyState()
 end
 
 function onLoad(save)
-    local decalInfoUrl ="https://gudyfr.github.io/fhtts/map_decals.json"
     if save ~= nil then
         State = JSON.decode(save)
     end
     if State == nil then
         State = createEmptyState()
     end
-    
-    WebRequest.get(decalInfoUrl, processDecalInfo)
+
+    createButtons()
+
     registerSavable("World Map")
+    Global.call('registerDataUpdatable', self)
 end
 
 function onSave()
     return JSON.encode(State)
+end
+
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        WebRequest.get(baseUrl .. "map_decals.json", processDecalInfo)
+    end
 end
 
 function compareX(obj1, obj2)
@@ -46,13 +56,13 @@ function printLocations()
 end
 
 function processDecalInfo(request)
-    decalInfos = jsonDecode(request.text)
+    Map_decals = jsonDecode(request.text)
     createButtons()
 end
 
 function createButtons()
-    if decalInfos ~= nil and decalInfos.outpost ~= nil then
-        local outpostData = decalInfos.outpost
+    if Map_decals ~= nil and Map_decals.outpost ~= nil then
+        local outpostData = Map_decals.outpost
         if outpostData.others ~= nil then
             for _, entry in pairs(outpostData.others) do
                 local fName = "toggle_" .. entry.name
@@ -140,7 +150,7 @@ function complete(entry)
 end
 
 function change_building(name, alt)
-    local info = decalInfos.outpost.buildings[name]
+    local info = Map_decals.outpost.buildings[name]
     local level = State.buildings[name]
     local decals = info.decals
     local change
@@ -183,11 +193,11 @@ function refreshDecals()
         self.setDecals(stickers)
         clearButtons()
     else
-        if decalInfos ~= nil then
+        if Map_decals ~= nil then
             stickers = {}
             -- Scenario decals
-            if decalInfos.scenarios ~= nil then
-                for _, entry in ipairs(decalInfos.scenarios) do
+            if Map_decals.scenarios ~= nil then
+                for _, entry in ipairs(Map_decals.scenarios) do
                     if State.enabledDecals[entry.name] or false then
                         if State.completedDecals[entry.name] or false then
                             entry.url = entry.completed
@@ -200,10 +210,10 @@ function refreshDecals()
             end
 
             -- Outpost decals
-            if decalInfos.outpost ~= nil then
+            if Map_decals.outpost ~= nil then
                 -- Buildings
-                if decalInfos.outpost.buildings ~= nil then
-                    for building, info in pairs(decalInfos.outpost.buildings) do
+                if Map_decals.outpost.buildings ~= nil then
+                    for building, info in pairs(Map_decals.outpost.buildings) do
                         if State.buildings[building] == nil then
                             State.buildings[building] = info.min
                         end
@@ -218,8 +228,8 @@ function refreshDecals()
                     end
                 end
                 -- Others
-                if decalInfos.outpost.others ~= nil then
-                    for _, entry in ipairs(decalInfos.outpost.others) do
+                if Map_decals.outpost.others ~= nil then
+                    for _, entry in ipairs(Map_decals.outpost.others) do
                         if State.enabledDecals[entry.name] ~= nil and State.enabledDecals[entry.name] then
                             table.insert(stickers, entry)
                         end

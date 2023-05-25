@@ -76,10 +76,11 @@ function addCardToDeckAtWorldPosition(card, position, options)
         return
     end
     options = options or {}
-    local atBottom = options.bottoms or false
+    local atBottom = options.atBottom or false
     local shuffle = options.shuffle or false
     local smooth = options.smooth or false
     local noPut = options.noPut or false
+    local flip = options.flip or false
     local current = getDeckOrCardAtWorldPosition(position)
     if current == nil then
         -- There is currently nothing at that location, simply move the card there (shifted up)
@@ -94,14 +95,17 @@ function addCardToDeckAtWorldPosition(card, position, options)
         -- Move the card above or below the deck depending on where we want it to go
         local deckPosition = current.getPosition()
         if atBottom then
-            deckPosition.y = deckPosition.y - 0.5
+            deckPosition.y = deckPosition.y - 0.1
         else
-            deckPosition.y = deckPosition.y + 0.5
+            deckPosition.y = deckPosition.y + 0.1
         end
         if smooth then
             card.setPositionSmooth(deckPosition)
         else
             card.setPosition(deckPosition)
+        end
+        if flip then
+            card.setRotation({0,0,180})
         end
         if not noPut then
             current.putObject(card)

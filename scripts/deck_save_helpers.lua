@@ -43,7 +43,7 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                 })
             else
                 cardObject = clone.remainder
-            end            
+            end
             if cardObject ~= nil then
                 if cardTransformFunction ~= nil then
                     cardTransformFunction(cardObject)
@@ -53,7 +53,7 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                 else
                     -- preserve order, card should be above deck
                     local pos = deck.getPosition()
-                    cardObject.setPosition({pos.x, pos.y+0.1, pos.z})
+                    cardObject.setPosition({ pos.x, pos.y + 0.1, pos.z })
                     deck = deck.putObject(cardObject)
                 end
             end
@@ -71,6 +71,34 @@ function destroyTakenIfStillThere(obj)
     end
 end
 
+function getCardListInZone(guid)
+    local results = {}
+    local zone = getObjectFromGUID(guid)
+    if zone ~= nil then
+        for _, obj in ipairs(zone.getObjects()) do
+            if obj.tag == "Card" then
+                if obj.hasTag("ability card") then
+                    table.insert(results, obj.getName() or obj.getDescription())
+                end
+            end
+        end
+    end
+    return results
+end
+
+function deleteCardsInZone(guid)
+    local zone = getObjectFromGUID(guid)
+    if zone ~= nil then
+        for _, obj in ipairs(zone.getObjects()) do
+            if obj.tag == "Card" then
+                if obj.hasTag("ability card") then
+                    destroyObject(obj)
+                end
+            end
+        end
+    end
+end
+
 function getCardList(position)
     local results = {}
     local hitlist = Physics.cast({
@@ -83,12 +111,12 @@ function getCardList(position)
     })
 
     for _, result in ipairs(hitlist) do
-        if result.hit_object.tag == "Deck" then            
+        if result.hit_object.tag == "Deck" then
             for _, obj in ipairs(result.hit_object.getObjects()) do
                 local name = obj.name
                 if name == "Card" then
                     name = obj.description
-                end                
+                end
                 table.insert(results, name)
             end
         elseif result.hit_object.tag == "Card" then
@@ -151,7 +179,7 @@ function getRestoreObjectIn(container, name, preserveOriginal)
         for _, obj in ipairs(container.getObjects()) do
             if obj.name == name then
                 -- Clone it and return it to the box
-                local object = container.takeObject({ guid = obj.guid, smooth = false, position = {0,3,0}})
+                local object = container.takeObject({ guid = obj.guid, smooth = false, position = { 0, 3, 0 } })
                 if preserveOriginal then
                     local clone = object.clone()
                     container.putObject(object)
@@ -161,4 +189,38 @@ function getRestoreObjectIn(container, name, preserveOriginal)
             end
         end
     end
+end
+
+function getDecalsFromDeck(deckPosition, results)
+    local deck = getDeckOrCardAt(deckPosition)
+    local newDeck = {}
+    forEachInDeckOrCard(deck, function(card)
+        local decals = card.getDecals() or {}
+        if #decals > 0 then
+            results[card.getName() or card.getDescription()] = decals
+        end
+        if newDeck[1] == nil then
+            newDeck[1] = card
+        else
+            local newDeckPosition = newDeck[1].getPosition()
+            card.setPosition({ newDeckPosition.x, newDeckPosition.y - 0.1, newDeckPosition.z })
+            newDeck[1] = newDeck[1].putObject(card)
+        end
+        Wait.frames(function() if not card.isDestroyed() then destroyObject(card) end end, 1)
+    end)
+    if newDeck[1] ~= nil then
+        Wait.frames(function()
+            newDeck[1].setPosition(shiftUp(self.positionToWorld(deckPosition)))
+        end, 1)
+    end
+end
+
+function reapplyDecalsAndMoveTo(deck, decals, position, options)
+    forEachInDeckOrCard(deck, function(card)
+        local cardDecals = decals[card.getName() or card.getDescription()] or {}
+        if #cardDecals > 0 then
+            card.setDecals(cardDecals)
+        end
+        addCardToDeckAt(card, position, options)
+    end)
 end

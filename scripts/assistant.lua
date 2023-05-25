@@ -6,12 +6,19 @@ require('constants')
 require("savable")
 require("deck_save_helpers")
 require('utils')
+require('data/monsterStats')
+require('data/monsterAbilities')
+require('data/characterInitiatives')
 
 TAG = "BattleInterface"
 
 function getState()
-    local results = {}
-    return results
+    local decals = {}
+    -- Save stickers on the loot cards
+    for _, deckPosition in ipairs({ Loot.ActiveDeck, Loot.DrawDeck, Loot.DiscardDeck }) do
+        getDecalsFromDeck(deckPosition, decals)
+    end
+    return { decals = decals, buttonState = ButtonState }
 end
 
 function onStateUpdate(state)
@@ -28,7 +35,12 @@ function onStateUpdate(state)
     deleteCardsAt(Loot.DiscardDeck)
     deleteCardsAt(Loot.DrawDeck)
     deleteCardsAt(Loot.ActiveDeck)
-    setAtLocalPosition(deck, Loot.ActiveDeck, true)
+
+    local decals = state.decals or {}
+    reapplyDecalsAndMoveTo(deck, decals, Loot.ActiveDeck, { flip = true, atBottom=true })
+
+    ButtonState = state.buttonState or {}
+    updateInternal()
 end
 
 function onLoad(save)
@@ -161,10 +173,14 @@ function XZSorter(a, b)
     return 30 * (a.z - b.z) - a.x + b.x < 0
 end
 
-function updateData(baseUrl)
-    WebRequest.get(baseUrl .. "characterInitiatives.json", updateCharacterInitiatives)
-    WebRequest.get(baseUrl .. "monsterStats.json", updateMonsterStats)
-    WebRequest.get(baseUrl .. "monsterAbilities.json", updateMonsterAbilities)
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        WebRequest.get(baseUrl .. "characterInitiatives.json", updateCharacterInitiatives)
+        WebRequest.get(baseUrl .. "monsterStats.json", updateMonsterStats)
+        WebRequest.get(baseUrl .. "monsterAbilities.json", updateMonsterAbilities)
+    end
 end
 
 function updateCharacterInitiatives(request)
@@ -512,7 +528,7 @@ function onLootDraw(params)
         local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
         local enhancements = 0
         for _, decal in ipairs(card.getDecals() or {}) do
-            if decal.name == "enhance plus one" then
+            if decal.name == "+1" then
                 enhancements = enhancements + 1
             end
         end

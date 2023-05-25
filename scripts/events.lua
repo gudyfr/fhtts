@@ -297,13 +297,13 @@ function returnCard()
         local type = string.sub(activeCard.getName(), 1, 1)
         if type == 'S' then
             -- Summer event card
-            addCardToDeckAt(activeCard, searchPositions[5], {bottom=true})
+            addCardToDeckAt(activeCard, searchPositions[5], {atBottom=true})
         elseif type == 'W' then
             -- Winter event card
-            addCardToDeckAt(activeCard, searchPositions[8], {bottom=true})
+            addCardToDeckAt(activeCard, searchPositions[8], {atBottom=true})
         elseif type == 'B' or type == 'P' then
             -- Boat or Personal Quest
-            addCardToDeckAt(activeCard, searchPositions[2], {bottom=true})
+            addCardToDeckAt(activeCard, searchPositions[2], {atBottom=true})
         end
     end
 end

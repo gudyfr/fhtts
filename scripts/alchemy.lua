@@ -1,4 +1,6 @@
 require("savable")
+require('data/alchemy_decals')
+
 -- Savable functions
 function getState()
     return enabledDecals
@@ -17,7 +19,10 @@ function onLoad(state)
     if enabledDecals == nil then
         enabledDecals = {}
     end
-    WebRequest.get("http://cloud-3.steamusercontent.com/ugc/2035103391713278252/90283ABBEDE9189C23EA0937021379A784F1C348/", processDecals)
+
+    refreshUI()
+
+    Global.call('registerDataUpdatable', self)
     registerSavable("Alchemy")
 end
 
@@ -25,12 +30,26 @@ function onSave()
     return JSON.encode(enabledDecals)
 end
 
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        WebRequest.get(baseUrl .. "alchemy_decals.json", processDecals)
+    end
+end
+
 function processDecals(request)
- if request.text ~= nil then
-    -- print("Parsing Alch")
-    data = JSON.decode(request.text)
-    if data ~= nil then
-        for _,entry in pairs(data) do            
+    if request.text ~= nil then
+        -- print("Parsing Alch")
+        Alchemy_decals = JSON.decode(request.text)
+        refreshUI()
+    end
+end
+
+function refreshUI()
+    if Alchemy_decals ~= nil then
+        self.clearButtons()
+        for _, entry in pairs(Alchemy_decals) do
             local revealed
             if enabledDecals[entry.name] ~= nil and enabledDecals[entry.name] then
                 revealed = true
@@ -43,25 +62,24 @@ function processDecals(request)
             local tooltip
             name = ""
             tooltip = "Toggle the potion visibility"
-            
+
             local params = {
                 function_owner = self,
                 click_function = fName,
                 label          = name,
-                position       = {-(entry.position.x),entry.position.y,entry.position.z},
+                position       = { -(entry.position.x), entry.position.y, entry.position.z },
                 width          = 200,
                 height         = 200,
                 font_size      = 50,
-                color          = {1,1,1,0},
-                scale          = {.3, .3, .3},
-                font_color     = {1, 1, 1, 0},
+                color          = { 1, 1, 1, 0 },
+                scale          = { .3, .3, .3 },
+                font_color     = { 1, 1, 1, 0 },
                 tooltip        = tooltip
             }
             self.createButton(params)
         end
         refreshDecals()
     end
- end
 end
 
 function toggle(entry)
@@ -75,11 +93,11 @@ function toggle(entry)
 end
 
 function refreshDecals()
-    if data ~= nil then
+    if Alchemy_decals ~= nil then
         stickers = {}
-        for _,entry in pairs(data) do            
+        for _, entry in pairs(Alchemy_decals) do
             if enabledDecals[entry.name] ~= nil and enabledDecals[entry.name] then
-                table.insert(stickers,entry)
+                table.insert(stickers, entry)
             end
         end
         self.setDecals(stickers)

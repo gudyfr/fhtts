@@ -8,6 +8,7 @@ require('standees')
 require('constants')
 require('game_state')
 require('cards')
+require('data/gameData')
 
 TAG = "ScenarioMat"
 CURRENT_ASSISTANT_VERSION = 3
@@ -107,7 +108,8 @@ end
 function onLoad(state)
     fhLogInit()
     self.interactable = false
-    -- print(JSON.encode(self.getSnapPoints()))
+
+    updateGameStateWithGameData(GameData)
 
     if state ~= nil then
         local json = JSON.decode(state)
@@ -331,13 +333,21 @@ function onLoad(state)
     Global.call("registerDataUpdatable", self)
 end
 
-function updateData(baseUrl)
-    local url = baseUrl .. "gameData.json"
-    WebRequest.get(url, updateGameData)
+function updateData(params)
+    local baseUrl = params.baseUrl
+    local first = params.first
+    if baseUrl ~= "https://gudyfr.github.io/fhtts/" or not first then
+        local url = baseUrl .. "gameData.json"
+        WebRequest.get(url, updateGameData)
+    end
 end
 
 function updateGameData(request)
     local gameData = jsonDecode(request.text)
+    updateGameStateWithGameData(gameData)
+end
+
+function updateGameStateWithGameData(gameData)
     if CurrentGameState ~= nil then
         CurrentGameState:updateGameData(gameData)
     else
@@ -1650,7 +1660,7 @@ function refreshStandees(state)
 
                 if standee.hasTag("summon") then
                     local buttons = standee.getButtons() or {}
-                    if #buttons ~=1 then
+                    if #buttons ~= 1 then
                         clearStandee(standee)
                         addSummonButton(standee)
                     end
@@ -1701,8 +1711,7 @@ function addSummon(standee)
     local name = standee.getName()
     -- remove all buttons on the standee (to get rid of the summon button)
     standee.clearButtons()
-    updateAssistant("POST", "addSummon", {name=name}, updateState)
-
+    updateAssistant("POST", "addSummon", { name = name }, updateState)
 end
 
 standeeStates = {}

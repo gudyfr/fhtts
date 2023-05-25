@@ -5,6 +5,7 @@ require("fhlog")
 require('player_mat_data')
 require('cards')
 require('am_draw')
+require('constants')
 
 function getState()
   local state = {}
@@ -24,6 +25,10 @@ function getState()
     end
     abilityCards.persist = persistCards
     abilityCards.supply = getCardList(cardLocations['supply'])
+    local playerHand = getPlayerHand()
+    if playerHand ~= nil then
+      abilityCards.hand = getCardListInZone(playerHand)
+    end
     state.abilityCards = abilityCards
 
     -- Attack Modifiers
@@ -105,6 +110,22 @@ function loadCharacterBox(characterBox, state)
         rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
       end
       rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
+
+      local playerColor = getPlayerColor()
+      local playerHand = getPlayerHand()
+      if playerColor ~= nil and playerHand ~= nil then
+        deleteCardsInZone(playerHand)
+        --Handle cards which where in each player's hand
+        if abilityCards.hand ~= nil then
+          forEachInDeckOrCardIf(deck, function(card) card.deal(1, playerColor) end,
+            function(e)
+              for _, handCard in ipairs(abilityCards.hand) do
+                if handCard == e.name or handCard == e.description then return true end
+              end
+              return false
+            end)
+        end
+      end
     else
       local remaining = {}
       for _, obj in ipairs(deck.getObjects()) do
@@ -252,21 +273,26 @@ function clearBoard(includeDecks)
       end
     end
   end
+
+  local playerHand = getPlayerHand()
+  deleteCardsInZone(playerHand)
 end
 
 function getPlayerNumber()
-  if self.getName() == "Green Player Mat" then
-    return 1
-  elseif self.getName() == "Red Player Mat" then
-    return 2
-  elseif self.getName() == "White Player Mat" then
-    return 3
-  elseif self.getName() == "Blue Player Mat" then
-    return 4
-  elseif self.getName() == "Yellow Player Mat" then
-    return 5
+  for i = 1, 5 do
+    if self.getName() == PlayerColors[i] .. " Player Mat" then
+      return i
+    end
   end
   return -1
+end
+
+function getPlayerColor()
+  return PlayerColors[getPlayerNumber()]
+end
+
+function getPlayerHand()
+  return PlayerHands[getPlayerColor()]
 end
 
 ItemCardPositions = {}
