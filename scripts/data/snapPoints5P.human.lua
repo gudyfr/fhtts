@@ -2673,4 +2673,21 @@ SnapPoints5P = {
          "monster",
          },
       },
+   {
+      position = {
+         x = 12.798,
+         y = 0.035,
+         z = -11.205,
+         },
+      rotation = {
+         x = 0,
+         y = 0,
+         z = 0,
+         },
+      rotation_snap = false,
+      tags = {
+         "deck",
+         "monster curse",
+         },
+      },
    }
