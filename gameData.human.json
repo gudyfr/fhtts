@@ -1,5 +1,2466 @@
 {
 	"monsters": {
+		"City Guard (Sun Special)": {
+			"name": "City Guard",
+			"internal": "City Guard (Sun Special)",
+			"maxInstances": 6,
+			"deck": "City Guard (Sun Special)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 1
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "7",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "8",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "9",
+						"retaliate": 1,
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "9",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "10",
+						"retaliate": 2,
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "12",
+						"retaliate": 2,
+						"shield": 3
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "11",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "13",
+						"retaliate": 3,
+						"shield": 3
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "14",
+						"retaliate": 3,
+						"shield": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Inox Necromancer": {
+			"name": "Inox Necromancer",
+			"internal": "Inox Necromancer",
+			"maxInstances": 4,
+			"deck": "Inox Necromancer",
+			"levels": [
+				{
+					"boss": {
+						"hp": "6"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "9"
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "11"
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "14"
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "16"
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "20"
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "24"
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "27"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Mountain's Heart": {
+			"name": "Mountain's Heart",
+			"internal": "Mountain's Heart",
+			"maxInstances": 6,
+			"deck": "Earth Demon (FH)",
+			"levels": [
+				{
+					"boss": {
+						"hp": "20"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "26"
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "36"
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "40"
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "42"
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "50"
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "64"
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "84"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Abael Warlord": {
+			"name": "Abael Warlord",
+			"internal": "Abael Warlord",
+			"maxInstances": 6,
+			"deck": "Abael Herder",
+			"levels": [
+				{
+					"normal": {
+						"hp": "8"
+					},
+					"elite": {
+						"hp": "12"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "12"
+					},
+					"elite": {
+						"hp": "18"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "16"
+					},
+					"elite": {
+						"hp": "22"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "18"
+					},
+					"elite": {
+						"hp": "26"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "22"
+					},
+					"elite": {
+						"hp": "34"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "28"
+					},
+					"elite": {
+						"hp": "40"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "36"
+					},
+					"elite": {
+						"hp": "56"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "48"
+					},
+					"elite": {
+						"hp": "72"
+					},
+					"level": 7
+				}
+			]
+		},
+		"High Flame": {
+			"name": "High Flame",
+			"internal": "High Flame",
+			"maxInstances": 6,
+			"deck": "Flame Demon",
+			"levels": [
+				{
+					"boss": {
+						"hp": "3",
+						"retaliate": 2,
+						"shield": 5
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "3",
+						"retaliate": 4,
+						"shield": 6
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "4",
+						"retaliate": 5,
+						"shield": 6
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "5",
+						"retaliate": 5,
+						"shield": 6
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "5",
+						"retaliate": 6,
+						"shield": 6
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "6",
+						"retaliate": 6,
+						"shield": 7
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "7",
+						"retaliate": 7,
+						"shield": 7
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "8",
+						"retaliate": 7,
+						"shield": 7
+					},
+					"level": 7
+				}
+			]
+		},
+		"Giant Viper (Angry Face Special)": {
+			"name": "Giant Viper",
+			"internal": "Giant Viper (Angry Face Special)",
+			"maxInstances": 10,
+			"deck": "Giant Viper",
+			"levels": [
+				{
+					"normal": {
+						"hp": "2"
+					},
+					"elite": {
+						"hp": "3"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "3"
+					},
+					"elite": {
+						"hp": "5"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "4"
+					},
+					"elite": {
+						"hp": "7"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "4"
+					},
+					"elite": {
+						"hp": "8"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "11"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "7"
+					},
+					"elite": {
+						"hp": "13"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "8"
+					},
+					"elite": {
+						"hp": "14"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "10"
+					},
+					"elite": {
+						"hp": "17"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Bandit Archer (Note Special)": {
+			"name": "Bandit Archer",
+			"internal": "Bandit Archer (Note Special)",
+			"maxInstances": 6,
+			"deck": "Bandit Archer (Note Special)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "4"
+					},
+					"elite": {
+						"hp": "6"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "7"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "9"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "10"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "8"
+					},
+					"elite": {
+						"hp": "10"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "10"
+					},
+					"elite": {
+						"hp": "12"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "10"
+					},
+					"elite": {
+						"hp": "13"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "13"
+					},
+					"elite": {
+						"hp": "17"
+					},
+					"level": 7
+				}
+			]
+		},
+		"City Guard (Banner Spear Special)": {
+			"name": "City Guard",
+			"internal": "City Guard (Banner Spear Special)",
+			"maxInstances": 6,
+			"deck": "City Guard (Banner Spear Special)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 1
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "7",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "8",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 2,
+						"retaliate": 1
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "9",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "10",
+						"shield": 2,
+						"retaliate": 2
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "13",
+						"shield": 2,
+						"retaliate": 2
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "15",
+						"shield": 3,
+						"retaliate": 3
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "17",
+						"shield": 2
+					},
+					"elite": {
+						"hp": "20",
+						"shield": 3,
+						"retaliate": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Shape Blocks Out the Sun": {
+			"name": "Shape Blocks Out the Sun",
+			"internal": "Shape Blocks Out the Sun",
+			"maxInstances": 4,
+			"deck": "Lurker Clawcrusher",
+			"levels": [
+				{
+					"boss": {
+						"hp": "30",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 1
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "30",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "39",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "42",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "54",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "63",
+						"immunities": [
+							"disarm"
+						],
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "66",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"shield": 3
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "87",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"shield": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Earth Demon (Mindthief Special)": {
+			"name": "Earth Demon",
+			"internal": "Earth Demon (Mindthief Special)",
+			"maxInstances": 6,
+			"deck": "Earth Demon",
+			"levels": [
+				{
+					"normal": {
+						"hp": "14"
+					},
+					"elite": {
+						"hp": "20"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "18"
+					},
+					"elite": {
+						"hp": "26"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "24"
+					},
+					"elite": {
+						"hp": "36"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "26"
+					},
+					"elite": {
+						"hp": "40"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "30"
+					},
+					"elite": {
+						"hp": "42"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "34"
+					},
+					"elite": {
+						"hp": "50"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "40"
+					},
+					"elite": {
+						"hp": "54"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "44"
+					},
+					"elite": {
+						"hp": "64"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Hollow Scholar": {
+			"name": "Hollow Scholar",
+			"internal": "Hollow Scholar",
+			"maxInstances": 6,
+			"deck": "Hollow Scholar",
+			"levels": [
+				{
+					"boss": {
+						"hp": "12"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "12"
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "14"
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "18"
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "20"
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "26"
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "36"
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "42"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Song of the Deep": {
+			"name": "Song of the Deep",
+			"internal": "Song of the Deep",
+			"maxInstances": 6,
+			"deck": "Shaman",
+			"levels": [
+				{
+					"boss": {
+						"hp": "3",
+						"shield": 2
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "3",
+						"shield": 3
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "4",
+						"shield": 3
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "5",
+						"shield": 3
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "5",
+						"shield": 4
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "6",
+						"shield": 4
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "6",
+						"shield": 5
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "8",
+						"shield": 5
+					},
+					"level": 7
+				}
+			]
+		},
+		"Algox Icespeaker (Shattersong Special)": {
+			"name": "Algox Icespeaker",
+			"internal": "Algox Icespeaker (Shattersong Special)",
+			"maxInstances": 4,
+			"deck": "Algox Icespeaker",
+			"levels": [
+				{
+					"normal": {
+						"hp": "6",
+						"immunities": [
+							"stun"
+						],
+						"shield": 1
+					},
+					"elite": {
+						"hp": "8",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "8",
+						"immunities": [
+							"stun"
+						],
+						"shield": 1
+					},
+					"elite": {
+						"hp": "8",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"immunities": [
+							"stun"
+						],
+						"shield": 1
+					},
+					"elite": {
+						"hp": "10",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "12",
+						"immunities": [
+							"stun"
+						],
+						"shield": 1
+					},
+					"elite": {
+						"hp": "12",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "14",
+						"immunities": [
+							"stun"
+						],
+						"shield": 1
+					},
+					"elite": {
+						"hp": "15",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "15",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"elite": {
+						"hp": "18",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "20",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"elite": {
+						"hp": "26",
+						"immunities": [
+							"brittle",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "27",
+						"immunities": [
+							"brittle",
+							"stun"
+						],
+						"shield": 2
+					},
+					"elite": {
+						"hp": "35",
+						"immunities": [
+							"brittle",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 7
+				}
+			]
+		},
+		"Bandit Guard (Note Special)": {
+			"name": "Bandit Guard",
+			"internal": "Bandit Guard (Note Special)",
+			"maxInstances": 6,
+			"deck": "Bandit Guard (Note Special)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "9"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 1
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "10",
+						"shield": 1
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "9"
+					},
+					"elite": {
+						"hp": "10",
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "10"
+					},
+					"elite": {
+						"hp": "11",
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "11"
+					},
+					"elite": {
+						"hp": "12",
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "14"
+					},
+					"elite": {
+						"hp": "14",
+						"shield": 2
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "16"
+					},
+					"elite": {
+						"hp": "14",
+						"shield": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Earth Demon (Diviner Special)": {
+			"name": "Earth Demon",
+			"internal": "Earth Demon (Diviner Special)",
+			"maxInstances": 6,
+			"deck": "Earth Demon",
+			"levels": [
+				{
+					"normal": {
+						"hp": "21"
+					},
+					"elite": {
+						"hp": "30"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "27"
+					},
+					"elite": {
+						"hp": "39"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "36"
+					},
+					"elite": {
+						"hp": "54"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "39"
+					},
+					"elite": {
+						"hp": "60"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "45"
+					},
+					"elite": {
+						"hp": "63"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "51"
+					},
+					"elite": {
+						"hp": "75"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "60"
+					},
+					"elite": {
+						"hp": "81"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "66"
+					},
+					"elite": {
+						"hp": "96"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Ghost Wolf": {
+			"name": "Ghost Wolf",
+			"internal": "Ghost Wolf",
+			"maxInstances": 6,
+			"deck": "Hound",
+			"levels": [
+				{
+					"boss": {
+						"hp": "6"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "6",
+						"retaliate": 2
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "7",
+						"retaliate": 2
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "8",
+						"retaliate": 2
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "11",
+						"retaliate": 2
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "12",
+						"retaliate": 3
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "15",
+						"retaliate": 3
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "15",
+						"retaliate": 4
+					},
+					"level": 7
+				}
+			]
+		},
+		"Deep Earth": {
+			"name": "Deep Earth",
+			"internal": "Deep Earth",
+			"maxInstances": 6,
+			"deck": "Earth Demon",
+			"levels": [
+				{
+					"boss": {
+						"hp": "20"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "26"
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "36"
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "40"
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "42"
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "50"
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "54"
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "64"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Stone Golem (Scoundrel Special)": {
+			"name": "Stone Golem",
+			"internal": "Stone Golem (Scoundrel Special)",
+			"maxInstances": 6,
+			"deck": "Stone Golem",
+			"levels": [
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 4
+					},
+					"elite": {
+						"hp": "10",
+						"shield": 5
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 5
+					},
+					"elite": {
+						"hp": "11",
+						"shield": 6
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "11",
+						"shield": 5
+					},
+					"elite": {
+						"hp": "14",
+						"shield": 6
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "11",
+						"shield": 6
+					},
+					"elite": {
+						"hp": "15",
+						"shield": 7
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "12",
+						"shield": 6
+					},
+					"elite": {
+						"hp": "17",
+						"shield": 7
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"shield": 6
+					},
+					"elite": {
+						"hp": "19",
+						"shield": 7
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "16",
+						"shield": 6
+					},
+					"elite": {
+						"hp": "20",
+						"shield": 7
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "16",
+						"shield": 7
+					},
+					"elite": {
+						"hp": "21",
+						"shield": 8
+					},
+					"level": 7
+				}
+			]
+		},
+		"Black Imp (Deathwalker Special)": {
+			"name": "Black Imp",
+			"internal": "Black Imp (Deathwalker Special)",
+			"maxInstances": 10,
+			"deck": "Imp (FH)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "3"
+					},
+					"elite": {
+						"hp": "3"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "3"
+					},
+					"elite": {
+						"hp": "5"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "4"
+					},
+					"elite": {
+						"hp": "7"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "4"
+					},
+					"elite": {
+						"hp": "7"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "7"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "7"
+					},
+					"elite": {
+						"hp": "9"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "9"
+					},
+					"elite": {
+						"hp": "12"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "13"
+					},
+					"elite": {
+						"hp": "18"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Energized Corpse": {
+			"name": "Energized Corpse",
+			"internal": "Energized Corpse",
+			"maxInstances": 6,
+			"deck": "Frozen Corpse",
+			"levels": [
+				{
+					"boss": {
+						"hp": "20"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "20",
+						"shield": 1,
+						"retaliate": 1
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "22",
+						"shield": 1,
+						"retaliate": 1
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "28",
+						"shield": 1,
+						"retaliate": 2
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "34",
+						"shield": 1,
+						"retaliate": 2
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "40",
+						"shield": 1,
+						"retaliate": 3
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "48",
+						"shield": 2,
+						"retaliate": 3
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "62",
+						"shield": 2,
+						"retaliate": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Chief of Spikes": {
+			"name": "Chief of Spikes",
+			"internal": "Chief of Spikes",
+			"maxInstances": 4,
+			"deck": "Algox Icespeaker",
+			"levels": [
+				{
+					"boss": {
+						"hp": "8",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "8",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "10",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "12",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "15",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "18",
+						"immunities": [
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "26",
+						"immunities": [
+							"brittle",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "35",
+						"immunities": [
+							"brittle",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 7
+				}
+			]
+		},
+		"Plea for Help Without Answer": {
+			"name": "Plea for Help Without Answer",
+			"internal": "Plea for Help Without Answer",
+			"maxInstances": 6,
+			"deck": "Lurker Mindsnipper",
+			"levels": [
+				{
+					"boss": {
+						"hp": "21",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 2
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "21",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 3
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "24",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 3
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "33",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 3
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "39",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 4
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "45",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 4
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "66",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 4
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "81",
+						"immunities": [
+							"disarm",
+							"stun"
+						],
+						"retaliate": 5
+					},
+					"level": 7
+				}
+			]
+		},
+		"Incarnation of Ancestors": {
+			"name": "Incarnation of Ancestors",
+			"internal": "Incarnation of Ancestors",
+			"maxInstances": 6,
+			"deck": "Boss (FH)",
+			"levels": [
+				{
+					"boss": {
+						"hp": "22",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 1
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "28",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 1
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "30",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 1
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "36",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 1
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "40",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 1
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "40",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "54",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 2
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "58",
+						"immunities": [
+							"poison",
+							"stun"
+						],
+						"shield": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Cave Bear (Circles special)": {
+			"name": "Cave Bear",
+			"internal": "Cave Bear (Circles special)",
+			"maxInstances": 4,
+			"deck": "Cave Bear",
+			"levels": [
+				{
+					"normal": {
+						"hp": "14"
+					},
+					"elite": {
+						"hp": "22"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "18"
+					},
+					"elite": {
+						"hp": "28"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "22"
+					},
+					"elite": {
+						"hp": "34"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "26"
+					},
+					"elite": {
+						"hp": "40"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "32"
+					},
+					"elite": {
+						"hp": "42"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "34"
+					},
+					"elite": {
+						"hp": "48"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "38"
+					},
+					"elite": {
+						"hp": "56"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "44"
+					},
+					"elite": {
+						"hp": "66"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Lieutenant": {
+			"name": "Lieutenant",
+			"internal": "Lieutenant",
+			"maxInstances": 6,
+			"deck": "Guard",
+			"levels": [
+				{
+					"boss": {
+						"hp": "18",
+						"shield": 1
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "18",
+						"shield": 2
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "21",
+						"shield": 2
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "21",
+						"retaliate": 1,
+						"shield": 2
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "30",
+						"retaliate": 2,
+						"shield": 2
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "36",
+						"retaliate": 2,
+						"shield": 3
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "39",
+						"retaliate": 3,
+						"shield": 3
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "42",
+						"retaliate": 3,
+						"shield": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"Lost in Seaweed": {
+			"name": "Lost in Seaweed",
+			"internal": "Lost in Seaweed",
+			"maxInstances": 6,
+			"deck": "Lurker Wavethrower",
+			"levels": [
+				{
+					"boss": {
+						"hp": "12"
+					},
+					"level": 0
+				},
+				{
+					"boss": {
+						"hp": "14"
+					},
+					"level": 1
+				},
+				{
+					"boss": {
+						"hp": "18"
+					},
+					"level": 2
+				},
+				{
+					"boss": {
+						"hp": "22"
+					},
+					"level": 3
+				},
+				{
+					"boss": {
+						"hp": "26"
+					},
+					"level": 4
+				},
+				{
+					"boss": {
+						"hp": "32"
+					},
+					"level": 5
+				},
+				{
+					"boss": {
+						"hp": "42"
+					},
+					"level": 6
+				},
+				{
+					"boss": {
+						"hp": "52"
+					},
+					"level": 7
+				}
+			]
+		},
+		"Night Demon (Deathwalker Special)": {
+			"name": "Night Demon",
+			"internal": "Night Demon (Deathwalker Special)",
+			"maxInstances": 6,
+			"deck": "Night Demon (FH)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "3"
+					},
+					"elite": {
+						"hp": "5"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "8"
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "6"
+					},
+					"elite": {
+						"hp": "11"
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "7"
+					},
+					"elite": {
+						"hp": "13"
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "8"
+					},
+					"elite": {
+						"hp": "15"
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "11"
+					},
+					"elite": {
+						"hp": "17"
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "16"
+					},
+					"elite": {
+						"hp": "23"
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "20"
+					},
+					"elite": {
+						"hp": "30"
+					},
+					"level": 7
+				}
+			]
+		},
+		"City Guard (Scoundrel Special)": {
+			"name": "City Guard",
+			"internal": "City Guard (Scoundrel Special)",
+			"maxInstances": 6,
+			"deck": "Guard",
+			"levels": [
+				{
+					"normal": {
+						"hp": "5",
+						"shield": 3
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 4
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5",
+						"shield": 4
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 5
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "7",
+						"shield": 4
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 5
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "8",
+						"shield": 4
+					},
+					"elite": {
+						"hp": "9",
+						"retaliate": 1,
+						"shield": 5
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "9",
+						"shield": 4
+					},
+					"elite": {
+						"hp": "10",
+						"retaliate": 2,
+						"shield": 5
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 5
+					},
+					"elite": {
+						"hp": "12",
+						"retaliate": 2,
+						"shield": 6
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "11",
+						"shield": 5
+					},
+					"elite": {
+						"hp": "13",
+						"retaliate": 3,
+						"shield": 6
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"shield": 5
+					},
+					"elite": {
+						"hp": "14",
+						"retaliate": 3,
+						"shield": 6
+					},
+					"level": 7
+				}
+			]
+		},
+		"Algox Snowspeaker (Trapper Special)": {
+			"name": "Algox Snowspeaker",
+			"internal": "Algox Snowspeaker (Trapper Special)",
+			"maxInstances": 4,
+			"deck": "Algox Snowspeaker (Trapper Special)",
+			"levels": [
+				{
+					"normal": {
+						"hp": "6",
+						"retaliate": 1
+					},
+					"elite": {
+						"hp": "8",
+						"retaliate": 1
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "7",
+						"retaliate": 1
+					},
+					"elite": {
+						"hp": "10",
+						"retaliate": 1
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "9",
+						"retaliate": 1
+					},
+					"elite": {
+						"hp": "12",
+						"retaliate": 2
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "12",
+						"retaliate": 1
+					},
+					"elite": {
+						"hp": "15",
+						"retaliate": 2
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"retaliate": 2
+					},
+					"elite": {
+						"hp": "17",
+						"retaliate": 2
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "15",
+						"retaliate": 2
+					},
+					"elite": {
+						"hp": "21",
+						"retaliate": 2
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "20",
+						"retaliate": 2
+					},
+					"elite": {
+						"hp": "27",
+						"immunities": [
+							"brittle"
+						],
+						"retaliate": 3
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "27",
+						"immunities": [
+							"brittle"
+						],
+						"retaliate": 3
+					},
+					"elite": {
+						"hp": "35",
+						"immunities": [
+							"brittle"
+						],
+						"retaliate": 3
+					},
+					"level": 7
+				}
+			]
+		},
+		"City Guard (Ally)": {
+			"name": "City Guard (Ally)",
+			"internal": "City Guard (Ally)",
+			"maxInstances": 6,
+			"deck": "Guard",
+			"levels": [
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "6"
+					},
+					"level": 0
+				},
+				{
+					"normal": {
+						"hp": "5"
+					},
+					"elite": {
+						"hp": "6",
+						"shield": 1
+					},
+					"level": 1
+				},
+				{
+					"normal": {
+						"hp": "7"
+					},
+					"elite": {
+						"hp": "9",
+						"shield": 1
+					},
+					"level": 2
+				},
+				{
+					"normal": {
+						"hp": "8"
+					},
+					"elite": {
+						"hp": "9",
+						"retaliate": 1,
+						"shield": 1
+					},
+					"level": 3
+				},
+				{
+					"normal": {
+						"hp": "9"
+					},
+					"elite": {
+						"hp": "10",
+						"retaliate": 2,
+						"shield": 1
+					},
+					"level": 4
+				},
+				{
+					"normal": {
+						"hp": "10",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "12",
+						"retaliate": 2,
+						"shield": 2
+					},
+					"level": 5
+				},
+				{
+					"normal": {
+						"hp": "11",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "13",
+						"retaliate": 3,
+						"shield": 2
+					},
+					"level": 6
+				},
+				{
+					"normal": {
+						"hp": "13",
+						"shield": 1
+					},
+					"elite": {
+						"hp": "14",
+						"retaliate": 3,
+						"shield": 2
+					},
+					"level": 7
+				}
+			]
+		},
 		"Chaos Lieutenant": {
 			"name": "Chaos Lieutenant",
 			"internal": "Chaos Lieutenant",
@@ -9877,6 +12338,181 @@
 		}
 	},
 	"decks": {
+		"Inox Necromancer": {
+			"name": "Inox Necromancer",
+			"cards": [
+				[
+					588,
+					false,
+					8
+				],
+				[
+					589,
+					false,
+					8
+				],
+				[
+					590,
+					true,
+					23
+				],
+				[
+					591,
+					true,
+					23
+				],
+				[
+					592,
+					false,
+					62
+				],
+				[
+					593,
+					false,
+					74
+				],
+				[
+					594,
+					false,
+					89
+				],
+				[
+					595,
+					false,
+					9
+				]
+			]
+		},
+		"City Guard (Sun Special)": {
+			"name": "City Guard (Sun Special)",
+			"cards": [
+				[
+					0,
+					true,
+					99
+				]
+			]
+		},
+		"Bandit Guard (Note Special)": {
+			"name": "Bandit Guard (Note Special)",
+			"cards": [
+				[
+					0,
+					true,
+					49
+				]
+			]
+		},
+		"Bandit Archer (Note Special)": {
+			"name": "Bandit Archer (Note Special)",
+			"cards": [
+				[
+					0,
+					true,
+					49
+				]
+			]
+		},
+		"City Guard (Banner Spear Special)": {
+			"name": "City Guard (Banner Spear Special)",
+			"cards": [
+				[
+					0,
+					true,
+					50
+				]
+			]
+		},
+		"Hollow Scholar": {
+			"name": "Hollow Scholar",
+			"cards": [
+				[
+					666,
+					false,
+					64
+				],
+				[
+					667,
+					true,
+					20
+				],
+				[
+					668,
+					false,
+					25
+				],
+				[
+					669,
+					false,
+					45
+				],
+				[
+					670,
+					false,
+					45
+				],
+				[
+					671,
+					false,
+					81
+				],
+				[
+					672,
+					false,
+					74
+				],
+				[
+					673,
+					true,
+					12
+				]
+			]
+		},
+		"Algox Snowspeaker (Trapper Special)": {
+			"name": "Algox Snowspeaker (Trapper Special)",
+			"cards": [
+				[
+					738,
+					false,
+					22
+				],
+				[
+					740,
+					false,
+					43
+				],
+				[
+					742,
+					true,
+					6
+				],
+				[
+					745,
+					false,
+					66
+				],
+				[
+					739,
+					false,
+					18
+				],
+				[
+					741,
+					false,
+					30
+				],
+				[
+					743,
+					false,
+					59
+				],
+				[
+					744,
+					true,
+					27
+				]
+			]
+		},
 		"Ancient Artillery (FH)": {
 			"name": "Ancient Artillery (FH)",
 			"cards": [
@@ -12014,6 +14650,1796 @@
 		}
 	},
 	"scenarios": {
+		"#30 Pain Conduit: A Collection of Suffering": {
+			"name": "#30 Pain Conduit: A Collection of Suffering",
+			"monsters": [
+				"Chaos Demon (FH)",
+				"Earth Demon (FH)",
+				"Flame Demon (FH)",
+				"Sun Demon (FH)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						1,
+						5,
+						9,
+						13,
+						17,
+						21,
+						25
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn one normal Flame Demon at A."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						6,
+						10,
+						14,
+						18,
+						22,
+						26
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn one normal Sun Demon at B."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3,
+						7,
+						11,
+						15,
+						19,
+						23,
+						27
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn one normal Earth Demon A."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						8,
+						12,
+						16,
+						20,
+						24,
+						28
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn one normal Chaos Demon at B."
+				}
+			]
+		},
+		"#17 Beast Tyrant: The Caged Bear": {
+			"name": "#17 Beast Tyrant: The Caged Bear",
+			"monsters": [
+				"Hound",
+				"Forest Imp",
+				"Rending Drake",
+				"Vermling Shaman",
+				"Cave Bear"
+			],
+			"specials": []
+		},
+		"#43 Hollowpact: Hallow Redemption": {
+			"name": "#43 Hollowpact: Hallow Redemption",
+			"monsters": [
+				"Aesther Ashblade",
+				"Cave Bear",
+				"Forest Imp",
+				"Vermling Shaman"
+			],
+			"specials": [
+				{
+					"type": "LevelAdjust",
+					"name": "Aesther Ashblade"
+				}
+			],
+			"sections": {
+				"#71A Scenario 62": {
+					"name": "#71A Scenario 62",
+					"monsters": [
+						"Your Shadow"
+					],
+					"specials": []
+				}
+			}
+		},
+		"#38 Brightspark: Elemental Converter": {
+			"name": "#38 Brightspark: Elemental Converter",
+			"monsters": [
+				"Black Imp",
+				"Deep Terror",
+				"Hound",
+				"Lurker",
+				"Rending Drake",
+				"Spitting Drake"
+			],
+			"specials": []
+		},
+		"#35 Deepwraith: Wet Work": {
+			"name": "#35 Deepwraith: Wet Work",
+			"monsters": [
+				"Abael Warlord",
+				"Abael Scout",
+				"Burrowing Blade",
+				"Piranha Pig"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#41 Fire Knight: Through the Fire and the Flames": {
+			"name": "#41 Fire Knight: Through the Fire and the Flames",
+			"monsters": [
+				"Flame Demon",
+				"Rending Drake #60 Special",
+				"Savvas Lavaflow",
+				"Spitting Drake"
+			],
+			"specials": [],
+			"sections": {
+				"#68A Scenario 60": {
+					"name": "#68A Scenario 60",
+					"monsters": [
+						"Drakefiend"
+					],
+					"specials": []
+				}
+			}
+		},
+		"#29 Trapper: A Magnificent Trap": {
+			"name": "#29 Trapper: A Magnificent Trap",
+			"monsters": [
+				"Algox Guard",
+				"Algox Snowspeaker (Trapper Special)",
+				"Wind Demon (FH)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						3,
+						7
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn one normal Algox Guard at C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						6,
+						8
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn one normal Wind Demon at A."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn one normal Algox Snowspeaker at B and one normal Algox Guard at C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						9
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn one normal Algox Snowspeaker at B."
+				}
+			]
+		},
+		"#8 Quartermaster: Storage Fees": {
+			"name": "#8 Quartermaster: Storage Fees",
+			"monsters": [
+				"Hound",
+				"Bandit Guard",
+				"Bandit Archer"
+			],
+			"specials": []
+		},
+		"#40 Chieftain: Forest Invaders": {
+			"name": "#40 Chieftain: Forest Invaders",
+			"monsters": [
+				"Cave Bear",
+				"Giant Viper",
+				"Hound",
+				"Vermling Scout",
+				"Vermling Shaman"
+			],
+			"specials": []
+		},
+		"#15 Sawbones: Aftermath": {
+			"name": "#15 Sawbones: Aftermath",
+			"monsters": [
+				"City Guard",
+				"Lieutenant"
+			],
+			"specials": []
+		},
+		"#33 H.I.V.E.: Recharge": {
+			"name": "#33 H.I.V.E.: Recharge",
+			"monsters": [
+				"Frozen Corpse",
+				"Living Bones (FH)",
+				"Living Spirit (FH)",
+				"Energized Corpse"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn normal Living Bones at D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn normal Living Bones at E."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn normal Living Spirit at B and C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						7
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn normal Frozen Corpse at D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						8
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn normal Frozen Corpse at E."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						10
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn normal Living Bones at D and E."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						12
+					],
+					"startOfRound": true,
+					"note": "Read 1."
+				}
+			]
+		},
+		"#39 Chainguard: Penitentiary Lockdown": {
+			"name": "#39 Chainguard: Penitentiary Lockdown",
+			"monsters": [
+				"Bandit Archer",
+				"Bandit Guard"
+			],
+			"specials": []
+		},
+		"#9 Summoner: Plane of Wild Beasts": {
+			"name": "#9 Summoner: Plane of Wild Beasts",
+			"monsters": [
+				"Hound",
+				"Spitting Drake",
+				"Cave Bear (Circles special)"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						1
+					],
+					"name": "spawn 1",
+					"startOfRound": false,
+					"note": "One normal Hound spawns at A."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2
+					],
+					"name": "spawn 2",
+					"startOfRound": false,
+					"note": "One normal Spitting Drake spawns at B."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"name": "spawn 3",
+					"startOfRound": false,
+					"note": "Two normal Hounds spawns at C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4
+					],
+					"name": "spawn 4",
+					"startOfRound": false,
+					"note": "One normal Spitting Drake spawns at D."
+				}
+			]
+		},
+		"#26 Infuser: Path of Ancestry": {
+			"name": "#26 Infuser: Path of Ancestry",
+			"monsters": [
+				"Incarnation of Ancestors"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Objective",
+					"name": "Orb of Energy a",
+					"hp": "L+1"
+				},
+				{
+					"type": "Objective",
+					"name": "Orb of Energy b",
+					"hp": "L+1"
+				},
+				{
+					"type": "Objective",
+					"name": "Orb of Energy c",
+					"hp": "L+1"
+				},
+				{
+					"type": "Objective",
+					"name": "Orb of Energy d",
+					"hp": "L+1"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						6,
+						10,
+						14,
+						18,
+						22,
+						26
+					],
+					"startOfRound": true,
+					"note": "Altar 1 spawns Orb of Energy a"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3,
+						7,
+						11,
+						15,
+						19,
+						23,
+						27
+					],
+					"startOfRound": true,
+					"note": "Altar 2 spawns Orb of Energy b"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						8,
+						12,
+						16,
+						20,
+						24,
+						28
+					],
+					"startOfRound": true,
+					"note": "Altar 3 spawns Orb of Energy c"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5,
+						9,
+						13,
+						17,
+						21,
+						25,
+						29
+					],
+					"startOfRound": true,
+					"note": "Altar 4 spawns Orb of Energy d"
+				}
+			]
+		},
+		"#19 Diviner: Forecast of the Inevitable": {
+			"name": "#19 Diviner: Forecast of the Inevitable",
+			"monsters": [
+				"Earth Demon (Diviner Special)",
+				"Valrath Savage"
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Rift 1",
+					"hp": "3+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Rift 2",
+					"hp": "3+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Rift 3",
+					"hp": "3+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Rift 4",
+					"hp": "3+L"
+				}
+			]
+		},
+		"#49 Artificer: Magnum Opus": {
+			"name": "#49 Artificer: Magnum Opus",
+			"monsters": [
+				"Clockwork Soldier",
+				"Clockwork Railcaster"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"startOfRound": true,
+					"note": "Read Section 1."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5,
+						9
+					],
+					"startOfRound": true,
+					"note": "Add Section QA2."
+				}
+			],
+			"sections": {
+				"#2 Mechanical Menace": {
+					"name": "#2 Mechanical Menace",
+					"monsters": [
+						"Clockwork Devastator"
+					],
+					"specials": []
+				}
+			}
+		},
+		"#46 Spirit Caller: Beyond the Grave": {
+			"name": "#46 Spirit Caller: Beyond the Grave",
+			"monsters": [
+				"Vermling Shaman"
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Angry Spirit 1",
+					"hp": "6",
+					"init": 25
+				},
+				{
+					"type": "Escort",
+					"name": "Angry Spirit 2",
+					"hp": "6",
+					"init": 25
+				}
+			],
+			"sections": {
+				"#73C Scenario 65": {
+					"name": "#73C Scenario 65",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "Objective",
+							"name": "Vile Spirit 1",
+							"hp": "4",
+							"init": 50
+						},
+						{
+							"type": "Objective",
+							"name": "Vile Spirit 2",
+							"hp": "4",
+							"init": 50
+						}
+					]
+				},
+				"#73D Scenario 65": {
+					"name": "#73D Scenario 65",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "Objective",
+							"name": "Haunted Ghoul Spirit 1",
+							"hp": "10",
+							"init": 50
+						}
+					]
+				}
+			}
+		},
+		"#52 Rimehearth: Conflux of Power": {
+			"name": "#52 Rimehearth: Conflux of Power",
+			"monsters": [
+				"Savvas Acolyte",
+				"Inferno Demon",
+				"Glacier Demon",
+				"Flame Demon",
+				"Frost Demon"
+			],
+			"specials": []
+		},
+		"#25 Geminate: Divide and Conquer": {
+			"name": "#25 Geminate: Divide and Conquer",
+			"monsters": [
+				"Flaming Bladespinner",
+				"Ice Wraith",
+				"Lightning Eel",
+				"Lurker Soldier",
+				"Lurker Wavethrower",
+				"Robotic Boltshooter"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#36 Crashing Tide: Crash Against the Waves": {
+			"name": "#36 Crashing Tide: Crash Against the Waves",
+			"monsters": [
+				"Lightning Eel",
+				"Lost in Seaweed",
+				"Shape Blocks Out the Sun",
+				"Plea for Help Without Answer"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn Lost in Seaweed at A and Lightning Eels each hex adjacent to it."
+				}
+			],
+			"sections": {
+				"1": {
+					"name": "1",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "ResetRound"
+						},
+						{
+							"type": "Timer",
+							"list": [
+								4
+							],
+							"name": "spawn 2",
+							"startOfRound": true,
+							"note": "Spawn Shape BLocke Out the Sun"
+						}
+					]
+				},
+				"2": {
+					"name": "2",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "ResetRound"
+						},
+						{
+							"type": "Timer",
+							"list": [
+								4
+							],
+							"name": "spawn 3",
+							"startOfRound": true,
+							"note": "Spawn Plea for Help Without Answer"
+						}
+					]
+				}
+			}
+		},
+		"#11 Plagueherald: Plagued Crypt": {
+			"name": "#11 Plagueherald: Plagued Crypt",
+			"monsters": [
+				"Giant Viper",
+				"Black Imp"
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 1",
+					"hp": "4+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 2",
+					"hp": "4+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 3",
+					"hp": "4+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 4",
+					"hp": "4+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 5",
+					"hp": "4+L"
+				},
+				{
+					"type": "Escort",
+					"name": "Spirit of Xorn 6",
+					"hp": "4+L"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2
+					],
+					"startOfRound": true,
+					"note": "Door b opens."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"startOfRound": true,
+					"note": "Door c opens."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						8
+					],
+					"startOfRound": true,
+					"note": "Door d opens."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						11
+					],
+					"startOfRound": true,
+					"note": "Door e opens."
+				}
+			]
+		},
+		"#55 Thornreaper: Collapsed Cavern": {
+			"name": "#55 Thornreaper: Collapsed Cavern",
+			"monsters": [
+				"Black Imp",
+				"Cave Bear",
+				"Deep Terror",
+				"Earth Demon",
+				"Forest Imp",
+				"Living Bones"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"startOfRound": false,
+					"note": "Read section 48.B"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						9
+					],
+					"startOfRound": false,
+					"note": "Read section 48.C"
+				}
+			]
+		},
+		"#7 Sunkeeper: Caravan Escort": {
+			"name": "#7 Sunkeeper: Caravan Escort",
+			"monsters": [
+				"City Guard (Sun Special)",
+				"Bandit Guard",
+				"Bandit Archer",
+				"Inox Guard",
+				"Inox Archer",
+				"Inox Shaman",
+				"Vermling Scout",
+				"Vermling Shaman",
+				"Cave Bear"
+			],
+			"specials": [
+				{
+					"type": "LevelAdjust",
+					"name": "City Guard (Sun Special)"
+				}
+			]
+		},
+		"#2 Tinkerer: An Unfortunate Intrusion": {
+			"name": "#2 Tinkerer: An Unfortunate Intrusion",
+			"monsters": [
+				"City Guard (Ally)",
+				"Vermling Scout",
+				"Vermling Shaman"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						4,
+						6,
+						8,
+						10,
+						12,
+						14,
+						16,
+						18,
+						20,
+						22,
+						24,
+						26,
+						28,
+						30
+					],
+					"name": "spawn 1",
+					"startOfRound": false,
+					"note": "Four normal Vermling Scouts spawn at A."
+				}
+			]
+		},
+		"#50 Ruinmaw: The Fall of Shadow’s Respite": {
+			"name": "#50 Ruinmaw: The Fall of Shadow’s Respite",
+			"monsters": [
+				"Gnashing Drake",
+				"Spitting Drake",
+				"Rending Drake",
+				"Vermling Scout (ally)",
+				"Vermling Shaman (ally)"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"startOfRound": false,
+					"note": "Read Section 1."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						6
+					],
+					"startOfRound": false,
+					"note": "Read Section 2."
+				},
+				{
+					"type": "Escort",
+					"name": "The Chosen",
+					"hp": "6+L"
+				}
+			],
+			"sections": {
+				"#4 The Shadow Falls": {
+					"name": "#4 The Shadow Falls",
+					"monsters": [
+						"Brood Mother"
+					],
+					"specials": []
+				}
+			}
+		},
+		"#4 Scoundrel: Armory Heist": {
+			"name": "#4 Scoundrel: Armory Heist",
+			"monsters": [
+				"City Guard (Scoundrel Special)",
+				"Stone Golem (Scoundrel Special)",
+				"Ancient Artillery"
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Rikharn",
+					"hp": "15+5*L",
+					"init": 49
+				}
+			]
+		},
+		"#12 Berserker: Unnatural Insults": {
+			"name": "#12 Berserker: Unnatural Insults",
+			"monsters": [
+				"Living Corpse",
+				"Living Bones",
+				"Cultist",
+				"Inox Necromancer"
+			],
+			"specials": []
+		},
+		"#20 Drifter: Wonder of Nature": {
+			"name": "#20 Drifter: Wonder of Nature",
+			"monsters": [
+				"Flame Demon (FH)",
+				"Forest Imp (FH)",
+				"Hound (FH)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#54 Tempest: Storm Mountain": {
+			"name": "#54 Tempest: Storm Mountain",
+			"monsters": [
+				"Stone Golem",
+				"Volt Demon",
+				"Wind Demon"
+			],
+			"specials": []
+		},
+		"#51 Incarnate: Unsouled": {
+			"name": "#51 Incarnate: Unsouled",
+			"monsters": [
+				"Inox Archer",
+				"Inox Guard",
+				"Inox Guard (ally)"
+			],
+			"specials": [],
+			"sections": {
+				"#38A (Scenario 79)": {
+					"name": "#38A (Scenario 79)",
+					"monsters": [
+						"Okeda"
+					],
+					"specials": []
+				}
+			}
+		},
+		"#24 Boneshaper: Bones in the Dirt": {
+			"name": "#24 Boneshaper: Bones in the Dirt",
+			"monsters": [
+				"Earth Demon (FH)",
+				"Snow Imp",
+				"Hollow Scholar"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#13 Soothsinger: Battle of the Bards": {
+			"name": "#13 Soothsinger: Battle of the Bards",
+			"monsters": [
+				"Bandit Guard (Note Special)",
+				"Bandit Archer (Note Special)",
+				"City Guard",
+				"City Archer",
+				"Stone Golem",
+				"Song of the Deep"
+			],
+			"specials": [
+				{
+					"type": "LevelAdjust",
+					"name": "Bandit Guard (Note Special)"
+				},
+				{
+					"type": "LevelAdjust",
+					"name": "Bandit Archer (Note Special)"
+				}
+			]
+		},
+		"#31 Snowdancer: Fighting Snow with Snow": {
+			"name": "#31 Snowdancer: Fighting Snow with Snow",
+			"monsters": [
+				"Algox Snowspeaker",
+				"Frost Demon (FH)",
+				"Wind Demon (FH)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Rune Worker 1",
+					"hp": "L+1"
+				},
+				{
+					"type": "Escort",
+					"name": "Rune Worker 2",
+					"hp": "L+1"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn one elite Frost Demon at E."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						7
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn one normal Wind Demon at both D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						10
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn one elite Algox Snowspeaker at E."
+				}
+			]
+		},
+		"#47 Starslinger: Otherworldly Strangers": {
+			"name": "#47 Starslinger: Otherworldly Strangers",
+			"monsters": [
+				"City Archer",
+				"City Guard",
+				"Earth Demon",
+				"Harrower Infester",
+				"Night Demon",
+				"Sun Demon"
+			],
+			"specials": [
+				{
+					"type": "Allies",
+					"list": [
+						"City Guard",
+						"City Archer"
+					]
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"startOfRound": false,
+					"note": "Read section 74C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"startOfRound": false,
+					"note": "Read section 74F."
+				}
+			]
+		},
+		"#32 Frozen Fist: Under the Ice": {
+			"name": "#32 Frozen Fist: Under the Ice",
+			"monsters": [
+				"Ancient Artillery (FH)",
+				"Flaming Bladespinner",
+				"Ruined Machine",
+				"Steel Automaton"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Altar 1",
+					"hp": "L*2+6"
+				},
+				{
+					"type": "Escort",
+					"name": "Altar 2",
+					"hp": "L*2+6"
+				},
+				{
+					"type": "Escort",
+					"name": "Altar 3",
+					"hp": "L*2+6"
+				}
+			],
+			"sections": {
+				"1": {
+					"name": "1",
+					"monsters": [],
+					"specials": [
+						{
+							"type": "ResetRound"
+						},
+						{
+							"type": "Timer",
+							"list": [
+								2
+							],
+							"name": "spawn 1",
+							"startOfRound": true,
+							"note": "Spawn normal Ruined Machines at A and B."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								5
+							],
+							"name": "spawn 2",
+							"startOfRound": true,
+							"note": "Spawn normal Ancient Artillery at C."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								7
+							],
+							"name": "spawn 2",
+							"startOfRound": true,
+							"note": "Spawn normal Ancient Artillery at D."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								8
+							],
+							"name": "spawn 3",
+							"startOfRound": true,
+							"note": "Spawn elite Flaming Bladespinner at A."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								10
+							],
+							"name": "spawn 4",
+							"startOfRound": true,
+							"note": "Spawn normal Ruined Machine at C."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								11
+							],
+							"name": "spawn 4",
+							"startOfRound": true,
+							"note": "Spawn normal Ruined Machine at D."
+						},
+						{
+							"type": "Timer",
+							"list": [
+								12
+							],
+							"name": "spawn 5",
+							"startOfRound": true,
+							"note": "Spawn normal Ancient Artillery at A and B."
+						}
+					]
+				}
+			}
+		},
+		"#27 Pyroclast: Crumbling Descent": {
+			"name": "#27 Pyroclast: Crumbling Descent",
+			"monsters": [
+				"Burrowing Blade",
+				"Rending Drake (FH)",
+				"Mountain's Heart"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#14 Doomstalker: Corrupted Hunt": {
+			"name": "#14 Doomstalker: Corrupted Hunt",
+			"monsters": [
+				"Ghost Wolf",
+				"Deep Earth",
+				"High Flame",
+				"Giant Viper (Angry Face Special)",
+				"Spitting Drake"
+			],
+			"specials": []
+		},
+		"#22 Banner Spear: Scouting Ambush": {
+			"name": "#22 Banner Spear: Scouting Ambush",
+			"monsters": [
+				"City Guard (Banner Spear Special)",
+				"Polar Bear",
+				"Vermling Scout (FH)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Allies",
+					"list": [
+						"City Guard (Banner Spear Special)"
+					]
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn normal Vermling Scout at B, C, D, E."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn normal Polar Bear at B. Elite Vermling Scout at D and F."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						7
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn elite Vermling Scout at A, B, C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						9
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn elite Polar Bear at E. Elite Vermling Scout at D and F."
+				}
+			]
+		},
+		"#45 Luminary: Glowing Crystals": {
+			"name": "#45 Luminary: Glowing Crystals",
+			"monsters": [
+				"Deep Terror",
+				"Lurker"
+			],
+			"specials": []
+		},
+		"#16 Elementalist: Elemental Secrets": {
+			"name": "#16 Elementalist: Elemental Secrets",
+			"monsters": [
+				"Flame Demon",
+				"Earth Demon",
+				"Frost Demon",
+				"Wind Demon"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						1,
+						5,
+						9,
+						13,
+						17,
+						21,
+						25,
+						29
+					],
+					"startOfRound": true,
+					"note": "Air Strong."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						6,
+						10,
+						14,
+						18,
+						22,
+						26,
+						30
+					],
+					"startOfRound": true,
+					"note": "Ice Strong."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3,
+						7,
+						11,
+						15,
+						19,
+						23,
+						27,
+						31
+					],
+					"startOfRound": true,
+					"note": "Earth Strong."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						8,
+						12,
+						16,
+						20,
+						24,
+						28,
+						32
+					],
+					"startOfRound": true,
+					"note": "Fire Strong."
+				}
+			]
+		},
+		"#5 Cragheart: Stone Defense": {
+			"name": "#5 Cragheart: Stone Defense",
+			"monsters": [
+				"Cave Bear",
+				"Ooze",
+				"Sun Demon"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						1,
+						3,
+						5
+					],
+					"name": "spawn 1",
+					"startOfRound": false,
+					"note": "One normal Cave Bear spawns at A and one elite Ooze spawns at B."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						4,
+						6
+					],
+					"name": "spawn 2",
+					"startOfRound": false,
+					"note": "One normal Sun Demon spawns at C and two normal Oozes spawn at D."
+				}
+			]
+		},
+		"#53 Shardrender: Corrupted Presence": {
+			"name": "#53 Shardrender: Corrupted Presence",
+			"monsters": [
+				"Deep Terror (TOA 81)",
+				"Frost Demon",
+				"Living Spirit",
+				"Night Demon",
+				"Tendril of Corruption"
+			],
+			"specials": [
+				{
+					"type": "Timer",
+					"list": [
+						2
+					],
+					"startOfRound": false,
+					"note": "Read section 42.B"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						6,
+						8,
+						10,
+						12,
+						14,
+						16,
+						18,
+						20,
+						22,
+						24,
+						26,
+						28,
+						30
+					],
+					"startOfRound": false,
+					"note": "Simultaneously move your character to the hex that contains your character token and move that character token to the hex you occupied."
+				}
+			]
+		},
+		"#48 Amber Aegis: Hive Guardian": {
+			"name": "#48 Amber Aegis: Hive Guardian",
+			"monsters": [
+				"Flame Demon",
+				"Frost Demon",
+				"Wind Demon",
+				"Earth Demon",
+				"Night Demon",
+				"Sun Demon"
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Soul Leech Egg 1",
+					"hp": "3+L",
+					"init": 25
+				},
+				{
+					"type": "Escort",
+					"name": "Soul Leech Egg 2",
+					"hp": "3+L",
+					"init": 25
+				},
+				{
+					"type": "Timer",
+					"list": [
+						2,
+						6
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn one normal Flame Demon at hex C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3,
+						7
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn two normal Sun Demons at hex D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						4,
+						8
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn one normal Night Demon at hex B."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5,
+						9
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn two normal Wind Demons at hex E."
+				}
+			]
+		},
+		"#6 Mindthief: Rodent Liberation": {
+			"name": "#6 Mindthief: Rodent Liberation",
+			"monsters": [
+				"Vermling Scout",
+				"Vermling Shaman",
+				"Earth Demon (Mindthief Special)"
+			],
+			"specials": [
+				{
+					"type": "Objective",
+					"name": "Altar 1",
+					"hp": "3+L"
+				},
+				{
+					"type": "Objective",
+					"name": "Altar 2",
+					"hp": "3+L"
+				},
+				{
+					"type": "Objective",
+					"name": "Altar 3",
+					"hp": "3+L"
+				}
+			]
+		},
+		"#42 Hierophant: Archaic Preservation": {
+			"name": "#42 Hierophant: Archaic Preservation",
+			"monsters": [
+				"Ancient Artillery",
+				"Black Imp",
+				"Lurker",
+				"Rending Drake",
+				"Stone Golem"
+			],
+			"specials": []
+		},
+		"#10 Nightshroud: Harvesting the Night": {
+			"name": "#10 Nightshroud: Harvesting the Night",
+			"monsters": [
+				"Night Demon",
+				"Deep Terror"
+			],
+			"specials": []
+		},
+		"#56 Vanquisher: Return to Crystal Gardens": {
+			"name": "#56 Vanquisher: Return to Crystal Gardens",
+			"monsters": [
+				"Shardrender (84)",
+				"Smoke Spirit"
+			],
+			"specials": []
+		},
+		"#28 Shattersong: Tuning the Resonance": {
+			"name": "#28 Shattersong: Tuning the Resonance",
+			"monsters": [
+				"Algox Archer",
+				"Algox Icespeaker (Shattersong Special)",
+				"Chief of Spikes"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#37 Bombard: Disarm the Machine": {
+			"name": "#37 Bombard: Disarm the Machine",
+			"monsters": [
+				"Ancient Artillery",
+				"Stone Golem"
+			],
+			"specials": []
+		},
+		"#44 Mirefoot: A Cornered Viper": {
+			"name": "#44 Mirefoot: A Cornered Viper",
+			"monsters": [
+				"Cave Bear",
+				"Giant Viper",
+				"Inox Archer",
+				"Living Corpse",
+				"Living Spirit",
+				"Stone Golem"
+			],
+			"specials": []
+		},
+		"#3 Spellweaver: Corrupted Laboratory": {
+			"name": "#3 Spellweaver: Corrupted Laboratory",
+			"monsters": [
+				"Black Imp",
+				"Spitting Drake",
+				"Stone Golem"
+			],
+			"specials": []
+		},
+		"#21 Blinkblade: Race Against the Clock": {
+			"name": "#21 Blinkblade: Race Against the Clock",
+			"monsters": [
+				"Ancient Artillery (FH)",
+				"Robotic Boltshooter",
+				"Ruined Machine",
+				"Steel Automaton"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#34 Metal Mosaic: Boiler Room": {
+			"name": "#34 Metal Mosaic: Boiler Room",
+			"monsters": [
+				"Ancient Artillery (FH)",
+				"Flaming Bladespinner",
+				"Ruined Machine",
+				"Steel Automaton"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": []
+		},
+		"#23 Deathwalker: The Dead of Night": {
+			"name": "#23 Deathwalker: The Dead of Night",
+			"monsters": [
+				"Black Imp (Deathwalker Special)",
+				"Night Demon (Deathwalker Special)"
+			],
+			"loot": [
+				0,
+				0,
+				15,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			],
+			"specials": [
+				{
+					"type": "Escort",
+					"name": "Glowing Orb",
+					"hp": "6+3*L"
+				},
+				{
+					"type": "Timer",
+					"list": [
+						3
+					],
+					"name": "spawn 1",
+					"startOfRound": true,
+					"note": "Spawn normal Night Demon at A and D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						5
+					],
+					"name": "spawn 2",
+					"startOfRound": true,
+					"note": "Spawn normal Black Imp at A, B, C and D."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						7
+					],
+					"name": "spawn 3",
+					"startOfRound": true,
+					"note": "Spawn elite Black Imp at A and C."
+				},
+				{
+					"type": "Timer",
+					"list": [
+						10
+					],
+					"name": "spawn 4",
+					"startOfRound": true,
+					"note": "Spawn elite Night Demon at B and D."
+				}
+			]
+		},
+		"#18 Bladeswarm: The Sands of Time": {
+			"name": "#18 Bladeswarm: The Sands of Time",
+			"monsters": [
+				"Giant Viper",
+				"Living Spirit",
+				"Stone Golem"
+			],
+			"specials": []
+		},
+		"#1 Brute: Return to the Black Barrow": {
+			"name": "#1 Brute: Return to the Black Barrow",
+			"monsters": [
+				"Bandit Guard",
+				"Bandit Archer",
+				"Living Bones"
+			],
+			"specials": []
+		},
 		"#124 A Growing Problem": {
 			"name": "#124 A Growing Problem",
 			"monsters": [
