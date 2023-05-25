@@ -16,18 +16,20 @@ function getState()
 		name = v.label
 		data_to_save.inputs[name] = v.value
 	end
+	data_to_save.decals = self.getDecals()
 	return data_to_save
 end
 
 function onStateUpdate(state)
 	self.clearButtons()
-	self.clearInputs()
+	self.clearInputs()	
 	refreshUI(state)
+	self.setDecals(state.decals or {})
 	forceSave()
 end
 
 function createEmptyState()
-	return { buttons = {}, inputs = {} }
+	return { buttons = {}, inputs = {}, decals = {} }
 end
 
 toggleSymbol = "\u{2717}"

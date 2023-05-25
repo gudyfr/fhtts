@@ -588,10 +588,9 @@ function getBuildingInfo(buildingNumber)
         end
     end
 
-    return JSON.encode({level=level, wrecked=wrecked})
+    return JSON.encode({ level = level, wrecked = wrecked })
 end
 
-
 function getCampaignSheet()
-    return findLocalObject({x=-1.10,y=0.1,z=-0.94},"","","CampaignSheet")    
+    return findLocalObject({ x = -1.10, y = 0.1, z = -0.94 }, "", "", "CampaignSheet")
 end
