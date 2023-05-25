@@ -182,6 +182,9 @@ function toggleDecal(params)
     local name = params[1]
     local on = params[2]
     local completed = params[3] or false
+    if name:sub(1, 4) == "map_" and on and not (State.enabledDecals[name] or false) then
+        broadcastToAll("Adding sticker " .. name:sub(5):upper() .. " to the map")
+    end
     State.enabledDecals[name] = on
     State.completedDecals[name] = completed
     refreshDecals()
