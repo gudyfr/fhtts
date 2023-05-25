@@ -4400,7 +4400,7 @@ ProcessedScenarios2 = {
                               y = 1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  what = {
                                     },
                                  id = "scenario/131/token/1",
@@ -4863,7 +4863,7 @@ ProcessedScenarios2 = {
                               y = 1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  what = {
                                     },
                                  id = "section/150.3/token/2",
@@ -5159,7 +5159,7 @@ ProcessedScenarios2 = {
                               y = 3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  what = {
                                     },
                                  id = "section/188.1/token/3",
@@ -14143,7 +14143,7 @@ ProcessedScenarios2 = {
                               trigger = {
                                  type = "door",
                                  action = "reveal",
-                                 locked = True,
+                                 locked = true,
                                  what = {
                                     type = "section",
                                     name = "128.4",
@@ -16280,7 +16280,7 @@ ProcessedScenarios2 = {
                               y = -1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  id = "scenario/155/token/2",
                                  },
                               rename = "Door 2",
@@ -16296,7 +16296,7 @@ ProcessedScenarios2 = {
                               y = 3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  id = "scenario/155/token/3",
                                  },
                               rename = "Door 3",
@@ -16307,7 +16307,7 @@ ProcessedScenarios2 = {
                               y = 3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  id = "scenario/155/token/1",
                                  },
                               rename = "Door 1",
@@ -16684,7 +16684,7 @@ ProcessedScenarios2 = {
                      {
                         action = "move",
                         what = "01-A",
-                        smooth = False,
+                        smooth = false,
                         by = {
                            x = 3,
                            y = 0,
@@ -19239,7 +19239,7 @@ ProcessedScenarios2 = {
                               y = -1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "reveal",
                                  what = {
                                     type = "section",
@@ -20663,7 +20663,7 @@ ProcessedScenarios2 = {
                               y = 1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "none",
                                  what = {
                                     },
@@ -20838,7 +20838,7 @@ ProcessedScenarios2 = {
                               y = 3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "none",
                                  what = {
                                     },
@@ -20984,7 +20984,7 @@ ProcessedScenarios2 = {
                               y = -1,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "none",
                                  what = {
                                     },
@@ -21110,7 +21110,7 @@ ProcessedScenarios2 = {
                               y = 3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "none",
                                  what = {
                                     },
@@ -37015,8 +37015,8 @@ ProcessedScenarios2 = {
                                              x = 16,
                                              y = 0,
                                              },
-                                          smooth = False,
-                                          selfOnly = True,
+                                          smooth = false,
+                                          selfOnly = true,
                                           also = {
                                              {
                                                 action = "reveal",
@@ -37193,8 +37193,8 @@ ProcessedScenarios2 = {
                                              x = 16,
                                              y = 0,
                                              },
-                                          smooth = False,
-                                          selfOnly = True,
+                                          smooth = false,
+                                          selfOnly = true,
                                           also = {
                                              {
                                                 action = "reveal",
@@ -57741,7 +57741,7 @@ ProcessedScenarios2 = {
                               y = -3,
                               trigger = {
                                  type = "door",
-                                 locked = True,
+                                 locked = true,
                                  action = "reveal",
                                  what = {
                                     type = "section",
@@ -66486,8 +66486,8 @@ ProcessedScenarios2 = {
                               x = -24,
                               y = 0,
                               },
-                           smooth = False,
-                           selfOnly = True,
+                           smooth = false,
+                           selfOnly = true,
                            also = {
                               {
                                  action = "reveal",
@@ -66579,8 +66579,8 @@ ProcessedScenarios2 = {
                                                 x = -24,
                                                 y = 0,
                                                 },
-                                             smooth = False,
-                                             selfOnly = True,
+                                             smooth = false,
+                                             selfOnly = true,
                                              also = {
                                                 {
                                                    action = "reveal",
@@ -68369,7 +68369,7 @@ ProcessedScenarios2 = {
                                     type = "section",
                                     name = "20.3",
                                     },
-                                 locked = True,
+                                 locked = true,
                                  id = "scenario/117/token/2",
                                  },
                               type = "Door",
@@ -68390,7 +68390,7 @@ ProcessedScenarios2 = {
                                     type = "section",
                                     name = "87.3",
                                     },
-                                 locked = True,
+                                 locked = true,
                                  id = "scenario/117/token/3",
                                  },
                               type = "Door",
@@ -71371,7 +71371,7 @@ ProcessedScenarios2 = {
                               trigger = {
                                  type = "door",
                                  action = "reveal",
-                                 locked = True,
+                                 locked = true,
                                  what = {
                                     },
                                  id = "scenario/122/token/1",

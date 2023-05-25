@@ -157,7 +157,7 @@ Ct2 = {
       },
    {
       name = "ct26",
-      lockable = True,
+      lockable = true,
       position = {
          x = 0.189,
          y = 0.11,
@@ -186,7 +186,7 @@ Ct2 = {
       },
    {
       name = "ct25",
-      lockable = True,
+      lockable = true,
       position = {
          x = -0.137,
          y = 0.11,
@@ -347,7 +347,7 @@ Ct2 = {
       },
    {
       name = "ct36",
-      lockable = True,
+      lockable = true,
       size = 0,
       position = {
          x = 0.086,
@@ -374,7 +374,7 @@ Ct2 = {
       },
    {
       name = "ct37",
-      lockable = True,
+      lockable = true,
       position = {
          x = 0.189,
          y = 0.11,
@@ -579,7 +579,7 @@ Ct2 = {
       },
    {
       name = "ct58",
-      lockable = True,
+      lockable = true,
       position = {
          x = -0.218,
          y = 0.11,
@@ -602,7 +602,7 @@ Ct2 = {
       },
    {
       name = "ct59",
-      lockable = True,
+      lockable = true,
       position = {
          x = -0.466,
          y = 0.11,

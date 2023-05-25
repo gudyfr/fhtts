@@ -31,12 +31,13 @@ def dumpJsonAsLua(json,indent="", noIndent=False):
         f.write("}")
     elif isinstance(json, str):
         f.write(f"\"{json}\"")
+    elif isinstance(json, bool):
+        f.write("true" if json else "false")
     elif isinstance(json, int):
         f.write(f"{json}")
     elif isinstance(json, float):
         f.write(f"{trimPrecision(json)}")
-    elif isinstance(json, bool):
-        f.write(f"{json}")
+    
     elif isinstance(json, type(None)):
         f.write("nil")
     else:

@@ -9882,42 +9882,42 @@ GameData = {
          cards = {
             {
                626,
-               False,
+               false,
                46,
                },
             {
                627,
-               True,
+               true,
                71,
                },
             {
                628,
-               True,
+               true,
                71,
                },
             {
                629,
-               False,
+               false,
                37,
                },
             {
                630,
-               False,
+               false,
                57,
                },
             {
                632,
-               False,
+               false,
                17,
                },
             {
                631,
-               False,
+               false,
                95,
                },
             {
                633,
-               False,
+               false,
                46,
                },
             },
@@ -9927,42 +9927,42 @@ GameData = {
          cards = {
             {
                757,
-               False,
+               false,
                16,
                },
             {
                759,
-               False,
+               false,
                31,
                },
             {
                756,
-               False,
+               false,
                32,
                },
             {
                760,
-               False,
+               false,
                44,
                },
             {
                761,
-               False,
+               false,
                56,
                },
             {
                758,
-               True,
+               true,
                64,
                },
             {
                755,
-               False,
+               false,
                14,
                },
             {
                754,
-               True,
+               true,
                29,
                },
             },
@@ -9972,42 +9972,42 @@ GameData = {
          cards = {
             {
                538,
-               False,
+               false,
                14,
                },
             {
                539,
-               False,
+               false,
                1,
                },
             {
                540,
-               False,
+               false,
                67,
                },
             {
                541,
-               False,
+               false,
                20,
                },
             {
                542,
-               False,
+               false,
                42,
                },
             {
                543,
-               False,
+               false,
                51,
                },
             {
                544,
-               True,
+               true,
                77,
                },
             {
                545,
-               True,
+               true,
                98,
                },
             },
@@ -10017,42 +10017,42 @@ GameData = {
          cards = {
             {
                722,
-               False,
+               false,
                65,
                },
             {
                723,
-               True,
+               true,
                60,
                },
             {
                724,
-               True,
+               true,
                60,
                },
             {
                725,
-               False,
+               false,
                84,
                },
             {
                726,
-               False,
+               false,
                75,
                },
             {
                727,
-               False,
+               false,
                75,
                },
             {
                728,
-               False,
+               false,
                96,
                },
             {
                729,
-               False,
+               false,
                54,
                },
             },
@@ -10062,42 +10062,42 @@ GameData = {
          cards = {
             {
                570,
-               True,
+               true,
                40,
                },
             {
                571,
-               True,
+               true,
                42,
                },
             {
                572,
-               False,
+               false,
                62,
                },
             {
                573,
-               False,
+               false,
                71,
                },
             {
                574,
-               False,
+               false,
                83,
                },
             {
                575,
-               False,
+               false,
                93,
                },
             {
                576,
-               False,
+               false,
                79,
                },
             {
                577,
-               False,
+               false,
                87,
                },
             },
@@ -10107,42 +10107,42 @@ GameData = {
          cards = {
             {
                546,
-               False,
+               false,
                3,
                },
             {
                547,
-               False,
+               false,
                24,
                },
             {
                548,
-               True,
+               true,
                46,
                },
             {
                550,
-               False,
+               false,
                49,
                },
             {
                551,
-               False,
+               false,
                67,
                },
             {
                552,
-               False,
+               false,
                77,
                },
             {
                553,
-               True,
+               true,
                30,
                },
             {
                549,
-               False,
+               false,
                8,
                },
             },
@@ -10152,42 +10152,42 @@ GameData = {
          cards = {
             {
                554,
-               False,
+               false,
                18,
                },
             {
                555,
-               False,
+               false,
                38,
                },
             {
                557,
-               False,
+               false,
                58,
                },
             {
                556,
-               False,
+               false,
                58,
                },
             {
                558,
-               True,
+               true,
                78,
                },
             {
                559,
-               True,
+               true,
                78,
                },
             {
                560,
-               False,
+               false,
                58,
                },
             {
                561,
-               False,
+               false,
                18,
                },
             },
@@ -10197,42 +10197,42 @@ GameData = {
          cards = {
             {
                746,
-               True,
+               true,
                15,
                },
             {
                747,
-               False,
+               false,
                70,
                },
             {
                748,
-               False,
+               false,
                35,
                },
             {
                749,
-               False,
+               false,
                15,
                },
             {
                750,
-               False,
+               false,
                30,
                },
             {
                751,
-               False,
+               false,
                50,
                },
             {
                752,
-               False,
+               false,
                50,
                },
             {
                753,
-               True,
+               true,
                55,
                },
             },
@@ -10242,7 +10242,7 @@ GameData = {
          cards = {
             {
                752,
-               True,
+               true,
                50,
                },
             },
@@ -10252,42 +10252,42 @@ GameData = {
          cards = {
             {
                802,
-               False,
+               false,
                38,
                },
             {
                803,
-               False,
+               false,
                7,
                },
             {
                804,
-               False,
+               false,
                16,
                },
             {
                806,
-               False,
+               false,
                16,
                },
             {
                807,
-               True,
+               true,
                2,
                },
             {
                808,
-               False,
+               false,
                30,
                },
             {
                809,
-               False,
+               false,
                38,
                },
             {
                805,
-               True,
+               true,
                7,
                },
             },
@@ -10297,42 +10297,42 @@ GameData = {
          cards = {
             {
                842,
-               False,
+               false,
                6,
                },
             {
                843,
-               False,
+               false,
                7,
                },
             {
                844,
-               True,
+               true,
                19,
                },
             {
                845,
-               True,
+               true,
                19,
                },
             {
                846,
-               False,
+               false,
                26,
                },
             {
                847,
-               False,
+               false,
                26,
                },
             {
                848,
-               False,
+               false,
                83,
                },
             {
                849,
-               False,
+               false,
                72,
                },
             },
@@ -10342,7 +10342,7 @@ GameData = {
          cards = {
             {
                846,
-               True,
+               true,
                26,
                },
             },
@@ -10352,42 +10352,42 @@ GameData = {
          cards = {
             {
                826,
-               False,
+               false,
                5,
                },
             {
                827,
-               False,
+               false,
                37,
                },
             {
                828,
-               False,
+               false,
                37,
                },
             {
                829,
-               False,
+               false,
                42,
                },
             {
                830,
-               True,
+               true,
                43,
                },
             {
                831,
-               False,
+               false,
                76,
                },
             {
                832,
-               True,
+               true,
                43,
                },
             {
                833,
-               False,
+               false,
                24,
                },
             },
@@ -10397,42 +10397,42 @@ GameData = {
          cards = {
             {
                666,
-               False,
+               false,
                64,
                },
             {
                667,
-               True,
+               true,
                20,
                },
             {
                668,
-               False,
+               false,
                25,
                },
             {
                669,
-               False,
+               false,
                45,
                },
             {
                670,
-               False,
+               false,
                45,
                },
             {
                671,
-               False,
+               false,
                81,
                },
             {
                672,
-               False,
+               false,
                74,
                },
             {
                673,
-               True,
+               true,
                12,
                },
             },
@@ -10442,42 +10442,42 @@ GameData = {
          cards = {
             {
                658,
-               True,
+               true,
                22,
                },
             {
                659,
-               True,
+               true,
                33,
                },
             {
                660,
-               False,
+               false,
                48,
                },
             {
                661,
-               False,
+               false,
                48,
                },
             {
                662,
-               False,
+               false,
                61,
                },
             {
                663,
-               False,
+               false,
                75,
                },
             {
                664,
-               False,
+               false,
                55,
                },
             {
                665,
-               False,
+               false,
                67,
                },
             },
@@ -10487,42 +10487,42 @@ GameData = {
          cards = {
             {
                674,
-               True,
+               true,
                11,
                },
             {
                675,
-               False,
+               false,
                28,
                },
             {
                676,
-               False,
+               false,
                38,
                },
             {
                677,
-               False,
+               false,
                38,
                },
             {
                678,
-               False,
+               false,
                61,
                },
             {
                679,
-               False,
+               false,
                64,
                },
             {
                680,
-               False,
+               false,
                41,
                },
             {
                681,
-               True,
+               true,
                23,
                },
             },
@@ -10532,42 +10532,42 @@ GameData = {
          cards = {
             {
                578,
-               False,
+               false,
                4,
                },
             {
                579,
-               False,
+               false,
                37,
                },
             {
                580,
-               False,
+               false,
                22,
                },
             {
                581,
-               False,
+               false,
                26,
                },
             {
                582,
-               True,
+               true,
                46,
                },
             {
                583,
-               True,
+               true,
                41,
                },
             {
                584,
-               False,
+               false,
                35,
                },
             {
                585,
-               False,
+               false,
                15,
                },
             },
@@ -10577,42 +10577,42 @@ GameData = {
          cards = {
             {
                866,
-               False,
+               false,
                36,
                },
             {
                867,
-               False,
+               false,
                57,
                },
             {
                868,
-               False,
+               false,
                59,
                },
             {
                870,
-               False,
+               false,
                66,
                },
             {
                671,
-               True,
+               true,
                94,
                },
             {
                872,
-               True,
+               true,
                94,
                },
             {
                869,
-               False,
+               false,
                85,
                },
             {
                873,
-               False,
+               false,
                66,
                },
             },
@@ -10622,42 +10622,42 @@ GameData = {
          cards = {
             {
                850,
-               False,
+               false,
                12,
                },
             {
                851,
-               True,
+               true,
                13,
                },
             {
                852,
-               False,
+               false,
                25,
                },
             {
                853,
-               False,
+               false,
                39,
                },
             {
                854,
-               False,
+               false,
                54,
                },
             {
                855,
-               False,
+               false,
                59,
                },
             {
                857,
-               False,
+               false,
                6,
                },
             {
                856,
-               True,
+               true,
                72,
                },
             },
@@ -10667,42 +10667,42 @@ GameData = {
          cards = {
             {
                794,
-               False,
+               false,
                70,
                },
             {
                795,
-               False,
+               false,
                98,
                },
             {
                796,
-               False,
+               false,
                98,
                },
             {
                797,
-               False,
+               false,
                19,
                },
             {
                798,
-               False,
+               false,
                14,
                },
             {
                799,
-               False,
+               false,
                14,
                },
             {
                800,
-               True,
+               true,
                47,
                },
             {
                801,
-               True,
+               true,
                35,
                },
             },
@@ -10712,42 +10712,42 @@ GameData = {
          cards = {
             {
                786,
-               False,
+               false,
                97,
                },
             {
                787,
-               False,
+               false,
                97,
                },
             {
                788,
-               False,
+               false,
                22,
                },
             {
                789,
-               True,
+               true,
                68,
                },
             {
                790,
-               False,
+               false,
                41,
                },
             {
                791,
-               False,
+               false,
                51,
                },
             {
                792,
-               False,
+               false,
                31,
                },
             {
                793,
-               True,
+               true,
                68,
                },
             },
@@ -10757,42 +10757,42 @@ GameData = {
          cards = {
             {
                770,
-               True,
+               true,
                29,
                },
             {
                771,
-               False,
+               false,
                40,
                },
             {
                772,
-               False,
+               false,
                53,
                },
             {
                773,
-               False,
+               false,
                54,
                },
             {
                774,
-               False,
+               false,
                69,
                },
             {
                775,
-               False,
+               false,
                92,
                },
             {
                776,
-               False,
+               false,
                79,
                },
             {
                777,
-               True,
+               true,
                35,
                },
             },
@@ -10802,42 +10802,42 @@ GameData = {
          cards = {
             {
                763,
-               False,
+               false,
                8,
                },
             {
                762,
-               False,
+               false,
                8,
                },
             {
                765,
-               True,
+               true,
                23,
                },
             {
                766,
-               True,
+               true,
                23,
                },
             {
                764,
-               False,
+               false,
                62,
                },
             {
                767,
-               False,
+               false,
                74,
                },
             {
                768,
-               False,
+               false,
                89,
                },
             {
                769,
-               False,
+               false,
                9,
                },
             },
@@ -10847,42 +10847,42 @@ GameData = {
          cards = {
             {
                858,
-               False,
+               false,
                32,
                },
             {
                859,
-               False,
+               false,
                52,
                },
             {
                860,
-               True,
+               true,
                57,
                },
             {
                861,
-               False,
+               false,
                27,
                },
             {
                862,
-               False,
+               false,
                87,
                },
             {
                863,
-               False,
+               false,
                89,
                },
             {
                864,
-               False,
+               false,
                6,
                },
             {
                865,
-               True,
+               true,
                89,
                },
             },
@@ -10892,42 +10892,42 @@ GameData = {
          cards = {
             {
                586,
-               True,
+               true,
                17,
                },
             {
                587,
-               False,
+               false,
                36,
                },
             {
                588,
-               False,
+               false,
                36,
                },
             {
                589,
-               False,
+               false,
                68,
                },
             {
                590,
-               True,
+               true,
                73,
                },
             {
                591,
-               False,
+               false,
                95,
                },
             {
                592,
-               False,
+               false,
                88,
                },
             {
                593,
-               False,
+               false,
                50,
                },
             },
@@ -10937,42 +10937,42 @@ GameData = {
          cards = {
             {
                562,
-               False,
+               false,
                9,
                },
             {
                563,
-               True,
+               true,
                21,
                },
             {
                564,
-               True,
+               true,
                21,
                },
             {
                565,
-               False,
+               false,
                29,
                },
             {
                566,
-               False,
+               false,
                37,
                },
             {
                567,
-               False,
+               false,
                43,
                },
             {
                568,
-               False,
+               false,
                43,
                },
             {
                569,
-               False,
+               false,
                2,
                },
             },
@@ -10982,42 +10982,42 @@ GameData = {
          cards = {
             {
                874,
-               False,
+               false,
                11,
                },
             {
                875,
-               False,
+               false,
                14,
                },
             {
                876,
-               True,
+               true,
                17,
                },
             {
                877,
-               True,
+               true,
                85,
                },
             {
                878,
-               False,
+               false,
                79,
                },
             {
                879,
-               False,
+               false,
                73,
                },
             {
                880,
-               False,
+               false,
                36,
                },
             {
                881,
-               False,
+               false,
                52,
                },
             },
@@ -11027,42 +11027,42 @@ GameData = {
          cards = {
             {
                874,
-               False,
+               false,
                11,
                },
             {
                875,
-               False,
+               false,
                14,
                },
             {
                876,
-               True,
+               true,
                17,
                },
             {
                877,
-               True,
+               true,
                85,
                },
             {
                878,
-               False,
+               false,
                79,
                },
             {
                879,
-               False,
+               false,
                73,
                },
             {
                880,
-               False,
+               false,
                36,
                },
             {
                881,
-               False,
+               false,
                52,
                },
             },
@@ -11072,42 +11072,42 @@ GameData = {
          cards = {
             {
                874,
-               False,
+               false,
                11,
                },
             {
                875,
-               False,
+               false,
                14,
                },
             {
                876,
-               True,
+               true,
                17,
                },
             {
                877,
-               True,
+               true,
                85,
                },
             {
                878,
-               False,
+               false,
                79,
                },
             {
                879,
-               False,
+               false,
                73,
                },
             {
                880,
-               False,
+               false,
                36,
                },
             {
                881,
-               False,
+               false,
                52,
                },
             },
@@ -11117,42 +11117,42 @@ GameData = {
          cards = {
             {
                818,
-               True,
+               true,
                68,
                },
             {
                819,
-               True,
+               true,
                68,
                },
             {
                820,
-               False,
+               false,
                75,
                },
             {
                821,
-               False,
+               false,
                53,
                },
             {
                822,
-               False,
+               false,
                63,
                },
             {
                823,
-               False,
+               false,
                37,
                },
             {
                824,
-               False,
+               false,
                65,
                },
             {
                825,
-               False,
+               false,
                85,
                },
             },
@@ -11162,42 +11162,42 @@ GameData = {
          cards = {
             {
                610,
-               True,
+               true,
                78,
                },
             {
                611,
-               True,
+               true,
                38,
                },
             {
                612,
-               False,
+               false,
                33,
                },
             {
                613,
-               False,
+               false,
                12,
                },
             {
                614,
-               False,
+               false,
                58,
                },
             {
                615,
-               False,
+               false,
                43,
                },
             {
                616,
-               False,
+               false,
                17,
                },
             {
                617,
-               False,
+               false,
                68,
                },
             },
@@ -11207,42 +11207,42 @@ GameData = {
          cards = {
             {
                634,
-               False,
+               false,
                23,
                },
             {
                635,
-               True,
+               true,
                71,
                },
             {
                636,
-               False,
+               false,
                42,
                },
             {
                637,
-               False,
+               false,
                42,
                },
             {
                638,
-               False,
+               false,
                68,
                },
             {
                639,
-               False,
+               false,
                68,
                },
             {
                640,
-               True,
+               true,
                39,
                },
             {
                641,
-               False,
+               false,
                84,
                },
             },
@@ -11252,42 +11252,42 @@ GameData = {
          cards = {
             {
                642,
-               True,
+               true,
                95,
                },
             {
                643,
-               True,
+               true,
                44,
                },
             {
                644,
-               False,
+               false,
                59,
                },
             {
                645,
-               False,
+               false,
                59,
                },
             {
                646,
-               False,
+               false,
                41,
                },
             {
                647,
-               False,
+               false,
                71,
                },
             {
                648,
-               False,
+               false,
                13,
                },
             {
                649,
-               False,
+               false,
                16,
                },
             },
@@ -11297,42 +11297,42 @@ GameData = {
          cards = {
             {
                706,
-               False,
+               false,
                20,
                },
             {
                707,
-               True,
+               true,
                82,
                },
             {
                708,
-               True,
+               true,
                9,
                },
             {
                709,
-               False,
+               false,
                35,
                },
             {
                710,
-               False,
+               false,
                67,
                },
             {
                711,
-               False,
+               false,
                12,
                },
             {
                712,
-               False,
+               false,
                16,
                },
             {
                713,
-               False,
+               false,
                5,
                },
             },
@@ -11342,42 +11342,42 @@ GameData = {
          cards = {
             {
                650,
-               False,
+               false,
                70,
                },
             {
                651,
-               False,
+               false,
                82,
                },
             {
                652,
-               False,
+               false,
                32,
                },
             {
                653,
-               False,
+               false,
                57,
                },
             {
                654,
-               False,
+               false,
                11,
                },
             {
                655,
-               False,
+               false,
                17,
                },
             {
                656,
-               True,
+               true,
                98,
                },
             {
                657,
-               True,
+               true,
                78,
                },
             },
@@ -11387,42 +11387,42 @@ GameData = {
          cards = {
             {
                690,
-               False,
+               false,
                47,
                },
             {
                691,
-               False,
+               false,
                58,
                },
             {
                692,
-               False,
+               false,
                44,
                },
             {
                693,
-               True,
+               true,
                13,
                },
             {
                694,
-               True,
+               true,
                60,
                },
             {
                695,
-               False,
+               false,
                36,
                },
             {
                696,
-               False,
+               false,
                11,
                },
             {
                697,
-               False,
+               false,
                31,
                },
             },
@@ -11432,42 +11432,42 @@ GameData = {
          cards = {
             {
                682,
-               True,
+               true,
                6,
                },
             {
                683,
-               False,
+               false,
                10,
                },
             {
                684,
-               False,
+               false,
                22,
                },
             {
                685,
-               False,
+               false,
                34,
                },
             {
                686,
-               False,
+               false,
                37,
                },
             {
                687,
-               False,
+               false,
                18,
                },
             {
                688,
-               True,
+               true,
                51,
                },
             {
                689,
-               False,
+               false,
                46,
                },
             },
@@ -11477,42 +11477,42 @@ GameData = {
          cards = {
             {
                698,
-               False,
+               false,
                60,
                },
             {
                699,
-               False,
+               false,
                51,
                },
             {
                700,
-               False,
+               false,
                29,
                },
             {
                701,
-               True,
+               true,
                98,
                },
             {
                702,
-               True,
+               true,
                98,
                },
             {
                703,
-               False,
+               false,
                36,
                },
             {
                704,
-               False,
+               false,
                48,
                },
             {
                705,
-               False,
+               false,
                40,
                },
             },
@@ -11522,42 +11522,42 @@ GameData = {
          cards = {
             {
                698,
-               False,
+               false,
                60,
                },
             {
                699,
-               False,
+               false,
                51,
                },
             {
                700,
-               False,
+               false,
                29,
                },
             {
                701,
-               True,
+               true,
                98,
                },
             {
                702,
-               True,
+               true,
                98,
                },
             {
                703,
-               False,
+               false,
                36,
                },
             {
                704,
-               False,
+               false,
                48,
                },
             {
                705,
-               False,
+               false,
                40,
                },
             },
@@ -11567,42 +11567,42 @@ GameData = {
          cards = {
             {
                698,
-               False,
+               false,
                60,
                },
             {
                699,
-               False,
+               false,
                51,
                },
             {
                700,
-               False,
+               false,
                29,
                },
             {
                701,
-               True,
+               true,
                98,
                },
             {
                702,
-               True,
+               true,
                98,
                },
             {
                703,
-               False,
+               false,
                36,
                },
             {
                704,
-               False,
+               false,
                48,
                },
             {
                705,
-               False,
+               false,
                40,
                },
             },
@@ -11612,42 +11612,42 @@ GameData = {
          cards = {
             {
                714,
-               True,
+               true,
                40,
                },
             {
                715,
-               False,
+               false,
                38,
                },
             {
                716,
-               False,
+               false,
                54,
                },
             {
                717,
-               True,
+               true,
                26,
                },
             {
                718,
-               False,
+               false,
                18,
                },
             {
                719,
-               False,
+               false,
                23,
                },
             {
                720,
-               False,
+               false,
                13,
                },
             {
                721,
-               False,
+               false,
                31,
                },
             },
@@ -11657,42 +11657,42 @@ GameData = {
          cards = {
             {
                602,
-               False,
+               false,
                83,
                },
             {
                603,
-               True,
+               true,
                22,
                },
             {
                604,
-               False,
+               false,
                44,
                },
             {
                605,
-               False,
+               false,
                48,
                },
             {
                606,
-               False,
+               false,
                57,
                },
             {
                607,
-               False,
+               false,
                91,
                },
             {
                608,
-               False,
+               false,
                78,
                },
             {
                609,
-               True,
+               true,
                16,
                },
             },
@@ -11702,42 +11702,42 @@ GameData = {
          cards = {
             {
                594,
-               False,
+               false,
                31,
                },
             {
                595,
-               False,
+               false,
                41,
                },
             {
                596,
-               False,
+               false,
                63,
                },
             {
                597,
-               False,
+               false,
                85,
                },
             {
                598,
-               False,
+               false,
                29,
                },
             {
                599,
-               False,
+               false,
                42,
                },
             {
                600,
-               True,
+               true,
                56,
                },
             {
                601,
-               True,
+               true,
                93,
                },
             },
@@ -11747,42 +11747,42 @@ GameData = {
          cards = {
             {
                810,
-               False,
+               false,
                27,
                },
             {
                811,
-               True,
+               true,
                10,
                },
             {
                812,
-               False,
+               false,
                73,
                },
             {
                813,
-               False,
+               false,
                9,
                },
             {
                814,
-               False,
+               false,
                72,
                },
             {
                816,
-               False,
+               false,
                49,
                },
             {
                815,
-               True,
+               true,
                90,
                },
             {
                817,
-               False,
+               false,
                23,
                },
             },
@@ -11792,42 +11792,42 @@ GameData = {
          cards = {
             {
                618,
-               True,
+               true,
                95,
                },
             {
                619,
-               False,
+               false,
                48,
                },
             {
                620,
-               False,
+               false,
                76,
                },
             {
                621,
-               False,
+               false,
                24,
                },
             {
                622,
-               False,
+               false,
                70,
                },
             {
                623,
-               False,
+               false,
                64,
                },
             {
                624,
-               False,
+               false,
                45,
                },
             {
                625,
-               True,
+               true,
                10,
                },
             },
@@ -11837,42 +11837,42 @@ GameData = {
          cards = {
             {
                782,
-               False,
+               false,
                88,
                },
             {
                781,
-               False,
+               false,
                20,
                },
             {
                785,
-               False,
+               false,
                56,
                },
             {
                783,
-               False,
+               false,
                12,
                },
             {
                779,
-               False,
+               false,
                72,
                },
             {
                778,
-               False,
+               false,
                18,
                },
             {
                784,
-               True,
+               true,
                65,
                },
             {
                780,
-               True,
+               true,
                68,
                },
             },
@@ -11882,42 +11882,42 @@ GameData = {
          cards = {
             {
                834,
-               True,
+               true,
                13,
                },
             {
                835,
-               False,
+               false,
                14,
                },
             {
                841,
-               False,
+               false,
                3,
                },
             {
                836,
-               False,
+               false,
                29,
                },
             {
                837,
-               False,
+               false,
                41,
                },
             {
                840,
-               False,
+               false,
                61,
                },
             {
                839,
-               True,
+               true,
                80,
                },
             {
                838,
-               False,
+               false,
                60,
                },
             },
@@ -11927,42 +11927,42 @@ GameData = {
          cards = {
             {
                738,
-               False,
+               false,
                22,
                },
             {
                740,
-               False,
+               false,
                43,
                },
             {
                742,
-               True,
+               true,
                6,
                },
             {
                745,
-               False,
+               false,
                66,
                },
             {
                739,
-               False,
+               false,
                18,
                },
             {
                741,
-               False,
+               false,
                30,
                },
             {
                743,
-               False,
+               false,
                59,
                },
             {
                744,
-               True,
+               true,
                27,
                },
             },
@@ -11972,42 +11972,42 @@ GameData = {
          cards = {
             {
                730,
-               True,
+               true,
                17,
                },
             {
                732,
-               False,
+               false,
                41,
                },
             {
                734,
-               False,
+               false,
                8,
                },
             {
                737,
-               False,
+               false,
                12,
                },
             {
                731,
-               False,
+               false,
                76,
                },
             {
                733,
-               False,
+               false,
                39,
                },
             {
                735,
-               True,
+               true,
                56,
                },
             {
                736,
-               False,
+               false,
                80,
                },
             },
@@ -12039,7 +12039,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Ice Cluster Grows..",
                },
             },
@@ -12290,7 +12290,7 @@ GameData = {
                list = {
                   9,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Read section 75.2",
                },
             {
@@ -12299,7 +12299,7 @@ GameData = {
                   1,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Flame Demon at A. Normal for 2-3 characters. Elite for 4.",
                },
             {
@@ -12308,7 +12308,7 @@ GameData = {
                   2,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Earth Demon at B. Normal for 2-3 characters. Elite for 4.",
                },
             {
@@ -12317,7 +12317,7 @@ GameData = {
                   3,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one elite Ice Wraith at C. Spawn one extra normal Ice wraith at D, if 3-4 characters.",
                },
             {
@@ -12329,7 +12329,7 @@ GameData = {
                   8,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Flame Demon at C. Normal for 2-3 characters. Elite for 4. Spawn one Earth demon at D. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12339,7 +12339,7 @@ GameData = {
                   9,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn normal Ice Wraith at A. Also spawn an elite Ice Wraith if 3-4 characters. Spawn one Earth demon at B. Normal for 2-3 characters, elite for 4.",
                },
             },
@@ -12443,7 +12443,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 154.3",
                },
             {
@@ -12452,7 +12452,7 @@ GameData = {
                   2,
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at B. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12461,7 +12461,7 @@ GameData = {
                   3,
                   8,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at C. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -12470,7 +12470,7 @@ GameData = {
                   4,
                   9,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at D. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12479,7 +12479,7 @@ GameData = {
                   5,
                   10,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at E. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -12489,7 +12489,7 @@ GameData = {
                   11,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Chaos Demons at both F. One normal each for 2 characters. One elite each for 3. One normal and one Elite each for 4 characters.",
                },
             },
@@ -12580,7 +12580,7 @@ GameData = {
                      list = {
                         2,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Replace any one metal cabinet with one normal Steel Automaton.",
                      },
                   {
@@ -12588,7 +12588,7 @@ GameData = {
                      list = {
                         4,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "If 3 or 4 characters: Replace any one metal cabinet with one normal Steel Automaton.",
                      },
                   {
@@ -12596,7 +12596,7 @@ GameData = {
                      list = {
                         6,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "If 4 characters: Replace any one metal cabinet with one normal Steel Automaton.",
                      },
                   },
@@ -12651,7 +12651,7 @@ GameData = {
                   12,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Aesther Scout at any empty starting hex. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -12660,7 +12660,7 @@ GameData = {
                   9,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Aesther Scout at any empty starting hex. Normal for 2 characters, elite for 3-4.",
                },
             },
@@ -12710,7 +12710,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Reveal Token and spawn monster according to table on page 76.",
                },
             },
@@ -12746,7 +12746,7 @@ GameData = {
                list = {
                   1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Tip: Leave the Chaos Demon active for Tormentor's extra card.",
                },
             {
@@ -12758,7 +12758,7 @@ GameData = {
                   21,
                   27,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at A. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12770,7 +12770,7 @@ GameData = {
                   22,
                   28,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at B. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -12783,7 +12783,7 @@ GameData = {
                   29,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Chaos Demon at C. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12795,7 +12795,7 @@ GameData = {
                   24,
                   30,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Demon at A. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -12807,7 +12807,7 @@ GameData = {
                   25,
                   31,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Demon at B. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -12820,7 +12820,7 @@ GameData = {
                   32,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Chaos Demon at C. Normal for 2-3 characters, elite for 4.",
                },
             },
@@ -12867,7 +12867,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Living Spirit at A. Normal for 2 characters, elite for 3-4.",
                },
             },
@@ -12897,7 +12897,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Deep Terror at C. Normal for 2-3 characters, elite for 4.",
                      },
                   },
@@ -12927,7 +12927,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 3",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Night Demon at B. Normal for 2 characters, elite for 3-4.",
                      },
                   },
@@ -12983,7 +12983,7 @@ GameData = {
                   26,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door A: Spawn 1 elite Ruined Machine. Spawn 2 normal Ruined machines extra for 3-4 characters.",
                },
             {
@@ -12994,7 +12994,7 @@ GameData = {
                   27,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door B: Spawn 1 Robotic Boltshooter. Normal for 2 characters, elite 3-4.",
                },
             {
@@ -13005,7 +13005,7 @@ GameData = {
                   28,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door C: Spawn 1 normal Flaming Bladespinner. Spawn 1 extra normal Flaming Bladespinner for 4 characters.",
                },
             {
@@ -13016,7 +13016,7 @@ GameData = {
                   29,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door D: Spawn 1 elite Ruined Machine. Spawn 2 normal Ruined machines extra for 3-4 characters.",
                },
             {
@@ -13027,7 +13027,7 @@ GameData = {
                   30,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door A: Spawn 1 Robotic Boltshooter. Normal for 2 characters, elite 3-4.",
                },
             {
@@ -13038,7 +13038,7 @@ GameData = {
                   31,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door B: Spawn 1 normal Flaming Bladespinner. Spawn 1 extra normal Flaming Bladespinner for 4 characters.",
                },
             {
@@ -13048,7 +13048,7 @@ GameData = {
                   20,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door C: Spawn 1 elite Ruined Machine. Spawn 2 normal Ruined machines extra for 3-4 characters.",
                },
             {
@@ -13058,7 +13058,7 @@ GameData = {
                   21,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door D: Spawn 1 Robotic Boltshooter. Normal for 2 characters, elite 3-4.",
                },
             {
@@ -13068,7 +13068,7 @@ GameData = {
                   22,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door A: Spawn 1 normal Flaming Bladespinner. Spawn 1 extra normal Flaming Bladespinner for 4 characters.",
                },
             {
@@ -13078,7 +13078,7 @@ GameData = {
                   23,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door B: Spawn 1 elite Ruined Machine. Spawn 2 normal Ruined machines extra for 3-4 characters.",
                },
             {
@@ -13088,7 +13088,7 @@ GameData = {
                   24,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door C: Spawn 1 Robotic Boltshooter. Normal for 2 characters, elite 3-4.",
                },
             {
@@ -13098,7 +13098,7 @@ GameData = {
                   25,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "At door D: Spawn 1 normal Flaming Bladespinner. Spawn 1 extra normal Flaming Bladespinner for 4 characters.",
                },
             },
@@ -13144,7 +13144,7 @@ GameData = {
                         3,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Frozen Corpse at B. It is normal for two characters or elite for three or four characters.",
                      },
                   {
@@ -13153,7 +13153,7 @@ GameData = {
                         5,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Frozen Corpse at C. It is normal for two or three characters or elite for four characters.",
                      },
                   },
@@ -13254,7 +13254,7 @@ GameData = {
                   25,
                   28,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All characters move 1 hex to the right. Move Air to row b.",
                },
             {
@@ -13271,7 +13271,7 @@ GameData = {
                   26,
                   29,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All characters move 1 hex to the right. Move Air to row c.",
                },
             {
@@ -13288,7 +13288,7 @@ GameData = {
                   27,
                   30,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All characters move 1 hex to the right. Move Air to row a.",
                },
             },
@@ -13303,7 +13303,7 @@ GameData = {
                      list = {
                         -1,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "All characters suffer 1 damage.",
                      },
                   },
@@ -13429,7 +13429,7 @@ GameData = {
                      list = {
                         -1,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "all characters suffer 1 damage until altar 1 is destroyed",
                      },
                   {
@@ -13469,7 +13469,7 @@ GameData = {
                      list = {
                         -1,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "all monsters heal 2 damage until altar 2 is destroyed",
                      },
                   {
@@ -13489,7 +13489,7 @@ GameData = {
                      list = {
                         -1,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "all characters gain muddle until altar 3 is destroyed",
                      },
                   {
@@ -13551,7 +13551,7 @@ GameData = {
                   28,
                   29,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Reveal token and place a corridor.",
                },
             {
@@ -13564,7 +13564,7 @@ GameData = {
                   25,
                   30,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Remove all corridors and shuffle tokens.",
                },
             },
@@ -13666,7 +13666,7 @@ GameData = {
                   3,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn normal Snow Imps at A and B. Spawn also at C for 3-4 characters. It is elite for 4 characters.",
                },
             {
@@ -13676,7 +13676,7 @@ GameData = {
                   4,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn normal Living spirits. At E for 2 characters, B for 3, B and D for 4. Spawn normal Snow imp at D for 3 characters.",
                },
             {
@@ -13686,7 +13686,7 @@ GameData = {
                   7,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Ice Wraiths. At A for 2-3 characters, A and C for 4. Spawn an elite Snow Imp at C for 3 characters.",
                },
             {
@@ -13698,7 +13698,7 @@ GameData = {
                   12,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Snow Imps at B, D and E. Normal for 2 characters, elite at E for 3, all elite for 4 characters.",
                },
             {
@@ -13708,7 +13708,7 @@ GameData = {
                   11,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Ice Wraiths. At A for 2 characters, A and C for 3. A, C and E for 4 characters. Spawn normal living spirit at C for 2 characters.",
                },
             {
@@ -13734,7 +13734,7 @@ GameData = {
                   30,
                   },
                name = "spawn 6",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Ice Wraiths. At A and C for 2 characters, A, C, and E for 3. A,B,C,D for 4 characters.",
                },
             },
@@ -13772,7 +13772,7 @@ GameData = {
                   27,
                   },
                name = "spawn 1",
-               startOfRound = False,
+               startOfRound = false,
                note = "Spawn 1 Ruined Machine at an empty starting hex. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -13785,7 +13785,7 @@ GameData = {
                   30,
                   },
                name = "spawn 2",
-               startOfRound = False,
+               startOfRound = false,
                note = "Spawn 1 Ruined Machine at an empty starting hex.Normal for 2 characters, elite for 3-4.",
                },
             },
@@ -13830,7 +13830,7 @@ GameData = {
                   28,
                   30,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Ruined Machine at each a and b with a cabinet. Normal for 2 characters, elite at b for 3 or all elite for 4 characters.",
                },
             {
@@ -13851,7 +13851,7 @@ GameData = {
                   27,
                   29,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Characters, their summons and Ruined Machines adjacent to a power conduit suffer trap damage.",
                },
             {
@@ -13961,7 +13961,7 @@ GameData = {
                list = {
                   5,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 173.2.",
                },
             {
@@ -13969,7 +13969,7 @@ GameData = {
                list = {
                   8,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 87.1.",
                },
             },
@@ -14125,7 +14125,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Lurker Soldier at A and 1 Lurker Mindsnipper at B. both normal for 2 characters, Mindsnipper elite for 3-4 and both elite for 4 characters.",
                },
             },
@@ -14181,7 +14181,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Hound at any empty starting Hex. Normal for 2-3 characters, elite for 4.",
                      },
                   {
@@ -14204,7 +14204,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Hound at any empty starting Hex. Normal for 2 characters, elite for 3-4.",
                      },
                   },
@@ -14243,7 +14243,7 @@ GameData = {
                   27,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Frost Demon at E. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -14258,7 +14258,7 @@ GameData = {
                   28,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Wind Demon at F. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -14273,7 +14273,7 @@ GameData = {
                   29,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Frost Demon at G. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -14288,7 +14288,7 @@ GameData = {
                   30,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Wind Demon at H. Normal for 2-3 characters, elite for 4.",
                },
             },
@@ -14318,7 +14318,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Figures not occupying stable hexes fall.",
                },
             },
@@ -14432,7 +14432,7 @@ GameData = {
                   6,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Scout at A. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -14442,7 +14442,7 @@ GameData = {
                   7,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Archer at B. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -14452,7 +14452,7 @@ GameData = {
                   8,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Guard at A. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -14462,7 +14462,7 @@ GameData = {
                   9,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Snowspeaker at B. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -14470,7 +14470,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 53.2.",
                },
             },
@@ -14514,7 +14514,7 @@ GameData = {
                   9,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Algox Guard and Archer at A, 1 normal Mindsnipper at B for 2 characters. 3-4 characters: add one Mindsnipper. 4 characters: one more Guard, and the Archer is elite.",
                },
             {
@@ -14522,7 +14522,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 105.4.",
                },
             {
@@ -14530,7 +14530,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 56.2.",
                },
             },
@@ -14586,7 +14586,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Chaos Lieutenant perform heal (RxL)/2 self (rounded down). Where R is number of Ruined Machines.",
                },
             {
@@ -14609,7 +14609,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn C-1 normal Ruined Machines at C.",
                },
             },
@@ -14704,7 +14704,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Hounds at D and E. Only one normal for 2 characters, one normal at both for 3 characters and one elite for 4.",
                      },
                   {
@@ -14722,7 +14722,7 @@ GameData = {
                         31,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn One Normal Polar Bar at E. Also one Normal Polar Bear at D for 3-4 characters.",
                      },
                   },
@@ -14756,7 +14756,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All figures resolve: Corresponding Hex unoccupied: suffer 1 damage. Occupied by enemy: suffer 2 damage. Occupied by ally: heal 1, self.",
                },
             },
@@ -14797,7 +14797,7 @@ GameData = {
                list = {
                   8,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 43.1.",
                },
             },
@@ -14855,7 +14855,7 @@ GameData = {
                      list = {
                         4,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Read section 148.5",
                      },
                   },
@@ -14952,7 +14952,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Guard at E and one Algox Archer at D. Normal for 2-3 characters, elite for 4 characters.",
                },
             {
@@ -14967,7 +14967,7 @@ GameData = {
                   28,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Algox Guard at E and one Algox Archer at D. Normal for 2 characters, elite for 3-4 characters.",
                },
             {
@@ -15025,7 +15025,7 @@ GameData = {
                   10,
                   11,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Descend one floor",
                },
             {
@@ -15033,7 +15033,7 @@ GameData = {
                list = {
                   2,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 90.3",
                },
             {
@@ -15041,7 +15041,7 @@ GameData = {
                list = {
                   4,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 27.2",
                },
             {
@@ -15049,7 +15049,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 44.2",
                },
             {
@@ -15057,7 +15057,7 @@ GameData = {
                list = {
                   9,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 15.3",
                },
             {
@@ -15065,7 +15065,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 39.1",
                },
             {
@@ -15073,7 +15073,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Descend one floor. Scenario Complete when all enemies are dead.",
                },
             },
@@ -15091,7 +15091,7 @@ GameData = {
                list = {
                   3,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 120.2.",
                },
             {
@@ -15099,7 +15099,7 @@ GameData = {
                list = {
                   5,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 181.5",
                },
             {
@@ -15107,7 +15107,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 185.1",
                },
             {
@@ -15115,7 +15115,7 @@ GameData = {
                list = {
                   8,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 194.2",
                },
             },
@@ -15142,7 +15142,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Lurker Soldier at E. It is elite for 4 characters. Also spawn a normal Lurker Wavethrower at D for 3-4 characters.",
                      },
                   },
@@ -15252,7 +15252,7 @@ GameData = {
                         -1,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn 1 Ruined Machine at both A and 1 Steel Automation at B. All normal for 2 characters, Steel Automaton elite for 3-4 and all elite for 4 characters.",
                      },
                   },
@@ -15428,7 +15428,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "If there is at least one character adjacent to snow rock A, place one damage token on it.",
                },
             {
@@ -15451,7 +15451,7 @@ GameData = {
                   29,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Piranha Pig (normal for 2 characters, elite for 3-4) and 2 Lightning Eels (normal for 2-3 characters, elite for 4)",
                },
             {
@@ -15474,7 +15474,7 @@ GameData = {
                   30,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Piranha Pig (normal for 2-3 characters, elite for 4) and 2 Lightning Eels (normal for 2 characters, elite for 3-4)",
                },
             },
@@ -15506,7 +15506,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "If ice pillar was damaged this round: spawn monsters.",
                },
             {
@@ -15678,7 +15678,7 @@ GameData = {
                list = {
                   10,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 33.4.",
                },
             {
@@ -15687,7 +15687,7 @@ GameData = {
                   5,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Algox Guards at each A and B. Normal for 2 characters, elite at B for 3 characters and all elite for 4.",
                },
             {
@@ -15696,7 +15696,7 @@ GameData = {
                   8,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Algox Snowspeaker at each A. Normal for 2 characters, elite for 2-3. Also spawn two Snow Imps at each B. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -15862,7 +15862,7 @@ GameData = {
                         -1,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn elite Ruined Machines at F. One for 2 characters and two for 3-4 characters.",
                      },
                   },
@@ -15878,7 +15878,7 @@ GameData = {
                         -1,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Spitting drake at G. Normal for 2-3 characters and elite for 4 characters.",
                      },
                   },
@@ -15925,7 +15925,7 @@ GameData = {
                         2,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn two Chaos Demons at C. one is elite for 3 characters and both are elite for 4 characters.",
                      },
                   },
@@ -16060,7 +16060,7 @@ GameData = {
                   9,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Flaming Bladespinner at both B and D. Both normal for 2 characters, elite at D for 3 and both elite for 4 characters.",
                },
             {
@@ -16070,7 +16070,7 @@ GameData = {
                   10,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Robotic Boltshooter at both c and e. Both normal for 2 characters, elite at e for 3 and both elite for 4 characters.",
                },
             {
@@ -16080,7 +16080,7 @@ GameData = {
                   7,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 2 Ruined Machines at any starting hex. Both normal for 2 characters, one elite for 3 and both elite for 4 characters.",
                },
             {
@@ -16089,7 +16089,7 @@ GameData = {
                   11,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 2 Flaming Bladespinners at any starting hex. Both normal for 2 characters, one elite for 3 and both elite for 4 characters.",
                },
             {
@@ -16116,7 +16116,7 @@ GameData = {
                   30,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Ruined Machines at b,c, d and e. All normal for 2 characters, elite at c and e for 3 and All elite for 4 characters.",
                },
             },
@@ -16186,7 +16186,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one monster at C. 2 characters: normal Hound. 3 characters: elite Hound. 4 characters: normal Polar Bear.",
                },
             {
@@ -16208,7 +16208,7 @@ GameData = {
                   29,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Snow Imps at D. 2 characters: one normal. 3 characters: one elite. 4 characters: one normal and one elite.",
                },
             {
@@ -16258,7 +16258,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one monster at E. 2 characters: normal Hound. 3 characters: elite Hound. 4 characters: normal Polar Bear.",
                      },
                   {
@@ -16280,7 +16280,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Snow Imps at F. 2 characters: one normal. 3 characters: one elite. 4 characters: one normal and one elite.",
                      },
                   {
@@ -16396,7 +16396,7 @@ GameData = {
                         27,
                         29,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow.",
                      },
                   {
@@ -16405,7 +16405,7 @@ GameData = {
                         2,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow. Spawn one Normal Burrowing Blade at B. For 4 characters, spawn also at C.",
                      },
                   {
@@ -16414,7 +16414,7 @@ GameData = {
                         4,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow. Spawn one Normal Burrowing Blade at C and D. For 4 characters, spawn also at B.",
                      },
                   {
@@ -16423,7 +16423,7 @@ GameData = {
                         6,
                         },
                      name = "spawn 3",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow. Spawn Frozen Corpses at B and C. Elite at C for 3 characters and both elite for 4 characters.",
                      },
                   {
@@ -16432,7 +16432,7 @@ GameData = {
                         8,
                         },
                      name = "spawn 4",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow. Spawn Shrike Fiends. 2 characters: Normal at C and D. 3 characters: Normal at B and D, elite at C. 4 characters: Elite at B,C and D.",
                      },
                   {
@@ -16451,7 +16451,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 5",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place New Snow. Spawn Normal Frozen Corpses at B. One for 2 characters and two for 3-4 characters. Spawn Elite Burrowing Blades at C. One for 2-3 characters and two for 4 characters.",
                      },
                   },
@@ -16484,7 +16484,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Place numbered token on each Frozen Corpse.",
                },
             {
@@ -16492,7 +16492,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Each Frozen Corpse with a token is Replaced by a Shrike Fiend.",
                },
             },
@@ -16523,7 +16523,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place numbered token on each Frozen Corpse. Spawn one Shrike Fiend at the raven nest. It is elite for 4 characters.",
                      },
                   {
@@ -16538,7 +16538,7 @@ GameData = {
                         28,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Place numbered token on each Frozen Corpse. Spawn one Shrike Fiend at the raven nest. It is elite for 3-4 characters.",
                      },
                   },
@@ -16752,7 +16752,7 @@ GameData = {
                list = {
                   6,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Tile 7-G is submerged.",
                },
             {
@@ -16760,7 +16760,7 @@ GameData = {
                list = {
                   10,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Tiles 2-B and 2-D are submerged.",
                },
             {
@@ -16768,7 +16768,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Tile 14-A is submerged.",
                },
             {
@@ -16778,7 +16778,7 @@ GameData = {
                   4,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn at F: Lurker Soldier, elite for 4 characters. One Lurker Wavethrower or two for 3-4 characters.",
                },
             {
@@ -16788,7 +16788,7 @@ GameData = {
                   5,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Lurker Soldier at B. It is elite for 3-4 characters. Spawn at G: Lurker Soldier, elite for 4 characters. One Lurker Wavethrower or two for 3-4 characters.",
                },
             {
@@ -16798,7 +16798,7 @@ GameData = {
                   8,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Lurker Clawcrusher at C. For 3-4 characters, spawn another Lurker clawcrusher at B. It is elite for 4 characters.",
                },
             {
@@ -16808,7 +16808,7 @@ GameData = {
                   9,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Lurker Clawcrusher at B. It is elite for 4 characters. Spawn at E: Lurker Soldier, elite for 3-4 characters. One Lurker Wavethrower or two for 3-4 characters.",
                },
             {
@@ -16837,7 +16837,7 @@ GameData = {
                   30,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Lurker Clawcrusher at B. It is elite for 4 characters. Spawn at E: Lurker Soldier, elite for 3-4 characters. One Lurker Wavethrower or two for 3-4 characters.",
                },
             },
@@ -16965,7 +16965,7 @@ GameData = {
                         26,
                         30,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "If the Flaming Sword of Justice is alive, spawn one Hound at B. It is elite for 4 characters.",
                      },
                   {
@@ -16979,7 +16979,7 @@ GameData = {
                         24,
                         28,
                         },
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "If the Flaming Sword of Justice is alive, spawn one Hound at B. It is elite for 3-4 characters.",
                      },
                   },
@@ -17157,7 +17157,7 @@ GameData = {
                         28,
                         30,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "The character with the idol adds one damage token to their mat and all other characters remove one (if any).",
                      },
                   },
@@ -17190,7 +17190,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 131.4",
                },
             },
@@ -17210,7 +17210,7 @@ GameData = {
                   10,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Wind Demon at both B and C. Both normal for 2 characters, elite at B for 3 and both elite for 4 characters.",
                },
             },
@@ -17243,7 +17243,7 @@ GameData = {
                list = {
                   1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Note: you will need the physical cards for this scenario.",
                },
             },
@@ -17299,7 +17299,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Living Spirit at starting hex. Normal for 2-3 characters, elite for 4.",
                      },
                   {
@@ -17322,7 +17322,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Living Spirit at starting hex. Normal for 2 characters, elite for 3-4.",
                      },
                   },
@@ -17355,7 +17355,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 3",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Living Bones at door 1. Normal for 2-3 characters, elite for 4.",
                      },
                   {
@@ -17378,7 +17378,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 4",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Living Bones at door 1. Normal for 2 characters, elite for 3-4.",
                      },
                   },
@@ -17411,7 +17411,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 6",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Ruined Machine at door 1. Normal for 2 characters, elite for 3-4.",
                      },
                   {
@@ -17434,7 +17434,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 5",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Ruined Machine at door 1. Normal for 2-3 characters, elite for 4.",
                      },
                   },
@@ -17612,7 +17612,7 @@ GameData = {
                   2,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Lurker Wavethrower at A. Also at B if 3-4 characters.",
                },
             {
@@ -17621,7 +17621,7 @@ GameData = {
                   3,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Lurker Wavethrower at G. Also at C if 4 characters.",
                },
             {
@@ -17630,7 +17630,7 @@ GameData = {
                   4,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Lurker Mindsnipper at D. If 3 characters Spawn additionally 1 Lurker Wavethrower at C. Else if 4 characters, spawn 2 Normal Mindsnippers at D.",
                },
             {
@@ -17639,7 +17639,7 @@ GameData = {
                   5,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Lightning Eel at E. Normal for 2 characters, elite for 3-4. Also spawn 2 Lightning Eels at G. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -17648,7 +17648,7 @@ GameData = {
                   6,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Lurker Clawcrusher at F. If exactly 3 characters, spawn 1 normal Lurker Wavethrower at B. if 4 characters, spawn 1 extra Lurker Clawcrusher at B.",
                },
             {
@@ -17657,7 +17657,7 @@ GameData = {
                   7,
                   },
                name = "spawn 6",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Lurker Wavethrower at both A and B. Normal for 2 characters, B is elite for 3 characters and both elite for 4.",
                },
             {
@@ -17666,7 +17666,7 @@ GameData = {
                   8,
                   },
                name = "spawn 7",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Lurker Wavethrower at A and one Lurker Mindsnipper at G. Normal for 2 characters, Wavethrower elite for 3 and both elite for 4.",
                },
             {
@@ -17675,7 +17675,7 @@ GameData = {
                   9,
                   },
                name = "spawn 8",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 normal Lurker Clawcrusher at C. Spawn Lightning Eels at E: 1 for 2 characters, 3 for 3, 6 for 4.",
                },
             {
@@ -17684,7 +17684,7 @@ GameData = {
                   10,
                   },
                name = "spawn 9",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 elite Lurker Mindsnipper at F. If 3-4 characters spawn also a Mindsnipper at B. Normal for 3 characters, elite for 4.",
                },
             {
@@ -17693,7 +17693,7 @@ GameData = {
                   11,
                   },
                name = "spawn 10",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Lurker Wavethrower at E and 1 Lurker Clawcrusher at G. Both normal for 2 characters, Wavethrower elite for 3 and both elite for 4 characters.",
                },
             {
@@ -17701,7 +17701,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 86.2.",
                },
             {
@@ -17744,7 +17744,7 @@ GameData = {
                      list = {
                         -1,
                         },
-                     startOfRound = False,
+                     startOfRound = false,
                      note = "Swarms move 2 hexes towards Zu. Zu move 2 focusing on closest swarm.",
                      },
                   },
@@ -17805,7 +17805,7 @@ GameData = {
                   4,
                   5,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "place numbered token in a.",
                },
             {
@@ -17814,7 +17814,7 @@ GameData = {
                   3,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Place numbered token in A. Spawn Algox Icespeaker at both C. Normal for 2-3 characters, elite for 4. For 3-4 characters spawn Algox Archers at both D. They are elite for exactly 3 characters.",
                },
             {
@@ -17823,7 +17823,7 @@ GameData = {
                   6,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Algox Archer at both C. Normal for 2-3 characters, elite for 4. Also Spawn Normal Algox Icespeakers at both D. For 3-4 characters, also spawn normal Algox Guard at D",
                },
             {
@@ -18127,7 +18127,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Each Earth Demon or Forest Imp in winter and each Frost Demon and Savvas Icestorm in spring suffer 1 damage.",
                },
             },
@@ -18210,7 +18210,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "When all enemies are dead, scenario is complete.",
                },
             {
@@ -18221,7 +18221,7 @@ GameData = {
                   6,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Algox Scout at A. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -18232,7 +18232,7 @@ GameData = {
                   7,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Algox Guard at B. Normal for 2 characters, elite for 3-4.",
                },
             },
@@ -18271,7 +18271,7 @@ GameData = {
                list = {
                   4,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Read section 7.1",
                },
             {
@@ -18279,7 +18279,7 @@ GameData = {
                list = {
                   8,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Read section 148.1",
                },
             {
@@ -18287,7 +18287,7 @@ GameData = {
                list = {
                   10,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Read section 122.5",
                },
             {
@@ -18295,7 +18295,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario complete! Read section 73.2",
                },
             {
@@ -18305,7 +18305,7 @@ GameData = {
                   3,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Savvas Icestorm at B. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -18315,7 +18315,7 @@ GameData = {
                   4,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Savvas Lavaflow at B. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -18325,7 +18325,7 @@ GameData = {
                   7,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Savvas Icestorm at E. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -18335,7 +18335,7 @@ GameData = {
                   8,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Savvas Lavaflow at D. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -18344,7 +18344,7 @@ GameData = {
                   9,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Earth Demon at D. Normal for 2-3 characters, elite for 4. Also spawn Flame Demon at E. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -18353,7 +18353,7 @@ GameData = {
                   10,
                   },
                name = "spawn 6",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Wind Demon at D. Normal for 2 characters, elite for 3-4. Also spawn Frost Demon at E. Normal for 2-3 characters, elite for 4.",
                },
             {
@@ -18362,7 +18362,7 @@ GameData = {
                   11,
                   },
                name = "spawn 7",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Savvas Lavaflow at B. For 3-4 character also spawn Earth Demon at E. Normal for 3 characters, elite for 4.",
                },
             {
@@ -18371,7 +18371,7 @@ GameData = {
                   12,
                   },
                name = "spawn 8",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Elite Savvas Icestorm at B. For 3-4 character also spawn Frost Demon at E. Normal for 3 characters, elite for 4.",
                },
             },
@@ -18669,7 +18669,7 @@ GameData = {
                   12,
                   13,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "You may place up to 2 new militia members.",
                },
             {
@@ -18677,7 +18677,7 @@ GameData = {
                list = {
                   10,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Read section 72.1",
                },
             {
@@ -18686,7 +18686,7 @@ GameData = {
                   1,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one normal Living doom on tiles 11 and 13. 7, 11, 13 for 3 characters and 2, 7, 11, 13 for 4.",
                },
             {
@@ -18695,7 +18695,7 @@ GameData = {
                   2,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one Shrike Fiend on tiles 2 and 7. Normal for 2 characters, elite on 2 for 3 characters and both elite for 4.",
                },
             {
@@ -18704,7 +18704,7 @@ GameData = {
                   3,
                   },
                name = "spawn 3",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn two Burrowing Blades on tile 13. Normal for 2 characters, 1 elite for 3 characters and both elite for 4.",
                },
             {
@@ -18713,7 +18713,7 @@ GameData = {
                   4,
                   },
                name = "spawn 4",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Living Spirits on tile 11. 2 characters: spawn 3. 3 characters: spawn 4. 4 characters: spawn 5.",
                },
             {
@@ -18722,7 +18722,7 @@ GameData = {
                   5,
                   },
                name = "spawn 5",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn one normal Shrike Fiend on tiles 2 and 7. 2, 7, 13 for 3 characters and 2, 7, 11, 13 for 4.",
                },
             {
@@ -18731,7 +18731,7 @@ GameData = {
                   6,
                   },
                name = "spawn 6",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Living Dooms. 2 characters: normal on 2, elite on 11. 3 characters: normal on 13, elite on 11. 4 characters: elites on 11 and 13.",
                },
             {
@@ -18740,7 +18740,7 @@ GameData = {
                   7,
                   },
                name = "spawn 7",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn normal Burrowing Blades. 2 characters: spawn on 2 and 7. 3 characters: spawn on 2, 7, 13. 4 characters: spawn on 2, 7, 11, 13",
                },
             {
@@ -18749,7 +18749,7 @@ GameData = {
                   8,
                   },
                name = "spawn 8",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Shrike Fiends on 7, 11, 13. 2 characters: all normal. 3 characters: normal on 7, 11 elite on 13. 4 characters: normal on 7, elites on 11, 13.",
                },
             {
@@ -18758,7 +18758,7 @@ GameData = {
                   9,
                   },
                name = "spawn 9",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Living Spirits on 2, 7, 11, 13. 2 characters: normal on 2, 7, 11, elite on 13. 3 characters: normal on 7, elite on 2, 11, 13. 4 characters: elites on all.",
                },
             {
@@ -18767,7 +18767,7 @@ GameData = {
                   10,
                   },
                name = "spawn 10",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn Shrike Fiends on 2, 7, 11, 13. 2 characters: normal on 7, 11, 13, elite on 2. 3 characters: normal on 13, elite on 2, 7, 11. 4 characters: elites on all.",
                },
             },
@@ -18820,7 +18820,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Ruined Machine at either A. Normal for 2-3 characters. Elite for 4.",
                      },
                   {
@@ -18843,7 +18843,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Ruined Machine at either A. Normal for 2 characters. Elite for 3-4.",
                      },
                   },
@@ -18899,7 +18899,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Savvas Lavaflow at A. It is elite for 4 characters.",
                      },
                   {
@@ -18914,7 +18914,7 @@ GameData = {
                         28,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn one Savvas Lavaflow at A. It is elite for 3-4 characters.",
                      },
                   },
@@ -18973,7 +18973,7 @@ GameData = {
                list = {
                   1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "You will need to manually keep track of ability decks in this scenario.",
                },
             {
@@ -18981,7 +18981,7 @@ GameData = {
                list = {
                   2,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 170.1.",
                },
             {
@@ -18989,7 +18989,7 @@ GameData = {
                list = {
                   3,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 152.2.",
                },
             {
@@ -18997,7 +18997,7 @@ GameData = {
                list = {
                   4,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 176.3.",
                },
             {
@@ -19005,7 +19005,7 @@ GameData = {
                list = {
                   5,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 124.3.",
                },
             {
@@ -19013,7 +19013,7 @@ GameData = {
                list = {
                   6,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 139.1.",
                },
             {
@@ -19021,7 +19021,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 166.2.",
                },
             {
@@ -19029,7 +19029,7 @@ GameData = {
                list = {
                   8,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 132.4.",
                },
             {
@@ -19037,7 +19037,7 @@ GameData = {
                list = {
                   9,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 186.4.",
                },
             {
@@ -19045,7 +19045,7 @@ GameData = {
                list = {
                   9,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Complete! Read section 196.3.",
                },
             },
@@ -19084,7 +19084,7 @@ GameData = {
                list = {
                   6,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Read section 45.1.",
                },
             },
@@ -19132,7 +19132,7 @@ GameData = {
                   29,
                   31,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All characters and character summons move one hex to the top.",
                },
             {
@@ -19154,7 +19154,7 @@ GameData = {
                   28,
                   30,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "All characters and character summons move one hex to the bottom.",
                },
             {
@@ -19217,7 +19217,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Remove one damage token from each unopened door.",
                },
             {
@@ -19225,7 +19225,7 @@ GameData = {
                list = {
                   -1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Replace each baseless standee with one normal Frozen Corpse.",
                },
             {
@@ -19264,7 +19264,7 @@ GameData = {
                list = {
                   1,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars a active.",
                },
             {
@@ -19280,7 +19280,7 @@ GameData = {
                   25,
                   28,
                   },
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars a active.",
                },
             {
@@ -19293,7 +19293,7 @@ GameData = {
                   29,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars B active. Spawn 1 Ruined Machine at D. normal for 2 characters, elite for 3-4.",
                },
             {
@@ -19306,7 +19306,7 @@ GameData = {
                   26,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars B active. Spawn 1 Ruined Machine at D. normal for 2-3 characters, elite for 4.",
                },
             {
@@ -19319,7 +19319,7 @@ GameData = {
                   30,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars C active. Spawn 1 Ruined Machine at D. normal for 2-3 characters, elite for 4.",
                },
             {
@@ -19332,7 +19332,7 @@ GameData = {
                   27,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Ice Pillars C active. Spawn 1 Ruined Machine at D. normal for 2 characters, elite for 3-4.",
                },
             },
@@ -19395,7 +19395,7 @@ GameData = {
                list = {
                   12,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "Scenario Lost... (unless a character is adjacent to the Artificer)",
                },
             },
@@ -19430,7 +19430,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Piranha Pigs at each F. Normal for 2 character and elite fro 3-4 characters.",
                      },
                   {
@@ -19453,7 +19453,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn Lurker Clawcrusher at D. It is Elite for 3-4 characters. Spawn Lurker Wavethrower at E. It is Elite for 4 characters. Spawn Piranha Pigs at each F. They are elite fro 3-4 characters.",
                      },
                   },
@@ -19497,7 +19497,7 @@ GameData = {
                list = {
                   7,
                   },
-               startOfRound = False,
+               startOfRound = false,
                note = "When all enemies are dead, scenario is complete.",
                },
             {
@@ -19508,7 +19508,7 @@ GameData = {
                   6,
                   },
                name = "spawn 1",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 1 Polar Bear at C. Normal for 2 characters, elite for 3-4.",
                },
             {
@@ -19519,7 +19519,7 @@ GameData = {
                   7,
                   },
                name = "spawn 2",
-               startOfRound = True,
+               startOfRound = true,
                note = "Spawn 2 Vermling Scouts at D. Normal for 2-3 characters, elite for 4.",
                },
             },
@@ -19824,7 +19824,7 @@ GameData = {
                         30,
                         },
                      name = "spawn 1",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "Spawn One Black Imp at B. It is elite for 4 characters.",
                      },
                   {
@@ -19846,7 +19846,7 @@ GameData = {
                         29,
                         },
                      name = "spawn 2",
-                     startOfRound = True,
+                     startOfRound = true,
                      note = "If 3 or 4 characters: Spawn One Black Imp at B. It is elite for 4 characters.",
                      },
                   },

@@ -1,7 +1,7 @@
 Ct3 = {
    {
       name = "ctng",
-      empty = True,
+      empty = true,
       position = {
          x = -0.478,
          y = 0.11,

@@ -84,7 +84,7 @@ Ct1 = {
       },
    {
       name = "ct2",
-      lockable = True,
+      lockable = true,
       trigger = "map_w",
       position = {
          x = -0.493,
@@ -111,7 +111,7 @@ Ct1 = {
       },
    {
       name = "ct3",
-      lockable = True,
+      lockable = true,
       trigger = "map_w",
       position = {
          x = -0.164,
@@ -383,7 +383,7 @@ Ct1 = {
       },
    {
       name = "ct29",
-      lockable = True,
+      lockable = true,
       position = {
          x = 0.165,
          y = 0.11,
@@ -412,7 +412,7 @@ Ct1 = {
       },
    {
       name = "ct28",
-      lockable = True,
+      lockable = true,
       position = {
          x = -0.163,
          y = 0.11,
@@ -439,7 +439,7 @@ Ct1 = {
       },
    {
       name = "ct30",
-      lockable = True,
+      lockable = true,
       position = {
          x = -0.494,
          y = 0.11,

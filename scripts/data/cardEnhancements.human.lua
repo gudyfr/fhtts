@@ -1,4 +1,4 @@
-ActiveEnhancements = {
+CardEnhancements = {
    ["01 31 - Fastest Alive"] = {
       level = 8,
       spots = {

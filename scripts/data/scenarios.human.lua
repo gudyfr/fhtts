@@ -345,11 +345,11 @@ Scenarios = {
       monsters = {
          {
             name = "Frozen Fist",
-            boss = True,
+            boss = true,
             },
          {
             name = "Snowdancer",
-            boss = True,
+            boss = true,
             },
          {
             name = "Algox Archer",
@@ -419,11 +419,11 @@ Scenarios = {
       monsters = {
          {
             name = "Frozen Fist",
-            boss = True,
+            boss = true,
             },
          {
             name = "Snowdancer",
-            boss = True,
+            boss = true,
             },
          {
             name = "Algox Archer",
@@ -520,7 +520,7 @@ Scenarios = {
             type = "Objective",
             count = 1,
             as = "Altar a",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -637,7 +637,7 @@ Scenarios = {
          {
             name = "Frozen Corpse",
             as = "Coral Corpse",
-            boss = True,
+            boss = true,
             },
          {
             name = "Lurker Clawcrusher",
@@ -879,14 +879,14 @@ Scenarios = {
             name = "Ice Pillar",
             type = "Obstacle",
             count = 3,
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             },
          {
             name = "Ice Pillar",
             type = "Obstacle",
             count = 3,
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             start_nr = 4,
             },
@@ -894,14 +894,14 @@ Scenarios = {
             name = "Ice Pillar",
             type = "Obstacle",
             count = 1,
-            trackable = True,
+            trackable = true,
             as = "Ice Pillar A",
             },
          {
             name = "Ice Pillar",
             type = "Obstacle",
             count = 1,
-            trackable = True,
+            trackable = true,
             as = "Ice Pillar B",
             },
          {
@@ -1140,7 +1140,7 @@ Scenarios = {
          {
             name = "1",
             as = "Scenario",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 17,
@@ -1433,7 +1433,7 @@ Scenarios = {
          {
             name = "1",
             as = "Spectral Helper 1",
-            trackable = True,
+            trackable = true,
             tags = {
                "looter",
                },
@@ -1441,7 +1441,7 @@ Scenarios = {
          {
             name = "2",
             as = "Spectral Helper 2",
-            trackable = True,
+            trackable = true,
             tags = {
                "looter",
                },
@@ -1663,7 +1663,7 @@ Scenarios = {
             as = "Cabinet",
             renamed = "by nr",
             count = 4,
-            trackable = True,
+            trackable = true,
             },
          },
       page = 25,
@@ -1745,21 +1745,21 @@ Scenarios = {
             size = 2,
             count = 3,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             type = "Objective",
             },
          {
             name = "Crate",
             count = 3,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             type = "Objective",
             },
          {
             name = "Glowing Orb",
             type = "Objective",
             count = 1,
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -1889,7 +1889,7 @@ Scenarios = {
          {
             name = "Living Doom",
             as = "Hateful Corpse",
-            boss = True,
+            boss = true,
             },
          {
             name = "Living Spirit",
@@ -2171,7 +2171,7 @@ Scenarios = {
             type = "Objective",
             count = 9,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -2253,12 +2253,12 @@ Scenarios = {
          {
             name = "1",
             as = "Emissary 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Emissary 2",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 34,
@@ -2827,7 +2827,7 @@ Scenarios = {
             type = "Objective",
             count = 4,
             as = "Door",
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             },
          },
@@ -3006,12 +3006,12 @@ Scenarios = {
          {
             name = "a",
             as = "Emissary 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "b",
             as = "Emissary 2",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 46,
@@ -3447,7 +3447,7 @@ Scenarios = {
             type = "Objective",
             count = 6,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -3554,7 +3554,7 @@ Scenarios = {
          {
             name = "Ice Pillar",
             type = "Objective",
-            trackable = True,
+            trackable = true,
             count = 1,
             },
          {
@@ -3882,7 +3882,7 @@ Scenarios = {
             type = "Objective",
             count = 1,
             as = "Pulse Emitter",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 58,
@@ -4225,11 +4225,11 @@ Scenarios = {
       monsters = {
          {
             name = "Frozen Fist",
-            boss = True,
+            boss = true,
             },
          {
             name = "Snowdancer",
-            boss = True,
+            boss = true,
             },
          {
             name = "Algox Archer",
@@ -4329,7 +4329,7 @@ Scenarios = {
             name = "Altar",
             type = "Objective",
             count = 3,
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             },
          {
@@ -4578,7 +4578,7 @@ Scenarios = {
       tokens = {
          {
             name = "a",
-            trackable = True,
+            trackable = true,
             as = "Orphan",
             },
          },
@@ -4757,7 +4757,7 @@ Scenarios = {
          {
             name = "1",
             as = "Moonshard",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 73,
@@ -4840,7 +4840,7 @@ Scenarios = {
          {
             name = "1",
             as = "Crain",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 75,
@@ -4922,7 +4922,7 @@ Scenarios = {
          {
             name = "1",
             as = "Crain",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 77,
@@ -4996,49 +4996,49 @@ Scenarios = {
             type = "Objective",
             size = 3,
             count = 1,
-            trackable = True,
+            trackable = true,
             },
          },
       tokens = {
          {
             name = "1",
             as = "Militia 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Militia 2",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "3",
             as = "Militia 3",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "4",
             as = "Militia 4",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "5",
             as = "Militia 5",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "6",
             as = "Militia 6",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "7",
             as = "Militia 7",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "8",
             as = "Militia 8",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 79,
@@ -5363,7 +5363,7 @@ Scenarios = {
             count = 4,
             as = "Elemental Core",
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 84,
@@ -5406,7 +5406,7 @@ Scenarios = {
          {
             name = "Chaos Demon",
             as = "Tormentor",
-            boss = True,
+            boss = true,
             },
          {
             name = "Earth Demon",
@@ -5566,7 +5566,7 @@ Scenarios = {
          {
             name = "City Guard",
             as = "Flaming Sword of Justice",
-            boss = True,
+            boss = true,
             },
          {
             name = "Hound",
@@ -5596,7 +5596,7 @@ Scenarios = {
             name = "Tree",
             type = "Objective",
             as = "The Great Oak",
-            trackable = True,
+            trackable = true,
             size = 3,
             count = 2,
             },
@@ -5611,7 +5611,7 @@ Scenarios = {
             name = "a",
             count = 3,
             as = "The Great Oak",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 88,
@@ -6046,7 +6046,7 @@ Scenarios = {
             type = "Objective",
             count = 2,
             as = "Small Tree",
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             },
          },
@@ -6644,7 +6644,7 @@ Scenarios = {
             name = "Metal Cabinet",
             type = "Objective",
             count = 4,
-            trackable = True,
+            trackable = true,
             renamed = "by letter",
             },
          {
@@ -6711,14 +6711,14 @@ Scenarios = {
             name = "Metal Door",
             type = "Door",
             count = 1,
-            trackable = True,
+            trackable = true,
             as = "Door 1",
             },
          {
             name = "Metal Door",
             type = "Door",
             count = 2,
-            trackable = True,
+            trackable = true,
             as = "Door 2",
             },
          {
@@ -6759,7 +6759,7 @@ Scenarios = {
             type = "Objective",
             size = 2,
             count = 1,
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Barricade",
@@ -6897,7 +6897,7 @@ Scenarios = {
          {
             name = "Piranha Pig",
             as = "Giant Piranha Pig",
-            boss = True,
+            boss = true,
             },
          },
       overlays = {
@@ -7301,12 +7301,12 @@ Scenarios = {
          {
             name = "a",
             as = "Brother 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "b",
             as = "Brother 2",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 108,
@@ -7436,7 +7436,7 @@ Scenarios = {
          {
             name = "Algox Icespeaker",
             as = "Vanjal",
-            boss = True,
+            boss = true,
             },
          {
             name = "Algox Priest",
@@ -7489,7 +7489,7 @@ Scenarios = {
             name = "Altar",
             count = 2,
             renamed = "by letter",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -7501,7 +7501,7 @@ Scenarios = {
          {
             name = "1",
             as = "Faye",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 110,
@@ -7795,7 +7795,7 @@ Scenarios = {
          {
             name = "Algox Snowspeaker",
             as = "Yoglang",
-            boss = True,
+            boss = true,
             },
          {
             name = "Hound",
@@ -7806,7 +7806,7 @@ Scenarios = {
          {
             name = "Vermling Priest",
             as = "Scabwit",
-            boss = True,
+            boss = true,
             },
          {
             name = "Vermling Scout",
@@ -7881,7 +7881,7 @@ Scenarios = {
          {
             name = "Algox Snowspeaker",
             as = "Yoglang",
-            boss = True,
+            boss = true,
             },
          {
             name = "Hound",
@@ -7892,7 +7892,7 @@ Scenarios = {
          {
             name = "Vermling Priest",
             as = "Scabwit",
-            boss = True,
+            boss = true,
             },
          {
             name = "Vermling Scout",
@@ -8798,7 +8798,7 @@ Scenarios = {
             type = "Objective",
             count = 6,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 127,
@@ -9039,7 +9039,7 @@ Scenarios = {
             type = "Objective",
             count = 4,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -9449,7 +9449,7 @@ Scenarios = {
          {
             name = "Savvas Icestorm",
             as = "The Shimmer",
-            boss = True,
+            boss = true,
             },
          {
             name = "Wind Demon",
@@ -9718,7 +9718,7 @@ Scenarios = {
             type = "Objective",
             count = 8,
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 138,
@@ -9783,7 +9783,7 @@ Scenarios = {
             name = "Ice Pillar",
             type = "Objective",
             count = 7,
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             tags = {
                "lootable",
@@ -9883,27 +9883,27 @@ Scenarios = {
          {
             name = "1",
             as = "Caravan Wagon 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Caravan Wagon 2",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "3",
             as = "Caravan Wagon 3",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "4",
             as = "Caravan Wagon 4",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "5",
             as = "Caravan Wagon 5",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 140,
@@ -10206,7 +10206,7 @@ Scenarios = {
             name = "Dungeon Door",
             type = "Door",
             as = "Door 2",
-            trackable = True,
+            trackable = true,
             count = 1,
             },
          {
@@ -10224,7 +10224,7 @@ Scenarios = {
             name = "Glowing Orb",
             type = "Objective",
             count = 1,
-            trackable = True,
+            trackable = true,
             },
          {
             name = "Treasure Chest",
@@ -10279,7 +10279,7 @@ Scenarios = {
          {
             name = "Steel Automaton",
             as = "Augmented Mindthief",
-            boss = True,
+            boss = true,
             },
          },
       overlays = {
@@ -10360,7 +10360,7 @@ Scenarios = {
          {
             name = "Frozen Corpse",
             as = "Hungry Maw",
-            boss = True,
+            boss = true,
             },
          },
       overlays = {
@@ -10755,14 +10755,14 @@ Scenarios = {
             name = "Barrels",
             type = "Objective",
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             count = 3,
             },
          {
             name = "Crate",
             type = "Objective",
             renamed = "by nr",
-            trackable = True,
+            trackable = true,
             count = 2,
             },
          },
@@ -10770,37 +10770,37 @@ Scenarios = {
          {
             name = "1",
             as = "Helper 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Helper 2",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "3",
             as = "Helper 3",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "4",
             as = "Helper 4",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "5",
             as = "Helper 5",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "6",
             as = "Helper 6",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "7",
             as = "Helper 7",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 151,
@@ -11557,7 +11557,7 @@ Scenarios = {
          {
             name = "Savvas Lavaflow",
             as = "Belara",
-            boss = True,
+            boss = true,
             },
          },
       overlays = {
@@ -12151,7 +12151,7 @@ Scenarios = {
          {
             name = "Living Bones",
             as = "Hollow Scholar",
-            boss = True,
+            boss = true,
             },
          {
             name = "Snow Imp",
@@ -12334,22 +12334,22 @@ Scenarios = {
          {
             name = "1",
             as = "Orb of Energy a",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Orb of Energy b",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "3",
             as = "Orb of Energy c",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "4",
             as = "Orb of Energy d",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 177,
@@ -12392,7 +12392,7 @@ Scenarios = {
          {
             name = "Earth Demon",
             as = "Mountain's Heart",
-            boss = True,
+            boss = true,
             },
          {
             name = "Rending Drake",
@@ -12692,62 +12692,62 @@ Scenarios = {
          {
             name = "a",
             as = "Rune of Power 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "a",
             as = "Rune of Power 2",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "a",
             as = "Rune of Power 3",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "a",
             as = "Rune of Power 4",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "c",
             as = "Rune of Power 5",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "c",
             as = "Rune of Power 6",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "1",
             as = "Rune Worker 1",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "2",
             as = "Rune Worker 2",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "3",
             as = "Rune Worker 3",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "4",
             as = "Rune Worker 4",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "5",
             as = "Rune Worker 5",
-            trackable = True,
+            trackable = true,
             },
          {
             name = "6",
             as = "Rune Worker 6",
-            trackable = True,
+            trackable = true,
             },
          },
       page = 184,
@@ -12815,7 +12815,7 @@ Scenarios = {
             name = "Altar",
             type = "Objective",
             count = 3,
-            trackable = True,
+            trackable = true,
             renamed = "by nr",
             },
          },

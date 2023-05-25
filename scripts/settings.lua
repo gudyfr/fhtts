@@ -65,15 +65,14 @@ function on5pToggled()
 
     local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
     local customObject = scenarioMat.getCustomObject()
-    print(JSON.encode(customObject))
     local snapPoints
     if enabled then
         customObject.diffuse = ScenarioMat5P
-        snapPoints = jsonDecode(SnapPoints5P)
+        snapPoints = SnapPoints5P
         scenarioMat.addTag("5 players")
     else
         customObject.diffuse = ScenarioMat4P
-        snapPoints = jsonDecode(SnapPoints4P)
+        snapPoints = SnapPoints4P
         scenarioMat.removeTag("5 players")
     end
     scenarioMat.setCustomObject(customObject)
