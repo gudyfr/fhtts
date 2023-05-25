@@ -437,7 +437,12 @@ function changeBuildingLevel(buildingPosition, currentCard, nr, targetLevel, dow
         if down then
             broadcastToAll("Building " .. nr .. " is at minimum level")
         else
-            broadcastToAll("Building " .. nr .. " has reached max level")
+            -- Let's see if we have even unlocked this building
+            if not down and targetLevel == 1 then
+                broadcastToAll("Building " .. nr .. " has not been unlocked yet")
+            else
+                broadcastToAll("Building " .. nr .. " has reached max level")
+            end
         end
     end
 
