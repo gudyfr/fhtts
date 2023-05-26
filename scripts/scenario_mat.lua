@@ -109,7 +109,6 @@ function onLoad(state)
     fhLogInit()
     self.interactable = false
 
-    updateGameStateWithGameData(GameData)
 
     if state ~= nil then
         local json = JSON.decode(state)
@@ -328,6 +327,7 @@ function onLoad(state)
         self.createButton(params)
     end
 
+    updateGameStateWithGameData(GameData)
     updateCharacters()
     registerSavable("Scenario Mat")
     Global.call("registerDataUpdatable", self)
@@ -990,18 +990,10 @@ function onStart()
                 characterName = playerMat.call("getCharacterName")
                 if characterName ~= nil then
                     -- find the initiative card
-                    local hitlist = Physics.cast({
-                        origin       = self.positionToWorld(cardLocations[color][1]),
-                        direction    = { 0, 1, 0 },
-                        type         = 2,
-                        size         = { 1, 1, 1 },
-                        max_distance = 0,
-                        debug        = false
-                    })
-
-                    for i, j in pairs(hitlist) do
-                        if j.hit_object.tag == "Card" then
-                            local cardName = j.hit_object.getName()
+                    for cardNumber = 1, 2 do
+                        local card = getDeckOrCardAt(cardLocations[color][cardNumber])
+                        if card ~= nil and card.tag == "Card" then
+                            local cardName = card.getName()
                             if cardName ~= nil then
                                 local speed
                                 local initiativeType = initiativeTypes[color] or "Normal"
@@ -1010,7 +1002,11 @@ function onStart()
                                 else
                                     speed = tonumber(string.sub(cardName, 4, 5))
                                 end
-                                initiatives[characterName] = speed
+                                if cardNumber == 1 then
+                                    initiatives[characterName] = speed
+                                else
+                                    initiatives[characterName .. ".2"] = speed
+                                end
                             end
                         end
                     end
@@ -1023,6 +1019,7 @@ function onStart()
                 log("Could not find player mat for " .. color)
             end
         end
+        -- initiatives.secondCards = secondCards
         updateAssistant("POST", "startRound", initiatives)
     end
 end

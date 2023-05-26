@@ -593,8 +593,10 @@ function Character:addSummon(name)
     end
 end
 
-function Character:startRound(initiative)
+function Character:startRound(initiative, secondCardInitiative)
+    fhlog(DEBUG, "GameState", "Setting initiative at %s - %s for %s", initiative, secondCardInitiative, self.name)
     self.initiative = initiative
+    self.secondCardInitiative = secondCardInitiative
 end
 
 function Character:endRound()
@@ -915,7 +917,7 @@ function GameState:startRound(characterInitiatives)
         return
     end
     for name, character in pairs(self.characters) do
-        character:startRound(tonumber(characterInitiatives[name]) or 99)
+        character:startRound(tonumber(characterInitiatives[name]) or 99, tonumber(characterInitiatives[name .. ".2"]) or 99)
     end
     for _, monster in pairs(self.monsters) do
         monster:startRound()
@@ -1278,7 +1280,13 @@ function GameState:getCurrentList()
         if a.active ~= b.active then
             if a.active then return true else return false end
         end
-        return (a.initiative or 0) < (b.initiative or 0)
+        if (a.initiative or 0) ~= (b.initiative or 0) then
+            return (a.initiative or 0) < (b.initiative or 0)
+        else
+            -- monster do not have a second card initiative,
+            -- and so in its absence assume it's 99 to make it slower than characters
+            return (a.secondCardInitiative or 99) < (b.secondCardInitiative or 99)
+        end
     end)
     return currentList
 end
