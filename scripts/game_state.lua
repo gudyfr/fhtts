@@ -58,7 +58,7 @@ end
 
 function Card:save()
     return {
-        self.number, self.shuffle, self.initiative
+        self.nr, self.shuffle, self.initiative
     }
 end
 
@@ -420,11 +420,13 @@ function Monster:startRound()
         self.initiative = 100
     end
     self.active = #self.instances > 0
+    self.turnState = 0
 end
 
 function Monster:endRound()
     self.currentCard = nil
     self.initiative = 100
+    self.turnState = 0
     self.active = #self.instances > 0
     self.deck:shuffleIfNeeded()
 end
@@ -597,10 +599,12 @@ function Character:startRound(initiative, secondCardInitiative)
     fhlog(DEBUG, "GameState", "Setting initiative at %s - %s for %s", initiative, secondCardInitiative, self.name)
     self.initiative = initiative
     self.secondCardInitiative = secondCardInitiative
+    self.turnState = 0
 end
 
 function Character:endRound()
     self.initiative = 0
+    self.turnState = 0
 end
 
 function Character:changeHp(amount)
@@ -642,8 +646,8 @@ function Character:findSummonModel(name)
         local summonName = summon.name
         if summonName == name then
             return summon, 0
-        elseif string.sub(name,1,string.len(summonName)) == summonName then
-            return summon, tonumber(string.sub(name,#summonName + 1)) or 0
+        elseif string.sub(name, 1, string.len(summonName)) == summonName then
+            return summon, tonumber(string.sub(name, #summonName + 1)) or 0
         end
     end
 end
@@ -730,30 +734,63 @@ function Npc:toState()
     }
 end
 
-Timer = {}
+Timer = { count = 0 }
 Timer.__index = Timer
 
-function Timer.new(json)
+function Timer.new(gameState, json)
     local self = setmetatable({}, Timer)
     if json.startOfRound then
         self.roundState = 0
     else
         self.roundState = 1
     end
+    Timer.count = Timer.count + 1
+    self.id = json.id or Timer.count
+    self.gameState = gameState
     self.list = json.list
+    self.notes = json.notes
     self.note = json.note
     return self
 end
 
-function Timer.newFromSave(save)
-    return Timer.new(save)
+function Timer.newFromSave(gameState, save)
+    return Timer.new(gameState, save)
 end
 
 function Timer:save()
     return {
         startOfRound = self.roundState == 0 and true or false,
         list = self.list,
-        note = self.note
+        notes = self.notes,
+        id = self.id
+    }
+end
+
+function Timer:isActive()
+    if self.roundState == self.gameState.roundState then
+        local currentRound = self.gameState.round
+        for _, roundNumber in ipairs(self.list) do
+            if roundNumber == currentRound or roundNumber == -1 then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+function Timer:toState()
+    local text = self.note
+    if self.notes ~= nil then
+        local noteIndex = self.gameState:nbCharacters() - 1
+        if noteIndex < 1 then noteIndex = 1 end
+        if noteIndex > #self.notes then noteIndex = #self.notes end
+        text = self.notes[noteIndex]
+    end
+
+    return {
+        id = self.id,
+        round = self.gameState.round,
+        text = text,
     }
 end
 
@@ -795,7 +832,7 @@ function GameState.newFromSave(gameData, save)
     end)
     self.npcs = mapDict(save.npcs or {}, function(e) return Npc.newFromSave(self, e) end)
     self.currentScenario = gameData.scenarios[save.scenarioName or ""]
-    self.timers = map(save.timers or {}, Timer.newFromSave)
+    self.timers = map(save.timers or {}, function(e) return Timer.newFromSave(self, e) end)
     self.loot = save.loot
     self.looted = save.looted
     return self
@@ -888,8 +925,8 @@ end
 function GameState:addSummon(name)
     fhlog(DEBUG, "GameState", "Adding summon : %s", name)
     for _, character in pairs(self.characters) do
-       -- Blindly attempt to summon on that character
-       character:addSummon(name)
+        -- Blindly attempt to summon on that character
+        character:addSummon(name)
     end
 end
 
@@ -917,7 +954,8 @@ function GameState:startRound(characterInitiatives)
         return
     end
     for name, character in pairs(self.characters) do
-        character:startRound(tonumber(characterInitiatives[name]) or 99, tonumber(characterInitiatives[name .. ".2"]) or 99)
+        character:startRound(tonumber(characterInitiatives[name]) or 99,
+            tonumber(characterInitiatives[name .. ".2"]) or 99)
     end
     for _, monster in pairs(self.monsters) do
         monster:startRound()
@@ -1008,8 +1046,6 @@ function GameState:reset()
     self.looted = {}
     self.currentScenario = scenario
 end
-
-
 
 function GameState:prepareScenario(name)
     fhlog(DEBUG, "GameState", "Preparing Scenario %s", name)
@@ -1133,7 +1169,7 @@ end
 
 function GameState:addTimer(special)
     fhlog(DEBUG, "GameState", "Adding timer for rounds %s", special.list)
-    table.insert(self.timers, Timer.new(special))
+    table.insert(self.timers, Timer.new(self, special))
 end
 
 function GameState:addAllies(special)
@@ -1294,13 +1330,8 @@ end
 function GameState:getActiveTimers()
     local results = {}
     for _, timer in ipairs(self.timers or {}) do
-        if self.roundState == timer.roundState then
-            local correctRound = false
-            for _, round in ipairs(timer.list or {}) do
-                if self.round == round then
-                    table.insert(results, timer)
-                end
-            end
+        if timer:isActive() then
+            table.insert(results, timer)
         end
     end
     return results
@@ -1315,7 +1346,7 @@ function GameState:toState()
         roundState = self.roundState,
         currentList = currentList,
         elements = self.elements,
-        notes = map(self:getActiveTimers(), function(e) return e.note end)
+        notes = map(self:getActiveTimers(), Timer.toState)
     }
     fhlog(INFO, "GameState", "Returning state : %s", result)
     return result

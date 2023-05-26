@@ -19917,7 +19917,11 @@ GameData = {
                   },
                name = "spawn 1",
                startOfRound = true,
-               note = "Spawn 1 Piranha Pig (normal for 2 characters, elite for 3-4) and 2 Lightning Eels (normal for 2-3 characters, elite for 4)",
+               notes = {
+                  "Spawn 1 normal Piranha Pig and 2 normal Lightning Eels",
+                  "Spawn 1 elite Piranha Pig and 2 normal Lightning Eels",
+                  "Spawn 1 elite Piranha Pig and 2 elite Lightning Eels",
+                  },
                },
             {
                type = "Timer",
@@ -19940,7 +19944,11 @@ GameData = {
                   },
                name = "spawn 2",
                startOfRound = true,
-               note = "Spawn 1 Piranha Pig (normal for 2-3 characters, elite for 4) and 2 Lightning Eels (normal for 2 characters, elite for 3-4)",
+               notes = {
+                  "Spawn 1 normal Piranha Pig and 2 normal Lightning Eels",
+                  "Spawn 1 normal Piranha Pig and 2 elite Lightning Eels",
+                  "Spawn 1 elite Piranha Pig and 2 elite Lightning Eels",
+                  },
                },
             },
          },

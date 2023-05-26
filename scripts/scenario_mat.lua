@@ -2091,9 +2091,14 @@ function hash(str)
     return h
 end
 
+StateUpdaterTimer = nil
 function updateCurrentState()
     if isInternalGameStateEnabled() then
-        processState(CurrentGameState:toState())
+        -- Queue the update for next frame, that way we can avoid doing too many updates in the same frame
+        if StateUpdaterTimer ~= nil then
+            Wait.stop(StateUpdaterTimer)
+        end
+        StateUpdaterTimer = Wait.frames(function() processState(CurrentGameState:toState()) end)
     end
 end
 

@@ -37,7 +37,7 @@ function onStateUpdate(state)
     deleteCardsAt(Loot.ActiveDeck)
 
     local decals = state.decals or {}
-    reapplyDecalsAndMoveTo(deck, decals, Loot.ActiveDeck, { flip = true, atBottom=true })
+    reapplyDecalsAndMoveTo(deck, decals, Loot.ActiveDeck, { flip = true, atBottom = true })
 
     ButtonState = state.buttonState or {}
     updateInternal()
@@ -203,15 +203,18 @@ function updateState(state)
     updateInternal()
 end
 
-PreviousNotes = ""
+AlreadyShownNotes = {}
+DismissedNotes = {}
 function updateInternal()
     self.clearButtons()
     -- Let's show one note at this time
     if State ~= nil then
-        if State.notes ~= nil and #State.notes > 0 then
-            if State.notes[1] ~= PreviousNotes then
-                PreviousNotes = State.notes[1]
-                broadcastToAll(PreviousNotes)
+        if State.notes ~= nil then
+            for _, note in ipairs(State.notes) do
+                if AlreadyShownNotes[note.id] ~= note.round then
+                    AlreadyShownNotes[note.id] = note.round
+                    broadcastToAll(note.text)
+                end
             end
         end
     end
@@ -341,9 +344,30 @@ function updateInternal()
                 end
             end
         end
+
+        -- Handle notes
+        if State.notes ~= nil then
+            currentZ = 2
+            for _, note in ipairs(State.notes) do
+                local noteId = note.id
+                local noteRound = note.round
+                if DismissedNotes[noteId] ~= noteRound then
+                    local fName = "dimissNote_" .. noteId
+                    self.setVar(fName, function() dismissNote(noteId, noteRound) end)
+                    self.createButton(getDismissableLabel(fName, note.text, currentX, currentZ))
+                    currentZ = currentZ - 0.20
+                end
+            end
+        end
+
         self.setDecals(decals)
     end
     createBoardElementsControls()
+end
+
+function dismissNote(noteId, noteRound)
+    DismissedNotes[noteId] = noteRound
+    updateInternal()
 end
 
 function getDecal(name, url, x, z, w, h)
@@ -384,6 +408,15 @@ function getCheckbox(stateName, x, z, w, h, visible)
 end
 
 function nop()
+end
+
+function getDismissableLabel(fName, name, x, z)
+    local params = getButton(fName, x, z, 3000, 400, false)
+    params.font_color = { 1, 1, 1, 100 }
+    params.label = name:gsub("%. ", ".\n")
+    params.font_size = 150
+    params.tooltip = "Click to dismiss"
+    return params
 end
 
 function getLabel(name, x, z)
@@ -511,6 +544,8 @@ function cleanup()
     cleanupAttackModifiers(AttackModifiers.Ally.DrawDeck, AttackModifiers.Ally.DiscardDeck)
     cleanupAttackModifiers(AttackModifiers.Monster.DrawDeck, AttackModifiers.Monster.DiscardDeck)
     cleanLootDeck()
+    AlreadyShownNotes = {}
+    DismissedNotes = {}
 end
 
 function onLootDrawInternal(obj, player, alt)
