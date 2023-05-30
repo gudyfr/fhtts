@@ -174,11 +174,13 @@ function addButtons(scenario)
         fName = getToggleFunctionName("completed", scenario)
         zOffset = -(0.043 + (entry.zOffset or 0))
         xOffset = 0.116
+        local loadXScale = .45
         local size = entry.size or 1
         if size == 2 then
             xOffset = 0.14
         elseif size == 0 then
             xOffset = 0.092
+            loadXScale = .40
         elseif size == 3 then
             xOffset = 0.176
         end
@@ -207,7 +209,7 @@ function addButtons(scenario)
             height         = 200,
             font_size      = 50,
             color          = { 1, 1, 1, 0 },
-            scale          = { .45, .05, .05 },
+            scale          = { loadXScale, .05, .05 },
             font_color     = { 0, 0, 0, 1 },
             tooltip        = tooltip
         }

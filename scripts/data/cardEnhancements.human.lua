@@ -671,6 +671,7 @@ CardEnhancements = {
       level = 3,
       spots = {
          {
+            ability = "attack",
             position = {
                x = -0.253,
                z = -0.787,
@@ -775,6 +776,7 @@ CardEnhancements = {
       spots = {
          {
             ability = "attack",
+            lost = "lost",
             position = {
                x = -0.423,
                z = -1.155,
@@ -783,6 +785,7 @@ CardEnhancements = {
             },
          {
             ability = "attack",
+            lost = "lost",
             position = {
                x = -0.408,
                z = -0.903,
@@ -791,6 +794,7 @@ CardEnhancements = {
             },
          {
             ability = "attack",
+            lost = "lost",
             position = {
                x = -0.409,
                z = -0.448,
@@ -3911,7 +3915,7 @@ CardEnhancements = {
             },
          },
       },
-   ["31 - Morbud Camouflage"] = {
+   ["31 - Morbid Camouflage"] = {
       level = 1,
       spots = {
          {
@@ -6088,6 +6092,7 @@ CardEnhancements = {
       level = 1,
       spots = {
          {
+            ability = "attack",
             lost = "lost",
             multi = "multi",
             position = {

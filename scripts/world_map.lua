@@ -61,31 +61,18 @@ function processDecalInfo(request)
 end
 
 function createButtons()
+    if Map_decals ~= nil and Map_decals.scenarios ~= nil then
+        for _, entry in ipairs(Map_decals.scenarios) do
+            if entry.name == "map_z" then
+                createToggleButton(entry)
+            end
+        end
+    end
     if Map_decals ~= nil and Map_decals.outpost ~= nil then
         local outpostData = Map_decals.outpost
         if outpostData.others ~= nil then
             for _, entry in pairs(outpostData.others) do
-                local fName = "toggle_" .. entry.name
-                self.setVar(fName, function() toggle(entry) end)
-                local name
-                local tooltip
-                name = ""
-                tooltip = "Toggle " .. string.sub(entry.name, 4, 5)
-
-                local params = {
-                    function_owner = self,
-                    click_function = fName,
-                    label          = name,
-                    position       = { -(entry.position.x), entry.position.y, entry.position.z },
-                    width          = 200,
-                    height         = 200,
-                    font_size      = 50,
-                    color          = { 1, 1, 1, 0 },
-                    scale          = { .3, .3, .3 },
-                    font_color     = { 1, 1, 1, 0 },
-                    tooltip        = tooltip
-                }
-                self.createButton(params)
+                createToggleButton(entry)
             end
         end
         if outpostData.buildings ~= nil then
@@ -130,6 +117,30 @@ function createButtons()
         end
     end
     refreshDecals()
+end
+
+function createToggleButton(entry)
+    local fName = "toggle_" .. entry.name
+    self.setVar(fName, function() toggle(entry) end)
+    local name
+    local tooltip
+    name = ""
+    tooltip = "Toggle " .. (entry.display or string.sub(entry.name, 4, 5))
+
+    local params = {
+        function_owner = self,
+        click_function = fName,
+        label          = name,
+        position       = { -(entry.position.x), entry.position.y, entry.position.z },
+        width          = 200,
+        height         = 200,
+        font_size      = 50,
+        color          = { 1, 1, 1, 0 },
+        scale          = { .3, .3, .3 },
+        font_color     = { 1, 1, 1, 0 },
+        tooltip        = tooltip
+    }
+    self.createButton(params)
 end
 
 function toggle(entry)

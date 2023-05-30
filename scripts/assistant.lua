@@ -300,32 +300,36 @@ function updateInternal()
                         table.insert(decals, getDecal(decalName, url, currentX, currentZ, .7, .25))
                     else
                         -- We dont' have an image to show, but we can show the entry's name
-                        self.createButton(getLabel((name or entry.id or "") .. " (" .. (entry.initiative or "") .. ")",
+                        self.createButton(getLabel((name or entry.id or ""),
                             currentX, currentZ))
                     end
 
                     -- Render controls to override a player turn order, if the round has started
-                    if State.round.state == 1 and not npc then
-                        if i ~= 1 then
-                            -- Add a button to lower the player initiative
-                            local url =
-                            "http://cloud-3.steamusercontent.com/ugc/2035105157823185573/8BABEE86FE1085D5C001E6DD4EE1F1E040BF6D1D/"
-                            table.insert(decals, getDecal(name .. "_faster", url, currentX + 0.55, currentZ, .1, .05))
+                    if State.round.state == 1 then
+                        if not npc then
+                            if i ~= 1 then
+                                -- Add a button to lower the player initiative
+                                local url =
+                                "http://cloud-3.steamusercontent.com/ugc/2035105157823185573/8BABEE86FE1085D5C001E6DD4EE1F1E040BF6D1D/"
+                                table.insert(decals, getDecal(name .. "_faster", url, currentX + 0.55, currentZ, .1, .05))
 
-                            local fName = "changeInitiative_down_" .. name
-                            self.setVar(fName, function() changeInitiative(name, -1) end)
-                            self.createButton(getButton(fName, currentX + 0.55, currentZ, 700, 250))
-                        end
-                        if i ~= lastActive then
-                            -- Add a button to increase the player intitiative
-                            local url =
-                            "http://cloud-3.steamusercontent.com/ugc/2035105157823185619/529E35C0294D03A666C9EA9C924105F40F07697F/"
-                            table.insert(decals, getDecal(name .. "_slower", url, currentX - 0.55, currentZ, .1, .05))
+                                local fName = "changeInitiative_down_" .. name
+                                self.setVar(fName, function() changeInitiative(name, -1) end)
+                                self.createButton(getButton(fName, currentX + 0.55, currentZ, 700, 250))
+                            end
+                            if i ~= lastActive then
+                                -- Add a button to increase the player intitiative
+                                local url =
+                                "http://cloud-3.steamusercontent.com/ugc/2035105157823185619/529E35C0294D03A666C9EA9C924105F40F07697F/"
+                                table.insert(decals, getDecal(name .. "_slower", url, currentX - 0.55, currentZ, .1, .05))
 
-                            local fName = "changeInitiative_up_" .. name
-                            self.setVar(fName, function() changeInitiative(name, 1) end)
-                            self.createButton(getButton(fName, currentX - 0.55, currentZ, 700, 250))
+                                local fName = "changeInitiative_up_" .. name
+                                self.setVar(fName, function() changeInitiative(name, 1) end)
+                                self.createButton(getButton(fName, currentX - 0.55, currentZ, 700, 250))
+                            end
                         end
+                        -- Also render the player initiative
+                        self.createButton(getLabel((entry.initiative or ""), currentX + 0.8, currentZ))
                     end
                     currentZ = currentZ + itemHeight / 2
                 end
@@ -581,6 +585,13 @@ function setLootDeck(cards)
     cleanup()
 
     -- Setup loot deck
+    if ButtonState['lootCard1'] == true then
+        table.insert(cards, '1418')
+    end
+    if ButtonState['lootCard2'] == true then
+        table.insert(cards, '1419')
+    end
+    
     local sourceDeck = getDeckOrCardAt(Loot.ActiveDeck)
     for _, card in ipairs(cards) do
         forEachInDeckOrCardIf(sourceDeck, function(card) addCardToDeckAt(card, Loot.DrawDeck) end,

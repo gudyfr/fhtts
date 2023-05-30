@@ -2780,6 +2780,7 @@ Map_decals = {
          },
       {
          name = "map_z",
+         display = "Map sticker z",
          position = {
             x = -0.503,
             y = 0.06,
@@ -4505,6 +4506,7 @@ Map_decals = {
       others = {
          {
             name = "fh-boat-orig.png",
+            display = "Boat",
             position = {
                x = -0.752,
                y = 0.06,
@@ -4524,6 +4526,7 @@ Map_decals = {
             },
          {
             name = "fh-climbing-gear-orig.png",
+            display = "Climbing Gear",
             position = {
                x = -0.342,
                y = 0.06,
@@ -4543,6 +4546,7 @@ Map_decals = {
             },
          {
             name = "fh-sled-orig.png",
+            display = "Sled",
             position = {
                x = -0.513,
                y = 0.06,
@@ -4562,6 +4566,7 @@ Map_decals = {
             },
          {
             name = "fh-wall-j-orig.png",
+            display = "Wall J",
             position = {
                x = 0.529,
                y = 0.06,
@@ -4581,6 +4586,7 @@ Map_decals = {
             },
          {
             name = "fh-wall-k-orig.png",
+            display = "Wall K",
             position = {
                x = 0.195,
                y = 0.06,
@@ -4600,6 +4606,7 @@ Map_decals = {
             },
          {
             name = "fh-wall-l-orig.png",
+            display = "Wall L",
             position = {
                x = 1.107,
                y = 0.06,
@@ -4619,6 +4626,7 @@ Map_decals = {
             },
          {
             name = "fh-wall-n-orig.png",
+            display = "Wall N",
             position = {
                x = -0.407,
                y = 0.06,
@@ -4638,6 +4646,7 @@ Map_decals = {
             },
          {
             name = "fh-wall-m-orig.png",
+            display = "Wall M",
             position = {
                x = 0.792,
                y = 0.06,
@@ -4657,6 +4666,7 @@ Map_decals = {
             },
          {
             name = "fh-statue-orig.png",
+            display = "Statue",
             position = {
                x = 0.557,
                y = 0.06,
@@ -4676,6 +4686,7 @@ Map_decals = {
             },
          {
             name = "fh-red-well-orig.png",
+            display = "Red Well",
             position = {
                x = 0.219,
                y = 0.06,
@@ -4695,6 +4706,7 @@ Map_decals = {
             },
          {
             name = "fh-ice-spike-orig.png",
+            display = "Ice Spike",
             position = {
                x = -0.113,
                y = 0.06,

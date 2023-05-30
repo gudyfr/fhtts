@@ -1102,7 +1102,11 @@ function GameState:getLootCardInfo(card)
             return { value = value, type = type }
         end
     end
-    fhlog(ERROR, "GameState", "Card %s not found", card or "nil")
+
+    if card == 1418 or card == 1419 then
+        return { value = 0, type = "special" }
+    end
+    fhlog(ERROR, "GameState", "Card %s not found", card or "nil")    
 end
 
 function GameState:getLoot()

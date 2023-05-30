@@ -1990,7 +1990,11 @@ function onLootDrawn(params)
         if character ~= nil and card ~= nil then
             print(card)
             local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
-            broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type, { r = 0.2, g = 1, b = 0.2 })
+            if lootInfo.type ~= "special" then
+                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type, { r = 0.2, g = 1, b = 0.2 })
+            else
+                broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
+            end
         else
             print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
             broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
@@ -2114,6 +2118,7 @@ function updateAssistant(method, command, params, callback)
             elseif command == "getLoot" then
                 local result = CurrentGameState:getLoot()
                 processLoot(result, params.mode)
+                handled = true
             end
         elseif method == "POST" then
             if command == "addCharacter" then

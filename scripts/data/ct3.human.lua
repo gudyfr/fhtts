@@ -111,6 +111,7 @@ Ct3 = {
    {
       name = "ct66",
       size = 0,
+      zOffset = 0.03,
       position = {
          x = 0.189,
          y = 0.11,

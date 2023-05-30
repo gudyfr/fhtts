@@ -498,7 +498,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                         local underlay2 = {
                            name = underlay.name .. "_2",
                            url = underlay.url,
-                           position = { -0.665, 0, 0 },
+                           position = { 0.665, 0, 0 },
                            rotation = underlay.rotation,
                            scale = underlay.scale,
                         }
@@ -507,7 +507,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                         local underlay3 = {
                            name = underlay.name .. "_3",
                            url = underlay.url,
-                           position = { -0.3325, 0, -0.665 },
+                           position = { 0.3325, 0, -0.665 },
                            rotation = underlay.rotation,
                            scale = underlay.scale,
                         }

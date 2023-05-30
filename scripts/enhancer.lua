@@ -152,8 +152,11 @@ function isDevMode()
     return self.getDescription() == "dev"
 end
 
-function onObjectCollisionExit()
-    setCurrentCard(nil)
+function onObjectCollisionExit(params)
+    local hitObject = params[2].collision_object
+    if hitObject == CurrentCard then
+        setCurrentCard(nil)
+    end
 end
 
 function round(number)
@@ -322,7 +325,7 @@ function refreshDecals()
                     local lost = CurrentSpot.lost or ""
                     local persist = CurrentSpot.persist or ""
                     local level = CurrentCardInfo.level or 1
-                    local currentEnhancements, currentHexEnhancements = countEnhancements(CurrentCardInfo)
+                    local currentTopEnhancements, currentTopHexEnhancements, currentBottomEnhancements, currentBottomHexEnhancements = countEnhancements(CurrentCardInfo)
                     local currentZ = -0.7
                     local currentX = -0.3
                     for _, t in ipairs(TypesPerType[type]) do
@@ -365,7 +368,11 @@ function refreshDecals()
                                     local ability = summon .. action
                                     local cost = info.cost or info.costByAbility[ability] or 0
                                     if type == 'h' then
-                                        cost = math.ceil(cost / (currentHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                        if CurrentSpot.position[2] > 0 then
+                                            cost = math.ceil(cost / (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                        else
+                                            cost = math.ceil(cost / (currentBottomHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                        end
                                     end
                                     if multi == "multi" and t ~= "c" then
                                         cost = cost * 2
@@ -390,7 +397,11 @@ function refreshDecals()
                                     if enhancerInfo.level >= 4 then
                                         previousCost = 50
                                     end
-                                    cost = cost + currentEnhancements * previousCost
+                                    if CurrentSpot.position.z > 0 then
+                                        cost = cost + currentTopEnhancements * previousCost
+                                    else
+                                        cost = cost + currentBottomEnhancements * previousCost
+                                    end
 
                                     -- enhancer discout
                                     if enhancerInfo.level >= 2 then
@@ -671,17 +682,26 @@ function onEnhancementRemove(player, name)
 end
 
 function countEnhancements(card)
-    local count = 0
-    local hexCount = 0
+    local topCount = 0
+    local topHexCount = 0
+    local bottomCount = 0
+    local bottomHexCount = 0
     for _, spot in ipairs(card.spots) do
         if spot.enhancement ~= nil then
-            count = count + 1
-            if spot.enhancement == 'hex' then
-                hexCount = hexCount + 1
-            end
+            if spot.position.z > 0 then
+                topCount = topCount + 1
+                if spot.enhancement == 'hex' then
+                    topHexCount = topHexCount + 1
+                end
+            else
+                bottomCount = bottomCount + 1
+                if spot.enhancement == 'hex' then
+                    bottomHexCount = bottomHexCount + 1
+                end
+            end           
         end
     end
-    return count, hexCount
+    return topCount, topHexCount, bottomCount, bottomHexCount
 end
 
 function getEnhancerInfo()
