@@ -90,7 +90,26 @@ function onStateUpdate(state)
             rebuildDeck(deck, cardGuids, cardNames, ItemPositions[i], true)
         end
 
-        -- And finally, we can move the remaining cards, if any, to their place\
+        -- Gloomhaven items
+        local ghItems = {
+            { "010", "010", "025", "025", "072", "072", "105", "109",   "116", "116" },
+            { "021", "021", "037", "037", "053", "053", "093", "093-1", "094", "094-1", "106", "115" },
+            { "046", "046", "083", "083-1", "084", "084-1", "085", "085-1", "086", "086-1", "087", "087-1", "088",
+                "088-1", "094", "094-1", "102", "110", "111", "120", "121", "122", "123", "126", "128" },
+            { "017", "017", "035", "035", "047", "047", "051", "051", "062", "062", "074", "074-1", "077",
+                "077-1", "078", "078-1", "079", "079-1", "080", "080-1", "081", "081-1", "082", "082-1",
+                "117", "117", "118", "118", "119", "127", "129", "131" },
+        }
+
+        for i, cardNames in ipairs(ghItems) do
+            local ghCardNames = {}
+            for _, cardName in ipairs(cardNames) do
+                table.insert(ghCardNames, "GH-" .. cardName)
+            end
+            rebuildDeck(deck, cardGuids, ghCardNames, GHItemPositions[i], true)
+        end
+
+        -- And finally, we can move the remaining cards, if any, to their place
         -- At this point they should all be random scenarios
         deleteCardsAt(ItemPositions[#slots])
         if deck ~= nil then
@@ -118,6 +137,7 @@ function onSave()
 end
 
 ItemPositions = {}
+GHItemPositions = {}
 SearchResultPosition = {}
 SearchInputPosition = {}
 SearchButtonPosition = {}
@@ -154,7 +174,14 @@ function locateBoardElementsFromTags()
 
         if tagsMap['deck'] ~= nil then
             if tagsMap['item'] ~= nil then
-                table.insert(ItemPositions, position)
+                if tagsMap['craftable'] == nil and tagsMap['purchasable'] == nil and tagsMap['other'] == nil then
+                    if tagsMap['gh'] == nil then
+                        table.insert(ItemPositions, position)
+                    else
+                        table.insert(GHItemPositions, position)
+                    end
+                end
+
                 for _, key in ipairs({ 'craftable', 'purchasable', 'other' }) do
                     if tagsMap[key] ~= nil then
                         AvailableDecks[key].deck = position
@@ -382,7 +409,7 @@ end
 
 function getItemsDrawPiles()
     local positions = {}
-    for name,info in pairs(AvailableDecks) do
+    for name, info in pairs(AvailableDecks) do
         local position = self.positionToWorld(info.deck)
         positions[name] = position
     end
