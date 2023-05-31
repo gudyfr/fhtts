@@ -213,7 +213,15 @@ function dump()
     print(JSON.encode(CardEnhancements))
 end
 
+function isDisabled()
+    return self.getDescription() == 'disabled'
+end
+
 function refreshDecals()
+    if isDisabled() then
+        return
+    end
+    
     self.clearButtons()
 
     if isDevMode() then
@@ -337,7 +345,7 @@ function refreshDecals()
                     local persist = CurrentSpot.persist or ""
                     local level = CurrentCardInfo.level or 1
                     local currentTopEnhancements, currentTopHexEnhancements, currentBottomEnhancements, currentBottomHexEnhancements =
-                    countEnhancements(CurrentCardInfo)
+                        countEnhancements(CurrentCardInfo)
                     local currentZ = -0.7
                     local currentX = -0.3
                     for _, t in ipairs(TypesPerType[type]) do
@@ -382,10 +390,10 @@ function refreshDecals()
                                     if type == 'h' then
                                         if CurrentSpot.position[2] > 0 then
                                             cost = math.ceil(cost /
-                                            (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                                (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
                                         else
                                             cost = math.ceil(cost /
-                                            (currentBottomHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                                (currentBottomHexEnhancements + (CurrentSpot.baseHexes or 1)))
                                         end
                                     end
                                     if multi == "multi" and t ~= "c" then
