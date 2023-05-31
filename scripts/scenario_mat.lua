@@ -1748,11 +1748,15 @@ function refreshStandee(standee, instance)
             -- Apply the standeeNr sticker
             local position = StandeeNrPositions[standee.getName()] or { x = -0.2, y = 0.5, z = -0.05 }
             height = position.y + 0.35
+            local standeeNumbers = StandeeNumbers
+            if instance.type == 1 then
+                standeeNumbers = EliteStandeeNumbers
+            end
             local sticker = {
                 position = position,
                 rotation = { 0, baseYRot, 0 },
                 scale = { 0.2, 0.2, 0.2 },
-                url = StandeeNumbers[nr],
+                url = standeeNumbers[nr],
                 name = standee.guid .. "_nr_" .. nr
             }
             table.insert(stickers, sticker)

@@ -276,7 +276,7 @@ end
 
 function MonsterInstance:toState()
     return {
-        type = self.type,
+        type = self.type == "elite" and 1 or 0,
         standeeNr = self.nr,
         health = self.hp,
         maxHealth = self.maxHp,
@@ -1040,7 +1040,7 @@ function GameState:findTarget(name, nr)
     end
 
     -- Summons
-    local possibleName = name:sub(1, name:len()-2)
+    local possibleName = name:sub(1, name:len() - 2)
     local possibleNr = tonumber(name:sub(name:len()))
     for _, character in pairs(self.characters) do
         for _, summon in pairs(character.activeSummons) do

@@ -88,7 +88,7 @@ end
 
 function applyEnhancementsToCard(card)
   -- Delegate to enhancer
-  getObjectFromGUID('b2dcae').call('applyEnhancementsToCard', card)
+  getObjectFromGUID(EnhancerMatGuid).call('applyEnhancementsToCard', card)
 end
 
 function loadCharacterBox(characterBox, state)

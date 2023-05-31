@@ -20,3 +20,4 @@ ScenarioMatGuid = '4aa570'
 OutpostMatGuid = '756956'
 CampaignTrackerGuids = { '029e08', '631fbe', '7f539b', '31de67', 'e145fb' }
 BattleInterfaceMat = 'c64592'
+EnhancerMatGuid = 'b2dcae'

@@ -2286,7 +2286,8 @@ end
 
 PingListeners = {}
 
-function registerForPing(obj)
+function registerForPing(params)
+   local obj = params[1]
    table.insert(PingListeners, obj)
 end
 
@@ -2324,5 +2325,50 @@ function fhLogSettingsUpdated()
    local payload = JSON.encode({ level = level, tags = tags })
    for _, obj in ipairs(FhLoggers) do
       obj.call("onFhLogSettingsUpdated", payload)
+   end
+end
+
+DropListeners = {}
+
+function registerForDrop(params)
+   local obj = params[1]
+   table.insert(DropListeners, obj)
+end
+
+function onObjectDrop(player_color, dropped_object)
+   -- Let's do a cast to see if we're being dropped on top of one of the listeners
+   local hitlist = Physics.cast({
+      origin = dropped_object.getPosition(),
+      direction = { 0, -1, 0 },
+      debug = false,
+   })
+   for _, hit in ipairs(hitlist) do
+      local obj = hit.hit_object
+      if obj ~= nil then
+         for _, listener in ipairs(DropListeners) do
+            if obj.guid == listener.guid then
+               listener.call("onObjectDropCallback", { player_color = player_color, object = dropped_object })
+            end
+         end
+      end
+   end
+end
+
+function onObjectPickUp(player_color, dropped_object)
+   -- Let's do a cast to see if we're being dropped on top of one of the listeners
+   local hitlist = Physics.cast({
+      origin = dropped_object.getPosition(),
+      direction = { 0, -1, 0 },
+      debug = false,
+   })
+   for _, hit in ipairs(hitlist) do
+      local obj = hit.hit_object
+      if obj ~= nil then
+         for _, listener in ipairs(DropListeners) do
+            if obj.guid == listener.guid then
+               listener.call("onObjectPickUpCallback", { player_color = player_color, object = dropped_object })
+            end
+         end
+      end
    end
 end

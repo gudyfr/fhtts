@@ -35,8 +35,8 @@ end
 
 function onLoad(save)
     fhLogInit()
-    Global.call('registerForCollision', self)
-    Global.call('registerForPing', self)
+    Global.call('registerForDrop', {self})
+    Global.call('registerForPing', {self})
     if save ~= nil then
         ActiveEnhancements = JSON.decode(save)
     end
@@ -82,14 +82,24 @@ ActiveEnhancements = {}
 CurrentCard = nil
 CurrentCardInfo = nil
 CurrentSpot = nil
-function onObjectCollisionEnter(payload)
-    fhlog(INFO, TAG, "onObjectCollisionEnter")
-    if CardPosition ~= nil then
-        local card = getDeckOrCardAt(CardPosition)
+
+function onObjectDropCallback(params)
+    local card = params.object
+    fhlog(INFO, TAG, "onObjectDropped : %s", getCardName(card))
+    -- if CardPosition ~= nil then
+        -- local card = getDeckOrCardAt(CardPosition)
         if card ~= nil and card.tag == "Card" then
-            fhlog(INFO, TAG, "detected card : %s", card.getName())
+            -- fhlog(INFO, TAG, "detected card : %s", card.getName())
             setCurrentCard(card)
         end
+    -- end
+end
+
+function onObjectPickUpCallback(params)
+    local card = params.object
+    fhlog(INFO, TAG, "onObjectPickedUp : %s", getCardName(card))
+    if card == CurrentCard then
+        setCurrentCard(nil)
     end
 end
 
@@ -162,14 +172,6 @@ function isDevMode()
     return self.getDescription() == "dev"
 end
 
-function onObjectCollisionExit(params)
-    local hitObject = params[2].collision_object
-    fhlog(INFO, TAG, "onObjectCollisionExit : %s", getCardName(hitObject))
-    if hitObject == CurrentCard then
-        setCurrentCard(nil)
-    end
-end
-
 function round(number)
     return tonumber(string.format("%.3f", number))
 end
@@ -221,7 +223,7 @@ function refreshDecals()
     if isDisabled() then
         return
     end
-    
+
     self.clearButtons()
 
     if isDevMode() then
@@ -476,7 +478,7 @@ function getInfoSticker(name, url)
     return {
         rotation = { 90, 180, 0 },
         scale = { 2.0, 0.8, 0.8 },
-        position = { -0.85, 0.06, 0.2 },
+        position = { -0.85, 0.16, 0.2 },
         name = "info_" .. name,
         url = url
     }
