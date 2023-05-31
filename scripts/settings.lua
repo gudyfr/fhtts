@@ -18,6 +18,7 @@ function createEmptyState()
             ["enable-automatic-scenario-layout"] = true,
             ["enable-automatic-narration"] = false,
             ["enable-automatic-characters"] = true,
+            ["enable-am-ui-overlay"] = true,
             difficulty = 0
         }
     }
@@ -40,7 +41,8 @@ function getExpectedEntries()
         { "enable-highlight-tiles-by-type",     "checkbox" },
         { "enable-automatic-characters",        "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
-        { "enable-automatic-narration",         "checkbox" }
+        { "enable-automatic-narration",         "checkbox" },
+        { "enable-am-ui-overlay",               "checkbox", onUIOverlayChanged },
     }
 end
 
@@ -104,6 +106,10 @@ function onDifficultyInsane(set)
     end
 end
 
+function onUIOverlayChanged(set)
+    UI.setAttribute("layout", "active", set)
+end
+
 function setDifficulty(level)
     local entries = { "easy", "normal", "hard", "insane" }
     for _, button in ipairs(self.getButtons()) do
@@ -111,7 +117,7 @@ function setDifficulty(level)
             if entry ~= level then
                 local name = "difficulty-" .. entry
                 State[name] = false
-                if button.click_function == "onToggle_" .. name then
+                if button.click_function == "onTog1e_" .. name then
                     local label = ""
                     button.label = label
                     self.editButton(button)
