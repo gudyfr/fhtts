@@ -30,6 +30,7 @@ function onStateUpdate(enhancements)
             end
         end
     end
+    self.setDescription('')
 end
 
 function onLoad(save)
@@ -82,15 +83,25 @@ CurrentCard = nil
 CurrentCardInfo = nil
 CurrentSpot = nil
 function onObjectCollisionEnter(payload)
+    fhlog(INFO, TAG, "onObjectCollisionEnter")
     if CardPosition ~= nil then
         local card = getDeckOrCardAt(CardPosition)
         if card ~= nil and card.tag == "Card" then
+            fhlog(INFO, TAG, "detected card : %s", card.getName())
             setCurrentCard(card)
         end
     end
 end
 
+function getCardName(card)
+    if card == nil then
+        return "<none>"
+    end
+    return card.getName() or "<unnamed>"
+end
+
 function setCurrentCard(card)
+    fhlog(INFO, TAG, "setCurrentCard from %s to %s", getCardName(CurrentCard), getCardName(card))
     if CurrentCard == card then
         return
     end
@@ -153,6 +164,7 @@ end
 
 function onObjectCollisionExit(params)
     local hitObject = params[2].collision_object
+    fhlog(INFO, TAG, "onObjectCollisionExit : %s", getCardName(hitObject))
     if hitObject == CurrentCard then
         setCurrentCard(nil)
     end
@@ -707,6 +719,9 @@ function countEnhancements(card)
 end
 
 function getEnhancerInfo()
+    if self.getDescription() == "unlocked" then
+        return { level = 1, wrecked = false }
+    end
     local outpost = getObjectFromGUID('756956')
     if outpost ~= nil then
         local info = JSON.decode(outpost.call('getBuildingInfo', "44"))
