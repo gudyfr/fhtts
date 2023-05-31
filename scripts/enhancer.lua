@@ -625,7 +625,7 @@ function hexesUp()
 end
 
 function onSpotClicked(n, alt)
-    if alt then
+    if alt and isDevMode() then
         table.remove(CurrentCardInfo.spots, n)
     end
     if CurrentCard ~= nil then
