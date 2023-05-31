@@ -249,6 +249,12 @@ function MonsterInstance:changeHp(amount)
     end
 end
 
+function MonsterInstance:changeMaxHp(amount)
+    local damage = self.maxHp - self.hp
+    self.maxHp = self.maxHp + amount
+    self.hp = self.maxHp - damage
+end
+
 function MonsterInstance:toggleCondition(condition)
     local current = self.conditions[condition] or false
     if not current then
@@ -493,12 +499,15 @@ end
 
 function Summon:changeHp(amount)
     self.hp = self.hp + amount
-    if self.hp > self.maxHp then
-        self.maxHp = self.hp
-    end
     if self.hp <= 0 then
         self.character:removeSummon(self.name, self.nr)
     end
+end
+
+function Summon:changeMaxHp(amount)
+    local damage = self.maxHp - self.hp
+    self.maxHp = self.maxHp + amount
+    self.hp = self.maxHp - damage
 end
 
 function Summon:toggleCondition(condition)
@@ -541,6 +550,7 @@ function Character.newFromSave(json, save)
     self.hps = json.hps
     self.level = save.level
     self.initiative = save.initiative
+    self.displayInitiative = save.displayInitiative
     self.hp = save.hp
     self.maxHp = save.maxHp
     self.xp = save.xp
@@ -557,6 +567,7 @@ function Character:save()
         name = self.name,
         level = self.level,
         initiative = self.initiative,
+        displayInitiative = self.initiative,
         hp = self.hp,
         maxHp = self.maxHp,
         xp = self.xp,
@@ -568,6 +579,7 @@ end
 
 function Character:reset()
     self.initiative = 0
+    self.displayInitiative = 0
     self.turnState = 0
     self.hp = self.hps[self.level]
     self.maxHp = self.hps[self.level]
@@ -598,20 +610,31 @@ end
 function Character:startRound(initiative, secondCardInitiative)
     fhlog(DEBUG, "GameState", "Setting initiative at %s - %s for %s", initiative, secondCardInitiative, self.name)
     self.initiative = initiative
+    self.displayInitiative = initiative
     self.secondCardInitiative = secondCardInitiative
     self.turnState = 0
 end
 
 function Character:endRound()
     self.initiative = 0
+    self.displayInitiative = 0
     self.turnState = 0
 end
 
 function Character:changeHp(amount)
     self.hp = self.hp + amount
+    if self.hp > self.maxHp then
+        self.hp = self.maxHp
+    end
     if self.hp < 0 then
         self.hp = 0
     end
+end
+
+function Character:changeMaxHp(amount)
+    local damage = self.maxHp - self.hp
+    self.maxHp = self.maxHp + amount
+    self.hp = self.maxHp - damage
 end
 
 function Character:changeXp(amount)
@@ -657,8 +680,8 @@ function Character:toState()
         id = self.name,
         active = self.hp > 0,
         turnState = self.turnState,
-        initiative = self.initiative,
         characterState = {
+            initiative = self.displayInitiative,
             health = self.hp,
             maxHealth = self.maxHp,
             level = self.level,
@@ -710,12 +733,15 @@ end
 
 function Npc:changeHp(amount)
     self.hp = self.hp + amount
-    if self.hp > self.maxHp then
-        self.hp = self.maxHp
-    end
     if self.hp <= 0 then
         self.gameState:removeNpc(self)
     end
+end
+
+function Npc:changeMaxHp(amount)
+    local damage = self.maxHp - self.hp
+    self.maxHp = self.maxHp + amount
+    self.hp = self.maxHp - damage
 end
 
 function Npc:toState()
@@ -723,9 +749,9 @@ function Npc:toState()
         id = self.name,
         active = self.hp > 0 and self.type == "Escort",
         turnState = self.turnState,
-        initiative = self.initiative,
         npc = true,
         characterState = {
+            initiative = self.initiative,
             health = self.hp,
             maxHealth = self.maxHp,
             conditions = mapDictToList(self.conditions, function(k, v) return ConditionMapping[k] end)
@@ -936,6 +962,8 @@ function GameState:change(what, name, nr, amount)
     if target ~= nil then
         if what == "hp" then
             target:changeHp(amount)
+        elseif what == "maxHp" then
+            target:changeMaxHp(amount)
         elseif what == "xp" then
             target:changeXp(amount)
         elseif what == "level" then
@@ -987,9 +1015,8 @@ function GameState:endRound()
     self.roundState = 0
 end
 
-function GameState:infuse(element, half)
-    half = half or false
-    self.elements[element] = half and 1 or 2
+function GameState:setElement(element, state)
+    self.elements[element] = state
 end
 
 function GameState:nbCharacters()
@@ -1013,9 +1040,13 @@ function GameState:findTarget(name, nr)
     end
 
     -- Summons
+    local possibleName = name:sub(1, name:len()-2)
+    local possibleNr = tonumber(name:sub(name:len()))
     for _, character in pairs(self.characters) do
         for _, summon in pairs(character.activeSummons) do
             if summon.name == name and (summon.nr == nr) then
+                return summon
+            elseif summon.name == possibleName and summon.nr == possibleNr then
                 return summon
             end
         end
@@ -1106,7 +1137,7 @@ function GameState:getLootCardInfo(card)
     if card == 1418 or card == 1419 then
         return { value = 0, type = "special" }
     end
-    fhlog(ERROR, "GameState", "Card %s not found", card or "nil")    
+    fhlog(ERROR, "GameState", "Card %s not found", card or "nil")
 end
 
 function GameState:getLoot()

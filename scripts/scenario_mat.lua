@@ -11,7 +11,7 @@ require('cards')
 require('data/gameData')
 
 TAG = "ScenarioMat"
-CURRENT_ASSISTANT_VERSION = 3
+CURRENT_ASSISTANT_VERSION = 5
 TAG_5_PLAYERS = "5 players"
 
 function getState()
@@ -520,7 +520,7 @@ end
 function toggleElement(element, alt)
     if alt then
         elementStates[element] = 1
-    elseif elementStates[element] == 2 then
+    elseif elementStates[element] ~= 0 then
         elementStates[element] = 0
     else
         elementStates[element] = 2
@@ -1372,16 +1372,16 @@ function changeStandeeHp(params)
         if inputs ~= nil then
             nr = tonumber(inputs[1].value)
         end
-        updateAssistant("POST", "change", { target = name, nr = nr, what = "hp", change = amount }, updateState)
+        updateAssistant("POST", "change", { target = name, nr = nr, what = params.changeMax and "maxHp" or "hp", change = amount }, updateState)
     end
 end
 
 function damageStandee(standee, color, alt)
-    changeStandeeHp({ standee = standee, amount = -1 })
+    changeStandeeHp({ standee = standee, amount = -1, changeMax=alt })
 end
 
 function undamageStandee(standee, color, alt)
-    changeStandeeHp({ standee = standee, amount = 1 })
+    changeStandeeHp({ standee = standee, amount = 1, changeMax=alt })
 end
 
 function unregisterStandee(standee)
@@ -1512,9 +1512,9 @@ function processState(state)
                     name = originalId,
                     type = "character",
                     turnState = entry.turnState,
-                    active = entry.active,
+                    active = entry.active or entry.characterState.health > 0,
                     noUi = entry.noUi or false,
-                    initiative = entry.initiative,
+                    initiative = entry.characterState.initiative,
                     npc = entry.npc or false
                 })
         else
@@ -1534,7 +1534,7 @@ function processState(state)
                         turnState = entry.turnState,
                         level = entry.level,
                         card = entry.currentCard,
-                        active = entry.active
+                        active = entry.active or #instances > 0,
                     })
             end
         end
@@ -1847,6 +1847,7 @@ function refreshStandee(standee, instance)
         standee.createButton(buttonParams)
         -- Also create hp - and hp + buttons
         buttonParams.label = "-"
+        buttonParams.tooltip = "Right click to change max"
         buttonParams.click_function = "damageStandee"
         buttonParams.position.x = vec.x - 0.35 * xScaleFactor
         buttonParams.width = 200
@@ -2174,7 +2175,7 @@ function updateAssistant(method, command, params, callback)
                 updateCurrentState()
                 handled = true
             elseif command == "setElement" then
-                CurrentGameState:infuse(params.element, state == 1)
+                CurrentGameState:setElement(params.element, params.state)
                 updateCurrentState()
                 handled = true
             elseif command == "endScenario" then

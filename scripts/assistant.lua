@@ -253,7 +253,7 @@ function updateInternal()
 
                     -- Render the monster image
                     local grey = ""
-                    if turnState == 2 or not entry.active then
+                    if turnState == 2 or entry.active == false then
                         grey = ".grey"
                     end
                     local decalName = name .. grey
