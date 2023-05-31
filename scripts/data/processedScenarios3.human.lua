@@ -209,10 +209,26 @@ ProcessedScenarios3 = {
                               y = -5,
                               levels = "nnn",
                               },
+                           {
+                              x = 6,
+                              y = 0,
+                              levels = "aae",
+                              },
                            },
                         },
                      },
                   overlays = {
+                     {
+                        name = "Snow Rock",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 7,
+                              y = -1,
+                              type = "Obstacle",
+                              },
+                           },
+                        },
                      {
                         name = "Snowdrift",
                         orientation = 0,
@@ -253,6 +269,10 @@ ProcessedScenarios3 = {
                               y = -3,
                               type = "Trap",
                               },
+                           {
+                              x = 9,
+                              y = -5,
+                              },
                            },
                         },
                      },
@@ -279,10 +299,6 @@ ProcessedScenarios3 = {
                         name = "Hound",
                         orientation = 0,
                         positions = {
-                           {
-                              x = -2,
-                              y = 0,
-                              },
                            {
                               x = 3,
                               y = 0,
@@ -345,17 +361,6 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
-                        name = "Snow Rock",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = -1,
-                              type = "Obstacle",
-                              },
-                           },
-                        },
-                     {
                         name = "Snowdrift",
                         orientation = 0,
                         positions = {
@@ -363,17 +368,6 @@ ProcessedScenarios3 = {
                               x = 2,
                               y = 0,
                               type = "Difficult Terrain",
-                              },
-                           },
-                        },
-                     {
-                        name = "Spike Pit",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 1,
-                              y = -5,
-                              type = "Trap",
                               },
                            },
                         },
@@ -9635,20 +9629,6 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
-                        name = "d",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -7,
-                              y = 6,
-                              },
-                           {
-                              x = -4,
-                              y = 0,
-                              },
-                           },
-                        },
-                     {
                         name = "start",
                         orientation = 0,
                         positions = {
@@ -9680,11 +9660,6 @@ ProcessedScenarios3 = {
                         name = "Algox Archer",
                         orientation = 0,
                         positions = {
-                           {
-                              x = -5,
-                              y = 0,
-                              levels = "nne",
-                              },
                            {
                               x = -6,
                               y = 3,
@@ -9730,46 +9705,12 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -4,
-                              y = 0,
-                              },
-                           {
-                              x = -7,
-                              y = 6,
-                              },
-                           },
-                        },
-                     {
                         name = "Large Snow Rock",
                         orientation = 60,
                         positions = {
                            {
                               x = -5,
                               y = 3,
-                              },
-                           {
-                              x = -7,
-                              y = 4,
-                              },
-                           },
-                        },
-                     {
-                        name = "Rubble",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -5,
-                              y = 1,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = -7,
-                              y = 5,
-                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -9821,8 +9762,33 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
+                     {
+                        name = "d",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              },
+                           {
+                              x = 1,
+                              y = 0,
+                              },
+                           },
+                        },
                      },
                   monsters = {
+                     {
+                        name = "Algox Archer",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              levels = "nne",
+                              },
+                           },
+                        },
                      {
                         name = "Algox Guard",
                         orientation = 0,
@@ -9894,12 +9860,41 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              },
+                           {
+                              x = 1,
+                              y = 0,
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Snow Rock",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 4,
+                              },
+                           },
+                        },
+                     {
                         name = "Rubble",
                         orientation = 0,
                         positions = {
                            {
                               x = -1,
                               y = 1,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -2,
+                              y = 5,
                               type = "Difficult Terrain",
                               },
                            {
@@ -9910,6 +9905,11 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 4,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
                               type = "Difficult Terrain",
                               },
                            },
@@ -15260,16 +15260,6 @@ ProcessedScenarios3 = {
                      },
                   tokens = {
                      {
-                        name = "c",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -4,
-                              y = 3,
-                              },
-                           },
-                        },
-                     {
                         name = "d",
                         orientation = 0,
                         positions = {
@@ -15308,16 +15298,8 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -9,
-                              y = 4,
-                              },
-                           {
                               x = -7,
                               y = 2,
-                              },
-                           {
-                              x = -8,
-                              y = 3,
                               },
                            },
                         },
@@ -15358,49 +15340,11 @@ ProcessedScenarios3 = {
                         },
                      {
                         name = "Snow Corridor",
-                        orientation = 0,
+                        orientation = 60,
                         positions = {
                            {
                               x = -2,
                               y = 3,
-                              },
-                           },
-                        },
-                     {
-                        name = "Barrels",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 4,
-                              type = "Objective",
-                              },
-                           },
-                        },
-                     {
-                        name = "Bear Trap",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 3,
-                              type = "Trap",
-                              },
-                           {
-                              x = -4,
-                              y = 4,
-                              type = "Trap",
-                              },
-                           },
-                        },
-                     {
-                        name = "Crate",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -2,
-                              y = 4,
-                              type = "Objective",
                               },
                            },
                         },
@@ -15429,6 +15373,16 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = 0,
+                              },
+                           },
+                        },
+                     {
+                        name = "c",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 8,
+                              y = -7,
                               },
                            },
                         },
@@ -15486,6 +15440,14 @@ ProcessedScenarios3 = {
                               x = 2,
                               y = -4,
                               },
+                           {
+                              x = 3,
+                              y = -6,
+                              },
+                           {
+                              x = 4,
+                              y = -7,
+                              },
                            },
                         },
                      },
@@ -15516,6 +15478,11 @@ ProcessedScenarios3 = {
                               y = -5,
                               type = "Objective",
                               },
+                           {
+                              x = 9,
+                              y = -6,
+                              type = "Objective",
+                              },
                            },
                         },
                      {
@@ -15537,12 +15504,26 @@ ProcessedScenarios3 = {
                               y = -5,
                               type = "Trap",
                               },
+                           {
+                              x = 8,
+                              y = -6,
+                              },
+                           {
+                              x = 9,
+                              y = -7,
+                              type = "Trap",
+                              },
                            },
                         },
                      {
                         name = "Crate",
                         orientation = 0,
                         positions = {
+                           {
+                              x = 10,
+                              y = -6,
+                              type = "Objective",
+                              },
                            {
                               x = 8,
                               y = -3,
@@ -15577,6 +15558,7 @@ ProcessedScenarios3 = {
                            {
                               x = 9,
                               y = -5,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -18140,6 +18122,20 @@ ProcessedScenarios3 = {
                      },
                   tokens = {
                      {
+                        name = "b",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 4,
+                              },
+                           {
+                              x = -1,
+                              y = 2,
+                              },
+                           },
+                        },
+                     {
                         name = "c",
                         orientation = 0,
                         positions = {
@@ -18176,6 +18172,16 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
+                        name = "e",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -7,
+                              y = 0,
+                              },
+                           },
+                        },
+                     {
                         name = "start",
                         orientation = 0,
                         positions = {
@@ -18191,6 +18197,17 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
+                     {
+                        name = "Frozen Corpse",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 1,
+                              levels = "ann",
+                              },
+                           },
+                        },
                      {
                         name = "Lightning Eel",
                         orientation = 0,
@@ -18235,6 +18252,22 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 4,
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = -1,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -6,
+                              y = -1,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -18289,6 +18322,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Obstacle",
                               },
                            {
                               x = -4,
@@ -18307,8 +18341,23 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = -1,
+                              y = 2,
+                              type = "Difficult Terrain",
+                              },
+                           {
                               x = -2,
                               y = 2,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -2,
+                              y = 3,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -2,
+                              y = 4,
                               type = "Difficult Terrain",
                               },
                            {
@@ -18348,16 +18397,8 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -5,
-                              y = 3,
-                              },
-                           {
                               x = -4,
                               y = 2,
-                              },
-                           {
-                              x = -4,
-                              y = 1,
                               },
                            },
                         },
@@ -18373,17 +18414,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
-                     {
-                        name = "Frozen Corpse",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -4,
-                              y = 0,
-                              levels = "ann",
-                              },
-                           },
-                        },
                      {
                         name = "Shrike Fiend",
                         orientation = 0,
@@ -18434,22 +18464,7 @@ ProcessedScenarios3 = {
                         positions = {
                            {
                               x = -4,
-                              y = 1,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = -4,
                               y = 2,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = -5,
-                              y = 2,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = -5,
-                              y = 3,
                               type = "Difficult Terrain",
                               },
                            },
@@ -18462,16 +18477,6 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
-                     {
-                        name = "e",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -6,
-                              y = 3,
-                              },
-                           },
-                        },
                      {
                         name = "start",
                         orientation = 0,
@@ -18503,22 +18508,6 @@ ProcessedScenarios3 = {
                         positions = {
                            {
                               x = -2,
-                              y = 2,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = 2,
-                              type = "Corridor",
-                              },
-                           {
-                              x = -5,
                               y = 2,
                               type = "Corridor",
                               },
@@ -23245,6 +23234,16 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
+                        name = "c",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -10,
+                              y = 6,
+                              },
+                           },
+                        },
+                     {
                         name = "e",
                         orientation = 0,
                         positions = {
@@ -23268,6 +23267,7 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 0,
+                              levels = "aan",
                               },
                            },
                         },
@@ -23290,6 +23290,11 @@ ProcessedScenarios3 = {
                               y = 4,
                               levels = "nee",
                               },
+                           {
+                              x = -9,
+                              y = 4,
+                              levels = "aan",
+                              },
                            },
                         },
                      {
@@ -23305,6 +23310,27 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -8,
+                              y = 2,
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -7,
+                              y = 0,
+                              type = "Corridor",
+                              },
+                           },
+                        },
                      {
                         name = "Huge Water",
                         orientation = 0,
@@ -23376,6 +23402,11 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = -10,
+                              y = 6,
+                              type = "Difficult Terrain",
+                              },
+                           {
                               x = -2,
                               y = 1,
                               type = "Difficult Terrain",
@@ -23424,16 +23455,6 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
-                     {
-                        name = "c",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -2,
-                              y = 6,
-                              },
-                           },
-                        },
                      {
                         name = "d",
                         orientation = 0,
@@ -23489,11 +23510,6 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -1,
-                              y = 4,
-                              levels = "aan",
-                              },
-                           {
                               x = -4,
                               y = 3,
                               levels = "nne",
@@ -23525,16 +23541,6 @@ ProcessedScenarios3 = {
                   overlays = {
                      {
                         name = "Large Snow Corridor",
-                        orientation = 60,
-                        positions = {
-                           {
-                              x = 0,
-                              y = 2,
-                              },
-                           },
-                        },
-                     {
-                        name = "Large Snow Corridor",
                         orientation = 300,
                         positions = {
                            {
@@ -23551,11 +23557,6 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 4,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 1,
-                              y = 0,
                               type = "Corridor",
                               },
                            },
@@ -23613,11 +23614,6 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 0,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = -2,
-                              y = 6,
                               type = "Difficult Terrain",
                               },
                            },
@@ -23695,16 +23691,6 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
-                     {
-                        name = "c",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 9,
-                              y = -4,
-                              },
-                           },
-                        },
                      },
                   monsters = {
                      {
@@ -23714,12 +23700,10 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -3,
-                              levels = "nnn",
                               },
                            {
                               x = 6,
                               y = -3,
-                              levels = "nnn",
                               },
                            },
                         },
@@ -23748,17 +23732,14 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
-                              type = "Corridor",
                               },
                            {
                               x = 5,
                               y = -3,
-                              type = "Corridor",
                               },
                            {
                               x = 7,
                               y = -3,
-                              type = "Corridor",
                               },
                            },
                         },
@@ -23818,6 +23799,16 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
+                     {
+                        name = "c",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 6,
+                              },
+                           },
+                        },
                      {
                         name = "d",
                         orientation = 0,
@@ -24452,6 +24443,11 @@ ProcessedScenarios3 = {
                               y = 4,
                               levels = "nnn",
                               },
+                           {
+                              x = 0,
+                              y = 0,
+                              levels = "nnn",
+                              },
                            },
                         },
                      {
@@ -24541,17 +24537,6 @@ ProcessedScenarios3 = {
                   tokens = {
                      },
                   monsters = {
-                     {
-                        name = "Earth Demon",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -5,
-                              y = 0,
-                              levels = "nnn",
-                              },
-                           },
-                        },
                      {
                         name = "Hollow Scholar",
                         orientation = 0,
@@ -25714,6 +25699,28 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Log",
                         orientation = 300,
                         positions = {
@@ -25742,6 +25749,11 @@ ProcessedScenarios3 = {
                            {
                               x = -5,
                               y = 1,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = 1,
+                              y = 0,
                               type = "Obstacle",
                               },
                            },
@@ -25781,11 +25793,6 @@ ProcessedScenarios3 = {
                               y = 4,
                               type = "Corridor",
                               },
-                           {
-                              x = -7,
-                              y = 6,
-                              type = "Corridor",
-                              },
                            },
                         },
                      {
@@ -25795,11 +25802,6 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 3,
-                              type = "Corridor",
-                              },
-                           {
-                              x = -7,
-                              y = 5,
                               type = "Corridor",
                               },
                            },
@@ -25837,17 +25839,6 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 5,
-                              type = "Obstacle",
-                              },
-                           },
-                        },
-                     {
-                        name = "Tree",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -4,
-                              y = 0,
                               type = "Obstacle",
                               },
                            },
@@ -26155,6 +26146,37 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 7,
+                              },
+                           {
+                              x = -7,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -9,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Ice Spikes",
                         orientation = 0,
                         positions = {
@@ -26179,6 +26201,11 @@ ProcessedScenarios3 = {
                         name = "Snow Rock",
                         orientation = 0,
                         positions = {
+                           {
+                              x = -4,
+                              y = 6,
+                              type = "Obstacle",
+                              },
                            {
                               x = -7,
                               y = 5,
@@ -26266,37 +26293,6 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 3,
-                              y = -3,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 5,
-                              y = -3,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 7,
-                              y = -3,
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 8,
-                              y = -3,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
                         name = "Ice Spikes",
                         orientation = 0,
                         positions = {
@@ -26314,17 +26310,6 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -1,
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Rock",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 8,
-                              y = -4,
-                              type = "Obstacle",
                               },
                            },
                         },
@@ -29177,32 +29162,12 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
-                        name = "Cave Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 8,
-                              y = -3,
-                              },
-                           },
-                        },
-                     {
                         name = "Large Cave Corridor",
                         orientation = 0,
                         positions = {
                            {
                               x = 3,
                               y = -3,
-                              },
-                           {
-                              x = 5,
-                              y = -3,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 7,
-                              y = -3,
-                              type = "Corridor",
                               },
                            },
                         },
@@ -29211,14 +29176,8 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = 4,
-                              y = -3,
-                              type = "Objective",
-                              },
-                           {
                               x = 6,
                               y = -3,
-                              type = "Objective",
                               },
                            },
                         },
@@ -29281,6 +29240,32 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Cave Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 7,
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Cave Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -7,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Altar",
                         orientation = 0,
                         positions = {
@@ -29302,6 +29287,11 @@ ProcessedScenarios3 = {
                            {
                               x = -8,
                               y = 5,
+                              type = "Objective",
+                              },
+                           {
+                              x = -8,
+                              y = 7,
                               type = "Objective",
                               },
                            },
@@ -32200,11 +32190,6 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -4,
-                              y = 0,
-                              type = "Corridor",
-                              },
-                           {
                               x = -5,
                               y = 2,
                               type = "Corridor",
@@ -32214,11 +32199,6 @@ ProcessedScenarios3 = {
                               y = 4,
                               type = "Corridor",
                               },
-                           {
-                              x = -7,
-                              y = 6,
-                              type = "Corridor",
-                              },
                            },
                         },
                      {
@@ -32226,16 +32206,8 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -5,
-                              y = 1,
-                              },
-                           {
                               x = -6,
                               y = 3,
-                              },
-                           {
-                              x = -7,
-                              y = 5,
                               },
                            },
                         },
@@ -32335,6 +32307,36 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
+                     {
+                        name = "Large Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              type = "Corridor",
+                              },
+                           {
+                              x = 1,
+                              y = 0,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              },
+                           },
+                        },
                      {
                         name = "Bookshelf",
                         orientation = 0,
@@ -33600,22 +33602,6 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -5,
-                              y = 1,
-                              type = "Corridor",
-                              },
-                           {
-                              x = -7,
-                              y = 5,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
                         name = "Ice Spikes",
                         orientation = 0,
                         positions = {
@@ -33701,7 +33687,6 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -3,
-                              type = "Objective",
                               },
                            },
                         },
@@ -33712,23 +33697,10 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -3,
-                              type = "Objective",
                               },
                            {
                               x = 7,
                               y = -3,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 5,
-                              y = -3,
-                              type = "Objective",
                               },
                            },
                         },
@@ -33754,7 +33726,6 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -3,
-                              type = "Objective",
                               },
                            {
                               x = 5,
@@ -33769,18 +33740,6 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -3,
-                              type = "Objective",
-                              },
-                           },
-                        },
-                     {
-                        name = "Ice Spikes",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 3,
-                              y = -4,
-                              type = "Hazardous Terrain",
                               },
                            },
                         },
@@ -33813,6 +33772,43 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -8,
+                              y = 2,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -9,
+                              y = 4,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -7,
+                              y = 7,
+                              type = "Objective",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Ice Pillar",
                         orientation = 0,
                         positions = {
@@ -33835,6 +33831,11 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 3,
+                              type = "Hazardous Terrain",
+                              },
+                           {
+                              x = -9,
+                              y = 6,
                               type = "Hazardous Terrain",
                               },
                            },
@@ -33944,22 +33945,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
-                     {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = 4,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 0,
-                              y = 2,
-                              type = "Corridor",
-                              },
-                           },
-                        },
                      {
                         name = "Snow Corridor",
                         orientation = 0,
@@ -34540,6 +34525,16 @@ ProcessedScenarios3 = {
                      },
                   tokens = {
                      {
+                        name = "a",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -6,
+                              y = 0,
+                              },
+                           },
+                        },
+                     {
                         name = "b",
                         orientation = 0,
                         positions = {
@@ -34574,11 +34569,46 @@ ProcessedScenarios3 = {
                            {
                               x = -8,
                               y = 3,
+                              levels = "nee",
                               },
                            },
                         },
                      },
                   overlays = {
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -8,
+                              y = 2,
+                              },
+                           {
+                              x = -9,
+                              y = 4,
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              type = "Corridor",
+                              },
+                           {
+                              x = -7,
+                              y = 7,
+                              type = "Objective",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              },
+                           },
+                        },
                      {
                         name = "Ice Pillar",
                         orientation = 0,
@@ -34602,6 +34632,11 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 3,
+                              type = "Hazardous Terrain",
+                              },
+                           {
+                              x = -9,
+                              y = 6,
                               type = "Hazardous Terrain",
                               },
                            },
@@ -34651,16 +34686,6 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
-                     {
-                        name = "a",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 2,
-                              y = 0,
-                              },
-                           },
-                        },
                      },
                   monsters = {
                      {
@@ -34698,20 +34723,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
-                     {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = 4,
-                              },
-                           {
-                              x = 0,
-                              y = 2,
-                              },
-                           },
-                        },
                      {
                         name = "Snow Corridor",
                         orientation = 0,
@@ -34818,7 +34829,6 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -3,
-                              type = "Objective",
                               },
                            },
                         },
@@ -34829,23 +34839,10 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -3,
-                              type = "Objective",
                               },
                            {
                               x = 7,
                               y = -3,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 5,
-                              y = -3,
-                              type = "Objective",
                               },
                            },
                         },
@@ -34871,7 +34868,6 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -3,
-                              type = "Objective",
                               },
                            {
                               x = 5,
@@ -34886,18 +34882,6 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -3,
-                              type = "Objective",
-                              },
-                           },
-                        },
-                     {
-                        name = "Ice Spikes",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 3,
-                              y = -4,
-                              type = "Hazardous Terrain",
                               },
                            },
                         },
@@ -34957,21 +34941,6 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 4,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -5,
-                              y = 1,
-                              },
-                           {
-                              x = -7,
-                              y = 5,
                               type = "Corridor",
                               },
                            },
@@ -38096,20 +38065,12 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -4,
-                              y = 0,
-                              },
-                           {
                               x = -5,
                               y = 2,
                               },
                            {
                               x = -6,
                               y = 4,
-                              },
-                           {
-                              x = -7,
-                              y = 6,
                               },
                            },
                         },
@@ -38118,17 +38079,8 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -5,
-                              y = 1,
-                              },
-                           {
                               x = -6,
                               y = 3,
-                              type = "Corridor",
-                              },
-                           {
-                              x = -7,
-                              y = 5,
                               type = "Corridor",
                               },
                            },
@@ -38296,6 +38248,35 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              },
+                           {
+                              x = 1,
+                              y = 0,
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              type = "Corridor",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              },
+                           },
+                        },
                      {
                         name = "Dungeon Door",
                         orientation = 0,
@@ -40401,7 +40382,7 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 4,
-                              levels = "nnn",
+                              levels = "nna",
                               },
                            },
                         },
@@ -40418,13 +40399,25 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
+                     },
+                  },
+               {
+                  reference = {
+                     tile = "16-D",
+                     tileOrientation = "0",
+                     },
+                  tokens = {
+                     },
+                  monsters = {
+                     },
+                  overlays = {
                      {
                         name = "Metal Door",
                         orientation = 0,
                         positions = {
                            {
-                              x = -6,
-                              y = 5,
+                              x = -1,
+                              y = -1,
                               trigger = {
                                  type = "door",
                                  action = "reveal",
@@ -41648,10 +41641,6 @@ ProcessedScenarios3 = {
                               },
                            {
                               x = 0,
-                              y = -2,
-                              },
-                           {
-                              x = 0,
                               y = 1,
                               levels = "nnn",
                               },
@@ -41666,16 +41655,6 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -1,
-                              },
-                           },
-                        },
-                     {
-                        name = "Rubble",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = -2,
                               },
                            },
                         },
@@ -41697,41 +41676,8 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
-                     {
-                        name = "a",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -2,
-                              y = 5,
-                              },
-                           {
-                              x = -1,
-                              y = 3,
-                              },
-                           {
-                              x = -3,
-                              y = 1,
-                              },
-                           {
-                              x = 0,
-                              y = 1,
-                              },
-                           },
-                        },
                      },
                   monsters = {
-                     {
-                        name = "Harrower Infester",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = 0,
-                              levels = "eee",
-                              },
-                           },
-                        },
                      },
                   overlays = {
                      {
@@ -41750,13 +41696,13 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -1,
-                              y = 2,
+                              x = -4,
+                              y = 5,
                               type = "Difficult Terrain",
                               },
                            {
-                              x = -2,
-                              y = 1,
+                              x = -4,
+                              y = 6,
                               type = "Difficult Terrain",
                               },
                            },
@@ -41786,13 +41732,45 @@ ProcessedScenarios3 = {
                               y = -2,
                               },
                            {
+                              x = 6,
+                              y = -2,
+                              },
+                           {
                               x = 4,
                               y = -4,
+                              },
+                           {
+                              x = 7,
+                              y = -4,
+                              },
+                           {
+                              x = 5,
+                              y = -6,
+                              },
+                           {
+                              x = 8,
+                              y = -6,
                               },
                            },
                         },
                      },
                   monsters = {
+                     {
+                        name = "Harrower Infester",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 3,
+                              y = 1,
+                              levels = "ane",
+                              },
+                           {
+                              x = 7,
+                              y = -7,
+                              levels = "eee",
+                              },
+                           },
+                        },
                      },
                   overlays = {
                      {
@@ -41800,13 +41778,18 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = 4,
-                              y = -1,
+                              x = 2,
+                              y = 1,
                               type = "Difficult Terrain",
                               },
                            {
-                              x = 4,
-                              y = -2,
+                              x = 6,
+                              y = -6,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 7,
+                              y = -5,
                               type = "Difficult Terrain",
                               },
                            },
@@ -44811,11 +44794,19 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = -8,
+                              y = 6,
+                              },
+                           {
                               x = -7,
                               y = 6,
                               },
                            {
                               x = -6,
+                              y = 6,
+                              },
+                           {
+                              x = -5,
                               y = 6,
                               },
                            },
@@ -44906,20 +44897,6 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
-                     {
-                        name = "start",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 4,
-                              y = -4,
-                              },
-                           {
-                              x = 7,
-                              y = -4,
-                              },
-                           },
-                        },
                      },
                   monsters = {
                      {
@@ -44947,7 +44924,6 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
-                              type = "Corridor",
                               },
                            {
                               x = 7,
@@ -46099,12 +46075,28 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Snow Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 7,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Rock",
                         orientation = 0,
                         positions = {
                            {
                               x = -1,
                               y = 2,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = -10,
+                              y = 6,
                               type = "Obstacle",
                               },
                            },
@@ -46132,6 +46124,17 @@ ProcessedScenarios3 = {
                               x = -7,
                               y = 5,
                               type = "Difficult Terrain",
+                              },
+                           },
+                        },
+                     {
+                        name = "Tree",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 5,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -46174,39 +46177,14 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
-                              type = "Corridor",
                               },
                            {
                               x = 5,
                               y = -3,
-                              type = "Corridor",
                               },
                            {
                               x = 7,
                               y = -3,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 8,
-                              y = -3,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Snow Rock",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 2,
-                              y = -4,
-                              type = "Obstacle",
                               },
                            },
                         },
@@ -46245,10 +46223,6 @@ ProcessedScenarios3 = {
                               x = 4,
                               y = -1,
                               type = "Obstacle",
-                              },
-                           {
-                              x = 9,
-                              y = -5,
                               },
                            },
                         },
@@ -58750,7 +58724,6 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -1,
-                              type = "Corridor",
                               },
                            },
                         },
