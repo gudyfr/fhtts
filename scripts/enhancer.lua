@@ -34,7 +34,6 @@ end
 
 function onLoad(save)
     fhLogInit()
-    print(save)
     Global.call('registerForCollision', self)
     Global.call('registerForPing', self)
     if save ~= nil then
@@ -325,7 +324,8 @@ function refreshDecals()
                     local lost = CurrentSpot.lost or ""
                     local persist = CurrentSpot.persist or ""
                     local level = CurrentCardInfo.level or 1
-                    local currentTopEnhancements, currentTopHexEnhancements, currentBottomEnhancements, currentBottomHexEnhancements = countEnhancements(CurrentCardInfo)
+                    local currentTopEnhancements, currentTopHexEnhancements, currentBottomEnhancements, currentBottomHexEnhancements =
+                    countEnhancements(CurrentCardInfo)
                     local currentZ = -0.7
                     local currentX = -0.3
                     for _, t in ipairs(TypesPerType[type]) do
@@ -369,9 +369,11 @@ function refreshDecals()
                                     local cost = info.cost or info.costByAbility[ability] or 0
                                     if type == 'h' then
                                         if CurrentSpot.position[2] > 0 then
-                                            cost = math.ceil(cost / (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                            cost = math.ceil(cost /
+                                            (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
                                         else
-                                            cost = math.ceil(cost / (currentBottomHexEnhancements + (CurrentSpot.baseHexes or 1)))
+                                            cost = math.ceil(cost /
+                                            (currentBottomHexEnhancements + (CurrentSpot.baseHexes or 1)))
                                         end
                                     end
                                     if multi == "multi" and t ~= "c" then
@@ -698,7 +700,7 @@ function countEnhancements(card)
                 if spot.enhancement == 'hex' then
                     bottomHexCount = bottomHexCount + 1
                 end
-            end           
+            end
         end
     end
     return topCount, topHexCount, bottomCount, bottomHexCount

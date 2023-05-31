@@ -2,6 +2,16 @@ require("json")
 require("savable")
 require('data/map_decals')
 
+MapImages = {
+    map         = 'http://cloud-3.steamusercontent.com/ugc/2028354869645264961/26F5991D9CF784EF2A3FC0284D52ED64306BABF3/',
+    map_w       = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265086/89684AB440A99382FA31176A67F214EA527D7E5F/',
+    map_w_x     = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265242/0CBFAB4D1F25E62521056ABF0FAE953905D587EB/',
+    map_w_z     = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265720/99A1E452A5E79BBE6412951EDA5939814A3C318C/',
+    map_w_x_y   = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265369/4DA218CBC0620C285B8F2442E5F7D89527EF9190/',
+    map_w_x_z   = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265593/993D3CFF858022801C66682721B025A14A91E973/',
+    map_w_x_y_z = 'http://cloud-3.steamusercontent.com/ugc/2028354869645265479/729EDCBA368C46736ABF9A5604ACABF1E2F3E7F3/',
+}
+
 -- Savable functions
 function getState()
     return State
@@ -202,16 +212,42 @@ function toggleDecal(params)
 end
 
 function refreshDecals()
-    if devMode then
+    -- Determine the map image to use
+    local mapName = 'map'
+    if State.enabledDecals['map_w'] then
+        mapName = mapName .. '_w'
+    end
+    if State.enabledDecals['map_x'] then
+        mapName = mapName .. '_x'
+    end
+    if State.enabledDecals['map_y'] then
+        mapName = mapName .. '_y'
+    end
+    if State.enabledDecals['map_z'] then
+        mapName = mapName .. '_z'
+    end
+    local mapUrl = MapImages[mapName]
+    if mapUrl ~= nil then
+        local customObject = self.getCustomObject()
+        local currentMapImage = customObject.image
+        if currentMapImage ~= mapUrl then
+            customObject.image = mapUrl
+            self.setCustomObject(customObject)
+            -- as many map updates are scripted and come from the campaign tracker
+            -- we tend to update more than simply the map image, and we need the CT to dispatch those
+            -- messages to the current object, so delaying the map reload by 1 frame.
+            Wait.frames(function()
+                self.script_state = onSave()
+                self.reload()
+            end, 1)
+        end
+    end
+    if Map_decals ~= nil then
         stickers = {}
-        self.setDecals(stickers)
-        clearButtons()
-    else
-        if Map_decals ~= nil then
-            stickers = {}
-            -- Scenario decals
-            if Map_decals.scenarios ~= nil then
-                for _, entry in ipairs(Map_decals.scenarios) do
+        -- Scenario decals
+        if Map_decals.scenarios ~= nil then
+            for _, entry in ipairs(Map_decals.scenarios) do
+                if entry.name:sub(1, 4) ~= "map_" then
                     if State.enabledDecals[entry.name] or false then
                         if State.completedDecals[entry.name] or false then
                             entry.url = entry.completed
@@ -222,36 +258,36 @@ function refreshDecals()
                     end
                 end
             end
+        end
 
-            -- Outpost decals
-            if Map_decals.outpost ~= nil then
-                -- Buildings
-                if Map_decals.outpost.buildings ~= nil then
-                    for building, info in pairs(Map_decals.outpost.buildings) do
-                        if State.buildings[building] == nil then
-                            State.buildings[building] = info.min
-                        end
-                        local index
-                        if State.buildings[building] ~= info.min then
-                            index = State.buildings[building] - info.min
-                        end
-                        local decal = info.decals[index]
-                        if decal ~= nil then
-                            table.insert(stickers, decal)
-                        end
+        -- Outpost decals
+        if Map_decals.outpost ~= nil then
+            -- Buildings
+            if Map_decals.outpost.buildings ~= nil then
+                for building, info in pairs(Map_decals.outpost.buildings) do
+                    if State.buildings[building] == nil then
+                        State.buildings[building] = info.min
                     end
-                end
-                -- Others
-                if Map_decals.outpost.others ~= nil then
-                    for _, entry in ipairs(Map_decals.outpost.others) do
-                        if State.enabledDecals[entry.name] ~= nil and State.enabledDecals[entry.name] then
-                            table.insert(stickers, entry)
-                        end
+                    local index
+                    if State.buildings[building] ~= info.min then
+                        index = State.buildings[building] - info.min
+                    end
+                    local decal = info.decals[index]
+                    if decal ~= nil then
+                        table.insert(stickers, decal)
                     end
                 end
             end
-            self.setDecals(stickers)
+            -- Others
+            if Map_decals.outpost.others ~= nil then
+                for _, entry in ipairs(Map_decals.outpost.others) do
+                    if State.enabledDecals[entry.name] ~= nil and State.enabledDecals[entry.name] then
+                        table.insert(stickers, entry)
+                    end
+                end
+            end
         end
+        self.setDecals(stickers)
     end
 end
 
