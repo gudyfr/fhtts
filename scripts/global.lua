@@ -209,7 +209,7 @@ function getMapTile(mapName, layout)
 
                   clone.setRotation({ 0, -orientation, targetZRot })
                   local hx, hz = getWorldPositionFromHexPosition(center.x, center.y)
-                  clone.setPosition({ hx, 1.39, hz })
+                  clone.setPositionSmooth({ hx, 1.39, hz })
                   clone.setLock(true)
                   handled = true
                   clone.registerCollisions()
@@ -267,7 +267,7 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
 
             if position ~= nil then
                local pos = { position.x, position.y + 1.4, position.z }
-               clone.setPosition(pos)
+               clone.setPositionSmooth(pos)
             else
                getObjectFromGUID(scenarioBagId).putObject(clone)
             end
@@ -319,7 +319,7 @@ function getToken(token, position)
             local obj
             if position ~= nil then
                local pos = { position.x, position.y + i / 10, position.z }
-               obj = bag.takeObject({ position = pos, smooth = false })
+               obj = bag.takeObject({ position = pos, smooth = true })
             else
                obj = bag.takeObject()
             end
@@ -375,7 +375,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                local position = scenarioElementPositions[currentScenarioElementPosition]
                if position ~= nil then
                   local pos = { position.x, position.y + i / 10, position.z }
-                  obj = container.takeObject({ position = pos, smooth = false })
+                  obj = container.takeObject({ position = pos, smooth = true })
                   addedToScenarioMat = true
                end
             end
@@ -660,7 +660,20 @@ function prepareScenarioEx(params)
    prepareScenario(params.name, params.campaign, params.scenario)
 end
 
+function waitms(ms)
+   local start = os.time()
+   while os.time() < start + ms / 1000 do
+      coroutine.yield(0)
+   end
+end
+
 function prepareScenario(name, campaign, title)
+   local prepareFunc = "prepareScenario_" .. campaign .. "_" .. name
+   self.setVar(prepareFunc, function() continuePreparing(name, campaign, title) return 1 end)
+   startLuaCoroutine(Global, prepareFunc)
+end
+
+function continuePreparing(name, campaign, title)
    name = tostring(name)
    Settings = JSON.decode(getSettings())
    -- This will simply highlight elements which would be destroyed if we were to prepare this scenario (if any)
@@ -782,6 +795,7 @@ function prepareScenario(name, campaign, title)
          --    count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
          currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
+            waitms(LAYOUT_WAIT_TIME_MS)
       end
 
 
@@ -791,6 +805,7 @@ function prepareScenario(name, campaign, title)
       for _, tileName in ipairs(elements.tiles) do
          -- print("Adding Map Tile " .. tileName .. " to the scenario bag")
          getMapTile(tileName, layout)
+         waitms(LAYOUT_WAIT_TIME_MS)
       end
 
       -- offset by 2 before the monsters
@@ -799,7 +814,7 @@ function prepareScenario(name, campaign, title)
          for index, monster in ipairs(elements.monsters) do
             -- print("Adding Monster " .. JSON.encode(monster))
             getMonster(monster, scenarioElementPositions, currentScenarioElementPosition)
-
+            waitms(LAYOUT_WAIT_TIME_MS)
             -- and they take a bit of space
             currentScenarioElementPosition = currentScenarioElementPosition + 1
          end
@@ -809,6 +824,7 @@ function prepareScenario(name, campaign, title)
          for index, token in ipairs(elements.tokens) do
             -- print("Adding token " .. token.name)
             getToken(token, scenarioElementPositions[currentScenarioElementPosition])
+            waitms(LAYOUT_WAIT_TIME_MS)
             currentScenarioElementPosition = currentScenarioElementPosition + 1
          end
       end
@@ -829,7 +845,8 @@ function prepareScenario(name, campaign, title)
          if name == "91" then
             prepareScenario91()
          end
-         Wait.time(function() layoutScenarioElements(name) end, 0.5)
+         waitms(1000)
+         layoutScenarioElements(name)
       end
 
       getScenarioMat().call("setScenario", { scenario = title, campaign = campaign, name = name })
@@ -861,7 +878,7 @@ function layoutScenarioElements(id)
          CurrentScenarioObjects = getScenarioElementObjects()
          for _, map in ipairs(scenarioInfo['maps']) do
             if map.type == "scenario" then
-               layoutMap(map)
+               layoutMapAsync(map)
             end
          end
       end
@@ -873,7 +890,16 @@ function getScenarioElementObjects()
    return zone.getObjects(true)
 end
 
+
 function layoutMap(map)
+   local layoutMapFunc = "layoutMap_" .. map.name
+   self.setVar(layoutMapFunc, function() layoutMapAsync(map) return 1 end)
+   startLuaCoroutine(Global, layoutMapFunc)
+end
+
+LAYOUT_WAIT_TIME_MS = 150
+
+function layoutMapAsync(map)
    local elements = CurrentScenario.elements
    local scenarioInfo = CurrentScenario.scenarioInfo
    local objects = CurrentScenarioObjects
@@ -961,17 +987,18 @@ function layoutMap(map)
                         if position.type == "Door" then
                            scenarioDoors[hx .. "," .. hy] = true
                         end
-                        obj.setPosition({ x, 1.44, z })
+                        obj.setPositionSmooth({ x, 1.44, z })
                         local orientation = overlay.orientation or 0
                         if orientation > 180 then
                            orientation = orientation - 360
                         end
-                        obj.setRotation({ 0, -orientation, 0 })
+                        obj.setRotationSmooth({ 0, -orientation, 0 })
 
                         -- Handle potential triggers
                         if position.trigger ~= nil then
                            attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                         end
+                        waitms(LAYOUT_WAIT_TIME_MS)
                      else
                         fhlog(WARNING, TAG, "Could not find object in prepare area : %s", overlay.name)
                      end
@@ -1004,16 +1031,17 @@ function layoutMap(map)
                local obj = takeToken(name)
                if obj ~= nil then
                   local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-                  obj.setPosition({ x, 2.21, z })
+                  obj.setPositionSmooth({ x, 2.21, z })
                   local zRot = 0
                   if random ~= nil then
                      zRot = 180
                   end
                   local yRot = 0
-                  obj.setRotation({ 0, yRot, zRot })
+                  obj.setRotationSmooth({ 0, yRot, zRot })
                   if position.trigger ~= nil then
                      attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                   end
+                  waitms(LAYOUT_WAIT_TIME_MS)
                end
             end
          end
@@ -1031,11 +1059,12 @@ function layoutMap(map)
                            smooth = false
                         })
                         local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
-                        obj.setPosition({ x, 2.35, z })
+                        obj.setPositionSmooth({ x, 2.35, z })
                         -- Handle potential triggers
                         if position.trigger ~= nil then
                            attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                         end
+                        waitms(LAYOUT_WAIT_TIME_MS)
                      end
                   end
                end
@@ -2227,24 +2256,44 @@ function getSave()
 end
 
 function loadSave(save)
+   self.setVar("_loadSave", function() loadSaveAsync(save) return 1 end)
+   startLuaCoroutine(Global, "_loadSave")
+end
+
+function loadSaveAsync(save)
+   broadcastToAll("Loading in Progress...")
    table.sort(Savables, function(a, b) return a.priority < b.priority end)
    local data = JSON.decode(save)
    for i, info in ipairs(Savables) do
       local name = info.savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
-         local encoded = JSON.encode(savableData)
-         -- Spread the loading across multiple frames
-         -- And also helps in debugging
+         local encoded = JSON.encode(savableData)         
          info.savable.call("loadSave", encoded)
+         while info.savable.call("isStateUpdating") do
+            waitms(100)
+         end
+         waitms(250)
       end
    end
+   broadcastToAll("Loading Complete")
 end
 
 function reset()
+   broadcastToAll("Reset in Progress...")
+   startLuaCoroutine(Global, "resetAsync")
+end
+
+function resetAsync()
    for _, info in ipairs(Savables) do
       info.savable.call("reset")
+      while info.savable.call("isStateUpdating") do
+         waitms(100)
+      end
+      waitms(250)
    end
+   broadcastToAll("Reset Complete")
+   return 1
 end
 
 function onObjectPickUp(color, obj)

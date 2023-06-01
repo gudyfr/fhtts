@@ -147,6 +147,7 @@ function deleteCardsAt(position)
             destroyObject(result.hit_object)
         end
     end
+    waitms(25)
 end
 
 function getRestoreDeck(name)

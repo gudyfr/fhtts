@@ -5,7 +5,7 @@ Savable = {}
 function registerSavable(name, priority)
     priority = priority or 1
     Savable.name = name
-    Global.call("registerSavable", {savable=self,priority=priority})
+    Global.call("registerSavable", { savable = self, priority = priority })
 end
 
 function getName()
@@ -17,13 +17,28 @@ function emptyStateConstrutor()
 end
 
 function reset()
+    broadcastToAll("Resetting " .. Savable.name)
     local cleanState
     if self.getVar("createEmptyState") ~= nil then
         cleanState = self.call("createEmptyState")
     else
         cleanState = emptyStateConstrutor()
     end
-    self.call("onStateUpdate", cleanState)
+    savableSetState(cleanState)
+end
+
+function isStateUpdating()
+    return StateIsResetting
+end
+
+function savableSetState(state)
+    StateIsResetting = true
+    self.setVar('_savableSetState', function()
+        onStateUpdate(state)
+        StateIsResetting = false
+        return 1
+    end)
+    startLuaCoroutine(self, '_savableSetState')
 end
 
 function getSave()
@@ -36,6 +51,16 @@ function getSave()
 end
 
 function loadSave(serialized)
+    broadcastToAll("Loading " .. Savable.name)
     local itemSave = JSON.decode(serialized)
-    self.call("onStateUpdate", itemSave.State)
+    savableSetState(itemSave.State)
+end
+
+LOAD_WAIT_MS = 100
+
+function waitms(ms)
+    local start = os.time()
+    while os.time() < start + ms / 1000 do
+        coroutine.yield(0)
+    end
 end

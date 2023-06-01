@@ -113,7 +113,6 @@ function addCardToDeckAtWorldPosition(card, position, options)
 
         if shuffle then
             current.shuffle()
-            -- Wait.time(function() current.shuffle() end, 0.1)
         end
     end
 end

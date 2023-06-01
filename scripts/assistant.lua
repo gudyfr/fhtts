@@ -35,7 +35,7 @@ function onStateUpdate(state)
     deleteCardsAt(Loot.DiscardDeck)
     deleteCardsAt(Loot.DrawDeck)
     deleteCardsAt(Loot.ActiveDeck)
-
+    
     local decals = state.decals or {}
     reapplyDecalsAndMoveTo(deck, decals, Loot.ActiveDeck, { flip = true, atBottom = true })
 

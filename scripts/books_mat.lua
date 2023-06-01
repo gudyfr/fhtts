@@ -109,6 +109,7 @@ function onStateUpdate(state)
     State = state
     for book, bookState in pairs(state) do
         goToPage(book, bookState.history[bookState.historyPosition])
+        waitms(LOAD_WAIT_MS)
     end
     refreshDecals()
 end
