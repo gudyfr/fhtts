@@ -669,7 +669,10 @@ end
 
 function prepareScenario(name, campaign, title)
    local prepareFunc = "prepareScenario_" .. campaign .. "_" .. name
-   self.setVar(prepareFunc, function() continuePreparing(name, campaign, title) return 1 end)
+   self.setVar(prepareFunc, function()
+      continuePreparing(name, campaign, title)
+      return 1
+   end)
    startLuaCoroutine(Global, prepareFunc)
 end
 
@@ -738,15 +741,23 @@ function continuePreparing(name, campaign, title)
          broadcastToAll("Please choose")
 
          -- We want to center the choices, and space them by two
-         local firstPosition = (#scenarioElementPositions - #choices) / 2
-         for _, choice in ipairs(choices) do
+         local xOffset = -2 * (#choices - 1) / 2
+         for i, choice in ipairs(choices) do
             local token = choice.token
             local value = choice.value
             if token ~= nil and value ~= nil then
                local title = choice.title or ("Choose " .. token)
-               local obj = getToken({ name = token }, scenarioElementPositions[firstPosition])
+               local x, z = getWorldPositionFromHexPosition(xOffset + 2 * (i - 1), 0)
+               local obj = getToken({ name = token }, { x = x, y = 1.5, z = z })
+               obj.setScale({0.5,0.5,0.5 })
                if obj ~= nil then
-                  self.setVar("scenarioChoice_" .. token, function() prepareFrosthavenScenario(name .. value) end)
+                  self.setVar("scenarioChoice_" .. token,
+                     function()
+                        cleanup(true, true)
+                        Wait.frames(function()
+                           prepareFrosthavenScenario(name .. value)
+                        end, 2)
+                     end)
                   local params = {
                      click_function = "scenarioChoice_" .. token,
                      label = '',
@@ -760,7 +771,6 @@ function continuePreparing(name, campaign, title)
                   }
                   obj.createButton(params)
                end
-               firstPosition = firstPosition + 2
             end
          end
          if elements.page ~= nil then
@@ -795,7 +805,7 @@ function continuePreparing(name, campaign, title)
          --    count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
          currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
-            waitms(LAYOUT_WAIT_TIME_MS)
+         waitms(LAYOUT_WAIT_TIME_MS)
       end
 
 
@@ -890,10 +900,12 @@ function getScenarioElementObjects()
    return zone.getObjects(true)
 end
 
-
 function layoutMap(map)
    local layoutMapFunc = "layoutMap_" .. map.name
-   self.setVar(layoutMapFunc, function() layoutMapAsync(map) return 1 end)
+   self.setVar(layoutMapFunc, function()
+      layoutMapAsync(map)
+      return 1
+   end)
    startLuaCoroutine(Global, layoutMapFunc)
 end
 
@@ -2256,7 +2268,10 @@ function getSave()
 end
 
 function loadSave(save)
-   self.setVar("_loadSave", function() loadSaveAsync(save) return 1 end)
+   self.setVar("_loadSave", function()
+      loadSaveAsync(save)
+      return 1
+   end)
    startLuaCoroutine(Global, "_loadSave")
 end
 
@@ -2268,7 +2283,7 @@ function loadSaveAsync(save)
       local name = info.savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
-         local encoded = JSON.encode(savableData)         
+         local encoded = JSON.encode(savableData)
          info.savable.call("loadSave", encoded)
          while info.savable.call("isStateUpdating") do
             waitms(100)
