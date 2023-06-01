@@ -2759,7 +2759,7 @@ CardEnhancements = {
                x = -0.264,
                z = -0.254,
                },
-            type = "",
+            type = "dm",
             },
          {
             ability = "move",
