@@ -457,8 +457,9 @@ function getChallengeDeck()
     return nil
 end
 
-function shiftUp(pos)
-    return { pos[1], pos[2] + 0.05, pos[3] }
+function shiftUp(pos, amount)
+    amount = amount or 0.05
+    return { pos[1], pos[2] + amount, pos[3] }
 end
 
 function getHitlist(relativePosition)
@@ -1309,12 +1310,15 @@ function getColorFromTags(tagsMap)
 end
 
 function sendCard(params)
-    color = params[1]
-    card = params[2]
-    index = params[3]
-    destination = self.positionToWorld(cardLocations[color][index])
-    card.flip()
-    card.setPosition(destination)
+    local color = params[1]
+    local card = params[2]
+    local index = params[3]
+    local destination = self.positionToWorld(cardLocations[color][index])
+    local orientation = card.getRotation()
+    if orientation.z < 10 and orientation.z > -10 then
+        card.flip()
+    end
+    card.setPositionSmooth(shiftUp(destination, 0.5))
 end
 
 function onCleanup(obj, color, alt)
