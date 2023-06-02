@@ -75,7 +75,13 @@ function onStateUpdate(state)
           smooth = false,
           callback_function =
               function(characterBox)
-                loadCharacterBox(characterBox, state)
+                local fName = '_loadCharacterBox'
+                self.setVar(fName, function()
+                  loadCharacterBox(characterBox, state)
+                  return 1
+                end
+                )
+                startLuaCoroutine(self, fName)
               end
         })
       end
@@ -426,19 +432,29 @@ function onObjectCollisionEnter(params)
     pos.y = pos.y + 3
     pos.z = pos.z - 10
     obj.setPosition(pos)
-    loadCharacterBox(obj, { characterName = obj.getName() })
+    local fName = "_loadCharacterBox"
+    self.setVar(fName, function()
+      loadCharacterBox(obj, { characterName = obj.getName() })
+      return 1
+    end)
+    startLuaCoroutine(self, fName)
   elseif obj.hasTag("Saved Character") then
-    -- move the container out of the mat to avoid conflicts with unpacking it
-    local pos = self.getPosition()
-    pos.y = pos.y + 3
-    pos.z = pos.z + 8
-    obj.setPosition(pos)
-    local save = JSON.decode(obj.getGMNotes())
-    onStateUpdate(save.character)
-    loadItems(save.items)
-    loadPersonalQuest(save.quests)
+    local gmNotes = obj.getGMNotes()
     destroyObject(obj)
+    local fName = "_loadSavedCharacter"
+    self.setVar(fName, function()
+      local save = JSON.decode(gmNotes)
+      loadSavedCharacter(save)
+      return 1
+    end)
+    startLuaCoroutine(self, fName)
   end
+end
+
+function loadSavedCharacter(save)
+  onStateUpdate(save.character)
+  loadItems(save.items)
+  loadPersonalQuest(save.quests)
 end
 
 function onObjectCollisionExit(params)

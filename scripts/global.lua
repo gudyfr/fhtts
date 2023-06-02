@@ -850,6 +850,8 @@ function continuePreparing(name, campaign, title)
 
       getScenarioMat().call("setErrata", elements.errata)
 
+      getScenarioMat().call("setScenario", { scenario = title, campaign = campaign, name = name })
+
       local settings = JSON.decode(getSettings())
       if settings["enable-automatic-scenario-layout"] or false then
          if name == "91" then
@@ -859,7 +861,6 @@ function continuePreparing(name, campaign, title)
          layoutScenarioElements(name)
       end
 
-      getScenarioMat().call("setScenario", { scenario = title, campaign = campaign, name = name })
    end
 end
 

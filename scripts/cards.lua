@@ -91,6 +91,9 @@ function addCardToDeckAtWorldPosition(card, position, options)
         else
             card.setPosition(globalPosition)
         end
+        if flip then
+            card.setRotation({0,0,180})
+        end
     else
         -- Move the card above or below the deck depending on where we want it to go
         local deckPosition = current.getPosition()
