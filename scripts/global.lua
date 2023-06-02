@@ -749,7 +749,7 @@ function continuePreparing(name, campaign, title)
                local title = choice.title or ("Choose " .. token)
                local x, z = getWorldPositionFromHexPosition(xOffset + 2 * (i - 1), 0)
                local obj = getToken({ name = token }, { x = x, y = 1.5, z = z })
-               obj.setScale({0.5,0.5,0.5 })
+               obj.setScale({ 0.5, 0.5, 0.5 })
                if obj ~= nil then
                   self.setVar("scenarioChoice_" .. token,
                      function()
@@ -860,7 +860,6 @@ function continuePreparing(name, campaign, title)
          waitms(1000)
          layoutScenarioElements(name)
       end
-
    end
 end
 
@@ -2034,15 +2033,13 @@ function getScenarioMat()
 end
 
 function onScriptingButtonDown(index, color)
-   for _, player in ipairs(Player.getPlayers()) do
-      if player.color == color then
-         obj = player.getHoverObject()
-         if obj ~= nil and obj.tag == "Card" then
-            getScenarioMat().call("sendCard", { color, obj, index })
-         end
-      end
-   end
+   -- Explicitely ignore scripting buttons
 end
+
+function onScriptingButtonUp(index, color)
+   -- Explicitely ignore scripting buttons
+end
+
 
 function playCard(color, card)
    for _, player in ipairs(Player.getPlayers()) do
@@ -2055,12 +2052,14 @@ function playCard(color, card)
    end
 end
 
-function drawCard(color, card)
+function drawCard(color)
    for _, player in ipairs(Player.getPlayers()) do
       if player.color == color then
-         obj = player.getHoverObject()
-         if obj ~= nil and obj.tag == "Card" then
-            obj.deal(1, color)
+         local obj = player.getHoverObject()
+         if obj ~= nil then
+            if obj.tag == "Card" or obj.tag == "Deck" then
+               obj.deal(1, color)
+            end
          end
       end
    end

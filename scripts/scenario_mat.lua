@@ -1309,12 +1309,31 @@ function getColorFromTags(tagsMap)
     return nil
 end
 
+function getPlayer(color)
+    for _,player in ipairs(Player.getPlayers()) do
+        if player.color == color then
+            return player
+        end
+    end
+end
+
 function sendCard(params)
     local color = params[1]
     local card = params[2]
     local index = params[3]
     local destination = self.positionToWorld(cardLocations[color][index])
     local orientation = card.getRotation()
+    -- Find out if this card is in a player hand (it then needs to be moved a bit)
+    local player = getPlayer(color)
+    if player ~= nil then
+        for _, obj in ipairs(player.getHandObjects()) do
+            if obj.guid == card.guid then
+                local position = card.getPosition()
+                card.setPosition(position + Vector(0, 0, -5))
+                break
+            end
+        end
+    end
     if orientation.z < 10 and orientation.z > -10 then
         card.flip()
     end
@@ -1376,16 +1395,17 @@ function changeStandeeHp(params)
         if inputs ~= nil then
             nr = tonumber(inputs[1].value)
         end
-        updateAssistant("POST", "change", { target = name, nr = nr, what = params.changeMax and "maxHp" or "hp", change = amount }, updateState)
+        updateAssistant("POST", "change",
+            { target = name, nr = nr, what = params.changeMax and "maxHp" or "hp", change = amount }, updateState)
     end
 end
 
 function damageStandee(standee, color, alt)
-    changeStandeeHp({ standee = standee, amount = -1, changeMax=alt })
+    changeStandeeHp({ standee = standee, amount = -1, changeMax = alt })
 end
 
 function undamageStandee(standee, color, alt)
-    changeStandeeHp({ standee = standee, amount = 1, changeMax=alt })
+    changeStandeeHp({ standee = standee, amount = 1, changeMax = alt })
 end
 
 function unregisterStandee(standee)
@@ -2000,7 +2020,8 @@ function onLootDrawn(params)
             print(card)
             local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
             if lootInfo.type ~= "special" then
-                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type, { r = 0.2, g = 1, b = 0.2 })
+                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
+                    { r = 0.2, g = 1, b = 0.2 })
             else
                 broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
             end
