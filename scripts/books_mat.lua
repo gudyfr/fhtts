@@ -470,6 +470,7 @@ function changePage(target, page, value)
 end
 
 function goToPage(target, page, value)
+    local pageFloor = math.floor(page)
     local model = bookModels[target]
     if model ~= nil then
         -- First we need to locate the book
@@ -477,7 +478,7 @@ function goToPage(target, page, value)
         if currentState ~= nil then
             -- Now we need to find the target object / State
             for idx, entry in ipairs(model) do
-                if page >= entry.from and page <= entry.to then
+                if pageFloor >= entry.from and pageFloor <= entry.to then
                     -- Switch State if needed
                     if currentState.guid ~= entry.guid then
                         currentState = currentState.setState(idx)
