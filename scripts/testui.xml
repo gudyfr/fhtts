@@ -1,0 +1,423 @@
+<Defaults>
+    <Image preserveAspect="true" flexibleWidth="0" flexibleHeight="0"/>
+    <Text color="#cccccc" font="Pirata"/>
+    <VerticalLayout flexibleWidth="0" childForceExpandWidth="false" childForceExpandHeight="false"/>
+    <HorizontalLayout flexibleHeight="0" childForceExpandWidth="false" childForceExpandHeight="false"/>
+
+
+    <Image class="player" preferredWidth="90" color="#ffffffff"/>
+    <Image class="monster" preferredWidth="90" color="#ffffffff"/>
+    <Image class="ability" preferredWidth="210" color="#ffffffff"/>
+    <Image class="stats" preferredWidth="250" color="#ffffffff"/>
+
+    <HorizontalLayout class="playerConditions" spacing="2" childAlignment="LowerLeft"/>
+    <Image class="playerCondition" preserveAspect="true" preferredWidth="25"/>
+
+    <TableLayout flexibleWidth="1" flexibleHeight="1" cellBackgroundColor="clear"/>
+
+    <VerticalLayout class="playerInitiative" preferredWidth="35" childAlignment="UpperCenter"/>
+    <Image class="initiative" image="initiative" preferredHeight="13"/>
+    <Text class="initiative" fontSize="25" />
+
+    <HorizontalLayout class="playerHp" spacing="5" childAlignment="LowerLeft"/>
+    <Image class="playerHp" image="hp" preserveAspect="true" preferredWidth="25"/>
+    <Text class="playerHp" fontSize="30"/>
+
+    <Image class="instance" flexibleWidth="0"  preferredWidth="35"/>
+
+    <HorizontalLayout class="instanceHp" preferredHeight="95" flexibleHeight="0" spacing="5" childAlignment="LowerLeft"/>
+    <Image class="instanceHp" image="hp" preferredWidth="10"/>
+    <Text class="instanceHp" text="7 / 13" fontSize="17"/>
+
+    <HorizontalLayout class="instanceConditions" spacing="2" flexibleHeight="0" childAlignment="LowerLeft"/>
+    <Image class="instanceCondition" preserveAspect="true" preferredWidth="15"/>
+
+    <HorizontalLayout class="divider" padding="5 5 2 2" flexibleHeight="0" preferredHeight="10"/>
+    <Image class="divider" image="divider" preferredHeight="5"/>
+
+    <HorizontalLayout class="playerEntry" padding="2 2 2 2" flexibleHeight="0" preferredHeight="100"/>
+    <VerticalLayout class="monsterEntry0" padding="5 5 5 5" flexibleHeight="0" preferredHeight="150"/>
+    <VerticalLayout class="monsterEntry5" padding="5 5 5 5" flexibleHeight="0" preferredHeight="200"/>
+    <VerticalLayout class="monsterEntry10" padding="5 5 5 5" flexibleHeight="0" preferredHeight="250"/>
+
+    <VerticalLayout class="initiativeChanger" flexibleWidth="0" preferredWidth="10"/>
+    <HorizontalLayout class="entry" childAlignment="MiddleLeft" spacing="5"/>
+    <HorizontalLayout class="monsterEntry" childAlignment="MiddleLeft" spacing="5" preferredHeight="150"/>
+
+    <Panel class="spacer" preferredWidth="10"/>
+    <Row class="instance" preferredHeight="50"/>
+    <Cell onClick="showPopup" />
+</Defaults>
+
+<Panel image="bg" width="570" height="70%" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+    <VerticalScrollView width="100%" height="100%" color="clear">
+        <VerticalLayout height="1240">
+            <HorizontalLayout class="playerEntry">
+                <VerticalLayout class="initiativeChanger">
+                    <Image id="faster" image="faster" onClick="onFaster" active="false"/>
+                    <Image id="slower" image="slower" onClick="onSlower"/>
+                </VerticalLayout>
+                <Image class="player" image="Drifter"/>
+                <TableLayout>
+                    <Row>
+                        <Cell>
+                            <HorizontalLayout>
+                                <VerticalLayout class="playerInitiative">
+                                    <Image class="initiative"/>
+                                    <Text class="initiative" text="32"/>
+                                </VerticalLayout>
+                            </HorizontalLayout>                                
+                        </Cell>
+                        <Cell></Cell>
+                        <Cell></Cell>
+                        <Cell></Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <HorizontalLayout class="playerHp">
+                                <Image class="playerHp"/>
+                                <Text class="playerHp" text="7 / 13"/>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell columnSpan="3">
+                            <HorizontalLayout class="playerConditions">
+                                <Image class="playerCondition" image="wound"/>
+                                <Image class="playerCondition" image="stun"/>                                    
+                            </HorizontalLayout>
+                        </Cell>
+                    </Row>
+                </TableLayout>                                
+            </HorizontalLayout>
+            <HorizontalLayout class="divider"><Image class="divider"/></HorizontalLayout>
+            <HorizontalLayout class="playerEntry">
+                <VerticalLayout class="initiativeChanger">
+                    <Image id="faster" image="faster" onClick="onFaster"/>
+                    <Image id="slower" image="slower" onClick="onSlower"/>
+                </VerticalLayout>
+                <Image class="player" image="Frozen Fist"/>
+                <TableLayout>
+                    <Row>
+                        <Cell>
+                            <HorizontalLayout>
+                                <VerticalLayout class="playerInitiative">
+                                    <Image class="initiative"/>
+                                    <Text class="initiative" text="71"/>
+                                </VerticalLayout>
+                            </HorizontalLayout>                                
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="Drifter"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                        <HorizontalLayout>
+                                <Image class="instance" image="Drifter"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout></Cell>
+                        <Cell></Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <HorizontalLayout class="playerHp">
+                                <Image class="playerHp"/>
+                                <Text class="playerHp" text="10 / 10"/>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell columnSpan="3">
+                            <HorizontalLayout class="playerConditions">
+                                <Image class="playerCondition" image="wound"/>
+                                <Image class="playerCondition" image="stun"/>                                    
+                            </HorizontalLayout>
+                        </Cell>
+                    </Row>
+                </TableLayout>                                
+            </HorizontalLayout>
+            <HorizontalLayout class="divider"><Image class="divider"/></HorizontalLayout>
+            <VerticalLayout class="monsterEntry10">
+                <HorizontalLayout class="monsterEntry">
+                    <Panel class="spacer"/>                
+                    <Image class="monster" image="Frozen Fist"/>
+                    <Image class="ability" image="m_ability_demo"/>
+                    <Image class="stats" image="m_stats_demo"/>
+                </HorizontalLayout>
+                <TableLayout>
+                    <Row>
+                        <Cell id="cell0">
+                            <HorizontalLayout>
+                                <Image class="instance" image="e3"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="e3"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                        <Cell>
+                            <HorizontalLayout>
+                                <Image class="instance" image="n1"/>
+                                <VerticalLayout>
+                                    <HorizontalLayout class="instanceConditions">
+                                        <Image class="instanceCondition" image="wound"/>
+                                        <Image class="instanceCondition" image="stun"/>    
+                                    </HorizontalLayout>
+                                    <HorizontalLayout class="instanceHp">
+                                        <Image class="instanceHp"/>
+                                        <Text class="instanceHp" text="7 / 13"/>
+                                    </HorizontalLayout>
+                                </VerticalLayout>
+                            </HorizontalLayout>
+                        </Cell>
+                    </Row>                        
+                </TableLayout>
+            </VerticalLayout>
+            <HorizontalLayout class="divider"><Image class="divider"/></HorizontalLayout>
+            <VerticalLayout class="monsterEntry0" >
+                <HorizontalLayout class="monsterEntry">
+                    <Panel class="spacer"/>                
+                    <Image class="monster" image="Frozen Fist"/>
+                    <Image class="ability" image="m_ability_demo"/>
+                    <Image class="stats" image="m_stats_demo"/>
+                </HorizontalLayout>                
+            </VerticalLayout>
+            <HorizontalLayout class="divider"><Image class="divider"/></HorizontalLayout>
+                <VerticalLayout class="monsterEntry5">
+                    <HorizontalLayout class="monsterEntry">
+                        <Panel class="spacer"/>                
+                        <Image class="monster" image="Frozen Fist"/>
+                        <Image class="ability" image="m_ability_demo"/>
+                        <Image class="stats" image="m_stats_demo"/>
+                    </HorizontalLayout>
+                    <TableLayout>
+                        <Row>
+                            <Cell>
+                                <HorizontalLayout>
+                                    <Image class="instance" image="e3"/>
+                                    <VerticalLayout>
+                                        <HorizontalLayout class="instanceConditions">
+                                            <Image class="instanceCondition" image="wound"/>
+                                            <Image class="instanceCondition" image="stun"/>    
+                                        </HorizontalLayout>
+                                        <HorizontalLayout class="instanceHp">
+                                            <Image class="instanceHp"/>
+                                            <Text class="instanceHp" text="7 / 13"/>
+                                        </HorizontalLayout>
+                                    </VerticalLayout>
+                                </HorizontalLayout>
+                            </Cell>
+                            <Cell>
+                                <HorizontalLayout>
+                                    <Image class="instance" image="n1"/>
+                                    <VerticalLayout>
+                                        <HorizontalLayout class="instanceConditions">
+                                            <Image class="instanceCondition" image="wound"/>
+                                            <Image class="instanceCondition" image="stun"/>    
+                                        </HorizontalLayout>
+                                        <HorizontalLayout class="instanceHp">
+                                            <Image class="instanceHp"/>
+                                            <Text class="instanceHp" text="7 / 13"/>
+                                        </HorizontalLayout>
+                                    </VerticalLayout>
+                                </HorizontalLayout>
+                            </Cell>
+                            <Cell>
+                                <HorizontalLayout>
+                                    <Image class="instance" image="n1"/>
+                                    <VerticalLayout>
+                                        <HorizontalLayout class="instanceConditions">
+                                            <Image class="instanceCondition" image="wound"/>
+                                            <Image class="instanceCondition" image="stun"/>    
+                                        </HorizontalLayout>
+                                        <HorizontalLayout class="instanceHp">
+                                            <Image class="instanceHp"/>
+                                            <Text class="instanceHp" text="7 / 13"/>
+                                        </HorizontalLayout>
+                                    </VerticalLayout>
+                                </HorizontalLayout>
+                            </Cell>
+                            <Cell>
+                                <HorizontalLayout>
+                                    <Image class="instance" image="n1"/>
+                                    <VerticalLayout>
+                                        <HorizontalLayout class="instanceConditions">
+                                            <Image class="instanceCondition" image="wound"/>
+                                            <Image class="instanceCondition" image="stun"/>    
+                                        </HorizontalLayout>
+                                        <HorizontalLayout class="instanceHp">
+                                            <Image class="instanceHp"/>
+                                            <Text class="instanceHp" text="7 / 13"/>
+                                        </HorizontalLayout>
+                                    </VerticalLayout>
+                                </HorizontalLayout>
+                            </Cell>
+                            <Cell>
+                                <HorizontalLayout>
+                                    <Image class="instance" image="n1"/>
+                                    <VerticalLayout>
+                                        <HorizontalLayout class="instanceConditions">
+                                            <Image class="instanceCondition" image="wound"/>
+                                            <Image class="instanceCondition" image="stun"/>    
+                                        </HorizontalLayout>
+                                        <HorizontalLayout class="instanceHp">
+                                            <Image class="instanceHp"/>
+                                            <Text class="instanceHp" text="7 / 13"/>
+                                        </HorizontalLayout>
+                                    </VerticalLayout>
+                                </HorizontalLayout>
+                            </Cell>
+                        </Row>                                               
+                    </TableLayout>
+                </VerticalLayout>
+        </VerticalLayout>
+    </VerticalScrollView>
+</Panel>
+
+<Panel id="popup" showAnimation="Grow" hideAnimation="Shrink" onMouseExit="onExitPopup" image="bg" width="300" height="300" offset="10 10" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+<Image image="hp" width="50" height="50" offsetXY="50 -50" rectAlignment="UpperLeft"/>
+</Panel>    
