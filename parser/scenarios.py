@@ -70,7 +70,7 @@ def identify(out, img, templateFile, xOffset, yOffset, threshold=0.94, showMatch
                 templateFile, pt[0], pt[1], score))
         if showMatch:
             cv.rectangle(out, (pt[0] + xOffset, pt[1]+yOffset),
-                         (pt[0] + w + xOffset, pt[1] + h+yOffset), (0, 0, 255), 1)
+                         (pt[0] + w + xOffset, pt[1] + h+yOffset), (0, 0, 255), 2)
         output.append(positionToJson(pt, w, h, score, xOffset, yOffset))
 
     return output
@@ -410,7 +410,14 @@ for id in scenarioIds:
                             results.append(
                                 {"name": subEntry, "type": entry, "results": result})
             t = "p" if page["type"] == "scenario" else "s"
-            cv.imwrite(f"out/{id}-{t}{page['page']}.jpg", out)
+
+            # resize image
+            width = int(out.shape[1] * 0.5)
+            height = int(out.shape[0] * 0.5)
+            dim = (width, height)
+            resized = cv.resize(out, dim, interpolation = cv.INTER_AREA)
+
+            cv.imwrite(f"out/{id}-{t}{page['page']}.jpg", resized,[cv.IMWRITE_JPEG_QUALITY, 75])
             scenarioData["maps"].append(
                 {"type": page['type'], "page": page['page'], "name": page['name'], "results": results})
 
