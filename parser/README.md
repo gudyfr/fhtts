@@ -1,5 +1,8 @@
 # A set of scripts to parse and process the scenario and section books of Frosthaven
 
+## Output Assets
+The dev branch includes the output assets from the scenario parser. Each scenario will have 1 image file per relevant scenario book page and section book page, with the identified assets highlighted on each. This can be used to quickly diagnose the source of an issue in scenario data.
+
 ## Usage
  - **scenario.py** is used to identify all elements present in a given scenario. For each scenario it creates a json file with all the collected data, as well as debug images showing what was identified.
  - **merge.py** is used to merge all individual json files from each scenario into a common one
