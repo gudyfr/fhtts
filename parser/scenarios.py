@@ -410,7 +410,7 @@ for id in scenarioIds:
                             results.append(
                                 {"name": subEntry, "type": entry, "results": result})
             t = "p" if page["type"] == "scenario" else "s"
-            cv.imwrite(f"out/{id}-{t}{page['page']}.png", out)
+            cv.imwrite(f"out/{id}-{t}{page['page']}.jpg", out)
             scenarioData["maps"].append(
                 {"type": page['type'], "page": page['page'], "name": page['name'], "results": results})
 
