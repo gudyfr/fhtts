@@ -44507,7 +44507,7 @@ ProcessedScenarios3 = {
             },
          {
             type = "section",
-            name = "36.3",
+            name = "36.5",
             entries = {
                {
                   reference = {
@@ -44549,39 +44549,6 @@ ProcessedScenarios3 = {
                               x = 2,
                               y = 0,
                               type = "Treasure",
-                              },
-                           },
-                        },
-                     },
-                  },
-               {
-                  reference = {
-                     tile = "02-E",
-                     tileOrientation = "180",
-                     },
-                  tokens = {
-                     {
-                        name = "a",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 2,
-                              y = 0,
-                              },
-                           },
-                        },
-                     },
-                  monsters = {
-                     },
-                  overlays = {
-                     {
-                        name = "Snow Rock",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 1,
-                              y = -2,
-                              type = "Obstacle",
                               },
                            },
                         },
@@ -44687,51 +44654,6 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -1,
-                              type = "Treasure",
-                              },
-                           },
-                        },
-                     },
-                  },
-               {
-                  reference = {
-                     tile = "16-A",
-                     tileOrientation = "180",
-                     },
-                  tokens = {
-                     {
-                        name = "a",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 4,
-                              y = -2,
-                              },
-                           {
-                              x = 5,
-                              y = -2,
-                              },
-                           {
-                              x = 5,
-                              y = -4,
-                              },
-                           {
-                              x = 6,
-                              y = -4,
-                              },
-                           },
-                        },
-                     },
-                  monsters = {
-                     },
-                  overlays = {
-                     {
-                        name = "Treasure Chest",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 5,
-                              y = -3,
                               type = "Treasure",
                               },
                            },
