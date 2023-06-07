@@ -2,6 +2,7 @@ require("garden_stickers")
 require("savable")
 require("deck_save_helpers")
 require("utils")
+require('cards')
 
 function getState()
     local result = {}
@@ -153,11 +154,60 @@ function onLoad(save)
     end
 
     updateGardenButtons()
+    -- refreshing decals potentially interacts with other elements so we should delay it until everything loaded
+    Wait.frames(refreshDecals, 1)
+
     registerSavable("Outpost")
+    Global.call("registerForDrop", { self })
 end
 
 function onSave()
     return JSON.encode(State)
+end
+
+WaitFunction = nil
+function onObjectDropCallback()
+    -- Wait until the card has dropped on top of the deck (if this is what's going on)
+    if WaitFunction ~= nil then
+        Wait.stop(WaitFunction)
+    end
+    WaitFunction = Wait.time(updateAvailableBuildings, 0.5)
+end
+
+function updateAvailableBuildings()
+    if State.availableBuildings == nil then
+        State.availableBuildings = {}
+    end
+    local availableBuildings = {}
+    local deck = getDeckOrCardAt(BuildingElements["deck"])
+    if deck ~= nil then
+        for _, card in ipairs(deck.getObjects()) do
+            local buildingNumber = getBuildingNumber(card.name)
+            if buildingNumber ~= nil then
+                local buildingInfo = JSON.decode(getBuildingInfo(buildingNumber))
+                if buildingInfo.level == 0 and MinBuildingLevels[buildingNumber] == nil then
+                    availableBuildings[buildingNumber] = true
+                end
+            end
+        end
+    end
+    local hasChanged = false
+    for nr, _ in pairs(availableBuildings) do
+        if State.availableBuildings[nr] ~= true then
+            hasChanged = true
+            break
+        end
+    end
+    for nr, _ in pairs(State.availableBuildings) do
+        if availableBuildings[nr] ~= true then
+            hasChanged = true
+            break
+        end
+    end
+    if hasChanged then
+        State.availableBuildings = availableBuildings
+        refreshDecals()
+    end
 end
 
 TownGuardElements = {
@@ -345,18 +395,7 @@ function getBuildingName(name)
 end
 
 function getBuildingDeck()
-    local hitlist = Physics.cast({
-        origin    = self.positionToWorld(BuildingElements["deck"]),
-        direction = { 0, 1, 0 },
-        type      = 2,
-        debug     = false
-    })
-    for _, h in ipairs(hitlist) do
-        if h.hit_object.tag == "Deck" then
-            return h.hit_object
-        end
-    end
-    return nil
+    return getDeckOrCardAt(BuildingElements["deck"])
 end
 
 function findBuildingByNumberAndLevel(deck, nr, lvl)
@@ -433,6 +472,9 @@ function changeBuildingLevel(buildingPosition, currentCard, nr, targetLevel, dow
         -- Update the map
         local map = getObjectFromGUID('d17d72')
         map.call("setBuildingLevel", { nr, targetLevel })
+
+        -- Update the decals after the card has moved out of the way
+        Wait.time(updateAvailableBuildings, 0.5)
     else
         if down then
             broadcastToAll("Building " .. nr .. " is at minimum level")
@@ -554,6 +596,26 @@ function refreshDecals()
             createGardenDecal(stickers, 2, pos)
             if gardenLevel >= 4 then
                 createGardenDecal(stickers, 3, pos)
+            end
+        end
+    end
+
+    if State.availableBuildings ~= nil then
+        print(JSON.encode(State.availableBuildings))
+        for nr, value in pairs(State.availableBuildings) do
+            if value then
+                -- Let's make sure that the map knows that this building is available for building
+                local map = getObjectFromGUID('d17d72')
+                map.call("setBuildingLevel", { nr, 0 })
+
+                -- And also add the decal to the area which would usually hold the building card
+                local buildingPosition = BuildingElements["buildings"][nr]
+                local decal = map.call('getLevel0BuildingDecal', { nr })
+                -- Change the decal position
+                decal.position = { buildingPosition.x, buildingPosition.y + 0.01, buildingPosition.z + 0.1 }
+                local scale = 0.65
+                decal.scale = { x = decal.scale.x * scale, y = decal.scale.y * scale, z = decal.scale.z * scale }
+                table.insert(stickers, decal)
             end
         end
     end

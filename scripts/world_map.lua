@@ -199,6 +199,32 @@ function setBuildingLevel(params)
     refreshDecals()
 end
 
+FakeLevel0Stickers = {
+    ["05"] = "http://cloud-3.steamusercontent.com/ugc/2026103703078249014/19DEC6290699F65A5559E8289D412515C68ABA45/",
+    ["12"] = "http://cloud-3.steamusercontent.com/ugc/2026103703078249070/1E820EFA32C60A20F280989098B2106985D496FD/",
+    ["17"] = "http://cloud-3.steamusercontent.com/ugc/2026103703078249134/1F921F7A72C3194F36660EAB4C473FF70773C01F/"
+}
+
+function getLevel0BuildingDecal(params)
+    local nr = params[1]
+    if FakeLevel0Stickers[nr] ~= nil then
+        return {
+            url = FakeLevel0Stickers[nr],
+            scale = {
+            x = 0.189,
+            y = 0.108,
+            z = 0.668,
+            },
+            rotation = { 90, 180, 0 },
+            position = { 0, 0, 0 },
+            name = nr .. "_lvl0"
+        }
+    end
+    local decals = Map_decals.outpost.buildings[nr].decals
+    local decal = decals[1]
+    return decal
+end
+
 function toggleDecal(params)
     local name = params[1]
     local on = params[2]
