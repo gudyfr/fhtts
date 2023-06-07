@@ -1,0 +1,1939 @@
+{
+   "id": "17",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 22,
+         "name": 22,
+         "results": [
+            {
+               "name": "09-B",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 766,
+                        "y": 3081
+                     },
+                     "size": {
+                        "x": 79,
+                        "y": 30
+                     },
+                     "score": 1.0000008344650269
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 611,
+                        "y": 2171
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 72
+                     },
+                     "score": 0.9999997019767761
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 610,
+                        "y": 2170
+                     },
+                     "size": {
+                        "x": 97,
+                        "y": 73
+                     },
+                     "score": 0.9878798127174377
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-90",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 156,
+                        "y": 2272
+                     },
+                     "size": {
+                        "x": 75,
+                        "y": 100
+                     },
+                     "score": 0.9999988675117493
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-270",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1084,
+                        "y": 2274
+                     },
+                     "size": {
+                        "x": 79,
+                        "y": 106
+                     },
+                     "score": 0.9599007964134216
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 617,
+                        "y": 2385
+                     },
+                     "size": {
+                        "x": 85,
+                        "y": 97
+                     },
+                     "score": 0.9999968409538269
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 613,
+                        "y": 2380
+                     },
+                     "size": {
+                        "x": 90,
+                        "y": 106
+                     },
+                     "score": 0.9831976890563965
+                  }
+               ]
+            },
+            {
+               "name": "Poison Trap",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 478,
+                        "y": 2390
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 91
+                     },
+                     "score": 0.9999990463256836
+                  },
+                  {
+                     "position": {
+                        "x": 743,
+                        "y": 2390
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 91
+                     },
+                     "score": 0.9960498809814453
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 644,
+                        "y": 2244
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9885729551315308
+                  },
+                  {
+                     "position": {
+                        "x": 180,
+                        "y": 2362
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9999989867210388
+                  },
+                  {
+                     "position": {
+                        "x": 1108,
+                        "y": 2362
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9939551949501038
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 513,
+                        "y": 2476
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9845353364944458
+                  },
+                  {
+                     "position": {
+                        "x": 646,
+                        "y": 2476
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 1.0000003576278687
+                  },
+                  {
+                     "position": {
+                        "x": 778,
+                        "y": 2476
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9966712594032288
+                  }
+               ]
+            },
+            {
+               "name": "1.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 638,
+                        "y": 2173
+                     },
+                     "size": {
+                        "x": 40,
+                        "y": 51
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "1g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 635,
+                        "y": 2177
+                     },
+                     "size": {
+                        "x": 48,
+                        "y": 45
+                     },
+                     "score": 0.9501993060112
+                  }
+               ]
+            },
+            {
+               "name": "2.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1099,
+                        "y": 2293
+                     },
+                     "size": {
+                        "x": 45,
+                        "y": 47
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "2g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1100,
+                        "y": 2293
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 48
+                     },
+                     "score": 0.9413655400276184
+                  }
+               ]
+            },
+            {
+               "name": "3.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 171,
+                        "y": 2294
+                     },
+                     "size": {
+                        "x": 47,
+                        "y": 45
+                     },
+                     "score": 0.9999998211860657
+                  }
+               ]
+            },
+            {
+               "name": "3g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 174,
+                        "y": 2291
+                     },
+                     "size": {
+                        "x": 41,
+                        "y": 51
+                     },
+                     "score": 0.9504837393760681
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 638,
+                        "y": 2413
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "c.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 506,
+                        "y": 2413
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.000000238418579
+                  },
+                  {
+                     "position": {
+                        "x": 770,
+                        "y": 2413
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 506,
+                        "y": 2646
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9835975170135498
+                  },
+                  {
+                     "position": {
+                        "x": 639,
+                        "y": 2646
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9936992526054382
+                  },
+                  {
+                     "position": {
+                        "x": 771,
+                        "y": 2646
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9897779822349548
+                  },
+                  {
+                     "position": {
+                        "x": 572,
+                        "y": 2760
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9925797581672668
+                  },
+                  {
+                     "position": {
+                        "x": 707,
+                        "y": 2760
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9926519393920898
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 17,
+         "name": "17.3",
+         "results": [
+            {
+               "name": "02-C",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 986,
+                        "y": 1574
+                     },
+                     "size": {
+                        "x": 78,
+                        "y": 30
+                     },
+                     "score": 0.9782009124755859
+                  }
+               ]
+            },
+            {
+               "name": "Living Doom",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1194,
+                        "y": 1846
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9946379661560059
+                  }
+               ]
+            },
+            {
+               "name": "Living Spirit",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1126,
+                        "y": 1731
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 126
+                     },
+                     "score": 0.9982730150222778
+                  },
+                  {
+                     "position": {
+                        "x": 1258,
+                        "y": 1731
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 126
+                     },
+                     "score": 0.9988076090812683
+                  }
+               ]
+            },
+            {
+               "name": "Treasure Chest",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1190,
+                        "y": 1644
+                     },
+                     "size": {
+                        "x": 107,
+                        "y": 49
+                     },
+                     "score": 0.9696202278137207
+                  }
+               ]
+            },
+            {
+               "name": "aan.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1116,
+                        "y": 1762
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 81
+                     },
+                     "score": 0.9760213494300842
+                  }
+               ]
+            },
+            {
+               "name": "ann.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1250,
+                        "y": 1766
+                     },
+                     "size": {
+                        "x": 24,
+                        "y": 75
+                     },
+                     "score": 0.98896723985672
+                  }
+               ]
+            },
+            {
+               "name": "eee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1185,
+                        "y": 1884
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 67
+                     },
+                     "score": 0.970327615737915
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1360,
+                        "y": 2174
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9680245518684387
+                  }
+               ]
+            },
+            {
+               "name": "Treasure.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1227,
+                        "y": 1612
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 29
+                     },
+                     "score": 0.9855309724807739
+                  }
+               ]
+            },
+            {
+               "name": "5.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1352,
+                        "y": 2109
+                     },
+                     "size": {
+                        "x": 42,
+                        "y": 51
+                     },
+                     "score": 0.9424082040786743
+                  }
+               ]
+            },
+            {
+               "name": "goal.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1210,
+                        "y": 1699
+                     },
+                     "size": {
+                        "x": 65,
+                        "y": 32
+                     },
+                     "score": 0.94610595703125
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 19,
+         "name": "19.3",
+         "results": [
+            {
+               "name": "07-E",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2226,
+                        "y": 2833
+                     },
+                     "size": {
+                        "x": 69,
+                        "y": 29
+                     },
+                     "score": 0.9528226256370544
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1853,
+                        "y": 2371
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 72
+                     },
+                     "score": 0.9648809432983398
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1852,
+                        "y": 2371
+                     },
+                     "size": {
+                        "x": 97,
+                        "y": 73
+                     },
+                     "score": 0.9464749097824097
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1385,
+                        "y": 2474
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 90
+                     },
+                     "score": 0.9721986055374146
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1460,
+                        "y": 2583
+                     },
+                     "size": {
+                        "x": 85,
+                        "y": 97
+                     },
+                     "score": 0.9765216708183289
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1456,
+                        "y": 2578
+                     },
+                     "size": {
+                        "x": 90,
+                        "y": 106
+                     },
+                     "score": 0.9829099774360657
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1783,
+                        "y": 2465
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 104
+                     },
+                     "score": 0.9994587898254395
+                  },
+                  {
+                     "position": {
+                        "x": 1916,
+                        "y": 2465
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 104
+                     },
+                     "score": 1.0000007152557373
+                  },
+                  {
+                     "position": {
+                        "x": 1850,
+                        "y": 2581
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 104
+                     },
+                     "score": 0.9891385436058044
+                  },
+                  {
+                     "position": {
+                        "x": 1982,
+                        "y": 2581
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 104
+                     },
+                     "score": 0.9836980700492859
+                  }
+               ]
+            },
+            {
+               "name": "Poison Trap",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1322,
+                        "y": 2588
+                     },
+                     "size": {
+                        "x": 96,
+                        "y": 91
+                     },
+                     "score": 0.9938929080963135
+                  }
+               ]
+            },
+            {
+               "name": "Spike Pit",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1524,
+                        "y": 2474
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 76
+                     },
+                     "score": 0.9951322078704834
+                  },
+                  {
+                     "position": {
+                        "x": 1391,
+                        "y": 2704
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 76
+                     },
+                     "score": 0.9827726483345032
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1886,
+                        "y": 2444
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.96709144115448
+                  },
+                  {
+                     "position": {
+                        "x": 1356,
+                        "y": 2904
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9956084489822388
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1821,
+                        "y": 2558
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9805182814598083
+                  },
+                  {
+                     "position": {
+                        "x": 1954,
+                        "y": 2558
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.982112467288971
+                  },
+                  {
+                     "position": {
+                        "x": 1423,
+                        "y": 2559
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9746171832084656
+                  },
+                  {
+                     "position": {
+                        "x": 1556,
+                        "y": 2559
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9635483026504517
+                  },
+                  {
+                     "position": {
+                        "x": 1357,
+                        "y": 2674
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9826596975326538
+                  },
+                  {
+                     "position": {
+                        "x": 1489,
+                        "y": 2674
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9630128741264343
+                  },
+                  {
+                     "position": {
+                        "x": 1888,
+                        "y": 2674
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9770416617393494
+                  },
+                  {
+                     "position": {
+                        "x": 2020,
+                        "y": 2674
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9707158207893372
+                  },
+                  {
+                     "position": {
+                        "x": 1423,
+                        "y": 2789
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9808507561683655
+                  }
+               ]
+            },
+            {
+               "name": "4.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1351,
+                        "y": 2838
+                     },
+                     "size": {
+                        "x": 39,
+                        "y": 53
+                     },
+                     "score": 0.9593492150306702
+                  }
+               ]
+            },
+            {
+               "name": "5.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1879,
+                        "y": 2377
+                     },
+                     "size": {
+                        "x": 42,
+                        "y": 51
+                     },
+                     "score": 0.9999899864196777
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1414,
+                        "y": 2497
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9770364165306091
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1481,
+                        "y": 2611
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9769874811172485
+                  }
+               ]
+            },
+            {
+               "name": "c.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1349,
+                        "y": 2611
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9708461761474609
+                  }
+               ]
+            },
+            {
+               "name": "d.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1547,
+                        "y": 2495
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9779930114746094
+                  },
+                  {
+                     "position": {
+                        "x": 1416,
+                        "y": 2721
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9779930114746094
+                  }
+               ]
+            },
+            {
+               "name": "e.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1812,
+                        "y": 2497
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9764907956123352
+                  },
+                  {
+                     "position": {
+                        "x": 1945,
+                        "y": 2497
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9764907956123352
+                  },
+                  {
+                     "position": {
+                        "x": 1878,
+                        "y": 2611
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9764907956123352
+                  },
+                  {
+                     "position": {
+                        "x": 2011,
+                        "y": 2611
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9764907956123352
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 25,
+         "name": "25.3",
+         "results": [
+            {
+               "name": "02-I",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1949,
+                        "y": 2537
+                     },
+                     "size": {
+                        "x": 74,
+                        "y": 29
+                     },
+                     "score": 0.9645877480506897
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2086,
+                        "y": 2707
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 90
+                     },
+                     "score": 0.9925440549850464
+                  },
+                  {
+                     "position": {
+                        "x": 2219,
+                        "y": 2707
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 90
+                     },
+                     "score": 0.9980190992355347
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2157,
+                        "y": 2812
+                     },
+                     "size": {
+                        "x": 90,
+                        "y": 106
+                     },
+                     "score": 0.9898769855499268
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1925,
+                        "y": 2907
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9824094772338867
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2256,
+                        "y": 2793
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9737182855606079
+                  },
+                  {
+                     "position": {
+                        "x": 2190,
+                        "y": 2908
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9892929196357727
+                  }
+               ]
+            },
+            {
+               "name": "2.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1917,
+                        "y": 2842
+                     },
+                     "size": {
+                        "x": 45,
+                        "y": 47
+                     },
+                     "score": 0.9418168663978577
+                  }
+               ]
+            },
+            {
+               "name": "2g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1918,
+                        "y": 2842
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 48
+                     },
+                     "score": 0.9999996423721313
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2116,
+                        "y": 2725
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  },
+                  {
+                     "position": {
+                        "x": 2248,
+                        "y": 2725
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2183,
+                        "y": 2840
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 42,
+         "name": "42.3",
+         "results": [
+            {
+               "name": "02-K",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 901,
+                        "y": 1626
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 28
+                     },
+                     "score": 0.9484704732894897
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1039,
+                        "y": 1795
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 90
+                     },
+                     "score": 0.9896568059921265
+                  }
+               ]
+            },
+            {
+               "name": "Bear Trap",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1109,
+                        "y": 1899
+                     },
+                     "size": {
+                        "x": 90,
+                        "y": 106
+                     },
+                     "score": 0.969818651676178
+                  }
+               ]
+            },
+            {
+               "name": "Spike Pit",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1177,
+                        "y": 1796
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 76
+                     },
+                     "score": 0.9887851476669312
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1408,
+                        "y": 1995
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9970342516899109
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1077,
+                        "y": 1881
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9460535645484924
+                  },
+                  {
+                     "position": {
+                        "x": 1209,
+                        "y": 1881
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9879558086395264
+                  },
+                  {
+                     "position": {
+                        "x": 1143,
+                        "y": 1995
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9493004679679871
+                  }
+               ]
+            },
+            {
+               "name": "3.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1399,
+                        "y": 1932
+                     },
+                     "size": {
+                        "x": 47,
+                        "y": 45
+                     },
+                     "score": 0.951928973197937
+                  }
+               ]
+            },
+            {
+               "name": "3g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1402,
+                        "y": 1929
+                     },
+                     "size": {
+                        "x": 41,
+                        "y": 51
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1069,
+                        "y": 1813
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1136,
+                        "y": 1929
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "d.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1202,
+                        "y": 1811
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000001192092896
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 62,
+         "name": "62.3",
+         "results": [
+            {
+               "name": "02-A",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1728,
+                        "y": 2478
+                     },
+                     "size": {
+                        "x": 76,
+                        "y": 29
+                     },
+                     "score": 0.982405960559845
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2003,
+                        "y": 2430
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 72
+                     },
+                     "score": 0.9899628162384033
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Door",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2002,
+                        "y": 2430
+                     },
+                     "size": {
+                        "x": 97,
+                        "y": 73
+                     },
+                     "score": 0.9770945310592651
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2066,
+                        "y": 2763
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 90
+                     },
+                     "score": 0.9975568056106567
+                  }
+               ]
+            },
+            {
+               "name": "Spike Pit",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2005,
+                        "y": 2649
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 76
+                     },
+                     "score": 0.986337423324585
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2036,
+                        "y": 2503
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.991683840751648
+                  },
+                  {
+                     "position": {
+                        "x": 1970,
+                        "y": 3079
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9956339001655579
+                  }
+               ]
+            },
+            {
+               "name": "Pressure Plate.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2037,
+                        "y": 2734
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9755083322525024
+                  },
+                  {
+                     "position": {
+                        "x": 2103,
+                        "y": 2848
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.946534276008606
+                  }
+               ]
+            },
+            {
+               "name": "1.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1964,
+                        "y": 3012
+                     },
+                     "size": {
+                        "x": 40,
+                        "y": 51
+                     },
+                     "score": 0.947652280330658
+                  }
+               ]
+            },
+            {
+               "name": "1g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1961,
+                        "y": 3016
+                     },
+                     "size": {
+                        "x": 48,
+                        "y": 45
+                     },
+                     "score": 0.9999997615814209
+                  }
+               ]
+            },
+            {
+               "name": "4.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2031,
+                        "y": 2431
+                     },
+                     "size": {
+                        "x": 39,
+                        "y": 53
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2095,
+                        "y": 2782
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "d.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2030,
+                        "y": 2665
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000001192092896
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "02-A",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1983,
+                  "y": 2063
+               },
+               "size": {
+                  "x": 118,
+                  "y": 126
+               },
+               "score": 1.0
+            }
+         ]
+      },
+      {
+         "name": "02-C",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2084,
+                  "y": 1833
+               },
+               "size": {
+                  "x": 117,
+                  "y": 125
+               },
+               "score": 1.0
+            }
+         ]
+      },
+      {
+         "name": "02-I",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2145,
+                  "y": 2142
+               },
+               "size": {
+                  "x": 118,
+                  "y": 125
+               },
+               "score": 0.9999992251396179
+            }
+         ]
+      },
+      {
+         "name": "02-K",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1821,
+                  "y": 2141
+               },
+               "size": {
+                  "x": 117,
+                  "y": 127
+               },
+               "score": 1.0000007152557373
+            }
+         ]
+      },
+      {
+         "name": "07-E",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2027,
+                  "y": 1960
+               },
+               "size": {
+                  "x": 235,
+                  "y": 102
+               },
+               "score": 0.9999997019767761
+            }
+         ]
+      },
+      {
+         "name": "09-B",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1940,
+                  "y": 2191
+               },
+               "size": {
+                  "x": 204,
+                  "y": 203
+               },
+               "score": 1.000001072883606
+            }
+         ]
+      }
+   ]
+}

@@ -1,0 +1,1503 @@
+{
+   "id": "54",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 63,
+         "name": 63,
+         "results": [
+            {
+               "name": "02-J",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1856,
+                        "y": 2900
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 30
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
+               "name": "02-L",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2390,
+                        "y": 2899
+                     },
+                     "size": {
+                        "x": 71,
+                        "y": 30
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "Cave Door",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1628,
+                        "y": 2306
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 104
+                     },
+                     "score": 0.9967146515846252
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1827,
+                        "y": 2425
+                     },
+                     "size": {
+                        "x": 229,
+                        "y": 111
+                     },
+                     "score": 0.9937387108802795
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1929,
+                        "y": 2454
+                     },
+                     "size": {
+                        "x": 25,
+                        "y": 53
+                     },
+                     "score": 0.9947391152381897
+                  },
+                  {
+                     "position": {
+                        "x": 1929,
+                        "y": 2683
+                     },
+                     "size": {
+                        "x": 25,
+                        "y": 53
+                     },
+                     "score": 0.9825801253318787
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1826,
+                        "y": 2424
+                     },
+                     "size": {
+                        "x": 234,
+                        "y": 114
+                     },
+                     "score": 0.9906150698661804
+                  }
+               ]
+            },
+            {
+               "name": "Cave Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1894,
+                        "y": 2564
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 62
+                     },
+                     "score": 0.9755249619483948
+                  },
+                  {
+                     "position": {
+                        "x": 1894,
+                        "y": 2793
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 62
+                     },
+                     "score": 1.0000087022781372
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2371,
+                        "y": 2422
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9708175659179688
+                  },
+                  {
+                     "position": {
+                        "x": 1707,
+                        "y": 2651
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.971420407295227
+                  },
+                  {
+                     "position": {
+                        "x": 2238,
+                        "y": 2651
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9718823432922363
+                  },
+                  {
+                     "position": {
+                        "x": 2303,
+                        "y": 2766
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9672442674636841
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2376,
+                        "y": 2436
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.947533905506134
+                  },
+                  {
+                     "position": {
+                        "x": 1713,
+                        "y": 2665
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9468002915382385
+                  },
+                  {
+                     "position": {
+                        "x": 2243,
+                        "y": 2665
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9474848508834839
+                  },
+                  {
+                     "position": {
+                        "x": 2309,
+                        "y": 2780
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9464153051376343
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2370,
+                        "y": 2424
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9961593151092529
+                  },
+                  {
+                     "position": {
+                        "x": 2237,
+                        "y": 2653
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9938843250274658
+                  },
+                  {
+                     "position": {
+                        "x": 1706,
+                        "y": 2654
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.985662043094635
+                  },
+                  {
+                     "position": {
+                        "x": 2303,
+                        "y": 2769
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9863461256027222
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1467,
+                        "y": 2462
+                     },
+                     "size": {
+                        "x": 148,
+                        "y": 43
+                     },
+                     "score": 0.9996549487113953
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2047,
+                        "y": 2443
+                     },
+                     "size": {
+                        "x": 112,
+                        "y": 170
+                     },
+                     "score": 0.9987886548042297
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "-120",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1440,
+                        "y": 2682
+                     },
+                     "size": {
+                        "x": 127,
+                        "y": 163
+                     },
+                     "score": 0.9999995231628418
+                  }
+               ]
+            },
+            {
+               "name": "Corridor-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1997,
+                        "y": 2518
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 30
+                     },
+                     "score": 0.9447048306465149
+                  }
+               ]
+            },
+            {
+               "name": "Corridor.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1928,
+                        "y": 2861
+                     },
+                     "size": {
+                        "x": 29,
+                        "y": 30
+                     },
+                     "score": 0.9681862592697144
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1663,
+                        "y": 2400
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9474634528160095
+                  }
+               ]
+            },
+            {
+               "name": "Objective-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1599,
+                        "y": 2517
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 1.0000009536743164
+                  },
+                  {
+                     "position": {
+                        "x": 2394,
+                        "y": 2517
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9525665640830994
+                  },
+                  {
+                     "position": {
+                        "x": 2063,
+                        "y": 2632
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9981238842010498
+                  },
+                  {
+                     "position": {
+                        "x": 2261,
+                        "y": 2746
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9536715745925903
+                  },
+                  {
+                     "position": {
+                        "x": 1730,
+                        "y": 2747
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9467939138412476
+                  },
+                  {
+                     "position": {
+                        "x": 1533,
+                        "y": 2861
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9785066843032837
+                  },
+                  {
+                     "position": {
+                        "x": 2327,
+                        "y": 2862
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9471687078475952
+                  }
+               ]
+            },
+            {
+               "name": "Objective.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1598,
+                        "y": 2517
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9438433051109314
+                  },
+                  {
+                     "position": {
+                        "x": 2393,
+                        "y": 2517
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9965298771858215
+                  },
+                  {
+                     "position": {
+                        "x": 2062,
+                        "y": 2632
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9490787982940674
+                  },
+                  {
+                     "position": {
+                        "x": 1729,
+                        "y": 2746
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9604427218437195
+                  },
+                  {
+                     "position": {
+                        "x": 2260,
+                        "y": 2746
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9914289712905884
+                  },
+                  {
+                     "position": {
+                        "x": 2326,
+                        "y": 2861
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9823533296585083
+                  }
+               ]
+            },
+            {
+               "name": "1.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1657,
+                        "y": 2330
+                     },
+                     "size": {
+                        "x": 40,
+                        "y": 51
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "1g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1654,
+                        "y": 2334
+                     },
+                     "size": {
+                        "x": 48,
+                        "y": 45
+                     },
+                     "score": 0.9502014517784119
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 2803
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9957326650619507
+                  },
+                  {
+                     "position": {
+                        "x": 2055,
+                        "y": 2803
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.995660126209259
+                  }
+               ]
+            },
+            {
+               "name": "start.small.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1856,
+                        "y": 2685
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 36
+                     },
+                     "score": 0.999071478843689
+                  },
+                  {
+                     "position": {
+                        "x": 1986,
+                        "y": 2685
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 36
+                     },
+                     "score": 0.9795261025428772
+                  },
+                  {
+                     "position": {
+                        "x": 1922,
+                        "y": 2797
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 36
+                     },
+                     "score": 1.0
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "scenario",
+         "page": 64,
+         "name": 64,
+         "results": []
+      },
+      {
+         "type": "section",
+         "page": 13,
+         "name": "13.3",
+         "results": [
+            {
+               "name": "04-A",
+               "variant": "",
+               "orientation": "-240",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1717,
+                        "y": 2623
+                     },
+                     "size": {
+                        "x": 55,
+                        "y": 65
+                     },
+                     "score": 0.9654390811920166
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2028,
+                        "y": 2540
+                     },
+                     "size": {
+                        "x": 148,
+                        "y": 43
+                     },
+                     "score": 0.9944658279418945
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2025,
+                        "y": 3054
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9714804887771606
+                  }
+               ]
+            },
+            {
+               "name": "Objective-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2161,
+                        "y": 2595
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9763059020042419
+                  }
+               ]
+            },
+            {
+               "name": "Objective.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2160,
+                        "y": 2594
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9404726624488831
+                  }
+               ]
+            },
+            {
+               "name": "3.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2016,
+                        "y": 2991
+                     },
+                     "size": {
+                        "x": 47,
+                        "y": 45
+                     },
+                     "score": 0.951928973197937
+                  }
+               ]
+            },
+            {
+               "name": "3g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2019,
+                        "y": 2988
+                     },
+                     "size": {
+                        "x": 41,
+                        "y": 51
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 167,
+         "name": "167.1",
+         "results": [
+            {
+               "name": "13-B",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 765,
+                        "y": 1778
+                     },
+                     "size": {
+                        "x": 72,
+                        "y": 32
+                     },
+                     "score": 0.9861453771591187
+                  }
+               ]
+            },
+            {
+               "name": "Cave Door",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 396,
+                        "y": 836
+                     },
+                     "size": {
+                        "x": 98,
+                        "y": 104
+                     },
+                     "score": 0.9979426264762878
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 343,
+                        "y": 950
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9728726148605347
+                  },
+                  {
+                     "position": {
+                        "x": 541,
+                        "y": 1064
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9657049775123596
+                  },
+                  {
+                     "position": {
+                        "x": 210,
+                        "y": 1179
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.967717170715332
+                  },
+                  {
+                     "position": {
+                        "x": 276,
+                        "y": 1294
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9721173644065857
+                  },
+                  {
+                     "position": {
+                        "x": 541,
+                        "y": 1294
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.968747615814209
+                  },
+                  {
+                     "position": {
+                        "x": 607,
+                        "y": 1638
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.971429169178009
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 349,
+                        "y": 964
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9470673203468323
+                  },
+                  {
+                     "position": {
+                        "x": 547,
+                        "y": 1078
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9467571973800659
+                  },
+                  {
+                     "position": {
+                        "x": 216,
+                        "y": 1193
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9464771747589111
+                  },
+                  {
+                     "position": {
+                        "x": 282,
+                        "y": 1308
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9463857412338257
+                  },
+                  {
+                     "position": {
+                        "x": 547,
+                        "y": 1308
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9463125467300415
+                  },
+                  {
+                     "position": {
+                        "x": 613,
+                        "y": 1652
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9453871250152588
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 342,
+                        "y": 952
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9881093502044678
+                  },
+                  {
+                     "position": {
+                        "x": 541,
+                        "y": 1067
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9926601648330688
+                  },
+                  {
+                     "position": {
+                        "x": 210,
+                        "y": 1182
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.98769211769104
+                  },
+                  {
+                     "position": {
+                        "x": 275,
+                        "y": 1297
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9807462096214294
+                  },
+                  {
+                     "position": {
+                        "x": 541,
+                        "y": 1297
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9876307845115662
+                  },
+                  {
+                     "position": {
+                        "x": 607,
+                        "y": 1641
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.9796394109725952
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 368,
+                        "y": 1220
+                     },
+                     "size": {
+                        "x": 148,
+                        "y": 43
+                     },
+                     "score": 0.9998065233230591
+                  },
+                  {
+                     "position": {
+                        "x": 434,
+                        "y": 1564
+                     },
+                     "size": {
+                        "x": 148,
+                        "y": 43
+                     },
+                     "score": 0.9998239278793335
+                  }
+               ]
+            },
+            {
+               "name": "Large Cave Rock",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 616,
+                        "y": 1315
+                     },
+                     "size": {
+                        "x": 112,
+                        "y": 170
+                     },
+                     "score": 0.9970073699951172
+                  }
+               ]
+            },
+            {
+               "name": "Treasure Chest",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 725,
+                        "y": 1663
+                     },
+                     "size": {
+                        "x": 107,
+                        "y": 49
+                     },
+                     "score": 0.9905043244361877
+                  }
+               ]
+            },
+            {
+               "name": "Door.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 431,
+                        "y": 931
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.9731482267379761
+                  },
+                  {
+                     "position": {
+                        "x": 431,
+                        "y": 1850
+                     },
+                     "size": {
+                        "x": 28,
+                        "y": 31
+                     },
+                     "score": 0.986024022102356
+                  }
+               ]
+            },
+            {
+               "name": "Objective-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 366,
+                        "y": 1045
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.945783793926239
+                  },
+                  {
+                     "position": {
+                        "x": 565,
+                        "y": 1160
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9447903037071228
+                  },
+                  {
+                     "position": {
+                        "x": 234,
+                        "y": 1275
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.942484974861145
+                  },
+                  {
+                     "position": {
+                        "x": 499,
+                        "y": 1276
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9436586499214172
+                  },
+                  {
+                     "position": {
+                        "x": 565,
+                        "y": 1390
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9443417191505432
+                  },
+                  {
+                     "position": {
+                        "x": 565,
+                        "y": 1620
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9421064257621765
+                  }
+               ]
+            },
+            {
+               "name": "Objective.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 365,
+                        "y": 1045
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9803035259246826
+                  },
+                  {
+                     "position": {
+                        "x": 564,
+                        "y": 1160
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9919601678848267
+                  },
+                  {
+                     "position": {
+                        "x": 233,
+                        "y": 1275
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9863749146461487
+                  },
+                  {
+                     "position": {
+                        "x": 498,
+                        "y": 1276
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9988345503807068
+                  },
+                  {
+                     "position": {
+                        "x": 299,
+                        "y": 1389
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9624210596084595
+                  },
+                  {
+                     "position": {
+                        "x": 564,
+                        "y": 1390
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9803020358085632
+                  },
+                  {
+                     "position": {
+                        "x": 630,
+                        "y": 1505
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9827883243560791
+                  },
+                  {
+                     "position": {
+                        "x": 564,
+                        "y": 1620
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9965665936470032
+                  },
+                  {
+                     "position": {
+                        "x": 630,
+                        "y": 1733
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9799469113349915
+                  }
+               ]
+            },
+            {
+               "name": "Treasure.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 762,
+                        "y": 1631
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 29
+                     },
+                     "score": 0.9533025622367859
+                  }
+               ]
+            },
+            {
+               "name": "1.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 425,
+                        "y": 1784
+                     },
+                     "size": {
+                        "x": 40,
+                        "y": 51
+                     },
+                     "score": 0.9476686120033264
+                  }
+               ]
+            },
+            {
+               "name": "1g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 422,
+                        "y": 1788
+                     },
+                     "size": {
+                        "x": 48,
+                        "y": 45
+                     },
+                     "score": 0.9999985694885254
+                  }
+               ]
+            },
+            {
+               "name": "2.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 423,
+                        "y": 863
+                     },
+                     "size": {
+                        "x": 45,
+                        "y": 47
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "2g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 424,
+                        "y": 863
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 48
+                     },
+                     "score": 0.9413655400276184
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "02-J",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1948,
+                  "y": 2521
+               },
+               "size": {
+                  "x": 117,
+                  "y": 125
+               },
+               "score": 0.9573588967323303
+            }
+         ]
+      },
+      {
+         "name": "02-L",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2067,
+                  "y": 2521
+               },
+               "size": {
+                  "x": 116,
+                  "y": 126
+               },
+               "score": 0.997016191482544
+            }
+         ]
+      },
+      {
+         "name": "04-A",
+         "orientation": "-240",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1934,
+                  "y": 2170
+               },
+               "size": {
+                  "x": 170,
+                  "y": 149
+               },
+               "score": 0.9907230734825134
+            }
+         ]
+      },
+      {
+         "name": "13-B",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1946,
+                  "y": 2316
+               },
+               "size": {
+                  "x": 147,
+                  "y": 202
+               },
+               "score": 1.0000001192092896
+            }
+         ]
+      }
+   ]
+}

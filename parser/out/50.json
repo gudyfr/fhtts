@@ -1,0 +1,277 @@
+{
+   "id": "50",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 58,
+         "name": 58,
+         "results": [
+            {
+               "name": "16-B",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2054,
+                        "y": 2550
+                     },
+                     "size": {
+                        "x": 78,
+                        "y": 33
+                     },
+                     "score": 0.9977341294288635
+                  }
+               ]
+            },
+            {
+               "name": "Metal Cabinet",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1557,
+                        "y": 2094
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 74
+                     },
+                     "score": 0.9948512315750122
+                  }
+               ]
+            },
+            {
+               "name": "Objective.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1592,
+                        "y": 2165
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9972643852233887
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1320,
+                        "y": 2333
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1386,
+                        "y": 2451
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "c.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1916,
+                        "y": 2451
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
+               "name": "d.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2050,
+                        "y": 2219
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000001192092896
+                  }
+               ]
+            },
+            {
+               "name": "e.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1121,
+                        "y": 1989
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999997615814209
+                  }
+               ]
+            },
+            {
+               "name": "f.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1784,
+                        "y": 1759
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000001192092896
+                  }
+               ]
+            },
+            {
+               "name": "g.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1122,
+                        "y": 1760
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998211860657
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1520,
+                        "y": 1993
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9753511548042297
+                  },
+                  {
+                     "position": {
+                        "x": 1653,
+                        "y": 1993
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9710171818733215
+                  },
+                  {
+                     "position": {
+                        "x": 1453,
+                        "y": 2107
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9869790077209473
+                  },
+                  {
+                     "position": {
+                        "x": 1719,
+                        "y": 2107
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9970207214355469
+                  },
+                  {
+                     "position": {
+                        "x": 1520,
+                        "y": 2221
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.974581241607666
+                  },
+                  {
+                     "position": {
+                        "x": 1653,
+                        "y": 2221
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9701507687568665
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "16-B",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1926,
+                  "y": 478
+               },
+               "size": {
+                  "x": 232,
+                  "y": 201
+               },
+               "score": 0.9906554222106934
+            }
+         ]
+      }
+   ]
+}

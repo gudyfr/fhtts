@@ -1,0 +1,863 @@
+{
+   "id": "31",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 39,
+         "name": 39,
+         "results": [
+            {
+               "name": "07-H",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2176,
+                        "y": 2415
+                     },
+                     "size": {
+                        "x": 72,
+                        "y": 30
+                     },
+                     "score": 1.000001072883606
+                  }
+               ]
+            },
+            {
+               "name": "Flaming Bladespinner",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1673,
+                        "y": 2158
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9925757050514221
+                  }
+               ]
+            },
+            {
+               "name": "Steel Automaton",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1936,
+                        "y": 2159
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 127
+                     },
+                     "score": 0.9967966675758362
+                  }
+               ]
+            },
+            {
+               "name": "ana.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1662,
+                        "y": 2189
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 83
+                     },
+                     "score": 0.9804329872131348
+                  }
+               ]
+            },
+            {
+               "name": "nne.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1928,
+                        "y": 2191
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 76
+                     },
+                     "score": 0.9935158491134644
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2163,
+                        "y": 2085
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  },
+                  {
+                     "position": {
+                        "x": 2098,
+                        "y": 2199
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  },
+                  {
+                     "position": {
+                        "x": 2163,
+                        "y": 2313
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1235,
+                        "y": 2084
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9950895309448242
+                  },
+                  {
+                     "position": {
+                        "x": 1369,
+                        "y": 2084
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9904423952102661
+                  },
+                  {
+                     "position": {
+                        "x": 1303,
+                        "y": 2199
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.975881814956665
+                  },
+                  {
+                     "position": {
+                        "x": 1235,
+                        "y": 2314
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9869024157524109
+                  },
+                  {
+                     "position": {
+                        "x": 1369,
+                        "y": 2314
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9822564721107483
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 32,
+         "name": "32.2",
+         "results": [
+            {
+               "name": "07-F",
+               "variant": "",
+               "orientation": "-60",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1510,
+                        "y": 2192
+                     },
+                     "size": {
+                        "x": 57,
+                        "y": 68
+                     },
+                     "score": 0.9999983310699463
+                  }
+               ]
+            },
+            {
+               "name": "Flaming Bladespinner",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1062,
+                        "y": 2255
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9915673732757568
+                  },
+                  {
+                     "position": {
+                        "x": 1261,
+                        "y": 2370
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9990856647491455
+                  }
+               ]
+            },
+            {
+               "name": "Robotic Boltshooter",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1188,
+                        "y": 2254
+                     },
+                     "size": {
+                        "x": 111,
+                        "y": 132
+                     },
+                     "score": 0.9913646578788757
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1081,
+                        "y": 2402
+                     },
+                     "size": {
+                        "x": 139,
+                        "y": 182
+                     },
+                     "score": 0.989308774471283
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1081,
+                        "y": 2398
+                     },
+                     "size": {
+                        "x": 141,
+                        "y": 188
+                     },
+                     "score": 0.9729962348937988
+                  }
+               ]
+            },
+            {
+               "name": "ane.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1049,
+                        "y": 2286
+                     },
+                     "size": {
+                        "x": 29,
+                        "y": 83
+                     },
+                     "score": 0.9894304871559143
+                  }
+               ]
+            },
+            {
+               "name": "eee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1252,
+                        "y": 2409
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 67
+                     },
+                     "score": 0.9906452298164368
+                  }
+               ]
+            },
+            {
+               "name": "nee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1187,
+                        "y": 2290
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 76
+                     },
+                     "score": 0.9949095249176025
+                  }
+               ]
+            },
+            {
+               "name": "Difficult Terrain.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1097,
+                        "y": 2586
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9512465596199036
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1221,
+                        "y": 2068
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  },
+                  {
+                     "position": {
+                        "x": 1287,
+                        "y": 2183
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  },
+                  {
+                     "position": {
+                        "x": 1420,
+                        "y": 2183
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 823,
+                        "y": 2757
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9885623455047607
+                  },
+                  {
+                     "position": {
+                        "x": 756,
+                        "y": 2870
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.992037296295166
+                  },
+                  {
+                     "position": {
+                        "x": 889,
+                        "y": 2870
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9787948131561279
+                  },
+                  {
+                     "position": {
+                        "x": 1021,
+                        "y": 2870
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9940235018730164
+                  },
+                  {
+                     "position": {
+                        "x": 956,
+                        "y": 2987
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9868708252906799
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 37,
+         "name": "37.2",
+         "results": [
+            {
+               "name": "11-F",
+               "variant": "",
+               "orientation": "-60",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1514,
+                        "y": 2341
+                     },
+                     "size": {
+                        "x": 56,
+                        "y": 67
+                     },
+                     "score": 1.0000017881393433
+                  }
+               ]
+            },
+            {
+               "name": "Robotic Boltshooter",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 998,
+                        "y": 2510
+                     },
+                     "size": {
+                        "x": 111,
+                        "y": 132
+                     },
+                     "score": 0.9976710081100464
+                  },
+                  {
+                     "position": {
+                        "x": 932,
+                        "y": 2854
+                     },
+                     "size": {
+                        "x": 111,
+                        "y": 132
+                     },
+                     "score": 0.9976131916046143
+                  }
+               ]
+            },
+            {
+               "name": "Steel Automaton",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1134,
+                        "y": 2284
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 127
+                     },
+                     "score": 0.9979086518287659
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 675,
+                        "y": 2673
+                     },
+                     "size": {
+                        "x": 224,
+                        "y": 46
+                     },
+                     "score": 0.9847046732902527
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1156,
+                        "y": 2658
+                     },
+                     "size": {
+                        "x": 139,
+                        "y": 182
+                     },
+                     "score": 0.9801362752914429
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1156,
+                        "y": 2654
+                     },
+                     "size": {
+                        "x": 141,
+                        "y": 188
+                     },
+                     "score": 0.9908465147018433
+                  }
+               ]
+            },
+            {
+               "name": "Treasure Chest",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1265,
+                        "y": 2542
+                     },
+                     "size": {
+                        "x": 107,
+                        "y": 49
+                     },
+                     "score": 0.9985231161117554
+                  }
+               ]
+            },
+            {
+               "name": "nee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1128,
+                        "y": 2317
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 76
+                     },
+                     "score": 0.9974803924560547
+                  }
+               ]
+            },
+            {
+               "name": "nne.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 995,
+                        "y": 2546
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 76
+                     },
+                     "score": 0.9948110580444336
+                  },
+                  {
+                     "position": {
+                        "x": 928,
+                        "y": 2890
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 76
+                     },
+                     "score": 0.9912933707237244
+                  }
+               ]
+            },
+            {
+               "name": "Difficult Terrain.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 841,
+                        "y": 2728
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9481083750724792
+                  },
+                  {
+                     "position": {
+                        "x": 1172,
+                        "y": 2843
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.954339861869812
+                  }
+               ]
+            },
+            {
+               "name": "Treasure.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1302,
+                        "y": 2510
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 29
+                     },
+                     "score": 0.9461067318916321
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1228,
+                        "y": 2208
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  },
+                  {
+                     "position": {
+                        "x": 1296,
+                        "y": 2325
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  },
+                  {
+                     "position": {
+                        "x": 1428,
+                        "y": 2325
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 437,
+                        "y": 2669
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9969274401664734
+                  },
+                  {
+                     "position": {
+                        "x": 566,
+                        "y": 2669
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9870455861091614
+                  },
+                  {
+                     "position": {
+                        "x": 501,
+                        "y": 2783
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9735599160194397
+                  },
+                  {
+                     "position": {
+                        "x": 437,
+                        "y": 2900
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9998465180397034
+                  },
+                  {
+                     "position": {
+                        "x": 566,
+                        "y": 2900
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9899003505706787
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "07-F",
+         "orientation": "-60",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2187,
+                  "y": 482
+               },
+               "size": {
+                  "x": 205,
+                  "y": 254
+               },
+               "score": 1.000001311302185
+            }
+         ]
+      },
+      {
+         "name": "07-H",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1900,
+                  "y": 484
+               },
+               "size": {
+                  "x": 231,
+                  "y": 100
+               },
+               "score": 0.9772140383720398
+            }
+         ]
+      },
+      {
+         "name": "11-F",
+         "orientation": "-60",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1869,
+                  "y": 575
+               },
+               "size": {
+                  "x": 298,
+                  "y": 308
+               },
+               "score": 0.9999999403953552
+            }
+         ]
+      }
+   ]
+}

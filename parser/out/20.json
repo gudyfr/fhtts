@@ -1,0 +1,895 @@
+{
+   "id": "20",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 25,
+         "name": 25,
+         "results": []
+      },
+      {
+         "type": "scenario",
+         "page": 26,
+         "name": 26,
+         "results": [
+            {
+               "name": "02-A",
+               "variant": "",
+               "orientation": "-240",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 555,
+                        "y": 1591
+                     },
+                     "size": {
+                        "x": 51,
+                        "y": 65
+                     },
+                     "score": 0.9999995827674866
+                  }
+               ]
+            },
+            {
+               "name": "02-C",
+               "variant": "",
+               "orientation": "-120",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2173,
+                        "y": 1215
+                     },
+                     "size": {
+                        "x": 50,
+                        "y": 65
+                     },
+                     "score": 0.9999994039535522
+                  }
+               ]
+            },
+            {
+               "name": "02-I",
+               "variant": "",
+               "orientation": "-60",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2389,
+                        "y": 2454
+                     },
+                     "size": {
+                        "x": 52,
+                        "y": 63
+                     },
+                     "score": 1.0000014305114746
+                  }
+               ]
+            },
+            {
+               "name": "02-K",
+               "variant": "",
+               "orientation": "-300",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 774,
+                        "y": 2832
+                     },
+                     "size": {
+                        "x": 51,
+                        "y": 64
+                     },
+                     "score": 1.000001072883606
+                  }
+               ]
+            },
+            {
+               "name": "Steel Automaton",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1648,
+                        "y": 1877
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 127
+                     },
+                     "score": 0.9992883801460266
+                  },
+                  {
+                     "position": {
+                        "x": 1648,
+                        "y": 2107
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 127
+                     },
+                     "score": 1.0000001192092896
+                  }
+               ]
+            },
+            {
+               "name": "Metal Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1182,
+                        "y": 1538
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9894582033157349
+                  },
+                  {
+                     "position": {
+                        "x": 1714,
+                        "y": 1538
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9931946992874146
+                  },
+                  {
+                     "position": {
+                        "x": 1050,
+                        "y": 2228
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9835254549980164
+                  },
+                  {
+                     "position": {
+                        "x": 1847,
+                        "y": 2228
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.994216799736023
+                  }
+               ]
+            },
+            {
+               "name": "Metal Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1108,
+                        "y": 1707
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 49
+                     },
+                     "score": 0.9692742228507996
+                  },
+                  {
+                     "position": {
+                        "x": 1844,
+                        "y": 1707
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 49
+                     },
+                     "score": 0.9905295968055725
+                  },
+                  {
+                     "position": {
+                        "x": 1845,
+                        "y": 2396
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 49
+                     },
+                     "score": 0.9795910120010376
+                  },
+                  {
+                     "position": {
+                        "x": 1180,
+                        "y": 2398
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 49
+                     },
+                     "score": 0.990452229976654
+                  }
+               ]
+            },
+            {
+               "name": "Metal Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1181,
+                        "y": 1538
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9955230951309204
+                  },
+                  {
+                     "position": {
+                        "x": 1713,
+                        "y": 1538
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9974111914634705
+                  },
+                  {
+                     "position": {
+                        "x": 1049,
+                        "y": 2228
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9906476736068726
+                  },
+                  {
+                     "position": {
+                        "x": 1846,
+                        "y": 2228
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9983882308006287
+                  }
+               ]
+            },
+            {
+               "name": "Large Metal Corridor",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1054,
+                        "y": 1658
+                     },
+                     "size": {
+                        "x": 160,
+                        "y": 204
+                     },
+                     "score": 0.9973961114883423
+                  },
+                  {
+                     "position": {
+                        "x": 1718,
+                        "y": 2348
+                     },
+                     "size": {
+                        "x": 160,
+                        "y": 204
+                     },
+                     "score": 1.0000090599060059
+                  }
+               ]
+            },
+            {
+               "name": "Large Metal Corridor",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1783,
+                        "y": 1658
+                     },
+                     "size": {
+                        "x": 161,
+                        "y": 210
+                     },
+                     "score": 1.000000238418579
+                  },
+                  {
+                     "position": {
+                        "x": 1118,
+                        "y": 2348
+                     },
+                     "size": {
+                        "x": 161,
+                        "y": 210
+                     },
+                     "score": 0.9587835669517517
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1735,
+                        "y": 1679
+                     },
+                     "size": {
+                        "x": 139,
+                        "y": 182
+                     },
+                     "score": 0.983467698097229
+                  },
+                  {
+                     "position": {
+                        "x": 1138,
+                        "y": 2254
+                     },
+                     "size": {
+                        "x": 139,
+                        "y": 182
+                     },
+                     "score": 0.9921831488609314
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1735,
+                        "y": 1674
+                     },
+                     "size": {
+                        "x": 141,
+                        "y": 188
+                     },
+                     "score": 0.9976526498794556
+                  },
+                  {
+                     "position": {
+                        "x": 1138,
+                        "y": 2249
+                     },
+                     "size": {
+                        "x": 141,
+                        "y": 188
+                     },
+                     "score": 0.9728688597679138
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1131,
+                        "y": 1669
+                     },
+                     "size": {
+                        "x": 121,
+                        "y": 189
+                     },
+                     "score": 0.9856833815574646
+                  },
+                  {
+                     "position": {
+                        "x": 1729,
+                        "y": 2242
+                     },
+                     "size": {
+                        "x": 121,
+                        "y": 189
+                     },
+                     "score": 0.9868305325508118
+                  }
+               ]
+            },
+            {
+               "name": "Power Conduit",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1128,
+                        "y": 1668
+                     },
+                     "size": {
+                        "x": 124,
+                        "y": 195
+                     },
+                     "score": 0.9930464029312134
+                  }
+               ]
+            },
+            {
+               "name": "Glowing Orb",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1463,
+                        "y": 2024
+                     },
+                     "size": {
+                        "x": 69,
+                        "y": 63
+                     },
+                     "score": 0.9999993443489075
+                  }
+               ]
+            },
+            {
+               "name": "Metal Cabinet",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 717,
+                        "y": 1445
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 74
+                     },
+                     "score": 0.997996985912323
+                  },
+                  {
+                     "position": {
+                        "x": 2178,
+                        "y": 1445
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 74
+                     },
+                     "score": 0.984798014163971
+                  },
+                  {
+                     "position": {
+                        "x": 718,
+                        "y": 2595
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 74
+                     },
+                     "score": 0.9885715842247009
+                  },
+                  {
+                     "position": {
+                        "x": 2178,
+                        "y": 2595
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 74
+                     },
+                     "score": 0.9960559010505676
+                  }
+               ]
+            },
+            {
+               "name": "nee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1641,
+                        "y": 1910
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 76
+                     },
+                     "score": 0.994939386844635
+                  }
+               ]
+            },
+            {
+               "name": "nne.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1640,
+                        "y": 2140
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 76
+                     },
+                     "score": 0.9954487085342407
+                  }
+               ]
+            },
+            {
+               "name": "Corridor-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1087,
+                        "y": 1862
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 30
+                     },
+                     "score": 0.9662525653839111
+                  },
+                  {
+                     "position": {
+                        "x": 1884,
+                        "y": 1862
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 30
+                     },
+                     "score": 0.9882010817527771
+                  }
+               ]
+            },
+            {
+               "name": "Corridor.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1217,
+                        "y": 1633
+                     },
+                     "size": {
+                        "x": 29,
+                        "y": 30
+                     },
+                     "score": 0.9718882441520691
+                  }
+               ]
+            },
+            {
+               "name": "Objective-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 753,
+                        "y": 1516
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9463209509849548
+                  },
+                  {
+                     "position": {
+                        "x": 1485,
+                        "y": 2091
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9541027545928955
+                  },
+                  {
+                     "position": {
+                        "x": 754,
+                        "y": 2667
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 31
+                     },
+                     "score": 0.9450685381889343
+                  }
+               ]
+            },
+            {
+               "name": "Objective.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 752,
+                        "y": 1516
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9949681758880615
+                  },
+                  {
+                     "position": {
+                        "x": 2214,
+                        "y": 1517
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9718457460403442
+                  },
+                  {
+                     "position": {
+                        "x": 1484,
+                        "y": 2091
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9942294359207153
+                  },
+                  {
+                     "position": {
+                        "x": 2214,
+                        "y": 2666
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9717085361480713
+                  },
+                  {
+                     "position": {
+                        "x": 753,
+                        "y": 2667
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 32
+                     },
+                     "score": 0.9921460151672363
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 944,
+                        "y": 1345
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  },
+                  {
+                     "position": {
+                        "x": 2009,
+                        "y": 2719
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2006,
+                        "y": 1344
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  },
+                  {
+                     "position": {
+                        "x": 945,
+                        "y": 2719
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1147,
+                        "y": 1916
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9879958033561707
+                  },
+                  {
+                     "position": {
+                        "x": 1280,
+                        "y": 1916
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9911584258079529
+                  },
+                  {
+                     "position": {
+                        "x": 1213,
+                        "y": 2032
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9812086224555969
+                  },
+                  {
+                     "position": {
+                        "x": 1147,
+                        "y": 2147
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9889096021652222
+                  },
+                  {
+                     "position": {
+                        "x": 1280,
+                        "y": 2147
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9918850064277649
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "02-A",
+         "orientation": "-240",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1839,
+                  "y": 623
+               },
+               "size": {
+                  "x": 168,
+                  "y": 165
+               },
+               "score": 1.000000238418579
+            }
+         ]
+      },
+      {
+         "name": "02-C",
+         "orientation": "-120",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2097,
+                  "y": 624
+               },
+               "size": {
+                  "x": 169,
+                  "y": 165
+               },
+               "score": 0.9999988675117493
+            }
+         ]
+      },
+      {
+         "name": "02-I",
+         "orientation": "-60",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2098,
+                  "y": 840
+               },
+               "size": {
+                  "x": 167,
+                  "y": 163
+               },
+               "score": 0.9999984502792358
+            }
+         ]
+      },
+      {
+         "name": "02-K",
+         "orientation": "-300",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1840,
+                  "y": 840
+               },
+               "size": {
+                  "x": 168,
+                  "y": 166
+               },
+               "score": 1.0000046491622925
+            }
+         ]
+      },
+      {
+         "name": "15-C",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1965,
+                  "y": 713
+               },
+               "size": {
+                  "x": 174,
+                  "y": 200
+               },
+               "score": 0.9994612336158752
+            }
+         ]
+      }
+   ]
+}

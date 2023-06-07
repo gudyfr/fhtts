@@ -1,0 +1,1591 @@
+{
+   "id": "76",
+   "maps": [
+      {
+         "type": "scenario",
+         "page": 94,
+         "name": 94,
+         "results": []
+      },
+      {
+         "type": "scenario",
+         "page": 95,
+         "name": 95,
+         "results": [
+            {
+               "name": "04-A",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1003,
+                        "y": 1687
+                     },
+                     "size": {
+                        "x": 76,
+                        "y": 32
+                     },
+                     "score": 0.9999997019767761
+                  }
+               ]
+            },
+            {
+               "name": "10-B",
+               "variant": "",
+               "orientation": "-180",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1410,
+                        "y": 302
+                     },
+                     "size": {
+                        "x": 78,
+                        "y": 35
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "15-C",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1998,
+                        "y": 1873
+                     },
+                     "size": {
+                        "x": 76,
+                        "y": 29
+                     },
+                     "score": 0.9645386338233948
+                  }
+               ]
+            },
+            {
+               "name": "Fish King",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1754,
+                        "y": 1385
+                     },
+                     "size": {
+                        "x": 106,
+                        "y": 128
+                     },
+                     "score": 1.0000004768371582
+                  }
+               ]
+            },
+            {
+               "name": "Algox Archer",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1753,
+                        "y": 692
+                     },
+                     "size": {
+                        "x": 106,
+                        "y": 131
+                     },
+                     "score": 0.9985703825950623
+                  }
+               ]
+            },
+            {
+               "name": "Algox Guard",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1691,
+                        "y": 587
+                     },
+                     "size": {
+                        "x": 84,
+                        "y": 106
+                     },
+                     "score": 0.9933208227157593
+                  },
+                  {
+                     "position": {
+                        "x": 1823,
+                        "y": 587
+                     },
+                     "size": {
+                        "x": 84,
+                        "y": 106
+                     },
+                     "score": 0.9963870644569397
+                  }
+               ]
+            },
+            {
+               "name": "Lurker Mindsnipper",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1230,
+                        "y": 1857
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 99
+                     },
+                     "score": 0.9999998807907104
+                  },
+                  {
+                     "position": {
+                        "x": 1032,
+                        "y": 1972
+                     },
+                     "size": {
+                        "x": 88,
+                        "y": 99
+                     },
+                     "score": 0.9944620132446289
+                  }
+               ]
+            },
+            {
+               "name": "Dungeon Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1621,
+                        "y": 933
+                     },
+                     "size": {
+                        "x": 99,
+                        "y": 99
+                     },
+                     "score": 0.9846720099449158
+                  }
+               ]
+            },
+            {
+               "name": "Large Dungeon Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1858,
+                        "y": 964
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 51
+                     },
+                     "score": 0.9999985694885254
+                  }
+               ]
+            },
+            {
+               "name": "Large Dungeon Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1753,
+                        "y": 931
+                     },
+                     "size": {
+                        "x": 231,
+                        "y": 116
+                     },
+                     "score": 0.9706413149833679
+                  }
+               ]
+            },
+            {
+               "name": "Large Dungeon Corridor",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1423,
+                        "y": 1739
+                     },
+                     "size": {
+                        "x": 164,
+                        "y": 216
+                     },
+                     "score": 0.9935034513473511
+                  }
+               ]
+            },
+            {
+               "name": "Rubble",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2089,
+                        "y": 1513
+                     },
+                     "size": {
+                        "x": 91,
+                        "y": 76
+                     },
+                     "score": 0.9748989343643188
+                  }
+               ]
+            },
+            {
+               "name": "Rubble",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2096,
+                        "y": 1532
+                     },
+                     "size": {
+                        "x": 82,
+                        "y": 58
+                     },
+                     "score": 0.9554206132888794
+                  }
+               ]
+            },
+            {
+               "name": "Water",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1089,
+                        "y": 1858
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 95
+                     },
+                     "score": 0.9801119565963745
+                  },
+                  {
+                     "position": {
+                        "x": 1155,
+                        "y": 1971
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 95
+                     },
+                     "score": 0.9766492247581482
+                  },
+                  {
+                     "position": {
+                        "x": 1288,
+                        "y": 1971
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 95
+                     },
+                     "score": 0.9764034152030945
+                  },
+                  {
+                     "position": {
+                        "x": 1089,
+                        "y": 2087
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 95
+                     },
+                     "score": 0.9808402061462402
+                  },
+                  {
+                     "position": {
+                        "x": 1221,
+                        "y": 2087
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 95
+                     },
+                     "score": 0.9735127687454224
+                  }
+               ]
+            },
+            {
+               "name": "Water",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1285,
+                        "y": 1907
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 50
+                     },
+                     "score": 0.9999995231628418
+                  },
+                  {
+                     "position": {
+                        "x": 1087,
+                        "y": 2021
+                     },
+                     "size": {
+                        "x": 46,
+                        "y": 50
+                     },
+                     "score": 0.9848834276199341
+                  }
+               ]
+            },
+            {
+               "name": "Water",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1087,
+                        "y": 1854
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 104
+                     },
+                     "score": 0.9642780423164368
+                  },
+                  {
+                     "position": {
+                        "x": 1286,
+                        "y": 1967
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 104
+                     },
+                     "score": 0.9626097083091736
+                  },
+                  {
+                     "position": {
+                        "x": 1087,
+                        "y": 2083
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 104
+                     },
+                     "score": 0.9631795883178711
+                  },
+                  {
+                     "position": {
+                        "x": 1220,
+                        "y": 2083
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 104
+                     },
+                     "score": 0.9516553282737732
+                  }
+               ]
+            },
+            {
+               "name": "Altar",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1773,
+                        "y": 1171
+                     },
+                     "size": {
+                        "x": 62,
+                        "y": 90
+                     },
+                     "score": 0.991707980632782
+                  }
+               ]
+            },
+            {
+               "name": "Altar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1773,
+                        "y": 1172
+                     },
+                     "size": {
+                        "x": 60,
+                        "y": 88
+                     },
+                     "score": 0.9646744728088379
+                  }
+               ]
+            },
+            {
+               "name": "Altar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1773,
+                        "y": 1173
+                     },
+                     "size": {
+                        "x": 60,
+                        "y": 93
+                     },
+                     "score": 0.9637808203697205
+                  }
+               ]
+            },
+            {
+               "name": "Altar",
+               "orientation": "-120",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1549,
+                        "y": 1522
+                     },
+                     "size": {
+                        "x": 109,
+                        "y": 87
+                     },
+                     "score": 0.9999995827674866
+                  }
+               ]
+            },
+            {
+               "name": "Altar",
+               "orientation": "-240",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1951,
+                        "y": 1525
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 81
+                     },
+                     "score": 0.9999997019767761
+                  }
+               ]
+            },
+            {
+               "name": "Barricade",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1437,
+                        "y": 622
+                     },
+                     "size": {
+                        "x": 213,
+                        "y": 60
+                     },
+                     "score": 0.9898021221160889
+                  },
+                  {
+                     "position": {
+                        "x": 1967,
+                        "y": 623
+                     },
+                     "size": {
+                        "x": 213,
+                        "y": 60
+                     },
+                     "score": 0.9863162636756897
+                  },
+                  {
+                     "position": {
+                        "x": 1437,
+                        "y": 1312
+                     },
+                     "size": {
+                        "x": 213,
+                        "y": 60
+                     },
+                     "score": 0.9971434473991394
+                  },
+                  {
+                     "position": {
+                        "x": 1967,
+                        "y": 1312
+                     },
+                     "size": {
+                        "x": 213,
+                        "y": 60
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1767,
+                        "y": 1619
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 100
+                     },
+                     "score": 0.9701643586158752
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1774,
+                        "y": 944
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 1.0
+                  },
+                  {
+                     "position": {
+                        "x": 1773,
+                        "y": 1633
+                     },
+                     "size": {
+                        "x": 61,
+                        "y": 79
+                     },
+                     "score": 0.9473184943199158
+                  }
+               ]
+            },
+            {
+               "name": "Ice Pillar",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1766,
+                        "y": 1621
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 99
+                     },
+                     "score": 0.980783224105835
+                  }
+               ]
+            },
+            {
+               "name": "Treasure Chest",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 955,
+                        "y": 2105
+                     },
+                     "size": {
+                        "x": 107,
+                        "y": 49
+                     },
+                     "score": 0.9988316893577576
+                  }
+               ]
+            },
+            {
+               "name": "aan.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1678,
+                        "y": 613
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 81
+                     },
+                     "score": 0.9907137155532837
+                  }
+               ]
+            },
+            {
+               "name": "aees.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1221,
+                        "y": 1883
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 70
+                     },
+                     "score": 0.9999995827674866
+                  }
+               ]
+            },
+            {
+               "name": "ann.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1813,
+                        "y": 595
+                     },
+                     "size": {
+                        "x": 24,
+                        "y": 75
+                     },
+                     "score": 0.9506772756576538
+                  }
+               ]
+            },
+            {
+               "name": "bbb.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1746,
+                        "y": 1420
+                     },
+                     "size": {
+                        "x": 25,
+                        "y": 75
+                     },
+                     "score": 0.9997068047523499
+                  }
+               ]
+            },
+            {
+               "name": "eees.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1022,
+                        "y": 1996
+                     },
+                     "size": {
+                        "x": 23,
+                        "y": 70
+                     },
+                     "score": 0.9736317992210388
+                  }
+               ]
+            },
+            {
+               "name": "nee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1747,
+                        "y": 729
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 76
+                     },
+                     "score": 0.9948602318763733
+                  }
+               ]
+            },
+            {
+               "name": "nnn.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1811,
+                        "y": 612
+                     },
+                     "size": {
+                        "x": 24,
+                        "y": 83
+                     },
+                     "score": 0.9920480251312256
+                  }
+               ]
+            },
+            {
+               "name": "Corridor-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1525,
+                        "y": 1945
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 30
+                     },
+                     "score": 0.9799705743789673
+                  }
+               ]
+            },
+            {
+               "name": "Corridor.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1656,
+                        "y": 1026
+                     },
+                     "size": {
+                        "x": 29,
+                        "y": 30
+                     },
+                     "score": 0.9707813262939453
+                  }
+               ]
+            },
+            {
+               "name": "Difficult Terrain.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2121,
+                        "y": 1602
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9800705909729004
+                  },
+                  {
+                     "position": {
+                        "x": 1126,
+                        "y": 1948
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9543253183364868
+                  },
+                  {
+                     "position": {
+                        "x": 1192,
+                        "y": 2062
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9921901822090149
+                  },
+                  {
+                     "position": {
+                        "x": 1325,
+                        "y": 2062
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9801868796348572
+                  },
+                  {
+                     "position": {
+                        "x": 1126,
+                        "y": 2177
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9672756195068359
+                  },
+                  {
+                     "position": {
+                        "x": 1258,
+                        "y": 2177
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9733763337135315
+                  }
+               ]
+            },
+            {
+               "name": "Obstacle-2.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1592,
+                        "y": 682
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.978584349155426
+                  },
+                  {
+                     "position": {
+                        "x": 2123,
+                        "y": 682
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9912782311439514
+                  },
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 1026
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9529874920845032
+                  },
+                  {
+                     "position": {
+                        "x": 1789,
+                        "y": 1256
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9570900797843933
+                  },
+                  {
+                     "position": {
+                        "x": 1592,
+                        "y": 1371
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9919672012329102
+                  },
+                  {
+                     "position": {
+                        "x": 2122,
+                        "y": 1371
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9792878031730652
+                  },
+                  {
+                     "position": {
+                        "x": 1591,
+                        "y": 1601
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9581790566444397
+                  },
+                  {
+                     "position": {
+                        "x": 1988,
+                        "y": 1601
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9567310810089111
+                  },
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 1715
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9503155946731567
+                  }
+               ]
+            },
+            {
+               "name": "Obstacle.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1593,
+                        "y": 682
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9533829092979431
+                  },
+                  {
+                     "position": {
+                        "x": 2123,
+                        "y": 682
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9486149549484253
+                  },
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 1026
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9903408885002136
+                  },
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 1256
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.981781005859375
+                  },
+                  {
+                     "position": {
+                        "x": 1593,
+                        "y": 1371
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9616933465003967
+                  },
+                  {
+                     "position": {
+                        "x": 2123,
+                        "y": 1371
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9676920175552368
+                  },
+                  {
+                     "position": {
+                        "x": 1592,
+                        "y": 1601
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9734285473823547
+                  },
+                  {
+                     "position": {
+                        "x": 1989,
+                        "y": 1601
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9806482791900635
+                  },
+                  {
+                     "position": {
+                        "x": 1790,
+                        "y": 1715
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 30
+                     },
+                     "score": 0.9823136925697327
+                  }
+               ]
+            },
+            {
+               "name": "Treasure.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 993,
+                        "y": 2073
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 29
+                     },
+                     "score": 0.9459137320518494
+                  }
+               ]
+            },
+            {
+               "name": "a.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1782,
+                        "y": 504
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0000003576278687
+                  }
+               ]
+            },
+            {
+               "name": "b.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1185,
+                        "y": 1995
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999998807907104
+                  }
+               ]
+            },
+            {
+               "name": "start.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1583,
+                        "y": 1083
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9866392612457275
+                  },
+                  {
+                     "position": {
+                        "x": 1983,
+                        "y": 1083
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9850899577140808
+                  },
+                  {
+                     "position": {
+                        "x": 1718,
+                        "y": 1313
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9909584522247314
+                  },
+                  {
+                     "position": {
+                        "x": 1848,
+                        "y": 1313
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9928683638572693
+                  },
+                  {
+                     "position": {
+                        "x": 1517,
+                        "y": 1427
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9777331352233887
+                  },
+                  {
+                     "position": {
+                        "x": 1717,
+                        "y": 1541
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9842970967292786
+                  },
+                  {
+                     "position": {
+                        "x": 1518,
+                        "y": 1655
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9840336441993713
+                  },
+                  {
+                     "position": {
+                        "x": 1717,
+                        "y": 1771
+                     },
+                     "size": {
+                        "x": 44,
+                        "y": 45
+                     },
+                     "score": 0.9957788586616516
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "type": "section",
+         "page": 105,
+         "name": "105.4",
+         "results": [
+            {
+               "name": "01-H",
+               "variant": "",
+               "orientation": "-0",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2401,
+                        "y": 3001
+                     },
+                     "size": {
+                        "x": 77,
+                        "y": 30
+                     },
+                     "score": 0.9714803099632263
+                  }
+               ]
+            },
+            {
+               "name": "Flaming Bladespinner",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2040,
+                        "y": 2747
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9974738955497742
+                  },
+                  {
+                     "position": {
+                        "x": 2173,
+                        "y": 2747
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9977171421051025
+                  },
+                  {
+                     "position": {
+                        "x": 2306,
+                        "y": 2747
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9936421513557434
+                  },
+                  {
+                     "position": {
+                        "x": 1974,
+                        "y": 2861
+                     },
+                     "size": {
+                        "x": 102,
+                        "y": 127
+                     },
+                     "score": 0.9941557049751282
+                  }
+               ]
+            },
+            {
+               "name": "Rubble",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1777,
+                        "y": 2759
+                     },
+                     "size": {
+                        "x": 91,
+                        "y": 76
+                     },
+                     "score": 0.9751835465431213
+                  },
+                  {
+                     "position": {
+                        "x": 1909,
+                        "y": 2759
+                     },
+                     "size": {
+                        "x": 91,
+                        "y": 76
+                     },
+                     "score": 0.9904517531394958
+                  },
+                  {
+                     "position": {
+                        "x": 1843,
+                        "y": 2874
+                     },
+                     "size": {
+                        "x": 91,
+                        "y": 76
+                     },
+                     "score": 0.9919708967208862
+                  }
+               ]
+            },
+            {
+               "name": "Rubble",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1784,
+                        "y": 2778
+                     },
+                     "size": {
+                        "x": 82,
+                        "y": 58
+                     },
+                     "score": 0.9532127976417542
+                  },
+                  {
+                     "position": {
+                        "x": 1917,
+                        "y": 2778
+                     },
+                     "size": {
+                        "x": 82,
+                        "y": 58
+                     },
+                     "score": 0.9450404047966003
+                  },
+                  {
+                     "position": {
+                        "x": 1851,
+                        "y": 2893
+                     },
+                     "size": {
+                        "x": 82,
+                        "y": 58
+                     },
+                     "score": 0.9423601627349854
+                  }
+               ]
+            },
+            {
+               "name": "Treasure Chest",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2367,
+                        "y": 2891
+                     },
+                     "size": {
+                        "x": 107,
+                        "y": 49
+                     },
+                     "score": 0.9680197834968567
+                  }
+               ]
+            },
+            {
+               "name": "aan.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2028,
+                        "y": 2779
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 81
+                     },
+                     "score": 0.9930213689804077
+                  }
+               ]
+            },
+            {
+               "name": "ane.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2292,
+                        "y": 2777
+                     },
+                     "size": {
+                        "x": 29,
+                        "y": 83
+                     },
+                     "score": 0.985673189163208
+                  }
+               ]
+            },
+            {
+               "name": "eee.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2164,
+                        "y": 2787
+                     },
+                     "size": {
+                        "x": 21,
+                        "y": 67
+                     },
+                     "score": 0.9879266023635864
+                  }
+               ]
+            },
+            {
+               "name": "nnn.png",
+               "type": "monster levels",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1963,
+                        "y": 2892
+                     },
+                     "size": {
+                        "x": 24,
+                        "y": 83
+                     },
+                     "score": 0.99513840675354
+                  }
+               ]
+            },
+            {
+               "name": "Difficult Terrain.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1809,
+                        "y": 2848
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9799885153770447
+                  },
+                  {
+                     "position": {
+                        "x": 1941,
+                        "y": 2848
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9814252853393555
+                  },
+                  {
+                     "position": {
+                        "x": 1875,
+                        "y": 2963
+                     },
+                     "size": {
+                        "x": 26,
+                        "y": 29
+                     },
+                     "score": 0.9852897524833679
+                  }
+               ]
+            },
+            {
+               "name": "Treasure.png",
+               "type": "overlay types",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2404,
+                        "y": 2859
+                     },
+                     "size": {
+                        "x": 27,
+                        "y": 29
+                     },
+                     "score": 0.9892622232437134
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "layout": [
+      {
+         "name": "10-B",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1954,
+                  "y": 1668
+               },
+               "size": {
+                  "x": 175,
+                  "y": 150
+               },
+               "score": 0.9901002049446106
+            }
+         ]
+      },
+      {
+         "name": "15-C",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1955,
+                  "y": 1822
+               },
+               "size": {
+                  "x": 174,
+                  "y": 200
+               },
+               "score": 0.9929941892623901
+            }
+         ]
+      },
+      {
+         "name": "04-A",
+         "orientation": "-180",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 1822,
+                  "y": 1978
+               },
+               "size": {
+                  "x": 172,
+                  "y": 148
+               },
+               "score": 0.9930000305175781
+            }
+         ]
+      },
+      {
+         "name": "01-H",
+         "orientation": "-0",
+         "variant": "",
+         "positions": [
+            {
+               "position": {
+                  "x": 2132,
+                  "y": 1898
+               },
+               "size": {
+                  "x": 145,
+                  "y": 75
+               },
+               "score": 0.9629870057106018
+            }
+         ]
+      }
+   ]
+}
