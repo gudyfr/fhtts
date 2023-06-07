@@ -39,10 +39,10 @@ function onStateUpdate(state)
         local deck, guids = getRestoreDeck("Challenges")
         if deck ~= nil then
             for name, position in pairs(ChallengesDestinations) do
-                rebuildDeck(deck, guids, challenges[name], position, false)
+                deck = rebuildDeck(deck, guids, challenges[name], position, false)
             end
         end
-        rebuildDeck(deck, guids, challenges["Draw"], DrawDecks["Challenges"], true)
+        deck = rebuildDeck(deck, guids, challenges["Draw"], DrawDecks["Challenges"], true)
         -- All cards should have been used, so keep on the scenario mat the unused ones
         -- destroyObject(deck)
     else

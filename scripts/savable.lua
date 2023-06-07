@@ -50,9 +50,9 @@ function getSave()
     return result
 end
 
-function loadSave(serialized)
+function loadSave(params)
+    local itemSave = params[1]
     broadcastToAll("Loading " .. Savable.name)
-    local itemSave = JSON.decode(serialized)
     savableSetState(itemSave.State)
 end
 

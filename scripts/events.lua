@@ -84,7 +84,7 @@ function getState()
     state["Active"] = getCardList(activePosition)
 
     state.players = {}
-    if Name == "Outpost Events" then        
+    if Name == "Outpost Events" then
         for _, player in ipairs(PlayerColors) do
             local playerMat = Global.call("getPlayerMatExt", { player })
             if playerMat ~= nil then
@@ -107,23 +107,26 @@ function onStateUpdate(state)
         -- Use the deck to move card/decks into the right locations
         for _, category in ipairs(categories) do
             for _, status in ipairs(Statuses) do
-                rebuildDeck(deck, cardGuids, state[category][status], searchPositions[i],
+                deck = rebuildDeck(deck, cardGuids, state[category][status], searchPositions[i],
                     status == "Removed" or category == "Personal Quests")
                 i = i + 1
             end
         end
-        rebuildDeck(deck, cardGuids, state["Search"], resultPosition)
-        rebuildDeck(deck, cardGuids, state["Active"], activePosition)
+        deck = rebuildDeck(deck, cardGuids, state["Search"], resultPosition)
+        deck = rebuildDeck(deck, cardGuids, state["Active"], activePosition)
         if Name == "Outpost Events" then
             for _, player in ipairs(PlayerColors) do
                 local playerMat = Global.call("getPlayerMatExt", { player })
                 if playerMat ~= nil then
                     local personalQuestCardPosition = JSON.decode(playerMat.call("getPersonalQuestCardPosition"))
-                    rebuildDeck(deck, cardGuids, state.players[player] or {}, self.positionToLocal(personalQuestCardPosition))
+                    deck = rebuildDeck(deck, cardGuids, state.players[player] or {},
+                        self.positionToLocal(personalQuestCardPosition))
                 end
             end
         end
-        destroyObject(deck)
+        if deck ~= nil and not deck.isDestroyed() then
+            destroyObject(deck)
+        end
     end
 end
 
@@ -136,7 +139,7 @@ function onLoad(save)
         for _, tag in ipairs(point.tags) do
             tags[tag] = 1
         end
-        local position = point.position        
+        local position = point.position
         -- print(JSON.encode(tags))
 
         if tags["input"] ~= nil then
@@ -169,7 +172,7 @@ function onLoad(save)
             table.insert(searchPositions, point.position)
         end
     end
-    table.sort(searchPositions, function(a,b) return (a.z-b.z) * 10 + b.x - a.x < 0 end)
+    table.sort(searchPositions, function(a, b) return (a.z - b.z) * 10 + b.x - a.x < 0 end)
     registerSavable(Name)
 end
 
@@ -297,13 +300,13 @@ function returnCard()
         local type = string.sub(activeCard.getName(), 1, 1)
         if type == 'S' then
             -- Summer event card
-            addCardToDeckAt(activeCard, searchPositions[5], {atBottom=true})
+            addCardToDeckAt(activeCard, searchPositions[5], { atBottom = true })
         elseif type == 'W' then
             -- Winter event card
-            addCardToDeckAt(activeCard, searchPositions[8], {atBottom=true})
+            addCardToDeckAt(activeCard, searchPositions[8], { atBottom = true })
         elseif type == 'B' or type == 'P' then
             -- Boat or Personal Quest
-            addCardToDeckAt(activeCard, searchPositions[2], {atBottom=true})
+            addCardToDeckAt(activeCard, searchPositions[2], { atBottom = true })
         end
     end
 end

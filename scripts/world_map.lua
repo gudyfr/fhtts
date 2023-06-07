@@ -192,10 +192,40 @@ function change_building(name, alt)
     outpost.call("setBuildingLevel", { name, level })
 end
 
+BuildingNames = {
+    ["05"] = "Mining Camp",
+    ["12"] = "Hunting Lodge",
+    ["17"] = "Logging Camp",
+    ["21"] = "Inn",
+    ["24"] = "Garden",
+    ["34"] = "Craftsman",
+    ["35"] = "Alchemist",
+    ["37"] = "Trading Post",
+    ["39"] = "Jeweler",
+    ["42"] = "Temple of the Great Oak",
+    ["44"] = "Enhancer",
+    ["65"] = "Metal Depot",
+    ["67"] = "Lumber Depot",
+    ["72"] = "Hide Depot",
+    ["74"] = "Mining Camp",
+    ["81"] = "Hall of Revelry",
+    ["83"] = "Library",
+    ["84"] = "Workshop",
+    ["85"] = "Carpenter",
+    ["88"] = "Stables",
+    ["90"] = "Town Hall",
+    ["98"] = "Barracks",
+}
+
 function setBuildingLevel(params)
-    local name = params[1]
+    local nr = params[1]
     local level = params[2]
-    State.buildings[name] = level
+    local previousLevel = State.buildings[nr]
+    if (previousLevel == nil or previousLevel == -1) and level == 0 then
+        local name = BuildingNames[nr] or "unknown"
+        broadcastToAll("Building " .. nr .. "(" .. name ..  ") is now available to build", { 0, 0.75, 0 })
+    end
+    State.buildings[nr] = level
     refreshDecals()
 end
 

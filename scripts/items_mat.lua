@@ -37,15 +37,15 @@ end
 
 function onStateUpdate(state)
     -- Get the items deck out of the save container
-    deck, cardGuids = getRestoreDeck("Items")
+    local deck, cardGuids = getRestoreDeck("Items")
     if deck ~= nil then
         -- First we can rebuild our craftable, purchasable and other decks
         for category, model in pairs(AvailableDecks) do
             local cards = state[category]
             table.sort(cards, function(a, b) return a < b end)
-            rebuildDeck(deck, cardGuids, cards, model.deck)
+            deck = rebuildDeck(deck, cardGuids, cards, model.deck)
         end
-        rebuildDeck(deck, cardGuids, state["scenario discard"] or {}, DiscardedRandomScenarioPosition)
+        deck = rebuildDeck(deck, cardGuids, state["scenario discard"] or {}, DiscardedRandomScenarioPosition)
 
         -- Then restore player items
         for color, playerMatGuid in pairs(PlayerMats) do
@@ -58,7 +58,7 @@ function onStateUpdate(state)
                 local playerCards = state.players[color] or {}
                 for name, position in pairs(playerItemCardPositions) do
                     local cardNames = playerCards[name] or {}
-                    rebuildDeck(deck, cardGuids, cardNames, self.positionToLocal(position))
+                    deck = rebuildDeck(deck, cardGuids, cardNames, self.positionToLocal(position))
                 end
             end
         end
@@ -87,7 +87,7 @@ function onStateUpdate(state)
                 end
             end
             table.sort(cardNames, function(a, b) return a > b end)
-            rebuildDeck(deck, cardGuids, cardNames, ItemPositions[i], true)
+            deck = rebuildDeck(deck, cardGuids, cardNames, ItemPositions[i], true)
         end
 
         -- Gloomhaven items
@@ -106,7 +106,7 @@ function onStateUpdate(state)
             for _, cardName in ipairs(cardNames) do
                 table.insert(ghCardNames, "GH-" .. cardName)
             end
-            rebuildDeck(deck, cardGuids, ghCardNames, GHItemPositions[i], true)
+            deck = rebuildDeck(deck, cardGuids, ghCardNames, GHItemPositions[i], true)
         end
 
         -- And finally, we can move the remaining cards, if any, to their place

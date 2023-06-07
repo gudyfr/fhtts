@@ -110,12 +110,12 @@ function loadCharacterBox(characterBox, state)
   if deck ~= nil then
     local abilityCards = state.abilityCards
     if abilityCards ~= nil then
-      rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil, applyEnhancementsToCard)
-      rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
       for i, cards in ipairs(abilityCards.persist) do
-        rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
+        deck = rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
       end
-      rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
 
       local playerColor = getPlayerColor()
       local playerHand = getPlayerHand()
@@ -137,7 +137,7 @@ function loadCharacterBox(characterBox, state)
       for _, obj in ipairs(deck.getObjects()) do
         table.insert(remaining, obj.name)
       end
-      rebuildDeck(deck, guids, remaining, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, remaining, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
     end
   end
 
@@ -146,10 +146,10 @@ function loadCharacterBox(characterBox, state)
   local baseDeck, baseGuids = getRestoreDeck("Attack Modifiers " .. playerNumber)
   local attackModifiers = state.attackModifiers
   if attackModifiers ~= nil then
-    rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
-    rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
+    deck = rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
+    deck = rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
       baseGuids)
-    rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
+      deck = rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
     -- Detroy remaining cards from base deck
     if baseDeck ~= nil and not baseDeck.isDestroyed() then
@@ -167,7 +167,7 @@ function loadCharacterBox(characterBox, state)
   if perks ~= nil then
     if deck ~= nil then
       for i, position in ipairs(PerksPositions) do
-        rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
+        deck = rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
       end
     end
   else
@@ -240,7 +240,9 @@ function loadCharacterBox(characterBox, state)
   end
 
   -- detroy the box
-  destroyObject(characterBox)
+  if not characterBox.isDestroyed() then
+    destroyObject(characterBox)
+  end
 end
 
 function clearBoard(includeDecks)
@@ -275,7 +277,9 @@ function clearBoard(includeDecks)
     if position ~= nil then
       local obj = findLocalObject(position)
       if obj ~= nil then
-        destroyObject(obj)
+        if not obj.isDestroyed() then
+          destroyObject(obj)
+        end
       end
     end
   end

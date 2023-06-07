@@ -25,21 +25,25 @@ function onStateUpdate(state)
     local deck, cardGuids = getRestoreDeck("Buildings")
     if deck ~= nil then
         for nr, position in pairs(BuildingElements.buildings) do
-            rebuildDeck(deck, cardGuids, state.buildings[nr] or {}, position)
+            deck = rebuildDeck(deck, cardGuids, state.buildings[nr] or {}, position)
         end
-        rebuildDeck(deck, cardGuids, state.buildingDeck, BuildingElements.deck, true)
-        destroyObject(deck)
+        deck = rebuildDeck(deck, cardGuids, state.buildingDeck, BuildingElements.deck, true)
+        if deck ~= nil and not deck.isDestroyed() then
+            destroyObject(deck)
+        end
     end
 
     --Recover Town Guards
     local deck, cardGuids = getRestoreDeck("Town Guards")
     if deck ~= nil then
         for name, position in pairs(TownGuardElements.decks) do
-            rebuildDeck(deck, cardGuids, state.townGuards[name] or {}, position, name == "draw" or name == "supply")
+            deck = rebuildDeck(deck, cardGuids, state.townGuards[name] or {}, position,
+                name == "draw" or name == "supply")
         end
         -- We should have moved all town guards cards, so leave the remaining ones on the scenario mat
     end
     updateGardenButtons()
+    updateAvailableBuildings()
     refreshDecals()
 end
 
@@ -180,7 +184,7 @@ function updateAvailableBuildings()
     end
     local availableBuildings = {}
     local deck = getDeckOrCardAt(BuildingElements["deck"])
-    if deck ~= nil then
+    if deck ~= nil and deck.tag == "Deck" then
         for _, card in ipairs(deck.getObjects()) do
             local buildingNumber = getBuildingNumber(card.name)
             if buildingNumber ~= nil then
@@ -601,7 +605,7 @@ function refreshDecals()
     end
 
     if State.availableBuildings ~= nil then
-        print(JSON.encode(State.availableBuildings))
+        -- print(JSON.encode(State.availableBuildings))
         for nr, value in pairs(State.availableBuildings) do
             if value then
                 -- Let's make sure that the map knows that this building is available for building

@@ -7,13 +7,20 @@ function XZSorter(a, b)
 end
 
 function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, otherGuids, cardTransformFunction)
+    if clone == nil then
+        return nil
+    end
     cardNames = cardNames or {}
     deleteCardsAt(position)
     local deck = nil
+    local used = false
+    local _used = false
     for _, card in ipairs(cardNames) do
-        deck = rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
+        deck, _used = rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
+        used = used or _used
         if otherDeck ~= nil and otherGuids ~= nil then
-            deck = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
+            deck, _used = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
+            used = used or _used
         end
     end
     -- We've rebuilt the deck, move it to the right place
@@ -25,16 +32,35 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
         end
         deck.setRotation({ 0, 0, zRot })
     end
+
+    if clone.tag == "Deck" then
+        if clone.remainder ~= nil then
+            return clone.remainder
+        else
+            return clone
+        end
+    else
+        if used then
+            return nil
+        else
+            return clone
+        end
+    end
 end
 
 function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
     local guids = cardGuids[card]
+    local used = false
     if guids ~= nil then
         if #guids > 0 then
             local guid = guids[1]
             table.remove(guids, 1)
             local cardObject
-            if clone.remainder == nil then
+            if clone.tag == "Card" then
+                -- We can't test for guid here, as the guid might have changed from when the card was still in the deck
+                -- So we need to assume that the last remaining card is the one we're looking for
+                cardObject = clone
+            elseif clone.remainder == nil then
                 cardObject = clone.takeObject({
                     guid = guid,
                     smooth = false,
@@ -42,9 +68,12 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                     position = { 0, 2, 0 }
                 })
             else
-                cardObject = clone.remainder
+                if clone.remainder.guid == guid then
+                    cardObject = clone.remainder
+                end
             end
             if cardObject ~= nil then
+                used = true
                 if cardTransformFunction ~= nil then
                     cardTransformFunction(cardObject)
                 end
@@ -59,7 +88,7 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
             end
         end
     end
-    return deck
+    return deck, used
 end
 
 function destroyTakenIfStillThere(obj)
@@ -91,7 +120,7 @@ function deleteCardsInZone(guid)
     if zone ~= nil then
         for _, obj in ipairs(zone.getObjects()) do
             if obj.tag == "Card" then
-                if obj.hasTag("ability card") then
+                if obj.hasTag("ability card") and not obj.isDestroyed() then
                     destroyObject(obj)
                 end
             end

@@ -2283,8 +2283,7 @@ function loadSaveAsync(save)
       local name = info.savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
-         local encoded = JSON.encode(savableData)
-         info.savable.call("loadSave", encoded)
+         info.savable.call("loadSave", {savableData})
          while info.savable.call("isStateUpdating") do
             waitms(100)
          end
