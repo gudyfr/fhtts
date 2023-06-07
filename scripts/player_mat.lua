@@ -461,7 +461,7 @@ function onObjectCollisionExit(params)
   local obj = params[2].collision_object
   if obj.hasTag("character mat") then
     -- Let's give it a bit of time for the character mat to be lifted
-    Wait.time(function() Global.call("getScenarioMat").call("updateCharacters") end, 0.25)
+    Wait.time(function() Global.call("getScenarioMat").call("updateCharacters") end, 1)
   end
 end
 
