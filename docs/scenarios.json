@@ -1269,7 +1269,9 @@
         },
         "monsters": [
             {
-                "name": "Chaos Demon"
+                "name": "Chaos Demon",
+                "as" : "Chaos Lieutenant",
+                "boss" : true
             },
             {
                 "name": "Robotic Boltshooter"

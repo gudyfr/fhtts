@@ -26421,13 +26421,13 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Chaos Demon",
+                        name = "Chaos Lieutenant",
                         orientation = 0,
                         positions = {
                            {
                               x = 2,
                               y = -2,
-                              levels = "eee",
+                              levels = "bbb",
                               },
                            },
                         },

@@ -1270,6 +1270,8 @@ Scenarios = {
       monsters = {
          {
             name = "Chaos Demon",
+            as = "Chaos Lieutenant",
+            boss = true,
             },
          {
             name = "Robotic Boltshooter",
