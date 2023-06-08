@@ -894,6 +894,24 @@
                ]
             },
             {
+               "name": "Bookshelf",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 521,
+                        "y": 660
+                     },
+                     "size": {
+                        "x": 152,
+                        "y": 206
+                     },
+                     "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
                "name": "Crate",
                "orientation": "",
                "type": "overlay",
@@ -1695,6 +1713,23 @@
                         "y": 28
                      },
                      "score": 0.9559609293937683
+                  }
+               ]
+            },
+            {
+               "name": "Prince of Frost",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 2072,
+                        "y": 993
+                     },
+                     "size": {
+                        "x": 104,
+                        "y": 128
+                     },
+                     "score": 1.0000001192092896
                   }
                ]
             },
