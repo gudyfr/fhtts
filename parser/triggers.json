@@ -7487,5 +7487,44 @@
                 }
             }
         }
+    ],
+    "153": [
+        {
+            "in": {
+                "type": "scenario",
+                "name": 189
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "153.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 189
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "trigger": {
+                "type": "door",
+                "mode": "all",
+                "action": "reveal",
+                "what": {
+                    "type": "section.solo",
+                    "name": "153.2"
+                }
+            }
+        }
     ]
 }

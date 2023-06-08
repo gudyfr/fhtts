@@ -15467,17 +15467,6 @@
             "tokens": [],
             "monsters": [
               {
-                "name": "Ancient Artillery",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 1,
-                    "levels": "nnn"
-                  }
-                ]
-              },
-              {
                 "name": "Ice Wraith",
                 "orientation": 0,
                 "positions": [
@@ -15485,27 +15474,11 @@
                     "x": -3,
                     "y": 2,
                     "levels": "aan"
-                  },
-                  {
-                    "x": -3,
-                    "y": 5,
-                    "levels": "nnn"
                   }
                 ]
               }
             ],
             "overlays": [
-              {
-                "name": "Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 4,
-                    "type": "Corridor"
-                  }
-                ]
-              },
               {
                 "name": "Barricade",
                 "orientation": 0,
@@ -15523,29 +15496,7 @@
                 "positions": [
                   {
                     "x": -3,
-                    "y": 1,
-                    "type": "Obstacle"
-                  }
-                ]
-              },
-              {
-                "name": "Stairs",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 4,
-                    "trigger": {
-                      "type": "door",
-                      "display": "Go Below Deck",
-                      "action": "reveal",
-                      "what": {
-                        "type": "section",
-                        "name": "153.1"
-                      },
-                      "id": "scenario/153/token/a"
-                    },
-                    "type": "Difficult Terrain"
+                    "y": 1
                   }
                 ]
               }
@@ -15591,12 +15542,17 @@
                 "positions": [
                   {
                     "x": -4,
-                    "y": 1
+                    "y": 1,
+                    "levels": "aan"
                   },
                   {
                     "x": 0,
                     "y": 1,
                     "levels": "nee"
+                  },
+                  {
+                    "x": 2,
+                    "y": -4
                   }
                 ]
               },
@@ -15604,6 +15560,11 @@
                 "name": "Ice Wraith",
                 "orientation": 0,
                 "positions": [
+                  {
+                    "x": -1,
+                    "y": 0,
+                    "levels": "nnn"
+                  },
                   {
                     "x": -2,
                     "y": 4,
@@ -15618,6 +15579,17 @@
               }
             ],
             "overlays": [
+              {
+                "name": "Dungeon Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Corridor"
+                  }
+                ]
+              },
               {
                 "name": "Barrels",
                 "orientation": 0,
@@ -15642,6 +15614,27 @@
                     "x": -4,
                     "y": 5,
                     "type": "Obstacle"
+                  }
+                ]
+              },
+              {
+                "name": "Stairs",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "trigger": {
+                      "type": "door",
+                      "display": "Go Below Deck",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section",
+                        "name": "153.1"
+                      },
+                      "id": "scenario/153/token/a"
+                    },
+                    "type": "Difficult Terrain"
                   }
                 ]
               }
@@ -21833,14 +21826,6 @@
                 "positions": [
                   {
                     "x": -6,
-                    "y": 7
-                  },
-                  {
-                    "x": -3,
-                    "y": 6
-                  },
-                  {
-                    "x": -6,
                     "y": 5
                   },
                   {
@@ -21876,18 +21861,8 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -2,
-                    "y": 5,
-                    "levels": "ann"
-                  },
-                  {
                     "x": -4,
                     "y": 1,
-                    "levels": "nnn"
-                  },
-                  {
-                    "x": -6,
-                    "y": 6,
                     "levels": "nnn"
                   }
                 ]
@@ -21900,11 +21875,6 @@
                     "x": -3,
                     "y": 2,
                     "levels": "nne"
-                  },
-                  {
-                    "x": -5,
-                    "y": 6,
-                    "levels": "ann"
                   }
                 ]
               },
@@ -21912,11 +21882,6 @@
                 "name": "Robotic Boltshooter",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": -3,
-                    "y": 5,
-                    "levels": "aan"
-                  },
                   {
                     "x": -4,
                     "y": 4,
@@ -21943,17 +21908,6 @@
                 ]
               },
               {
-                "name": "Barricade",
-                "orientation": 300,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 6,
-                    "type": "Obstacle"
-                  }
-                ]
-              },
-              {
                 "name": "Crate",
                 "orientation": 0,
                 "positions": [
@@ -21965,17 +21919,6 @@
                   {
                     "x": 0,
                     "y": 1,
-                    "type": "Obstacle"
-                  }
-                ]
-              },
-              {
-                "name": "Mast",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 5,
                     "type": "Obstacle"
                   }
                 ]
@@ -22005,6 +21948,14 @@
                     "y": -2
                   },
                   {
+                    "x": 4,
+                    "y": -5
+                  },
+                  {
+                    "x": 7,
+                    "y": -6
+                  },
+                  {
                     "x": 9,
                     "y": -6
                   }
@@ -22012,6 +21963,33 @@
               }
             ],
             "monsters": [
+              {
+                "name": "Ancient Artillery",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 4,
+                    "y": -6,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": 8,
+                    "y": -7,
+                    "levels": "ann"
+                  }
+                ]
+              },
+              {
+                "name": "Flaming Bladespinner",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 5,
+                    "y": -6,
+                    "levels": "ann"
+                  }
+                ]
+              },
               {
                 "name": "Piranha Pig",
                 "orientation": 0,
@@ -22044,7 +22022,13 @@
                   },
                   {
                     "x": 5,
-                    "y": -4
+                    "y": -4,
+                    "levels": "nnn"
+                  },
+                  {
+                    "x": 7,
+                    "y": -7,
+                    "levels": "aan"
                   }
                 ]
               }
@@ -22091,6 +22075,10 @@
                   {
                     "x": 6,
                     "y": -4
+                  },
+                  {
+                    "x": 8,
+                    "y": -6
                   }
                 ]
               },
@@ -22102,6 +22090,16 @@
                     "x": 6,
                     "y": -3,
                     "type": "Obstacle"
+                  }
+                ]
+              },
+              {
+                "name": "Mast",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": -7
                   }
                 ]
               },
@@ -27097,6 +27095,17 @@
                     "levels": "nnn"
                   }
                 ]
+              },
+              {
+                "name": "Piranha Pig",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 1,
+                    "levels": "nnn"
+                  }
+                ]
               }
             ],
             "overlays": [
@@ -27107,18 +27116,16 @@
                   {
                     "x": -2,
                     "y": 3,
+                    "trigger": {
+                      "type": "door",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "153.1"
+                      },
+                      "id": "scenario/189/token/1"
+                    },
                     "type": "Door"
-                  }
-                ]
-              },
-              {
-                "name": "Nest",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": 9,
-                    "type": "Obstacle"
                   }
                 ]
               },
@@ -27144,7 +27151,94 @@
                 ]
               }
             ]
-          },
+          }
+        ],
+        "triggers": []
+      },
+      {
+        "type": "section.solo",
+        "name": "153.1",
+        "entries": [
+          {
+            "reference": {
+              "tile": "14-B",
+              "tileOrientation": "240"
+            },
+            "tokens": [],
+            "monsters": [
+              {
+                "name": "Burrowing Blade",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 8,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": -3,
+                    "y": 6,
+                    "levels": "eee"
+                  },
+                  {
+                    "x": 0,
+                    "y": 3,
+                    "levels": "eee"
+                  }
+                ]
+              }
+            ],
+            "overlays": [
+              {
+                "name": "Cave Door",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 3,
+                    "y": 2,
+                    "trigger": {
+                      "type": "door",
+                      "mode": "all",
+                      "action": "reveal",
+                      "what": {
+                        "type": "section.solo",
+                        "name": "153.2"
+                      },
+                      "id": "scenario/189/token/2"
+                    },
+                    "type": "Door"
+                  }
+                ]
+              },
+              {
+                "name": "Nest",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": 4,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -2,
+                    "y": 7,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": -3,
+                    "y": 5,
+                    "type": "Obstacle"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "section.solo",
+        "name": "153.2",
+        "entries": [
           {
             "reference": {
               "tile": "05-A",
@@ -27160,26 +27254,6 @@
                     "x": 4,
                     "y": -2,
                     "levels": "eee"
-                  }
-                ]
-              },
-              {
-                "name": "Burrowing Blade",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": -1,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": -5,
-                    "y": 4,
-                    "levels": "eee"
-                  },
-                  {
-                    "x": -6,
-                    "y": 2
                   }
                 ]
               },
@@ -27200,59 +27274,9 @@
                 ]
               }
             ],
-            "overlays": [
-              {
-                "name": "Cave Door",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": -2,
-                    "type": "Door"
-                  }
-                ]
-              },
-              {
-                "name": "Nest",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": 0,
-                    "type": "Obstacle"
-                  },
-                  {
-                    "x": -5,
-                    "y": 3,
-                    "type": "Obstacle"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "reference": {
-              "tile": "14-B",
-              "tileOrientation": "240"
-            },
-            "tokens": [],
-            "monsters": [
-              {
-                "name": "Piranha Pig",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 3,
-                    "y": -3,
-                    "levels": "nnn"
-                  }
-                ]
-              }
-            ],
             "overlays": []
           }
-        ],
-        "triggers": []
+        ]
       }
     ]
   },
@@ -30286,7 +30310,40 @@
               "tile": "14-A",
               "tileOrientation": "60"
             },
-            "tokens": [],
+            "tokens": [
+              {
+                "name": "a",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "trigger": {
+                      "display": "Nothing yet",
+                      "id": "scenario/28/token/a"
+                    }
+                  }
+                ]
+              },
+              {
+                "name": "start",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": -5
+                  },
+                  {
+                    "x": 1,
+                    "y": -5
+                  },
+                  {
+                    "x": 2,
+                    "y": -5
+                  }
+                ]
+              }
+            ],
             "monsters": [
               {
                 "name": "Lurker Clawcrusher",
@@ -30315,7 +30372,8 @@
                   },
                   {
                     "x": -4,
-                    "y": 1
+                    "y": 1,
+                    "levels": "aan"
                   },
                   {
                     "x": -5,
@@ -30367,6 +30425,22 @@
                     "type": "Obstacle"
                   }
                 ]
+              },
+              {
+                "name": "Stairs",
+                "orientation": 180,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  }
+                ]
               }
             ]
           },
@@ -30376,20 +30450,6 @@
               "tileOrientation": "0"
             },
             "tokens": [
-              {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -3,
-                    "y": 4,
-                    "trigger": {
-                      "display": "Nothing yet",
-                      "id": "scenario/28/token/a"
-                    }
-                  }
-                ]
-              },
               {
                 "name": "start",
                 "orientation": 0,
@@ -30401,41 +30461,12 @@
                   {
                     "x": -1,
                     "y": 1
-                  },
-                  {
-                    "x": -2,
-                    "y": 0
-                  },
-                  {
-                    "x": -1,
-                    "y": 0
-                  },
-                  {
-                    "x": 0,
-                    "y": 0
                   }
                 ]
               }
             ],
             "monsters": [],
-            "overlays": [
-              {
-                "name": "Stairs",
-                "orientation": 180,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 4,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -4,
-                    "y": 4,
-                    "type": "Difficult Terrain"
-                  }
-                ]
-              }
-            ]
+            "overlays": []
           }
         ],
         "triggers": [
@@ -40285,6 +40316,18 @@
                 "orientation": 0,
                 "positions": [
                   {
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "x": 1,
+                    "y": 0
+                  },
+                  {
+                    "x": 2,
+                    "y": 0
+                  },
+                  {
                     "x": 1,
                     "y": -1
                   },
@@ -40334,8 +40377,23 @@
                     "y": -2
                   },
                   {
+                    "x": 3,
+                    "y": 0
+                  },
+                  {
                     "x": 6,
                     "y": -6
+                  }
+                ]
+              },
+              {
+                "name": "Stairs",
+                "orientation": 180,
+                "positions": [
+                  {
+                    "x": 1,
+                    "y": 1,
+                    "type": "Difficult Terrain"
                   }
                 ]
               },
@@ -40346,6 +40404,20 @@
                   {
                     "x": 2,
                     "y": -4
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 2
+                  },
+                  {
+                    "x": 1,
+                    "y": 2
                   }
                 ]
               }
@@ -40376,24 +40448,6 @@
                     "y": 0
                   }
                 ]
-              },
-              {
-                "name": "start",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -7,
-                    "y": -2
-                  },
-                  {
-                    "x": -6,
-                    "y": -2
-                  },
-                  {
-                    "x": -5,
-                    "y": -2
-                  }
-                ]
               }
             ],
             "monsters": [
@@ -40419,8 +40473,7 @@
                   },
                   {
                     "x": -5,
-                    "y": 0,
-                    "levels": "eee"
+                    "y": 0
                   }
                 ]
               },
@@ -40442,17 +40495,6 @@
               }
             ],
             "overlays": [
-              {
-                "name": "Barrels",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": -2,
-                    "type": "Obstacle"
-                  }
-                ]
-              },
               {
                 "name": "Huge Water",
                 "orientation": 0,
@@ -40499,30 +40541,9 @@
                 ]
               },
               {
-                "name": "Stairs",
-                "orientation": 180,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": -1,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
                 "name": "Water",
                 "orientation": 0,
                 "positions": [
-                  {
-                    "x": -6,
-                    "y": 0,
-                    "type": "Difficult Terrain"
-                  },
-                  {
-                    "x": -7,
-                    "y": 0,
-                    "type": "Difficult Terrain"
-                  },
                   {
                     "x": 0,
                     "y": 0,
@@ -66603,30 +66624,6 @@
             },
             "tokens": [
               {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -6,
-                    "y": 8
-                  },
-                  {
-                    "x": -5,
-                    "y": 8
-                  }
-                ]
-              },
-              {
-                "name": "b",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -2,
-                    "y": 5
-                  }
-                ]
-              },
-              {
                 "name": "c",
                 "orientation": 0,
                 "positions": [
@@ -66648,20 +66645,21 @@
                     "levels": "nee"
                   }
                 ]
-              },
+              }
+            ],
+            "overlays": [
               {
-                "name": "Lurker Soldier",
+                "name": "Crate",
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -3,
-                    "y": 6,
-                    "levels": "nne"
+                    "x": 0,
+                    "y": 0,
+                    "type": "Obstacle"
                   }
                 ]
               }
-            ],
-            "overlays": []
+            ]
           },
           {
             "reference": {
@@ -66786,11 +66784,6 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": -2,
-                    "type": "Obstacle"
-                  },
-                  {
                     "x": 5,
                     "y": 0,
                     "type": "Obstacle"
@@ -66805,6 +66798,30 @@
               "tileOrientation": "0"
             },
             "tokens": [
+              {
+                "name": "a",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -8,
+                    "y": 3
+                  },
+                  {
+                    "x": -7,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "name": "b",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -4,
+                    "y": 0
+                  }
+                ]
+              },
               {
                 "name": "d",
                 "orientation": 0,
@@ -66844,7 +66861,19 @@
                 ]
               }
             ],
-            "monsters": [],
+            "monsters": [
+              {
+                "name": "Lurker Soldier",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -5,
+                    "y": 1,
+                    "levels": "nne"
+                  }
+                ]
+              }
+            ],
             "overlays": [
               {
                 "name": "Crate",

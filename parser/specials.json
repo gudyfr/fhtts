@@ -865,6 +865,35 @@
                     "y": -8
                 }
             }
+        ],
+        "tile-order" : ["11-D", "14-B", "05-A"],
+        "entries-to-map": [
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 189
+                },
+                "having": {
+                    "reference": "14-B"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "153.1"
+                }
+            },
+            {
+                "in": {
+                    "type": "scenario",
+                    "name": 189
+                },
+                "having": {
+                    "reference": "05-A"
+                },
+                "to": {
+                    "type": "section.solo",
+                    "name": "153.2"
+                }
+            }
         ]
     },
     "154": {
