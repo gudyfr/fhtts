@@ -14,13 +14,18 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
     deleteCardsAt(position)
     local deck = nil
     local used = false
+    local otherUsed = false
     local _used = false
+    local _otherUsed = false
+    local cloneWasDeck = clone.tag == "Deck"
+    local otherDeckWasDeck = otherDeck ~= nil and otherDeck.tag == "Deck"
+
     for _, card in ipairs(cardNames) do
         deck, _used = rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
         used = used or _used
         if otherDeck ~= nil and otherGuids ~= nil then
-            deck, _used = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
-            used = used or _used
+            deck, _otherUsed = rebuildCardFrom(deck, card, otherDeck, otherGuids, cardTransformFunction)
+            otherUsed = otherUsed or _otherUsed
         end
     end
     -- We've rebuilt the deck, move it to the right place
@@ -33,22 +38,42 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
         deck.setRotation({ 0, 0, zRot })
     end
 
-    if clone.tag == "Deck" then
+    local newClone = clone
+    local newOtherDeck = otherDeck
+
+    if cloneWasDeck then
         if clone.remainder ~= nil then
-            return clone.remainder
+            newClone = clone.remainder
         else
-            return clone
+            if clone.isDestroyed() then
+                newClone = nil
+            end
         end
     else
         if used then
-            return nil
-        else
-            return clone
+            newClone = nil
         end
     end
+
+    if otherDeckWasDeck then
+        if otherDeck.remainder ~= nil then
+            newOtherDeck = otherDeck.remainder
+        else
+            if otherDeck.isDestroyed() then
+                newOtherDeck = nil
+            end
+        end
+    else
+        if otherUsed then
+            newOtherDeck = nil
+        end
+    end
+
+    return newClone, newOtherDeck
 end
 
 function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
+    -- print("Rebuilding card " .. card)
     local guids = cardGuids[card]
     local used = false
     if guids ~= nil then
@@ -57,10 +82,12 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
             table.remove(guids, 1)
             local cardObject
             if clone.tag == "Card" then
+                -- print("Rebuilding card from card")
                 -- We can't test for guid here, as the guid might have changed from when the card was still in the deck
                 -- So we need to assume that the last remaining card is the one we're looking for
                 cardObject = clone
             elseif clone.remainder == nil then
+                -- print("Rebuilding card from deck")
                 cardObject = clone.takeObject({
                     guid = guid,
                     smooth = false,
@@ -68,6 +95,7 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                     position = { 0, 2, 0 }
                 })
             else
+                -- print("Rebuilding card from deck remainder")
                 if clone.remainder.guid == guid then
                     cardObject = clone.remainder
                 end
@@ -82,7 +110,7 @@ function rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
                 else
                     -- preserve order, card should be above deck
                     local pos = deck.getPosition()
-                    cardObject.setPosition({ pos.x, pos.y + 0.1, pos.z })
+                    cardObject.setPosition({ pos.x, pos.y + 0.5, pos.z })
                     deck = deck.putObject(cardObject)
                 end
             end

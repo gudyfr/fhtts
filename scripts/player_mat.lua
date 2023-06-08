@@ -69,6 +69,7 @@ function onStateUpdate(state)
         local position = self.getPosition()
         position.z = position.z - 8
         position.y = position.y + 3
+        LoadingCharacterBox = true
         characterBag.takeObject({
           position = position,
           rotation = { 0, 180, 0 },
@@ -84,6 +85,9 @@ function onStateUpdate(state)
                 startLuaCoroutine(self, fName)
               end
         })
+        while LoadingCharacterBox do
+          waitms(100)
+        end
       end
     end
   else
@@ -110,12 +114,14 @@ function loadCharacterBox(characterBox, state)
   if deck ~= nil then
     local abilityCards = state.abilityCards
     if abilityCards ~= nil then
-      deck = rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil,
+        applyEnhancementsToCard)
       deck = rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
       for i, cards in ipairs(abilityCards.persist) do
         deck = rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
       end
-      deck = rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil, applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.supply, cardLocations["supply"], false, nil, nil,
+        applyEnhancementsToCard)
 
       local playerColor = getPlayerColor()
       local playerHand = getPlayerHand()
@@ -132,6 +138,10 @@ function loadCharacterBox(characterBox, state)
             end)
         end
       end
+      -- Move the remaining deck to the side
+      if deck ~= nil and not deck.isDestroyed() then
+        deck.setPosition(deck.getPosition() + Vector(5, 0, 0))
+      end
     else
       local remaining = {}
       for _, obj in ipairs(deck.getObjects()) do
@@ -146,10 +156,10 @@ function loadCharacterBox(characterBox, state)
   local baseDeck, baseGuids = getRestoreDeck("Attack Modifiers " .. playerNumber)
   local attackModifiers = state.attackModifiers
   if attackModifiers ~= nil then
-    deck = rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
-    deck = rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
+    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
+    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
       baseGuids)
-      deck = rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
+    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
     -- Detroy remaining cards from base deck
     if baseDeck ~= nil and not baseDeck.isDestroyed() then
@@ -165,8 +175,11 @@ function loadCharacterBox(characterBox, state)
   local deck, guids = getRestoreDeckIn(characterBox, "Perks", false)
   deck.addTag("perk")
   if perks ~= nil then
+    -- print(JSON.encode(perks))
     if deck ~= nil then
       for i, position in ipairs(PerksPositions) do
+        -- print(deck)
+        -- print(deck.tag)
         deck = rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
       end
     end
@@ -243,6 +256,8 @@ function loadCharacterBox(characterBox, state)
   if not characterBox.isDestroyed() then
     destroyObject(characterBox)
   end
+
+  LoadingCharacterBox = false
 end
 
 function clearBoard(includeDecks)
