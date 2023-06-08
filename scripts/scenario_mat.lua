@@ -1981,7 +1981,7 @@ function refreshStandee(standee, instance)
                 self.setVar(fName, function() toggleCondition(standee.guid, condition) end)
                 local removeButton = {
                     function_owner = self,
-                    position = { vec.x, vec.y, vec.z },
+                    position = { -vec.x, vec.y, vec.z },
                     rotation = { -35, -baseYRot, 0 },
                     scale = { .23 * xScaleFactor, 0.23 * yScaleFactor, 0.23 },
                     click_function = fName,

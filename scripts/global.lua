@@ -345,6 +345,7 @@ function getToken(token, position)
 
             if token.trackable or false then
                obj.addTag("trackable")
+               obj.addTag("no loot")
             end
 
             if position == nil then
@@ -358,13 +359,12 @@ function getToken(token, position)
    end
 end
 
-function spawnNElementsIn(count, trackables, name, info, destination, scenarioElementPositions,
+function spawnNElementsIn(count, name, info, destination, scenarioElementPositions,
                           currentScenarioElementPosition)
    destination = getObjectFromGUID('cd31b5')
    bag = getObjectFromGUID('5cd812')
    bag.setLock(false)
    bags = bag.getObjects()
-   local tracked = trackables[name]
    for id, overlayBag in pairs(bags) do
       if overlayBag.name == name then
          container = bag.takeObject({ guid = overlayBag.guid })
@@ -392,6 +392,7 @@ function spawnNElementsIn(count, trackables, name, info, destination, scenarioEl
                table.insert(CurrentScenario.registeredForCollision, obj.guid)
                if (info.trackable or false) then
                   obj.addTag("trackable")
+                  obj.addTag("no loot")
                   -- For sizing of the overlays
                   obj.addTag("overlay")
                end
@@ -780,12 +781,6 @@ function continuePreparing(name, campaign, title)
          return
       end
 
-
-      local trackables = elements.trackables
-      if trackables == nil then
-         trackables = {}
-      end
-
       for _, info in ipairs(elements.overlays) do
          local overlayName = info.name
          local count = info.count
@@ -803,7 +798,7 @@ function continuePreparing(name, campaign, title)
          currentScenarioElementPosition = currentScenarioElementPosition + size
          -- print("Adding " ..
          --    count .. " " .. overlayName .. " to the scenario bag at pos " .. currentScenarioElementPosition)
-         currentScenarioElementPosition = spawnNElementsIn(count, trackables, overlayName, info, scenarioBag,
+         currentScenarioElementPosition = spawnNElementsIn(count, overlayName, info, scenarioBag,
             scenarioElementPositions, currentScenarioElementPosition)
          waitms(LAYOUT_WAIT_TIME_MS)
       end
@@ -2040,7 +2035,6 @@ function onScriptingButtonUp(index, color)
    -- Explicitely ignore scripting buttons
 end
 
-
 function playCard(color, card)
    for _, player in ipairs(Player.getPlayers()) do
       if player.color == color then
@@ -2283,7 +2277,7 @@ function loadSaveAsync(save)
       local name = info.savable.call("getName")
       local savableData = data[name]
       if savableData ~= nil then
-         info.savable.call("loadSave", {savableData})
+         info.savable.call("loadSave", { savableData })
          while info.savable.call("isStateUpdating") do
             waitms(100)
          end

@@ -59813,17 +59813,6 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Relic",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 3,
-                              levels = "bbb",
-                              },
-                           },
-                        },
-                     {
                         name = "Robotic Boltshooter",
                         orientation = 0,
                         positions = {
@@ -59836,6 +59825,17 @@ ProcessedScenarios3 = {
                               x = -3,
                               y = 6,
                               levels = "nnn",
+                              },
+                           },
+                        },
+                     {
+                        name = "The Relic",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 3,
+                              levels = "bbb",
                               },
                            },
                         },

@@ -6601,7 +6601,7 @@ Scenarios = {
          },
       monsters = {
          {
-            name = "Relic",
+            name = "The Relic",
             },
          {
             name = "Robotic Boltshooter",
