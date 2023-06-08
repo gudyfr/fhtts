@@ -1735,6 +1735,15 @@ function addSummon(standee)
     updateAssistant("POST", "addSummon", { name = name }, updateState)
 end
 
+HeightByFigurine = {
+    Drifter=1.7,
+    Geminate=1.2,
+    Deathwalker=1.6,
+    Boneshaper=1.8,
+    Blinkblade=1.2,
+    ["Banner Spear"] = 1.7,
+}
+
 standeeStates = {}
 function refreshStandee(standee, instance)
     local height = 0.95
@@ -1749,6 +1758,14 @@ function refreshStandee(standee, instance)
         xScaleFactor = 0.6
         yScaleFactor = 0.7
         height = 0.2
+    elseif standee.hasTag("model") then
+        xScaleFactor = 2.0
+        yScaleFactor = 2.0
+        height = 2.0
+        local customHeight = HeightByFigurine[standee.getName()]
+        if customHeight ~= nil then
+            height = customHeight
+        end
     end
     if instance.health == 0 then
         clearStandee(standee)

@@ -202,9 +202,9 @@ function loadCharacterBox(characterBox, state)
     -- characterSheet.setLock(true)
   end
 
-  -- Character Mat & figurine (and potential 2nd figurine for the Geminate)
+  -- Character Mat, standee and figurine (and potential 2nd standee for the Geminate)
   local currentUntagged = 1
-  for i = 1, 3 do
+  for i = 1, 4 do
     local characterObject = getRestoreObjectIn(characterBox, characterName, false)
     if characterObject ~= nil then
       if characterObject.tag == "Tile" then
