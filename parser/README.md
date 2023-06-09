@@ -4,12 +4,132 @@
 The dev branch includes the output assets from the scenario parser. Each scenario will have 1 image file per relevant scenario book page and section book page, with the identified assets highlighted on each. This can be used to quickly diagnose the source of an issue in scenario data.
 
 ## Usage
- - **scenario.py** is used to identify all elements present in a given scenario. For each scenario it creates a json file with all the collected data, as well as debug images showing what was identified.
- - **merge.py** is used to merge all individual json files from each scenario into a common one
- - **process.py** processes the collected image matches, and converts them into a usable data format, with hex coordinates.
- - **analysis.py** can be used to run some sanity checks and was used to identify missing assets for element identification
+ - **scenario.py** is used to identify all elements present in a given scenario. For each scenario it creates a json file with all the collected data, as well as debug images showing what was identified (both in the out/ folder). This uses the parserPatches.json file to address some of the automated parser issues (and errors in the scenario / section books), as well as tiles.json for determining parts of the image which should be parsed. All assets are under assets (pages contains the scenario / section book pages, and tiles contains all sub-images which should be found in the pages.). Also uses the scenario info from docs/scenarios.json to determine what to look for.  
+ - **merge.py** is used to merge all individual json files from each scenario into a common one.  
+ - **process.py** processes the collected image matches, and converts them into a usable data format, with hex coordinates. It uses data from tileInfos.json, specials.json and triggers.json. Outputs docs/processedScenarios3.json and processedScenarios.human.json at the root of the project. The later includes indentation and should be used to look at what data was created, especially when diagnoising issues.  
+ - **analysis.py** can be used to run some sanity checks and was used to identify missing assets for element identification.    
+ - **jsonToLua.py** converts all json files under the docs/ folder into lua files under scripts/data. This is used to load the initial data (much)faster in the mod (and without the need to make web calls)  
 
-## Data format
+
+ ## Typical workflow
+ run `py scenario.py -layout -map -all` once to (re-)generate all the scenario data. This will take multiple hours on a fast machine.  
+ run `py merge.py` to merge all the individual scenario data into scenarioData.json.  
+ run `py process.py` to process the scenarioData.json.  
+ run `py jsonToLua.py` to regenerate all lua data files.  
+ save all scripts to TTS (Ctrl + Alt + S) to reload the mod with the latest data.  
+When making changes at the parser level (assets or parserPatches.json) then rerun the scenario parsing for the scenario which should get fixed :  
+run `py scenario.py -layout -map <scenario number>` then run all other scripts. (merge, process, jsonToLua)
+When making changes at the process level (tileInfos.json, specials.json, triggers.json) simply return the process and jsonToLua steps.
+
+## parserPatches.json format
+This is a dictionary with keys being scenario numbers. Each entry is itself a dictionary with the key being the page number (in either the scenario or section book). Those sub entries are also dictionaries, with the following possible entries :  
+```json
+"tiles" : ["01-A","10-C"], // Overrides the tiles that the parser will look for on that specific page.  
+"also" : ["Cave Door"],    // Adds elements that the parser will look for (by default it'll look for elements defined in docs/scenarios.json)
+"overrides" : [            // Changes the values of some parsed elements
+  {
+    "where" : {
+      "name" : "Cave Door",   // Any field name from the scenario json file can be looked for here
+      "orientation" : "-180"  // When multiple fields are specified, they all need to match for the override to happen
+    },
+    "with" : {
+      "name" : "Snow Door"    // Any field can be overriden here
+    }
+  }
+],
+"maxY": 2000              // Specifies the maxixum y coordinate that the parser will look for on that page. minY, minX and maxX also available.
+```
+
+## specials.json format
+A dictionary with each entry being the scenario name (usually its number but sometimes with A/B appended), containing a dictionary of special processing rules for this scenario:  
+```json
+"remove-maps": [              // Removes maps (pages)
+    {
+        "type": "scenario",
+        "name": 8
+    }
+],
+"remove-tiles": [           // Removes tiles
+    "11-B"
+],
+"remove-tokens": [          // Removes tokens
+    "a"
+],
+"remove-monsters": [        // Removes monsters
+    "Polar Bear",
+    "Hound",
+    "Vermling Scout"
+]
+"bosses": [                 // Renames regular monster into bosses
+    {
+        "in": "106.2",      // Optional, if the substitution should only be done in a specific section
+        "from": "Frozen Corpse",
+        "to": "Coral Corpse"
+    }
+],
+"shiftX": -3,               // Adds an offset to the automatic layout of the whole scenario (hex coordinates)
+"shiftY": -3,               // Adds an offset to the automatic layout of the whole scenario (hex coordinates)
+"entries-to-map": [         // Converts an entry (typically a tile) into its own map (typically a page)
+  {
+    "in": {                 // Where to extract the tile from
+        "type": "scenario",
+        "name": 113
+    },
+    "having": {             // How to identify the tile to be extracted (typically one of the following two entries is used, not both)
+        "token": {          // the tile contains a specific token
+            "name": "1"
+        },
+        "reference" : "14-B" // Specific tile
+    },
+    "to": {                 // Name for the map to be created (type and name are required)
+        "type": "choice",
+        "name": "1"
+    }
+  }
+],
+"set-layout": [             // Set the layout of the scenario (Solo scenarios do not have a layout provided). There is an in-game tool in the debug version of the mod which will output the current layout on the scenario mat.
+  {
+      "center": {
+          "x": 0,
+          "y": 4
+      },
+      "name": "15-A",
+      "orientation": 0,
+      "origin": {
+          "x": 3,
+          "y": 1
+      }
+  }
+],
+"tile-order" : ["07-D","05-B","15-A"], // Hints where doors should be setup (when a door is on 2 tiles, it'll be attached to the tile of the lowest order). Used (and required) for solo scenarios when splitting the 1 map into multiple ones.
+```
+
+
+## triggers.json Data format
+This is a dictionary with entry being the scenario name, and each value a set of triggers in this scenario. Each trigger has the following format :  
+```json
+{
+    "in": {                   // Where the trigger is scenario "name" is its page number as an int, section "name" is a string
+        "type": "scenario",   // "scenario", "section", or possibly something else if defined in the specials.json entriesToMap
+        "name": 3             // NOT the scenario number, its page number in the scenario book. The section number for sections
+    },
+    "target": {               // Where is this trigger on the map. Typicall targets what is underneath a token or 'global'
+        "type": "token",
+        "name": "1"
+    },
+    "condition": {            // Optional. Only setup the trigger if the condition is met.
+      "players": [            // Currently only 'players' is supported as a conditon
+          3,
+          4
+      ]
+    },
+    "trigger": {              // What the trigger should do
+        ...
+    }
+}
+```
+
+## Output Data format
  Each scenario is a json object:
  ```json
  {
