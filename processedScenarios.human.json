@@ -29191,18 +29191,7 @@
               "tile": "14-B",
               "tileOrientation": "0"
             },
-            "tokens": [
-              {
-                "name": "a",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -5,
-                    "y": -3
-                  }
-                ]
-              }
-            ],
+            "tokens": [],
             "monsters": [
               {
                 "name": "Algox Guard",
@@ -29250,6 +29239,7 @@
                   {
                     "x": -5,
                     "y": -3,
+                    "renamed": "Ice Sheet",
                     "type": "Objective"
                   }
                 ]

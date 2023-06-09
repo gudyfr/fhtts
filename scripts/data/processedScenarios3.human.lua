@@ -29512,16 +29512,6 @@ ProcessedScenarios3 = {
                      tileOrientation = "0",
                      },
                   tokens = {
-                     {
-                        name = "a",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -5,
-                              y = -3,
-                              },
-                           },
-                        },
                      },
                   monsters = {
                      {
@@ -29570,6 +29560,7 @@ ProcessedScenarios3 = {
                            {
                               x = -5,
                               y = -3,
+                              renamed = "Ice Sheet",
                               type = "Objective",
                               },
                            },

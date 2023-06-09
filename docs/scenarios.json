@@ -206,8 +206,9 @@
             },
             {
                 "name": "Large Ice Corridor",
-                "as": "Large Ice",
+                "as": "Ice Sheet",
                 "type": "Objective",
+                "trackable": true,
                 "size": 2,
                 "count": 1
             },

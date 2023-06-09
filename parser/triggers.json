@@ -75,6 +75,17 @@
                     "name": "6.1"
                 }
             }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "6.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "a"
+            },
+            "renamed": "Ice Sheet"
         }
     ],
     "3": [
