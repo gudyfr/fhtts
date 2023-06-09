@@ -60,10 +60,11 @@ function name()
             elseif j.hit_object.tag == "Card" then
                 local card = j.hit_object
                 card.setPosition(destination)
-                updateName(card, CurrentName, i)
+                updateName(card, CurrentName, i, 1)
                 i = i + 1
             elseif j.hit_object.tag == "Deck" then
                 cards = j.hit_object.getObjects()
+                local nbCards = #cards
                 for _, obj in pairs(cards) do
                     guid = obj.guid
                     if j.hit_object.remainder == nil then
@@ -73,7 +74,7 @@ function name()
                         card.setPosition(destination)
                     end
                     destination.y = destination.y + 0.1
-                    updateName(card, CurrentName, i)
+                    updateName(card, CurrentName, i, nbCards)
                     i = i + 1
                 end
             else
@@ -83,8 +84,14 @@ function name()
     end
 end
 
-function updateName(obj,baseName,i)
-    local tag = currentTag
+function updateName(obj,baseName,i,nbCards)
+    local direction = 1
+    local offset = 0
+    if string.sub(baseName, 1,1) == "-" then
+        baseName = string.sub(baseName, 2)
+        direction = -1
+        offset = nbCards - 1
+    end
     local start = tonumber(baseName)
-    obj.setName(string.format("%d", start+i))
+    obj.setName(string.format("%d", start+direction*(offset-i)))
 end
