@@ -480,6 +480,23 @@
             ]
         }
     },
+    "113": {
+        "154": {
+            "also": [
+                "Black Imp"
+            ],
+            "overrides": [
+                {
+                    "where": {
+                        "name": "Black Imp"
+                    },
+                    "with": {
+                        "name": "Forest Imp"
+                    }
+                }
+            ]
+        }
+    },
     "115": {
         "140": {
             "maxY": 1750
