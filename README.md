@@ -48,6 +48,16 @@ The goal is to have everything scripted.
   - Download the save file under [tts saves](https://github.com/gudyfr/fhtts/tree/main/tts%20saves)
   - Download the [Assistant](https://github.com/gudyfr/FrosthavenAssistant/releases/tag/v1.7.2_web) (builds available for windows, macos and android, or build your own : [github project](https://github.com/gudyfr/FrosthavenAssistant/tree/webserver) )
   - Follow the [Getting Started Guide](https://github.com/gudyfr/fhtts/tree/main/docs/docs/index.md)
+
+# Development setup
+ - Download and install [Visual Studio Code](https://code.visualstudio.com/)  
+ - Add the following extensions to VS Code :  
+    - [Tabletop Simulator Lua](https://marketplace.visualstudio.com/items?itemName=rolandostar.tabletopsimulator-lua)  
+    - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
+ - In VS Code Settings, under Extensions/Tabletop Simulator Lua/Include other file paths, configure the path to the scripts sub-directory of this repo.
+ - Install [python](https://www.python.org/downloads/), and make sure to add Pyton's excutable to the path.
+ - Load the dev version of the mod in TTS (Save 101),
+ - Load TTS scripts with ctrl+alt+L, save them with ctrl+alt+s
   
 # License & Attribution
   - This work is distributed under the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
