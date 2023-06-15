@@ -1079,11 +1079,13 @@ function spawned(params)
                         local input = inputs[1]
                         monster.editInput({ index = input.index, value = re.text })
                     end
-                    for i, postponed in ipairs(NeedsToSwitch) do
-                        if postponed == monster.guid then
-                            table.remove(NeedsToSwitch, i)
-                            toggled(monster)
-                        end
+                    if NeedsToSwitch[monster.guid] ~= nil then
+                        toggled(monster)
+                        NeedsToSwitch[monster.guid] = nil
+                    end
+                    if NeedsToUpdateNr[monster.guid] ~= nil then
+                        updateStandeeNr({monster, NeedsToUpdateNr[monster.guid]})
+                        NeedsToUpdateNr[monster.guid] = nil
                     end
                 else
                     fhlog(ERROR, TAG, "Could not fetch Standee number : %s", (re.text or "<empty response>"))
@@ -1095,26 +1097,59 @@ function spawned(params)
 end
 
 NeedsToSwitch = {}
+NeedsToUpdateNr = {}
+
+function getStandeeNrInput(standee)
+    local inputs = standee.getInputs() or {}
+    if #inputs > 0 then
+        return inputs[1]
+    end
+end
+
+function getStandeeNr(standee)
+    local input = getStandeeNrInput(standee)
+    if input ~= nil then
+        return input.value
+    end
+end
 
 function toggled(monster)
-    local inputs = monster.getInputs() or {}
-    if #inputs > 0 then
-        local input = inputs[1]
-        if input ~= nil then
-            local nr = input["value"]
-            if nr ~= nil then
-                updateAssistant("POST", "switchMonster", {
-                    monster = monster.getName(),
-                    nr = nr
-                })
-                return
-            end
+    local nr = getStandeeNr(monster)
+    if nr ~= nil then
+        updateAssistant("POST", "switchMonster", {
+            monster = monster.getName(),
+            nr = nr
+        })
+    else
+        -- We haven't received the standee number for this monster yet, so postpone switching to elite
+        if isXHavenEnabled() then
+            NeedsToSwitch[monster.guid] = true
         end
     end
+end
 
-    -- We haven't received the standee number for this monster yet, so postpone switching to elite
-    if isXHavenEnabled() then
-        table.insert(NeedsToSwitch, monster.guid)
+function updateStandeeNr(params)
+    print(params)
+    local standee = params[1]
+    local newNr = params[2]
+    local nr = getStandeeNr(standee)
+    if nr ~= nil and nr ~= "" then
+        updateAssistant("POST", "updateStandeeNr", {
+            name = standee.getName(),
+            nr = nr,
+            newNr = newNr
+        })
+        local input = getStandeeNrInput(standee)
+        if input ~= nil then
+            input.value = newNr
+            standee.editInput(input)
+        end
+
+    else
+        -- We haven't received the standee number for this monster yet, so postpone switching its number
+        if isXHavenEnabled() then
+            NeedsToUpdateNr[standee.guid] = newNr
+        end
     end
 end
 
@@ -1310,7 +1345,7 @@ function getColorFromTags(tagsMap)
 end
 
 function getPlayer(color)
-    for _,player in ipairs(Player.getPlayers()) do
+    for _, player in ipairs(Player.getPlayers()) do
         if player.color == color then
             return player
         end
@@ -1736,11 +1771,11 @@ function addSummon(standee)
 end
 
 HeightByFigurine = {
-    Drifter=1.7,
-    Geminate=1.2,
-    Deathwalker=1.6,
-    Boneshaper=1.8,
-    Blinkblade=1.2,
+    Drifter = 1.7,
+    Geminate = 1.2,
+    Deathwalker = 1.6,
+    Boneshaper = 1.8,
+    Blinkblade = 1.2,
     ["Banner Spear"] = 1.7,
 }
 
@@ -2249,6 +2284,10 @@ function updateAssistant(method, command, params, callback)
                 handled = true
             elseif command == "addSummon" then
                 CurrentGameState:addSummon(params.name)
+                updateCurrentState()
+                handled = true
+            elseif command == "updateStandeeNr" then
+                CurrentGameState:updateStandeeNr(params.name, params.nr, params.newNr)
                 updateCurrentState()
                 handled = true
             end

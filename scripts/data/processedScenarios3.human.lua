@@ -7793,18 +7793,20 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
-                        name = "Savvas Icestorm",
+                        name = "The Shimmer",
                         orientation = 0,
                         positions = {
                            {
                               x = -4,
                               y = 0,
-                              levels = "eee",
+                              levels = "bbb",
+                              standeeNr = 1,
                               },
                            {
                               x = -7,
                               y = 6,
-                              levels = "eee",
+                              levels = "bbb",
+                              standeeNr = 1,
                               },
                            },
                         },
@@ -53322,6 +53324,7 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -1,
+                              levels = "aan",
                               },
                            },
                         },

@@ -18,6 +18,7 @@ mapTilesBagId = '9cbcab'
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
 function onLoad(save)
+   FhLoggers = {}
    fhLogInit()
    addHotkey("Play Initiative Card",
       function(player_color, hovered_object, pointer, key_up) playCard(player_color, 1) end)
@@ -1062,7 +1063,13 @@ function layoutMapAsync(map)
                      local monsterBag = locateScenarioElementWithName(monster.name, objects, false, nameMappings)
                      if monsterBag ~= nil then
                         local obj = monsterBag.takeObject({
-                           callback_function = function(spawned) if level == 'e' then makeElite(spawned) end end,
+                           callback_function = function(spawned)
+                              if level == 'e' then makeElite(spawned) end
+                              if position.standeeNr ~= nil then
+                                 Global.call("setStandeeNr", {
+                                    spawned, position.standeeNr })
+                              end
+                           end,
                            smooth = false
                         })
                         local x, z = getWorldPositionFromHexPosition(position.x + origin.x, position.y + origin.y)
@@ -1193,7 +1200,13 @@ end
 
 function makeElite(obj)
    obj.setColorTint("Yellow")
-   Global.call("getScenarioMat").call("toggled", obj)
+   getScenarioMat().call("toggled", obj)
+end
+
+function setStandeeNr(params)
+   local standee = params[1]
+   local nr = params[2]
+   getScenarioMat().call("updateStandeeNr", { standee, nr })
 end
 
 function updateTriggers(trigger, obj)
@@ -2367,8 +2380,6 @@ function onPlayerPing(player, position, object)
       obj.call("onPing", payload)
    end
 end
-
-FhLoggers = {}
 
 function registerFhLogger(obj)
    table.insert(FhLoggers, obj)

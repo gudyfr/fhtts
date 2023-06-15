@@ -243,10 +243,14 @@ function MonsterInstance:changeHp(amount)
     self.hp = self.hp + amount
     if self.hp <= 0 then
         -- death, free up this instance
-        self.monster:removeInstance(self)
+        self:remove()
     elseif self.hp > self.maxHp then
         self.hp = self.maxHp
     end
+end
+
+function MonsterInstance:remove()
+    self.monster:removeInstance(self)
 end
 
 function MonsterInstance:changeMaxHp(amount)
@@ -1248,6 +1252,19 @@ function GameState:switchMonster(name, nr)
     local target = self:findTarget(name, nr)
     if target ~= nil then
         target:switchType()
+    end
+end
+
+function GameState:updateStandeeNr(name, nr, newNr)
+    fhlog(DEBUG, "GameState", "Changing %s(%s) to #(%s)", name, nr or "", newNr or "")
+    local target = self:findTarget(name, nr)
+    if target ~= nil then
+        -- Check if there is already a standee with the target number
+        local newTarget = self:findTarget(name, newNr)
+        if newTarget ~= nil then
+            -- Simply remove the current one
+            target:remove()
+        end
     end
 end
 

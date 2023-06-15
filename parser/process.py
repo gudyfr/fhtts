@@ -222,9 +222,10 @@ def mapToPositions(entries):
 
 
 def addToEntries(entries, positions, key, bosses=[]):
-    extractedBosses = []
+    extractedBosses = {}
     entriesToRemove = []
     for entry in entries:
+        positionsToRemove = []
         for position in entry['positions']:
             name = positionToKey(position)
             if name in positions:
@@ -234,9 +235,16 @@ def addToEntries(entries, positions, key, bosses=[]):
                     for boss in bosses:
                         if entry['name'] == boss['from']:
                             position[key] = 'bbb'
-                            extractedBosses.append(
-                                {"name": boss['to'], "orientation": entry['orientation'], "positions": [position]})
-                            entry['positions'].remove(position)
+                            if 'forceStandeeNr' in boss:
+                                position['standeeNr'] = boss['forceStandeeNr']
+                            bossName = boss['to']
+                            if bossName in extractedBosses:
+                                extractedBosses[bossName]['positions'].append(
+                                    position)
+                            else:
+                                extractedBosses[bossName] = {"name": boss['to'], "orientation": entry['orientation'], "positions": [position]}
+                            positionsToRemove.append(position)        
+        entry['positions'] = [position for position in entry['positions'] if position not in positionsToRemove]
 
         # If we've removed the only instance of that monster, let's remove it
         if len(entry['positions']) == 0:
@@ -245,7 +253,7 @@ def addToEntries(entries, positions, key, bosses=[]):
     for entry in entriesToRemove:
         entries.remove(entry)
 
-    for boss in extractedBosses:
+    for name, boss in extractedBosses.items():
         entries.append(boss)
 
 
@@ -578,8 +586,8 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
             positionToMonsterLevels = mapToPositions(
                 processed['monsterLevels'])
             positionToOverlayTypes = mapToPositions(processed['overlayTypes'])
-            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", filter(
-                lambda e: e['in'] == mapData["name"] if 'in' in e else True, bosses))
+            addToEntries(processed['monsters'], positionToMonsterLevels, "levels", list(filter(
+                lambda e: e['in'] == mapData["name"] if 'in' in e else True, bosses)))
             addToEntries(processed['overlays'], positionToOverlayTypes, "type")
            
 
