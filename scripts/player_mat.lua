@@ -842,7 +842,7 @@ end
 function onObjectDropCallback(params)
   local obj = params.object
   if obj.getName() == "Loot" then
-    Global.call("getScenarioMat").call("updateAssistantWrapper", {"POST", "loot", { target = getCharacterName(), count = 1}})
+    Global.call("getScenarioMat").call("doLoot", {target_name = getCharacterName(), count = 1})
     destroyObject(obj)
   end
 end

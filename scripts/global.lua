@@ -25,6 +25,12 @@ function onLoad(save)
    addHotkey("Play Third Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 3) end)
    addHotkey("Draw Card", function(player_color, hovered_object, point, key_up) drawCard(player_color) end)
    addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
+   addHotkey("Loot a Token", function(player_color, hovered_object, point, key_up) lootKeyPressed(player_color, hovered_object) end)
+   addHotkey("Loot a Token (Green)", function(player_color, hovered_object, point, key_up) lootKeyPressed("Green", hovered_object) end)
+   addHotkey("Loot a Token (Red)", function(player_color, hovered_object, point, key_up) lootKeyPressed("Red", hovered_object) end)
+   addHotkey("Loot a Token (White)", function(player_color, hovered_object, point, key_up) lootKeyPressed("White", hovered_object) end)
+   addHotkey("Loot a Token (Blue)", function(player_color, hovered_object, point, key_up) lootKeyPressed("Blue", hovered_object) end)
+   addHotkey("Loot a Token (Yellow)", function(player_color, hovered_object, point, key_up) lootKeyPressed("Yellow", hovered_object) end)
 
    -- Restore the triggers
    local state = JSON.decode(save or {}) or {}
@@ -2446,5 +2452,12 @@ function onObjectPickUp(player_color, dropped_object)
             end
          end
       end
+   end
+end
+
+function lootKeyPressed(color, hovered)
+   if hovered and hovered.getName and hovered.getName() == "Loot" then
+      destroyObject(hovered)
+      getScenarioMat().call("doLoot", {player_color= color, count= 1})
    end
 end

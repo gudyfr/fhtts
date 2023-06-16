@@ -1956,19 +1956,7 @@ function refreshStandee(standee, instance)
             end
 
             if nbLoot > 0 then
-                updateAssistant("POST", "loot", { target = standee.getName(), count = nbLoot })
-                -- update the local game state
-                local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
-                -- Who's playing this standee?
-                for color, character in pairs(Characters) do
-                    if character == standee.getName() then
-                        battleInterfaceMat.call("onLootDraw", { color = color })
-                        for n = 2, nbLoot do
-                            Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1,
-                                nbLoot - 1)
-                        end
-                    end
-                end
+                doLoot({target_name=standee.getName(), count=nbLoot})
             end
         end
     end
@@ -2535,6 +2523,35 @@ function changeInitiative(params)
     updateAssistant("POST", "changeInitiative", params, updateState)
 end
 
-function updateAssistantWrapper(params)
-    updateAssistant(params[1], params[2],params[3],params[4])
+--[[
+    params: {
+        target_name: [character name] or nil
+        player_color: [colorname] or nil
+        player_number: [number] or nil
+        count: [number] --number of loot to be processed
+    }
+]]
+function doLoot(params) 
+    local targetName
+    local targetColor
+    if params.target_name ~= nil then
+        targetName = params.target_name
+        for color, character in pairs(Characters) do
+            if character == targetName then
+                targetColor = color
+            end
+        end
+    else
+        targetColor = params.player_color or PlayerColors[params.player_number]
+        targetName = Characters[targetColor]
+    end
+    updateAssistant("POST", "loot", { target = targetName, count = params.count or 1 })
+    -- update the local game state
+    local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+    -- Who's playing this standee?
+    battleInterfaceMat.call("onLootDraw", { color = targetColor })
+    for n = 2, params.count or 1 do
+        Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1,
+            nbLoot - 1)
+    end
 end
