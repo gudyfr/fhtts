@@ -1875,6 +1875,10 @@ function locateScenarioElementWithName(name, objects, remove, nameMappings)
 end
 
 function onObjectLeaveContainer(container, leave_object)
+   if container.hasTag("battle map token") then
+      leave_object.addTag("battle map token")
+      leave_object.sticky = false
+   end
    if container.hasTag("deletable") then
       leave_object.addTag("deletable")
    end
@@ -2395,10 +2399,13 @@ end
 function onObjectDrop(player_color, dropped_object)
    -- Let's do a cast to see if we're being dropped on top of one of the listeners
    local hitlist = Physics.cast({
-      origin = dropped_object.getPosition(),
+      origin = dropped_object.getPositionSmooth(),
       direction = { 0, -1, 0 },
       debug = false,
    })
+   if dropped_object.hasTag("battle map token") then
+      onBattleMapTokenDrop(player_color, dropped_object, hitlist)
+   end
    for _, hit in ipairs(hitlist) do
       local obj = hit.hit_object
       if obj ~= nil then
@@ -2411,10 +2418,22 @@ function onObjectDrop(player_color, dropped_object)
    end
 end
 
+function onBattleMapTokenDrop(player_color, dropped_object, hitlist) 
+   for _, hit in pairs(hitlist) do
+       local obj = hit.hit_object
+       if obj.hasTag("tracked") then
+           local pos = obj.getPosition()
+           if (dropped_object.getPosition().y > pos.y) then
+            dropped_object.setPositionSmooth({x=pos.x, y=1.45, z=pos.z})
+           end
+       end
+   end
+end
+
 function onObjectPickUp(player_color, dropped_object)
    -- Let's do a cast to see if we're being dropped on top of one of the listeners
    local hitlist = Physics.cast({
-      origin = dropped_object.getPosition(),
+      origin = dropped_object.getPositionSmooth(),
       direction = { 0, -1, 0 },
       debug = false,
    })

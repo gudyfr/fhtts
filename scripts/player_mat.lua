@@ -372,6 +372,8 @@ function onLoad()
 
   setDecals()
   registerSavable(self.getName())
+  
+  Global.call("registerForDrop", {self})
 end
 
 function packCharacter()
@@ -834,5 +836,13 @@ function endScenario(payload)
     for name, value in pairs(loot) do
       characterSheet.call("addEx", { name = name, amount = value })
     end
+  end
+end
+
+function onObjectDropCallback(params)
+  local obj = params.object
+  if obj.getName() == "Loot" then
+    Global.call("getScenarioMat").call("updateAssistantWrapper", {"POST", "loot", { target = getCharacterName(), count = 1}})
+    destroyObject(obj)
   end
 end

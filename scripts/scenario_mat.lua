@@ -2534,3 +2534,7 @@ end
 function changeInitiative(params)
     updateAssistant("POST", "changeInitiative", params, updateState)
 end
+
+function updateAssistantWrapper(params)
+    updateAssistant(params[1], params[2],params[3],params[4])
+end
