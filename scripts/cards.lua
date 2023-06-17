@@ -67,7 +67,9 @@ function forEachInDeckOrCardIf(deck, cardTransform, entryTest)
         local card = deck
         local tester = { name = card.getName(), tags = card.getTags(), description = card.getDescription() }
         if entryTest(tester) then
-            cardTransform(card)
+            if cardTransform ~= nil then
+                cardTransform(card)
+            end
             count = count + 1
         end
     end
