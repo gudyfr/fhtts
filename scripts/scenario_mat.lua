@@ -11,7 +11,7 @@ require('cards')
 require('data/gameData')
 
 TAG = "ScenarioMat"
-CURRENT_ASSISTANT_VERSION = 5
+CURRENT_ASSISTANT_VERSION = 6
 TAG_5_PLAYERS = "5 players"
 
 function getState()
