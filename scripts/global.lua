@@ -622,6 +622,7 @@ function cleanup(forceDelete, noMessage)
       end
       -- And clear the errata
       getScenarioMat().call('setErrata', nil)
+      getScenarioMat().call('onCleanedUp')
    end
 
    if highlighted then

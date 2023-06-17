@@ -1084,7 +1084,7 @@ function spawned(params)
                         NeedsToSwitch[monster.guid] = nil
                     end
                     if NeedsToUpdateNr[monster.guid] ~= nil then
-                        updateStandeeNr({monster, NeedsToUpdateNr[monster.guid]})
+                        updateStandeeNr({ monster, NeedsToUpdateNr[monster.guid] })
                         NeedsToUpdateNr[monster.guid] = nil
                     end
                 else
@@ -1144,7 +1144,6 @@ function updateStandeeNr(params)
             input.value = newNr
             standee.editInput(input)
         end
-
     else
         -- We haven't received the standee number for this monster yet, so postpone switching its number
         if isXHavenEnabled() then
@@ -1381,6 +1380,10 @@ function onCleanup(obj, color, alt)
     else
         toggleEndScenarioUI()
     end
+end
+
+function onCleanedUp()
+    updateAssistant("POST", "endScenario", {}, updateAssistant)
 end
 
 function toggleEndScenarioUI()
