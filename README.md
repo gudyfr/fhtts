@@ -55,9 +55,13 @@ The goal is to have everything scripted.
     - [Tabletop Simulator Lua](https://marketplace.visualstudio.com/items?itemName=rolandostar.tabletopsimulator-lua)  
     - [Lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)
  - In VS Code Settings, under Extensions/Tabletop Simulator Lua/Include other file paths, configure the path to the scripts sub-directory of this repo.
- - Install [python](https://www.python.org/downloads/), and make sure to add Pyton's excutable to the path.
  - Load the dev version of the mod in TTS (Save 101),
  - Load TTS scripts with ctrl+alt+L, save them with ctrl+alt+s
+ - To work on auto-layout / scenario issues :
+    - Install [python](https://www.python.org/downloads/), and make sure to add Pyton's excutable to the path.
+ - To work on the assistant :
+    - Download and install [Flutter](https://flutter.dev/)
+    - Run flutter doctor, and install any missing element (like Android Studio, and Visual Studio)
   
 # License & Attribution
   - This work is distributed under the [CC BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
