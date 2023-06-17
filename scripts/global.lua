@@ -249,11 +249,13 @@ function getMonster(monster, scenarioElementPositions, currentScenarioElementPos
             if monster.as ~= nil then
                -- We need to get a monster out of the bag, reset the bag and put the monster back in the bag.
                -- And rename both
+               clone.addTag("renaming")
                local obj = clone.takeObject()
                obj.setName(monster.as)
                clone.setName(monster.as)
                clone.reset()
                clone.putObject(obj)
+               clone.removeTag("renaming")
             end
 
             if monster.loot ~= nil then
@@ -1045,7 +1047,7 @@ function layoutMapAsync(map)
                      zRot = 180
                   end
                   local yRot = 0
-                  obj.setRotationSmooth({ 0, yRot, zRot })
+                  obj.setRotation({ 0, yRot, zRot })
                   if position.trigger ~= nil then
                      attachTriggerToElement(position.trigger, obj, scenarioInfo.id)
                   end
@@ -1891,7 +1893,7 @@ function onObjectLeaveContainer(container, leave_object)
    if container.hasTag("deletable") then
       leave_object.addTag("deletable")
    end
-   if container.hasTag("spawner") then
+   if container.hasTag("spawner") and not container.hasTag("renaming") then
       local params = {
          monster = leave_object,
          isBoss = container.hasTag("boss")
