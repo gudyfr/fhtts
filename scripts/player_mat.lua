@@ -156,10 +156,11 @@ function loadCharacterBox(characterBox, state)
   local baseDeck, baseGuids = getRestoreDeck("Attack Modifiers " .. playerNumber)
   local attackModifiers = state.attackModifiers
   if attackModifiers ~= nil then
-    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck, baseGuids)
-    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
+    deck, baseDeck = rebuildDeck(deck, guids, attackModifiers.draw, AttackModifiersDrawPosition, true, baseDeck,
       baseGuids)
-    deck,baseDeck = rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
+    deck, baseDeck = rebuildDeck(deck, guids, attackModifiers.discard, AttackModifiersDiscardPosition, false, baseDeck,
+      baseGuids)
+    deck, baseDeck = rebuildDeck(deck, guids, attackModifiers.supply, AttackModifiersSupplyPosition, false, baseDeck,
       baseGuids)
     -- Detroy remaining cards from base deck
     if baseDeck ~= nil and not baseDeck.isDestroyed() then
@@ -372,6 +373,8 @@ function onLoad()
 
   setDecals()
   registerSavable(self.getName())
+
+  Global.call("registerForDrop", { self })
 end
 
 function packCharacter()
@@ -834,5 +837,13 @@ function endScenario(payload)
     for name, value in pairs(loot) do
       characterSheet.call("addEx", { name = name, amount = value })
     end
+  end
+end
+
+function onObjectDropCallback(params)
+  local obj = params.object
+  if obj.getName() == "Loot" then
+    Global.call("getScenarioMat").call("doLoot", { target_name = getCharacterName(), count = 1 })
+    destroyObject(obj)
   end
 end

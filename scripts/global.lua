@@ -26,6 +26,18 @@ function onLoad(save)
    addHotkey("Play Third Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 3) end)
    addHotkey("Draw Card", function(player_color, hovered_object, point, key_up) drawCard(player_color) end)
    addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
+   addHotkey("Loot a Token",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed(player_color, hovered_object) end)
+   addHotkey("Loot a Token (Green)",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed("Green", hovered_object) end)
+   addHotkey("Loot a Token (Red)",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed("Red", hovered_object) end)
+   addHotkey("Loot a Token (White)",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed("White", hovered_object) end)
+   addHotkey("Loot a Token (Blue)",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed("Blue", hovered_object) end)
+   addHotkey("Loot a Token (Yellow)",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed("Yellow", hovered_object) end)
 
    -- Restore the triggers
    local state = JSON.decode(save or {}) or {}
@@ -1890,6 +1902,12 @@ function locateScenarioElementWithName(name, objects, remove, nameMappings)
 end
 
 function onObjectLeaveContainer(container, leave_object)
+   if container.hasTag("battle map token") then
+      leave_object.addTag("battle map token")
+      leave_object.addTag("scenarioElement")
+      leave_object.registerCollisions()
+      leave_object.sticky = false
+   end
    if container.hasTag("deletable") then
       leave_object.addTag("deletable")
    end
@@ -2408,10 +2426,13 @@ end
 function onObjectDrop(player_color, dropped_object)
    -- Let's do a cast to see if we're being dropped on top of one of the listeners
    local hitlist = Physics.cast({
-      origin = dropped_object.getPosition(),
+      origin = dropped_object.getPositionSmooth(),
       direction = { 0, -1, 0 },
       debug = false,
    })
+   if dropped_object.hasTag("battle map token") then
+      onBattleMapTokenDrop(player_color, dropped_object, hitlist)
+   end
    for _, hit in ipairs(hitlist) do
       local obj = hit.hit_object
       if obj ~= nil then
@@ -2424,10 +2445,23 @@ function onObjectDrop(player_color, dropped_object)
    end
 end
 
+function onBattleMapTokenDrop(player_color, dropped_object, hitlist)
+   for _, hit in pairs(hitlist) do
+      local obj = hit.hit_object
+      if obj.hasTag("tracked") then
+         local pos = obj.getPosition()
+         if (dropped_object.getPosition().y > pos.y) then
+            dropped_object.setPositionSmooth({ x = pos.x, y = 1.45, z = pos.z }, false, true)
+            obj.setPositionSmooth({x = pos.x, y = pos.y + 0.2, z = pos.z})
+         end
+      end
+   end
+end
+
 function onObjectPickUp(player_color, dropped_object)
    -- Let's do a cast to see if we're being dropped on top of one of the listeners
    local hitlist = Physics.cast({
-      origin = dropped_object.getPosition(),
+      origin = dropped_object.getPositionSmooth(),
       direction = { 0, -1, 0 },
       debug = false,
    })
@@ -2440,5 +2474,12 @@ function onObjectPickUp(player_color, dropped_object)
             end
          end
       end
+   end
+end
+
+function lootKeyPressed(color, hovered)
+   if hovered and hovered.getName and hovered.getName() == "Loot" then
+      destroyObject(hovered)
+      getScenarioMat().call("doLoot", { player_color = color, count = 1 })
    end
 end
