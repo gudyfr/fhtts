@@ -441,6 +441,11 @@ function packCharacter()
     forEachInDeckOrCard(deck, function(card) addCardToDeckAtWorldPosition(card, pqPosition) end)
 
     clearBoard(true)
+
+    -- Update characters on the scenario mat
+    Wait.frames( function ()
+      Global.call("getScenarioMat").call("updateCharacters")
+    end, 1)
   end
 end
 
