@@ -1310,7 +1310,7 @@ function getColorFromTags(tagsMap)
 end
 
 function getPlayer(color)
-    for _,player in ipairs(Player.getPlayers()) do
+    for _, player in ipairs(Player.getPlayers()) do
         if player.color == color then
             return player
         end
@@ -1736,11 +1736,11 @@ function addSummon(standee)
 end
 
 HeightByFigurine = {
-    Drifter=1.7,
-    Geminate=1.2,
-    Deathwalker=1.6,
-    Boneshaper=1.8,
-    Blinkblade=1.2,
+    Drifter = 1.7,
+    Geminate = 1.2,
+    Deathwalker = 1.6,
+    Boneshaper = 1.8,
+    Blinkblade = 1.2,
     ["Banner Spear"] = 1.7,
 }
 
@@ -1956,7 +1956,7 @@ function refreshStandee(standee, instance)
             end
 
             if nbLoot > 0 then
-                doLoot({target_name=standee.getName(), count=nbLoot})
+                doLoot({ target_name = standee.getName(), count = nbLoot })
             end
         end
     end
@@ -2531,7 +2531,7 @@ end
         count: [number] --number of loot to be processed
     }
 ]]
-function doLoot(params) 
+function doLoot(params)
     local targetName
     local targetColor
     if params.target_name ~= nil then
