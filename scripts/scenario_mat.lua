@@ -951,10 +951,8 @@ function getDecal(color, card, state, image)
 end
 
 function getStatePosition(color, card, state)
-    -- print(JSON.encode({ color = color, card = card, state = state }))
     local cardPosition = cardLocations[color][card]
     local offset = relativeStateButtonLocations[state]
-    -- print(JSON.encode({ cardPosition = cardPosition, offset=offset }))
     return {
         cardPosition[1] + offset[1],
         cardPosition[2] + offset[2],
@@ -1546,7 +1544,6 @@ function processState(state)
     local assistantData = {}
 
     for _, entry in ipairs(state.currentList) do
-        -- print(JSON.encode(entry))
         local id = entry.id
         local originalId = id
         -- We need to get rid of some of the (FH) and scenario specific monster names
@@ -1614,7 +1611,6 @@ function processState(state)
         end
         refreshDecals();
     end
-    -- print(JSON.encode(newState))
     refreshStandees(newState)
 
     charactersStatus.monsters = monstersStatus
@@ -1809,7 +1805,6 @@ function refreshStandee(standee, instance)
         clearStandee(standee)
         return
     end
-    -- print(standee.getName() .. ": " .. JSON.encode(standee.getRotation()))
     local baseYRot = standee.getRotation().y
     local flip = (baseYRot > 90 and baseYRot < 270)
     if flip then
@@ -1909,7 +1904,6 @@ function refreshStandee(standee, instance)
     if flip then
         rot:rotateOver('y', 180):normalize()
     end
-    -- print("rot : " .. JSON.encode(rot) .. " hy " .. rot:heading('y'))
     local buttonParams = {
         function_owner = self,
         click_function = "noop",
@@ -1969,7 +1963,6 @@ function refreshStandee(standee, instance)
 
     -- Special casing for looting (when going from turnState 1 to 2)
     if standee.hasTag("looter") and isEndOfRoundLootingEnabled() then
-        --print(JSON.encode(instance))
         if standeeStates[standee.guid] ~= nil and
             standeeStates[standee.guid].turnState ~= nil and
             standeeStates[standee.guid].turnState == 1 and
@@ -2005,7 +1998,6 @@ function refreshStandee(standee, instance)
         conditons = conditions,
         turnState = instance.turnState
     }
-    --print(JSON.encode(conditions))
     if nbConditions > 0 then
         local xOffset = 0.13 * (nbConditions - 1) * xScaleFactor
         for _, condition in ipairs(conditions) do
@@ -2303,9 +2295,7 @@ function updateAssistant(method, command, params, callback)
                     WebRequest.get(url)
                 end
             elseif method == "POST" then
-                if params == nil then
-                    params = {}
-                end
+                params = params or {}
                 local payload = JSON.encode(params)
                 -- print(command .. ":" .. payload)
                 if callback ~= nil then
