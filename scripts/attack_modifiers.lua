@@ -285,6 +285,7 @@ CardMappings = {
 
     -- Sawbones
     sap2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137143/F79EDEC586EBEBAB57837830399CD0D2F5752F22/",
+    sa2r = "http://cloud-3.steamusercontent.com/ugc/2020475472088949281/E139D9DD71234897542C4E113CEDA4608992E3AA/",
     saim = "http://cloud-3.steamusercontent.com/ugc/2023852627051137277/43EBEDDECCB0D1D6F6FCC5F347D3542F309D867F/",
     sawo = "http://cloud-3.steamusercontent.com/ugc/2023852627051137418/35CB4B3903072B2B6D83848BC27A7290FDA70A34/",
     sast = "http://cloud-3.steamusercontent.com/ugc/2023852627051137562/03B822A1416263E72996CF4A4FA147405306402C/",
@@ -383,6 +384,7 @@ CardMappings = {
     diha = "http://cloud-3.steamusercontent.com/ugc/2023852627051123283/6D86C02A862E0E3FC2AD7465C6202CAC008C969B/",
     dih1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051123414/A8865C69834A60822F1FCB3DC1E185FD2A4D95B3/",
     dicr = "http://cloud-3.steamusercontent.com/ugc/2023852627051123557/B6833F222556BCE9609DFA1333ED8E603AB5A545/",
+    disa = "http://cloud-3.steamusercontent.com/ugc/2020475472088955562/E5FC962461BCF2E73304069C55AAB015AE87DE16/",
 
     -- Bladeswarm
     blwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051125875/6F21AAA3543A2739CA6A637A79C2A55784483BCE/",
@@ -488,9 +490,9 @@ CardDescriptions = {
     bapu = "+2, Push 1",
     badi = "+1, Disarm",
     baaa = "+1, Add +1 for each ally adjacent to the target",
-    bas1 = "+0, Shield 1, Reroll",
+    bas1 = "+0, Shield 1 Self, Reroll",
     -- Deathwalker
-    deh1 = "+0, Heal 1 ally, Reroll",
+    deh1 = "+0, Heal 1 Ally, Reroll",
     demu = "+0, Muddle, Reroll",
     dedi = "+0, Disarm, Reroll",
     deda = "+2, Infuse Dark",
@@ -507,8 +509,8 @@ CardDescriptions = {
     bop1 = "+1",
     -- Crushing Tide
     ctpi = "+0, Pierce 3, Reroll",
-    ctat = "+0, Add 1 target",
-    cts1 = "+1, Shield 1, Reroll",
+    ctat = "+0, Add 1 Target",
+    cts1 = "+1, Shield 1 Self, Reroll",
     ctta = "+1, If you perfromed a tide action this round +2 instead",
     ctmu = "+2, Muddle",
     ctdi = "+1, Disarm",
@@ -537,18 +539,19 @@ CardDescriptions = {
     himo = "+1, After this attack ability, switch modes",
     hism = "+0, After this attack ability, grant one of your summons: Move 2",
     -- Snowdancer
-    sdhw = "+0, Heal 1 Ward ally, Reroll",
-    sdst = "+1, Strengthen ally",
+    sdhw = "+0, Heal 1 Ward Ally, Reroll",
+    sdst = "+1, Strengthen Ally",
     sdda = "+0, If this action forces the target to move, it suffers 1 damage, Reroll",
     sdiw = "+1, Infuse Ice / Wind",
     sdim = "+0, Immobilize",
-    sdh1 = "+0, Heal 1 ally",
+    sdh1 = "+0, Heal 1 Ally",
+
     -- Frozen Fist
-    ffh1 = "+0, Heal 1 ally, Reroll",
+    ffh1 = "+0, Heal 1 Ally, Reroll",
     ffp3 = "+3",
     ffit = "+2, Create one 1-hex icy terrain tile in a featureless hex adjacant to the target",
     ffie = "+1, Infuse Ice / Earth",
-    ffs1 = "+1, Shield 1, Reroll",
+    ffs1 = "+1, Shield 1 Self, Reroll",
     ffp0 = "+0",
     ffp1 = "+1",
     ffdi = "+0, Disarm",
@@ -559,7 +562,7 @@ CardDescriptions = {
     mmr2 = "+0, Retaliate 2, Reroll",
     mmpi = "+0, Pierce 3, Reroll",
     mmda = "+0, The target and all enemies adjacent to it suffer 1 damage",
-    mms1 = "+0, Shield 1, Reroll",
+    mms1 = "+0, Shield 1 Self, Reroll",
     mmpc = "+0, Gain or Lose pressure",
     -- Infuser
     inai = "+0, +1 fo each pair of active infusions",
@@ -604,8 +607,8 @@ CardDescriptions = {
     brst = "+0, Stun, Reroll",
     brdi = "+0, Disarm, Reroll",
     brmu = "+0, Muddle, Reroll",
-    brta = "+0, Add 1 target, Reroll",
-    brsh = "+1, Shield 1",
+    brta = "+0, Add 1 Target, Reroll",
+    brsh = "+1, Shield 1 Self",
 
     -- Spellweaver
     spp1 = "+1",
@@ -629,7 +632,7 @@ CardDescriptions = {
     tiwo = "+1, Wound",
     tiim = "+1, Immobilize",
     tih2 = "+1, Heal 2 Self",
-    tiat = "+0, Add Target",
+    tiat = "+0, Add 1 Target",
 
     -- Scoundrel
     scp0 = "+0",
@@ -669,7 +672,7 @@ CardDescriptions = {
     suh1 = "+0, Heal 1 Self, Reroll",
     sust = "+0, Stun, Reroll",
     suli = "+0, Infuse Light, Reroll",
-    sush = "+0, Shield 1, Reroll",
+    sush = "+0, Shield 1 Self, Reroll",
     sup1 = "+1",
 
     -- Soothsinger
@@ -686,6 +689,7 @@ CardDescriptions = {
 
     -- Sawbones
     sap2 = "+2",
+    sa2r = "+2, Reroll",
     saim = "+1, Immobilize",
     sawo = "+0, Wound, Reroll",
     sast = "+0, Stun, Reroll",
@@ -775,7 +779,7 @@ CardDescriptions = {
 
     -- Diviner
     dip1 = "+1",
-    pip3 = "+3, Shield 1 Self",
+    dip3 = "+3, Shield 1 Self",
     dida = "+2, Infuse Dark",
     dili = "+2, Infuse Light",
     dimu = "+3, Muddle",
@@ -784,6 +788,7 @@ CardDescriptions = {
     diha = "+1, Heal 2 Ally",
     dih1 = "+0, Heal 1 Self, Reroll",
     dicr = "+0, Curse, Reroll",
+    disa = "+1, Shield 1 Ally",
 
     -- Bladeswarm
     blwi = "+1, Infuse Wind",
