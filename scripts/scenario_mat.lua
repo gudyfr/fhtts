@@ -1779,6 +1779,7 @@ HeightByFigurine = {
 }
 
 standeeStates = {}
+
 function refreshStandee(standee, instance)
     local height = 0.95
     local xScaleFactor = 1.1
@@ -1970,10 +1971,10 @@ function refreshStandee(standee, instance)
             fhlog(DEBUG, TAG, "End of round looting for %s", standee.getName())
             local position = standee.getPosition()
             local hitlist = Physics.cast({
-                origin       = position,
+                origin       = {position.x, position.y + 1, position.z},
                 direction    = { 0, -1, 0 },
                 type         = 1,
-                max_distance = 3,
+                max_distance = 4,
                 debug        = false
             })
             local nbLoot = 0

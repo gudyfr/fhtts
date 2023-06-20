@@ -174,18 +174,20 @@ function loadCharacterBox(characterBox, state)
   -- Perks
   local perks = state.perks
   local deck, guids = getRestoreDeckIn(characterBox, "Perks", false)
-  deck.addTag("perk")
-  if perks ~= nil then
-    -- print(JSON.encode(perks))
-    if deck ~= nil then
-      for i, position in ipairs(PerksPositions) do
-        -- print(deck)
-        -- print(deck.tag)
-        deck = rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
+  if deck ~= nil then
+    deck.addTag("perk")
+    if perks ~= nil then
+      -- print(JSON.encode(perks))
+      if deck ~= nil then
+        for i, position in ipairs(PerksPositions) do
+          -- print(deck)
+          -- print(deck.tag)
+          deck = rebuildDeck(deck, guids, perks[i], position, i == 3, nil, nil, function(e) e.addTag("perk") end)
+        end
       end
+    else
+      setAtLocalPosition(deck, PerksPositions[#PerksPositions])
     end
-  else
-    setAtLocalPosition(deck, PerksPositions[#PerksPositions])
   end
 
   -- Clear the non card positions
@@ -193,6 +195,9 @@ function loadCharacterBox(characterBox, state)
 
   -- Character sheet
   local characterSheet = getRestoreObjectIn(characterBox, "CharacterSheet_" .. characterName, false)
+  if characterSheet == nil then
+    characterSheet = getRestoreObjectIn(characterBox, "Character Sheet", false)
+  end
   if characterSheet ~= nil then
     local sheetState = state.characterSheet
     if sheetState ~= nil then
@@ -208,7 +213,7 @@ function loadCharacterBox(characterBox, state)
   for i = 1, 4 do
     local characterObject = getRestoreObjectIn(characterBox, characterName, false)
     if characterObject ~= nil then
-      if characterObject.tag == "Tile" then
+      if characterObject.hasTag("Character Mat") then
         setAtLocalPosition(characterObject, CharacterMatPosition)
         -- characterObject.setLock(true)
       else
@@ -443,7 +448,7 @@ function packCharacter()
     clearBoard(true)
 
     -- Update characters on the scenario mat
-    Wait.frames( function ()
+    Wait.frames(function()
       Global.call("getScenarioMat").call("updateCharacters")
     end, 1)
   end
@@ -669,6 +674,37 @@ function getCharacterLevel()
     return characterSheet.call("getCharacterLevel")
   end
   return nil
+end
+
+function getCharacterLevelNew()
+  local characterSheetData = getCharacterSheetData()
+
+  if characterSheetData.buttons ~= nil then
+    for level = 1, 9 do
+      if characterSheetData.buttons["level" .. level].label == "\u{2717}" then
+        maxLevel = level
+      end
+    end
+    return maxLevel
+  end
+
+  return 1
+end
+
+function getCharacterPlayName()
+  local characterSheetData = getCharacterSheetData()
+  return characterSheetData.Name or ""
+end
+
+function getCharacterSheetData()
+  local characterSheet = getCharacterSheet()
+  if characterSheet ~= nil then
+    local success, saveDataJson = pcall(function() return characterSheet.call("forceSave") end)
+    if success and saveDataJson ~= nil then
+      return JSON.decode(saveDataJson) or {}
+    end
+  end
+  return {}
 end
 
 function getCharacterSheet()

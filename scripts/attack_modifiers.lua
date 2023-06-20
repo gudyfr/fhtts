@@ -194,6 +194,207 @@ CardMappings = {
     dwin = "http://cloud-3.steamusercontent.com/ugc/2015962364037195474/5851C2C14323AF3098B40DFE8DF5C6E8443C9127/",
     dwst = "http://cloud-3.steamusercontent.com/ugc/2035104110939470310/79F9F03100BE2FF0955F5BDF80B385FEF3DF9E9A/",
     dwdi = "http://cloud-3.steamusercontent.com/ugc/2015962364037195432/D3E3629FA8DD3A45D772AA0518D519601FA267DE/",
+
+    -- Brute
+    brp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051124536/7BC5A8CE7DD88EA353A120D6F537FB4FB68369EC/",
+    brp3 = "http://cloud-3.steamusercontent.com/ugc/2023852627051124662/4E1D784CF16FA0F913B3888EAE84F1DB56003C79/",
+    brpu = "http://cloud-3.steamusercontent.com/ugc/2023852627051124833/C49B0A44010AE184A4BEEEA7913EB27A57D4F607/",
+    brpi = "http://cloud-3.steamusercontent.com/ugc/2023852627051124964/AC5D6C587713405FF23B6BFDF9239B149979415F/",
+    brst = "http://cloud-3.steamusercontent.com/ugc/2023852627051125106/9D1B89EFBFEC0A60DCE14F61EEA5333192772584/",
+    brdi = "http://cloud-3.steamusercontent.com/ugc/2023852627051125276/EFF30B537B356EE71D4E7D1211191C63408C2BC7/",
+    brmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051125397/E6027B200B5C54E1890173B4FD0D3B7BF965DEFC/",
+    brta = "http://cloud-3.steamusercontent.com/ugc/2023852627051125516/0BF74D6CCCFB24BAFA88D0C1F085B2D6C49C1294/",
+    brsh = "http://cloud-3.steamusercontent.com/ugc/2023852627051125620/50F55A1F8136F54F82925D7C2A0457E1D162D6FA/",
+
+    -- Spellweaver
+    spp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051142835/007A716AD40B86D8631C218F259B7FE34F69FBD5/",
+    spst = "http://cloud-3.steamusercontent.com/ugc/2023852627051142961/7FE638B4E5E0247FF99F32391238590173A39587/",
+    spwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051143126/16402243ED5ED6C99DA803AB73DAAA3F31E855C2/",
+    spim = "http://cloud-3.steamusercontent.com/ugc/2023852627051143288/EE031A98C78A30768F7B55957C0126905C77DFEF/",
+    spcu = "http://cloud-3.steamusercontent.com/ugc/2023852627051143407/85760AB8463CE9C469687F96D85463D2168A8018/",
+    spfi = "http://cloud-3.steamusercontent.com/ugc/2023852627051143522/7C52EB58962561859152E59364690A0DCBD0D8FB/",
+    spic = "http://cloud-3.steamusercontent.com/ugc/2023852627051143651/EDB3CCF3883900AD28614904DFB97F581F62A56B/",
+    spea = "http://cloud-3.steamusercontent.com/ugc/2023852627051143775/A834FFC322DD0F44E87C85DC13F6B0A0DE648EDA/",
+    spwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051143903/10B17DFCEF26D4317B2103F105CE3D3991314E60/",
+    spli = "http://cloud-3.steamusercontent.com/ugc/2023852627051144009/40D27E38B4456F96EBF0FF19662B63A9BFD656A6/",
+    spda = "http://cloud-3.steamusercontent.com/ugc/2023852627051144149/617AE10D5DD160283A4ABDD3B59DFC4EA5CC711F/",
+
+    -- Tinkerer
+    tip0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051144241/B6718BA8549CBA9D33136081A5F43D68F14A555C/",
+    tip1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051144362/45EBA552CCB4F6B9613886B3A5EDCDA387C4E85A/",
+    tip3 = "http://cloud-3.steamusercontent.com/ugc/2023852627051144488/D14720715752133166289FE512AA76AFED90F900/",
+    tifi = "http://cloud-3.steamusercontent.com/ugc/2023852627051144628/69B5887D797628A46D952FBCBA36683A51D9DF12/",
+    timu = "http://cloud-3.steamusercontent.com/ugc/2023852627051144777/C3CFB00E371C842D7A8243726D1A243D0ABAEDF6/",
+    tiwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051145078/CA8BE03DACE710DBDCA526724C289B4C9B99591F/",
+    tiim = "http://cloud-3.steamusercontent.com/ugc/2023852627051145078/CA8BE03DACE710DBDCA526724C289B4C9B99591F/",
+    tih2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051145200/E4956ACEBB624101FDCED32279E2B95ABE035764/",
+    tiat = "http://cloud-3.steamusercontent.com/ugc/2023852627051145328/D06C86076A6E39BFE9D2FE546D52B9973BF4BC3D/",
+
+    -- Scoundrel
+    scp0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137933/B944B27C746A11377FF3DCCA0FB0A485A220EBE0/",
+    scp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051138050/31CA03D16C0D4C30F9030E8C078840A3EF67E1F1/",
+    scp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051138214/BB5C9BB4DC1BD55C44B94CF861287FA654EE0923/",
+    sc1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051138365/BACFFCFCADC0C6B43FD8F7EE2DD3068DF2338738/",
+    scpi = "http://cloud-3.steamusercontent.com/ugc/2023852627051138522/EB83CDA85F982DD57F76448266BAD862F0BD0642/",
+    scpo = "http://cloud-3.steamusercontent.com/ugc/2023852627051138635/78956DF050DA872ED60D636C42BE6A18E616EE50/",
+    scmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051138752/FCCE28D7A0F8A66B5402983B241BBF1990FED652/",
+    scin = "http://cloud-3.steamusercontent.com/ugc/2023852627051138877/673216F1E8BB35733362FA9E48A927CD216C5BD3/",
+
+    -- Cragheart
+    crp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051127707/A84A4004E4A764185E68E9E58E4083BFD4CE7D59/",
+    crm2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051127826/5A96E54B1C4AECE2098F2AA8436671BBC4D72644/",
+    crp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051127942/12391B0656D0EA99A91E3319FDD93191E9229B64/",
+    crim = "http://cloud-3.steamusercontent.com/ugc/2023852627051128057/D05F71CE1B2168B7AA8FA9ECB27EADD4FFC1262D/",
+    crmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051128196/70E541C12BDD8240E64A5AF3C55341D1DA6CD427/",
+    crpu = "http://cloud-3.steamusercontent.com/ugc/2023852627051128316/33838216263BE99F4433FAB9435E9165B63DA6D9/",
+    crea = "http://cloud-3.steamusercontent.com/ugc/2023852627051128495/E68F6FA5BB3EED79EE8324CF0CB4A746139EA0E6/",
+    crwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051128632/B5109B73F3A7A051EEF80EBDB2F45A25A4863DBA/",
+
+    -- Mindthief
+    mip2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051131750/C7B3A3B706A96666CAE85F86281552A8166E1420/",
+    mip0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051131951/523059C9592460517FD5F2652D4294517CCCDEAE/",
+    miic = "http://cloud-3.steamusercontent.com/ugc/2023852627051132183/4BAF708B5D5A7F3EB260810B4ADA675730258CBE/",
+    mi1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051132350/38B8729954D8EE25C7ED400D573DC55F6DF5AE21/",
+    mipu = "http://cloud-3.steamusercontent.com/ugc/2023852627051132527/9C24F1D17F332CA78C259154AA2A1FB42E6A9780/",
+    mimu = "http://cloud-3.steamusercontent.com/ugc/2023852627051132667/EEB140DFA7B5CD1AB858BD6DD9EA333123F5D238/",
+    miim = "http://cloud-3.steamusercontent.com/ugc/2023852627051132794/63F70DFAC05FCFCAA472C7B8BFCCAAF2C6A63B60/",
+    mist = "http://cloud-3.steamusercontent.com/ugc/2023852627051132943/399E1ECA6D218BA3E4900B2B4726AA5D9F3F0B78/",
+    midi = "http://cloud-3.steamusercontent.com/ugc/2023852627051133103/23EC261B84BB9DB60E59AC7C0D03D557E98ADC12/",
+
+    -- Sunkeeper
+    sup0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051139045/3ED3B7AA7312105631740A0076E811596156F9CC/",
+    sup2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051139201/0D5B915E0EBCC9E7000D3E14995FE56EF17BAB2C/",
+    su1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051139348/EE5D78055F790C5861E88EC10E0BA161BE18492C/",
+    suh1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051139466/249CC591D2D858BC5526956215BED826DBE098EC/",
+    sust = "http://cloud-3.steamusercontent.com/ugc/2023852627051139594/E4861FC00E4514E778F232E4BCA5CC557B6D21BE/",
+    suli = "http://cloud-3.steamusercontent.com/ugc/2023852627051139708/515C23C28126A85B51B6DC93D03EB3445D596082/",
+    sush = "http://cloud-3.steamusercontent.com/ugc/2023852627051139827/A409C1A5DFCCB6253DC93C55D36922A2A948642E/",
+    sup1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051139947/7CA2B40D7FB0E5AF744149B45EEF377105355EEC/",
+
+    -- Soothsinger
+    sop4 = "http://cloud-3.steamusercontent.com/ugc/2023852627051140070/92606C2F5AFFB156DDDDC596A3E32EB21D0BA789/",
+    soim = "http://cloud-3.steamusercontent.com/ugc/2023852627051140233/30DD934C736BB5EAC7825CE735F338BFB9794620/",
+    sodi = "http://cloud-3.steamusercontent.com/ugc/2023852627051140383/F244822BBDE753788F41EC0F99BEF4DB0CE097DE/",
+    sowo = "http://cloud-3.steamusercontent.com/ugc/2023852627051140496/B97EF5FDF2BAA35D4980A2E07FE3672FD738BDC0/",
+    sopo = "http://cloud-3.steamusercontent.com/ugc/2023852627051140654/FA41DF362DC37ED89B316AF59C3B645032BFB548/",
+    socu = "http://cloud-3.steamusercontent.com/ugc/2023852627051140779/03BCC74919AA437B888D09B272F04523278ECE80/",
+    somu = "http://cloud-3.steamusercontent.com/ugc/2023852627051140904/3E55C630426A4DA85758ABD7B8D05C1BF0DB9110/",
+    sost = "http://cloud-3.steamusercontent.com/ugc/2023852627051141006/31B2929E2890EA0D684B04B01C24371653A105EC/",
+    so1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051141134/C2750161E451146CFC75329E20C575D43A140542/",
+    socr = "http://cloud-3.steamusercontent.com/ugc/2023852627051141358/EBF345D4F430E5C7F7CED9B216940CD23772FCFE/",
+
+    -- Sawbones
+    sap2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137143/F79EDEC586EBEBAB57837830399CD0D2F5752F22/",
+    saim = "http://cloud-3.steamusercontent.com/ugc/2023852627051137277/43EBEDDECCB0D1D6F6FCC5F347D3542F309D867F/",
+    sawo = "http://cloud-3.steamusercontent.com/ugc/2023852627051137418/35CB4B3903072B2B6D83848BC27A7290FDA70A34/",
+    sast = "http://cloud-3.steamusercontent.com/ugc/2023852627051137562/03B822A1416263E72996CF4A4FA147405306402C/",
+    sah3 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137653/5DD7FD3158B47DCA5F34987BEC4B1A0D4C502EBF/",
+    sare = "http://cloud-3.steamusercontent.com/ugc/2023852627051137777/4B09FCF8F86467340E8587DB2686BDC60308C898/",
+
+    -- Beast Tyrant
+    btp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051126956/7504C3A7D1110F4358B532F8A4C0578F4BD94407/",
+    btp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051127090/38B2EDBE08575EB1A5D1B610305719583FE845F7/",
+    btwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051127189/79DDF890DE41D9CE5B754B349808433B6BC84820/",
+    btim = "http://cloud-3.steamusercontent.com/ugc/2023852627051127309/29F25779C348875DEDEA277231595961A77C8546/",
+    bth1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051127433/C1976A082F73A7F1C1C64B848045B8B50D261577/",
+    btea = "http://cloud-3.steamusercontent.com/ugc/2023852627051127574/2DB0F1D5D7606C3E475F3D04234D6678F199CF98/",
+
+    -- Berserker
+    bep1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051123689/517516AB77ABEFFC4949077A8580399570E9E807/",
+    bep2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051123804/34260BA4ABA1271689C2754671516E8095626785/",
+    bewo = "http://cloud-3.steamusercontent.com/ugc/2023852627051123955/00BBD50D29C8DE885A4F219B265E37229A9C0412/",
+    best = "http://cloud-3.steamusercontent.com/ugc/2023852627051124062/C0103C80EB4C953D01AA42168195C4214786472E/",
+    bedi = "http://cloud-3.steamusercontent.com/ugc/2023852627051124176/5A63F22585CE8DB0B9DD1C7701AEDD45B8177943/",
+    beh1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051124298/7F705F08F0D657A4E97FED4461F90C0ADD5C2370/",
+    befi = "http://cloud-3.steamusercontent.com/ugc/2023852627051124407/5242E2086B79C77401D8F643E0666CDC77E92B1E/",
+
+    -- Doomstalker
+    dop1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051128962/3822EDBFE6888E84D96C475D9F104A937FF7D025/",
+    do1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051129093/6FE8C2B8C3B01FCB2090DDEE0C5413D0441CBD23/",
+    domu = "http://cloud-3.steamusercontent.com/ugc/2023852627051129241/785B7E065ABD5FABF625BA577F5180AA4AC69F4C/",
+    dopo = "http://cloud-3.steamusercontent.com/ugc/2023852627051129408/6E884CA23067ADFF56AB963D97DBEE72E5DA3908/",
+    dowo = "http://cloud-3.steamusercontent.com/ugc/2023852627051129623/CEFB1EDA4F0E21B5C6F28D5A57D574B456D12A66/",
+    doim = "http://cloud-3.steamusercontent.com/ugc/2023852627051129805/F0225E470264D3097E617B0275643C53B1F8C364/",
+    dost = "http://cloud-3.steamusercontent.com/ugc/2023852627051129912/6ED671D928B2BDCD6CB12C50525F697B2478A6A1/",
+    doat = "http://cloud-3.steamusercontent.com/ugc/2023852627051130063/6E4BDF543C748B6202B3B4BEF002185DAED63BC1/",
+
+    -- Elementalist
+    elp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051130189/F6CEE6BBEA19DFB5EFCC0E1DAA8995CE451E2BC9/",
+    elp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051130332/FF62982C297304ACE189AFE161BE87A0C60F2B0B/",
+    elfi = "http://cloud-3.steamusercontent.com/ugc/2023852627051130473/8747C05F15C8C270DD45B7ADF0DA854CDCAC1BCE/",
+    elic = "http://cloud-3.steamusercontent.com/ugc/2023852627051130635/00638EBE6C51C84E1620F1754183E793F52CF22E/",
+    elwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051130845/341DBE92BBAF4502BBC70A6FC8A659D292D017CC/",
+    elea = "http://cloud-3.steamusercontent.com/ugc/2023852627051131027/71AB131ED059F1AF1AD03E7D77A9239653B3B460/",
+    elpu = "http://cloud-3.steamusercontent.com/ugc/2023852627051131125/E81F564039CDDC58BE2691D6521FEDB9B5A5AB1D/",
+    elwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051131285/10CAC21DAAEFD1E3D1CAE1CE0473AABA96D60AAC/",
+    elst = "http://cloud-3.steamusercontent.com/ugc/2023852627051131421/44FFB2CE6DFC2556ACAFF2853F9E5A84E3FD46F9/",
+    elta = "http://cloud-3.steamusercontent.com/ugc/2023852627051131570/FB1D849C1ED369B70EF19EFA9C9A0DECB45270C1/",
+
+    -- Nightshroud
+    nsda = "http://cloud-3.steamusercontent.com/ugc/2023852627051133239/2195E6BFB099D77004815B45D4B6912627A16D1D/",
+    nsin = "http://cloud-3.steamusercontent.com/ugc/2023852627051133388/FE132FCCC9202505BC8687DD1BFEB972CC37674D/",
+    nsmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051133580/EF05D97A3E6C03C20207900D068F70B0083590D5/",
+    nsh1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051133846/351957B95E75A72F0D173B275B5EC70A2434C7D3/",
+    nscu = "http://cloud-3.steamusercontent.com/ugc/2023852627051134053/4595D7971324F11BB4F6AE138BAF2F74841D78D7/",
+    nsat = "http://cloud-3.steamusercontent.com/ugc/2023852627051134229/F0E5FDB8744AD8BF28F1A053B6CA1718517EA153/",
+    nsp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051134397/FF7F7F4BF7E8404E820A6560B11BD1DC022AF85A/",
+    nsm1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051134608/9E8B663F3D942A13DB5587E5E95BCA642BEA1056/",
+
+    -- Plagueherald
+    plp0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051134780/C691EB6AB31CABEC7BF2CCC0295609BAA5DA0325/",
+    plp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051134998/ABD8090B5E16894889C5A03B2B7CC24FA5B5EC39/",
+    plp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051135200/9648C1708932A7074FE20696137CF9E89E81808C/",
+    plwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051135398/C2421AECEBC5D62CF793A14DB8DC8A9ED0E8B759/",
+    plpo = "http://cloud-3.steamusercontent.com/ugc/2023852627051135568/8E3957A273D6EE0F49992FE4868F2A7D287D4D78/",
+    plcu = "http://cloud-3.steamusercontent.com/ugc/2023852627051135696/C2299867B27BFB38CFC03BA97C7A8A2EDED5228B/",
+    plim = "http://cloud-3.steamusercontent.com/ugc/2023852627051135831/08B21D0861C987E00F9C6144C8D1DA4A1712FEF1/",
+    plst = "http://cloud-3.steamusercontent.com/ugc/2023852627051135969/CF26959FC64809D2686963FDDC358C3660CB832D/",
+
+    -- Quartermaster
+    qmp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051136092/F73C7FECC4CBCF077D85865547CEE8643C1316B9/",
+    qm1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051136224/BE1F249B4EA807CDB62CFB4A6E5421C8C801E965/",
+    qmmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051136320/2BAFDAE3A37DA61E93C254486A9CA229947D42ED/",
+    qmpi = "http://cloud-3.steamusercontent.com/ugc/2023852627051136459/274847070BF93397D9276AF3C6D05EEC9C935D8C/",
+    qmst = "http://cloud-3.steamusercontent.com/ugc/2023852627051136625/3AE9F2DE82F48E9B9491E42C9C66F7D56626BF28/",
+    qmat = "http://cloud-3.steamusercontent.com/ugc/2023852627051136746/3DF7533FBAF9C8C0FF7358C807EBD57FC3BD967C/",
+    qmre = "http://cloud-3.steamusercontent.com/ugc/2023852627051136862/11D42CDD6A7C6AAD18594DE124DDEFFE4610B98B/",
+    qmp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137006/9A785047034F27E94F7ABCC55C80A170BC48D9AF/",
+
+    -- Summoner
+    smp0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051141358/EBF345D4F430E5C7F7CED9B216940CD23772FCFE/",
+    smp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051141493/72BF20259E4F331460179D8466388EFFCB5DDE8B/",
+    smp2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051141599/43F1E666046BC2DA0ACC76AE9C51B303A56EAF08/",
+    smwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051141740/B46871B687B6BE6F654B2E7BD018B2B8D1A4C1F7/",
+    smpo = "http://cloud-3.steamusercontent.com/ugc/2023852627051141874/B67504F717F60BE9D1E53211C8CE2AFCD862CD6B/",
+    smh1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051142010/C1AE7E9FC920C2EF7F07CEF2A2F7074E0044BF8E/",
+    smfi = "http://cloud-3.steamusercontent.com/ugc/2023852627051142278/6A29E3C76E4F4DB2B19A3FFB9353318E9809DED4/",
+    smwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051142459/4C12E36AB6A2B5C329320DDA209894DDF40AEAC7/",
+    smda = "http://cloud-3.steamusercontent.com/ugc/2023852627051142601/CAB0E911BB9DDCDEAC270DDE9647373BCA64EBFB/",
+    smea = "http://cloud-3.steamusercontent.com/ugc/2023852627051142741/5F9A9DC7F79925EC0B6F1B98DF774F61E145AD1E/",
+
+    -- Diviner
+    dip1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051122149/87759C4CC3D182EB3EF77CB16687FD328A15E362/",
+    pip3 = "http://cloud-3.steamusercontent.com/ugc/2023852627051122515/0DF8BB319DAA0517A5BB2F1B6E4D631396EE2FDD/",
+    dida = "http://cloud-3.steamusercontent.com/ugc/2023852627051122650/CDF1A3C2B64D8D62781402BD3BB237F9F7D05788/",
+    dili = "http://cloud-3.steamusercontent.com/ugc/2023852627051122768/7306DD23A075BB81C2F4B6824DD1A9B657E89748/",
+    dimu = "http://cloud-3.steamusercontent.com/ugc/2023852627051122879/B289CA50EB255CF361F5902D6A1A7EBC8C47320E/",
+    dicu = "http://cloud-3.steamusercontent.com/ugc/2023852627051123028/9919022FB96B0E4646DE772C799E2D4B210B776E/",
+    dire = "http://cloud-3.steamusercontent.com/ugc/2023852627051123145/FD7295081361D718776B7D4F8E597FDB7F3A8B7F/",
+    diha = "http://cloud-3.steamusercontent.com/ugc/2023852627051123283/6D86C02A862E0E3FC2AD7465C6202CAC008C969B/",
+    dih1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051123414/A8865C69834A60822F1FCB3DC1E185FD2A4D95B3/",
+    dicr = "http://cloud-3.steamusercontent.com/ugc/2023852627051123557/B6833F222556BCE9609DFA1333ED8E603AB5A545/",
+
+    -- Bladeswarm
+    blwi = "http://cloud-3.steamusercontent.com/ugc/2023852627051125875/6F21AAA3543A2739CA6A637A79C2A55784483BCE/",
+    blea = "http://cloud-3.steamusercontent.com/ugc/2023852627051125875/6F21AAA3543A2739CA6A637A79C2A55784483BCE/",
+    blli = "http://cloud-3.steamusercontent.com/ugc/2023852627051125974/E6515ABAB0DA7857E97F25B387CC0B47DD743C78/",
+    blda = "http://cloud-3.steamusercontent.com/ugc/2023852627051126121/D4602468296FF64088AE41FA76F2A3277B25AE86/",
+    blh1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051126222/81A2E50EFBB0777C0D655EFE6363A96EA0BB9105/",
+    blwo = "http://cloud-3.steamusercontent.com/ugc/2023852627051126348/0D9A6E2F4AECF2CDC396A5069981BC9E43F695C6/",
+    blpo = "http://cloud-3.steamusercontent.com/ugc/2023852627051126463/867A8712CFCA538884C16D60D442F0E018C94D08/",
+    blmu = "http://cloud-3.steamusercontent.com/ugc/2023852627051126598/F27221FE59901D7F30F11C2B1F35A0945F315D29/",
+    blp1 = "http://cloud-3.steamusercontent.com/ugc/2023852627051126715/F16D477CBFE901838F97BE8C3EF7991D019A6EF5/",
+    blp0 = "http://cloud-3.steamusercontent.com/ugc/2023852627051126834/2580842B1A90A777DDED38B2CA1F67C68F93603A/",
 }
 
 CardDescriptions = {
@@ -390,6 +591,211 @@ CardDescriptions = {
     dwin = "+0, Invisible Self",
     dwst = "-1, Stun",
     dwdi = "+0, Disarm",
+
+    --
+    -- Gloomhaven classes
+    --
+
+    -- Brute
+    brp1 = "+1",
+    brp3 = "+3",
+    brpu = "+0, Push 1, Reroll",
+    brpi = "+0, Pierce 3, Reroll",
+    brst = "+0, Stun, Reroll",
+    brdi = "+0, Disarm, Reroll",
+    brmu = "+0, Muddle, Reroll",
+    brta = "+0, Add 1 target, Reroll",
+    brsh = "+1, Shield 1",
+
+    -- Spellweaver
+    spp1 = "+1",
+    spst = "+0, Stun",
+    spwo = "+1, Wound",
+    spim = "+1, Immobilize",
+    spcu = "+1, Curse",
+    spfi = "+2, Infuse Fire",
+    spic = "+2, Infuse Ice",
+    spea = "+0, Infuse Earth, Reroll",
+    spwi = "+0, Infuse Wind, Reroll",
+    spli = "+0, Infuse Light, Reroll",
+    spda = "+0, Infuse Dark, Reroll",
+
+    -- Tinkerer
+    tip0 = "+0",
+    tip1 = "+1",
+    tip3 = "+3",
+    tifi = "+0, Infuse Fire, Reroll",
+    timu = "+0, Muddle, Reroll",
+    tiwo = "+1, Wound",
+    tiim = "+1, Immobilize",
+    tih2 = "+1, Heal 2 Self",
+    tiat = "+0, Add Target",
+
+    -- Scoundrel
+    scp0 = "+0",
+    scp1 = "+1",
+    scp2 = "+2",
+    sc1r = "+1, Reroll",
+    scpi = "+0, Pierce 3, Reroll",
+    scpo = "+0, Poison, Reroll",
+    scmu = "+0, Muddle, Reroll",
+    scin = "+0, Invisible Self, Reroll",
+
+    -- Cragheart
+    crp1 = "+1",
+    crm2 = "-2",
+    crp2 = "+2",
+    crim = "+1, Immobilize",
+    crmu = "+2, Muddle",
+    crpu = "+0, Push 2, Reroll",
+    crea = "+0, Infuse Earth, Reroll",
+    crwi = "+0, Infuse Wind, Reroll",
+
+    -- Mindthief
+    mip2 = "+2",
+    mip0 = "+0",
+    miic = "+2, Infuse Ice",
+    mi1r = "+1, Reroll",
+    mipu = "+0, Pull 1, Reroll",
+    mimu = "+0, Muddle, Reroll",
+    miim = "+0, Immobilize, Reroll",
+    mist = "+0, Stun, Reroll",
+    midi = "+0, Disarm, Reroll",
+
+    -- Sunkeeper
+    sup0 = "+0",
+    sup2 = "+2",
+    su1r = "+1, Reroll",
+    suh1 = "+0, Heal 1 Self, Reroll",
+    sust = "+0, Stun, Reroll",
+    suli = "+0, Infuse Light, Reroll",
+    sush = "+0, Shield 1, Reroll",
+    sup1 = "+1",
+
+    -- Soothsinger
+    sop4 = "+4",
+    soim = "+1, Immobilize",
+    sodi = "+1, Disarm",
+    sowo = "+2, Wound",
+    sopo = "+2, Poison",
+    socu = "+2, Curse",
+    somu = "+3, Muddle",
+    sost = "+0, Stun",
+    so1r = "+1, Reroll",
+    socr = "+0, Curse, Reroll",
+
+    -- Sawbones
+    sap2 = "+2",
+    saim = "+1, Immobilize",
+    sawo = "+0, Wound, Reroll",
+    sast = "+0, Stun, Reroll",
+    sah3 = "+0, Heal 3 Self, Reroll",
+    sare = "+0, Refresh an item",
+
+    -- Beast Tyrant
+    btp1 = "+1",
+    btp2 = "+2",
+    btwo = "+1, Wound",
+    btim = "+1, Immobilize",
+    bth1 = "+0, Heal 1 Self, Reroll",
+    btea = "+0, Infuse Earth, Reroll",
+
+    -- Berserker
+    bep1 = "+1",
+    bep2 = "+2, Reroll",
+    bewo = "+0, Wound, Reroll",
+    best = "+0, Stun, Reroll",
+    bedi = "+1, Disarm, Reroll",
+    beh1 = "+0, Heal 1 Self, Reroll",
+    befi = "+2, Infuse Fire",
+
+    -- Doomstalker
+    dop1 = "+1",
+    do1r = "+1, Reroll",
+    domu = "+2, Muddle",
+    dopo = "+1, Poison",
+    dowo = "+1, Wound",
+    doim = "+1, Immobilize",
+    dost = "+0, Stun",
+    doat = "+0, Add 1 Target, Reroll",
+
+    -- Elementalist
+    elp1 = "+1",
+    elp2 = "+2",
+    elfi = "+0, Infuse Fire",
+    elic = "+0, Infuse Ice",
+    elwi = "+0, Infuse Wind",
+    elea = "+0, Infuse Earth",
+    elpu = "+1, Push 1",
+    elwo = "+1, Wound",
+    elst = "+0, Stun",
+    elta = "+0, Add 1 Target",
+
+    -- Nightshroud
+    nsda = "+1, Infuse Dark",
+    nsin = "+1, Invisible Self",
+    nsmu = "+0, Muddle, Reroll",
+    nsh1 = "+0, Heal 1 Self, Reroll",
+    nscu = "+0, Curse, Reroll",
+    nsat = "+0, Add 1 Target, Reroll",
+    nsp1 = "+1",
+    nsm1 = "-1, Infuse Dark",
+
+    -- Plagueherald
+    plp0 = "+0",
+    plp1 = "+1",
+    plp2 = "+2",
+    plwi = "+1, Infuse Wind",
+    plpo = "+0, Poison, Reroll",
+    plcu = "+0, Curse, Reroll",
+    plim = "+0, Immobilize, Reroll",
+    plst = "+0, Stun, Reroll",
+
+    -- Quartermaster
+    qmp2 = "+2",
+    qm1r = "+1, Reroll",
+    qmmu = "+0, Muddle, Reroll",
+    qmpi = "+0, Pierce 3, Reroll",
+    qmst = "+0, Stun, Reroll",
+    qmat = "+0, Add 1 Target, Reroll",
+    qmre = "+0, Refresh an item",
+    qmp1 = "+1",
+
+    -- Summoner
+    smp0 = "+0",
+    smp1 = "+1",
+    smp2 = "+2",
+    smwo = "+0, Wound, Reroll",
+    smpo = "+0, Poison, Reroll",
+    smh1 = "+0, Heal 1 Self, Reroll",
+    smfi = "+0, Infuse Fire, Reroll",
+    smwi = "+0, Infuse Wind, Reroll",
+    smda = "+0, Infuse Dark, Reroll",
+    smea = "+0, Infuse Earth, Reroll",
+
+    -- Diviner
+    dip1 = "+1",
+    pip3 = "+3, Shield 1 Self",
+    dida = "+2, Infuse Dark",
+    dili = "+2, Infuse Light",
+    dimu = "+3, Muddle",
+    dicu = "+2, Curse",
+    dire = "+2, Regenerate Self",
+    diha = "+1, Heal 2 Ally",
+    dih1 = "+0, Heal 1 Self, Reroll",
+    dicr = "+0, Curse, Reroll",
+
+    -- Bladeswarm
+    blwi = "+1, Infuse Wind",
+    blea = "+1, Infuse Earth",
+    blli = "+1, Infuse Light",
+    blda = "+1, Infuse Dark",
+    blh1 = "+0, Heal 1 Self, Reroll",
+    blwo = "+0, Wound",
+    blpo = "+0, Poison",
+    blmu = "+2, Muddle",
+    blp1 = "+1",
+    blp0 = "+0",
 }
 
 RoundedCardMappings = {

@@ -2384,16 +2384,30 @@ function registerForPing(params)
    table.insert(PingListeners, obj)
 end
 
+function round(x, digits)
+   local mult = 10^(digits or 0)
+   return math.floor(x * mult + 0.5) / mult
+end
+
+function roundTable(table, digits)
+   for key, value in pairs(table) do
+      if type(value) == "number" then
+         table[key] = round(value, digits)
+      end
+   end
+   return table
+end
+
 function onPlayerPing(player, position, object)
    local devSettings = JSON.decode(getDevSettings())
    local printPingedCoordinates = devSettings['print-pinged-coordinates']
    if printPingedCoordinates ~= nil then
       if printPingedCoordinates == 'Global' then
-         print(JSON.encode(position))
+         print(JSON.encode(roundTable(position,3)))
       else
          local target = getObjectFromGUID(printPingedCoordinates)
          if target ~= nil then
-            print(JSON.encode(target.positionToLocal(position)))
+            print(JSON.encode(roundTable(target.positionToLocal(position),3)))
          end
       end
    end
