@@ -1361,7 +1361,7 @@ function sendCard(params)
         for _, obj in ipairs(player.getHandObjects()) do
             if obj.guid == card.guid then
                 local position = card.getPosition()
-                card.setPosition(position + Vector(0, 0, -5))
+                card.setPosition(position + Vector(0, 4, 0))
                 break
             end
         end

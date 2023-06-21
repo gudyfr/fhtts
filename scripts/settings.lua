@@ -10,6 +10,7 @@ function createEmptyState()
             ["enable-x-haven"] = false,
             address = "localhost",
             port = "8080",
+            ["alt-zoom-fix"] = true,
             ["difficulty-normal"] = true,
             ["play-narration-in-assistant"] = true,
             ["enable-end-of-round-looting"] = true,
@@ -30,7 +31,9 @@ function getExpectedEntries()
         { "enable-5p",                          "checkbox", on5pToggled },
         { "address",                            "text" },
         { "port",                               "text" },
+        { "enable-solo",                        "checkbox", onSoloToggled},
         { "play-narration-in-assistant",        "checkbox" },
+        { "alt-zoom-fix",                       "checkbox", onAltZoomToggled },
         { "enable-internal-game-state",         "checkbox" },
         { "enable-end-of-round-looting",        "checkbox" },
         { "enable-highlight-current-figurines", "checkbox" },
@@ -80,6 +83,22 @@ function on5pToggled()
     scenarioMat.setCustomObject(customObject)
     scenarioMat.setSnapPoints(snapPoints)
     scenarioMat.reload()
+
+    Global.call("updateHotkeys", { enabled = State["enable-solo"], fivePlayers = State["enable-5p"] })
+end
+
+function onAltZoomToggled()
+    local enabled = State["alt-zoom-fix"]
+    local handZoneGuids = {"2cc705", "5caab9", "34a6bf", "b6e49e", "fcfb8f"}
+    for _, guid in ipairs(handZoneGuids) do
+        local zone = getObjectFromGUID(guid)
+        local position = zone.getPosition()
+        zone.setPosition({position.x, position.y, enabled and -36 or 50})
+    end
+end
+
+function onSoloToggled()
+    Global.call("updateHotkeys", { enabled = State["enable-solo"], fivePlayers = State["enable-5p"] })
 end
 
 function onDifficultyEasy(set)

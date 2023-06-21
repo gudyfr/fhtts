@@ -281,7 +281,7 @@ CardMappings = {
     somu = "http://cloud-3.steamusercontent.com/ugc/2023852627051140904/3E55C630426A4DA85758ABD7B8D05C1BF0DB9110/",
     sost = "http://cloud-3.steamusercontent.com/ugc/2023852627051141006/31B2929E2890EA0D684B04B01C24371653A105EC/",
     so1r = "http://cloud-3.steamusercontent.com/ugc/2023852627051141134/C2750161E451146CFC75329E20C575D43A140542/",
-    socr = "http://cloud-3.steamusercontent.com/ugc/2023852627051141358/EBF345D4F430E5C7F7CED9B216940CD23772FCFE/",
+    socr = "http://cloud-3.steamusercontent.com/ugc/2023852627051141229/6E1EFFF1EE78FBAD9D62EBCD3A6734D7D00F6032/",
 
     -- Sawbones
     sap2 = "http://cloud-3.steamusercontent.com/ugc/2023852627051137143/F79EDEC586EBEBAB57837830399CD0D2F5752F22/",

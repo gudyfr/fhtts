@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 require('json')
 require('constants')
 require('coordinates')
@@ -20,24 +21,6 @@ mapTilesBagId = '9cbcab'
 function onLoad(save)
    FhLoggers = {}
    fhLogInit()
-   addHotkey("Play Initiative Card",
-      function(player_color, hovered_object, pointer, key_up) playCard(player_color, 1) end)
-   addHotkey("Play Second Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 2) end)
-   addHotkey("Play Third Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 3) end)
-   addHotkey("Draw Card", function(player_color, hovered_object, point, key_up) drawCard(player_color) end)
-   addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
-   addHotkey("Loot a Token",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed(player_color, hovered_object) end)
-   addHotkey("Loot a Token (Green)",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed("Green", hovered_object) end)
-   addHotkey("Loot a Token (Red)",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed("Red", hovered_object) end)
-   addHotkey("Loot a Token (White)",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed("White", hovered_object) end)
-   addHotkey("Loot a Token (Blue)",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed("Blue", hovered_object) end)
-   addHotkey("Loot a Token (Yellow)",
-      function(player_color, hovered_object, point, key_up) lootKeyPressed("Yellow", hovered_object) end)
 
    -- Restore the triggers
    local state = JSON.decode(save or {}) or {}
@@ -75,8 +58,14 @@ function onLoad(save)
 
    CurrentScenarioObjects = getScenarioElementObjects()
 
-   Wait.frames(loadData, 1)
-   Wait.frames(fhLogSettingsUpdated, 1)
+   Wait.frames(onAfterLoad, 1)
+end
+
+function onAfterLoad()
+   loadData()
+   fhLogSettingsUpdated()
+   local settings = JSON.decode(getSettings())
+   updateHotkeys({ enabled = settings["enable-solo"] or false, fivePlayers = settings["enable-5p"] or false })
 end
 
 function onSave()
@@ -2329,6 +2318,7 @@ function reset()
 end
 
 function resetAsync()
+   MusicPlayer.stop()
    for _, info in ipairs(Savables) do
       info.savable.call("reset")
       while info.savable.call("isStateUpdating") do
@@ -2385,7 +2375,7 @@ function registerForPing(params)
 end
 
 function round(x, digits)
-   local mult = 10^(digits or 0)
+   local mult = 10 ^ (digits or 0)
    return math.floor(x * mult + 0.5) / mult
 end
 
@@ -2403,11 +2393,11 @@ function onPlayerPing(player, position, object)
    local printPingedCoordinates = devSettings['print-pinged-coordinates']
    if printPingedCoordinates ~= nil then
       if printPingedCoordinates == 'Global' then
-         print(JSON.encode(roundTable(position,3)))
+         print(JSON.encode(roundTable(position, 3)))
       else
          local target = getObjectFromGUID(printPingedCoordinates)
          if target ~= nil then
-            print(JSON.encode(roundTable(target.positionToLocal(position),3)))
+            print(JSON.encode(roundTable(target.positionToLocal(position), 3)))
          end
       end
    end
@@ -2469,7 +2459,7 @@ function onBattleMapTokenDrop(player_color, dropped_object, hitlist)
          local pos = obj.getPosition()
          if (dropped_object.getPosition().y > pos.y) then
             dropped_object.setPositionSmooth({ x = pos.x, y = 1.45, z = pos.z }, false, true)
-            obj.setPositionSmooth({x = pos.x, y = pos.y + 0.2, z = pos.z})
+            obj.setPositionSmooth({ x = pos.x, y = pos.y + 0.2, z = pos.z })
          end
       end
    end
@@ -2498,5 +2488,105 @@ function lootKeyPressed(color, hovered)
    if hovered and hovered.getName and hovered.getName() == "Loot" then
       destroyObject(hovered)
       getScenarioMat().call("doLoot", { player_color = color, count = 1 })
+   end
+end
+
+function becomeColor(player_color, new_color)
+   for _, player in ipairs(Player.getPlayers()) do
+      if player.color == player_color then
+         player.changeColor(new_color)
+      end
+   end
+end
+
+function updateHotkeys(params)
+   clearHotkeys()
+   local enabled = params.enabled or false
+   local fivePlayers = params.fivePlayers or false
+   addHotkey("Play Initiative Card",
+      function(player_color, hovered_object, pointer, key_up) playCard(player_color, 1) end)
+   addHotkey("Play Second Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 2) end)
+   addHotkey("Play Third Card", function(player_color, hovered_object, pointer, key_up) playCard(player_color, 3) end)
+   addHotkey("Draw Card", function(player_color, hovered_object, point, key_up) drawCard(player_color) end)
+   addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
+   addHotkey("Loot a Token",
+      function(player_color, hovered_object, point, key_up) lootKeyPressed(player_color, hovered_object) end)
+
+   if enabled then
+      addHotkey("Loot a Token (Player 1)",
+         function(player_color, hovered_object, point, key_up) lootKeyPressed("Green", hovered_object) end)
+      addHotkey("Loot a Token (Player 2)",
+         function(player_color, hovered_object, point, key_up) lootKeyPressed("Red", hovered_object) end)
+      addHotkey("Loot a Token (Player 3)",
+         function(player_color, hovered_object, point, key_up) lootKeyPressed("White", hovered_object) end)
+      addHotkey("Loot a Token (Player 4)",
+         function(player_color, hovered_object, point, key_up) lootKeyPressed("Blue", hovered_object) end)
+
+      if fivePlayers then
+         addHotkey("Loot a Token (Player 5)",
+            function(player_color, hovered_object, point, key_up) lootKeyPressed("Yellow", hovered_object) end)
+      end
+
+      addHotkey("Change Seat to Player 1",
+         function(player_color, hovered_object, point, key_up) becomeColor(player_color, "Green") end)
+      addHotkey("Change Seat to Player 2",
+         function(player_color, hovered_object, point, key_up) becomeColor(player_color, "Red") end)
+      addHotkey("Change Seat to Player 3",
+         function(player_color, hovered_object, point, key_up) becomeColor(player_color, "White") end)
+      addHotkey("Change Seat to Player 4",
+         function(player_color, hovered_object, point, key_up) becomeColor(player_color, "Blue") end)
+
+      if fivePlayers then
+         addHotkey("Change Seat to Player 5",
+            function(player_color, hovered_object, point, key_up) becomeColor(player_color, "Yellow") end)
+      end
+
+      addHotkey("Play Initiative Card (Player 1)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Green", 1) end)
+      addHotkey("Play Second Card (Player 1)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Green", 2) end)
+      addHotkey("Play Third Card (Player 1)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Green", 3) end)
+
+      addHotkey("Play Initiative Card (Player 2)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Red", 1) end)
+      addHotkey("Play Second Card (Player 2)", function(player_color, hovered_object, pointer, key_up) playCard("Red", 2) end)
+      addHotkey("Play Third Card (Player 2)", function(player_color, hovered_object, pointer, key_up) playCard("Red", 3) end)
+
+      addHotkey("Play Initiative Card (Player 3)",
+         function(player_color, hovered_object, pointer, key_up) playCard("White", 1) end)
+      addHotkey("Play Second Card (Player 3)",
+         function(player_color, hovered_object, pointer, key_up) playCard("White", 2) end)
+      addHotkey("Play Third Card (Player 3)",
+         function(player_color, hovered_object, pointer, key_up) playCard("White", 3) end)
+
+      addHotkey("Play Initiative Card (Player 4)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Blue", 1) end)
+      addHotkey("Play Second Card (Player 4)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Blue", 2) end)
+      addHotkey("Play Third Card (Player 4)", function(player_color, hovered_object, pointer, key_up) playCard("Blue", 3) end)
+
+      if fivePlayers then
+         addHotkey("Play Initiative Card (Player 5)",
+            function(player_color, hovered_object, pointer, key_up) playCard("Yellow", 1) end)
+         addHotkey("Play Second Card (Player 5)",
+            function(player_color, hovered_object, pointer, key_up) playCard("Yellow", 2) end)
+         addHotkey("Play Third Card (Player 5)",
+            function(player_color, hovered_object, pointer, key_up) playCard("Yellow", 3) end)
+      end
+
+      addHotkey("Sort Hand by initiative (Player 1)",
+         function(player_color, hovered_object, point, key_up) sortHand("Green") end)
+      addHotkey("Sort Hand by initiative (Player 2)",
+         function(player_color, hovered_object, point, key_up) sortHand("Red") end)
+      addHotkey("Sort Hand by initiative (Player 3)",
+         function(player_color, hovered_object, point, key_up) sortHand("White") end)
+      addHotkey("Sort Hand by initiative (Player 4)",
+         function(player_color, hovered_object, point, key_up) sortHand("Blue") end)
+
+      if fivePlayers then
+         addHotkey("Sort Hand by initiative (Player 5)",
+            function(player_color, hovered_object, point, key_up) sortHand("Yellow") end)
+      end
    end
 end

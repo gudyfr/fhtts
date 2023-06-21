@@ -15,6 +15,14 @@ function onLoad(save)
     end
     if State == nil then
         State = createEmptyState()
+    else
+        -- if we have introduced new values, then let's make sure we use their default value
+        local emptyState = createEmptyState()
+        for k, v in pairs(emptyState.state) do
+            if State[k] == nil then
+                State[k] = v
+            end
+        end
     end
     registerSavable(self.getName())
     refreshControls()
