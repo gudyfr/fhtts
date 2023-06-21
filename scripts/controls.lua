@@ -35,12 +35,15 @@ function refreshControls()
     else
         RelativeScale = 1
     end
-    for _, button in ipairs(self.getButtons() or {}) do
-        self.removeButton(button.index)
-    end
-    for _, input in ipairs(self.getInputs() or {}) do
-        self.removeInput(input.index)
-    end
+    self.clearButtons()
+    self.clearInputs()
+
+    -- for _, button in ipairs(self.getButtons() or {}) do
+    --     self.removeButton(button.index)
+    -- end
+    -- for _, input in ipairs(self.getInputs() or {}) do
+    --     self.removeInput(input.index)
+    -- end
 
     local points = {}
     for _, point in ipairs(self.getSnapPoints()) do

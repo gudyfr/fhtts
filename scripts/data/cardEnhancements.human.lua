@@ -1328,6 +1328,14 @@ CardEnhancements = {
    ["17 - Steam Armor"] = {
       level = 1,
       spots = {
+         {
+            ability = "move",
+            position = {
+               x = -0.255,
+               z = 0.418,
+               },
+            type = "s",
+            },
          },
       },
    ["17 - Venomous Barbs"] = {
@@ -9135,6 +9143,11 @@ CardEnhancements = {
             summon = "summon",
             type = "s",
             },
+         },
+      },
+   ["98 - Barracks - Lvl. 1"] = {
+      level = 1,
+      spots = {
          },
       },
    ["98 - Lie in Wait"] = {
