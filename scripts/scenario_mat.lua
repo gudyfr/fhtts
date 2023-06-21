@@ -71,7 +71,7 @@ function onStateUpdate(state)
     end
 
     CurrentGameState:resetAllState()
-    updateCurrentState()
+    updateCurrentState(true)
 end
 
 -- scenario mat
@@ -815,7 +815,7 @@ function updateCharacters()
         end
     end
     if hasChanged then
-        updateDifficulty(settings.difficulty or 0)
+        updateDifficulty({ difficulty = settings.difficulty or 0 })
     end
     refreshDecals()
 end
@@ -1381,7 +1381,7 @@ function onCleanup(obj, color, alt)
 end
 
 function onCleanedUp()
-    updateAssistant("POST", "endScenario", {}, updateAssistant)
+    updateAssistant("POST", "endScenario", {}, updateState)
 end
 
 function toggleEndScenarioUI()
@@ -1971,7 +1971,7 @@ function refreshStandee(standee, instance)
             fhlog(DEBUG, TAG, "End of round looting for %s", standee.getName())
             local position = standee.getPosition()
             local hitlist = Physics.cast({
-                origin       = {position.x, position.y + 1, position.z},
+                origin       = { position.x, position.y + 1, position.z },
                 direction    = { 0, -1, 0 },
                 type         = 1,
                 max_distance = 4,
@@ -2162,8 +2162,9 @@ function hash(str)
 end
 
 StateUpdaterTimer = nil
-function updateCurrentState()
-    if isInternalGameStateEnabled() then
+function updateCurrentState(forced)
+    forced = forced or false
+    if isInternalGameStateEnabled() or forced then
         -- Queue the update for next frame, that way we can avoid doing too many updates in the same frame
         if StateUpdaterTimer ~= nil then
             Wait.stop(StateUpdaterTimer)
@@ -2527,7 +2528,8 @@ function processLoot(lootTable, mode)
     return
 end
 
-function updateDifficulty(difficulty)
+function updateDifficulty(params)
+    local difficulty = params.difficulty or 0
     -- determine base difficulty
     local playerCount = 0
     local playerLevelSum = 0

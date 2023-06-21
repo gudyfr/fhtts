@@ -2318,7 +2318,6 @@ function reset()
 end
 
 function resetAsync()
-   MusicPlayer.stop()
    for _, info in ipairs(Savables) do
       info.savable.call("reset")
       while info.savable.call("isStateUpdating") do

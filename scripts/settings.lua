@@ -31,18 +31,18 @@ function getExpectedEntries()
         { "enable-5p",                          "checkbox", on5pToggled },
         { "address",                            "text" },
         { "port",                               "text" },
-        { "enable-solo",                        "checkbox", onSoloToggled},
+        { "enable-solo",                        "checkbox", onSoloToggled },
         { "play-narration-in-assistant",        "checkbox" },
         { "alt-zoom-fix",                       "checkbox", onAltZoomToggled },
         { "enable-internal-game-state",         "checkbox" },
         { "enable-end-of-round-looting",        "checkbox" },
         { "enable-highlight-current-figurines", "checkbox" },
+        { "enable-highlight-tiles-by-type",     "checkbox" },
+        { "enable-automatic-characters",        "checkbox" },
         { "difficulty-easy",                    "checkbox", onDifficultyEasy },
         { "difficulty-normal",                  "checkbox", onDifficultyNormal },
         { "difficulty-hard",                    "checkbox", onDifficultyHard },
         { "difficulty-insane",                  "checkbox", onDifficultyInsane },
-        { "enable-highlight-tiles-by-type",     "checkbox" },
-        { "enable-automatic-characters",        "checkbox" },
         { "enable-automatic-scenario-layout",   "checkbox" },
         { "enable-automatic-narration",         "checkbox" },
         { "enable-am-ui-overlay",               "checkbox", onUIOverlayChanged },
@@ -89,11 +89,11 @@ end
 
 function onAltZoomToggled()
     local enabled = State["alt-zoom-fix"]
-    local handZoneGuids = {"2cc705", "5caab9", "34a6bf", "b6e49e", "fcfb8f"}
+    local handZoneGuids = { "2cc705", "5caab9", "34a6bf", "b6e49e", "fcfb8f" }
     for _, guid in ipairs(handZoneGuids) do
         local zone = getObjectFromGUID(guid)
         local position = zone.getPosition()
-        zone.setPosition({position.x, position.y, enabled and -36 or 50})
+        zone.setPosition({ position.x, position.y, enabled and -36 or 50 })
     end
 end
 
@@ -136,7 +136,7 @@ function setDifficulty(level)
             if entry ~= level then
                 local name = "difficulty-" .. entry
                 State[name] = false
-                if button.click_function == "onTog1e_" .. name then
+                if button.click_function == "onToggle_" .. name then
                     local label = ""
                     button.label = label
                     self.editButton(button)
@@ -155,5 +155,5 @@ function setDifficulty(level)
     State.difficulty = difficulty
 
     local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
-    scenarioMat.call('updateDifficulty', difficulty)
+    scenarioMat.call('updateDifficulty', { difficulty = difficulty })
 end
