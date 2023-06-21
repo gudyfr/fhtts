@@ -390,7 +390,7 @@ function refreshDecals()
                                     local ability = summon .. action
                                     local cost = info.cost or info.costByAbility[ability] or 0
                                     if type == 'h' then
-                                        if CurrentSpot.position[2] > 0 then
+                                        if CurrentSpot.position.z > 0 then
                                             cost = math.ceil(cost /
                                                 (currentTopHexEnhancements + (CurrentSpot.baseHexes or 1)))
                                         else
