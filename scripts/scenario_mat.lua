@@ -815,7 +815,7 @@ function updateCharacters()
         end
     end
     if hasChanged then
-        updateDifficulty({ difficulty = settings.difficulty or 0 })
+        updateDifficulty({ difficulty = settings.difficulty or 0, soloMode = settings['enable-solo'] or false })
     end
     refreshDecals()
 end
@@ -2530,6 +2530,7 @@ end
 
 function updateDifficulty(params)
     local difficulty = params.difficulty or 0
+    local soloMode = params.soloMode or false
     -- determine base difficulty
     local playerCount = 0
     local playerLevelSum = 0
@@ -2544,10 +2545,14 @@ function updateDifficulty(params)
             end
         end
     end
-    local baseLevel = 0
+    local averageCharacters = 1
     if playerCount > 0 then
-        baseLevel = math.ceil(playerLevelSum / (playerCount * 2))
+        averageCharacters = playerLevelSum / playerCount
     end
+    if soloMode then
+        averageCharacters = averageCharacters + 1
+    end
+    local baseLevel = math.ceil(averageCharacters/2)
     local level = baseLevel + difficulty
     if level < 0 then level = 0 end
     if level > 7 then level = 7 end

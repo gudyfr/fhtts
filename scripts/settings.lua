@@ -105,6 +105,9 @@ end
 
 function onSoloToggled()
     Global.call("updateHotkeys", { enabled = State["enable-solo"], fivePlayers = State["enable-5p"] })
+    local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
+
+    scenarioMat.call('updateDifficulty', { difficulty = State["difficulty"], solo = State["enable-solo"] })
 end
 
 function onDifficultyEasy(set)
@@ -161,5 +164,5 @@ function setDifficulty(level)
     State.difficulty = difficulty
 
     local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
-    scenarioMat.call('updateDifficulty', { difficulty = difficulty })
+    scenarioMat.call('updateDifficulty', { difficulty = difficulty, solo = State["enable-solo"] })
 end
