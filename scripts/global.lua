@@ -2330,20 +2330,6 @@ function resetAsync()
    return 1
 end
 
-function onObjectPickUp(color, obj)
-   if obj.hasTag("character box") then
-      if #obj.getObjects() == 0 then
-         broadcastToColor("Drop on a player mat to pack that character", color)
-      else
-         broadcastToColor("Drop on a player mat to setup", color)
-      end
-   end
-end
-
-function onObjectDrop(color, obj)
-
-end
-
 function characterLevelChanged()
    -- We need to delay the update as we're getting the callback *before* the change is effective in the button
    Wait.frames(function() getScenarioMat().call("updateCharacters") end, 10)
@@ -2465,10 +2451,10 @@ function onBattleMapTokenDrop(player_color, dropped_object, hitlist)
    end
 end
 
-function onObjectPickUp(player_color, dropped_object)
+function onObjectPickUp(player_color, picked_up_object)
    -- Let's do a cast to see if we're being dropped on top of one of the listeners
    local hitlist = Physics.cast({
-      origin = dropped_object.getPositionSmooth(),
+      origin = picked_up_object.getPositionSmooth(),
       direction = { 0, -1, 0 },
       debug = false,
    })
@@ -2480,6 +2466,12 @@ function onObjectPickUp(player_color, dropped_object)
                listener.call("onObjectPickUpCallback", { player_color = player_color, object = dropped_object })
             end
          end
+      end
+   end
+
+   if picked_up_object.hasTag("character box") then
+      if #picked_up_object.getObjects() > 0 then
+         broadcastToColor("Drop on a player mat to setup", player_color)
       end
    end
 end

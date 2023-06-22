@@ -1361,15 +1361,22 @@ function sendCard(params)
         for _, obj in ipairs(player.getHandObjects()) do
             if obj.guid == card.guid then
                 local position = card.getPosition()
+                -- Move the card up to avoid the hand zone grabbing it again
                 card.setPosition(position + Vector(0, 4, 0))
+                card.setLock(true)
                 break
             end
         end
-    end
-    if orientation.z < 10 and orientation.z > -10 then
-        card.flip()
-    end
-    card.setPositionSmooth(shiftUp(destination, 0.5))
+    end    
+    Wait.time(function()
+        card.setLock(false) 
+        card.setPositionSmooth(shiftUp(destination, 0.5))
+        -- Make sure the card is visible to everyone (sometimes it's not)
+        card.setInvisibleTo({})
+        if orientation.z < 10 and orientation.z > -10 then
+            card.setRotationSmooth({ 0, 0, 180 });
+        end
+    end, 0.1)
 end
 
 function onCleanup(obj, color, alt)
@@ -2552,7 +2559,7 @@ function updateDifficulty(params)
     if soloMode then
         averageCharacters = averageCharacters + 1
     end
-    local baseLevel = math.ceil(averageCharacters/2)
+    local baseLevel = math.ceil(averageCharacters / 2)
     local level = baseLevel + difficulty
     if level < 0 then level = 0 end
     if level > 7 then level = 7 end
