@@ -1416,16 +1416,6 @@
                     "y": -1
                   }
                 ]
-              },
-              {
-                "name": "Shrike Fiend",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -1,
-                    "y": 3
-                  }
-                ]
               }
             ],
             "overlays": [
@@ -1502,11 +1492,6 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": 2,
-                    "y": 2,
-                    "levels": "nee"
-                  },
-                  {
                     "x": 4,
                     "y": -1,
                     "levels": "aan"
@@ -1557,9 +1542,25 @@
                 ]
               },
               {
+                "name": "Lurker Mindsnipper",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": 5,
+                    "levels": "nee"
+                  }
+                ]
+              },
+              {
                 "name": "Shrike Fiend",
                 "orientation": 0,
                 "positions": [
+                  {
+                    "x": -1,
+                    "y": 6,
+                    "levels": "ane"
+                  },
                   {
                     "x": -2,
                     "y": 4,
@@ -11438,9 +11439,19 @@
                     "levels": "nee"
                   },
                   {
+                    "x": -3,
+                    "y": 9,
+                    "levels": "nnn"
+                  },
+                  {
                     "x": -5,
                     "y": 8,
                     "levels": "ann"
+                  },
+                  {
+                    "x": 1,
+                    "y": 1,
+                    "levels": "aan"
                   }
                 ]
               }
@@ -11510,20 +11521,6 @@
                     "x": 0,
                     "y": 0,
                     "levels": "nee"
-                  }
-                ]
-              },
-              {
-                "name": "Night Demon",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -4,
-                    "y": -1
-                  },
-                  {
-                    "x": -8,
-                    "y": 7
                   }
                 ]
               },
@@ -15559,7 +15556,8 @@
                   },
                   {
                     "x": 2,
-                    "y": -4
+                    "y": -4,
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -21837,10 +21835,6 @@
                 "orientation": 0,
                 "positions": [
                   {
-                    "x": -6,
-                    "y": 5
-                  },
-                  {
                     "x": -5,
                     "y": 3
                   },
@@ -21970,6 +21964,10 @@
                   {
                     "x": 9,
                     "y": -6
+                  },
+                  {
+                    "x": 4,
+                    "y": -7
                   }
                 ]
               }
@@ -24768,6 +24766,10 @@
                     "x": 2,
                     "y": -7,
                     "type": "Corridor"
+                  },
+                  {
+                    "x": 5,
+                    "y": -5
                   }
                 ]
               },
@@ -24792,16 +24794,6 @@
             "tokens": [],
             "monsters": [],
             "overlays": [
-              {
-                "name": "Dungeon Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": -8,
-                    "y": 1
-                  }
-                ]
-              },
               {
                 "name": "Large Dungeon Corridor",
                 "orientation": 0,
@@ -32808,6 +32800,17 @@
                 ]
               },
               {
+                "name": "Algox Icespeaker",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1,
+                    "levels": "nne"
+                  }
+                ]
+              },
+              {
                 "name": "Algox Snowspeaker",
                 "orientation": 0,
                 "positions": [
@@ -33071,11 +33074,6 @@
                   {
                     "x": -4,
                     "y": 1,
-                    "levels": "nne"
-                  },
-                  {
-                    "x": 2,
-                    "y": 0,
                     "levels": "nne"
                   }
                 ]
@@ -39999,7 +39997,7 @@
                   {
                     "x": -6,
                     "y": 4,
-                    "levels": "nna"
+                    "levels": "nnn"
                   }
                 ]
               }
@@ -48353,17 +48351,6 @@
             "monsters": [],
             "overlays": [
               {
-                "name": "Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 0,
-                    "y": 2,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
                 "name": "Stalagmites",
                 "orientation": 0,
                 "positions": [
@@ -48486,6 +48473,11 @@
                   {
                     "x": -2,
                     "y": 6,
+                    "type": "Corridor"
+                  },
+                  {
+                    "x": -5,
+                    "y": 5,
                     "type": "Corridor"
                   }
                 ]
@@ -50997,11 +50989,11 @@
             "overlays": [
               {
                 "name": "Large Snow Corridor",
-                "orientation": 0,
+                "orientation": 60,
                 "positions": [
                   {
-                    "x": -1,
-                    "y": 5
+                    "x": -2,
+                    "y": 7
                   }
                 ]
               },
@@ -51011,7 +51003,8 @@
                 "positions": [
                   {
                     "x": 0,
-                    "y": 3
+                    "y": 3,
+                    "type": "Corridor"
                   }
                 ]
               },
@@ -51122,11 +51115,11 @@
             "overlays": [
               {
                 "name": "Large Snow Corridor",
-                "orientation": 60,
+                "orientation": 0,
                 "positions": [
                   {
-                    "x": -7,
-                    "y": 5
+                    "x": -6,
+                    "y": 3
                   }
                 ]
               },
@@ -53257,7 +53250,8 @@
                 "positions": [
                   {
                     "x": 0,
-                    "y": -3
+                    "y": -3,
+                    "levels": "ann"
                   }
                 ]
               },
@@ -68379,7 +68373,7 @@
               },
               {
                 "name": "Snow Corridor",
-                "orientation": 60,
+                "orientation": 0,
                 "positions": [
                   {
                     "x": 1,
@@ -68863,17 +68857,6 @@
             ],
             "overlays": [
               {
-                "name": "Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 1,
-                    "y": -3,
-                    "type": "Corridor"
-                  }
-                ]
-              },
-              {
                 "name": "Large Cave Corridor",
                 "orientation": 0,
                 "positions": [
@@ -68998,6 +68981,17 @@
               }
             ],
             "overlays": [
+              {
+                "name": "Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 6,
+                    "y": 4,
+                    "type": "Corridor"
+                  }
+                ]
+              },
               {
                 "name": "Large Cave Corridor",
                 "orientation": 300,
@@ -69714,7 +69708,8 @@
                 "positions": [
                   {
                     "x": 1,
-                    "y": 0
+                    "y": 0,
+                    "levels": "aan"
                   }
                 ]
               },
@@ -70213,16 +70208,6 @@
             ],
             "overlays": [
               {
-                "name": "Cave Corridor",
-                "orientation": 0,
-                "positions": [
-                  {
-                    "x": 5,
-                    "y": -1
-                  }
-                ]
-              },
-              {
                 "name": "Rubble",
                 "orientation": 0,
                 "positions": [
@@ -70307,6 +70292,16 @@
               }
             ],
             "overlays": [
+              {
+                "name": "Cave Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -6,
+                    "y": -4
+                  }
+                ]
+              },
               {
                 "name": "Large Cave Corridor",
                 "orientation": 0,

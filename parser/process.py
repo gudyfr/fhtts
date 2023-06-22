@@ -524,6 +524,14 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                         for attractor in attractors:
                             dX = x - attractor['x']
                             dY = y - attractor['y']
+                            # monsters have a small x offset (because of the level indicator)
+                            if key == "monsterLevels":
+                                # if name ends with s, it's a monster on an overlay, so the offset is smaller
+                                if name[-1] == 's':
+                                    dX = dX + 30
+                                else:
+                                    dX = dX + 44
+                                dY = dY - 5
                             distance = math.sqrt(dX*dX+dY*dY)
                             betterMatch = bestReference == None                            
                             if distance < bestDistance:
