@@ -531,7 +531,7 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                                     dX = dX + 30
                                 else:
                                     dX = dX + 44
-                                dY = dY - 5
+                                dY = dY - 9
                             distance = math.sqrt(dX*dX+dY*dY)
                             betterMatch = bestReference == None                            
                             if distance < bestDistance:

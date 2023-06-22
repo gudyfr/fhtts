@@ -1392,7 +1392,8 @@
                 "positions": [
                   {
                     "x": 2,
-                    "y": 0
+                    "y": 0,
+                    "levels": "ann"
                   }
                 ]
               },
@@ -1403,7 +1404,7 @@
                   {
                     "x": 1,
                     "y": 0,
-                    "levels": "ann"
+                    "levels": "nee"
                   }
                 ]
               },
@@ -1413,12 +1414,24 @@
                 "positions": [
                   {
                     "x": 2,
-                    "y": -1
+                    "y": -1,
+                    "levels": "nnn"
                   }
                 ]
               }
             ],
             "overlays": [
+              {
+                "name": "Large Snow Corridor",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "type": "Corridor"
+                  }
+                ]
+              },
               {
                 "name": "Metal Cabinet",
                 "orientation": 0,
@@ -1582,11 +1595,6 @@
                   {
                     "x": -4,
                     "y": 4
-                  },
-                  {
-                    "x": 0,
-                    "y": 3,
-                    "type": "Corridor"
                   }
                 ]
               },
@@ -23470,11 +23478,13 @@
                 "positions": [
                   {
                     "x": 4,
-                    "y": -3
+                    "y": -3,
+                    "levels": "nnn"
                   },
                   {
                     "x": 6,
-                    "y": -3
+                    "y": -3,
+                    "levels": "nnn"
                   }
                 ]
               },
@@ -40473,7 +40483,8 @@
                   },
                   {
                     "x": -5,
-                    "y": 0
+                    "y": 0,
+                    "levels": "eee"
                   }
                 ]
               },
@@ -48692,7 +48703,8 @@
                 "positions": [
                   {
                     "x": -2,
-                    "y": -2
+                    "y": -2,
+                    "levels": "eee"
                   }
                 ]
               }
@@ -53261,7 +53273,8 @@
                 "positions": [
                   {
                     "x": -2,
-                    "y": -2
+                    "y": -2,
+                    "levels": "ane"
                   }
                 ]
               }
@@ -69565,7 +69578,8 @@
                 "positions": [
                   {
                     "x": -3,
-                    "y": 0
+                    "y": 0,
+                    "levels": "nne"
                   }
                 ]
               },
