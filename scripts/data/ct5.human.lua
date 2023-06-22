@@ -439,7 +439,7 @@ Ct5 = {
          y = 0.221,
          z = 1.75,
          },
-      url = "http://cloud-3.steamusercontent.com/ugc/2035103293442047255/6EDE89B98E992928E730D2511780442E3A1333AE/",
+      url = "http://cloud-3.steamusercontent.com/ugc/2020475472097089381/FBB4014F4243C7A1CF1ACD0696F5F783EB8DC2D9/",
       unlocks = {
          133,
          },

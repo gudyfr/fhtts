@@ -241,7 +241,7 @@ Ct1 = {
          y = 0.221,
          z = 1.75,
          },
-      url = "http://cloud-3.steamusercontent.com/ugc/2015962364046802787/C33026EF782A8C8A4008B838C00A1FC11D67515E/",
+      url = "http://cloud-3.steamusercontent.com/ugc/2020475472097088270/3DD28E2E94F66AD9F159915D21CB1097C820E788/",
       unlocks = {
          18,
          },
