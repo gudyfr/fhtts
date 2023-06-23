@@ -16,7 +16,21 @@ function getState()
     for name, position in pairs(TownGuardElements.decks) do
         result.townGuards[name] = getCardList(position)
     end
-    -- print(JSON.encode(result))
+
+    local pets = {}
+    pets.unavailable = getCardList(Pets.unavailable)
+    pets.available = getCardList(Pets.available)
+    if #pets.unavailable > 0 or #pets.available > 0 then
+        result.pets = pets
+    end
+
+    local trials = {}
+    trials.supply = getCardList(Trials.supply)
+    trials.completed = getCardList(Trials.completed)
+    if #trials.supply > 0 or #trials.completed > 0 then
+        result.trials = trials
+    end
+
     return result
 end
 
@@ -42,6 +56,29 @@ function onStateUpdate(state)
         end
         -- We should have moved all town guards cards, so leave the remaining ones on the scenario mat
     end
+
+    if state.pets ~= nil then
+        local deck, cardGuids = getRestoreDeck("Pets")
+        if deck ~= nil then
+            deck = rebuildDeck(deck, cardGuids, state.pets.unavailable or {}, Pets.unavailable, true)
+            deck = rebuildDeck(deck, cardGuids, state.pets.available or {}, Pets.available)
+        end
+    else
+        deleteCardsAt(Pets.unavailable)
+        deleteCardsAt(Pets.available)
+    end
+
+    if state.trials ~= nil then
+        local deck, cardGuids = getRestoreDeck("Trials")
+        if deck ~= nil then
+            deck = rebuildDeck(deck, cardGuids, state.trials.supply or {}, Trials.supply, true)
+            deck = rebuildDeck(deck, cardGuids, state.trials.completed or {}, Trials.completed)
+        end
+    else
+        deleteCardsAt(Trials.supply)
+        deleteCardsAt(Trials.completed)
+    end
+
     updateGardenButtons()
     updateAvailableBuildings()
     refreshDecals()
@@ -222,6 +259,14 @@ BuildingElements = {
     deck = {},
     buildings = {}
 }
+Pets = {
+    unavailable = {},
+    available = {}
+}
+Trials = {
+    supply = {},
+    completed = {}
+}
 function locateElementsFromTags()
     local buildingLocations = {}
     for _, point in ipairs(self.getSnapPoints()) do
@@ -230,7 +275,6 @@ function locateElementsFromTags()
         for _, tag in ipairs(point.tags) do
             tagsMap[tag] = true
         end
-
         if tagsMap["town guard"] ~= nil then
             if tagsMap["button"] ~= nil then
                 if tagsMap["draw"] ~= nil then
@@ -257,10 +301,25 @@ function locateElementsFromTags()
                 table.insert(buildingLocations, position)
             end
         end
+        if tagsMap["deck"] ~= nil then
+            if tagsMap["pet"] ~= nil then
+                if tagsMap["supply"] ~= nil then
+                    Pets["unavailable"] = position
+                elseif tagsMap["active"] ~= nil then
+                    Pets["available"] = position
+                end
+            elseif tagsMap["trial"] ~= nil then
+                if tagsMap["supply"] ~= nil then
+                    Trials["supply"] = position
+                elseif tagsMap["discard"] ~= nil then
+                    Trials["completed"] = position
+                end
+            end
+        end
     end
     -- We have two rows of buildings, sort by Z first
     table.sort(buildingLocations, function(p1, p2) return p1.z < p2.z end)
-    first, second = split_table(buildingLocations, 11)
+    local first, second = split_table(buildingLocations, 11)
     table.sort(first, function(p1, p2) return p1.x > p2.x end)
     table.sort(second, function(p1, p2) return p1.x > p2.x end)
     buildingLocations = concatenate_tables(first, second)

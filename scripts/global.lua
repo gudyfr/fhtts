@@ -66,6 +66,7 @@ function onAfterLoad()
    fhLogSettingsUpdated()
    local settings = JSON.decode(getSettings())
    updateHotkeys({ enabled = settings["enable-solo"] or false, fivePlayers = settings["enable-5p"] or false })
+   UI.setAttribute("layout", "active", settings['enable-am-ui-overlay'])
 end
 
 function onSave()
