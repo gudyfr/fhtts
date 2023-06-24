@@ -830,7 +830,7 @@ function toggleItem(position)
       card = j.hit_object
       rot = card.getRotation()[2]
       if rot > -1 and rot < 1 then
-        if card.hasTag("lost") then
+        if card.hasTag("lost") or card.hasTag("flip") then
           card.flip()
         else
           card.setRotationSmooth({ 0, 90, 0 }, false, false)
