@@ -2872,6 +2872,7 @@ CardEnhancements = {
             type = "s",
             },
          {
+            ability = "move",
             position = {
                x = -0.279,
                z = 0.778,

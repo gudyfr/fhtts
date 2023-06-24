@@ -1,3 +1,6 @@
+NamePatches = {
+    ["25 - Line of Trasnference"] = "25 - Line of Transference"
+}
 function shiftUp(p)
     return { p.x, p.y + 0.5, p.z }
 end
@@ -21,6 +24,9 @@ function rebuildDeck(clone, cardGuids, cardNames, position, flip, otherDeck, oth
     local otherDeckWasDeck = otherDeck ~= nil and otherDeck.tag == "Deck"
 
     for _, card in ipairs(cardNames) do
+        if NamePatches[card] ~= nil then
+            card = NamePatches[card]
+        end
         deck, _used = rebuildCardFrom(deck, card, clone, cardGuids, cardTransformFunction)
         used = used or _used
         if otherDeck ~= nil and otherGuids ~= nil then

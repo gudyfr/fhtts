@@ -1221,4 +1221,129 @@ Random_scenarios = {
             },
          },
       },
+   positions = {
+      ["898"] = {
+         infuse = "Ice",
+         positions = {
+            {
+               category = "monster",
+               name = "Living Bones",
+               levels = "nne",
+               },
+            {
+               category = "monster",
+               name = "Living Bones",
+               levels = "ann",
+               },
+            {
+               category = "monster",
+               name = "Living Doom",
+               levels = "ann",
+               },
+            {
+               category = "overlay",
+               name = "Rubble",
+               type = "Difficult",
+               },
+            {
+               category = "monster",
+               name = "Living Doom",
+               levels = "eee",
+               },
+            {
+               category = "empty",
+               },
+            {
+               category = "empty",
+               },
+            {
+               category = "overlay",
+               name = "Rubble",
+               type = "Difficult",
+               },
+            {
+               category = "monster",
+               name = "Living Spirit",
+               levels = "aan",
+               },
+            {
+               category = "monster",
+               name = "Living Spirit",
+               levels = "nne",
+               },
+            {
+               category = "overlay",
+               name = "Rubble",
+               type = "Difficult",
+               },
+            {
+               category = "overlay",
+               name = "chest",
+               },
+            },
+         },
+      ["904"] = {
+         positions = {
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "ann",
+               },
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "nee",
+               },
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "nne",
+               },
+            {
+               category = "overlay",
+               name = "Debris",
+               type = "Obstacle",
+               },
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "eee",
+               },
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "ann",
+               },
+            {
+               category = "monster",
+               name = "Ancient Artillery",
+               levels = "nne",
+               },
+            {
+               category = "monster",
+               name = "Ancient Artillery",
+               levels = "nne",
+               },
+            {
+               category = "monster",
+               name = "Ruined Machine",
+               levels = "nne",
+               },
+            {
+               category = "monster",
+               name = "Ancient Artillery",
+               levels = "nee",
+               },
+            {
+               category = "overlay",
+               name = "Debris",
+               type = "Obstacle",
+               },
+            {
+               category = "token",
+               name = "loot",
+               },
+            },
+         },
+      },
    }
