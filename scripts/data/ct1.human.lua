@@ -304,7 +304,7 @@ Ct1 = {
          y = 0.221,
          z = 1.75,
          },
-      url = "http://cloud-3.steamusercontent.com/ugc/2015962364046802914/D29D4C5865D8CB66B0AE463F085342614CAE4028/",
+      url = "http://cloud-3.steamusercontent.com/ugc/2020475676376629525/12A8D7BDFFE297D7F547A8B4B3EEE7ED17751BE2/",
       later = {
          {
             n = 4,

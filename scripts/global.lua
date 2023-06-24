@@ -2471,9 +2471,12 @@ function onObjectPickUp(player_color, picked_up_object)
    end
 
    if picked_up_object.hasTag("character box") then
-      if #picked_up_object.getObjects() > 0 then
-         broadcastToColor("Drop on a player mat to setup", player_color)
-      end
+      Wait.frames(function()
+         local objects = picked_up_object.getObjects ~= nil and picked_up_object.getObjects() or {}
+         if #objects > 0 then
+            broadcastToColor("Drop on a player mat to setup", player_color)
+         end
+      end, 1)
    end
 end
 
@@ -2543,8 +2546,10 @@ function updateHotkeys(params)
 
       addHotkey("Play Initiative Card (Player 2)",
          function(player_color, hovered_object, pointer, key_up) playCard("Red", 1) end)
-      addHotkey("Play Second Card (Player 2)", function(player_color, hovered_object, pointer, key_up) playCard("Red", 2) end)
-      addHotkey("Play Third Card (Player 2)", function(player_color, hovered_object, pointer, key_up) playCard("Red", 3) end)
+      addHotkey("Play Second Card (Player 2)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Red", 2) end)
+      addHotkey("Play Third Card (Player 2)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Red", 3) end)
 
       addHotkey("Play Initiative Card (Player 3)",
          function(player_color, hovered_object, pointer, key_up) playCard("White", 1) end)
@@ -2557,7 +2562,8 @@ function updateHotkeys(params)
          function(player_color, hovered_object, pointer, key_up) playCard("Blue", 1) end)
       addHotkey("Play Second Card (Player 4)",
          function(player_color, hovered_object, pointer, key_up) playCard("Blue", 2) end)
-      addHotkey("Play Third Card (Player 4)", function(player_color, hovered_object, pointer, key_up) playCard("Blue", 3) end)
+      addHotkey("Play Third Card (Player 4)",
+         function(player_color, hovered_object, pointer, key_up) playCard("Blue", 3) end)
 
       if fivePlayers then
          addHotkey("Play Initiative Card (Player 5)",

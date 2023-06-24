@@ -92,7 +92,7 @@ Ct4 = {
          y = 0.221,
          z = 1.75,
          },
-      url = "http://cloud-3.steamusercontent.com/ugc/2035103293441246721/E14A43D7D677803230AE19CF5A4A619AA5D51AC6/",
+      url = "http://cloud-3.steamusercontent.com/ugc/2020475676376629355/B3D8C1D70D26B105447E4C970D96C799649B1B05/",
       unlocks = {
          88,
          },

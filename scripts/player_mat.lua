@@ -57,38 +57,64 @@ function getState()
   return state
 end
 
+function takeFromContainer(container, guids, i, callback, position, containers)
+  -- print("takeFromContainer : " .. i .. " / " .. #guids .. "(" .. JSON.encode(guids) .. ")")
+  table.insert(containers, container)
+  if i > #guids then
+    position = position or self.getPosition()
+    position.y = position.y + 3
+    position.z = position.z - 10
+    container.takeObject({
+      smooth = false,
+      position = position,
+      callback_function = function(box)
+        putContainersBack(containers)
+        Wait.frames(function() callback(box) end, 1)
+      end
+    })
+  else
+    local guid = guids[i]
+    container.takeObject({
+      guid = guid,
+      smooth = false,
+      callback_function = function(nextItem)
+        takeFromContainer(nextItem, guids, i + 1, callback, position, containers)
+      end
+    })
+  end
+end
+
+function putContainersBack(containers)
+  for i = #containers, 2, -1 do
+    containers[i - 1].putObject(containers[i])
+  end
+end
+
 function onStateUpdate(state)
   -- print(JSON.encode(state))
   if state.characterName ~= nil then
     local characterName = state.characterName
     -- Get a new character box
-    local characterBagGuid = CharacterBags[characterName]
-    if characterBagGuid ~= nil then
-      local characterBag = getObjectFromGUID(characterBagGuid)
-      if characterBag ~= nil then
-        local position = self.getPosition()
-        position.z = position.z - 8
-        position.y = position.y + 3
-        LoadingCharacterBox = true
-        characterBag.takeObject({
-          position = position,
-          rotation = { 0, 180, 0 },
-          smooth = false,
-          callback_function =
-              function(characterBox)
-                local fName = '_loadCharacterBox'
-                self.setVar(fName, function()
-                  loadCharacterBox(characterBox, state)
-                  return 1
-                end
-                )
-                startLuaCoroutine(self, fName)
-              end
-        })
-        while LoadingCharacterBox do
-          waitms(100)
-        end
+    local characterBagGuids = CharacterBags[characterName]
+    local position = self.getPosition()
+    position.y = position.y + 3
+    position.z = position.z - 10
+    LoadingCharacterBox = true
+    -- print("getting " .. characterBagGuids[1])
+    local container = getObjectFromGUID(characterBagGuids[1])
+    takeFromContainer(container, characterBagGuids, 2, function(characterBox)
+      -- print("callback called")
+      local fName = '_loadCharacterBox'
+      self.setVar(fName, function()
+        loadCharacterBox(characterBox, state)
+        return 1
       end
+      )
+      startLuaCoroutine(self, fName)
+    end, position, {})
+
+    while LoadingCharacterBox do
+      waitms(100)
     end
   else
     -- We need to clear it all
@@ -102,6 +128,7 @@ function applyEnhancementsToCard(card)
 end
 
 function loadCharacterBox(characterBox, state)
+  waitms(100)
   table.sort(UntaggedPositions, XZSorter)
   table.sort(TokenPositions, XZSorter)
   table.sort(PerksPositions, XZSorter)

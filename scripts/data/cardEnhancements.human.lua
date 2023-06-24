@@ -2852,7 +2852,7 @@ CardEnhancements = {
             },
          },
       },
-   ["25 - Line of Trasnference"] = {
+   ["25 - Line of Transference"] = {
       level = 1,
       spots = {
          {
