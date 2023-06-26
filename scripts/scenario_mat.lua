@@ -2398,6 +2398,8 @@ function onScenarioCompleted()
     else
         broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
     end
+    Global.call("onScenarioCompleted")
+
 end
 
 function onScenarioLost()

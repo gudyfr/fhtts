@@ -162,12 +162,13 @@ function refreshDecals()
                 -- print(JSON.encode(decals))
                 obj.setDecals(decals)
                 -- Create the buttons
-                local buttons = obj.getButtons()
-                if buttons ~= nil then
-                    for _, btn in ipairs(buttons) do
-                        obj.removeButton(btn.index)
-                    end
-                end
+                obj.clearButtons()
+                -- local buttons = obj.getButtons()
+                -- if buttons ~= nil then
+                --     for _, btn in ipairs(buttons) do
+                --         obj.removeButton(btn.index)
+                --     end
+                -- end
                 if name == "rulebook" then
                     for _, decalInfo in ipairs(Rules) do
                         if decalInfo.page == page then
@@ -304,18 +305,21 @@ function toggleCheckmark(book, page, name)
     pageState[name] = not checkmarkState
 
     if book == "scenario book" then
-        -- Tell the campaign tracker(s) this scenario is complete
-        for _, guid in ipairs(CampaignTrackerGuids) do
-            local ct = getObjectFromGUID(guid)
-            if ct ~= nil then
-                ct.call("toggleCompleted", { name, not checkmarkState })
+        local scenarioNumber = tonumber(name)
+        if scenarioNumber ~= nil then
+            -- Tell the campaign tracker(s) this scenario is complete
+            for _, guid in ipairs(CampaignTrackerGuids) do
+                local ct = getObjectFromGUID(guid)
+                if ct ~= nil then
+                    ct.call("toggleCompleted", { name, not checkmarkState })
+                end
             end
-        end
-        if tonumber(name) > 137 then
-            -- Solo scenarios are NOT handled by any campaign tracker, and so we need to let the scenario picker know
-            -- about the change.
-            local picker = getObjectFromGUID('596fc4')
-            picker.call('updateSoloScenario', { name, not checkmarkState })
+            if scenarioNumber > 137 then
+                -- Solo scenarios are NOT handled by any campaign tracker, and so we need to let the scenario picker know
+                -- about the change.
+                local picker = getObjectFromGUID('596fc4')
+                picker.call('updateSoloScenario', { name, not checkmarkState })
+            end
         end
     end
 

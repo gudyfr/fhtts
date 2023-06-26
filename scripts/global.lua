@@ -1505,6 +1505,18 @@ function openDoor(obj)
    end
 end
 
+function onScenarioCompleted()
+   if CurrentScenario ~= nil and CurrentScenario.elements ~= nil then
+      local completion = CurrentScenario.elements.completion
+      if completion ~= nil then
+         if completion.section ~= nil then
+            broadcastToAll("Reading Section " .. completion.section)
+            getObjectFromGUID('2a1fbe').call('setSection', completion.section)
+         end
+      end
+   end   
+end
+
 function handleTriggerAction(action, scenarioId, objGuid, undo)
    undo = undo or false
    -- print("Performing action on : " .. JSON.encode(action))

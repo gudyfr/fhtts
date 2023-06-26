@@ -1,5 +1,8 @@
 Scenarios = {
    ["0"] = {
+      completion = {
+         section = "2.2",
+         },
       errata = "Section 197.1 has outdated descriptions and names for several cards.",
       loot = {
          Arrowvine = 0,
@@ -80,6 +83,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["1"] = {
+      completion = {
+         section = "9.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -165,6 +171,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["2"] = {
+      completion = {
+         section = "77.3",
+         },
       errata = "The door is placed incorrectly after opening the final section. Don't move the door.",
       loot = {
          Arrowvine = 2,
@@ -236,6 +245,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["3"] = {
+      completion = {
+         section = "8.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -477,6 +489,9 @@ Scenarios = {
       title = "Heart of Ice",
       },
    ["5"] = {
+      completion = {
+         section = "38.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -546,6 +561,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["6"] = {
+      completion = {
+         section = "65.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -620,6 +638,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["7"] = {
+      completion = {
+         section = "3.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -698,6 +719,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["8"] = {
+      completion = {
+         section = "54.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -753,6 +777,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["9"] = {
+      completion = {
+         section = "93.4",
+         },
       errata = "The switches are the wall hexes.They are targetable in melee by standing in the adjacent hex,or ranged by targeting that wall hex",
       loot = {
          Arrowvine = 0,
@@ -845,6 +872,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["10"] = {
+      completion = {
+         section = "42.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -927,6 +957,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["11"] = {
+      completion = {
+         section = "47.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1002,6 +1035,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["12"] = {
+      completion = {
+         section = "23.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1084,6 +1120,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["13"] = {
+      completion = {
+         section = "96.1",
+         },
       errata = "The Shrike Fiends will not choose the scenario as a target for their multi-target attacks unless they can't find a primary focus.They will not target the scenario as a secondary target.",
       loot = {
          Arrowvine = 2,
@@ -1168,6 +1207,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["14"] = {
+      completion = {
+         section = "4.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1254,6 +1296,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["15"] = {
+      completion = {
+         section = "70.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1335,6 +1380,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["16"] = {
+      completion = {
+         section = "48.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1390,6 +1438,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["17"] = {
+      completion = {
+         section = "82.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1474,6 +1525,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["18"] = {
+      completion = {
+         section = "13.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -1545,6 +1599,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["19"] = {
+      completion = {
+         section = "58.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1612,6 +1669,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["20"] = {
+      completion = {
+         section = "57.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -1690,6 +1750,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["21"] = {
+      completion = {
+         section = "136.3",
+         },
       errata = "The special rules should include 'charactertokens' here to specifically include the Deathwalker's shadowtokens.",
       loot = {
          Arrowvine = 0,
@@ -1790,6 +1853,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["22"] = {
+      completion = {
+         section = "96.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -1871,6 +1937,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["23"] = {
+      completion = {
+         section = "105.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -1940,6 +2009,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["24"] = {
+      completion = {
+         section = "88.3",
+         },
       errata = "Character summons do not treat the special corridor hexes as negative.",
       loot = {
          Arrowvine = 0,
@@ -1996,6 +2068,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["25"] = {
+      completion = {
+         section = "16.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2063,6 +2138,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["26"] = {
+      completion = {
+         section = "24.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2138,6 +2216,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["27"] = {
+      completion = {
+         section = "8.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -2206,6 +2287,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["28"] = {
+      completion = {
+         section = "93.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2284,6 +2368,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["29"] = {
+      completion = {
+         section = "50.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2380,6 +2467,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["30"] = {
+      completion = {
+         section = "53.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2476,6 +2566,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["31"] = {
+      completion = {
+         section = "81.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -2532,6 +2625,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["32"] = {
+      completion = {
+         section = "59.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -2614,6 +2710,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["33"] = {
+      completion = {
+         section = "112.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -2677,6 +2776,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["34"] = {
+      completion = {
+         section = "86.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -2724,6 +2826,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["35"] = {
+      completion = {
+         section = "55.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -2788,6 +2893,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["36"] = {
+      completion = {
+         section = "118.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -2848,6 +2956,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["37"] = {
+      completion = {
+         section = "98.3",
+         },
       errata = "Treasure Chest should be #56",
       loot = {
          Arrowvine = 2,
@@ -2925,6 +3036,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["38"] = {
+      completion = {
+         section = "57.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -3038,6 +3152,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["39"] = {
+      completion = {
+         section = "84.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3139,6 +3256,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["40"] = {
+      completion = {
+         section = "71.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -3205,6 +3325,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["41"] = {
+      completion = {
+         section = "74.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3272,6 +3395,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["42"] = {
+      completion = {
+         section = "95.5",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3345,6 +3471,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["43"] = {
+      completion = {
+         section = "101.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -3411,6 +3540,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["44"] = {
+      completion = {
+         section = "33.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -3476,6 +3608,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["45"] = {
+      completion = {
+         section = "94.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3583,6 +3718,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["46"] = {
+      completion = {
+         section = "85.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3631,6 +3769,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["47"] = {
+      completion = {
+         section = "119.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3708,6 +3849,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["48"] = {
+      completion = {
+         section = "120.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3774,6 +3918,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["49"] = {
+      completion = {
+         section = "97.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -3851,6 +3998,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["50"] = {
+      completion = {
+         section = "86.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -3902,6 +4052,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["51"] = {
+      completion = {
+         section = "49.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -3983,6 +4136,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["52"] = {
+      completion = {
+         section = "90.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4057,6 +4213,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["53"] = {
+      completion = {
+         section = "107.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -4121,6 +4280,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["54"] = {
+      completion = {
+         section = "21.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -4211,6 +4373,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["55"] = {
+      completion = {
+         section = "109.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4283,6 +4448,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["56"] = {
+      completion = {
+         section = "60.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4361,6 +4529,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["57"] = {
+      completion = {
+         section = "92.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4435,6 +4606,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["58"] = {
+      completion = {
+         section = "88.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4520,6 +4694,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["59"] = {
+      completion = {
+         section = "62.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4606,6 +4783,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["60"] = {
+      completion = {
+         section = "10.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -4685,6 +4865,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["61"] = {
+      completion = {
+         section = "67.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4786,6 +4969,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["62"] = {
+      completion = {
+         section = "69.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -4864,6 +5050,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["63"] = {
+      completion = {
+         section = "73.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -4948,6 +5137,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["64"] = {
+      completion = {
+         section = "74.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -5067,6 +5259,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["65"] = {
+      completion = {
+         section = "168.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -5165,6 +5360,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["66"] = {
+      completion = {
+         section = "130.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -5294,6 +5492,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["67"] = {
+      completion = {
+         section = "154.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -5388,6 +5589,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["68"] = {
+      completion = {
+         section = "106.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -5487,6 +5691,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["69"] = {
+      completion = {
+         section = "27.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -5548,6 +5755,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["70"] = {
+      completion = {
+         section = "35.2",
+         },
       errata = "Has two Random Items on the Loot Deck.This is a typo; there should be 1.",
       loot = {
          Arrowvine = 0,
@@ -5636,6 +5846,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["71"] = {
+      completion = {
+         section = "121.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -5744,6 +5957,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["72"] = {
+      completion = {
+         section = "79.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6074,6 +6290,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["75"] = {
+      completion = {
+         section = "147.5",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6179,6 +6398,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["76"] = {
+      completion = {
+         section = "56.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6278,6 +6500,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["77"] = {
+      completion = {
+         section = "173.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6471,6 +6696,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["79"] = {
+      completion = {
+         section = "164.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6586,6 +6814,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["80"] = {
+      completion = {
+         section = "86.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6675,6 +6906,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["81"] = {
+      completion = {
+         section = "114.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6800,6 +7034,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["82"] = {
+      completion = {
+         section = "37.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -6873,6 +7110,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["83"] = {
+      completion = {
+         section = "64.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -6967,6 +7207,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["84"] = {
+      completion = {
+         section = "26.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7014,6 +7257,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["85"] = {
+      completion = {
+         section = "156.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7145,6 +7391,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["86"] = {
+      completion = {
+         section = "174.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -7237,6 +7486,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["87"] = {
+      completion = {
+         section = "68.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -7334,6 +7586,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["88"] = {
+      completion = {
+         section = "128.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7415,6 +7670,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["89"] = {
+      completion = {
+         section = "158.5",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -7529,6 +7787,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["90"] = {
+      completion = {
+         section = "121.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7582,6 +7843,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["91"] = {
+      completion = {
+         section = "122.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7680,6 +7944,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["92"] = {
+      completion = {
+         section = "152.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7771,6 +8038,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["93A"] = {
+      completion = {
+         section = "20.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7857,6 +8127,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["93B"] = {
+      completion = {
+         section = "192.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -7943,6 +8216,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["94"] = {
+      completion = {
+         section = "102.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -8037,6 +8313,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["95"] = {
+      completion = {
+         section = "34.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8119,6 +8398,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["96"] = {
+      completion = {
+         section = "79.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8222,6 +8504,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["97"] = {
+      completion = {
+         section = "43.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8302,6 +8587,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["98"] = {
+      completion = {
+         section = "177.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8401,6 +8689,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["99"] = {
+      completion = {
+         section = "189.5",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -8484,6 +8775,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["100"] = {
+      completion = {
+         section = "147.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8577,6 +8871,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["101"] = {
+      completion = {
+         section = "137.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -8661,6 +8958,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["102"] = {
+      completion = {
+         section = "142.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8750,6 +9050,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["103"] = {
+      completion = {
+         section = "158.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8823,6 +9126,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["104"] = {
+      completion = {
+         section = "10.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8895,6 +9201,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["105"] = {
+      completion = {
+         section = "165.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -8978,6 +9287,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["106"] = {
+      completion = {
+         section = "179.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -9167,6 +9479,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["108"] = {
+      completion = {
+         section = "136.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -9254,6 +9569,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["109"] = {
+      completion = {
+         section = "67.2",
+         },
       errata = "The special rule should reference Initiative 52, not 54.",
       loot = {
          Arrowvine = 0,
@@ -9342,6 +9660,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["110"] = {
+      completion = {
+         section = "80.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -9425,6 +9746,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["111"] = {
+      completion = {
+         section = "174.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -9524,6 +9848,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["112"] = {
+      completion = {
+         section = "30.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -9598,6 +9925,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["113"] = {
+      completion = {
+         section = "47.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -9680,6 +10010,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["114"] = {
+      completion = {
+         section = "125.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -9740,6 +10073,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["115"] = {
+      completion = {
+         section = "33.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -9813,6 +10149,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["116"] = {
+      completion = {
+         section = "141.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -9927,6 +10266,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["117"] = {
+      completion = {
+         section = "140.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -10002,6 +10344,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["118"] = {
+      completion = {
+         section = "192.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10072,6 +10417,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["119"] = {
+      completion = {
+         section = "176.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10165,6 +10513,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["120"] = {
+      completion = {
+         section = "147.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10336,6 +10687,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["122"] = {
+      completion = {
+         section = "11.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10461,6 +10815,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["123"] = {
+      completion = {
+         section = "189.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10546,6 +10903,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["124"] = {
+      completion = {
+         section = "110.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -10619,6 +10979,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["125"] = {
+      completion = {
+         section = "162.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10693,6 +11056,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["126"] = {
+      completion = {
+         section = "110.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10824,6 +11190,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["127"] = {
+      completion = {
+         section = "190.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -10912,6 +11281,9 @@ Scenarios = {
       difficulty = 1,
       },
    ["128"] = {
+      completion = {
+         section = "196.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -11007,6 +11379,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["129"] = {
+      completion = {
+         section = "150.4",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -11122,6 +11497,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["130"] = {
+      completion = {
+         section = "129.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 2,
@@ -11219,6 +11597,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["131"] = {
+      completion = {
+         section = "5.2",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -11268,6 +11649,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["132"] = {
+      completion = {
+         section = "148.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -11344,6 +11728,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["133"] = {
+      completion = {
+         section = "168.5",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -11425,6 +11812,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["134"] = {
+      completion = {
+         section = "153.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -11530,6 +11920,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["135"] = {
+      completion = {
+         section = "134.1",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
@@ -11631,6 +12024,9 @@ Scenarios = {
       difficulty = 3,
       },
    ["136"] = {
+      completion = {
+         section = "11.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 1,
@@ -11726,6 +12122,9 @@ Scenarios = {
       difficulty = 2,
       },
    ["137"] = {
+      completion = {
+         section = "138.3",
+         },
       errata = "",
       loot = {
          Arrowvine = 0,
