@@ -32350,6 +32350,22 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
+                     {
+                        name = "Steel Automaton",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 5,
+                              levels = "nne",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              levels = "nee",
+                              },
+                           },
+                        },
                      },
                   overlays = {
                      {
