@@ -167,6 +167,34 @@
                ]
             },
             {
+               "name": "Steel Automaton",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1636,
+                        "y": 2353
+                     },
+                     "size": {
+                        "x": 92,
+                        "y": 114
+                     },
+                     "score": 0.9983651638031006
+                  },
+                  {
+                     "position": {
+                        "x": 1636,
+                        "y": 2812
+                     },
+                     "size": {
+                        "x": 92,
+                        "y": 114
+                     },
+                     "score": 0.9999998211860657
+                  }
+               ]
+            },
+            {
                "name": "Large Metal Corridor",
                "orientation": "",
                "type": "overlay",
