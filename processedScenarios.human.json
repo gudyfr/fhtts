@@ -24718,7 +24718,33 @@
               }
             ],
             "monsters": [],
-            "overlays": []
+            "overlays": [
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 0,
+                    "y": 1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 0,
+                    "y": 2,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 2,
+                    "y": -2
+                  }
+                ]
+              }
+            ]
           },
           {
             "reference": {
@@ -24774,6 +24800,22 @@
                     "type": "Corridor"
                   }
                 ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -1,
+                    "y": -1,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": 3,
+                    "y": -9,
+                    "type": "Difficult Terrain"
+                  }
+                ]
               }
             ]
           },
@@ -24819,6 +24861,38 @@
                     "x": -1,
                     "y": 2,
                     "type": "Obstacle"
+                  }
+                ]
+              },
+              {
+                "name": "Large Debris",
+                "orientation": 300,
+                "positions": [
+                  {
+                    "x": -2,
+                    "y": 1,
+                    "type": "Obstacle"
+                  },
+                  {
+                    "x": 0,
+                    "y": 0,
+                    "type": "Obstacle"
+                  }
+                ]
+              },
+              {
+                "name": "Water",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": -3,
+                    "y": 0,
+                    "type": "Difficult Terrain"
+                  },
+                  {
+                    "x": -4,
+                    "y": 2,
+                    "type": "Difficult Terrain"
                   }
                 ]
               }
@@ -26430,7 +26504,19 @@
                 ]
               }
             ],
-            "monsters": [],
+            "monsters": [
+              {
+                "name": "Steel Automaton",
+                "orientation": 0,
+                "positions": [
+                  {
+                    "x": 2,
+                    "y": -5,
+                    "levels": "nnn"
+                  }
+                ]
+              }
+            ],
             "overlays": [
               {
                 "name": "Ice Corridor",
