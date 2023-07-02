@@ -165,17 +165,17 @@
             "Algox Guard"
         ]
     },
-    "111" : {
-        "bosses" : [
+    "111": {
+        "bosses": [
             {
                 "from": "Savvas Icestorm",
                 "to": "The Shimmer",
-                "forceStandeeNr" : 1
+                "forceStandeeNr": 1
             }
         ]
     },
-    "122" : {
-        "bosses" : [
+    "122": {
+        "bosses": [
             {
                 "from": "Frozen Corpse",
                 "to": "Hungry Maw"
@@ -221,7 +221,11 @@
                 }
             }
         ],
-        "tile-order" : ["07-D","05-B","15-A"],
+        "tile-order": [
+            "07-D",
+            "05-B",
+            "15-A"
+        ],
         "entries-to-map": [
             {
                 "in": {
@@ -290,8 +294,12 @@
                 }
             }
         ],
-        "tile-order" : [ "10-C", "11-F", "08-A"],
-        "entries-to-map" : [
+        "tile-order": [
+            "10-C",
+            "11-F",
+            "08-A"
+        ],
+        "entries-to-map": [
             {
                 "in": {
                     "type": "scenario",
@@ -427,8 +435,12 @@
                 }
             }
         ],
-        "tile-order" : ["07-B", "16-A", "13-E"],
-        "entries-to-map" : [
+        "tile-order": [
+            "07-B",
+            "16-A",
+            "13-E"
+        ],
+        "entries-to-map": [
             {
                 "in": {
                     "type": "scenario",
@@ -456,7 +468,7 @@
                 }
             }
         ],
-        "bosses" : [
+        "bosses": [
             {
                 "in": 175,
                 "from": "Living Bones",
@@ -531,7 +543,7 @@
                 }
             }
         ],
-        "bosses" : [
+        "bosses": [
             {
                 "in": 178,
                 "from": "Sun Demon",
@@ -606,7 +618,7 @@
                 }
             }
         ],
-        "bosses" : [
+        "bosses": [
             {
                 "from": "Earth Demon",
                 "to": "Mountain's Heart"
@@ -652,7 +664,11 @@
                 }
             }
         ],
-        "tile-order" : ["07-B", "13-A", "15-A"],
+        "tile-order": [
+            "07-B",
+            "13-A",
+            "15-A"
+        ],
         "entries-to-map": [
             {
                 "in": {
@@ -681,7 +697,7 @@
                 }
             }
         ],
-        "bosses" : [
+        "bosses": [
             {
                 "from": "Algox Icespeaker",
                 "to": "Chief of Spikes"
@@ -891,7 +907,11 @@
                 }
             }
         ],
-        "tile-order" : ["07-H", "06-B", "15-D"],
+        "tile-order": [
+            "07-H",
+            "06-B",
+            "15-D"
+        ],
         "entries-to-map": [
             {
                 "in": {
@@ -960,7 +980,11 @@
                 }
             }
         ],
-        "tile-order" : ["11-D", "14-B", "05-A"],
+        "tile-order": [
+            "11-D",
+            "14-B",
+            "05-A"
+        ],
         "entries-to-map": [
             {
                 "in": {
@@ -988,6 +1012,12 @@
                     "name": "153.2"
                 }
             }
+        ],
+        "bosses": [
+            {
+                "from": "Abael Herder",
+                "to": "Abael Warlord"
+            }
         ]
     },
     "154": {
@@ -1003,6 +1033,20 @@
                     "x": 4,
                     "y": -4
                 }
+            }
+        ],
+        "bosses": [
+            {
+                "from": "Lurker Clawcrusher",
+                "to": "Shape Blocks Out the Sun"
+            },
+            {
+                "from": "Lurker Mindsnipper",
+                "to": "Plea for Help Without Answer"
+            },
+            {
+                "from": "Lurker Wavethrower",
+                "to": "Lost in Seaweed"
             }
         ]
     }

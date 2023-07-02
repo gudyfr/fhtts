@@ -13408,6 +13408,8 @@ Scenarios = {
       monsters = {
          {
             name = "Abael Herder",
+            as = "Abael Warlord",
+            boss = true,
             },
          {
             name = "Abael Scout",
@@ -13472,12 +13474,18 @@ Scenarios = {
             },
          {
             name = "Lurker Clawcrusher",
+            as = "Shape Blocks Out the Sun",
+            boss = true,
             },
          {
             name = "Lurker Mindsnipper",
+            as = "Plea for Help Without Answer",
+            boss = true,
             },
          {
             name = "Lurker Wavethrower",
+            as = "Lost in Seaweed",
+            boss = true,
             },
          },
       overlays = {

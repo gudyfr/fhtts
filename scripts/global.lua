@@ -968,7 +968,7 @@ function layoutMapAsync(map)
       local origin = getOrigin(scenarioInfo, reference.tile)
       if origin ~= nil then
          -- Overlays
-         for _, overlay in ipairs(entry.overlays) do
+         for _, overlay in ipairs(entry.overlays or {}) do
             -- print("Looking for " .. overlay.name .. "(" .. overlay.orientation .. ")")
             for _, position in ipairs(overlay.positions) do
                local passesConditions = true
@@ -1216,7 +1216,9 @@ function setStandeeNr(params)
    getScenarioMat().call("updateStandeeNr", { standee, nr })
 end
 
+
 function updateTriggers(trigger, obj)
+   fhlog(DEBUG, TAG, "Updating trigger %s for %s", trigger, obj.guid)
    local scenarioTriggers = CurrentScenario.triggers
    local objs = scenarioTriggers.byTriggerId[trigger.id]
    if objs == nil then

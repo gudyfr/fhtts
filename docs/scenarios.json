@@ -12666,7 +12666,7 @@
         "monsters": [
             {
                 "name": "Sun Demon",
-                "as" : "Incarnation of Ancestors",
+                "as": "Incarnation of Ancestors",
                 "boss": true
             }
         ],
@@ -12816,7 +12816,7 @@
             },
             {
                 "name": "Algox Icespeaker"
-            },            
+            },
             {
                 "name": "Algox Icespeaker",
                 "as": "Chief of Spikes",
@@ -13356,7 +13356,9 @@
         },
         "monsters": [
             {
-                "name": "Abael Herder"
+                "name": "Abael Herder",
+                "as": "Abael Warlord",
+                "boss": true
             },
             {
                 "name": "Abael Scout"
@@ -13419,13 +13421,19 @@
                 "name": "Lightning Eel"
             },
             {
-                "name": "Lurker Clawcrusher"
+                "name": "Lurker Clawcrusher",
+                "as": "Shape Blocks Out the Sun",
+                "boss": true
             },
             {
-                "name": "Lurker Mindsnipper"
+                "name": "Lurker Mindsnipper",
+                "as": "Plea for Help Without Answer",
+                "boss": true
             },
             {
-                "name": "Lurker Wavethrower"
+                "name": "Lurker Wavethrower",
+                "as": "Lost in Seaweed",
+                "boss": true
             }
         ],
         "overlays": [
