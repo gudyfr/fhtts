@@ -4405,17 +4405,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
-                     {
-                        name = "Metal Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 0,
-                              y = 1,
-                              type = "Corridor",
-                              },
-                           },
-                        },
                      },
                   },
                {
@@ -4444,6 +4433,22 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
+                     {
+                        name = "Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = -1,
+                              type = "Corridor",
+                              },
+                           {
+                              x = 3,
+                              y = -7,
+                              type = "Corridor",
+                              },
+                           },
+                        },
                      {
                         name = "Dungeon Door",
                         orientation = 0,
@@ -4509,17 +4514,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
-                     {
-                        name = "Metal Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 0,
-                              y = 1,
-                              type = "Corridor",
-                              },
-                           },
-                        },
                      },
                   },
                },
@@ -12938,13 +12932,13 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Frozen Corpse",
+                        name = "Hungry Maw",
                         orientation = 0,
                         positions = {
                            {
                               x = -3,
                               y = 3,
-                              levels = "eee",
+                              levels = "bbb",
                               },
                            },
                         },
@@ -13030,6 +13024,31 @@ ProcessedScenarios3 = {
                               x = 0,
                               y = 1,
                               type = "Hazardous Terrain",
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Cave Rock",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 6,
+                              type = "Wall",
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Cave Rock",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 4,
+                              },
+                           {
+                              x = -5,
+                              y = 3,
                               },
                            },
                         },
@@ -17878,6 +17897,17 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 9,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Door",
                         orientation = 0,
                         positions = {
@@ -17944,16 +17974,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
-                     {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 3,
-                              y = -4,
-                              },
-                           },
-                        },
                      {
                         name = "Rubble",
                         orientation = 0,
@@ -22981,6 +23001,7 @@ ProcessedScenarios3 = {
                      {
                         action = "layout",
                         what = {
+                           name = "corridors",
                            entries = {
                               {
                                  reference = {
@@ -24377,6 +24398,7 @@ ProcessedScenarios3 = {
                               trigger = {
                                  type = "door",
                                  action = "reveal",
+                                 mode = "all",
                                  what = {
                                     type = "section.solo",
                                     name = "142.1",
@@ -24391,6 +24413,7 @@ ProcessedScenarios3 = {
                               trigger = {
                                  type = "door",
                                  action = "reveal",
+                                 mode = "all",
                                  what = {
                                     type = "section.solo",
                                     name = "142.1",
@@ -24405,6 +24428,7 @@ ProcessedScenarios3 = {
                               trigger = {
                                  type = "door",
                                  action = "reveal",
+                                 mode = "all",
                                  what = {
                                     type = "section.solo",
                                     name = "142.1",
@@ -24706,6 +24730,16 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Snow Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 6,
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Corridor",
                         orientation = 0,
                         positions = {
@@ -24854,6 +24888,27 @@ ProcessedScenarios3 = {
                               y = 4,
                               type = "Difficult Terrain",
                               },
+                           {
+                              x = 0,
+                              y = 2,
+                              type = "Difficult Terrain",
+                              },
+                           },
+                        },
+                     {
+                        name = "Water",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 0,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -2,
+                              y = 3,
+                              type = "Difficult Terrain",
+                              },
                            },
                         },
                      },
@@ -24967,6 +25022,42 @@ ProcessedScenarios3 = {
                   monsters = {
                      },
                   overlays = {
+                     {
+                        name = "Altar",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              type = "Obstacle",
+                              },
+                           },
+                        },
+                     {
+                        name = "Water",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 1,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 0,
+                              y = 2,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 1,
+                              y = -1,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 2,
+                              y = -2,
+                              },
+                           },
+                        },
                      },
                   },
                {
@@ -24978,13 +25069,13 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Sun Demon",
+                        name = "Incarnation of Ancestors",
                         orientation = 0,
                         positions = {
                            {
                               x = 4,
                               y = -5,
-                              levels = "eee",
+                              levels = "bbb",
                               },
                            },
                         },
@@ -25025,6 +25116,38 @@ ProcessedScenarios3 = {
                               },
                            },
                         },
+                     {
+                        name = "Altar",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = 5,
+                              y = -10,
+                              type = "Obstacle",
+                              },
+                           },
+                        },
+                     {
+                        name = "Water",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = -1,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 3,
+                              y = -9,
+                              type = "Difficult Terrain",
+                              },
+                           },
+                        },
                      },
                   },
                {
@@ -25059,6 +25182,11 @@ ProcessedScenarios3 = {
                         positions = {
                            {
                               x = -3,
+                              y = 1,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = -3,
                               y = 6,
                               },
                            },
@@ -25069,8 +25197,45 @@ ProcessedScenarios3 = {
                         positions = {
                            {
                               x = -1,
+                              y = 0,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = -1,
                               y = 2,
                               type = "Obstacle",
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Debris",
+                        orientation = 300,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 1,
+                              type = "Obstacle",
+                              },
+                           {
+                              x = 0,
+                              y = 0,
+                              type = "Obstacle",
+                              },
+                           },
+                        },
+                     {
+                        name = "Water",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 0,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -4,
+                              y = 2,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -25311,13 +25476,13 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Earth Demon",
+                        name = "Mountain's Heart",
                         orientation = 0,
                         positions = {
                            {
                               x = -3,
                               y = 3,
-                              levels = "eee",
+                              levels = "bbb",
                               },
                            },
                         },
@@ -25410,6 +25575,100 @@ ProcessedScenarios3 = {
             entries = {
                {
                   reference = {
+                     tile = "07-B",
+                     tileOrientation = "0",
+                     },
+                  tokens = {
+                     {
+                        name = "start",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -7,
+                              y = 1,
+                              },
+                           },
+                        },
+                     },
+                  monsters = {
+                     {
+                        name = "Algox Icespeaker",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 1,
+                              levels = "nnn",
+                              },
+                           },
+                        },
+                     },
+                  overlays = {
+                     {
+                        name = "Ice Pillar",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 2,
+                              type = "Objective",
+                              },
+                           {
+                              x = -5,
+                              y = 0,
+                              type = "Objective",
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Door",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 1,
+                              trigger = {
+                                 type = "door",
+                                 mode = "all",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section.solo",
+                                    name = "146.0",
+                                    },
+                                 id = "scenario/181/overlay/Snow Door",
+                                 },
+                              type = "Door",
+                              },
+                           },
+                        },
+                     {
+                        name = "Stalagmites",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 0,
+                              type = "Objective",
+                              },
+                           {
+                              x = -6,
+                              y = 2,
+                              type = "Objective",
+                              },
+                           },
+                        },
+                     },
+                  },
+               },
+            triggers = {
+               },
+            },
+         {
+            type = "section.solo",
+            name = "146.0",
+            entries = {
+               {
+                  reference = {
                      tile = "13-A",
                      tileOrientation = "180",
                      },
@@ -25446,16 +25705,38 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Ice Pillar",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = 0,
+                              type = "Objective",
+                              },
+                           {
+                              x = 4,
+                              y = -6,
+                              type = "Objective",
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Door",
                         orientation = 0,
                         positions = {
                            {
-                              x = 1,
-                              y = -3,
-                              },
-                           {
                               x = 6,
                               y = -3,
+                              trigger = {
+                                 type = "door",
+                                 mode = "all",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section.solo",
+                                    name = "146.1",
+                                    },
+                                 id = "scenario/181/token/1",
+                                 },
                               type = "Door",
                               },
                            },
@@ -25504,6 +25785,12 @@ ProcessedScenarios3 = {
                         },
                      },
                   },
+               },
+            },
+         {
+            type = "section.solo",
+            name = "146.1",
+            entries = {
                {
                   reference = {
                      tile = "15-A",
@@ -25513,13 +25800,13 @@ ProcessedScenarios3 = {
                      },
                   monsters = {
                      {
-                        name = "Algox Icespeaker",
+                        name = "Chief of Spikes",
                         orientation = 0,
                         positions = {
                            {
                               x = -1,
                               y = 3,
-                              levels = "eee",
+                              levels = "bbb",
                               },
                            },
                         },
@@ -25553,57 +25840,6 @@ ProcessedScenarios3 = {
                         },
                      },
                   },
-               {
-                  reference = {
-                     tile = "07-B",
-                     tileOrientation = "0",
-                     },
-                  tokens = {
-                     {
-                        name = "start",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -7,
-                              y = 1,
-                              },
-                           },
-                        },
-                     },
-                  monsters = {
-                     {
-                        name = "Algox Icespeaker",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = 1,
-                              levels = "nnn",
-                              },
-                           },
-                        },
-                     },
-                  overlays = {
-                     {
-                        name = "Stalagmites",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 0,
-                              type = "Objective",
-                              },
-                           {
-                              x = -6,
-                              y = 2,
-                              type = "Objective",
-                              },
-                           },
-                        },
-                     },
-                  },
-               },
-            triggers = {
                },
             },
          },
@@ -26029,6 +26265,24 @@ ProcessedScenarios3 = {
                   },
                },
             triggers = {
+               {
+                  type = "manual",
+                  by = {
+                     token = "section",
+                     at = {
+                        reference = "05-A",
+                        x = 3,
+                        y = -6,
+                        },
+                     },
+                  action = "reveal",
+                  what = {
+                     type = "section.solo",
+                     name = "148.1",
+                     },
+                  display = "Read 1",
+                  id = "scenario/183/global/s.1",
+                  },
                },
             },
          },
@@ -26296,6 +26550,11 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = 2,
+                              y = -1,
+                              type = "Hazardous Terrain",
+                              },
+                           {
                               x = 7,
                               y = -2,
                               type = "Hazardous Terrain",
@@ -26394,6 +26653,27 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -6,
+                              y = 8,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -6,
+                              y = 7,
+                              },
+                           },
+                        },
+                     {
                         name = "Rubble",
                         orientation = 0,
                         positions = {
@@ -26439,7 +26719,6 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -2,
-                              type = "Corridor",
                               },
                            },
                         },
@@ -26607,27 +26886,6 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
-                        name = "Large Metal Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 5,
-                              y = 0,
-                              type = "Corridor",
-                              },
-                           },
-                        },
-                     {
-                        name = "Metal Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 5,
-                              y = -1,
-                              },
-                           },
-                        },
-                     {
                         name = "Rubble",
                         orientation = 0,
                         positions = {
@@ -26707,6 +26965,26 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
+                     {
+                        name = "Steel Automaton",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = -5,
+                              trigger = {
+                                 type = "on-death",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section.solo",
+                                    name = "150.1",
+                                    },
+                                 id = "scenario/185/monster/Steel Automaton",
+                                 },
+                              levels = "nnn",
+                              },
+                           },
+                        },
                      },
                   overlays = {
                      {
@@ -26908,6 +27186,71 @@ ProcessedScenarios3 = {
             entries = {
                {
                   reference = {
+                     tile = "01-H",
+                     tileOrientation = "300",
+                     },
+                  tokens = {
+                     {
+                        name = "d",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 2,
+                              },
+                           },
+                        },
+                     },
+                  monsters = {
+                     },
+                  overlays = {
+                     },
+                  },
+               {
+                  reference = {
+                     tile = "01-E",
+                     tileOrientation = "60",
+                     },
+                  tokens = {
+                     {
+                        name = "e",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = -2,
+                              },
+                           },
+                        },
+                     },
+                  monsters = {
+                     },
+                  overlays = {
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 0,
+                              type = "Corridor",
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -2,
+                              y = -1,
+                              },
+                           },
+                        },
+                     },
+                  },
+               {
+                  reference = {
                      tile = "15-C",
                      tileOrientation = "0",
                      },
@@ -26938,12 +27281,33 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
-                        name = "Large Snow Corridor",
-                        orientation = 60,
+                        name = "Large Metal Corridor",
+                        orientation = 0,
                         positions = {
                            {
-                              x = 1,
-                              y = 1,
+                              x = -5,
+                              y = 2,
+                              },
+                           },
+                        },
+                     {
+                        name = "Large Metal Corridor",
+                        orientation = 300,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 0,
+                              },
+                           },
+                        },
+                     {
+                        name = "Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 7,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -27048,6 +27412,16 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Metal Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 3,
+                              y = -4,
+                              },
+                           },
+                        },
+                     {
                         name = "Rubble",
                         orientation = 0,
                         positions = {
@@ -27062,6 +27436,19 @@ ProcessedScenarios3 = {
                   },
                },
             triggers = {
+               {
+                  type = "round",
+                  when = {
+                     round = 12,
+                     state = 0,
+                     },
+                  action = "reveal",
+                  what = {
+                     type = "section.solo",
+                     name = "151.1",
+                     },
+                  id = "scenario/187/global/round12",
+                  },
                },
             },
          },
@@ -27113,10 +27500,20 @@ ProcessedScenarios3 = {
             entries = {
                {
                   reference = {
-                     tile = "15-D",
-                     tileOrientation = "0",
+                     tile = "07-H",
+                     tileOrientation = "180",
                      },
                   tokens = {
+                     {
+                        name = "start",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 1,
+                              y = -2,
+                              },
+                           },
+                        },
                      },
                   monsters = {
                      {
@@ -27124,8 +27521,13 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -6,
-                              y = 8,
+                              x = 3,
+                              y = 0,
+                              levels = "nnn",
+                              },
+                           {
+                              x = 4,
+                              y = 0,
                               levels = "nnn",
                               },
                            },
@@ -27135,25 +27537,9 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -4,
-                              y = 1,
-                              levels = "nnn",
-                              },
-                           {
-                              x = 0,
-                              y = 1,
-                              levels = "nnn",
-                              },
-                           },
-                        },
-                     {
-                        name = "Steel Automaton",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 3,
-                              levels = "nnn",
+                              x = 8,
+                              y = -2,
+                              levels = "eee",
                               },
                            },
                         },
@@ -27164,42 +27550,58 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -5,
-                              y = 7,
+                              x = 5,
+                              y = -3,
+                              trigger = {
+                                 type = "door",
+                                 mode = "all",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section.solo",
+                                    name = "152.0",
+                                    },
+                                 id = "scenario/188/overlay/Metal Door",
+                                 },
                               type = "Door",
                               },
                            },
                         },
                      {
-                        name = "Power Conduit",
-                        orientation = 60,
+                        name = "Rubble",
+                        orientation = 0,
                         positions = {
                            {
-                              x = -2,
-                              y = 3,
+                              x = 2,
+                              y = -1,
+                              type = "Difficult Terrain",
                               },
                            {
-                              x = -2,
-                              y = 5,
-                              },
-                           },
-                        },
-                     {
-                        name = "Power Conduit",
-                        orientation = 300,
-                        positions = {
-                           {
-                              x = -3,
-                              y = 2,
+                              x = 3,
+                              y = -2,
+                              type = "Difficult Terrain",
                               },
                            {
-                              x = -5,
-                              y = 4,
+                              x = 6,
+                              y = -1,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = 6,
+                              y = -2,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
                      },
                   },
+               },
+            triggers = {
+               },
+            },
+         {
+            type = "section.solo",
+            name = "152.0",
+            entries = {
                {
                   reference = {
                      tile = "06-B",
@@ -27215,6 +27617,11 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 2,
+                              levels = "nnn",
+                              },
+                           {
+                              x = -2,
+                              y = 0,
                               levels = "nnn",
                               },
                            },
@@ -27278,8 +27685,18 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
-                              x = -6,
-                              y = 9,
+                              x = -1,
+                              y = -1,
+                              trigger = {
+                                 type = "door",
+                                 mode = "all",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section.solo",
+                                    name = "152.1",
+                                    },
+                                 id = "scenario/188/token/1",
+                                 },
                               type = "Door",
                               },
                            },
@@ -27287,7 +27704,78 @@ ProcessedScenarios3 = {
                      },
                   },
                },
-            triggers = {
+            },
+         {
+            type = "section.solo",
+            name = "152.1",
+            entries = {
+               {
+                  reference = {
+                     tile = "15-D",
+                     tileOrientation = "0",
+                     },
+                  tokens = {
+                     },
+                  monsters = {
+                     {
+                        name = "Flaming Bladespinner",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -4,
+                              y = 1,
+                              levels = "nnn",
+                              },
+                           {
+                              x = 0,
+                              y = 1,
+                              levels = "nnn",
+                              },
+                           },
+                        },
+                     {
+                        name = "Steel Automaton",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 3,
+                              levels = "nnn",
+                              },
+                           },
+                        },
+                     },
+                  overlays = {
+                     {
+                        name = "Power Conduit",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = -2,
+                              y = 3,
+                              },
+                           {
+                              x = -2,
+                              y = 5,
+                              },
+                           },
+                        },
+                     {
+                        name = "Power Conduit",
+                        orientation = 300,
+                        positions = {
+                           {
+                              x = -3,
+                              y = 2,
+                              },
+                           {
+                              x = -5,
+                              y = 4,
+                              },
+                           },
+                        },
+                     },
+                  },
                },
             },
          },
@@ -41659,16 +42147,6 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
-                        name = "Large Cave Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 0,
-                              y = -1,
-                              },
-                           },
-                        },
-                     {
                         name = "Treasure Chest",
                         orientation = 0,
                         positions = {
@@ -41688,8 +42166,34 @@ ProcessedScenarios3 = {
                   tokens = {
                      },
                   monsters = {
+                     {
+                        name = "Harrower Infester",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 0,
+                              levels = "eee",
+                              },
+                           {
+                              x = -5,
+                              y = 8,
+                              levels = "ane",
+                              },
+                           },
+                        },
                      },
                   overlays = {
+                     {
+                        name = "Large Cave Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 9,
+                              },
+                           },
+                        },
                      {
                         name = "Log",
                         orientation = 0,
@@ -41706,6 +42210,11 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = -2,
+                              y = 1,
+                              type = "Difficult Terrain",
+                              },
+                           {
                               x = -4,
                               y = 5,
                               type = "Difficult Terrain",
@@ -41713,6 +42222,11 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 6,
+                              type = "Difficult Terrain",
+                              },
+                           {
+                              x = -6,
+                              y = 8,
                               type = "Difficult Terrain",
                               },
                            },
@@ -41765,38 +42279,12 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
-                     {
-                        name = "Harrower Infester",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 3,
-                              y = 1,
-                              levels = "ane",
-                              },
-                           {
-                              x = 7,
-                              y = -7,
-                              levels = "eee",
-                              },
-                           },
-                        },
                      },
                   overlays = {
                      {
                         name = "Rubble",
                         orientation = 0,
                         positions = {
-                           {
-                              x = 2,
-                              y = 1,
-                              type = "Difficult Terrain",
-                              },
-                           {
-                              x = 6,
-                              y = -6,
-                              type = "Difficult Terrain",
-                              },
                            {
                               x = 7,
                               y = -5,
@@ -52589,41 +53077,8 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
-                     {
-                        name = "Lurker Clawcrusher",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = -1,
-                              y = -2,
-                              levels = "ann",
-                              },
-                           },
-                        },
-                     {
-                        name = "Lurker Soldier",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 1,
-                              y = -2,
-                              levels = "aan",
-                              },
-                           },
-                        },
                      },
                   overlays = {
-                     {
-                        name = "Large Snow Corridor",
-                        orientation = 0,
-                        positions = {
-                           {
-                              x = 0,
-                              y = -1,
-                              type = "Corridor",
-                              },
-                           },
-                        },
                      },
                   },
                {
@@ -52638,6 +53093,11 @@ ProcessedScenarios3 = {
                         name = "Lurker Clawcrusher",
                         orientation = 0,
                         positions = {
+                           {
+                              x = 0,
+                              y = 0,
+                              levels = "ann",
+                              },
                            {
                               x = 4,
                               y = -6,
@@ -52660,6 +53120,11 @@ ProcessedScenarios3 = {
                               levels = "nnn",
                               },
                            {
+                              x = 2,
+                              y = 0,
+                              levels = "aan",
+                              },
+                           {
                               x = 6,
                               y = -8,
                               levels = "nee",
@@ -52668,6 +53133,17 @@ ProcessedScenarios3 = {
                         },
                      },
                   overlays = {
+                     {
+                        name = "Large Snow Corridor",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 1,
+                              y = 1,
+                              type = "Corridor",
+                              },
+                           },
+                        },
                      {
                         name = "Cave Door",
                         orientation = 0,
@@ -53647,6 +54123,17 @@ ProcessedScenarios3 = {
                         },
                      },
                   monsters = {
+                     {
+                        name = "Lurker Clawcrusher",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 2,
+                              levels = "nne",
+                              },
+                           },
+                        },
                      {
                         name = "Lurker Mindsnipper",
                         orientation = 0,
@@ -66400,6 +66887,7 @@ ProcessedScenarios3 = {
                      {
                         action = "layout",
                         what = {
+                           name = "corridors",
                            entries = {
                               {
                                  reference = {
@@ -66537,6 +67025,7 @@ ProcessedScenarios3 = {
                               {
                                  action = "layout",
                                  what = {
+                                    name = "corridors",
                                     entries = {
                                        {
                                           reference = {
@@ -66630,6 +67119,7 @@ ProcessedScenarios3 = {
                                                 {
                                                    action = "layout",
                                                    what = {
+                                                      name = "corridors",
                                                       entries = {
                                                          {
                                                             reference = {
@@ -70440,6 +70930,11 @@ ProcessedScenarios3 = {
                         orientation = 0,
                         positions = {
                            {
+                              x = 0,
+                              y = 0,
+                              type = "Corridor",
+                              },
+                           {
                               x = 1,
                               y = -2,
                               type = "Corridor",
@@ -70546,11 +71041,6 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 7,
-                              type = "Corridor",
-                              },
-                           {
-                              x = 0,
-                              y = 4,
                               type = "Corridor",
                               },
                            },

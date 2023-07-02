@@ -180,6 +180,35 @@
                ]
             },
             {
+               "name": "Water",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1807,
+                        "y": 2187
+                     },
+                     "size": {
+                        "x": 101,
+                        "y": 98
+                     },
+                     "score": 0.9509692788124084
+                  },
+                  {
+                     "position": {
+                        "x": 1541,
+                        "y": 2416
+                     },
+                     "size": {
+                        "x": 101,
+                        "y": 98
+                     },
+                     "score": 0.9500939249992371
+                  }
+               ]
+            },
+            {
                "name": "Barrels",
                "orientation": "",
                "type": "overlay",
@@ -686,6 +715,23 @@
                         "y": 132
                      },
                      "score": 0.9971717596054077
+                  }
+               ]
+            },
+            {
+               "name": "Lurker Clawcrusher",
+               "type": "monster",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1701,
+                        "y": 2646
+                     },
+                     "size": {
+                        "x": 105,
+                        "y": 129
+                     },
+                     "score": 0.9874809384346008
                   }
                ]
             },

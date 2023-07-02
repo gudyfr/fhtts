@@ -13,6 +13,44 @@
          "name": 187,
          "results": [
             {
+               "name": "01-E",
+               "variant": "",
+               "orientation": "-60",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1834,
+                        "y": 2517
+                     },
+                     "size": {
+                        "x": 56,
+                        "y": 71
+                     },
+                     "score": 0.999998927116394
+                  }
+               ]
+            },
+            {
+               "name": "01-H",
+               "variant": "",
+               "orientation": "-300",
+               "type": "tile",
+               "results": [
+                  {
+                     "position": {
+                        "x": 480,
+                        "y": 3015
+                     },
+                     "size": {
+                        "x": 58,
+                        "y": 69
+                     },
+                     "score": 1.0000007152557373
+                  }
+               ]
+            },
+            {
                "name": "02-K",
                "variant": "",
                "orientation": "-180",
@@ -85,6 +123,190 @@
                ]
             },
             {
+               "name": "Metal Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1125,
+                        "y": 1894
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9872774481773376
+                  }
+               ]
+            },
+            {
+               "name": "Metal Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1124,
+                        "y": 1894
+                     },
+                     "size": {
+                        "x": 100,
+                        "y": 105
+                     },
+                     "score": 0.9933327436447144
+                  }
+               ]
+            },
+            {
+               "name": "Large Metal Corridor",
+               "orientation": "",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 860,
+                        "y": 1894
+                     },
+                     "size": {
+                        "x": 232,
+                        "y": 113
+                     },
+                     "score": 0.9838584065437317
+                  },
+                  {
+                     "position": {
+                        "x": 529,
+                        "y": 2467
+                     },
+                     "size": {
+                        "x": 232,
+                        "y": 113
+                     },
+                     "score": 0.9775208830833435
+                  }
+               ]
+            },
+            {
+               "name": "Large Metal Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 858,
+                        "y": 1897
+                     },
+                     "size": {
+                        "x": 234,
+                        "y": 113
+                     },
+                     "score": 0.9842162728309631
+                  },
+                  {
+                     "position": {
+                        "x": 526,
+                        "y": 2470
+                     },
+                     "size": {
+                        "x": 234,
+                        "y": 113
+                     },
+                     "score": 0.9933452606201172
+                  }
+               ]
+            },
+            {
+               "name": "Large Metal Corridor",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 596,
+                        "y": 2589
+                     },
+                     "size": {
+                        "x": 161,
+                        "y": 210
+                     },
+                     "score": 0.9924930334091187
+                  }
+               ]
+            },
+            {
+               "name": "Large Snow Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1325,
+                        "y": 2469
+                     },
+                     "size": {
+                        "x": 233,
+                        "y": 111
+                     },
+                     "score": 0.9932870864868164
+                  }
+               ]
+            },
+            {
+               "name": "Large Snow Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1324,
+                        "y": 2467
+                     },
+                     "size": {
+                        "x": 231,
+                        "y": 113
+                     },
+                     "score": 0.9824656248092651
+                  }
+               ]
+            },
+            {
+               "name": "Large Snow Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1326,
+                        "y": 2472
+                     },
+                     "size": {
+                        "x": 228,
+                        "y": 109
+                     },
+                     "score": 0.993836522102356
+                  }
+               ]
+            },
+            {
+               "name": "Large Snow Corridor",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1324,
+                        "y": 2470
+                     },
+                     "size": {
+                        "x": 231,
+                        "y": 114
+                     },
+                     "score": 0.9486920237541199
+                  }
+               ]
+            },
+            {
                "name": "Large Snow Corridor",
                "orientation": "-60",
                "type": "overlay",
@@ -99,6 +321,24 @@
                         "y": 226
                      },
                      "score": 0.9973596930503845
+                  }
+               ]
+            },
+            {
+               "name": "Large Snow Corridor",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1323,
+                        "y": 2583
+                     },
+                     "size": {
+                        "x": 167,
+                        "y": 218
+                     },
+                     "score": 0.9841969013214111
                   }
                ]
             },
@@ -606,6 +846,40 @@
                         "y": 46
                      },
                      "score": 1.000000238418579
+                  }
+               ]
+            },
+            {
+               "name": "d.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 425,
+                        "y": 2740
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 1.0
+                  }
+               ]
+            },
+            {
+               "name": "e.png",
+               "type": "tokens",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1622,
+                        "y": 2742
+                     },
+                     "size": {
+                        "x": 43,
+                        "y": 46
+                     },
+                     "score": 0.9999997615814209
                   }
                ]
             },

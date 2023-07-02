@@ -109,6 +109,24 @@
                ]
             },
             {
+               "name": "Large Snow Corridor",
+               "orientation": "-60",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 457,
+                        "y": 2385
+                     },
+                     "size": {
+                        "x": 167,
+                        "y": 218
+                     },
+                     "score": 0.9998660683631897
+                  }
+               ]
+            },
+            {
                "name": "Snow Corridor",
                "orientation": "-0",
                "type": "overlay",
@@ -261,6 +279,35 @@
                ]
             },
             {
+               "name": "Large Water",
+               "orientation": "-300",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1252,
+                        "y": 2269
+                     },
+                     "size": {
+                        "x": 163,
+                        "y": 214
+                     },
+                     "score": 0.9925071001052856
+                  },
+                  {
+                     "position": {
+                        "x": 1252,
+                        "y": 2499
+                     },
+                     "size": {
+                        "x": 163,
+                        "y": 214
+                     },
+                     "score": 0.9999937415122986
+                  }
+               ]
+            },
+            {
                "name": "Rubble",
                "orientation": "",
                "type": "overlay",
@@ -315,6 +362,35 @@
                         "y": 58
                      },
                      "score": 0.9722442030906677
+                  }
+               ]
+            },
+            {
+               "name": "Water",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1121,
+                        "y": 2502
+                     },
+                     "size": {
+                        "x": 101,
+                        "y": 98
+                     },
+                     "score": 0.9867482781410217
+                  },
+                  {
+                     "position": {
+                        "x": 1054,
+                        "y": 2846
+                     },
+                     "size": {
+                        "x": 101,
+                        "y": 98
+                     },
+                     "score": 1.0000027418136597
                   }
                ]
             },

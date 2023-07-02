@@ -1367,9 +1367,9 @@ function sendCard(params)
                 break
             end
         end
-    end    
+    end
     Wait.time(function()
-        card.setLock(false) 
+        card.setLock(false)
         card.setPositionSmooth(shiftUp(destination, 0.5))
         -- Make sure the card is visible to everyone (sometimes it's not)
         card.setInvisibleTo({})
@@ -1712,12 +1712,16 @@ function refreshStandees(state)
                     getObjectFromGUID('5e0624').takeObject({ position = position, smooth = false })
                 end
             end
-            if not found and standee.hasTag("trackable") then
+            if not found and (standee.hasTag("trackable") or standee.hasTag("tracked")) then
                 local notes = standee.getGMNotes()
-                if notes.onDeath ~= nil then
-                    Global.call("triggered", notes.onDeath)
-                    notes.onDeath = nil
-                    standee.setGMNotes(notes)
+                if notes ~= nil then
+                    local notesObj = JSON.decode(notes)
+                    if notesObj ~= nil then
+                        local onDeath = notesObj.onDeath
+                        if onDeath ~= nil then
+                            Global.call("triggered", onDeath)
+                        end
+                    end
                 end
 
                 if standee.hasTag("summon") then
@@ -2399,7 +2403,6 @@ function onScenarioCompleted()
         broadcastToAll('X-Haven integration is off. Please collect loot, xps and inspiration manually')
     end
     Global.call("onScenarioCompleted")
-
 end
 
 function onScenarioLost()

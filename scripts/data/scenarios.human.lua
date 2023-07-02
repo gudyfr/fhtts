@@ -10779,7 +10779,14 @@ Scenarios = {
          {
             name = "Large Snow Rock",
             type = "Wall",
-            as = "Cave Wall",
+            as = "Snow Wall",
+            size = 2,
+            count = 3,
+            },
+         {
+            name = "Large Cave Rock",
+            type = "Wall",
+            as = "Rock Wall",
             size = 2,
             count = 3,
             },
@@ -12701,6 +12708,8 @@ Scenarios = {
       monsters = {
          {
             name = "Sun Demon",
+            as = "Incarnation of Ancestors",
+            boss = true,
             },
          },
       overlays = {
@@ -12852,6 +12861,11 @@ Scenarios = {
          {
             name = "Algox Icespeaker",
             },
+         {
+            name = "Algox Icespeaker",
+            as = "Chief of Spikes",
+            boss = true,
+            },
          },
       overlays = {
          {
@@ -12872,7 +12886,7 @@ Scenarios = {
          {
             name = "Stalagmites",
             type = "Objective",
-            count = 6,
+            count = 10,
             },
          },
       page = 180,
@@ -13263,12 +13277,12 @@ Scenarios = {
          },
       overlays = {
          {
-            name = "Dungeon Corridor",
+            name = "Metal Corridor",
             type = "Corridor",
             count = 1,
             },
          {
-            name = "Large Dungeon Corridor",
+            name = "Large Metal Corridor",
             type = "Corridor",
             size = 2,
             count = 3,

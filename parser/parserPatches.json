@@ -254,6 +254,21 @@
             ]
         }
     },
+    "71" : {
+        "111" : {
+            "also" : [ "Lurker Soldier"],
+            "overrides": [
+                {
+                    "where": {
+                        "name": "Lurker Soldier"
+                    },
+                    "with": {
+                        "name": "Lurker Clawcrusher"
+                    }
+                }
+            ]
+        }
+    },
     "74": {
         "164": {
             "tiles": [
@@ -574,6 +589,12 @@
             "tiles": [
                 "04-A",
                 "06-B"
+            ]
+        }
+    },
+    "146" : {
+        "180" : {
+            "tiles": [
             ]
         }
     }

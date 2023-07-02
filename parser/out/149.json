@@ -372,6 +372,46 @@
                ]
             },
             {
+               "name": "Ice Spikes",
+               "orientation": "-0",
+               "type": "overlay",
+               "results": [
+                  {
+                     "position": {
+                        "x": 1022,
+                        "y": 1956
+                     },
+                     "size": {
+                        "x": 92,
+                        "y": 94
+                     },
+                     "score": 1.0000001192092896
+                  },
+                  {
+                     "position": {
+                        "x": 1619,
+                        "y": 2071
+                     },
+                     "size": {
+                        "x": 92,
+                        "y": 94
+                     },
+                     "score": 0.9891267418861389
+                  },
+                  {
+                     "position": {
+                        "x": 1355,
+                        "y": 2300
+                     },
+                     "size": {
+                        "x": 92,
+                        "y": 94
+                     },
+                     "score": 0.972710371017456
+                  }
+               ]
+            },
+            {
                "name": "Log",
                "orientation": "-60",
                "type": "overlay",
