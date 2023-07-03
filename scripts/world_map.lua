@@ -135,7 +135,18 @@ function createToggleButton(entry)
     local name
     local tooltip
     name = ""
-    tooltip = "Toggle " .. (entry.display or string.sub(entry.name, 4, 5))
+    local isWall = string.sub(entry.display or "", 1, 4) == "Wall"
+    local enabled = State.enabledDecals[entry.name] or false
+    local displayName = entry.display or string.sub(entry.name, 4, 5)
+
+    local verb = isWall and "Remove " or "Hide "
+
+    if not enabled then
+        verb = isWall and "Build " or "Show "
+        displayName = entry['display-hidden'] or displayName
+    end
+
+    tooltip = verb .. displayName
 
     local params = {
         function_owner = self,
@@ -160,6 +171,8 @@ function toggle(entry)
         State.enabledDecals[entry.name] = true
     end
     refreshDecals()
+    self.clearButtons()
+    createButtons()
 end
 
 function complete(entry)
@@ -223,7 +236,7 @@ function setBuildingLevel(params)
     local previousLevel = State.buildings[nr]
     if (previousLevel == nil or previousLevel == -1) and level == 0 then
         local name = BuildingNames[nr] or "unknown"
-        broadcastToAll("Building " .. nr .. "(" .. name ..  ") is now available to build", { 0, 0.75, 0 })
+        broadcastToAll("Building " .. nr .. "(" .. name .. ") is now available to build", { 0, 0.75, 0 })
     end
     State.buildings[nr] = level
     refreshDecals()
@@ -241,9 +254,9 @@ function getLevel0BuildingDecal(params)
         return {
             url = FakeLevel0Stickers[nr],
             scale = {
-            x = 0.189,
-            y = 0.108,
-            z = 0.668,
+                x = 0.189,
+                y = 0.108,
+                z = 0.668,
             },
             rotation = { 90, 180, 0 },
             position = { 0, 0, 0 },
@@ -344,11 +357,5 @@ function refreshDecals()
             end
         end
         self.setDecals(stickers)
-    end
-end
-
-function clearButtons()
-    for _, button in ipairs(self.getButtons()) do
-        self.removeButton(button.index)
     end
 end

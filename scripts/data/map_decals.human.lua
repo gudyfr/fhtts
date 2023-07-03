@@ -4505,8 +4505,51 @@ Map_decals = {
          },
       others = {
          {
+            name = "stage",
+            display = "Stage",
+            ["display-hidden"] = "H",
+            position = {
+               x = -0.723,
+               y = 0.06,
+               z = 0.843,
+               },
+            rotation = {
+               x = 90,
+               y = 180,
+               z = 0,
+               },
+            scale = {
+               x = 0.175,
+               y = 0.161,
+               z = 0.89,
+               },
+            url = "http://cloud-3.steamusercontent.com/ugc/2015962364041819816/EEF44334A902063166E1D4E07EA7711773C72DBB/",
+            },
+         {
+            name = "portcullis",
+            display = "Portcullis",
+            ["display-hidden"] = "E",
+            position = {
+               x = 0.021,
+               y = 0.06,
+               z = 0.51,
+               },
+            rotation = {
+               x = 90,
+               y = 179.543,
+               z = 0,
+               },
+            scale = {
+               x = 0.335,
+               y = 0.161,
+               z = 0.89,
+               },
+            url = "http://cloud-3.steamusercontent.com/ugc/2015962364041819633/97168200865A2C89D62FF1405E720C29144E2310/",
+            },
+         {
             name = "fh-boat-orig.png",
             display = "Boat",
+            ["display-hidden"] = "A",
             position = {
                x = -0.752,
                y = 0.06,
@@ -4527,6 +4570,7 @@ Map_decals = {
          {
             name = "fh-climbing-gear-orig.png",
             display = "Climbing Gear",
+            ["display-hidden"] = "C",
             position = {
                x = -0.342,
                y = 0.06,
@@ -4546,6 +4590,7 @@ Map_decals = {
             },
          {
             name = "fh-sled-orig.png",
+            ["display-hidden"] = "B",
             display = "Sled",
             position = {
                x = -0.513,
@@ -4667,6 +4712,7 @@ Map_decals = {
          {
             name = "fh-statue-orig.png",
             display = "Statue",
+            ["display-hidden"] = "F",
             position = {
                x = 0.557,
                y = 0.06,
@@ -4687,6 +4733,7 @@ Map_decals = {
          {
             name = "fh-red-well-orig.png",
             display = "Red Well",
+            ["display-hidden"] = "G",
             position = {
                x = 0.219,
                y = 0.06,
@@ -4707,6 +4754,7 @@ Map_decals = {
          {
             name = "fh-ice-spike-orig.png",
             display = "Ice Spike",
+            ["display-hidden"] = "D",
             position = {
                x = -0.113,
                y = 0.06,

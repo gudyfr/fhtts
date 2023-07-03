@@ -20,6 +20,7 @@ function getExpectedEntries()
         { "print-pinged-coordinates", "text" },
         { "printSnapPoints",          "button" },
         { "toggleInteractable",       "button" },
+        { "printDecals",              "button" },
         { "log-level",                "text",    onFhLogUpdate },
         { "log-tags",                 "text",    onFhLogUpdate },
         { "getTileLayout",            "button" },
@@ -44,6 +45,13 @@ function printSnapPoints()
     local target = getTarget()
     if target ~= nil then
         print(JSON.encode(target.getSnapPoints()))
+    end
+end
+
+function printDecals()
+    local target = getTarget()
+    if target ~= nil then
+        print(JSON.encode(target.getDecals()))
     end
 end
 

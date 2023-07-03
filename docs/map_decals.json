@@ -2780,7 +2780,7 @@
         },
         {
             "name": "map_z",
-            "display" : "Map sticker z",
+            "display": "Map sticker z",
             "position": {
                 "x": -0.503,
                 "y": 0.060,
@@ -4505,8 +4505,51 @@
         },
         "others": [
             {
+                "name": "stage",
+                "display": "Stage",
+                "display-hidden" : "H",
+                "position": {
+                    "x": -0.723,
+                    "y": 0.06,
+                    "z": 0.843
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 180,
+                    "z": 0
+                },
+                "scale": {
+                    "x": 0.175,
+                    "y": 0.161,
+                    "z": 0.890
+                },
+                "url": "http://cloud-3.steamusercontent.com/ugc/2015962364041819816/EEF44334A902063166E1D4E07EA7711773C72DBB/"
+            },
+            {
+                "name": "portcullis",
+                "display": "Portcullis",
+                "display-hidden" : "E",
+                "position": {
+                    "x": 0.0205218400806189,
+                    "y": 0.0599999465048313,
+                    "z": 0.509978294372559
+                },
+                "rotation": {
+                    "x": 90,
+                    "y": 179.542724609375,
+                    "z": 0
+                },
+                "scale": {
+                    "x": 0.335107892751694,
+                    "y": 0.16100150346756,
+                    "z": 0.889999866485596
+                },
+                "url": "http://cloud-3.steamusercontent.com/ugc/2015962364041819633/97168200865A2C89D62FF1405E720C29144E2310/"
+            },
+            {
                 "name": "fh-boat-orig.png",
-                "display" : "Boat",
+                "display": "Boat",
+                "display-hidden" : "A",
                 "position": {
                     "x": -0.752,
                     "y": 0.06,
@@ -4525,8 +4568,9 @@
                 "url": "http://cloud-3.steamusercontent.com/ugc/2015962364041819459/FC582405199340B79B903F69F9C2696C122CF1BE/"
             },
             {
-                "name": "fh-climbing-gear-orig.png",
-                "display" : "Climbing Gear",
+                "name": "fh-climbing-gear-orig.png",            
+                "display": "Climbing Gear",
+                "display-hidden" : "C",
                 "position": {
                     "x": -0.342,
                     "y": 0.06,
@@ -4546,7 +4590,8 @@
             },
             {
                 "name": "fh-sled-orig.png",
-                "display" : "Sled",
+                "display-hidden" : "B",
+                "display": "Sled",
                 "position": {
                     "x": -0.513,
                     "y": 0.06,
@@ -4566,7 +4611,7 @@
             },
             {
                 "name": "fh-wall-j-orig.png",
-                "display" : "Wall J",
+                "display": "Wall J",
                 "position": {
                     "x": 0.529,
                     "y": 0.06,
@@ -4586,7 +4631,7 @@
             },
             {
                 "name": "fh-wall-k-orig.png",
-                "display" : "Wall K",
+                "display": "Wall K",
                 "position": {
                     "x": 0.195,
                     "y": 0.06,
@@ -4606,7 +4651,7 @@
             },
             {
                 "name": "fh-wall-l-orig.png",
-                "display" : "Wall L",
+                "display": "Wall L",
                 "position": {
                     "x": 1.107,
                     "y": 0.06,
@@ -4626,7 +4671,7 @@
             },
             {
                 "name": "fh-wall-n-orig.png",
-                "display" : "Wall N",
+                "display": "Wall N",
                 "position": {
                     "x": -0.407,
                     "y": 0.06,
@@ -4646,7 +4691,7 @@
             },
             {
                 "name": "fh-wall-m-orig.png",
-                "display" : "Wall M",
+                "display": "Wall M",
                 "position": {
                     "x": 0.792,
                     "y": 0.06,
@@ -4666,7 +4711,8 @@
             },
             {
                 "name": "fh-statue-orig.png",
-                "display" : "Statue",
+                "display": "Statue",
+                "display-hidden" : "F",
                 "position": {
                     "x": 0.557,
                     "y": 0.06,
@@ -4686,7 +4732,8 @@
             },
             {
                 "name": "fh-red-well-orig.png",
-                "display" : "Red Well",
+                "display": "Red Well",
+                "display-hidden" : "G",
                 "position": {
                     "x": 0.219,
                     "y": 0.06,
@@ -4706,7 +4753,8 @@
             },
             {
                 "name": "fh-ice-spike-orig.png",
-                "display" : "Ice Spike",
+                "display": "Ice Spike",
+                "display-hidden" : "D",
                 "position": {
                     "x": -0.113,
                     "y": 0.06,
