@@ -1000,6 +1000,7 @@ function layoutMapAsync(map)
                      if obj ~= nil then
                         local x, z = getWorldPositionFromHexPosition(hx, hy)
                         if position.type == "Door" then
+                           fhlog(INFO, TAG, "Adding door at %s,%s", hx, hy)
                            scenarioDoors[hx .. "," .. hy] = true
                         end
                         obj.setPositionSmooth({ x, 1.44, z })

@@ -5234,7 +5234,7 @@
                 "action": "reveal",
                 "what": {
                     "type": "section",
-                    "name": "188.3"
+                    "name": "183.2"
                 }
             }
         },
@@ -5255,6 +5255,17 @@
                     "name": "112.1"
                 }
             }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "154.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "1"
+            },
+            "rename": "Snow Door"
         },
         {
             "in": {
@@ -5295,6 +5306,17 @@
         {
             "in": {
                 "type": "section",
+                "name": "112.1"
+            },
+            "target": {
+                "type": "token",
+                "name": "2"
+            },
+            "rename": "Snow Door"
+        },
+        {
+            "in": {
+                "type": "section",
                 "name": "146.5"
             },
             "target": {
@@ -5325,6 +5347,42 @@
                 "what": {
                     "type": "section",
                     "name": "183.2"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "183.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "3"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "154.1"
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "section",
+                "name": "183.2"
+            },
+            "target": {
+                "type": "token",
+                "name": "6"
+            },
+            "trigger": {
+                "type": "door",
+                "action": "reveal",
+                "what": {
+                    "type": "section",
+                    "name": "146.5"
                 }
             }
         }

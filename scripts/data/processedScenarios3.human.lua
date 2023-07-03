@@ -8606,6 +8606,12 @@ ProcessedScenarios3 = {
                               type = "Door",
                               },
                            {
+                              x = -4,
+                              y = 2,
+                              rename = "Snow Door",
+                              type = "Door",
+                              },
+                           {
                               x = 0,
                               y = 2,
                               trigger = {
@@ -8711,6 +8717,40 @@ ProcessedScenarios3 = {
                            },
                         },
                      {
+                        name = "Snow Door",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -5,
+                              y = 3,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "183.2",
+                                    },
+                                 id = "section/146.5/token/6",
+                                 },
+                              type = "Door",
+                              },
+                           {
+                              x = -8,
+                              y = 1,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "112.1",
+                                    },
+                                 id = "section/146.5/token/5",
+                                 },
+                              type = "Door",
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Rock",
                         orientation = 0,
                         positions = {
@@ -8805,6 +8845,45 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Snow Door",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 1,
+                              y = -3,
+                              rename = "Snow Door",
+                              type = "Door",
+                              },
+                           {
+                              x = 5,
+                              y = -7,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "112.1",
+                                    },
+                                 id = "section/154.1/token/4",
+                                 },
+                              },
+                           {
+                              x = 6,
+                              y = -3,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "183.2",
+                                    },
+                                 id = "section/154.1/token/3",
+                                 },
+                              type = "Door",
+                              },
+                           },
+                        },
+                     {
                         name = "Snow Rock",
                         orientation = 0,
                         positions = {
@@ -8851,6 +8930,112 @@ ProcessedScenarios3 = {
          {
             type = "section",
             name = "183.2",
+            entries = {
+               {
+                  reference = {
+                     tile = "04-C",
+                     tileOrientation = "240",
+                     },
+                  tokens = {
+                     {
+                        name = "goal",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = 2,
+                              },
+                           },
+                        },
+                     },
+                  monsters = {
+                     {
+                        name = "Chaos Demon",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 0,
+                              y = 2,
+                              levels = "nnn",
+                              },
+                           {
+                              x = 4,
+                              y = -1,
+                              levels = "aan",
+                              },
+                           },
+                        },
+                     {
+                        name = "Polar Bear",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = 1,
+                              levels = "nee",
+                              },
+                           },
+                        },
+                     },
+                  overlays = {
+                     {
+                        name = "Snow Door",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = -1,
+                              y = 0,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "154.1",
+                                    },
+                                 id = "section/183.2/token/3",
+                                 },
+                              type = "Door",
+                              },
+                           {
+                              x = 3,
+                              y = -3,
+                              trigger = {
+                                 type = "door",
+                                 action = "reveal",
+                                 what = {
+                                    type = "section",
+                                    name = "146.5",
+                                    },
+                                 id = "section/183.2/token/6",
+                                 },
+                              },
+                           },
+                        },
+                     {
+                        name = "Snow Rock",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 3,
+                              y = 1,
+                              type = "Obstacle",
+                              },
+                           },
+                        },
+                     {
+                        name = "Treasure Chest",
+                        orientation = 0,
+                        positions = {
+                           {
+                              x = 2,
+                              y = 2,
+                              type = "Treasure",
+                              },
+                           },
+                        },
+                     },
+                  },
+               },
             triggers = {
                },
             },
