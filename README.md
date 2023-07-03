@@ -36,7 +36,6 @@ The goal is to have everything scripted.
   - The following scenarios are not yet automated (work in progress):
     - **82** (Special setup rules, with moving corridors)
     - **85** (It has a really high number of Section links)
-    - **113** (Some doors are missing)
   - Sometimes the overlay stickers showing health / conditions on top of figurines disapear.
   
  # How you can help
