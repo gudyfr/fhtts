@@ -1217,7 +1217,6 @@ function setStandeeNr(params)
    getScenarioMat().call("updateStandeeNr", { standee, nr })
 end
 
-
 function updateTriggers(trigger, obj)
    fhlog(DEBUG, TAG, "Updating trigger %s for %s", trigger, obj.guid)
    local scenarioTriggers = CurrentScenario.triggers
@@ -1341,6 +1340,7 @@ function actualTriggered(scenarioId, triggerId, objGuid, undo)
       else
          trigger.current = trigger.current - 1
       end
+      fhlog(DEBUG, TAG, "Countdown %s: %s", triggerId, trigger.current)
       if trigger.current ~= 0 then
          -- Prevent triggering the countDown actions
          return
@@ -1517,10 +1517,11 @@ function onScenarioCompleted()
             getObjectFromGUID('2a1fbe').call('setSection', completion.section)
          end
       end
-   end   
+   end
 end
 
 function handleTriggerAction(action, scenarioId, objGuid, undo)
+   fhlog(DEBUG, TAG, "Handling trigger: %s", action)
    undo = undo or false
    -- print("Performing action on : " .. JSON.encode(action))
    local triggerKey = getTriggeredKey(action, objGuid)

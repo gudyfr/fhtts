@@ -5199,7 +5199,13 @@
                 "what": {
                     "type": "section",
                     "name": "154.1"
-                }
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/137/global/room154"
+                    }
+                ]
             }
         },
         {
@@ -5235,7 +5241,13 @@
                 "what": {
                     "type": "section",
                     "name": "183.2"
-                }
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/137/global/room183"
+                    }
+                ]
             }
         },
         {
@@ -5259,17 +5271,6 @@
         {
             "in": {
                 "type": "section",
-                "name": "154.1"
-            },
-            "target": {
-                "type": "token",
-                "name": "1"
-            },
-            "rename": "Snow Door"
-        },
-        {
-            "in": {
-                "type": "section",
                 "name": "112.1"
             },
             "target": {
@@ -5282,7 +5283,13 @@
                 "what": {
                     "type": "section",
                     "name": "154.1"
-                }
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/137/global/room154"
+                    }
+                ]
             }
         },
         {
@@ -5302,17 +5309,6 @@
                     "name": "146.5"
                 }
             }
-        },
-        {
-            "in": {
-                "type": "section",
-                "name": "112.1"
-            },
-            "target": {
-                "type": "token",
-                "name": "2"
-            },
-            "rename": "Snow Door"
         },
         {
             "in": {
@@ -5347,7 +5343,13 @@
                 "what": {
                     "type": "section",
                     "name": "183.2"
-                }
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/137/global/room183"
+                    }
+                ]
             }
         },
         {
@@ -5365,7 +5367,13 @@
                 "what": {
                     "type": "section",
                     "name": "154.1"
-                }
+                },
+                "also": [
+                    {
+                        "action": "trigger",
+                        "what": "scenario/137/global/room154"
+                    }
+                ]
             }
         },
         {
@@ -5384,6 +5392,78 @@
                     "type": "section",
                     "name": "146.5"
                 }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 137
+            },
+            "target": {
+                "type": "global",
+                "name": "2doors"
+            },
+            "trigger": {
+                "type": "countDown",
+                "current": 2.0,
+                "action": "timeout",
+                "time": 2.0,
+                "trigger": {
+                    "action": "layout",
+                    "what": {
+                        "name": "corridors",
+                        "entries": [
+                            {
+                                "reference": {
+                                    "tile": "04-C"
+                                },
+                                "overlays": [
+                                    {
+                                        "name": "Large Snow Corridor",
+                                        "orientation": 300,
+                                        "positions": [
+                                            {
+                                                "x": -1,
+                                                "y": 0,
+                                                "type": "Corridor"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 137
+            },
+            "target": {
+                "type": "global",
+                "name": "room154"
+            },
+            "trigger": {
+                "dedupMode": "first",
+                "action": "trigger",
+                "what": "scenario/137/global/2doors"
+            }
+        },
+        {
+            "in": {
+                "type": "scenario",
+                "name": 137
+            },
+            "target": {
+                "type": "global",
+                "name": "room183"
+            },
+            "trigger": {
+                "dedupMode": "first",
+                "action": "trigger",
+                "what": "scenario/137/global/2doors"
             }
         }
     ],

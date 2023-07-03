@@ -636,7 +636,10 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
                                     dX = dX + 44
                                 dY = dY - 9
                             if key == "overlayTypes":
-                                dY = dY
+                                if name == "Treasure":
+                                    dY = dY + 45
+                                else:
+                                    dY = dY - 45
                             distance = math.sqrt(dX * dX + dY * dY)
                             betterMatch = bestReference == None
                             if distance < bestDistance:
@@ -653,7 +656,12 @@ def processMap(tileInfos, mapData, mapTriggers, scenarioSpecials):
 
                     relativeX = x - xOffset
                     relativeY = y - yOffset
-                    x, y = mapToHexCoordinate(x - xOffset, y - yOffset)
+                    if key == "overlayTypes":
+                        if name == "Treasure":
+                            relativeY = relativeY + 45
+                        else:
+                            relativeY = relativeY - 45
+                    x, y = mapToHexCoordinate(relativeX, relativeY)
                     outputPosition = {"x": x, "y": y, "score": r["score"]}
                     if key == "monsterLevels":
                         # Calculate the deviation from the ideal position

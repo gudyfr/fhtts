@@ -272,6 +272,7 @@ ProcessedScenarios3 = {
                            {
                               x = 9,
                               y = -5,
+                              type = "Trap",
                               },
                            },
                         },
@@ -559,6 +560,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -588,6 +590,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/4/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -2529,6 +2532,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/127/token/2",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -3399,6 +3403,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
+                              type = "Trap",
                               },
                            },
                         },
@@ -5499,6 +5504,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -1,
+                              type = "Trap",
                               },
                            {
                               x = 3,
@@ -6081,6 +6087,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/133/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -6619,6 +6626,7 @@ ProcessedScenarios3 = {
                            {
                               x = 8,
                               y = -4,
+                              type = "Door",
                               },
                            },
                         },
@@ -7501,6 +7509,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 3,
+                              type = "Wall",
                               },
                            },
                         },
@@ -7511,10 +7520,12 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 3,
+                              type = "Wall",
                               },
                            {
                               x = -4,
                               y = 3,
+                              type = "Wall",
                               },
                            },
                         },
@@ -7827,10 +7838,12 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 3,
+                              type = "Wall",
                               },
                            {
                               x = -4,
                               y = 3,
+                              type = "Wall",
                               },
                            },
                         },
@@ -8310,6 +8323,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 8,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -8494,6 +8508,12 @@ ProcessedScenarios3 = {
                                     type = "section",
                                     name = "154.1",
                                     },
+                                 also = {
+                                    {
+                                       action = "trigger",
+                                       what = "scenario/137/global/room154",
+                                       },
+                                    },
                                  id = "scenario/137/token/1",
                                  },
                               type = "Door",
@@ -8529,6 +8549,51 @@ ProcessedScenarios3 = {
                   },
                },
             triggers = {
+               {
+                  type = "countDown",
+                  current = 2.0,
+                  action = "timeout",
+                  time = 2.0,
+                  trigger = {
+                     action = "layout",
+                     what = {
+                        name = "corridors",
+                        entries = {
+                           {
+                              reference = {
+                                 tile = "04-C",
+                                 },
+                              overlays = {
+                                 {
+                                    name = "Large Snow Corridor",
+                                    orientation = 300,
+                                    positions = {
+                                       {
+                                          x = -1,
+                                          y = 0,
+                                          type = "Corridor",
+                                          },
+                                       },
+                                    },
+                                 },
+                              },
+                           },
+                        },
+                     },
+                  id = "scenario/137/global/2doors",
+                  },
+               {
+                  dedupMode = "first",
+                  action = "trigger",
+                  what = "scenario/137/global/2doors",
+                  id = "scenario/137/global/room154",
+                  },
+               {
+                  dedupMode = "first",
+                  action = "trigger",
+                  what = "scenario/137/global/2doors",
+                  id = "scenario/137/global/room183",
+                  },
                },
             },
          {
@@ -8601,6 +8666,12 @@ ProcessedScenarios3 = {
                                     type = "section",
                                     name = "154.1",
                                     },
+                                 also = {
+                                    {
+                                       action = "trigger",
+                                       what = "scenario/137/global/room154",
+                                       },
+                                    },
                                  id = "section/112.1/token/4",
                                  },
                               type = "Door",
@@ -8608,7 +8679,6 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 2,
-                              rename = "Snow Door",
                               type = "Door",
                               },
                            {
@@ -8729,6 +8799,12 @@ ProcessedScenarios3 = {
                                  what = {
                                     type = "section",
                                     name = "183.2",
+                                    },
+                                 also = {
+                                    {
+                                       action = "trigger",
+                                       what = "scenario/137/global/room183",
+                                       },
                                     },
                                  id = "section/146.5/token/6",
                                  },
@@ -8851,7 +8927,6 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -3,
-                              rename = "Snow Door",
                               type = "Door",
                               },
                            {
@@ -8866,6 +8941,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/154.1/token/4",
                                  },
+                              type = "Door",
                               },
                            {
                               x = 6,
@@ -8876,6 +8952,12 @@ ProcessedScenarios3 = {
                                  what = {
                                     type = "section",
                                     name = "183.2",
+                                    },
+                                 also = {
+                                    {
+                                       action = "trigger",
+                                       what = "scenario/137/global/room183",
+                                       },
                                     },
                                  id = "section/154.1/token/3",
                                  },
@@ -8992,6 +9074,12 @@ ProcessedScenarios3 = {
                                     type = "section",
                                     name = "154.1",
                                     },
+                                 also = {
+                                    {
+                                       action = "trigger",
+                                       what = "scenario/137/global/room154",
+                                       },
+                                    },
                                  id = "section/183.2/token/3",
                                  },
                               type = "Door",
@@ -9008,6 +9096,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/183.2/token/6",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -9720,6 +9809,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -3,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -10270,6 +10360,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -4,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -11428,6 +11519,7 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = -1,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -13000,6 +13092,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 7,
+                              type = "Wall",
                               },
                            },
                         },
@@ -13047,6 +13140,7 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 7,
+                              type = "Wall",
                               },
                            },
                         },
@@ -13349,6 +13443,7 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 7,
+                              type = "Wall",
                               },
                            },
                         },
@@ -14102,6 +14197,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -2,
+                              type = "Wall",
                               },
                            },
                         },
@@ -14894,6 +14990,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/119.4/token/2",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -14956,6 +15053,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -2,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -14971,6 +15069,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -2,
+                              type = "Hazardous Terrain",
                               },
                            {
                               x = 3,
@@ -14980,6 +15079,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -2,
+                              type = "Hazardous Terrain",
                               },
                            },
                         },
@@ -15698,11 +15798,11 @@ ProcessedScenarios3 = {
                            {
                               x = 8,
                               y = -6,
+                              type = "Trap",
                               },
                            {
                               x = 9,
                               y = -7,
-                              type = "Trap",
                               },
                            },
                         },
@@ -15739,6 +15839,7 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -15846,7 +15947,6 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 3,
-                              type = "Obstacle",
                               },
                            },
                         },
@@ -15857,6 +15957,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 1,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -16079,6 +16180,7 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 3,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -17185,6 +17287,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -4,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -18646,6 +18749,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 3,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -20616,6 +20720,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -1,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -20640,6 +20745,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/128.1/token/a",
                                  },
+                              type = "Pressure Plate",
                               },
                            },
                         },
@@ -20880,6 +20986,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/164/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -20897,6 +21004,7 @@ ProcessedScenarios3 = {
                                  what = "scenario/164/global/platesC",
                                  id = "scenario/164/token/c",
                                  },
+                              type = "Pressure Plate",
                               },
                            },
                         },
@@ -20907,6 +21015,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = -2,
+                              type = "Obstacle",
                               },
                            {
                               x = 0,
@@ -20921,6 +21030,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -7,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -20931,6 +21041,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -6,
+                              type = "Trap",
                               },
                            },
                         },
@@ -22510,10 +22621,12 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -4,
+                              type = "Obstacle",
                               },
                            {
                               x = 8,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -22535,6 +22648,7 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -7,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -22722,11 +22836,12 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -4,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 4,
                               y = -4,
-                              type = "Obstacle",
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -25240,6 +25355,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -2,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -26416,6 +26532,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -3,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -30319,6 +30436,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/27.1/token/2",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -31883,6 +32001,7 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -4,
+                              type = "Trap",
                               },
                            {
                               x = 1,
@@ -31898,11 +32017,12 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -3,
+                              type = "Obstacle",
                               },
                            {
                               x = 2,
                               y = -6,
-                              type = "Trap",
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -31932,6 +32052,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/38.4/token/2",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -32670,6 +32791,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -6,
+                              type = "Objective",
                               },
                            },
                         },
@@ -33460,6 +33582,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -4,
+                              type = "Objective",
                               },
                            },
                         },
@@ -33860,6 +33983,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = -6,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -39094,6 +39218,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
+                              type = "Trap",
                               },
                            },
                         },
@@ -39912,10 +40037,12 @@ ProcessedScenarios3 = {
                            {
                               x = 6,
                               y = -1,
+                              type = "Wall",
                               },
                            {
                               x = 6,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = 7,
@@ -40234,6 +40361,7 @@ ProcessedScenarios3 = {
                            {
                               x = 9,
                               y = -5,
+                              type = "Trap",
                               },
                            },
                         },
@@ -40390,6 +40518,7 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = 0,
+                              type = "Treasure",
                               },
                            {
                               x = 3,
@@ -40575,14 +40704,17 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -3,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 1,
                               y = -3,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 2,
                               y = -6,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -40593,6 +40725,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -40761,10 +40894,12 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = -4,
+                              type = "Obstacle",
                               },
                            {
                               x = 2,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -40784,6 +40919,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/51/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -40794,10 +40930,12 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -6,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 2,
                               y = -5,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -41459,14 +41597,17 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -2,
+                              type = "Obstacle",
                               },
                            {
                               x = 3,
                               y = 0,
+                              type = "Obstacle",
                               },
                            {
                               x = 6,
                               y = -6,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -41477,7 +41618,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = 1,
-                              type = "Difficult Terrain",
+                              type = "Corridor",
                               },
                            },
                         },
@@ -41488,6 +41629,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -4,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -41498,10 +41640,12 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = 2,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 1,
                               y = 2,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -42338,6 +42482,7 @@ ProcessedScenarios3 = {
                            {
                               x = -4,
                               y = 4,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -42735,6 +42880,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = -4,
+                              type = "Hazardous Terrain",
                               },
                            {
                               x = 3,
@@ -42868,6 +43014,7 @@ ProcessedScenarios3 = {
                            {
                               x = 9,
                               y = -5,
+                              type = "Trap",
                               },
                            },
                         },
@@ -43786,6 +43933,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/8/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -49316,6 +49464,7 @@ ProcessedScenarios3 = {
                            {
                               x = -7,
                               y = 5,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -50840,6 +50989,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -9,
+                              type = "Hazardous Terrain",
                               },
                            },
                         },
@@ -50873,6 +51023,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/142.2/token/2",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -51578,6 +51729,7 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 6,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -51816,7 +51968,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -6,
-                              type = "Obstacle",
+                              type = "Trap",
                               },
                            {
                               x = 4,
@@ -51826,6 +51978,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -6,
+                              type = "Trap",
                               },
                            },
                         },
@@ -51836,6 +51989,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -5,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -51946,6 +52100,7 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 1,
+                              type = "Treasure",
                               },
                            },
                         },
@@ -52112,6 +52267,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -10,
+                              type = "Corridor",
                               },
                            {
                               x = 5,
@@ -52137,6 +52293,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -8,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -53345,6 +53502,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "scenario/11/token/1",
                                  },
+                              type = "Door",
                               },
                            },
                         },
@@ -53516,10 +53674,12 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -4,
+                              type = "Trap",
                               },
                            {
                               x = 4,
                               y = -3,
+                              type = "Trap",
                               },
                            },
                         },
@@ -54676,6 +54836,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -4,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -54686,6 +54847,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = 0,
+                              type = "Trap",
                               },
                            },
                         },
@@ -54696,6 +54858,7 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -1,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -54715,6 +54878,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/129.2/token/a",
                                  },
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -54725,16 +54889,17 @@ ProcessedScenarios3 = {
                            {
                               x = 2,
                               y = -3,
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 3,
                               y = -2,
-                              type = "Obstacle",
+                              type = "Difficult Terrain",
                               },
                            {
                               x = 5,
                               y = -5,
-                              type = "Obstacle",
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -59688,6 +59853,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/76.1/token/d",
                                  },
+                              type = "Wall",
                               },
                            {
                               x = -1,
@@ -59701,6 +59867,7 @@ ProcessedScenarios3 = {
                                     },
                                  id = "section/76.1/token/d",
                                  },
+                              type = "Wall",
                               },
                            {
                               x = 2,
@@ -60276,6 +60443,7 @@ ProcessedScenarios3 = {
                            {
                               x = 7,
                               y = -3,
+                              type = "Obstacle",
                               },
                            },
                         },
@@ -60318,6 +60486,7 @@ ProcessedScenarios3 = {
                            {
                               x = 3,
                               y = -3,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -60998,6 +61167,7 @@ ProcessedScenarios3 = {
                            {
                               x = 7,
                               y = -3,
+                              type = "Wall",
                               },
                            },
                         },
@@ -61039,6 +61209,7 @@ ProcessedScenarios3 = {
                            {
                               x = 5,
                               y = -6,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
@@ -61111,6 +61282,7 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = -1,
+                              type = "Corridor",
                               },
                            {
                               x = 0,
@@ -61126,6 +61298,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Wall",
                               },
                            },
                         },
@@ -61146,7 +61319,6 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = -1,
-                              type = "Wall",
                               },
                            },
                         },
@@ -61565,6 +61737,7 @@ ProcessedScenarios3 = {
                            {
                               x = 0,
                               y = -1,
+                              type = "Corridor",
                               },
                            {
                               x = 0,
@@ -61688,6 +61861,7 @@ ProcessedScenarios3 = {
                            {
                               x = 4,
                               y = -2,
+                              type = "Corridor",
                               },
                            },
                         },
@@ -62798,6 +62972,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -62808,10 +62983,12 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = -3,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -62822,6 +62999,7 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 2,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63056,6 +63234,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = -3,
@@ -63070,6 +63249,7 @@ ProcessedScenarios3 = {
                            {
                               x = -6,
                               y = 2,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63151,10 +63331,12 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 1,
+                              type = "Wall",
                               },
                            {
                               x = -3,
                               y = 2,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63345,6 +63527,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63359,6 +63542,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63636,6 +63820,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 1,
+                              type = "Wall",
                               },
                            {
                               x = -3,
@@ -63735,6 +63920,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = 0,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63813,10 +63999,12 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 2,
+                              type = "Wall",
                               },
                            {
                               x = -2,
                               y = 2,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63907,6 +64095,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -63917,6 +64106,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = -3,
@@ -64066,6 +64256,7 @@ ProcessedScenarios3 = {
                            {
                               x = -1,
                               y = 1,
+                              type = "Wall",
                               },
                            },
                         },
@@ -64076,6 +64267,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = 0,
+                              type = "Wall",
                               },
                            },
                         },
@@ -64139,6 +64331,7 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = -6,
@@ -64210,6 +64403,7 @@ ProcessedScenarios3 = {
                            {
                               x = -2,
                               y = 0,
+                              type = "Wall",
                               },
                            {
                               x = -6,
@@ -64283,6 +64477,7 @@ ProcessedScenarios3 = {
                            {
                               x = 1,
                               y = 0,
+                              type = "Wall",
                               },
                            },
                         },
@@ -72380,6 +72575,7 @@ ProcessedScenarios3 = {
                            {
                               x = -3,
                               y = -1,
+                              type = "Difficult Terrain",
                               },
                            },
                         },
