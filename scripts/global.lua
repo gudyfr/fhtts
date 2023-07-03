@@ -2509,6 +2509,10 @@ function becomeColor(player_color, new_color)
    end
 end
 
+function fixHealthBars()
+   getScenarioMat().call("fixStandees")
+end
+
 function updateHotkeys(params)
    clearHotkeys()
    local enabled = params.enabled or false
@@ -2521,6 +2525,7 @@ function updateHotkeys(params)
    addHotkey("Sort Hand by initiative", function(player_color, hovered_object, point, key_up) sortHand(player_color) end)
    addHotkey("Loot a Token",
       function(player_color, hovered_object, point, key_up) lootKeyPressed(player_color, hovered_object) end)
+   addHotkey("Fix Health Bars", function(player_color, hovered_object, point, key_up) fixHealthBars() end)
 
    if enabled then
       addHotkey("Loot a Token (Player 1)",

@@ -1624,7 +1624,20 @@ function processState(state)
     Global.call("onEnemiesUpdate", JSON.encode(charactersStatus))
 end
 
+function fixStandees()
+    if StandeeState ~= nil then
+        for _, guid in ipairs(trackedGuids) do
+            local standee = getObjectFromGUID(guid)
+            if standee ~= nil then
+                standee.setDecals({})
+            end
+        end
+        Wait.frames(function() refreshStandees(StandeeState) end, 1)
+    end
+end
+
 function refreshStandees(state)
+    StandeeState = state
     for _, guid in ipairs(trackedGuids) do
         local standee = getObjectFromGUID(guid)
         if standee ~= nil then
