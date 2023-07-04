@@ -1,3 +1,4 @@
+require('async')
 require("json")
 require("number_decals")
 require("savable")
@@ -1055,7 +1056,24 @@ end
 
 function setScenario(params)
     CurrentScenario = params
-    updateAssistant("POST", "setScenario", params)
+    Async(function()
+        local res = coroutine.yield(function (resolve)
+            updateAssistant("POST", "setScenario", params, resolve)
+        end)
+
+        -- Assume internal game state and ignore
+        if res == nil then
+            return
+        end
+
+        local res = coroutine.yield(function (resolve)
+            updateAssistant("GET", "getLootDrawDeck", {}, resolve)
+        end)
+        
+        local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+        battleInterfaceMat.call('setLootDeck', jsonDecode(res.text))
+    end
+    )
 end
 
 function spawned(params)
@@ -2289,7 +2307,14 @@ function updateAssistant(method, command, params, callback)
                 updateCurrentState()
                 handled = true
             elseif command == "loot" then
-                -- Ignoring loot commands when using the internal game state
+                local battleInterface = getObjectFromGUID(BattleInterfaceMat)
+                local deckOrCard = battleInterface.call("getLootDrawDeck")
+                local cardName = getTopCardName(deckOrCard)
+                if cardName ~= nil then
+                    callback({ text = "[\"" .. cardName .. "\"]"})
+                else
+                    callback()
+                end
                 handled = true
             elseif command == "addSummon" then
                 CurrentGameState:addSummon(params.name)
@@ -2610,13 +2635,21 @@ function doLoot(params)
         targetColor = params.player_color or PlayerColors[params.player_number]
         targetName = Characters[targetColor]
     end
-    updateAssistant("POST", "loot", { target = targetName, count = params.count or 1 })
-    -- update the local game state
-    local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
-    -- Who's playing this standee?
-    battleInterfaceMat.call("onLootDraw", { color = targetColor })
-    for n = 2, params.count or 1 do
-        Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1,
-            nbLoot - 1)
-    end
+
+    Async(function()
+        local res = coroutine.yield(function (resolve)
+            updateAssistant("POST", "loot", { target = targetName, count = params.count or 1 }, resolve)
+        end)
+
+        if (res ~= nil) then
+            -- update the local game state
+            local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+    
+            local cards = jsonDecode(res.text)
+            for _, value in pairs(cards) do
+                -- Who's playing this standee?
+                battleInterfaceMat.call("onLootDraw", { color = targetColor, targetCard = value })
+            end
+        end
+    end)
 end

@@ -553,13 +553,20 @@ function cleanup()
 end
 
 function onLootDrawInternal(obj, player, alt)
-    onLootDraw({ color = player })
+    local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
+    scenarioMat.call("doLoot", { player_color = player })
 end
 
 function onLootDraw(params)
     local color = params.color
     local deck = getDeckOrCardAt(Loot.DrawDeck)
-    local card = takeCardFrom(deck)
+    local card = nil
+
+    if params.targetCard == nil then
+        card = takeCardFrom(deck)
+    else
+        card = takeCardByNameFrom(deck, params.targetCard)
+    end
     if card ~= nil then
         local name = card.getName()
         card.flip()
@@ -601,4 +608,8 @@ function setLootDeck(cards)
     if lootDeck ~= nil then
         lootDeck.shuffle()
     end
+end
+
+function getLootDrawDeck()
+    return getDeckOrCardAt(Loot.DrawDeck)
 end

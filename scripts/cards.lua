@@ -158,3 +158,30 @@ function takeCardFrom(deckOrCard)
     end
     return nil
 end
+
+function takeCardByNameFrom(deckOrCard, name)
+    if deckOrCard ~= nil then
+        if deckOrCard.tag == "Card" and deckOrCard.name == name then
+            return deckOrCard
+        elseif deckOrCard.tag == "Deck" then
+            for _, value in ipairs(deckOrCard.getObjects()) do
+                if value.name == name then
+                    return deckOrCard.takeObject({ guid = value.guid })
+                end
+            end
+        end
+    end
+    return nil
+end
+
+function getTopCardName(deckOrCard)
+    if deckOrCard == nil then
+        return nil
+    end
+
+    if deckOrCard.tag == "Card" then
+        return deckOrCard.name
+    elseif deckOrCard.tag == "Deck" then
+        return deckOrCard.getObjects()[1].name
+    end
+end
