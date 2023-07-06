@@ -1,4 +1,4 @@
-require('async')
+local A = require('async')
 require("json")
 require("number_decals")
 require("savable")
@@ -1056,24 +1056,20 @@ end
 
 function setScenario(params)
     CurrentScenario = params
-    Async(function()
-        local res = coroutine.yield(function (resolve)
-            updateAssistant("POST", "setScenario", params, resolve)
-        end)
+    A.sync(function()
+        local res = A.wait(updateAssistantAsync("POST", "setScenario", params))
 
         -- Assume internal game state and ignore
         if res == nil then
             return
         end
 
-        local res = coroutine.yield(function (resolve)
-            updateAssistant("GET", "getLootDrawDeck", {}, resolve)
-        end)
+        local res = A.wait(updateAssistantAsync("GET", "getLootDrawDeck", {}))
         
         local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
         battleInterfaceMat.call('setLootDeck', jsonDecode(res.text))
     end
-    )
+    )()
 end
 
 function spawned(params)
@@ -2360,6 +2356,12 @@ function updateAssistant(method, command, params, callback)
     end
 end
 
+-- Wraps updateAssistant as an async function
+-- Don't need the callback function as the last arg
+-- Needs to be called with A.wait() inside 
+-- an A.sync(function() end) block
+updateAssistantAsync = A.wrap(updateAssistant)
+
 function getGMNotes(obj)
     local current = obj.getGMNotes()
     if current == nil or current == "" then
@@ -2636,10 +2638,8 @@ function doLoot(params)
         targetName = Characters[targetColor]
     end
 
-    Async(function()
-        local res = coroutine.yield(function (resolve)
-            updateAssistant("POST", "loot", { target = targetName, count = params.count or 1 }, resolve)
-        end)
+    A.sync(function()
+        local res = A.wait(updateAssistantAsync("POST", "loot", { target = targetName, count = params.count or 1 }))
 
         if (res ~= nil) then
             -- update the local game state
@@ -2651,5 +2651,5 @@ function doLoot(params)
                 battleInterfaceMat.call("onLootDraw", { color = targetColor, targetCard = value })
             end
         end
-    end)
+    end)()
 end
