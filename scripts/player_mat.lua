@@ -845,15 +845,15 @@ function updateDecals()
   local decals = {}
   for i, position in ipairs(ItemCardPositions.actives) do
     table.insert(decals, getDecal(position))
-    fName = "toggle_item_" .. i
+    local fName = "toggle_item_" .. i
     self.setVar(fName, function() toggleItem(position) end)
-    position = getDecalPosition(position)
-    position[1] = -position[1]
-    params = {
+    local decalPosition = getDecalPosition(position)
+    decalPosition[1] = - decalPosition[1]
+    local params = {
       function_owner = self,
       click_function = fName,
       label          = "Use",
-      position       = position,
+      position       = decalPosition,
       width          = 200,
       height         = 200,
       font_size      = 50,
