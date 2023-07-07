@@ -426,7 +426,7 @@ function packCharacter()
   local quests = getCardList(PersonalQuestCardPosition)
   local save = { character = character, items = items, quests = quests }
   fhlog(DEBUG, TAG, "Packing Character : %s", save)
-  local originalBag = getObjectFromGUID(CharacterBags[characterName])
+  local originalBag = getObjectFromGUID(CharacterBags[characterName][1])
   if originalBag ~= nil then
     local customObject = originalBag.getCustomObject()
     local dropPosition = self.getPosition()
