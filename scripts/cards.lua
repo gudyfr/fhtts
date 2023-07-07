@@ -161,7 +161,7 @@ end
 
 function takeCardByNameFrom(deckOrCard, name)
     if deckOrCard ~= nil then
-        if deckOrCard.tag == "Card" and deckOrCard.name == name then
+        if deckOrCard.tag == "Card" and deckOrCard.getName() == name then
             return deckOrCard
         elseif deckOrCard.tag == "Deck" then
             for _, value in ipairs(deckOrCard.getObjects()) do
@@ -180,7 +180,7 @@ function getTopCardName(deckOrCard)
     end
 
     if deckOrCard.tag == "Card" then
-        return deckOrCard.name
+        return deckOrCard.getName()
     elseif deckOrCard.tag == "Deck" then
         return deckOrCard.getObjects()[1].name
     end
