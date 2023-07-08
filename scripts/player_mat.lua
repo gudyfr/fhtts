@@ -145,6 +145,10 @@ function loadCharacterBox(characterBox, state)
     if abilityCards ~= nil then
       deck = rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil,
         applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.available, cardLocations["available"], false, nil, nil,
+        applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.active, cardLocations["active"], false, nil, nil,
+        applyEnhancementsToCard)
       deck = rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
       for i, cards in ipairs(abilityCards.persist) do
         deck = rebuildDeck(deck, guids, cards, cardLocations["persist"][i], false, nil, nil, applyEnhancementsToCard)
