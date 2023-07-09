@@ -70,7 +70,7 @@ function takeFromContainer(container, guids, i, callback, position, containers)
       smooth = false,
       position = position,
       callback_function = function(box)
-        putContainersBack(containers)
+        putContainersBack(containers)      
         Wait.frames(function() callback(box) end, 1)
       end
     })
@@ -91,6 +91,27 @@ function putContainersBack(containers)
     containers[i - 1].putObject(containers[i])
   end
 end
+
+-- function createContainersTable()
+--   if self.getName() == "Red Player Mat" then
+--     local containerInfos = {}
+--     local done = 0
+--     local todo = 0
+--     for name, guids in pairs(CharacterBags) do
+--       todo = todo + 1
+--       local container = getObjectFromGUID(guids[1])
+--       takeFromContainer(container, guids, 2, function(box)
+--         containerInfos[name] = box.getCustomObject()
+--         done = done + 1
+--         if done == todo then
+--           print(JSON.encode(containerInfos))
+--         end
+--       end, { x=97, y=3, z=todo*2 }, {})
+--       waitms(1000)
+--     end
+--   end
+--   return 1
+-- end
 
 function onStateUpdate(state)
   -- print(JSON.encode(state))
@@ -443,9 +464,8 @@ function packCharacter()
   local quests = getCardList(PersonalQuestCardPosition)
   local save = { character = character, items = items, quests = quests }
   fhlog(DEBUG, TAG, "Packing Character : %s", save)
-  local originalBag = getObjectFromGUID(CharacterBags[characterName][1])
-  if originalBag ~= nil then
-    local customObject = originalBag.getCustomObject()
+  local customObject = CharacterBoxes[characterName]
+  if customObject ~= nil then
     local dropPosition = self.getPosition()
     dropPosition.z = dropPosition.z + 8
     dropPosition.y = dropPosition.y + 1
@@ -852,7 +872,7 @@ function updateDecals()
     local fName = "toggle_item_" .. i
     self.setVar(fName, function() toggleItem(position) end)
     local decalPosition = getDecalPosition(position)
-    decalPosition[1] = - decalPosition[1]
+    decalPosition[1] = -decalPosition[1]
     local params = {
       function_owner = self,
       click_function = fName,
