@@ -2,6 +2,9 @@
     "maps": {
         "867": {
             "tile": "16-B",
+            "name" : "Tracks",
+            "minor" : "At the start of their turns, monsters in this room add +1 Move to each of their move abilities.",
+            "major" : "Monsters add +1 Move and Jump to all their move abilities",
             "entrances": {
                 "A": {
                     "x": -7,
@@ -16,7 +19,56 @@
                     "direction": 270
                 }
             },
-            "locations": [],
+            "locations": [
+                {
+                    "x" : -7,
+                    "y" : 5
+                },
+                {
+                    "x" : -5,
+                    "y" : 6
+                },
+                {
+                    "x" : -3,
+                    "y" : 4
+                },
+                {
+                    "x" : -6,
+                    "y" : 0
+                },
+                {
+                    "x" : -5,
+                    "y" : 0
+                },
+                {
+                    "x" : -5,
+                    "y" : 3
+                },
+                {
+                    "x" : -6,
+                    "y" : 3
+                },
+                {
+                    "x" : -3,
+                    "y" : 3
+                },
+                {
+                    "x" : -9,
+                    "y" : 4
+                },
+                {
+                    "x" : -1,
+                    "y" : 0
+                },
+                {
+                    "x" : -1,
+                    "y" : 1
+                },
+                {
+                    "x" : 0,
+                    "y" : 0
+                }
+            ],
             "overlays": [
                 {
                     "name": "Large Debris",
@@ -32,7 +84,7 @@
                             "orientation": 0
                         },
                         {
-                            "x": -8,
+                            "x": -9,
                             "y": 6,
                             "orientation": 60
                         }
@@ -67,6 +119,9 @@
         },
         "868": {
             "tile": "16-C",
+            "name": "Mausoleum",
+            "minor": "When the next enemy dies, spawn one normal Living Bones at the closest sarcophagus.",
+            "major": "When the next enemy dies, spawn one elite Living Bones at each sarcophagus.",
             "entrances": {
                 "A": {
                     "x": -7,
@@ -86,7 +141,56 @@
                     "direction": 270
                 }
             },
-            "locations": [],
+            "locations": [
+                {
+                    "x": -1,
+                    "y": 1
+                },
+                {
+                    "x": -3,
+                    "y": 2
+                },
+                {
+                    "x": -3,
+                    "y": 5
+                },
+                {
+                    "x": -3,
+                    "y": 6
+                },
+                {
+                    "x": -6,
+                    "y": 2
+                },
+                {
+                    "x": -6,
+                    "y": 6
+                },
+                {
+                    "x": -7,
+                    "y": 2
+                },
+                {
+                    "x": -5,
+                    "y": 0
+                },
+                {
+                    "x": -5,
+                    "y": 3
+                },
+                {
+                    "x": -9,
+                    "y": 4
+                },
+                {
+                    "x": -9,
+                    "y": 6
+                },
+                {
+                    "x": -10,
+                    "y": 6
+                }
+            ],
             "overlays": [
                 {
                     "name": "Sarcophagus",
