@@ -2088,25 +2088,28 @@ function refreshStandee(standee, instance)
 end
 
 function onLootDrawn(params)
-    if isInternalGameStateEnabled() then
-        local card = params.card
-        local color = params.color
-        local enhancements = params.enhancements or 0
-        local character = Characters[color]
-        if character ~= nil and card ~= nil then
-            print(card)
-            local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
-            if lootInfo.type ~= "special" then
-                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
-                    { r = 0.2, g = 1, b = 0.2 })
-            else
-                broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
-            end
+    local card = params.card
+    local color = params.color
+    local enhancements = params.enhancements or 0
+    local character = Characters[color]
+
+    if character ~= nil and card ~= nil then
+        local lootInfo
+        if isInternalGameStateEnabled() then
+            lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
         else
-            print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
-            broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
-                { r = 1, g = 0, b = 0 })
+            lootInfo = CurrentGameState:getLootCardInfo(card)
         end
+        if lootInfo.type ~= "special" then
+            broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
+                { r = 0.2, g = 1, b = 0.2 })
+        else
+            broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
+        end
+    else
+        print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
+        broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
+            { r = 1, g = 0, b = 0 })
     end
 end
 
@@ -2308,9 +2311,10 @@ function updateAssistant(method, command, params, callback)
             elseif command == "loot" then
                 local battleInterface = getObjectFromGUID(BattleInterfaceMat)
                 local deckOrCard = battleInterface.call("getLootDrawDeck")
-                local cardName = getTopCardName(deckOrCard)
-                if cardName ~= nil then
-                    callback({ text = "[\"" .. cardName .. "\"]"})
+                local cardNames = getTopNCardName(deckOrCard, params.count)
+
+                if cardNames ~= nil then
+                    callback({ text = JSON.encode(cardNames)})
                 else
                     callback()
                 end
@@ -2659,7 +2663,14 @@ function doLoot(params)
             local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
     
             local cards = jsonDecode(res.text)
-            for _, value in pairs(cards) do
+            for idx, value in pairs(cards) do
+                -- Wait for cards to start moving in game
+                if idx > 1 then
+                    A.wait(A.wrap(function(resolve)
+                        Wait.time(resolve, 0.2)
+                    end)())
+                end
+
                 -- Who's playing this standee?
                 battleInterfaceMat.call("onLootDraw", { color = targetColor, targetCard = value })
             end

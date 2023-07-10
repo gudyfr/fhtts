@@ -174,14 +174,24 @@ function takeCardByNameFrom(deckOrCard, name)
     return nil
 end
 
-function getTopCardName(deckOrCard)
+function getTopNCardName(deckOrCard, numCards)
     if deckOrCard == nil then
         return nil
     end
 
     if deckOrCard.tag == "Card" then
-        return deckOrCard.getName()
+        return { deckOrCard.getName() }
     elseif deckOrCard.tag == "Deck" then
-        return deckOrCard.getObjects()[1].name
+        local _numCards = #(deckOrCard.getObjects())
+        if numCards < _numCards then
+            _numCards = numCards
+        end
+
+        local cards = {}
+        for i = 1, _numCards do
+            print(deckOrCard.getObjects()[i].name)
+            cards[i] = deckOrCard.getObjects()[i].name
+        end
+        return cards
     end
 end
