@@ -19,6 +19,8 @@ function getState()
     local abilityCards = {}
     abilityCards.discard = getCardList(cardLocations["discard"])
     abilityCards.lost = getCardList(cardLocations["lost"])
+    abilityCards.active = getCardList(cardLocations["active"])
+    abilityCards.available = getCardList(cardLocations["available"])
     local persistCards = {}
     for _, position in ipairs(cardLocations["persist"]) do
       table.insert(persistCards, getCardList(position))
@@ -68,7 +70,7 @@ function takeFromContainer(container, guids, i, callback, position, containers)
       smooth = false,
       position = position,
       callback_function = function(box)
-        putContainersBack(containers)
+        putContainersBack(containers)      
         Wait.frames(function() callback(box) end, 1)
       end
     })
@@ -89,6 +91,27 @@ function putContainersBack(containers)
     containers[i - 1].putObject(containers[i])
   end
 end
+
+-- function createContainersTable()
+--   if self.getName() == "Red Player Mat" then
+--     local containerInfos = {}
+--     local done = 0
+--     local todo = 0
+--     for name, guids in pairs(CharacterBags) do
+--       todo = todo + 1
+--       local container = getObjectFromGUID(guids[1])
+--       takeFromContainer(container, guids, 2, function(box)
+--         containerInfos[name] = box.getCustomObject()
+--         done = done + 1
+--         if done == todo then
+--           print(JSON.encode(containerInfos))
+--         end
+--       end, { x=97, y=3, z=todo*2 }, {})
+--       waitms(1000)
+--     end
+--   end
+--   return 1
+-- end
 
 function onStateUpdate(state)
   -- print(JSON.encode(state))
@@ -142,6 +165,10 @@ function loadCharacterBox(characterBox, state)
     local abilityCards = state.abilityCards
     if abilityCards ~= nil then
       deck = rebuildDeck(deck, guids, abilityCards.discard, cardLocations["discard"], false, nil, nil,
+        applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.available, cardLocations["available"], false, nil, nil,
+        applyEnhancementsToCard)
+      deck = rebuildDeck(deck, guids, abilityCards.active, cardLocations["active"], false, nil, nil,
         applyEnhancementsToCard)
       deck = rebuildDeck(deck, guids, abilityCards.lost, cardLocations["lost"], false, nil, nil, applyEnhancementsToCard)
       for i, cards in ipairs(abilityCards.persist) do
@@ -250,22 +277,30 @@ function loadCharacterBox(characterBox, state)
     end
   end
 
-  -- Finish emptying the box
+  -- Finish emptying the box: tokens, overlays and remaining standees
   local currentToken = 1
+  local currentOverlay = 1
   local zShift = 0
   for _, obj in ipairs(characterBox.getObjects()) do
     local isToken = false
+    local isOverlay = false
     for _, tag in ipairs(obj.tags) do
       if tag == "token" then
         isToken = true
+      elseif tag == "overlay" then
+        isOverlay = true
       end
     end
-    -- Always take out tokens, but only take out other objects (Standees) if we have room
+    -- Always take out tokens and overlays, but only take out other objects (standees) if we have room
     local destination, rotation
     if isToken then
       destination = TokenPositions[currentToken]
       currentToken = currentToken + 1
-      rotation = { 0, 0, 180 }
+      rotation = { 180, 0, 0 }
+    elseif isOverlay then
+      destination = OverlaysPositions[currentOverlay]
+      currentOverlay = currentOverlay + 1
+      rotation = { 180, 0, 0 }
     else
       destination = UntaggedPositions[currentUntagged]
       destination.z = destination.z + zShift
@@ -353,7 +388,10 @@ function getPlayerHand()
   return PlayerHands[getPlayerColor()]
 end
 
-ItemCardPositions = {}
+ItemCardPositions = {
+  actives = {},
+  supplies = {}
+}
 
 function onLoad()
   TAG = self.getDescription()
@@ -403,7 +441,7 @@ function onLoad()
     self.addContextMenuItem("Pack Character", packCharacter)
   end
 
-  setDecals()
+  updateDecals()
   registerSavable(self.getName())
 
   Global.call("registerForDrop", { self })
@@ -426,9 +464,8 @@ function packCharacter()
   local quests = getCardList(PersonalQuestCardPosition)
   local save = { character = character, items = items, quests = quests }
   fhlog(DEBUG, TAG, "Packing Character : %s", save)
-  local originalBag = getObjectFromGUID(CharacterBags[characterName])
-  if originalBag ~= nil then
-    local customObject = originalBag.getCustomObject()
+  local customObject = CharacterBoxes[characterName]
+  if customObject ~= nil then
     local dropPosition = self.getPosition()
     dropPosition.z = dropPosition.z + 8
     dropPosition.y = dropPosition.y + 1
@@ -563,6 +600,7 @@ CharacterSheetPosition = {}
 AbilityCardPositions = {}
 AttackModifiersSupplyPosition = {}
 PerksPositions = {}
+OverlaysPositions = {}
 UntaggedPositions = {}
 
 function locateBoardElementsFromTags()
@@ -596,6 +634,10 @@ function locateBoardElementsFromTags()
         table.insert(persistPositions, position)
       elseif tagsMap['supply'] ~= nil then
         cardLocations["supply"] = position
+      elseif tagsMap['available'] ~= nil then
+        cardLocations["available"] = position
+      elseif tagsMap['active'] ~= nil then
+        cardLocations["active"] = position
       end
     end
     if tagsMap["button"] ~= nil then
@@ -617,8 +659,15 @@ function locateBoardElementsFromTags()
     if tagsMap["token"] ~= nil then
       table.insert(TokenPositions, position)
     end
+    if tagsMap["overlay"] ~= nil then
+      table.insert(OverlaysPositions, position)
+    end
     if tagsMap["item"] ~= nil then
-      table.insert(ItemCardPositions, position)
+      if tagsMap["supply"] ~= nil then
+        table.insert(ItemCardPositions.supplies, position)
+      else
+        table.insert(ItemCardPositions.actives, position)
+      end
     end
     if tagsMap["personal quest"] ~= nil then
       PersonalQuestCardPosition = position
@@ -637,15 +686,21 @@ end
 
 function getItemCardPositionsInternal(mapToWorld)
   mapToWorld = mapToWorld or false
-  table.sort(ItemCardPositions, function(a, b) return 30 * (a.z - b.z) + b.x - a.x < 0 end)
-  local itemNames = { "hand1", "head", "hand2", "chest", "item1", "feet", "item2", "item3", "item4", "item5" }
-
+  table.sort(ItemCardPositions.actives, function(a, b) return 30 * (a.z - b.z) + b.x - a.x < 0 end)
+  local itemNames = { "head", "hand2", "chest", "hand1", "feet", "item1", "item2", "item3", "item4", "item5", "supply" }
+  local itemPositions = {}
+  for _, position in ipairs(ItemCardPositions.actives) do
+    table.insert(itemPositions, position)
+  end
+  for _, position in ipairs(ItemCardPositions.supplies) do
+    table.insert(itemPositions, position)
+  end
   local results = {}
   for i, name in ipairs(itemNames) do
     if mapToWorld then
-      results[name] = self.positionToWorld(ItemCardPositions[i])
+      results[name] = self.positionToWorld(itemPositions[i])
     else
-      results[name] = ItemCardPositions[i]
+      results[name] = itemPositions[i]
     end
   end
 
@@ -795,7 +850,7 @@ function cleanup()
   cleanupAttackModifiers(AttackModifiersDrawPosition, AttackModifiersDiscardPosition)
 
   -- Restore items
-  for _, position in ipairs(ItemCardPositions) do
+  for _, position in ipairs(ItemCardPositions.actives) do
     local deckOrCard = getDeckOrCardAt(position)
     if deckOrCard ~= nil then
       deckOrCard.setRotationSmooth({ 0, 0, 0 })
@@ -810,32 +865,28 @@ function returnCardToScenarioMat(card)
   end
 end
 
-function setDecals()
-  decals = {}
-  for i, point in pairs(self.getSnapPoints()) do
-    for j, tag in ipairs(point.tags) do
-      if tag == "item" then
-        table.insert(decals, getDecal(point.position))
-        fName = "toggle_item_" .. i
-        self.setVar(fName, function() toggleItem(point.position) end)
-        position = getDecalPosition(point.position)
-        position[1] = -position[1]
-        params = {
-          function_owner = self,
-          click_function = fName,
-          label          = "Use",
-          position       = position,
-          width          = 200,
-          height         = 200,
-          font_size      = 50,
-          color          = { 1, 1, 1, 0 },
-          scale          = { .3, .3, .3 },
-          font_color     = { 1, 1, 1, 0 },
-          tooltip        = "Flip the item used / unused",
-        }
-        self.createButton(params)
-      end
-    end
+function updateDecals()
+  local decals = {}
+  for i, position in ipairs(ItemCardPositions.actives) do
+    table.insert(decals, getDecal(position))
+    local fName = "toggle_item_" .. i
+    self.setVar(fName, function() toggleItem(position) end)
+    local decalPosition = getDecalPosition(position)
+    decalPosition[1] = -decalPosition[1]
+    local params = {
+      function_owner = self,
+      click_function = fName,
+      label          = "Use",
+      position       = decalPosition,
+      width          = 200,
+      height         = 200,
+      font_size      = 50,
+      color          = { 1, 1, 1, 0 },
+      scale          = { .3, .3, .3 },
+      font_color     = { 1, 1, 1, 0 },
+      tooltip        = "Flip the item used / unused",
+    }
+    self.createButton(params)
   end
   self.setDecals(decals)
 end
@@ -869,7 +920,7 @@ function toggleItem(position)
   end
 end
 
-decalOffset = { -.22, 0.01, 0.22 }
+decalOffset = { -.20, 0.01, 0.20 }
 function getDecal(position)
   decalPosition = getDecalPosition(position)
   --position[1] = -position[1]

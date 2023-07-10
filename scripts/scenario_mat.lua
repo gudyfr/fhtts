@@ -1581,7 +1581,7 @@ function processState(state)
         if entry.characterState ~= nil then
             for _, summon in ipairs(entry.characterState.summonList or {}) do
                 local summonName = summon.name
-                if summonName == "Shambling Skeleton" then
+                if summonName == "Shambling Skeleton" or "White Owl" then
                     summonName = summonName .. " " .. summon.standeeNr
                 end
                 newState[summonName] = { characterState = summon }

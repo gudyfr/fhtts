@@ -9957,7 +9957,7 @@ Scenarios = {
          {
             name = "Snow Door",
             type = "Door",
-            count = 6,
+            count = 7,
             },
          {
             name = "Large Snow Corridor",
