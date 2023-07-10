@@ -2476,6 +2476,16 @@ function findPlayerMat(characterName)
     return nil
 end
 
+function findPlayerMatByColor(playerColor)
+    for color, guid in pairs(PlayerMats) do
+        local mat = getObjectFromGUID(guid)
+        if (mat ~= nil) and (playerColor == color) then
+            return mat
+        end
+    end
+    return nil
+end
+
 function onLootReceived(request, mode)
     if request.is_done and not request.is_error then
         if math.floor(request.response_code / 100) == 2 then

@@ -653,6 +653,9 @@ function locateBoardElementsFromTags()
     if tagsMap["character sheet"] ~= nil then
       CharacterSheetPosition = position
     end
+    if tagsMap["loot"] ~= nil then
+      cardLocations["loot"] = position
+    end
     if tagsMap["perk"] ~= nil then
       table.insert(PerksPositions, position)
     end
@@ -705,6 +708,10 @@ function getItemCardPositionsInternal(mapToWorld)
   end
 
   return results
+end
+
+function getLootPosition()
+  return JSON.encode(self.positionToWorld(cardLocations["loot"]))
 end
 
 function getPersonalQuestCardPosition()

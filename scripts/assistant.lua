@@ -561,17 +561,19 @@ function onLootDraw(params)
     local color = params.color
     local deck = getDeckOrCardAt(Loot.DrawDeck)
     local card = nil
+    local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
+    local playerMat = scenarioMat.call("findPlayerMatByColor", color)
+    local lootPosition = JSON.decode(playerMat.call('getLootPosition'))
 
     if params.targetCard == nil then
         card = takeCardFrom(deck)
     else
         card = takeCardByNameFrom(deck, params.targetCard)
     end
-    if card ~= nil then
+    if (card ~= nil) and (playerMat ~= nil) then
         local name = card.getName()
         card.flip()
-        addCardToDeckAt(card, Loot.DiscardDeck, { smooth = true, noPut = true })
-        local scenarioMat = getObjectFromGUID(ScenarioMatGuid)
+        addCardToDeckAtWorldPosition(card, lootPosition, { smooth = true, noPut = true })
         local enhancements = 0
         for _, decal in ipairs(card.getDecals() or {}) do
             if decal.name == "+1" then
