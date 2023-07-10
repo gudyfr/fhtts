@@ -2085,25 +2085,28 @@ function refreshStandee(standee, instance)
 end
 
 function onLootDrawn(params)
-    if isInternalGameStateEnabled() then
-        local card = params.card
-        local color = params.color
-        local enhancements = params.enhancements or 0
-        local character = Characters[color]
-        if character ~= nil and card ~= nil then
-            print(card)
-            local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
-            if lootInfo.type ~= "special" then
-                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
-                    { r = 0.2, g = 1, b = 0.2 })
-            else
-                broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
-            end
+    local card = params.card
+    local color = params.color
+    local enhancements = params.enhancements or 0
+    local character = Characters[color]
+
+    if character ~= nil and card ~= nil then
+        local lootInfo
+        if isInternalGameStateEnabled() then
+            lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
         else
-            print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
-            broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
-                { r = 1, g = 0, b = 0 })
+            lootInfo = CurrentGameState:getLootCardInfo(card)
         end
+        if lootInfo.type ~= "special" then
+            broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
+                { r = 0.2, g = 1, b = 0.2 })
+        else
+            broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
+        end
+    else
+        print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
+        broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
+            { r = 1, g = 0, b = 0 })
     end
 end
 
