@@ -2125,7 +2125,7 @@ end
 
 function onObjectDestroy(object)
    if object.hasTag("tracked") then
-      getScenarioMat().call('unregisterStandee', object)
+      getScenarioMat().call('unregisterStandee', {target=object})
    end
 end
 

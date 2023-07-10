@@ -1105,7 +1105,7 @@ function spawned(params)
             end
         )
     end
-    registerStandee(monster)
+    registerStandee({target=monster})
 end
 
 NeedsToSwitch = {}
@@ -1413,7 +1413,8 @@ function toggleEndScenarioUI()
 end
 
 -- Standee functions
-function registerStandee(standee)
+function registerStandee(params)
+    local standee = params.target
     standee.addTag("tracked")
     onStandeeRegistered(standee)
     table.insert(trackedGuids, standee.guid)
@@ -1465,7 +1466,8 @@ function undamageStandee(standee, color, alt)
     changeStandeeHp({ standee = standee, amount = 1, changeMax = alt })
 end
 
-function unregisterStandee(standee)
+function unregisterStandee(params)
+    local standee = params.target
     for idx, guid in ipairs(trackedGuids) do
         if guid == standee.guid then
             table.remove(trackedGuids, idx)
@@ -1581,7 +1583,7 @@ function processState(state)
         if entry.characterState ~= nil then
             for _, summon in ipairs(entry.characterState.summonList or {}) do
                 local summonName = summon.name
-                if summonName == "Shambling Skeleton" or "White Owl" then
+                if summonName == "Shambling Skeleton" or summonName == "White Owl" then
                     summonName = summonName .. " " .. summon.standeeNr
                 end
                 newState[summonName] = { characterState = summon }
@@ -1651,6 +1653,7 @@ function fixStandees()
 end
 
 function refreshStandees(state)
+    fhlog(INFO, TAG, "Refreshing Standees : %s", state)
     StandeeState = state
     for _, guid in ipairs(trackedGuids) do
         local standee = getObjectFromGUID(guid)
