@@ -615,3 +615,7 @@ end
 function getLootDrawDeck()
     return getDeckOrCardAt(Loot.DrawDeck)
 end
+
+function returnToLootActiveDeck(lootDeck)
+    forEachInDeckOrCard(lootDeck, function(card) addCardToDeckAt(card, Loot.ActiveDeck) end)
+end

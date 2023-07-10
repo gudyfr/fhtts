@@ -863,6 +863,10 @@ function cleanup()
       deckOrCard.setRotationSmooth({ 0, 0, 0 })
     end
   end
+
+  local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+  local lootDeck = getDeckOrCardAt(cardLocations["loot"])
+  battleInterfaceMat.call("returnToLootActiveDeck", lootDeck)
 end
 
 function returnCardToScenarioMat(card)
