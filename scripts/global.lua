@@ -1,4 +1,3 @@
----@diagnostic disable: unused-local
 require('json')
 require('constants')
 require('coordinates')
@@ -6,6 +5,7 @@ require('fhlog')
 require('attack_modifiers')
 require('data/scenarios')
 require('data/processedScenarios3')
+require("data/random_dungeons")
 
 TAG = "Global"
 
@@ -1780,6 +1780,11 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       local what = action.what
       layoutMap(what)
    end
+
+   -- handle random dungeons triggers
+   -- obj = getobjfromguid
+   -- obj.call("function_name", {})
+   -- fct with one table as only parameter
 
    if action.also ~= nil then
       for i, subAction in ipairs(action.also) do
