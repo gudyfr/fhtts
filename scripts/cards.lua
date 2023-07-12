@@ -33,7 +33,7 @@ end
 --- Iterates over all cards in a deck, card or nil. For each entry in the container, it will call entryTest, and if that returns true, will take the card, and apply the transform function to it.
 ---@param deck any the deck, card or nil object to apply the cardTransform function to each card contained in it.
 ---@param cardTransform any the transform function to apply to each card. The function is called with the card as the first argument.
----@param entryTest any the test function to apply to each entry in the deck. The function is called with the entry (a table containing {name, description and tags} from the card) as the first argument. If the function returns true, the card is taken and the transform function is applied to it. 
+---@param entryTest any the test function to apply to each entry in the deck. The function is called with the entry (a table containing {name, description and tags} from the card) as the first argument. If the function returns true, the card is taken and the transform function is applied to it.
 ---@return number the number of cards that were taken and transformed.
 function forEachInDeckOrCardIf(deck, cardTransform, entryTest)
     if deck == nil then
@@ -189,7 +189,7 @@ function getTopNCardName(deckOrCard, numCards)
 
         local cards = {}
         for i = 1, _numCards do
-            print(deckOrCard.getObjects()[i].name)
+            -- print(deckOrCard.getObjects()[i].name)
             cards[i] = deckOrCard.getObjects()[i].name
         end
         return cards

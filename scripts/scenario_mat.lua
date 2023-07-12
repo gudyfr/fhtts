@@ -2107,7 +2107,7 @@ function onLootDrawn(params)
             broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
         end
     else
-        print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
+        -- print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
         broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
             { r = 1, g = 0, b = 0 })
     end
