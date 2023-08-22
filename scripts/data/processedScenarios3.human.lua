@@ -58244,7 +58244,7 @@ ProcessedScenarios3 = {
                   action = "reveal",
                   what = {
                      type = "section",
-                     name = "102.2",
+                     name = "131.2",
                      },
                   id = "scenario/96/global/fishking75",
                   },
@@ -58255,7 +58255,7 @@ ProcessedScenarios3 = {
                   action = "reveal",
                   what = {
                      type = "section",
-                     name = "165.2",
+                     name = "102.2",
                      },
                   id = "scenario/96/global/fishking50",
                   },
@@ -58266,7 +58266,7 @@ ProcessedScenarios3 = {
                   action = "reveal",
                   what = {
                      type = "section",
-                     name = "131.2",
+                     name = "165.2",
                      },
                   id = "scenario/96/global/fishking25",
                   },
