@@ -65,9 +65,7 @@ function onAfterLoad()
    loadData()
    fhLogSettingsUpdated()
    local settings = JSON.decode(getSettings())
-   local params = { enabled = settings["enable-solo"] or false, fivePlayers = settings["enable-5p"] or false }
-   updateHotkeys(params)
-   getScenarioMat().call('updateSnapPoints', params)
+   updateHotkeys({ enabled = settings["enable-solo"] or false, fivePlayers = settings["enable-5p"] or false })
    UI.setAttribute("layout", "active", settings['enable-am-ui-overlay'])
 end
 

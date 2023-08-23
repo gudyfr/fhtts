@@ -10,8 +10,6 @@ require('constants')
 require('game_state')
 require('cards')
 require('data/gameData')
-require('data/snapPoints4P')
-require('data/snapPoints5P')
 
 TAG = "ScenarioMat"
 CURRENT_ASSISTANT_VERSION = 6
@@ -362,17 +360,6 @@ function updateGameStateWithGameData(gameData)
         end
     end
 end
-
-function updateSnapPoints(params)
-    local fivePlayers = params.fivePlayers or false
-    if fivePlayers then
-        snapPoints = SnapPoints5P
-    else
-        snapPoints = SnapPoints4P
-    end
-    self.setSnapPoints(snapPoints)
-    self.reload()
- end
 
 function flipX(position)
     return { x = -position.x, y = position.y, z = position.z }
