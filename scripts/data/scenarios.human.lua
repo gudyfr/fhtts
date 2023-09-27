@@ -3913,7 +3913,7 @@ Scenarios = {
          "11-A",
          "11-C",
          },
-      title = "Blizzard island",
+      title = "Blizzard Island",
       location = "D2",
       difficulty = 2,
       },
