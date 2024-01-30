@@ -1,5 +1,44 @@
 require("fhlog")
+require('coordinates')
 require("data/random_dungeons")
+
+
+function WaitMS(ms)
+  local start = os.time()
+  while os.time() < start + ms / 1000 do
+    coroutine.yield(0)
+  end
+end
+
+TokenBagsGuids = {
+  n1 = '89f48c',
+  n2 = '166ec3',
+  n3 = '767548',
+  n4 = 'e0d378',
+  n5 = '91d577',
+  n6 = 'af78de',
+  n7 = '979463',
+  n8 = 'c4946a',
+  n9 = '94824b',
+  n10 = 'e93174',
+  n11 = 'aa55af',
+  n12 = 'd593a3',
+  a = '346c96',
+  b = '4d2a7b',
+  c = '52c747',
+  d = '35fef4',
+  e = '7a1e07',
+  f = 'd0aec7',
+  g = 'ca5ccf',
+  h = 'da4781',
+  i = 'b9ead6',
+  j = '7da71f',
+  k = '196642',
+  m = '45fdef',
+  start = '2a4be3',
+  loot = '5e0624',
+  section = '9ddb6d'
+}
 
 RandomRoomCardPositions = {
   deck = {},
@@ -98,29 +137,336 @@ function onLoad()
     end
   end
 
+  Global.call('registerForDrop', { self })
+
   --   Global.call("registerForCollision", self)
-  --   self.addContextMenuItem("Pack Character", packCharacter)
-  -- end
 
-  -- updateDecals()
   -- registerSavable(self.getName())
+end
 
-  -- Global.call("registerForDrop", { self })
+function DrawRoom()
+  -- TODO: shuffle before drawing and check if room entry corresponds to previous exit
+  -- maybe check before drawing
+  draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck,
+    RandomRoomCardPositions.actives, true)
+  draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
+    RandomMonstersCardPositions.actives, true)
 end
 
 function StartRandomDungeon(external)
   if external ~= true then
     external = false
   end
-  shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
-  draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck, RandomRoomCardPositions.actives,
-    not external)
-  shuffle(RandomMonstersCardPositions.deck, RandomMonstersCardPositions.actives)
-  draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
-    RandomMonstersCardPositions.actives,
-    not external)
+  Global.call("CreateRandomScenarioEx")
+  --output:
+  -- CurrentScenario = {
+  --     triggers = {
+  --        byTriggerId = {},
+  --        byObjectGuid = {},
+  --        triggered = {},
+  --        triggersById = {}
+  --     },
+  --     doors = {
+  --     },
+  --     tileGuids = {},
+  --     objectsOnObjects = {},
+  --     id = name, name is a random string between 1,000 and 1,000,000
+  --     elements = Scenarios[name], TODO: modify this
+  --     registeredForCollision = {}
+  --  }
+  Init_Current_rooms()
+  DrawRoom()
+  -- layout, exit = CreateLayout(room_data, Current_rooms)
+  -- entries = BuildEntries(room,)
+  Global.call("AddRandomScenarioLayoutEx", params)
+
+  -- shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
+  -- draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck, RandomRoomCardPositions.actives,
+  --   true)
+  -- shuffle(RandomMonstersCardPositions.deck, RandomMonstersCardPositions.actives)
+  -- draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
+  --   RandomMonstersCardPositions.actives,
+  --   not external)
 end
 
-function function_name(params)
-  -- Global.call()
+function Init_Current_rooms()
+  Current_rooms = { rooms = {} }
 end
+
+Current_rooms = {}
+Init_Current_rooms()
+
+function GetOppositeCoordinates(pos)
+  return { x = -pos.x, y = -pos.y }
+end
+
+function AddCoordinates(pos1, pos2)
+  return { x = pos1.x + pos2.x, y = pos1.y + pos2.y }
+end
+
+function RotateCoordinates(pos, orientation)
+  local x, y = RotateHexHelper(pos.x, pos.y, tonumber(orientation))
+  return { x = x, y = y }
+end
+
+function RotateHexHelper(x, y, orientation)
+  if x == 0 and y == 0 then
+    return x, y
+  end
+  if orientation < 0 then
+    orientation = orientation + 360
+  end
+  if orientation == 0 then
+    return x, y
+  elseif orientation == 60 then
+    return -y, x + y
+  elseif orientation == 120 then
+    return -x - y, x
+  elseif orientation == 180 then
+    return -x, -y
+  elseif orientation == 240 then
+    return y, -x - y
+  elseif orientation == 300 then
+    return x + y, -x
+  end
+end
+
+function DefineOffset(room_data)
+  if room_data.exit.type == "A" then
+    if room_data.exit.direction >= 180 and room_data.exit.direction < 359 then
+      return { x = -3, y = 6, direction = 270 }
+    else
+      return { x = 3, y = -6, direction = 90 }
+    end
+  else
+    if room_data.exit.direction >= 90 and room_data.exit.direction < 269 then
+      return { x = 6, y = 0, direction = 180 }
+    else
+      return { x = -6, y = 0, direction = 0 }
+    end
+  end
+end
+
+function AddLayout(room_data, start, target)
+  -- 1st tile: start = offset, target = exit
+  -- others: start = exit-1, target = entrance
+  -- angle = start.direction - target.direction
+  -- origin = start - rot(target, angle)
+  -- center = origin + rot(center, angle)
+  -- exit = origin + rot(exit, angle)
+  -- exit.direction = exit.direction + angle
+  local orientation = start.direction - target.direction
+  local origin = AddCoordinates(start, GetOppositeCoordinates(RotateCoordinates(target, orientation)))
+  local center = AddCoordinates(origin, RotateCoordinates(room_data.center, orientation))
+  local exit = AddCoordinates(origin, RotateCoordinates(room_data.exit, orientation))
+  exit.direction = room_data.exit.direction + orientation
+  exit.type = room_data.exit.type
+  local layout = {
+    name = room_data.tile,
+    orientation = tostring(orientation),
+    center = center,
+    origin = origin
+  }
+  if room_data.otherTiles ~= nil then
+    layout.other_layouts = {}
+    for _, other_tile in ipairs(room_data.otherTiles) do
+      local other_center = AddCoordinates(origin, RotateCoordinates(other_tile.center, orientation))
+      local other_layout = {
+        name = other_tile.tile,
+        orientation = tostring(orientation),
+        center = other_center,
+        origin = origin
+      }
+      table.insert(layout.other_layouts, other_layout)
+    end
+  end
+  return layout, exit
+end
+
+function CreateLayout(room_data, Current_rooms)
+  Current_rooms.offset = DefineOffset(room_data)
+  local layout, exit = AddLayout(room_data, Current_rooms.offset, room_data.exit)
+  print("layout: ", JSON.encode(layout))
+  return layout, exit
+end
+
+function ContinueLayout(room_data, Current_rooms)
+  local layout, exit = AddLayout(room_data, Current_rooms.last_exit, room_data.entrances[Current_rooms.last_exit.type])
+  return layout, exit
+end
+
+function AddRandomScenarioLayout(room_data, Current_rooms) -- TODO
+  local layout = {}
+  if Current_rooms == nil then
+    Current_rooms = {}
+    layout = CreateLayout(room_data)
+    table.insert(Current_rooms, { room = room_data, layout = layout })
+  else
+    layout = ContinueLayout(room_data, Current_rooms)
+    table.insert(Current_rooms, { room = room_data, layout = layout })
+  end
+  local params = { layout = layout }
+  Global.call("AddRandomScenarioLayoutEx", params)
+end
+
+function PlaceNumberedTokens(room_data, room_layout)
+  for i, rel_pos in ipairs(room_data.locations) do
+    local token_name = "n" .. i
+    local bagId = tokenBagsGuids[token_name]
+    local token_pos = AddCoordinates(room_layout.origin, RotateCoordinates(rel_pos, room_layout.orientation))
+    local x, z = getWorldPositionFromHexPosition(token_pos.x, token_pos.y)
+    local obj = getToken({ name = token_name }, { x = x, y = 2.35, z = z })
+  end
+end
+
+function TestRoomLayout(card_name, Current_rooms)
+  print("Current_rooms:", JSON.encode(Current_rooms))
+  local room_data = Random_dungeons.rooms[card_name]
+  if room_data ~= nil then
+    local layout
+    local exit
+    if #Current_rooms.rooms == 0 then
+      Global.call("CreateRandomScenarioEx")
+      print("Preparing first room")
+      layout, exit = CreateLayout(room_data, Current_rooms)
+    elseif #Current_rooms.rooms < 3 then
+      print("Preparing new room")
+      layout, exit = ContinueLayout(room_data, Current_rooms)
+    else
+      print("End of scenario") --TODO
+    end
+    local params = {
+      tile = room_data.tile,
+      layout = { layout }
+    }
+    table.insert(Current_rooms.rooms,
+      {
+        room = room_data,
+        layout = layout
+      })
+    --Maybe not needed to store all this information
+    Current_rooms.last_exit = exit
+    Global.call("GetMapTileEx", params)
+    if layout.other_layouts ~= nil then
+      for _, other_layout in ipairs(layout.other_layouts) do
+        local other_params = {
+          tile = other_layout.name,
+          layout = { other_layout }
+        }
+        Global.call("GetMapTileEx", other_params)
+      end
+    end
+  end
+end
+
+function GetDungeonLoot()
+  local loot = {
+    Arrowvine = 1,
+    Axenut = 1,
+    Coins = 12,
+    Corpsecap = 1,
+    Flamefruit = 1,
+    Hide = 2,
+    Item = 0,
+    Lumber = 2,
+    Metal = 2,
+    Rockroot = 1,
+    Snowthistle = 1
+  }
+  return loot
+end
+
+function UpdateDungeonOverlays(room_data, Dungeon_elements)
+  -- Treat loot and overlays defined on the room card only
+  local used_dungeon_overlays = {}
+  if Dungeon_elements.loot == nil then
+    Dungeon_elements.loot = GetDungeonLoot()
+    Dungeon_elements.overlays = {}
+  else
+    for _, used_overlay in ipairs(Dungeon_elements.overlays) do
+      used_dungeon_overlays[used_overlay.name] = true
+    end
+  end
+  for room_overlay in room_data.overlays do
+    if used_dungeon_overlays[room_overlay.name] then
+      for dungeon_overlay in Dungeon_elements.overlays do
+        if room_overlay.name == dungeon_overlay.name then
+          dungeon_overlay.count = dungeon_overlay + 1
+        end
+      end
+    else
+      table.insert(Dungeon_elements.overlays,
+        { name = room_overlay.name, count = #room_overlay.positions, type = room_overlay.type })
+      -- TODO: Add type to room_data overlays
+    end
+  end
+end
+
+function UpdateDungeonMonsters(monsters_data, Dungeon_elements)
+  --Treat monsters and overlays from monsters random cards
+  local used_dungeons_monsters = {}
+  local used_dungeon_overlays = {}
+  if Dungeon_elements.monsters == nil then
+    Dungeon_elements.monsters = {}
+  else
+    for _, used_monster_element in ipairs(Dungeon_elements.monsters) do
+      if used_monster_element.category == "monster" then
+        used_dungeons_monsters[used_monster_element.name] = true
+      elseif used_monster_element.category == "overlay" then
+        used_dungeon_overlays[used_monster_element.name] = true
+      end
+    end
+  end
+  for room_monster_element in monsters_data.positions do
+    if room_monster_element.category == "monster" then
+      if used_dungeons_monsters[room_monster_element.name] == nil then
+        table.insert(Dungeon_elements.monsters, { name = room_monster_element.name })
+      end
+    elseif room_monster_element.category == "overlay" then
+      if not used_dungeon_overlays[room_monster_element.name] then
+        table.insert(Dungeon_elements.overlays,
+          { name = room_monster_element.name, count = 1, type = room_monster_element.type })
+        used_dungeon_overlays[room_monster_element.name] = true
+      else
+        for _, dungeon_overlay in ipairs(Dungeon_elements.overlays) do
+          if dungeon_overlay.name == room_monster_element.name then
+            dungeon_overlay.count = dungeon_overlay.count + 1
+          end
+        end
+      end
+    end
+  end
+end
+
+function SpawnDungeonElements(room_data, monsters_data, Dungeon_elements, CurrentScenarioElementPosition)
+  UpdateDungeonOverlays(room_data, Dungeon_elements)
+  UpdateDungeonMonsters(monsters_data, Dungeon_elements)
+  local scenarioBag = getObjectFromGUID('cd31b5')
+  for _, info in ipairs(Dungeon_elements.overlays) do
+    local overlayName = info.name
+    local count = info.count
+    local size = 1
+    CurrentScenarioElementPosition = CurrentScenarioElementPosition + size
+    print("Spawning elements")
+    CurrentScenarioElementPosition = spawnNElementsIn(count, overlayName, info, scenarioBag, --move in utils
+      scenarioElementPositions, CurrentScenarioElementPosition)
+    WaitMS(LAYOUT_WAIT_TIME_MS)
+  end
+end
+
+function onObjectDropCallback(params)
+  local card = params.object
+  if card ~= nil and card.tag == "Card" then
+    local card_name = card.getName()
+    local card_number = tonumber(card_name)
+    if card_number > 866 and card_number < 891 then
+      print("Doing Layout for card ", card_number)
+      TestRoomLayout(card_name, Current_rooms)
+    else
+      FillRoomContent(card_name)
+    end
+  end
+end
+
+-- function FillRoomContent(card_number)
+-- end

@@ -1,10 +1,14 @@
 Random_dungeons = {
-   maps = {
+   rooms = {
       ["867"] = {
          tile = "16-B",
          name = "Tracks",
          minor = "At the start of their turns, monsters in this room add +1 Move to each of their move abilities.",
          major = "Monsters add +1 Move and Jump to all their move abilities",
+         center = {
+            x = -5,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -7,
@@ -12,12 +16,11 @@ Random_dungeons = {
                direction = 270,
                },
             },
-         exits = {
-            A = {
-               x = -5,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -5,
+            y = -1,
+            direction = 270,
             },
          locations = {
             {
@@ -122,6 +125,10 @@ Random_dungeons = {
          name = "Mausoleum",
          minor = "When the next enemy dies, spawn one normal Living Bones at the closest sarcophagus.",
          major = "When the next enemy dies, spawn one elite Living Bones at each sarcophagus.",
+         center = {
+            x = -5,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -7,
@@ -134,12 +141,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            A = {
-               x = -5,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -5,
+            y = -1,
+            direction = 270,
             },
          locations = {
             {
@@ -216,11 +222,15 @@ Random_dungeons = {
          },
       ["869"] = {
          tile = "15-B",
+         center = {
+            x = -3,
+            y = 3,
+            },
          entrances = {
             A = {
-               x = -1,
+               x = 1,
                y = 0,
-               direction = 120,
+               direction = 150,
                },
             B = {
                x = -1,
@@ -228,12 +238,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            A = {
-               x = -5,
-               y = 0,
-               direction = 210,
-               },
+         exit = {
+            type = "A",
+            x = -4,
+            y = 0,
+            direction = 210,
             },
          locations = {
             },
@@ -267,6 +276,10 @@ Random_dungeons = {
          },
       ["870"] = {
          tile = "15-D",
+         center = {
+            x = -3,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -7,
@@ -279,12 +292,11 @@ Random_dungeons = {
                direction = 0,
                },
             },
-         exits = {
-            A = {
-               x = -6,
-               y = 0,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -1,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -323,6 +335,10 @@ Random_dungeons = {
          },
       ["871"] = {
          tile = "14-A",
+         center = {
+            x = 1,
+            y = 4,
+            },
          entrances = {
             B = {
                x = -3,
@@ -330,12 +346,11 @@ Random_dungeons = {
                direction = 300,
                },
             },
-         exits = {
-            B = {
-               x = 2,
-               y = 0,
-               direction = 300,
-               },
+         exit = {
+            type = "B",
+            x = 2,
+            y = 0,
+            direction = 300,
             },
          locations = {
             },
@@ -369,6 +384,10 @@ Random_dungeons = {
          },
       ["872"] = {
          tile = "13-A",
+         center = {
+            x = -3,
+            y = 3,
+            },
          entrances = {
             B = {
                x = -1,
@@ -376,12 +395,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            B = {
-               x = -6,
-               y = 3,
-               direction = 180,
-               },
+         exit = {
+            type = "B",
+            x = -6,
+            y = 3,
+            direction = 180,
             },
          locations = {
             },
@@ -410,6 +428,10 @@ Random_dungeons = {
          },
       ["873"] = {
          tile = "13-E",
+         center = {
+            x = -3,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -1,
@@ -417,12 +439,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            A = {
-               x = -6,
-               y = 3,
-               direction = 180,
-               },
+         exit = {
+            type = "B",
+            x = -6,
+            y = 3,
+            direction = 180,
             },
          locations = {
             {
@@ -509,6 +530,10 @@ Random_dungeons = {
          },
       ["874"] = {
          tile = "12-B",
+         center = {
+            x = -4,
+            y = 2,
+            },
          entrances = {
             A = {
                x = 0,
@@ -516,12 +541,11 @@ Random_dungeons = {
                direction = 90,
                },
             },
-         exits = {
-            A = {
-               x = -5,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -5,
+            y = -1,
+            direction = 270,
             },
          locations = {
             {
@@ -613,6 +637,10 @@ Random_dungeons = {
          },
       ["875"] = {
          tile = "12-C",
+         center = {
+            x = -4,
+            y = 2,
+            },
          entrances = {
             A = {
                x = -6,
@@ -620,12 +648,11 @@ Random_dungeons = {
                direction = 270,
                },
             },
-         exits = {
-            A = {
-               x = 0,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = 0,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -654,6 +681,10 @@ Random_dungeons = {
          },
       ["876"] = {
          tile = "11-A",
+         center = {
+            x = -5,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -2,
@@ -661,18 +692,21 @@ Random_dungeons = {
                direction = 270,
                },
             },
-         exits = {
-            B = {
-               x = -10,
-               y = 6,
-               direction = 120,
-               },
+         exit = {
+            type = "B",
+            x = -10,
+            y = 6,
+            direction = 120,
             },
          locations = {
             },
          },
       ["877"] = {
          tile = "11-E",
+         center = {
+            x = -5,
+            y = 3,
+            },
          entrances = {
             A = {
                x = -8,
@@ -680,12 +714,11 @@ Random_dungeons = {
                direction = 210,
                },
             },
-         exits = {
-            A = {
-               x = -1,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -1,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -709,6 +742,10 @@ Random_dungeons = {
          },
       ["878"] = {
          tile = "10-A",
+         center = {
+            x = -4,
+            y = 2,
+            },
          entrances = {
             A = {
                x = -5,
@@ -721,12 +758,11 @@ Random_dungeons = {
                direction = 0,
                },
             },
-         exits = {
-            B = {
-               x = -1,
-               y = 3,
-               direction = 0,
-               },
+         exit = {
+            type = "B",
+            x = -1,
+            y = 3,
+            direction = 0,
             },
          locations = {
             },
@@ -745,6 +781,10 @@ Random_dungeons = {
          },
       ["879"] = {
          tile = "10-D",
+         center = {
+            x = -3,
+            y = 2,
+            },
          entrances = {
             A = {
                x = -5,
@@ -752,12 +792,11 @@ Random_dungeons = {
                direction = 270,
                },
             },
-         exits = {
-            A = {
-               x = -2,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = -2,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -786,26 +825,33 @@ Random_dungeons = {
             },
          },
       ["880"] = {
-         tile = "9-B",
+         tile = "09-B",
+         center = {
+            x = -2,
+            y = 3,
+            },
          entrances = {
             A = {
-               x = -1,
+               x = 0,
                y = -1,
                direction = 90,
                },
             },
-         exits = {
-            A = {
-               x = -4,
-               y = 7,
-               direction = 90,
-               },
+         exit = {
+            type = "A",
+            x = -4,
+            y = 7,
+            direction = 90,
             },
          locations = {
             },
          },
       ["881"] = {
-         tile = "9-D",
+         tile = "09-D",
+         center = {
+            x = -2,
+            y = 3,
+            },
          entrances = {
             B = {
                x = 0,
@@ -813,12 +859,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            B = {
-               x = -7,
-               y = 6,
-               direction = 180,
-               },
+         exit = {
+            type = "B",
+            x = -7,
+            y = 6,
+            direction = 180,
             },
          locations = {
             },
@@ -836,20 +881,23 @@ Random_dungeons = {
             },
          },
       ["882"] = {
-         tile = "8-B",
+         tile = "08-B",
+         center = {
+            x = -3,
+            y = 2,
+            },
          entrances = {
             A = {
-               x = -1,
+               x = 1,
                y = 0,
-               direction = 120,
+               direction = 150,
                },
             },
-         exits = {
-            A = {
-               x = -5,
-               y = 4,
-               direction = 90,
-               },
+         exit = {
+            type = "A",
+            x = -4,
+            y = 5,
+            direction = 90,
             },
          locations = {
             {
@@ -903,7 +951,11 @@ Random_dungeons = {
             },
          },
       ["883"] = {
-         tile = "7-E",
+         tile = "07-E",
+         center = {
+            x = -4,
+            y = 1,
+            },
          entrances = {
             A = {
                x = 0,
@@ -911,12 +963,11 @@ Random_dungeons = {
                direction = 90,
                },
             },
-         exits = {
-            B = {
-               x = -8,
-               y = 1,
-               direction = 180,
-               },
+         exit = {
+            type = "B",
+            x = -8,
+            y = 1,
+            direction = 180,
             },
          locations = {
             },
@@ -934,7 +985,11 @@ Random_dungeons = {
             },
          },
       ["884"] = {
-         tile = "7-G",
+         tile = "07-G",
+         center = {
+            x = -4,
+            y = 1,
+            },
          entrances = {
             A = {
                x = -6,
@@ -942,12 +997,11 @@ Random_dungeons = {
                direction = 90,
                },
             },
-         exits = {
-            A = {
-               x = -3,
-               y = 3,
-               direction = 90,
-               },
+         exit = {
+            type = "A",
+            x = -5,
+            y = 3,
+            direction = 90,
             },
          locations = {
             {
@@ -989,7 +1043,11 @@ Random_dungeons = {
             },
          },
       ["885"] = {
-         tile = "6-B",
+         tile = "06-B",
+         center = {
+            x = -3,
+            y = 4,
+            },
          entrances = {
             A = {
                x = -1,
@@ -1002,18 +1060,21 @@ Random_dungeons = {
                direction = 0,
                },
             },
-         exits = {
-            B = {
-               x = -3,
-               y = 7,
-               direction = 0,
-               },
+         exit = {
+            type = "B",
+            x = -3,
+            y = 7,
+            direction = 0,
             },
          locations = {
             },
          },
       ["886"] = {
-         tile = "5-A",
+         tile = "05-A",
+         center = {
+            x = -2,
+            y = 2,
+            },
          entrances = {
             A = {
                x = -2,
@@ -1021,12 +1082,11 @@ Random_dungeons = {
                direction = 90,
                },
             },
-         exits = {
-            B = {
-               x = 0,
-               y = -2,
-               direction = 0,
-               },
+         exit = {
+            type = "B",
+            x = 0,
+            y = -2,
+            direction = 0,
             },
          locations = {
             },
@@ -1050,20 +1110,23 @@ Random_dungeons = {
             },
          },
       ["887"] = {
-         tile = "4-B",
+         tile = "04-B",
+         center = {
+            x = -2,
+            y = 2,
+            },
          entrances = {
             A = {
                x = -5,
                y = 3,
-               direction = 300,
+               direction = 330,
                },
             },
-         exits = {
-            A = {
-               x = -1,
-               y = 4,
-               direction = 60,
-               },
+         exit = {
+            type = "A",
+            x = -1,
+            y = 4,
+            direction = 30,
             },
          locations = {
             {
@@ -1129,7 +1192,11 @@ Random_dungeons = {
             },
          },
       ["888"] = {
-         tile = "4-C",
+         tile = "04-C",
+         center = {
+            x = -2,
+            y = 2,
+            },
          entrances = {
             A = {
                x = 0,
@@ -1137,12 +1204,11 @@ Random_dungeons = {
                direction = 210,
                },
             },
-         exits = {
-            A = {
-               x = 0,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = 0,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -1172,9 +1238,17 @@ Random_dungeons = {
          },
       ["889"] = {
          tile = "02-B",
+         center = {
+            x = -2,
+            y = 2,
+            },
          otherTiles = {
             {
                tile = "02-D",
+               center = {
+                  x = 1,
+                  y = -3,
+                  },
                position = {
                   x = 3,
                   y = -5,
@@ -1194,12 +1268,11 @@ Random_dungeons = {
                direction = 180,
                },
             },
-         exits = {
-            B = {
-               x = -1,
-               y = -3,
-               direction = 180,
-               },
+         exit = {
+            type = "B",
+            x = -1,
+            y = -3,
+            direction = 180,
             },
          locations = {
             },
@@ -1233,9 +1306,17 @@ Random_dungeons = {
          },
       ["890"] = {
          tile = "02-G",
+         center = {
+            x = -2,
+            y = 2,
+            },
          otherTiles = {
             {
                tile = "02-E",
+               center = {
+                  x = 2,
+                  y = 2,
+                  },
                position = {
                   x = -4,
                   y = 0,
@@ -1245,22 +1326,21 @@ Random_dungeons = {
             },
          entrances = {
             A = {
-               x = -4,
+               x = -3,
                y = 4,
                direction = 270,
                },
             B = {
-               x = -5,
+               x = -4,
                y = 2,
                direction = 0,
                },
             },
-         exits = {
-            A = {
-               x = 3,
-               y = -1,
-               direction = 270,
-               },
+         exit = {
+            type = "A",
+            x = 3,
+            y = -1,
+            direction = 270,
             },
          locations = {
             },
@@ -1294,7 +1374,7 @@ Random_dungeons = {
                name = "Snow Corridor",
                positions = {
                   {
-                     x = -1,
+                     x = 1,
                      y = 0,
                      orientation = 0,
                      },
@@ -1309,12 +1389,12 @@ Random_dungeons = {
                name = "Snow Rock",
                positions = {
                   {
-                     x = -2,
+                     x = 2,
                      y = 0,
                      orientation = 0,
                      },
                   {
-                     x = 1,
+                     x = -1,
                      y = 2,
                      orientation = 0,
                      },
@@ -1323,7 +1403,7 @@ Random_dungeons = {
             },
          },
       },
-   positions = {
+   monsters = {
       ["891"] = {
          name = "Smashing",
          infuse = "Earth",
