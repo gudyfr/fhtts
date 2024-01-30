@@ -1425,7 +1425,7 @@ CardEnhancements = {
                x = 0.246,
                z = -0.711,
                },
-            type = "dp",
+            type = "dm",
             },
          {
             ability = "heal",

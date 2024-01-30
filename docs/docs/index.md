@@ -95,7 +95,7 @@ It should be sent to the appropriate location as well
 ![](images/tts_cards_returned.png)  
 **It is currently required that you Start and End rounds from TTS. Doing so from X-Haven Assistant will not work.**  
 
-### Attack modidiers
+### Attack modifiers
 On the side of the TTS window, there is a toggle button to enable the Attack Modifier UI  
 ![](images/tts_am_ui_collapsed.png)  
 Clicking it will expand / collapse the Attack Modifier UI  

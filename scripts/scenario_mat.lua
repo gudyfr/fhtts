@@ -1,3 +1,4 @@
+local A = require('async')
 require("json")
 require("number_decals")
 require("savable")
@@ -1055,7 +1056,20 @@ end
 
 function setScenario(params)
     CurrentScenario = params
-    updateAssistant("POST", "setScenario", params)
+    A.sync(function()
+        local res = A.wait(updateAssistantAsync("POST", "setScenario", params))
+
+        -- Assume internal game state and ignore
+        if res == nil then
+            return
+        end
+
+        local res = A.wait(updateAssistantAsync("GET", "getLootDrawDeck", {}))
+        
+        local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+        battleInterfaceMat.call('setLootDeck', jsonDecode(res.text))
+    end
+    )()
 end
 
 function spawned(params)
@@ -2074,25 +2088,28 @@ function refreshStandee(standee, instance)
 end
 
 function onLootDrawn(params)
-    if isInternalGameStateEnabled() then
-        local card = params.card
-        local color = params.color
-        local enhancements = params.enhancements or 0
-        local character = Characters[color]
-        if character ~= nil and card ~= nil then
-            print(card)
-            local lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
-            if lootInfo.type ~= "special" then
-                broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
-                    { r = 0.2, g = 1, b = 0.2 })
-            else
-                broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
-            end
+    local card = params.card
+    local color = params.color
+    local enhancements = params.enhancements or 0
+    local character = Characters[color]
+
+    if character ~= nil and card ~= nil then
+        local lootInfo
+        if isInternalGameStateEnabled() then
+            lootInfo = CurrentGameState:setCardLooted(card, character, enhancements)
         else
-            print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
-            broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
-                { r = 1, g = 0, b = 0 })
+            lootInfo = CurrentGameState:getLootCardInfo(card)
         end
+        if lootInfo.type ~= "special" then
+            broadcastToAll(character .. " looted " .. lootInfo.value .. " " .. lootInfo.type,
+                { r = 0.2, g = 1, b = 0.2 })
+        else
+            broadcastToAll(character .. " looted a special card. Refer to loot card.", { r = 0.2, g = 1, b = 0.2 })
+        end
+    else
+        -- print(string.format("card: %s, color: %s, character: %s", card or "nil", color or "nil", character or "nil"))
+        broadcastToAll("Unknown looter, loot card will not be accounted for at the end of the scenario",
+            { r = 1, g = 0, b = 0 })
     end
 end
 
@@ -2292,7 +2309,15 @@ function updateAssistant(method, command, params, callback)
                 updateCurrentState()
                 handled = true
             elseif command == "loot" then
-                -- Ignoring loot commands when using the internal game state
+                local battleInterface = getObjectFromGUID(BattleInterfaceMat)
+                local deckOrCard = battleInterface.call("getLootDrawDeck")
+                local cardNames = getTopNCardName(deckOrCard, params.count)
+
+                if cardNames ~= nil then
+                    callback({ text = JSON.encode(cardNames)})
+                else
+                    callback()
+                end
                 handled = true
             elseif command == "addSummon" then
                 CurrentGameState:addSummon(params.name)
@@ -2337,6 +2362,12 @@ function updateAssistant(method, command, params, callback)
         end
     end
 end
+
+-- Wraps updateAssistant as an async function
+-- Don't need the callback function as the last arg
+-- Needs to be called with A.wait() inside 
+-- an A.sync(function() end) block
+updateAssistantAsync = A.wrap(updateAssistant)
 
 function getGMNotes(obj)
     local current = obj.getGMNotes()
@@ -2447,6 +2478,16 @@ function findPlayerMat(characterName)
             if mat.call('getCharacterName') == characterName then
                 return mat
             end
+        end
+    end
+    return nil
+end
+
+function findPlayerMatByColor(playerColor)
+    for color, guid in pairs(PlayerMats) do
+        local mat = getObjectFromGUID(guid)
+        if (mat ~= nil) and (playerColor == color) then
+            return mat
         end
     end
     return nil
@@ -2613,13 +2654,26 @@ function doLoot(params)
         targetColor = params.player_color or PlayerColors[params.player_number]
         targetName = Characters[targetColor]
     end
-    updateAssistant("POST", "loot", { target = targetName, count = params.count or 1 })
-    -- update the local game state
-    local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
-    -- Who's playing this standee?
-    battleInterfaceMat.call("onLootDraw", { color = targetColor })
-    for n = 2, params.count or 1 do
-        Wait.time(function() battleInterfaceMat.call("onLootDraw", { color = color }) end, 1,
-            nbLoot - 1)
-    end
+
+    A.sync(function()
+        local res = A.wait(updateAssistantAsync("POST", "loot", { target = targetName, count = params.count or 1 }))
+
+        if (res ~= nil) then
+            -- update the local game state
+            local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+    
+            local cards = jsonDecode(res.text)
+            for idx, value in pairs(cards) do
+                -- Wait for cards to start moving in game
+                if idx > 1 then
+                    A.wait(A.wrap(function(resolve)
+                        Wait.time(resolve, 0.2)
+                    end)())
+                end
+
+                -- Who's playing this standee?
+                battleInterfaceMat.call("onLootDraw", { color = targetColor, targetCard = value })
+            end
+        end
+    end)()
 end

@@ -33,7 +33,7 @@ end
 --- Iterates over all cards in a deck, card or nil. For each entry in the container, it will call entryTest, and if that returns true, will take the card, and apply the transform function to it.
 ---@param deck any the deck, card or nil object to apply the cardTransform function to each card contained in it.
 ---@param cardTransform any the transform function to apply to each card. The function is called with the card as the first argument.
----@param entryTest any the test function to apply to each entry in the deck. The function is called with the entry (a table containing {name, description and tags} from the card) as the first argument. If the function returns true, the card is taken and the transform function is applied to it. 
+---@param entryTest any the test function to apply to each entry in the deck. The function is called with the entry (a table containing {name, description and tags} from the card) as the first argument. If the function returns true, the card is taken and the transform function is applied to it.
 ---@return number the number of cards that were taken and transformed.
 function forEachInDeckOrCardIf(deck, cardTransform, entryTest)
     if deck == nil then
@@ -157,4 +157,41 @@ function takeCardFrom(deckOrCard)
         end
     end
     return nil
+end
+
+function takeCardByNameFrom(deckOrCard, name)
+    if deckOrCard ~= nil then
+        if deckOrCard.tag == "Card" and deckOrCard.getName() == name then
+            return deckOrCard
+        elseif deckOrCard.tag == "Deck" then
+            for _, value in ipairs(deckOrCard.getObjects()) do
+                if value.name == name then
+                    return deckOrCard.takeObject({ guid = value.guid })
+                end
+            end
+        end
+    end
+    return nil
+end
+
+function getTopNCardName(deckOrCard, numCards)
+    if deckOrCard == nil then
+        return nil
+    end
+
+    if deckOrCard.tag == "Card" then
+        return { deckOrCard.getName() }
+    elseif deckOrCard.tag == "Deck" then
+        local _numCards = #(deckOrCard.getObjects())
+        if numCards < _numCards then
+            _numCards = numCards
+        end
+
+        local cards = {}
+        for i = 1, _numCards do
+            -- print(deckOrCard.getObjects()[i].name)
+            cards[i] = deckOrCard.getObjects()[i].name
+        end
+        return cards
+    end
 end

@@ -653,6 +653,9 @@ function locateBoardElementsFromTags()
     if tagsMap["character sheet"] ~= nil then
       CharacterSheetPosition = position
     end
+    if tagsMap["loot"] ~= nil then
+      cardLocations["loot"] = position
+    end
     if tagsMap["perk"] ~= nil then
       table.insert(PerksPositions, position)
     end
@@ -705,6 +708,10 @@ function getItemCardPositionsInternal(mapToWorld)
   end
 
   return results
+end
+
+function getLootPosition()
+  return JSON.encode(self.positionToWorld(cardLocations["loot"]))
 end
 
 function getPersonalQuestCardPosition()
@@ -856,6 +863,10 @@ function cleanup()
       deckOrCard.setRotationSmooth({ 0, 0, 0 })
     end
   end
+
+  local battleInterfaceMat = getObjectFromGUID(BattleInterfaceMat)
+  local lootDeck = getDeckOrCardAt(cardLocations["loot"])
+  battleInterfaceMat.call("returnToLootActiveDeck", lootDeck)
 end
 
 function returnCardToScenarioMat(card)
