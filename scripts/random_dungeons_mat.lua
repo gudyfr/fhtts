@@ -1,14 +1,7 @@
 require("fhlog")
 require('coordinates')
 require("data/random_dungeons")
-
-
-function WaitMS(ms)
-  local start = os.time()
-  while os.time() < start + ms / 1000 do
-    coroutine.yield(0)
-  end
-end
+local deck_helper = require("deck_helper")
 
 TokenBagsGuids = {
   n1 = '89f48c',
@@ -40,6 +33,7 @@ TokenBagsGuids = {
   section = '9ddb6d'
 }
 
+
 RandomRoomCardPositions = {
   deck = {},
   actives = {}
@@ -53,7 +47,7 @@ ButtonPositions = {
   rooms = {}
 }
 
-function locateElementsFromTags()
+local function locateElementsFromTags()
   for _, point in ipairs(self.getSnapPoints()) do
     local tagsMap = {}
     local position = point.position
@@ -93,7 +87,7 @@ function onLoad()
     local pos = ButtonPositions.start
     local button_parameters = {
       function_owner = self,
-      click_function = "StartRandomDungeon",
+      click_function = "TestDraw",
       label          = "Draw",
       position       = { -pos.x, pos.y, pos.z },
       width          = 600,
@@ -144,13 +138,63 @@ function onLoad()
   -- registerSavable(self.getName())
 end
 
-function DrawRoom()
-  -- TODO: shuffle before drawing and check if room entry corresponds to previous exit
-  -- maybe check before drawing
-  draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck,
-    RandomRoomCardPositions.actives, true)
-  draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
-    RandomMonstersCardPositions.actives, true)
+local function drawUntilCorrectRoom(roomNumber, exit_type, RandomRoomCardPositions)
+  if roomNumber == 1 then
+    local room_card = deck_helper.draw(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
+    return room_card
+  else
+    while true do
+      print("Drawing card")
+      local room_card = deck_helper.draw(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
+      print(room_card)
+      for entrance_type, _ in pairs(Random_dungeons.rooms[room_card.getName()].entrances) do
+        print("entrance_type: ", entrance_type)
+        if entrance_type == exit_type then
+          return room_card
+        end
+      end
+      print("Drew incorrect room, redrawing")
+    end
+  end
+end
+
+local function drawRoom(roomNumber, exit_type)
+  deck_helper.shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
+  deck_helper.shuffle(RandomMonstersCardPositions.deck,RandomMonstersCardPositions.actives)
+  local room_card = drawUntilCorrectRoom(roomNumber, exit_type, RandomRoomCardPositions)
+  local monster_card = deck_helper.draw(RandomMonstersCardPositions.deck,RandomMonstersCardPositions.actives)
+  return room_card, monster_card
+end
+
+function TestDraw()
+  local room_card1, _ = drawRoom(2, "B")
+  print(JSON.encode(Random_dungeons.rooms[room_card1.getName()]))
+  local exit_type_1 =Random_dungeons.rooms[room_card1.getName()].exit.type
+  -- local exit_type_2 =Random_dungeons.rooms[roomCard2.getName()].exit.type
+  -- local roomCard3, _ = drawRoom(3, exit_type_2)
+  -- print(JSON.encode(roomCard3))
+end
+
+function GetDeckOrCardAtPosition(position)
+  if position ~= nil then
+      local hitlist = Physics.cast({
+          origin       = position,
+          direction    = { 0, 1, 0 },
+          type         = 2,
+          size         = { 1, 1, 1 },
+          max_distance = 0,
+          debug        = false
+      })
+      for _, h in ipairs(hitlist) do
+          if h.hit_object.tag == "Deck" then
+              return h.hit_object
+          end
+          if h.hit_object.tag == "Card" then
+              return h.hit_object
+          end
+      end
+  end
+  return nil
 end
 
 function StartRandomDungeon(external)
@@ -175,11 +219,11 @@ function StartRandomDungeon(external)
   --     registeredForCollision = {}
   --  }
   Init_Current_rooms()
-  DrawRoom()
+  RoomCard, MonsterCard = drawRoom(1)
   -- layout, exit = CreateLayout(room_data, Current_rooms)
   -- entries = BuildEntries(room,)
+  print("RoomCard: ", RoomCard)
   Global.call("AddRandomScenarioLayoutEx", params)
-
   -- shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
   -- draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck, RandomRoomCardPositions.actives,
   --   true)
