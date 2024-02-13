@@ -138,6 +138,31 @@ function onLoad()
   -- registerSavable(self.getName())
 end
 
+-- Function to create a coroutine that waits for a specified amount of time
+local function wait(seconds)
+  local co = coroutine.create(function()
+      local startTime = os.time()
+      local endTime = startTime + seconds
+
+      while os.time() < endTime do
+          coroutine.yield()
+      end
+  end)
+
+  return function()
+      local success, errorMessage = coroutine.resume(co)
+      if not success then
+          print("Error in wait function: " .. errorMessage)
+      end
+  end
+end
+
+
+--- Function to draw room cards until one is drawn with the correct entrance
+---@param roomNumber integer the number of room which must be drawn (if 1, no check is done)
+---@param exit_type string the exit type of the previous room (that the entrance type of the drawn room must match)
+---@param RandomRoomCardPositions table the table of random room cards positions 
+---@return any room_card the correct room card object drawn 
 local function drawUntilCorrectRoom(roomNumber, exit_type, RandomRoomCardPositions)
   if roomNumber == 1 then
     local room_card = deck_helper.draw(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
@@ -154,10 +179,13 @@ local function drawUntilCorrectRoom(roomNumber, exit_type, RandomRoomCardPositio
         end
       end
       print("Drew incorrect room, redrawing")
+      local waitFunction = wait(3)
+      waitFunction()
     end
   end
 end
 
+--- Function to draw a room card and a monster card for a new room
 local function drawRoom(roomNumber, exit_type)
   deck_helper.shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
   deck_helper.shuffle(RandomMonstersCardPositions.deck,RandomMonstersCardPositions.actives)
@@ -169,10 +197,11 @@ end
 function TestDraw()
   local room_card1, _ = drawRoom(2, "B")
   print(JSON.encode(Random_dungeons.rooms[room_card1.getName()]))
-  local exit_type_1 =Random_dungeons.rooms[room_card1.getName()].exit.type
+  local exit_type_1 = Random_dungeons.rooms[room_card1.getName()].exit.type
   -- local exit_type_2 =Random_dungeons.rooms[roomCard2.getName()].exit.type
   -- local roomCard3, _ = drawRoom(3, exit_type_2)
   -- print(JSON.encode(roomCard3))
+  return exit_type_1
 end
 
 function GetDeckOrCardAtPosition(position)
@@ -197,48 +226,14 @@ function GetDeckOrCardAtPosition(position)
   return nil
 end
 
-function StartRandomDungeon(external)
-  if external ~= true then
-    external = false
-  end
-  Global.call("CreateRandomScenarioEx")
-  --output:
-  -- CurrentScenario = {
-  --     triggers = {
-  --        byTriggerId = {},
-  --        byObjectGuid = {},
-  --        triggered = {},
-  --        triggersById = {}
-  --     },
-  --     doors = {
-  --     },
-  --     tileGuids = {},
-  --     objectsOnObjects = {},
-  --     id = name, name is a random string between 1,000 and 1,000,000
-  --     elements = Scenarios[name], TODO: modify this
-  --     registeredForCollision = {}
-  --  }
-  Init_Current_rooms()
-  RoomCard, MonsterCard = drawRoom(1)
-  -- layout, exit = CreateLayout(room_data, Current_rooms)
-  -- entries = BuildEntries(room,)
-  print("RoomCard: ", RoomCard)
-  Global.call("AddRandomScenarioLayoutEx", params)
-  -- shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
-  -- draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck, RandomRoomCardPositions.actives,
-  --   true)
-  -- shuffle(RandomMonstersCardPositions.deck, RandomMonstersCardPositions.actives)
-  -- draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
-  --   RandomMonstersCardPositions.actives,
-  --   not external)
+local function init_current_rooms()
+  local current_rooms = { rooms = {} }
+  return current_rooms
 end
 
-function Init_Current_rooms()
-  Current_rooms = { rooms = {} }
-end
 
-Current_rooms = {}
-Init_Current_rooms()
+Current_rooms = init_current_rooms()
+
 
 function GetOppositeCoordinates(pos)
   return { x = -pos.x, y = -pos.y }
@@ -327,7 +322,7 @@ function AddLayout(room_data, start, target)
   return layout, exit
 end
 
-function CreateLayout(room_data, Current_rooms)
+local function create_layout(room_data, Current_rooms)
   Current_rooms.offset = DefineOffset(room_data)
   local layout, exit = AddLayout(room_data, Current_rooms.offset, room_data.exit)
   print("layout: ", JSON.encode(layout))
@@ -343,7 +338,7 @@ function AddRandomScenarioLayout(room_data, Current_rooms) -- TODO
   local layout = {}
   if Current_rooms == nil then
     Current_rooms = {}
-    layout = CreateLayout(room_data)
+    layout = create_layout(room_data)
     table.insert(Current_rooms, { room = room_data, layout = layout })
   else
     layout = ContinueLayout(room_data, Current_rooms)
@@ -372,7 +367,7 @@ function TestRoomLayout(card_name, Current_rooms)
     if #Current_rooms.rooms == 0 then
       Global.call("CreateRandomScenarioEx")
       print("Preparing first room")
-      layout, exit = CreateLayout(room_data, Current_rooms)
+      layout, exit = create_layout(room_data, Current_rooms)
     elseif #Current_rooms.rooms < 3 then
       print("Preparing new room")
       layout, exit = ContinueLayout(room_data, Current_rooms)
@@ -498,6 +493,9 @@ function SpawnDungeonElements(room_data, monsters_data, Dungeon_elements, Curren
   end
 end
 
+local function fillRoomContent(card_number)
+end
+
 function onObjectDropCallback(params)
   local card = params.object
   if card ~= nil and card.tag == "Card" then
@@ -507,10 +505,44 @@ function onObjectDropCallback(params)
       print("Doing Layout for card ", card_number)
       TestRoomLayout(card_name, Current_rooms)
     else
-      FillRoomContent(card_name)
+      fillRoomContent(card_name)
     end
   end
 end
 
--- function FillRoomContent(card_number)
--- end
+
+function StartRandomDungeon(external)
+  if external ~= true then
+    external = false
+  end
+  Global.call("CreateRandomScenarioEx")
+  --output:
+  -- CurrentScenario = {
+  --     triggers = {
+  --        byTriggerId = {},
+  --        byObjectGuid = {},
+  --        triggered = {},
+  --        triggersById = {}
+  --     },
+  --     doors = {
+  --     },
+  --     tileGuids = {},
+  --     objectsOnObjects = {},
+  --     id = name, name is a random string between 1,000 and 1,000,000
+  --     elements = Scenarios[name], TODO: modify this
+  --     registeredForCollision = {}
+  --  }
+  local current_rooms = init_current_rooms()
+  local roomCard, monsterCard = drawRoom(1)
+  local layout, exit = create_layout(Random_dungeons.rooms[roomCard.getName()], Current_rooms)
+  -- entries = BuildEntries(room,)
+  print("RoomCard: ", JSON.encode(Random_dungeons.rooms[roomCard.getName()]))
+  Global.call("AddRandomScenarioLayoutEx", params)
+  -- shuffle(RandomRoomCardPositions.deck, RandomRoomCardPositions.actives)
+  -- draw({ type = "player", player = getPlayerNumber() }, RandomRoomCardPositions.deck, RandomRoomCardPositions.actives,
+  --   true)
+  -- shuffle(RandomMonstersCardPositions.deck, RandomMonstersCardPositions.actives)
+  -- draw({ type = "player", player = getPlayerNumber() }, RandomMonstersCardPositions.deck,
+  --   RandomMonstersCardPositions.actives,
+  --   not external)
+end
