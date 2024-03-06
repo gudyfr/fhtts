@@ -21921,6 +21921,16 @@ ProcessedScenarios3 = {
                      },
                   overlays = {
                      {
+                        name = "Large Metal Corridor",
+                        orientation = 60,
+                        positions = {
+                           {
+                              x = 0,
+                              y = -1,
+                              },
+                           },
+                        },
+                     {
                         name = "Dungeon Door",
                         orientation = 240,
                         positions = {

@@ -496,6 +496,7 @@ CardEnhancements = {
          {
             ability = "move",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.242,
                z = 1.048,
@@ -506,6 +507,7 @@ CardEnhancements = {
             ability = "pull",
             lost = "lost",
             mtype = "",
+            multi = "multi",
             position = {
                x = 0.209,
                z = -0.861,
@@ -1268,6 +1270,7 @@ CardEnhancements = {
          {
             ability = "move",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.26,
                z = 0.918,
@@ -2783,7 +2786,7 @@ CardEnhancements = {
       level = 1,
       spots = {
          {
-            ability = "attack",
+            ability = "range",
             multi = "multi",
             position = {
                x = -0.367,
@@ -2917,6 +2920,7 @@ CardEnhancements = {
          {
             ability = "move",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.284,
                z = 0.913,
@@ -3991,6 +3995,7 @@ CardEnhancements = {
          {
             ability = "move",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.265,
                z = 1.1,
@@ -4971,6 +4976,7 @@ CardEnhancements = {
          {
             ability = "attack",
             mtype = "",
+            multi = "multi",
             position = {
                x = 0.021,
                z = -0.988,
@@ -5994,7 +6000,7 @@ CardEnhancements = {
                x = -0.254,
                z = 0.738,
                },
-            type = "",
+            type = "c",
             },
          },
       },
@@ -6904,6 +6910,7 @@ CardEnhancements = {
          {
             ability = "move",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.268,
                z = 1.064,
@@ -7140,6 +7147,7 @@ CardEnhancements = {
          {
             ability = "attack",
             mtype = "",
+            multi = "multi",
             position = {
                x = 0.132,
                z = -0.975,
@@ -7253,6 +7261,7 @@ CardEnhancements = {
          {
             ability = "target",
             mtype = "",
+            multi = "multi",
             position = {
                x = -0.147,
                z = 0.956,

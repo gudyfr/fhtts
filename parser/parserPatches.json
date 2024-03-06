@@ -614,6 +614,21 @@
             ]
         }
     },
+    "136" : {
+        "170" : {
+            "also" : [ "Large Dungeon Corridor"],
+            "overrides" : [
+                {
+                    "where" : {
+                        "name" : "Large Dungeon Corridor"
+                    },
+                    "with" : {
+                        "name" : "Large Metal Corridor"
+                    }
+                }
+            ]
+        }
+    },
     "146": {
         "180": {
             "tiles": []
