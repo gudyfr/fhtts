@@ -1,4 +1,3 @@
----@diagnostic disable: unused-local
 require('json')
 require('constants')
 require('coordinates')
@@ -6,6 +5,7 @@ require('fhlog')
 require('attack_modifiers')
 require('data/scenarios')
 require('data/processedScenarios3')
+require("data/random_dungeons")
 
 TAG = "Global"
 
@@ -172,14 +172,19 @@ TileLetterMappings = {
    L = "B"
 }
 
+function GetMapTileEx(params)
+   getMapTile(params.tile, params.layout)
+end
+
 function getMapTile(mapName, layout)
-   nameLen = string.len(mapName)
-   letter = string.sub(mapName, nameLen)
-   config = letterConfigs[letter]
-   mapTileName = string.sub(mapName, 1, nameLen - 1) .. config.tile
-   mapBag = getObjectFromGUID(mapTilesBagId)
+   local nameLen = string.len(mapName)
+   local letter = string.sub(mapName, nameLen)
+   local config = letterConfigs[letter]
+   local mapTileName = string.sub(mapName, 1, nameLen - 1) .. config.tile
+   local mapBag = getObjectFromGUID(mapTilesBagId)
    for _, tile in pairs(mapBag.getObjects()) do
       if tile.name == mapTileName then
+         print("Getting tile ", mapTileName)
          mapTile = mapBag.takeObject({ guid = tile.guid })
          clone = mapTile.clone()
          mapBag.putObject(mapTile)
@@ -195,7 +200,7 @@ function getMapTile(mapName, layout)
          if layout ~= nil then
             for _, tileLayout in ipairs(layout) do
                if not handled and tileLayout.name == mapName then
-                  -- print(JSON.encode(tileLayout))
+                  print("tile layout: ", JSON.encode(tileLayout)) --TODO: comment
                   local center = tileLayout.center
 
                   -- Hacky Fixes, we should fix the assets themselves instead
@@ -676,18 +681,21 @@ function waitms(ms)
    end
 end
 
-function prepareScenario(name, campaign, title)
-   local prepareFunc = "prepareScenario_" .. campaign .. "_" .. name
-   self.setVar(prepareFunc, function()
-      continuePreparing(name, campaign, title)
-      return 1
-   end)
-   startLuaCoroutine(Global, prepareFunc)
+function CreateRandomScenarioEx()
+   local id = math.random(1000000) + 1000
+   local title = "Random Scenario"
+   if MaybeCleanupAndInitScenario(tostring(id), title) then
+      CurrentScenario.scenarioInfo = { layout = {} }
+   end
 end
 
-function continuePreparing(name, campaign, title)
-   name = tostring(name)
-   Settings = JSON.decode(getSettings())
+function AddRandomScenarioLayoutEx(params)
+   local layout = { params.layout }
+   table.insert(CurrentScenario.scenarioInfo.layout, layout)
+   layoutMap(params.map)
+end
+
+function MaybeCleanupAndInitScenario(name, title)
    -- This will simply highlight elements which would be destroyed if we were to prepare this scenario (if any)
    -- However, if the user retries the prepare this scenario, it will delete the current scenario mat and prepare the scenario
    local deleted = cleanup(false, true)
@@ -696,11 +704,11 @@ function continuePreparing(name, campaign, title)
       -- Remove highlights right away
       cleanupTimeout()
       broadcastToAll("Scenario Mat has item cards on it. Can't prepare " .. title)
-      return
+      return false
    end
    if not deleted and not empty then
       broadcastToAll("Scenario Mat is not empty, try again to delete highlighted objects and prepare " .. title)
-      return
+      return false
    end
    broadcastToAll("Preparing " .. title)
    cleanupPrepareArea()
@@ -719,6 +727,24 @@ function continuePreparing(name, campaign, title)
       elements = Scenarios[name],
       registeredForCollision = {}
    }
+   return true
+end
+
+function prepareScenario(name, campaign, title)
+   local prepareFunc = "prepareScenario_" .. campaign .. "_" .. name
+   self.setVar(prepareFunc, function()
+      continuePreparing(name, campaign, title)
+      return 1
+   end)
+   startLuaCoroutine(Global, prepareFunc)
+end
+
+function continuePreparing(name, campaign, title, is_random)
+   name = tostring(name)
+   Settings = JSON.decode(getSettings())
+   if not MaybeCleanupAndInitScenario(name, title) then
+      return
+   end
    self.setVar("triggerClicked_" .. name,
       function(obj, color, alt)
          onTriggerClicked(name, obj.guid, alt)
@@ -726,14 +752,19 @@ function continuePreparing(name, campaign, title)
 
    local scenarioInfo = nil
    local layout = nil
-   if ProcessedScenarios3 ~= nil then
-      scenarioInfo = deepCopy(ProcessedScenarios3[name])
-      CurrentScenario.scenarioInfo = scenarioInfo
+   if campaign == "random" then
       if scenarioInfo ~= nil then
          layout = scenarioInfo.layout
       end
+   else
+      if ProcessedScenarios3 ~= nil then
+         scenarioInfo = deepCopy(ProcessedScenarios3[name])
+         CurrentScenario.scenarioInfo = scenarioInfo
+         if scenarioInfo ~= nil then
+            layout = scenarioInfo.layout
+         end
+      end
    end
-
    local scenarioBag = getObjectFromGUID('cd31b5')
    scenarioBag.reset()
    local elements = CurrentScenario.elements
@@ -1781,6 +1812,11 @@ function handleTriggerAction(action, scenarioId, objGuid, undo)
       layoutMap(what)
    end
 
+   -- handle random dungeons triggers
+   -- obj = getobjfromguid
+   -- obj.call("function_name", {})
+   -- fct with one table as only parameter
+
    if action.also ~= nil then
       for i, subAction in ipairs(action.also) do
          subAction.id = subAction.id or action.id .. "/" .. i
@@ -2125,7 +2161,7 @@ end
 
 function onObjectDestroy(object)
    if object.hasTag("tracked") then
-      getScenarioMat().call('unregisterStandee', {target=object})
+      getScenarioMat().call('unregisterStandee', { target = object })
    end
 end
 

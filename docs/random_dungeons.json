@@ -1,10 +1,14 @@
 {
-    "maps": {
+    "rooms": {
         "867": {
             "tile": "16-B",
-            "name" : "Tracks",
-            "minor" : "At the start of their turns, monsters in this room add +1 Move to each of their move abilities.",
-            "major" : "Monsters add +1 Move and Jump to all their move abilities",
+            "name": "Tracks",
+            "minor": "At the start of their turns, monsters in this room add +1 Move to each of their move abilities.",
+            "major": "Monsters add +1 Move and Jump to all their move abilities",
+            "center": {
+                "x": -5,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -7,
@@ -12,61 +16,60 @@
                     "direction": 270
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -5,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -5,
+                "y": -1,
+                "direction": 270
             },
             "locations": [
                 {
-                    "x" : -7,
-                    "y" : 5
+                    "x": -7,
+                    "y": 5
                 },
                 {
-                    "x" : -5,
-                    "y" : 6
+                    "x": -5,
+                    "y": 6
                 },
                 {
-                    "x" : -3,
-                    "y" : 4
+                    "x": -3,
+                    "y": 4
                 },
                 {
-                    "x" : -6,
-                    "y" : 0
+                    "x": -6,
+                    "y": 0
                 },
                 {
-                    "x" : -5,
-                    "y" : 0
+                    "x": -5,
+                    "y": 0
                 },
                 {
-                    "x" : -5,
-                    "y" : 3
+                    "x": -5,
+                    "y": 3
                 },
                 {
-                    "x" : -6,
-                    "y" : 3
+                    "x": -6,
+                    "y": 3
                 },
                 {
-                    "x" : -3,
-                    "y" : 3
+                    "x": -3,
+                    "y": 3
                 },
                 {
-                    "x" : -9,
-                    "y" : 4
+                    "x": -9,
+                    "y": 4
                 },
                 {
-                    "x" : -1,
-                    "y" : 0
+                    "x": -1,
+                    "y": 0
                 },
                 {
-                    "x" : -1,
-                    "y" : 1
+                    "x": -1,
+                    "y": 1
                 },
                 {
-                    "x" : 0,
-                    "y" : 0
+                    "x": 0,
+                    "y": 0
                 }
             ],
             "overlays": [
@@ -122,6 +125,10 @@
             "name": "Mausoleum",
             "minor": "When the next enemy dies, spawn one normal Living Bones at the closest sarcophagus.",
             "major": "When the next enemy dies, spawn one elite Living Bones at each sarcophagus.",
+            "center": {
+                "x": -5,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -7,
@@ -134,12 +141,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -5,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -5,
+                "y": -1,
+                "direction": 270
             },
             "locations": [
                 {
@@ -216,11 +222,15 @@
         },
         "869": {
             "tile": "15-B",
+            "center": {
+                "x": -3,
+                "y": 3
+            },
             "entrances": {
                 "A": {
-                    "x": -1,
+                    "x": 1,
                     "y": 0,
-                    "direction": 120
+                    "direction": 150
                 },
                 "B": {
                     "x": -1,
@@ -228,12 +238,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -5,
-                    "y": 0,
-                    "direction": 210
-                }
+            "exit": {
+                "type": "A",
+                "x": -4,
+                "y": 0,
+                "direction": 210
             },
             "locations": [],
             "overlays": [
@@ -266,6 +275,10 @@
         },
         "870": {
             "tile": "15-D",
+            "center": {
+                "x": -3,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -7,
@@ -278,12 +291,11 @@
                     "direction": 0
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -6,
-                    "y": 0,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -1,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -321,6 +333,10 @@
         },
         "871": {
             "tile": "14-A",
+            "center": {
+                "x": 1,
+                "y": 4
+            },
             "entrances": {
                 "B": {
                     "x": -3,
@@ -328,12 +344,11 @@
                     "direction": 300
                 }
             },
-            "exits": {
-                "B": {
-                    "x": 2,
-                    "y": 0,
-                    "direction": 300
-                }
+            "exit": {
+                "type": "B",
+                "x": 2,
+                "y": 0,
+                "direction": 300
             },
             "locations": [],
             "overlays": [
@@ -366,6 +381,10 @@
         },
         "872": {
             "tile": "13-A",
+            "center": {
+                "x": -3,
+                "y": 3
+            },
             "entrances": {
                 "B": {
                     "x": -1,
@@ -373,12 +392,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -6,
-                    "y": 3,
-                    "direction": 180
-                }
+            "exit": {
+                "type": "B",
+                "x": -6,
+                "y": 3,
+                "direction": 180
             },
             "locations": [],
             "overlays": [
@@ -406,6 +424,10 @@
         },
         "873": {
             "tile": "13-E",
+            "center": {
+                "x": -3,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -1,
@@ -413,12 +435,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -6,
-                    "y": 3,
-                    "direction": 180
-                }
+            "exit": {
+                "type": "B",
+                "x": -6,
+                "y": 3,
+                "direction": 180
             },
             "locations": [
                 {
@@ -505,6 +526,10 @@
         },
         "874": {
             "tile": "12-B",
+            "center": {
+                "x": -4,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": 0,
@@ -512,12 +537,11 @@
                     "direction": 90
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -5,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -5,
+                "y": -1,
+                "direction": 270
             },
             "locations": [
                 {
@@ -609,6 +633,10 @@
         },
         "875": {
             "tile": "12-C",
+            "center": {
+                "x": -4,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": -6,
@@ -616,12 +644,11 @@
                     "direction": 270
                 }
             },
-            "exits": {
-                "A": {
-                    "x": 0,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": 0,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -649,6 +676,10 @@
         },
         "876": {
             "tile": "11-A",
+            "center": {
+                "x": -5,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -2,
@@ -656,17 +687,20 @@
                     "direction": 270
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -10,
-                    "y": 6,
-                    "direction": 120
-                }
+            "exit": {
+                "type": "B",
+                "x": -10,
+                "y": 6,
+                "direction": 120
             },
             "locations": []
         },
         "877": {
             "tile": "11-E",
+            "center": {
+                "x": -5,
+                "y": 3
+            },
             "entrances": {
                 "A": {
                     "x": -8,
@@ -674,12 +708,11 @@
                     "direction": 210
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -1,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -1,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -702,6 +735,10 @@
         },
         "878": {
             "tile": "10-A",
+            "center": {
+                "x": -4,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": -5,
@@ -714,12 +751,11 @@
                     "direction": 0
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -1,
-                    "y": 3,
-                    "direction": 0
-                }
+            "exit": {
+                "type": "B",
+                "x": -1,
+                "y": 3,
+                "direction": 0
             },
             "locations": [],
             "overlays": [
@@ -737,6 +773,10 @@
         },
         "879": {
             "tile": "10-D",
+            "center": {
+                "x": -3,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": -5,
@@ -744,12 +784,11 @@
                     "direction": 270
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -2,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": -2,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -777,25 +816,32 @@
             ]
         },
         "880": {
-            "tile": "9-B",
+            "tile": "09-B",
+            "center": {
+                "x": -2,
+                "y": 3
+            },
             "entrances": {
                 "A": {
-                    "x": -1,
+                    "x": 0,
                     "y": -1,
                     "direction": 90
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -4,
-                    "y": 7,
-                    "direction": 90
-                }
+            "exit": {
+                "type": "A",
+                "x": -4,
+                "y": 7,
+                "direction": 90
             },
             "locations": []
         },
         "881": {
-            "tile": "9-D",
+            "tile": "09-D",
+            "center": {
+                "x": -2,
+                "y": 3
+            },
             "entrances": {
                 "B": {
                     "x": 0,
@@ -803,12 +849,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -7,
-                    "y": 6,
-                    "direction": 180
-                }
+            "exit": {
+                "type": "B",
+                "x": -7,
+                "y": 6,
+                "direction": 180
             },
             "locations": [],
             "overlays": [
@@ -825,20 +870,23 @@
             ]
         },
         "882": {
-            "tile": "8-B",
+            "tile": "08-B",
+            "center": {
+                "x": -3,
+                "y": 2
+            },
             "entrances": {
                 "A": {
-                    "x": -1,
+                    "x": 1,
                     "y": 0,
-                    "direction": 120
+                    "direction": 150
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -5,
-                    "y": 4,
-                    "direction": 90
-                }
+            "exit": {
+                "type": "A",
+                "x": -4,
+                "y": 5,
+                "direction": 90
             },
             "locations": [
                 {
@@ -892,7 +940,11 @@
             ]
         },
         "883": {
-            "tile": "7-E",
+            "tile": "07-E",
+            "center": {
+                "x": -4,
+                "y": 1
+            },
             "entrances": {
                 "A": {
                     "x": 0,
@@ -900,12 +952,11 @@
                     "direction": 90
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -8,
-                    "y": 1,
-                    "direction": 180
-                }
+            "exit": {
+                "type": "B",
+                "x": -8,
+                "y": 1,
+                "direction": 180
             },
             "locations": [],
             "overlays": [
@@ -922,7 +973,11 @@
             ]
         },
         "884": {
-            "tile": "7-G",
+            "tile": "07-G",
+            "center": {
+                "x": -4,
+                "y": 1
+            },
             "entrances": {
                 "A": {
                     "x": -6,
@@ -930,12 +985,11 @@
                     "direction": 90
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -3,
-                    "y": 3,
-                    "direction": 90
-                }
+            "exit": {
+                "type": "A",
+                "x": -5,
+                "y": 3,
+                "direction": 90
             },
             "locations": [
                 {
@@ -977,7 +1031,11 @@
             ]
         },
         "885": {
-            "tile": "6-B",
+            "tile": "06-B",
+            "center": {
+                "x": -3,
+                "y": 4
+            },
             "entrances": {
                 "A": {
                     "x": -1,
@@ -990,17 +1048,20 @@
                     "direction": 0
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -3,
-                    "y": 7,
-                    "direction": 0
-                }
+            "exit": {
+                "type": "B",
+                "x": -3,
+                "y": 7,
+                "direction": 0
             },
             "locations": []
         },
         "886": {
-            "tile": "5-A",
+            "tile": "05-A",
+            "center": {
+                "x": -2,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": -2,
@@ -1008,12 +1069,11 @@
                     "direction": 90
                 }
             },
-            "exits": {
-                "B": {
-                    "x": 0,
-                    "y": -2,
-                    "direction": 0
-                }
+            "exit": {
+                "type": "B",
+                "x": 0,
+                "y": -2,
+                "direction": 0
             },
             "locations": [],
             "overlays": [
@@ -1036,20 +1096,23 @@
             ]
         },
         "887": {
-            "tile": "4-B",
+            "tile": "04-B",
+            "center": {
+                "x": -2,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": -5,
                     "y": 3,
-                    "direction": 300
+                    "direction": 330
                 }
             },
-            "exits": {
-                "A": {
-                    "x": -1,
-                    "y": 4,
-                    "direction": 60
-                }
+            "exit": {
+                "type": "A",
+                "x": -1,
+                "y": 4,
+                "direction": 30
             },
             "locations": [
                 {
@@ -1115,7 +1178,11 @@
             ]
         },
         "888": {
-            "tile": "4-C",
+            "tile": "04-C",
+            "center": {
+                "x": -2,
+                "y": 2
+            },
             "entrances": {
                 "A": {
                     "x": 0,
@@ -1123,12 +1190,11 @@
                     "direction": 210
                 }
             },
-            "exits": {
-                "A": {
-                    "x": 0,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": 0,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -1157,9 +1223,17 @@
         },
         "889": {
             "tile": "02-B",
+            "center": {
+                "x": -2,
+                "y": 2
+            },
             "otherTiles": [
                 {
                     "tile": "02-D",
+                    "center": {
+                        "x": 1,
+                        "y": -3
+                    },
                     "position": {
                         "x": 3,
                         "y": -5,
@@ -1179,12 +1253,11 @@
                     "direction": 180
                 }
             },
-            "exits": {
-                "B": {
-                    "x": -1,
-                    "y": -3,
-                    "direction": 180
-                }
+            "exit": {
+                "type": "B",
+                "x": -1,
+                "y": -3,
+                "direction": 180
             },
             "locations": [],
             "overlays": [
@@ -1217,9 +1290,17 @@
         },
         "890": {
             "tile": "02-G",
+            "center": {
+                "x": -2,
+                "y": 2
+            },
             "otherTiles": [
                 {
                     "tile": "02-E",
+                    "center": {
+                        "x": 2,
+                        "y": 2
+                    },
                     "position": {
                         "x": -4,
                         "y": 0,
@@ -1229,22 +1310,21 @@
             ],
             "entrances": {
                 "A": {
-                    "x": -4,
+                    "x": -3,
                     "y": 4,
                     "direction": 270
                 },
                 "B": {
-                    "x": -5,
+                    "x": -4,
                     "y": 2,
                     "direction": 0
                 }
             },
-            "exits": {
-                "A": {
-                    "x": 3,
-                    "y": -1,
-                    "direction": 270
-                }
+            "exit": {
+                "type": "A",
+                "x": 3,
+                "y": -1,
+                "direction": 270
             },
             "locations": [],
             "overlays": [
@@ -1277,7 +1357,7 @@
                     "name": "Snow Corridor",
                     "positions": [
                         {
-                            "x": -1,
+                            "x": 1,
                             "y": 0,
                             "orientation": 0
                         },
@@ -1292,12 +1372,12 @@
                     "name": "Snow Rock",
                     "positions": [
                         {
-                            "x": -2,
+                            "x": 2,
                             "y": 0,
                             "orientation": 0
                         },
                         {
-                            "x": 1,
+                            "x": -1,
                             "y": 2,
                             "orientation": 0
                         }
@@ -1306,7 +1386,7 @@
             ]
         }
     },
-    "positions": {
+    "monsters": {
         "891": {
             "name": "Smashing",
             "infuse": "Earth",
@@ -1365,7 +1445,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "All enemies gain Wound",
                         "target": "all enemies",
@@ -1430,7 +1510,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "All enemies gain Imobilize",
                         "target": "all enemies",
@@ -1494,7 +1574,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 3 loot cards",
                         "target": "here",
@@ -1768,7 +1848,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Recover 5 cards from discard",
                         "target": "here"
@@ -1833,7 +1913,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Recover 1 lost card",
                         "target": "here"
@@ -1904,7 +1984,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 2 loot cards",
                         "target": "here",
@@ -2285,7 +2365,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "All enemies suffer 2 damage",
                         "target": "all enemies",
@@ -2430,7 +2510,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 2 loot cards",
                         "target": "here",
@@ -2497,7 +2577,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "All enemies suffer 3 damage",
                         "target": "all enemies",
@@ -2754,7 +2834,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 3 Wood",
                         "target": "here",
@@ -2822,7 +2902,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 3 Metal",
                         "target": "here",
@@ -2897,7 +2977,7 @@
                 },
                 {
                     "category": "overlay",
-                    "name": "chest",
+                    "name": "Treasure Chest",
                     "effect": {
                         "description": "Gain 3 Hide",
                         "target": "here",
