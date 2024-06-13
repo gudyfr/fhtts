@@ -977,7 +977,7 @@ function GameState:change(what, name, nr, amount)
 end
 
 function GameState:evalExpr(str)
-    return luaxp.evaluate(str, { L = self.level, C = self:nbCharacters() })
+    return luaxp.evaluate(str, { L = self.level, C = Global.call("getPlayerCount") })
 end
 
 function GameState:startRound(characterInitiatives)
